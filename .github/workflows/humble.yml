@@ -1,0 +1,55 @@
+name: Build-Humble-HTML
+
+on:
+  push:
+    branches:
+      - humble
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies with pip
+        run: pip install --no-warn-script-location  --user -r requirements.txt -c constraints.txt
+
+      - name: Test doc8
+        run: make test
+
+  build_html:
+    needs: test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Install dependencies with pip
+        run: pip install --no-warn-script-location --user -r requirements.txt -c constraints.txt
+
+      - name: Download conf.doc
+        run: wget https://raw.githubusercontent.com/fishros/ros2_documentation/config/conf.py -O conf.py && sed -i 's/ROS_DISTRO/humble/g' conf.py 
+
+      - name: Build the po doc
+        run: sphinx-build -b html -c . -D language=zh source build/html/zh
+
+      - name: Deploy Po documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./build/html/zh
+          publish_branch: gh-pages-cn-humble
