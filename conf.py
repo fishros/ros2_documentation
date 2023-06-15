@@ -308,7 +308,7 @@ def expand_macros(app, docname, source):
     source[0] = result
 
 def setup(app):
-    app.config.smv_current_version= ROS_DISTRO
+    app.config.smv_current_version= 'ROS_DISTRO'
     app.connect('config-inited', smv_rewrite_configs)
     app.connect('html-page-context', github_link_rewrite_branch)
     app.connect('source-read', expand_macros)
