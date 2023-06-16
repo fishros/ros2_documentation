@@ -464,13 +464,9 @@
 </pre></div>
 </div>
 <p>它包含了必要的头文件、库文件及其依赖项，以便项目能够正确找到它们。同时，在使用叠加工作空间时，它还会确保所有依赖项的包含目录被正确排序。</p>
-<p>The second way is to use <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code>.</p>
-<p>The recommended way in modern CMake is to only use targets, exporting and linking against them.
-CMake targets are namespaced, similar to C++.
-For instance, <code class="docutils literal notranslate"><span class="pre">Eigen3</span></code> defines the target <code class="docutils literal notranslate"><span class="pre">Eigen3::Eigen</span></code>.</p>
-<p>At least until <code class="docutils literal notranslate"><span class="pre">Crystal</span> <span class="pre">Clemmys</span></code> target names are not supported in the <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code> macro.
-Sometimes it will be necessary to call the <code class="docutils literal notranslate"><span class="pre">target_link_libaries</span></code> CMake function.
-In the example of Eigen3, the call should then look like</p>
+<p>第二种方法是使用``target_link_libraries``函数。</p>
+<p>在现代CMake中，推荐的方式是仅使用目标（targets），并将其导出和链接。CMake目标使用命名空间，类似于C++。例如，<code class="docutils literal notranslate"><span class="pre">Eigen3``定义了目标``Eigen3::Eigen</span></code>。</p>
+<p>至少在``ament_target_dependencies``宏中不支持``Crystal Clemmys``目标名称之前，有时需要调用``target_link_libraries`` CMake函数。以Eigen3为例，调用应该如下所示：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Eigen3</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_target</span><span class="w"> </span><span class="s">Eigen3::Eigen</span><span class="p">)</span>
 </pre></div>
