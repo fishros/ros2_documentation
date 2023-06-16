@@ -382,7 +382,7 @@
 <li><p><a class="reference internal" href="#cmake-toolchain-file" id="id3">CMake 工具链文件</a></p></li>
 <li><p><a class="reference internal" href="#target-file-system" id="id4">目标文件系统</a></p></li>
 <li><p><a class="reference internal" href="#build-process" id="id5">构建过程</a></p></li>
-<li><p><a class="reference internal" href="#cross-compiling-examples-for-arm" id="id6">Cross-compiling examples for Arm</a></p></li>
+<li><p><a class="reference internal" href="#cross-compiling-examples-for-arm" id="id6">为 Arm 进行交叉编译示例</a></p></li>
 <li><p><a class="reference internal" href="#automated-cross-compilation" id="id7">Automated Cross-compilation</a></p></li>
 <li><p><a class="reference internal" href="#cross-compiling-against-a-pre-built-ros-2" id="id8">Cross-compiling against a pre-built ROS 2</a></p></li>
 <li><p><a class="reference internal" href="#run-on-the-target" id="id9">Run on the target</a></p></li>
@@ -467,12 +467,11 @@
         -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span><span class="s2">&quot;&lt;path_to_toolchain/toolchainfile.cmake&gt;&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">toolchain-file</span></code> provide to CMake the information of the <code class="docutils literal notranslate"><span class="pre">cross-compiler</span></code> and the <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">file-system</span></code>.
-<code class="docutils literal notranslate"><span class="pre">Colcon</span></code> will call CMake with the given toolchain-file on every package of ROS 2.</p>
+<p><code class="docutils literal notranslate"><span class="pre">toolchain-file</span></code> 提供给 CMake 有关 <code class="docutils literal notranslate"><span class="pre">交叉编译器</span></code> 和 <code class="docutils literal notranslate"><span class="pre">目标文件系统</span></code> 的信息。<code class="docutils literal notranslate"><span class="pre">Colcon</span></code> 将在 ROS 2 的每个软件包上使用给定的 toolchain-file 来调用 CMake。</p>
 </div>
 <div class="section" id="cross-compiling-examples-for-arm">
-<h3><a class="toc-backref" href="#id6">Cross-compiling examples for Arm</a><a class="headerlink" href="#cross-compiling-examples-for-arm" title="永久链接至标题"></a></h3>
-<p>After <a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html"><span class="doc">downloading the ROS 2 source code</span></a>, you can add cross-compilation assets to the workspace via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ros-tooling/cross_compile.git</span> <span class="pre">-b</span> <span class="pre">0.0.1</span> <span class="pre">src/ros2/cross_compile</span></code>. These are working examples on how to cross-compile for Arm cores.</p>
+<h3><a class="toc-backref" href="#id6">为 Arm 进行交叉编译示例</a><a class="headerlink" href="#cross-compiling-examples-for-arm" title="永久链接至标题"></a></h3>
+<p>在 <a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html"><span class="doc">下载 ROS 2 源代码</span></a> 后，您可以通过 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ros-tooling/cross_compile.git</span> <span class="pre">-b</span> <span class="pre">0.0.1</span> <span class="pre">src/ros2/cross_compile</span></code> 将交叉编译资产添加到工作空间。这些是关于如何为 Arm 内核进行交叉编译的可行示例。</p>
 <dl class="simple">
 <dt>The following targets are supported:</dt><dd><ul class="simple">
 <li><p>Ubuntu-arm64: To be used with any ARMv8-A based system.</p></li>
