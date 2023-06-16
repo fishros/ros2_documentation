@@ -750,11 +750,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>: 标记文件的内容作为字符串。这可以是一个相对路径列表等。<code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> 不能与 <code class="docutils literal notranslate"><span class="pre">CONTENT_FILE</span></code> 一起使用。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CONTENT_FILE</span></code>: 用于创建标记文件的文件的路径。该文件可以是一个普通文件或使用 <code class="docutils literal notranslate"><span class="pre">configure_file()</span></code> 扩展的模板文件。<code class="docutils literal notranslate"><span class="pre">CONTENT_FILE</span></code> 不能与 <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> 一起使用。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME</span></code>：导出资源的软件包/库的名称，即标记文件的名称。默认为 <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AMENT_INDEX_BINARY_DIR</span></code>: The base path of the generated ament index. Unless really necessary, always use the default <code class="docutils literal notranslate"><span class="pre">${CMAKE_BINARY_DIR}/ament_cmake_index</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SKIP_INSTALL</span></code>: Skip installing the marker file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AMENT_INDEX_BINARY_DIR</span></code>：生成的ament索引的基路径。除非真的有必要，否则始终使用默认值 <code class="docutils literal notranslate"><span class="pre">${CMAKE_BINARY_DIR}/ament_cmake_index</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SKIP_INSTALL</span></code>：跳过安装标记文件。</p></li>
 </ul>
-<p>Since only one marker file exists per package, it is usually a problem if the CMake function/macro gets called twice by the same project.
-However, for large projects it might be best to split up calls registering resources.</p>
+<p>由于每个软件包只存在一个标记文件，如果同一项目调用了两次CMake函数/宏，则通常会出现问题。然而，对于大型项目，最好将调用注册资源的操作拆分为多次。</p>
 <p>Therefore, it is best practice to let a macro registering a resource such as <code class="docutils literal notranslate"><span class="pre">register_rviz_ogre_media_exports.cmake</span></code> only fill some variables.
 The real call to <code class="docutils literal notranslate"><span class="pre">ament_index_register_resource</span></code> can then be added within an ament extension to <code class="docutils literal notranslate"><span class="pre">ament_package</span></code>.
 Since there must only ever be one call to <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> per project, there will always only be one place where the resource gets registered.
