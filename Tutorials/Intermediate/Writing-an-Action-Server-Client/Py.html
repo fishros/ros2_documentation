@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writing an action server and client (Python) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>Writing an action server and client (Python) [待校准@6379] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Composing multiple nodes in a single process" href="../Composition.html" />
-    <link rel="prev" title="Writing an action server and client (C++)" href="Cpp.html" /> 
+    <link rel="next" title="Composing multiple nodes in a single process [待校准@5284]" href="../Composition.html" />
+    <link rel="prev" title="Writing an action server and client (C++) [待校准@6308]" href="Cpp.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,303 +46,303 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Windows-Install-Binary.html">Windows (binary)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/RHEL-Install-RPMs.html">RHEL (RPM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Alternatives.html">Alternatives</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu (binary)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Windows-Development-Setup.html">Windows (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL (binary)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/macOS-Development-Setup.html">macOS (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Latest-Development-Setup.html">Latest development (source)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html">Installation [待校准&#64;7525]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian) [待校准&#64;7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Windows-Install-Binary.html">Windows (binary) [待校准&#64;7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/RHEL-Install-RPMs.html">RHEL (RPM) [待校准&#64;7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Alternatives.html">Alternatives [待校准&#64;7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu (source) [待校准&#64;7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu (binary) [待校准&#64;7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Windows-Development-Setup.html">Windows (source) [待校准&#64;7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL (source) [待校准&#64;7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL (binary) [待校准&#64;7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/macOS-Development-Setup.html">macOS (source) [待校准&#64;7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora (source) [待校准&#64;7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Latest-Development-Setup.html">Latest development (source) [待校准&#64;7561]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Maintaining-a-Source-Checkout.html">Maintain source checkout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Testing.html">Testing with pre-release binaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Installation/DDS-Implementations.html">DDS implementations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext security plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Releases.html">Distributions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini Changelog</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill changelog</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Development.html">Development Distribution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (codename 'jazzy'; May, 2024)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/End-of-Life.html">End-of-Life Distributions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone (<code class="docutils literal notranslate"><span class="pre">galactic</span></code>)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone changelog</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor (<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Dashing-Diademata.html">Dashing Diademata (<code class="docutils literal notranslate"><span class="pre">dashing</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson (<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta2-Overview.html">Beta 2 (<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta1-Overview.html">Beta 1 (<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Alpha-Overview.html">Alphas</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Process.html">Development process for a release</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../Tutorials.html">Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../Beginner-CLI-Tools.html">Beginner: CLI tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">Configuring environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">Using <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>, <code class="docutils literal notranslate"><span class="pre">ros2</span></code>, and <code class="docutils literal notranslate"><span class="pre">rqt</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">Understanding nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">Understanding topics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">Understanding services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">Understanding parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">Understanding actions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">Using <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> to view logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">Launching nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">Recording and playing back data</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../Beginner-Client-Libraries.html">Beginner: Client libraries</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Colcon-Tutorial.html">Using <code class="docutils literal notranslate"><span class="pre">colcon</span></code> to build packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">Creating a workspace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">Creating a package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">Writing a simple service and client (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">Writing a simple service and client (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">Creating custom msg and srv files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">Implementing custom interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">Using parameters in a class (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">Using parameters in a class (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">Using <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> to identify issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Pluginlib.html">Creating and using plugins (C++)</a></li>
-</ul>
-</li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../Intermediate.html">Intermediate</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../Rosdep.html">Managing Dependencies with rosdep</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">Creating an action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Cpp.html">Writing an action server and client (C++)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Writing an action server and client (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Composition.html">Composing multiple nodes in a single process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">Monitoring for parameter changes (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Launch/Launch-Main.html">Launch</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Launch/Creating-Launch-Files.html">Creating a launch file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Launch/Launch-system.html">Integrating launch files into ROS 2 packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-Substitutions.html">Using substitutions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-Event-Handlers.html">Using event handlers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-ROS2-Launch-For-Large-Projects.html">Managing large projects</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Introduction-To-Tf2.html">Introducing <code class="docutils literal notranslate"><span class="pre">tf2</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">Writing a static broadcaster (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">Writing a static broadcaster (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Broadcaster-Py.html">Writing a broadcaster (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">Writing a broadcaster (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Listener-Py.html">Writing a listener (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Adding-A-Frame-Py.html">Adding a frame (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Adding-A-Frame-Cpp.html">Adding a frame (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Learning-About-Tf2-And-Time-Py.html">Using time (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Learning-About-Tf2-And-Time-Cpp.html">Using time (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Time-Travel-With-Tf2-Py.html">Traveling in time (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Time-Travel-With-Tf2-Cpp.html">Traveling in time (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Debugging-Tf2-Problems.html">Debugging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Quaternion-Fundamentals.html">Quaternion fundamentals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../Testing/Testing-Main.html">Testing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Testing/CLI.html">Running Tests in ROS 2 from the Command Line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Testing/Cpp.html">Writing Basic Tests with C++ with GTest</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Testing/Python.html">Writing Basic Tests with Python</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../URDF/URDF-Main.html">URDF</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">Building a visual robot model from scratch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Movable-Robot-Model-with-URDF.html">Building a movable robot model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">Adding physical and collision properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">Using Xacro to clean up your code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-URDF-with-Robot-State-Publisher.html">Using URDF with <code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Maintaining-a-Source-Checkout.html">Maintain source checkout [待校准&#64;7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Testing.html">Testing with pre-release binaries [待校准&#64;7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/DDS-Implementations.html">DDS implementations [待校准&#64;7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext security plugins [待校准&#64;7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [待校准&#64;7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [待校准&#64;7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [待校准&#64;7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [待校准&#64;7910]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../Advanced.html">Advanced</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">Enabling topic statistics (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Discovery-Server/Discovery-Server.html">Using Fast DDS Discovery Server as discovery protocol [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Allocator-Template-Tutorial.html">Implementing a custom memory allocator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/FastDDS-Configuration.html">Unlocking the potential of Fast DDS middleware [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">Recording a bag from a node (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">Recording a bag from a node (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Simulators/Simulation-Main.html">Simulators</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Webots/Simulation-Webots.html">Webots</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Ubuntu.html">Installation (Ubuntu)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Windows.html">Installation (Windows)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-MacOS.html">Installation (macOS)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">Setting up a robot simulation (Basic)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">Setting up a robot simulation (Advanced)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Releases.html">Distributions [待校准&#64;8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [待校准&#64;15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini Changelog [待校准&#64;12530]</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Gazebo.html">Setting up a robot simulation (Gazebo)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [待校准&#64;14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill changelog [待校准&#64;10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="docutils literal notranslate"><span class="pre">foxy</span></code>) [待校准&#64;14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [待校准&#64;15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Development.html">Development Distribution [待校准&#64;8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (codename 'jazzy'; May, 2024) [待校准&#64;15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/End-of-Life.html">End-of-Life Distributions [待校准&#64;8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone (<code class="docutils literal notranslate"><span class="pre">galactic</span></code>) [待校准&#64;14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone changelog [待校准&#64;8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor (<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>) [待校准&#64;14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Dashing-Diademata.html">Dashing Diademata (<code class="docutils literal notranslate"><span class="pre">dashing</span></code>) [待校准&#64;14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [待校准&#64;14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson (<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>) [待校准&#64;14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [待校准&#64;14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [待校准&#64;8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta2-Overview.html">Beta 2 (<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>) [待校准&#64;8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta1-Overview.html">Beta 1 (<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>) [待校准&#64;8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Alpha-Overview.html">Alphas [待校准&#64;8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Process.html">Development process for a release [待校准&#64;15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../Tutorials.html">Tutorials [待校准&#64;3059]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Beginner-CLI-Tools.html">Beginner: CLI tools [待校准&#64;3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">Configuring environment [待校准&#64;3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">Using <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>, <code class="docutils literal notranslate"><span class="pre">ros2</span></code>, and <code class="docutils literal notranslate"><span class="pre">rqt</span></code> [待校准&#64;3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">Understanding nodes [待校准&#64;4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">Understanding topics [待校准&#64;4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">Understanding services [待校准&#64;4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">Understanding parameters [待校准&#64;4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">Understanding actions [待校准&#64;4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">Using <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> to view logs [待校准&#64;4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">Launching nodes [待校准&#64;4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">Recording and playing back data [待校准&#64;4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Beginner-Client-Libraries.html">Beginner: Client libraries [待校准&#64;4367]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Colcon-Tutorial.html">Using <code class="docutils literal notranslate"><span class="pre">colcon</span></code> to build packages [待校准&#64;4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">Creating a workspace [待校准&#64;4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">Creating a package [待校准&#64;4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (C++) [待校准&#64;4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (Python) [待校准&#64;4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">Writing a simple service and client (C++) [待校准&#64;4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">Writing a simple service and client (Python) [待校准&#64;4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">Creating custom msg and srv files [待校准&#64;4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">Implementing custom interfaces [待校准&#64;4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">Using parameters in a class (C++) [待校准&#64;4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">Using parameters in a class (Python) [待校准&#64;4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">Using <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> to identify issues [待校准&#64;4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Pluginlib.html">Creating and using plugins (C++) [待校准&#64;4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../Intermediate.html">Intermediate [待校准&#64;5283]</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Rosdep.html">Managing Dependencies with rosdep [待校准&#64;5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">Creating an action [待校准&#64;5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cpp.html">Writing an action server and client (C++) [待校准&#64;6308]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Writing an action server and client (Python) [待校准&#64;6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Composition.html">Composing multiple nodes in a single process [待校准&#64;5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">Monitoring for parameter changes (C++) [待校准&#64;5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Launch/Launch-Main.html">Launch [待校准&#64;5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Creating-Launch-Files.html">Creating a launch file [待校准&#64;5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Launch-system.html">Integrating launch files into ROS 2 packages [待校准&#64;5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-Substitutions.html">Using substitutions [待校准&#64;5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-Event-Handlers.html">Using event handlers [待校准&#64;5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-ROS2-Launch-For-Large-Projects.html">Managing large projects [待校准&#64;5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [待校准&#64;5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Introduction-To-Tf2.html">Introducing <code class="docutils literal notranslate"><span class="pre">tf2</span></code> [待校准&#64;5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">Writing a static broadcaster (Python) [待校准&#64;6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">Writing a static broadcaster (C++) [待校准&#64;6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Broadcaster-Py.html">Writing a broadcaster (Python) [待校准&#64;6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">Writing a broadcaster (C++) [待校准&#64;5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Listener-Py.html">Writing a listener (Python) [待校准&#64;6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++) [待校准&#64;6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Adding-A-Frame-Py.html">Adding a frame (Python) [待校准&#64;5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Adding-A-Frame-Cpp.html">Adding a frame (C++) [待校准&#64;5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Learning-About-Tf2-And-Time-Py.html">Using time (Python) [待校准&#64;5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Learning-About-Tf2-And-Time-Cpp.html">Using time (C++) [待校准&#64;5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Time-Travel-With-Tf2-Py.html">Traveling in time (Python) [待校准&#64;5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Time-Travel-With-Tf2-Cpp.html">Traveling in time (C++) [待校准&#64;5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Debugging-Tf2-Problems.html">Debugging [待校准&#64;5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Quaternion-Fundamentals.html">Quaternion fundamentals [待校准&#64;5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code> [待校准&#64;5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Testing/Testing-Main.html">Testing [待校准&#64;5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/CLI.html">Running Tests in ROS 2 from the Command Line [待校准&#64;5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/Cpp.html">Writing Basic Tests with C++ with GTest [待校准&#64;5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/Python.html">Writing Basic Tests with Python [待校准&#64;5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../URDF/URDF-Main.html">URDF [待校准&#64;6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">Building a visual robot model from scratch [待校准&#64;6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Movable-Robot-Model-with-URDF.html">Building a movable robot model [待校准&#64;6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">Adding physical and collision properties [待校准&#64;6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">Using Xacro to clean up your code [待校准&#64;6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-URDF-with-Robot-State-Publisher.html">Using URDF with <code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code> [待校准&#64;6233]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Security/Security-Main.html">Security</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Introducing-ros2-security.html">Setting up security</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/The-Keystore.html">Understanding the security keystore</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Security-on-Two.html">Ensuring security across machines</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Examine-Traffic.html">Examining network traffic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Access-Controls.html">Setting access controls</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Deployment-Guidelines.html">Deployment Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Advanced.html">Advanced [待校准&#64;3065]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">Enabling topic statistics (C++) [待校准&#64;3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Discovery-Server/Discovery-Server.html">Using Fast DDS Discovery Server as discovery protocol [community-contributed] [待校准&#64;3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Allocator-Template-Tutorial.html">Implementing a custom memory allocator [待校准&#64;3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/FastDDS-Configuration.html">Unlocking the potential of Fast DDS middleware [community-contributed] [待校准&#64;3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">Recording a bag from a node (C++) [待校准&#64;3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">Recording a bag from a node (Python) [待校准&#64;3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Simulators/Simulation-Main.html">Simulators [待校准&#64;3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Webots/Simulation-Webots.html">Webots [待校准&#64;3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Ubuntu.html">Installation (Ubuntu) [待校准&#64;3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Windows.html">Installation (Windows) [待校准&#64;3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-MacOS.html">Installation (macOS) [待校准&#64;3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">Setting up a robot simulation (Basic) [待校准&#64;3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">Setting up a robot simulation (Advanced) [待校准&#64;3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [待校准&#64;3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Gazebo.html">Setting up a robot simulation (Gazebo) [待校准&#64;3628]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../Demos.html">Demos</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Quality-of-Service.html">Using quality-of-service settings for lossy networks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Managed-Nodes.html">Managing nodes with managed lifecycles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Intra-Process-Communication.html">Setting up efficient intra-process communication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Rosbag-with-ROS1-Bridge.html">Recording and playing back data with <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> using the ROS 1 bridge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Real-Time-Programming.html">Understanding real-time programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/dummy-robot-demo.html">Experimenting with a dummy robot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Logging-and-logger-configuration.html">Logging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Demos/Content-Filtering-Subscription.html">Creating a content filtering subscription</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../Miscellaneous.html">Miscellaneous</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">Deploying on IBM Cloud Kubernetes [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">Using Eclipse Oxygen with <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">Building a real-time Linux kernel [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">Building a package with Eclipse 2021-06</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Security/Security-Main.html">Security [待校准&#64;3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Introducing-ros2-security.html">Setting up security [待校准&#64;3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/The-Keystore.html">Understanding the security keystore [待校准&#64;3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Security-on-Two.html">Ensuring security across machines [待校准&#64;3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Examine-Traffic.html">Examining network traffic [待校准&#64;3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Access-Controls.html">Setting access controls [待校准&#64;3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Deployment-Guidelines.html">Deployment Guidelines [待校准&#64;3406]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../How-To-Guides.html">如何指南</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installation-Troubleshooting.html">Installation troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Developing-a-ROS-2-Package.html">Developing a ROS 2 package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python user documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-file-different-formats.html">Using Python, XML, and YAML for ROS 2 Launch Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launching-composable-nodes.html">Using ROS 2 launch to launch composable nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Node-arguments.html">Passing ROS arguments to nodes via the command-line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Sync-Vs-Async.html">Synchronous vs. asynchronous service clients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/DDS-tuning.html">DDS tuning information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2: Overriding QoS Policies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Cross-compilation.html">Cross-compilation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Releasing/Releasing-a-Package.html">Releasing a Package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/First-Time-Release.html">First Time Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Subsequent-Releases.html">Subsequent Releases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Team-Repository.html">Release Team / Repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Track.html">Release Track</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Demos.html">Demos [待校准&#64;4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Quality-of-Service.html">Using quality-of-service settings for lossy networks [待校准&#64;5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Managed-Nodes.html">Managing nodes with managed lifecycles [待校准&#64;5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Intra-Process-Communication.html">Setting up efficient intra-process communication [待校准&#64;5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Rosbag-with-ROS1-Bridge.html">Recording and playing back data with <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> using the ROS 1 bridge [待校准&#64;5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Real-Time-Programming.html">Understanding real-time programming [待校准&#64;5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/dummy-robot-demo.html">Experimenting with a dummy robot [待校准&#64;5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Logging-and-logger-configuration.html">Logging [待校准&#64;5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Content-Filtering-Subscription.html">Creating a content filtering subscription [待校准&#64;5001]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Python-Packages.html">Using Python Packages with ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Port-Plugin-Windows.html">Porting RQt plugins to Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">Running ROS 2 nodes in Docker [community-contributed]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Package-maintainer-guide.html">ROS 2 Package Maintainer Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-a-Custom-Debian-Package.html">Building a custom Debian package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">Building ROS 2 with tracing instrumentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Topics-Services-Actions.html">Topics vs Services vs Actions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Variants.html">Using variants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">Disabling Zero Copy Loaned Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installing-on-Raspberry-Pi.html">ROS 2 on Raspberry Pi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-callback-groups.html">Using Callback Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install.html">Building RQt from source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-MacOS.html">Building RQt from source on macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-Windows10.html">Building RQt from source on Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Miscellaneous.html">Miscellaneous [待校准&#64;6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">Deploying on IBM Cloud Kubernetes [community-contributed] [待校准&#64;6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">Using Eclipse Oxygen with <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> [community-contributed] [待校准&#64;6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">Building a real-time Linux kernel [community-contributed] [待校准&#64;6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">Building a package with Eclipse 2021-06 [待校准&#64;6440]</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Concepts.html">Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Domain-ID.html">The ROS_DOMAIN_ID</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Different-Middleware-Vendors.html">About different ROS 2 DDS/RTPS vendors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Logging.html">About logging and logger configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Quality-of-Service-Settings.html">About Quality of Service settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Executors.html">Executors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Topic-Statistics.html">About topic statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Command-Line-Tools.html">Introspection with command line tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-RQt.html">Overview and usage of RQt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Composition.html">About Composition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Catment.html">On the mixing of ament and catkin (catment)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Cross-Compilation.html">About Cross-compilation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Security.html">About ROS 2 Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Tf2.html">About tf2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Build-System.html">About the build system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Internal-Interfaces.html">About internal ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../How-To-Guides.html">如何指南 [&#64;1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installation-Troubleshooting.html">Installation troubleshooting [待校准&#64;371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Developing-a-ROS-2-Package.html">Developing a ROS 2 package [待校准&#64;338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [&#64;5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python user documentation [待校准&#64;158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2 [待校准&#64;491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-file-different-formats.html">Using Python, XML, and YAML for ROS 2 Launch Files [待校准&#64;464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launching-composable-nodes.html">Using ROS 2 launch to launch composable nodes [待校准&#64;587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2 [待校准&#64;705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Node-arguments.html">Passing ROS arguments to nodes via the command-line [待校准&#64;603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Sync-Vs-Async.html">Synchronous vs. asynchronous service clients [待校准&#64;987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/DDS-tuning.html">DDS tuning information [待校准&#64;294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2: Overriding QoS Policies [待校准&#64;627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations [待校准&#64;1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Cross-compilation.html">Cross-compilation [待校准&#64;207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Releasing/Releasing-a-Package.html">Releasing a Package [待校准&#64;928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/First-Time-Release.html">First Time Release [待校准&#64;792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Subsequent-Releases.html">Subsequent Releases [待校准&#64;938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Team-Repository.html">Release Team / Repository [待校准&#64;866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Track.html">Release Track [待校准&#64;887]</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Contact.html">Contact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../The-ROS2-Project.html">The ROS 2 Project</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Contributing.html">Contributing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2 developer guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">Code style and language versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Quality-Guide.html">Quality guide: ensuring code quality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide.html">Migration guide from ROS 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">Python migration guide from ROS 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Python-Packages.html">Using Python Packages with ROS 2 [待校准&#64;1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Port-Plugin-Windows.html">Porting RQt plugins to Windows [待校准&#64;717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">Running ROS 2 nodes in Docker [community-contributed] [待校准&#64;946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio [待校准&#64;1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Package-maintainer-guide.html">ROS 2 Package Maintainer Guide [待校准&#64;639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-a-Custom-Debian-Package.html">Building a custom Debian package [待校准&#64;196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">Building ROS 2 with tracing instrumentation [待校准&#64;175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Topics-Services-Actions.html">Topics vs Services vs Actions [待校准&#64;1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Variants.html">Using variants [待校准&#64;1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool [待校准&#64;1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04 [待校准&#64;1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">Disabling Zero Copy Loaned Messages [待校准&#64;361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installing-on-Raspberry-Pi.html">ROS 2 on Raspberry Pi [待校准&#64;444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-callback-groups.html">Using Callback Groups [待校准&#64;1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed] [待校准&#64;959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install.html">Building RQt from source [待校准&#64;738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-MacOS.html">Building RQt from source on macOS [待校准&#64;763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-Windows10.html">Building RQt from source on Windows 10 [待校准&#64;771]</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Build-Farms.html">ROS Build Farms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows Tips and Tricks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">Contributing to ROS 2 Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Features.html">Features Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Feature-Ideas.html">Feature Ideas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Roadmap.html">Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/ROSCon-Content.html">ROSCon Talks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Governance.html">Project Governance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 Technical Steering Committee Charter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC applicant intake process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">How to Start a Community Working Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Concepts.html">Concepts [待校准&#64;6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Domain-ID.html">The ROS_DOMAIN_ID [待校准&#64;6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Different-Middleware-Vendors.html">About different ROS 2 DDS/RTPS vendors [待校准&#64;6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Logging.html">About logging and logger configuration [待校准&#64;7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Quality-of-Service-Settings.html">About Quality of Service settings [待校准&#64;7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">About ROS 2 client libraries [待校准&#64;7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-Interfaces.html">About ROS 2 interfaces [待校准&#64;7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Parameters.html">About parameters in ROS 2 [待校准&#64;7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Executors.html">Executors [待校准&#64;6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Topic-Statistics.html">About topic statistics [待校准&#64;7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Command-Line-Tools.html">Introspection with command line tools [待校准&#64;6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-RQt.html">Overview and usage of RQt [待校准&#64;7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Composition.html">About Composition [待校准&#64;6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Catment.html">On the mixing of ament and catkin (catment) [待校准&#64;6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Cross-Compilation.html">About Cross-compilation [待校准&#64;6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Security.html">About ROS 2 Security [待校准&#64;7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Tf2.html">About tf2 [待校准&#64;7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Build-System.html">About the build system [待校准&#64;6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Internal-Interfaces.html">About internal ROS 2 interfaces [待校准&#64;6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Middleware-Implementations.html">About ROS 2 middleware implementations [待校准&#64;7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">About ROS 2 client libraries [待校准&#64;7206]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Marketing.html">Marketing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Contact.html">Contact [待校准&#64;7468]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../The-ROS2-Project.html">The ROS 2 Project [待校准&#64;1326]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Contributing.html">Contributing [待校准&#64;1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2 developer guide [待校准&#64;1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">Code style and language versions [待校准&#64;1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Quality-Guide.html">Quality guide: ensuring code quality [待校准&#64;2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide.html">Migration guide from ROS 1 [待校准&#64;1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">Python migration guide from ROS 1 [待校准&#64;2222]</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../API-Docs.html">API Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Related-Projects.html">Related Projects</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2 Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Build-Farms.html">ROS Build Farms [待校准&#64;1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows Tips and Tricks [待校准&#64;2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">Contributing to ROS 2 Documentation [待校准&#64;1572]</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Citations.html">Citations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Features.html">Features Status [待校准&#64;2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Feature-Ideas.html">Feature Ideas [待校准&#64;2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Roadmap.html">Roadmap [待校准&#64;2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/ROSCon-Content.html">ROSCon Talks [待校准&#64;2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Governance.html">Project Governance [待校准&#64;2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 Technical Steering Committee Charter [待校准&#64;2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC applicant intake process [待校准&#64;2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">How to Start a Community Working Group [待校准&#64;2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Marketing.html">Marketing [待校准&#64;2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API-Docs.html">API Documentation [待校准&#64;7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Related-Projects.html">Related Projects [待校准&#64;8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 Projects [待校准&#64;8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2 Projects [待校准&#64;8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">Glossary [待校准&#64;3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Citations.html">Citations [待校准&#64;6616]</a></li>
 </ul>
 
         </div>
@@ -359,9 +359,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../Tutorials.html">Tutorials</a> &raquo;</li>
-          <li><a href="../../Intermediate.html">Intermediate</a> &raquo;</li>
-      <li>Writing an action server and client (Python)</li>
+          <li><a href="../../../Tutorials.html">Tutorials [待校准&#64;3059]</a> &raquo;</li>
+          <li><a href="../../Intermediate.html">Intermediate [待校准&#64;5283]</a> &raquo;</li>
+      <li>Writing an action server and client (Python) [待校准&#64;6379]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,48 +374,40 @@
 
 
   <div class="section" id="writing-an-action-server-and-client-python">
-<span id="actionspy"></span><h1>Writing an action server and client (Python)<a class="headerlink" href="#writing-an-action-server-and-client-python" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Implement an action server and client in Python.</p>
-<p><strong>Tutorial level:</strong> Intermediate</p>
-<p><strong>Time:</strong> 15 minutes</p>
+<span id="actionspy"></span><h1>Writing an action server and client (Python) <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6379">[待校准&#64;6379]</a><a class="headerlink" href="#writing-an-action-server-and-client-python" title="永久链接至标题"></a></h1>
+<p><strong>Goal:</strong> Implement an action server and client in Python. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6380">[待校准&#64;6380]</a></p>
+<p><strong>Tutorial level:</strong> Intermediate <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=5286">[待校准&#64;5286]</a></p>
+<p><strong>Time:</strong> 15 minutes <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3507">[待校准&#64;3507]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">Contents</p>
+<p class="topic-title">Contents <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3277">[待校准&#64;3277]</a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#background" id="id1">Background</a></p></li>
-<li><p><a class="reference internal" href="#prerequisites" id="id2">Prerequisites</a></p></li>
-<li><p><a class="reference internal" href="#tasks" id="id3">Tasks</a></p>
+<li><p><a class="reference internal" href="#background" id="id1">Background [待校准&#64;3072]</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites" id="id2">Prerequisites [待校准&#64;3124]</a></p></li>
+<li><p><a class="reference internal" href="#tasks" id="id3">Tasks [待校准&#64;3282]</a></p>
 <ul>
-<li><p><a class="reference internal" href="#writing-an-action-server" id="id4">1 Writing an action server</a></p></li>
-<li><p><a class="reference internal" href="#writing-an-action-client" id="id5">2 Writing an action client</a></p></li>
+<li><p><a class="reference internal" href="#writing-an-action-server" id="id4">1 Writing an action server [待校准&#64;6382]</a></p></li>
+<li><p><a class="reference internal" href="#writing-an-action-client" id="id5">2 Writing an action client [待校准&#64;6405]</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#summary" id="id6">Summary</a></p></li>
-<li><p><a class="reference internal" href="#related-content" id="id7">Related content</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id6">Summary [待校准&#64;3353]</a></p></li>
+<li><p><a class="reference internal" href="#related-content" id="id7">Related content [待校准&#64;3946]</a></p></li>
 </ul>
 </div>
 <div class="section" id="background">
-<h2><a class="toc-backref" href="#id1">Background</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>Actions are a form of asynchronous communication in ROS 2.
-<em>Action clients</em> send goal requests to <em>action servers</em>.
-<em>Action servers</em> send goal feedback and results to <em>action clients</em>.</p>
+<h2>Background <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3072">[待校准&#64;3072]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<p>Actions are a form of asynchronous communication in ROS 2. <em>Action clients</em> send goal requests to <em>action servers</em>. <em>Action servers</em> send goal feedback and results to <em>action clients</em>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6381">[待校准&#64;6381]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2><a class="toc-backref" href="#id2">Prerequisites</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>You will need the <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code> package and the <code class="docutils literal notranslate"><span class="pre">Fibonacci.action</span></code>
-interface defined in the previous tutorial, <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action</span></a>.</p>
+<h2>Prerequisites <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3124">[待校准&#64;3124]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<p>You will need the <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code> package and the <code class="docutils literal notranslate"><span class="pre">Fibonacci.action</span></code> interface defined in the previous tutorial, <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action [待校准&#64;5358]</span></a>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6311">[待校准&#64;6311]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2><a class="toc-backref" href="#id3">Tasks</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>Tasks <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3282">[待校准&#64;3282]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="writing-an-action-server">
-<h3><a class="toc-backref" href="#id4">1 Writing an action server</a><a class="headerlink" href="#writing-an-action-server" title="永久链接至标题"></a></h3>
-<p>Let's focus on writing an action server that computes the Fibonacci sequence
-using the action we created in the <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action</span></a> tutorial.</p>
-<p>Until now, you've created packages and used <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> to run your nodes.
-To keep things simple in this tutorial, however, we’ll scope the action server to a single file.
-If you'd like to see what a complete package for the actions tutorials looks like, check out
-<a class="reference external" href="https://github.com/ros2/demos/tree/humble/action_tutorials">action_tutorials</a>.</p>
-<p>Open a new file in your home directory, let's call it <code class="docutils literal notranslate"><span class="pre">fibonacci_action_server.py</span></code>,
-and add the following code:</p>
+<h3>1 Writing an action server <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6382">[待校准&#64;6382]</a><a class="headerlink" href="#writing-an-action-server" title="永久链接至标题"></a></h3>
+<p>Let's focus on writing an action server that computes the Fibonacci sequence using the action we created in the <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action [待校准&#64;5358]</span></a> tutorial. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6320">[待校准&#64;6320]</a></p>
+<p>Until now, you've created packages and used <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> to run your nodes. To keep things simple in this tutorial, however, we’ll scope the action server to a single file. If you'd like to see what a complete package for the actions tutorials looks like, check out <a class="reference external" href="https://github.com/ros2/demos/tree/humble/action_tutorials">action_tutorials</a>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6383">[待校准&#64;6383]</a></p>
+<p>Open a new file in your home directory, let's call it <code class="docutils literal notranslate"><span class="pre">fibonacci_action_server.py</span></code>, and add the following code: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6384">[待校准&#64;6384]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionServer</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -451,12 +443,11 @@ and add the following code:</p>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Line 8 defines a class <code class="docutils literal notranslate"><span class="pre">FibonacciActionServer</span></code> that is a subclass of <code class="docutils literal notranslate"><span class="pre">Node</span></code>.
-The class is initialized by calling the <code class="docutils literal notranslate"><span class="pre">Node</span></code> constructor, naming our node <code class="docutils literal notranslate"><span class="pre">fibonacci_action_server</span></code>:</p>
+<p>Line 8 defines a class <code class="docutils literal notranslate"><span class="pre">FibonacciActionServer</span></code> that is a subclass of <code class="docutils literal notranslate"><span class="pre">Node</span></code>. The class is initialized by calling the <code class="docutils literal notranslate"><span class="pre">Node</span></code> constructor, naming our node <code class="docutils literal notranslate"><span class="pre">fibonacci_action_server</span></code>: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6385">[待校准&#64;6385]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;fibonacci_action_server&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the constructor we also instantiate a new action server:</p>
+<p>In the constructor we also instantiate a new action server: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6386">[待校准&#64;6386]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_action_server</span> <span class="o">=</span> <span class="n">ActionServer</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">Fibonacci</span><span class="p">,</span>
@@ -464,23 +455,22 @@ The class is initialized by calling the <code class="docutils literal notranslat
             <span class="bp">self</span><span class="o">.</span><span class="n">execute_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>An action server requires four arguments:</p>
+<p>An action server requires four arguments: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6387">[待校准&#64;6387]</a></p>
 <ol class="arabic simple">
-<li><p>A ROS 2 node to add the action client to: <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p></li>
-<li><p>The type of the action: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code> (imported in line 5).</p></li>
-<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code>.</p></li>
-<li><p>A callback function for executing accepted goals: <code class="docutils literal notranslate"><span class="pre">self.execute_callback</span></code>.
-This callback <strong>must</strong> return a result message for the action type.</p></li>
+<li><p>A ROS 2 node to add the action client to: <code class="docutils literal notranslate"><span class="pre">self</span></code>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6388">[待校准&#64;6388]</a></p></li>
+<li><p>The type of the action: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code> (imported in line 5). <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6389">[待校准&#64;6389]</a></p></li>
+<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6330">[待校准&#64;6330]</a></p></li>
+<li><p>A callback function for executing accepted goals: <code class="docutils literal notranslate"><span class="pre">self.execute_callback</span></code>. This callback <strong>must</strong> return a result message for the action type. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6390">[待校准&#64;6390]</a></p></li>
 </ol>
-<p>We also define an <code class="docutils literal notranslate"><span class="pre">execute_callback</span></code> method in our class:</p>
+<p>We also define an <code class="docutils literal notranslate"><span class="pre">execute_callback</span></code> method in our class: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6391">[待校准&#64;6391]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal_handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Executing goal...&#39;</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">Fibonacci</span><span class="o">.</span><span class="n">Result</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-<p>This is the method that will be called to execute a goal once it is accepted.</p>
-<p>Let's try running our action server:</p>
+<p>This is the method that will be called to execute a goal once it is accepted. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6392">[待校准&#64;6392]</a></p>
+<p>Let's try running our action server: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6393">[待校准&#64;6393]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_server.py
 </pre></div>
@@ -492,13 +482,12 @@ This callback <strong>must</strong> return a result message for the action type.
 </pre></div>
 </div>
 </div></div>
-<p>In another terminal, we can use the command line interface to send a goal:</p>
+<p>In another terminal, we can use the command line interface to send a goal: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6394">[待校准&#64;6394]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 action send_goal fibonacci action_tutorials_interfaces/action/Fibonacci <span class="s2">&quot;{order: 5}&quot;</span>
 </pre></div>
 </div>
-<p>In the terminal that is running the action server, you should see a logged message &quot;Executing goal...&quot; followed by a warning that the goal state was not set.
-By default, if the goal handle state is not set in the execute callback it assumes the <em>aborted</em> state.</p>
-<p>We can use the method <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed">succeed()</a> on the goal handle to indicate that the goal was successful:</p>
+<p>In the terminal that is running the action server, you should see a logged message &quot;Executing goal...&quot; followed by a warning that the goal state was not set. By default, if the goal handle state is not set in the execute callback it assumes the <em>aborted</em> state. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6395">[待校准&#64;6395]</a></p>
+<p>We can use the method <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed">succeed()</a> on the goal handle to indicate that the goal was successful: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6396">[待校准&#64;6396]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal_handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Executing goal...&#39;</span><span class="p">)</span>
 <span class="hll">        <span class="n">goal_handle</span><span class="o">.</span><span class="n">succeed</span><span class="p">()</span>
@@ -506,8 +495,8 @@ By default, if the goal handle state is not set in the execute callback it assum
         <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-<p>Now if you restart the action server and send another goal, you should see the goal finished with the status <code class="docutils literal notranslate"><span class="pre">SUCCEEDED</span></code>.</p>
-<p>Now let's make our goal execution actually compute and return the requested Fibonacci sequence:</p>
+<p>Now if you restart the action server and send another goal, you should see the goal finished with the status <code class="docutils literal notranslate"><span class="pre">SUCCEEDED</span></code>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6397">[待校准&#64;6397]</a></p>
+<p>Now let's make our goal execution actually compute and return the requested Fibonacci sequence: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6398">[待校准&#64;6398]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal_handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Executing goal...&#39;</span><span class="p">)</span>
 
@@ -523,15 +512,12 @@ By default, if the goal handle state is not set in the execute callback it assum
 </span>        <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-<p>After computing the sequence, we assign it to the result message field before returning.</p>
-<p>Again, restart the action server and send another goal.
-You should see the goal finish with the proper result sequence.</p>
+<p>After computing the sequence, we assign it to the result message field before returning. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6399">[待校准&#64;6399]</a></p>
+<p>Again, restart the action server and send another goal. You should see the goal finish with the proper result sequence. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6400">[待校准&#64;6400]</a></p>
 <div class="section" id="publishing-feedback">
-<h4>1.2 Publishing feedback<a class="headerlink" href="#publishing-feedback" title="永久链接至标题"></a></h4>
-<p>One of the nice things about actions is the ability to provide feedback to an action client during goal execution.
-We can make our action server publish feedback for action clients by calling the goal handle's <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback">publish_feedback()</a> method.</p>
-<p>We'll replace the <code class="docutils literal notranslate"><span class="pre">sequence</span></code> variable, and use a feedback message to store the sequence instead.
-After every update of the feedback message in the for-loop, we publish the feedback message and sleep for dramatic effect:</p>
+<h4>1.2 Publishing feedback <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6401">[待校准&#64;6401]</a><a class="headerlink" href="#publishing-feedback" title="永久链接至标题"></a></h4>
+<p>One of the nice things about actions is the ability to provide feedback to an action client during goal execution. We can make our action server publish feedback for action clients by calling the goal handle's <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback">publish_feedback()</a> method. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6402">[待校准&#64;6402]</a></p>
+<p>We'll replace the <code class="docutils literal notranslate"><span class="pre">sequence</span></code> variable, and use a feedback message to store the sequence instead. After every update of the feedback message in the for-loop, we publish the feedback message and sleep for dramatic effect: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6403">[待校准&#64;6403]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">time</span>
 </span>
 <span class="kn">import</span> <span class="nn">rclpy</span>
@@ -583,16 +569,15 @@ After every update of the feedback message in the for-loop, we publish the feedb
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>After restarting the action server, we can confirm that feedback is now published by using the command line tool with the <code class="docutils literal notranslate"><span class="pre">--feedback</span></code> option:</p>
+<p>After restarting the action server, we can confirm that feedback is now published by using the command line tool with the <code class="docutils literal notranslate"><span class="pre">--feedback</span></code> option: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6404">[待校准&#64;6404]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 action send_goal --feedback fibonacci action_tutorials_interfaces/action/Fibonacci <span class="s2">&quot;{order: 5}&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="writing-an-action-client">
-<h3><a class="toc-backref" href="#id5">2 Writing an action client</a><a class="headerlink" href="#writing-an-action-client" title="永久链接至标题"></a></h3>
-<p>We'll also scope the action client to a single file.
-Open a new file, let's call it <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client.py</span></code>, and add the following boilerplate code:</p>
+<h3>2 Writing an action client <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6405">[待校准&#64;6405]</a><a class="headerlink" href="#writing-an-action-client" title="永久链接至标题"></a></h3>
+<p>We'll also scope the action client to a single file. Open a new file, let's call it <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client.py</span></code>, and add the following boilerplate code: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6406">[待校准&#64;6406]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -629,23 +614,22 @@ Open a new file, let's call it <code class="docutils literal notranslate"><span 
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>We've defined a class <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> that is a subclass of <code class="docutils literal notranslate"><span class="pre">Node</span></code>.
-The class is initialized by calling the <code class="docutils literal notranslate"><span class="pre">Node</span></code> constructor, naming our node <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client</span></code>:</p>
+<p>We've defined a class <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> that is a subclass of <code class="docutils literal notranslate"><span class="pre">Node</span></code>. The class is initialized by calling the <code class="docutils literal notranslate"><span class="pre">Node</span></code> constructor, naming our node <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client</span></code>: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6407">[待校准&#64;6407]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;fibonacci_action_client&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Also in the class constructor, we create an action client using the custom action definition from the previous tutorial on <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action</span></a>:</p>
+<p>Also in the class constructor, we create an action client using the custom action definition from the previous tutorial on <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action [待校准&#64;5358]</span></a>: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6408">[待校准&#64;6408]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_action_client</span> <span class="o">=</span> <span class="n">ActionClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fibonacci</span><span class="p">,</span> <span class="s1">&#39;fibonacci&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We create an <code class="docutils literal notranslate"><span class="pre">ActionClient</span></code> by passing it three arguments:</p>
+<p>We create an <code class="docutils literal notranslate"><span class="pre">ActionClient</span></code> by passing it three arguments: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6409">[待校准&#64;6409]</a></p>
 <ol class="arabic simple">
-<li><p>A ROS 2 node to add the action client to: <code class="docutils literal notranslate"><span class="pre">self</span></code></p></li>
-<li><p>The type of the action: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code></p></li>
-<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code></p></li>
+<li><p>A ROS 2 node to add the action client to: <code class="docutils literal notranslate"><span class="pre">self</span></code> <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6410">[待校准&#64;6410]</a></p></li>
+<li><p>The type of the action: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code> <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6411">[待校准&#64;6411]</a></p></li>
+<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code> <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6412">[待校准&#64;6412]</a></p></li>
 </ol>
-<p>Our action client will be able to communicate with action servers of the same action name and type.</p>
-<p>We also define a method <code class="docutils literal notranslate"><span class="pre">send_goal</span></code> in the <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> class:</p>
+<p>Our action client will be able to communicate with action servers of the same action name and type. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6413">[待校准&#64;6413]</a></p>
+<p>We also define a method <code class="docutils literal notranslate"><span class="pre">send_goal</span></code> in the <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> class: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6414">[待校准&#64;6414]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">send_goal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
         <span class="n">goal_msg</span> <span class="o">=</span> <span class="n">Fibonacci</span><span class="o">.</span><span class="n">Goal</span><span class="p">()</span>
         <span class="n">goal_msg</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
@@ -655,13 +639,10 @@ The class is initialized by calling the <code class="docutils literal notranslat
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">goal_msg</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This method waits for the action server to be available, then sends a goal to the server.
-It returns a future that we can later wait on.</p>
-<p>After the class definition, we define a function <code class="docutils literal notranslate"><span class="pre">main()</span></code> that initializes ROS 2
-and creates an instance of our <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> node.
-It then sends a goal and waits until that goal has been completed.</p>
-<p>Finally, we call <code class="docutils literal notranslate"><span class="pre">main()</span></code> in the entry point of our Python program.</p>
-<p>Let's test our action client by first running the action server built earlier:</p>
+<p>This method waits for the action server to be available, then sends a goal to the server. It returns a future that we can later wait on. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6415">[待校准&#64;6415]</a></p>
+<p>After the class definition, we define a function <code class="docutils literal notranslate"><span class="pre">main()</span></code> that initializes ROS 2 and creates an instance of our <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> node. It then sends a goal and waits until that goal has been completed. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6416">[待校准&#64;6416]</a></p>
+<p>Finally, we call <code class="docutils literal notranslate"><span class="pre">main()</span></code> in the entry point of our Python program. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6417">[待校准&#64;6417]</a></p>
+<p>Let's test our action client by first running the action server built earlier: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6418">[待校准&#64;6418]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_server.py
 </pre></div>
@@ -673,7 +654,7 @@ It then sends a goal and waits until that goal has been completed.</p>
 </pre></div>
 </div>
 </div></div>
-<p>In another terminal, run the action client:</p>
+<p>In another terminal, run the action client: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6419">[待校准&#64;6419]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_client.py
 </pre></div>
@@ -685,7 +666,7 @@ It then sends a goal and waits until that goal has been completed.</p>
 </pre></div>
 </div>
 </div></div>
-<p>You should see messages printed by the action server as it successfully executes the goal:</p>
+<p>You should see messages printed by the action server as it successfully executes the goal: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6420">[待校准&#64;6420]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>fibonacci_action_server<span class="o">]</span>: Executing goal...
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>fibonacci_action_server<span class="o">]</span>: Feedback: array<span class="o">(</span><span class="s1">&#39;i&#39;</span>, <span class="o">[</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">1</span><span class="o">])</span>
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>fibonacci_action_server<span class="o">]</span>: Feedback: array<span class="o">(</span><span class="s1">&#39;i&#39;</span>, <span class="o">[</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">1</span>, <span class="m">2</span><span class="o">])</span>
@@ -694,15 +675,11 @@ It then sends a goal and waits until that goal has been completed.</p>
 <span class="c1"># etc.</span>
 </pre></div>
 </div>
-<p>The action client should start up, and then quickly finish.
-At this point, we have a functioning action client, but we don't see any results or get any feedback.</p>
+<p>The action client should start up, and then quickly finish. At this point, we have a functioning action client, but we don't see any results or get any feedback. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6421">[待校准&#64;6421]</a></p>
 <div class="section" id="getting-a-result">
-<h4>2.1 Getting a result<a class="headerlink" href="#getting-a-result" title="永久链接至标题"></a></h4>
-<p>So we can send a goal, but how do we know when it is completed?
-We can get the result information with a couple steps.
-First, we need to get a goal handle for the goal we sent.
-Then, we can use the goal handle to request the result.</p>
-<p>Here's the complete code for this example:</p>
+<h4>2.1 Getting a result <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6422">[待校准&#64;6422]</a><a class="headerlink" href="#getting-a-result" title="永久链接至标题"></a></h4>
+<p>So we can send a goal, but how do we know when it is completed? We can get the result information with a couple steps. First, we need to get a goal handle for the goal we sent. Then, we can use the goal handle to request the result. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6423">[待校准&#64;6423]</a></p>
+<p>Here's the complete code for this example: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6424">[待校准&#64;6424]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -757,14 +734,11 @@ Then, we can use the goal handle to request the result.</p>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ActionClient.send_goal_async">ActionClient.send_goal_async()</a> method returns a future to a goal handle.
-First we register a callback for when the future is complete:</p>
+<p>The <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ActionClient.send_goal_async">ActionClient.send_goal_async()</a> method returns a future to a goal handle. First we register a callback for when the future is complete: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6425">[待校准&#64;6425]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_send_goal_future</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">goal_response_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the future is completed when an action server accepts or rejects the goal request.
-Let's look at the <code class="docutils literal notranslate"><span class="pre">goal_response_callback</span></code> in more detail.
-We can check to see if the goal was rejected and return early since we know there will be no result:</p>
+<p>Note that the future is completed when an action server accepts or rejects the goal request. Let's look at the <code class="docutils literal notranslate"><span class="pre">goal_response_callback</span></code> in more detail. We can check to see if the goal was rejected and return early since we know there will be no result: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6426">[待校准&#64;6426]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">goal_response_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">):</span>
         <span class="n">goal_handle</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">goal_handle</span><span class="o">.</span><span class="n">accepted</span><span class="p">:</span>
@@ -774,21 +748,19 @@ We can check to see if the goal was rejected and return early since we know ther
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Goal accepted :)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now that we've got a goal handle, we can use it to request the result with the method <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ClientGoalHandle.get_result_async">get_result_async()</a>.
-Similar to sending the goal, we will get a future that will complete when the result is ready.
-Let's register a callback just like we did for the goal response:</p>
+<p>Now that we've got a goal handle, we can use it to request the result with the method <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ClientGoalHandle.get_result_async">get_result_async()</a>. Similar to sending the goal, we will get a future that will complete when the result is ready. Let's register a callback just like we did for the goal response: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6427">[待校准&#64;6427]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_get_result_future</span> <span class="o">=</span> <span class="n">goal_handle</span><span class="o">.</span><span class="n">get_result_async</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_get_result_future</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_result_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the callback, we log the result sequence and shutdown ROS 2 for a clean exit:</p>
+<p>In the callback, we log the result sequence and shutdown ROS 2 for a clean exit: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6428">[待校准&#64;6428]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">get_result_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">result</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Result: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">sequence</span><span class="p">))</span>
         <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>With an action server running in a separate terminal, go ahead and try running our Fibonacci action client!</p>
+<p>With an action server running in a separate terminal, go ahead and try running our Fibonacci action client! <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6429">[待校准&#64;6429]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_client.py
 </pre></div>
@@ -800,14 +772,12 @@ Let's register a callback just like we did for the goal response:</p>
 </pre></div>
 </div>
 </div></div>
-<p>You should see logged messages for the goal being accepted and the final result.</p>
+<p>You should see logged messages for the goal being accepted and the final result. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6430">[待校准&#64;6430]</a></p>
 </div>
 <div class="section" id="getting-feedback">
-<h4>2.2 Getting feedback<a class="headerlink" href="#getting-feedback" title="永久链接至标题"></a></h4>
-<p>Our action client can send goals.
-Nice!
-But it would be great if we could get some feedback about the goals we send from the action server.</p>
-<p>Here's the complete code for this example:</p>
+<h4>2.2 Getting feedback <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6431">[待校准&#64;6431]</a><a class="headerlink" href="#getting-feedback" title="永久链接至标题"></a></h4>
+<p>Our action client can send goals. Nice! But it would be great if we could get some feedback about the goals we send from the action server. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6432">[待校准&#64;6432]</a></p>
+<p>Here's the complete code for this example: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6424">[待校准&#64;6424]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -866,31 +836,30 @@ But it would be great if we could get some feedback about the goals we send from
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Here's the callback function for feedback messages:</p>
+<p>Here's the callback function for feedback messages: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6433">[待校准&#64;6433]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">feedback_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback_msg</span><span class="p">):</span>
         <span class="n">feedback</span> <span class="o">=</span> <span class="n">feedback_msg</span><span class="o">.</span><span class="n">feedback</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Received feedback: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feedback</span><span class="o">.</span><span class="n">partial_sequence</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>In the callback we get the feedback portion of the message and print the <code class="docutils literal notranslate"><span class="pre">partial_sequence</span></code> field to the screen.</p>
-<p>We need to register the callback with the action client.
-This is achieved by additionally passing the callback to the action client when we send a goal:</p>
+<p>In the callback we get the feedback portion of the message and print the <code class="docutils literal notranslate"><span class="pre">partial_sequence</span></code> field to the screen. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6434">[待校准&#64;6434]</a></p>
+<p>We need to register the callback with the action client. This is achieved by additionally passing the callback to the action client when we send a goal: <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6435">[待校准&#64;6435]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_send_goal_future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">goal_msg</span><span class="p">,</span> <span class="n">feedback_callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feedback_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We're all set. If we run our action client, you should see feedback being printed to the screen.</p>
+<p>We're all set. If we run our action client, you should see feedback being printed to the screen. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6436">[待校准&#64;6436]</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="summary">
-<h2><a class="toc-backref" href="#id6">Summary</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you put together a Python action server and action client line by line, and configured them to exchange goals, feedback, and results.</p>
+<h2>Summary <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3353">[待校准&#64;3353]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<p>In this tutorial, you put together a Python action server and action client line by line, and configured them to exchange goals, feedback, and results. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6437">[待校准&#64;6437]</a></p>
 </div>
 <div class="section" id="related-content">
-<h2><a class="toc-backref" href="#id7">Related content</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
+<h2>Related content <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=3946">[待校准&#64;3946]</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>There are several ways you could write an action server and client in Python; check out the <code class="docutils literal notranslate"><span class="pre">minimal_action_server</span></code> and <code class="docutils literal notranslate"><span class="pre">minimal_action_client</span></code> packages in the <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclpy/actions">ros2/examples</a> repo.</p></li>
-<li><p>For more detailed information about ROS actions, please refer to the <a class="reference external" href="http://design.ros2.org/articles/actions.html">design article</a>.</p></li>
+<li><p>There are several ways you could write an action server and client in Python; check out the <code class="docutils literal notranslate"><span class="pre">minimal_action_server</span></code> and <code class="docutils literal notranslate"><span class="pre">minimal_action_client</span></code> packages in the <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclpy/actions">ros2/examples</a> repo. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=6438">[待校准&#64;6438]</a></p></li>
+<li><p>For more detailed information about ROS actions, please refer to the <a class="reference external" href="http://design.ros2.org/articles/actions.html">design article</a>. <a class="reference external" href="http://dev.ros2.fishros.com/calibpage/#/home?msgid=5387">[待校准&#64;5387]</a></p></li>
 </ul>
 </div>
 </div>
@@ -900,8 +869,8 @@ This is achieved by additionally passing the callback to the action client when 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Cpp.html" class="btn btn-neutral float-left" title="Writing an action server and client (C++)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="../Composition.html" class="btn btn-neutral float-right" title="Composing multiple nodes in a single process" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Cpp.html" class="btn btn-neutral float-left" title="Writing an action server and client (C++) [待校准@6308]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Composition.html" class="btn btn-neutral float-right" title="Composing multiple nodes in a single process [待校准@5284]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
