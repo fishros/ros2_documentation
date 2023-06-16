@@ -560,12 +560,12 @@
 <li><p>将链接中的逻辑复制到名为``visibility_control.hpp``的头文件中。</p></li>
 <li><p>将``DLL``替换为``MY_LIBRARY``（例如，查看`rviz_rendering的可见性控制 &lt;<a class="reference external" href="https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp">https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp</a>&gt;`__）。</p></li>
 <li><p>对于需要导出的所有符号（例如类或函数），请使用宏&quot;MY_LIBRARY_PUBLIC&quot;。</p></li>
-<li><p>In the project <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> use:</p></li>
+<li><p>在项目的 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 中使用：</p></li>
 </ul>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">my_library</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s2">&quot;MY_LIBRARY_BUILDING_LIBRARY&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more details, see <a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html#windows-symbol-visibility"><span class="std std-ref">Windows Symbol Visibility in the Windows Tips and Tricks document</span></a>.</p>
+<p>有关更多详细信息，请参阅：<a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html#windows-symbol-visibility"><span class="std std-ref">Windows_Tips_and_Tricks 文档中的 Windows 符号可见性</span></a>。</p>
 </div>
 </div>
 <div class="section" id="testing-and-linting">
