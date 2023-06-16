@@ -377,11 +377,9 @@
 <p>以下建议是调优的起点；它们适用于特定的系统和环境，但调优可能会根据多个因素而有所不同。在调试过程中，您可能需要根据消息大小、网络拓扑等因素增加或减少值。</p>
 <p>重要的是要认识到调整参数可能会占用资源，并且可能会影响系统中超出预期改进范围的部分。改善可靠性的好处应该与每个个案的不利因素相权衡。</p>
 <div class="section" id="cross-vendor-tuning">
-<span id="id1"></span><h2>Cross-vendor tuning<a class="headerlink" href="#cross-vendor-tuning" title="永久链接至标题"></a></h2>
-<p><strong>Issue:</strong> Sending data over lossy (usually WiFi) connections becomes problematic when some IP fragments are dropped, possibly causing the kernel buffer on the receiving side to become full.</p>
-<p>When a UDP packet is missing at least one IP fragment, the rest of the received fragments fill up the kernel buffer.
-By default, the Linux kernel will time out after 30s of trying to recombine packet fragments.
-Since the kernel buffer is full at this point (default size is 256KB), no new fragments can come in, and so the connection will seemingly &quot;hang&quot; for long periods of time.</p>
+<span id="id1"></span><h2>跨供应商调优<a class="headerlink" href="#cross-vendor-tuning" title="永久链接至标题"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>问题：<a href="#id3"><span class="problematic" id="id4">**</span></a>在一些 IP 片段丢失的情况下，通过有丢包的（通常是 WiFi）连接发送数据会变得困难，可能导致接收端的内核缓冲区变满。</p>
+<p>当一个 UDP 包丢失至少一个 IP 片段时，其余的接收到的片段会填满内核缓冲区。默认情况下，Linux 内核将在尝试重新组合包片段后的30秒超时。由于此时内核缓冲区已满（默认大小为256KB），无法接收新的片段，因此连接似乎会长时间“挂起”。</p>
 <p>This issue is generic across all DDS vendors, so the solutions involve adjusting kernel parameters.</p>
 <p><strong>Solution:</strong> Use best-effort QoS settings instead of reliable.</p>
 <p>Best-effort settings reduce the amount of network traffic since the DDS implementation does not have to incur the overhead of reliable communications, where publishers require acknowledgements for messages sent to subscribers and must resend samples that have not been properly received.</p>
