@@ -619,12 +619,12 @@ git clone https://github.com/ros-tooling/cross_compile.git -b <span class="m">0<
 <span class="nb">cd</span> ..
 </pre></div>
 </div>
-<p>Generate and export the file-system as described in <a class="reference internal" href="#prepare-the-sysroot">3. Prepare the sysroot</a>, but with the provided <code class="docutils literal notranslate"><span class="pre">Dockerfile_ubuntu_arm64_prebuilt</span></code>. These <code class="docutils literal notranslate"><span class="pre">_prebuilt</span></code> Dockerfile will use the <a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html"><span class="doc">binary packages</span></a> to install ROS 2 instead of building from source.</p>
-<p>Modify the environment variable <code class="docutils literal notranslate"><span class="pre">ROS2_INSTALL_PATH</span></code> to point to the installation directory:</p>
+<p>按照`3. 准备sysroot`_中所述的方法生成和导出文件系统，但使用提供的``Dockerfile_ubuntu_arm64_prebuilt``。这些``_prebuilt`` Dockerfile将使用:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>二进制包 &lt;../Installation/Ubuntu-Install-Debians&gt;`来安装ROS 2，而不是从源代码构建。</p>
+<p>修改环境变量``ROS2_INSTALL_PATH``，指向安装目录：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS2_INSTALL_PATH</span><span class="o">=</span>~/cc_ws/sysroot_docker/opt/ros/crystal
 </pre></div>
 </div>
-<p>Source the <code class="docutils literal notranslate"><span class="pre">setup.bash</span></code> script on the target file-system:</p>
+<p>在目标文件系统上调用``setup.bash``脚本：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> <span class="nv">$ROS2_INSTALL_PATH</span>/setup.bash
 </pre></div>
 </div>
