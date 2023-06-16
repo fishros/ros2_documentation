@@ -695,10 +695,7 @@
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pluginlib_export_plugin_description_file</span><span class="p">(</span><span class="s">rviz_common</span><span class="w"> </span><span class="s">plugins_description.xml</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>When running <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>, this installs a file <code class="docutils literal notranslate"><span class="pre">my_rviz_displays</span></code> into a subfolder <code class="docutils literal notranslate"><span class="pre">rviz_common__pluginlib__plugin</span></code> into the resource_index.
-Pluginlib factories within rviz_common will know to gather information from all folders named <code class="docutils literal notranslate"><span class="pre">rviz_common__pluginlib__plugin</span></code> for packages that export plugins.
-The marker file for pluginlib factories contains an install-folder relative path to the <code class="docutils literal notranslate"><span class="pre">plugins_description.xml</span></code> file (and the name of the library as marker file name).
-With this information, the pluginlib can load the library and know which plugins to load from the <code class="docutils literal notranslate"><span class="pre">plugin_description.xml</span></code> file.</p>
+<p>运行``colcon build``时，它会将文件``my_rviz_displays``安装到resource_index的子文件夹``rviz_common__pluginlib__plugin``中。rviz_common内的Pluginlib工厂将从所有名为``rviz_common__pluginlib__plugin``的文件夹中收集来自导出插件的软件包的信息。Pluginlib工厂的标记文件包含到``plugins_description.xml``文件的安装文件夹相对路径（以及库的名称作为标记文件名）。有了这些信息，pluginlib可以加载库并从``plugin_description.xml``文件中知道要加载哪些插件。</p>
 <p>As a second example, consider the possibility to let your own RViz plugins use your own custom meshes.
 Meshes get loaded at startup time so that the plugin owner does not have to deal with it, but this implies RViz has to know about the meshes.
 To achieve this, RViz provides a function:</p>
