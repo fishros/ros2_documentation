@@ -656,11 +656,8 @@
 <span class="w">  </span><span class="s2">&quot;rosidl_generator_cpp_generate_interfaces.cmake&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>which registers the macro <code class="docutils literal notranslate"><span class="pre">rosidl_generator_cpp_generate_interfaces.cmake</span></code> for the package <code class="docutils literal notranslate"><span class="pre">rosidl_generator_cpp</span></code> to the extension point <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces</span></code>.
-When the extension point gets executed, this will trigger the execution of the script <code class="docutils literal notranslate"><span class="pre">rosidl_generator_cpp_generate_interfaces.cmake</span></code> here.
-In particular, this will call the generator whenever the function <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces</span></code> gets executed.</p>
-<p>The most important extension point for generators, aside from <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces</span></code>, is <code class="docutils literal notranslate"><span class="pre">ament_package</span></code>, which will simply execute scripts with the <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code> call.
-This extension point is useful when registering resources (see below).</p>
+<p>它为软件包``rosidl_generator_cpp``在扩展点``rosidl_generate_interfaces``上注册了宏``rosidl_generator_cpp_generate_interfaces.cmake``。当扩展点被执行时，它将触发在此处执行脚本``rosidl_generator_cpp_generate_interfaces.cmake``。特别地，这将在每次执行函数``rosidl_generate_interfaces``时调用生成器。</p>
+<p>除了``rosidl_generate_interfaces``之外，生成器的最重要的扩展点是``ament_package``，它将通过``ament_package()``调用简单地执行脚本。在注册资源时，此扩展点非常有用（请参见下文）。</p>
 <p><code class="docutils literal notranslate"><span class="pre">ament_register_extension</span></code> is a function which takes exactly three arguments:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">extension_point</span></code>: The name of the extension point (most of the time this will be one of <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> or <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces</span></code>)</p></li>
