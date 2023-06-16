@@ -443,8 +443,8 @@
 <p>建议采用以下最佳实践：</p>
 <ul class="simple">
 <li><p>如果您正在构建一个库，将所有应该可供客户使用并且必须安装的头文件放入名为包名称的``include``文件夹的子目录中，而其他文件（<a href="#id1"><span class="problematic" id="id2">``</span></a>.c/.cpp``和不应导出的头文件）则放在``src``文件夹中。</p></li>
-<li><p>only cpp files are explicitly referenced in the call to <code class="docutils literal notranslate"><span class="pre">add_library</span></code> or <code class="docutils literal notranslate"><span class="pre">add_executable</span></code></p></li>
-<li><p>allow to find headers via</p></li>
+<li><p>只有cpp文件在调用``add_library``或``add_executable``时被显式引用。</p></li>
+<li><p>通过允许找到头文件</p></li>
 </ul>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_include_directories</span><span class="p">(</span><span class="s">my_target</span>
 <span class="w">  </span><span class="s">PUBLIC</span>
@@ -452,7 +452,7 @@
 <span class="w">    </span><span class="o">$&lt;</span><span class="nv">INSTALL_INTERFACE:include</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This adds all files in the folder <code class="docutils literal notranslate"><span class="pre">${CMAKE_CURRENT_SOURCE_DIR}/include</span></code> to the public interface during build time and all files in the include folder (relative to <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_DIR}</span></code>) when being installed.</p>
+<p>这将在构建时将``${CMAKE_CURRENT_SOURCE_DIR}/include``文件夹中的所有文件添加到公共接口中，并在安装时将所有文件添加到include文件夹中（相对于``${CMAKE_INSTALL_DIR}``）。</p>
 <p>In principle, using generator expressions here is not necessary if both folders are called <code class="docutils literal notranslate"><span class="pre">include</span></code> and top-level with respect to <code class="docutils literal notranslate"><span class="pre">${CMAKE_CURRENT_SOURCE_DIR}</span></code> and <code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_DIR}</span></code>, but it is very common.</p>
 </div>
 <div class="section" id="adding-dependencies">
