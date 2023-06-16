@@ -737,17 +737,14 @@
 <p>对于RViz网格资源，对应的选择是：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> 作为资源的名称，</p></li>
-<li><p>install path relative paths to all folders containing resources. This will already enable you to write the logic for using the corresponding resource in your package.</p></li>
+<li><p>安装路径相对于包含资源的所有文件夹的路径。这将使您能够编写使用包中相应资源的逻辑。</p></li>
 </ul>
-<p>To allow users to easily register resources for your package, you should furthermore provide macros or functions such as the pluginlib function or <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> function.</p>
-<p>To register a resource, use the ament function <code class="docutils literal notranslate"><span class="pre">ament_index_register_resource</span></code>.
-This will create and install the marker files in the resource_index.
-As an example, the corresponding call for <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> is the following:</p>
+<p>为了让用户能够轻松地为您的软件包注册资源，您还应该提供宏或函数，例如 pluginlib 函数或 <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> 函数。</p>
+<p>要注册一个资源，请使用 ament 函数 <code class="docutils literal notranslate"><span class="pre">ament_index_register_resource</span></code>。这将在资源索引中创建和安装标记文件。例如，对于 <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> 的相应调用如下所示：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ament_index_register_resource</span><span class="p">(</span><span class="s">rviz_ogre_media_exports</span><span class="w"> </span><span class="s">CONTENT</span><span class="w"> </span><span class="o">${</span><span class="nv">OGRE_MEDIA_RESOURCE_FILE</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This installs a file named like <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}</span></code> into a folder <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> into the resource_index with content given by variable <code class="docutils literal notranslate"><span class="pre">${OGRE_MEDIA_RESOURCE_FILE}</span></code>.
-The macro has a number of parameters that can be useful:</p>
+<p>这将安装一个名为 <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}</span></code> 的文件到资源索引中的文件夹 <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> 中，其内容由变量 <code class="docutils literal notranslate"><span class="pre">${OGRE_MEDIA_RESOURCE_FILE}</span></code> 提供。该宏有一些可能有用的参数：</p>
 <ul class="simple">
 <li><p>the first (unnamed) parameter is the name of the resource, which amounts to the name of the folder in the resource_index</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>: The content of the marker file as string. This could be a list of relative paths, etc. <code class="docutils literal notranslate"><span class="pre">CONTENT</span></code> cannot be used together with <code class="docutils literal notranslate"><span class="pre">CONTENT_FILE</span></code>.</p></li>
