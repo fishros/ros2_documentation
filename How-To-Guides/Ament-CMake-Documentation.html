@@ -400,7 +400,7 @@
 <li><p><a class="reference internal" href="#adding-extension-points" id="id14">添加扩展点</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#adding-resources" id="id15">Adding resources</a></p>
+<li><p><a class="reference internal" href="#adding-resources" id="id15">添加资源</a></p>
 <ul>
 <li><p><a class="reference internal" href="#the-ament-index-explained" id="id16">The ament index explained</a></p></li>
 <li><p><a class="reference internal" href="#querying-the-ament-index" id="id17">Querying the ament index</a></p></li>
@@ -675,17 +675,16 @@
 <p>扩展点可以在宏中注册，以便在调用相应的宏时执行所有扩展。要实现这一点</p>
 <ul class="simple">
 <li><p>为您的扩展定义和记录一个名称（例如``my_extension_point``），这个名称将在使用扩展点时传递给``ament_register_extension``宏。</p></li>
-<li><p>In the macro/function which should execute the extensions call:</p></li>
+<li><p>在应执行扩展调用的宏/函数中：</p></li>
 </ul>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ament_execute_extensions</span><span class="p">(</span><span class="s">my_extension_point</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ament extensions work by defining a variable containing the name of the extension point and filling it with the macros to be executed.
-Upon calling <code class="docutils literal notranslate"><span class="pre">ament_execute_extensions</span></code>, the scripts defined in the variable are then executed one after another.</p>
+<p>Ament扩展通过定义一个变量来工作，该变量包含扩展点的名称，并用要执行的宏填充该变量。在调用``ament_execute_extensions``时，然后按顺序执行变量中定义的脚本。</p>
 </div>
 </div>
 <div class="section" id="adding-resources">
-<h2><a class="toc-backref" href="#id15">Adding resources</a><a class="headerlink" href="#adding-resources" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id15">添加资源</a><a class="headerlink" href="#adding-resources" title="永久链接至标题"></a></h2>
 <p>Especially when developing plugins or packages which allow plugins it is often essential to add resources to one ROS package from another (e.g. a plugin).
 Examples can be plugins for tools using the pluginlib.</p>
 <p>This can be achieved using the ament index (also called &quot;resource index&quot;).</p>
