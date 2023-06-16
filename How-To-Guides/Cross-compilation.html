@@ -381,7 +381,7 @@
 <ul>
 <li><p><a class="reference internal" href="#cmake-toolchain-file" id="id3">CMake 工具链文件</a></p></li>
 <li><p><a class="reference internal" href="#target-file-system" id="id4">目标文件系统</a></p></li>
-<li><p><a class="reference internal" href="#build-process" id="id5">Build process</a></p></li>
+<li><p><a class="reference internal" href="#build-process" id="id5">构建过程</a></p></li>
 <li><p><a class="reference internal" href="#cross-compiling-examples-for-arm" id="id6">Cross-compiling examples for Arm</a></p></li>
 <li><p><a class="reference internal" href="#automated-cross-compilation" id="id7">Automated Cross-compilation</a></p></li>
 <li><p><a class="reference internal" href="#cross-compiling-against-a-pre-built-ros-2" id="id8">Cross-compiling against a pre-built ROS 2</a></p></li>
@@ -449,17 +449,17 @@
 <dt>获取文件系统有多种方式：</dt><dd><ul class="simple">
 <li><p>下载预构建的映像</p></li>
 <li><p>在目标设备上安装依赖项并导出文件系统（例如使用sshfs）</p></li>
-<li><p>using qemu + docker (or chroot) to generate the file-system on the host machine.</p></li>
+<li><p>使用qemu + docker（或chroot）在主机上生成文件系统。</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>You can find information on how to use Docker + qemu on the next <a class="reference internal" href="#cross-compiling-examples-for-arm">Cross-compiling examples for Arm</a> section.</p>
+<p>您可以在接下来的`Cross-compiling examples for Arm`_部分找到有关如何使用Docker + qemu的信息。</p>
 </div>
 </div>
 <div class="section" id="build-process">
-<h3><a class="toc-backref" href="#id5">Build process</a><a class="headerlink" href="#build-process" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id5">构建过程</a><a class="headerlink" href="#build-process" title="永久链接至标题"></a></h3>
 <p>The build process is similar to native compilation. The only difference is an extra argument to <code class="docutils literal notranslate"><span class="pre">Colcon</span></code> to specify the <code class="docutils literal notranslate"><span class="pre">toolchain-file</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --merge-install <span class="se">\</span>
     --cmake-force-configure <span class="se">\</span>
