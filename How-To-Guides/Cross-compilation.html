@@ -379,7 +379,7 @@
 <li><p><a class="reference internal" href="#cross-compile-tool" id="id1">交叉编译工具</a></p></li>
 <li><p><a class="reference internal" href="#legacy-tool-instructions" id="id2">传统工具说明</a></p>
 <ul>
-<li><p><a class="reference internal" href="#cmake-toolchain-file" id="id3">CMake toolchain-file</a></p></li>
+<li><p><a class="reference internal" href="#cmake-toolchain-file" id="id3">CMake 工具链文件</a></p></li>
 <li><p><a class="reference internal" href="#target-file-system" id="id4">Target file-system</a></p></li>
 <li><p><a class="reference internal" href="#build-process" id="id5">Build process</a></p></li>
 <li><p><a class="reference internal" href="#cross-compiling-examples-for-arm" id="id6">Cross-compiling examples for Arm</a></p></li>
@@ -409,11 +409,11 @@
 </ul>
 </dd>
 </dl>
-<p>Furthermore, the ROS 2 software stack is built with <a class="reference external" href="https://github.com/colcon/colcon-core">Colcon</a> which provides a mechanism to forward parameters to the CMake instance used for the individual build of each package/library that is part of the ROS 2 distribution.</p>
-<p>When building ROS 2 natively, the developer is required to download all the dependencies (e.g. Python and other libraries) before compiling the packages that are part of the ROS 2 distribution. When cross-compiling, the same approach is required. The developer must first have the target system's filesystem with all dependencies already installed.</p>
-<p>The next sections of this document explain in detail the use of <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">cmake-toolchains</a> and the <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_SYSROOT.html">CMAKE_SYSROOT</a> feature to cross-compile ROS 2.</p>
+<p>此外，ROS 2 软件栈使用 <a class="reference external" href="https://github.com/colcon/colcon-core">Colcon</a> 构建，它提供了一种机制，可以将参数传递给用于构建 ROS 2 发行版中每个包/库的单独构建的 CMake 实例。</p>
+<p>在本地构建 ROS 2 时，开发人员需要在编译 ROS 2 发行版中的包之前下载所有的依赖项（例如 Python 和其他库）。在交叉编译时，也需要相同的方法。开发人员必须首先拥有目标系统的文件系统，并已安装所有的依赖项。</p>
+<p>本文档的后续部分详细说明了使用 <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">cmake-toolchains</a> 和 <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_SYSROOT.html">CMAKE_SYSROOT</a> 功能进行 ROS 2 交叉编译的方法。</p>
 <div class="section" id="cmake-toolchain-file">
-<h3><a class="toc-backref" href="#id3">CMake toolchain-file</a><a class="headerlink" href="#cmake-toolchain-file" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id3">CMake 工具链文件</a><a class="headerlink" href="#cmake-toolchain-file" title="永久链接至标题"></a></h3>
 <p>A CMake toolchain-file is a file which defines variables to configure CMake for cross-compilation. The basic entries are:</p>
 <blockquote>
 <div><ul class="simple">
