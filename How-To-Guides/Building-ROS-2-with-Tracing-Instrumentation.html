@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Topics vs Services vs Actions" href="Topics-Services-Actions.html" />
-    <link rel="prev" title="Building a custom Debian package" href="Building-a-Custom-Debian-Package.html" /> 
+    <link rel="prev" title="构建自定义的Debian软件包" href="Building-a-Custom-Debian-Package.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -266,7 +266,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Run-2-nodes-in-single-or-separate-docker-containers.html">Running ROS 2 nodes in Docker [community-contributed]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Package-maintainer-guide.html">ROS 2 Package Maintainer Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Building-a-Custom-Debian-Package.html">Building a custom Debian package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用跟踪工具构建ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">Topics vs Services vs Actions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">Using variants</a></li>
@@ -385,7 +385,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#validating" id="id6">正在验证</a></p></li>
-<li><p><a class="reference internal" href="#disabling-tracing" id="id7">Disabling tracing</a></p></li>
+<li><p><a class="reference internal" href="#disabling-tracing" id="id7">禁用跟踪</a></p></li>
 </ul>
 </div>
 <p>本指南介绍了如何使用``ros2_tracing``提供的跟踪工具构建ROS 2。更多信息请参见`存储库 &lt;<a class="reference external" href="https://github.com/ros2/ros2_tracing">https://github.com/ros2/ros2_tracing</a>&gt;`__。</p>
@@ -441,12 +441,11 @@ ros2 run tracetools status
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Tracing enabled
 </pre></div>
 </div>
-<p>If something else is printed, then something went wrong.</p>
+<p>如果打印出其他内容，那么出现了错误。</p>
 </div>
 <div class="section" id="disabling-tracing">
-<h2><a class="toc-backref" href="#id7">Disabling tracing</a><a class="headerlink" href="#disabling-tracing" title="永久链接至标题"></a></h2>
-<p>If the LTTng userspace tracer is installed and found when building <code class="docutils literal notranslate"><span class="pre">tracetools</span></code>, tracing will be automatically enabled.
-Alternatively, to build and completely remove both the tracepoints and the tracing instrumentation from ROS 2, set the <code class="docutils literal notranslate"><span class="pre">TRACETOOLS_DISABLED</span></code> CMake option to <code class="docutils literal notranslate"><span class="pre">ON</span></code>:</p>
+<h2><a class="toc-backref" href="#id7">禁用跟踪</a><a class="headerlink" href="#disabling-tracing" title="永久链接至标题"></a></h2>
+<p>如果在构建``tracetools``时安装并找到了LTTng用户空间跟踪器，将自动启用跟踪。或者，要从ROS 2中构建并完全删除跟踪点和跟踪工具，将``TRACETOOLS_DISABLED`` CMake选项设置为``ON``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --cmake-args -DTRACETOOLS_DISABLED<span class="o">=</span>ON --no-warn-unused-cli
 </pre></div>
 </div>
@@ -458,7 +457,7 @@ Alternatively, to build and completely remove both the tracepoints and the traci
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Building-a-Custom-Debian-Package.html" class="btn btn-neutral float-left" title="Building a custom Debian package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Building-a-Custom-Debian-Package.html" class="btn btn-neutral float-left" title="构建自定义的Debian软件包" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Topics-Services-Actions.html" class="btn btn-neutral float-right" title="Topics vs Services vs Actions" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
