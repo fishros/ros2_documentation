@@ -396,7 +396,7 @@
 <li><p><a class="reference internal" href="#extending-ament" id="id11">扩展 ament</a></p>
 <ul>
 <li><p><a class="reference internal" href="#adding-a-function-macro-to-ament" id="id12">向 ament 添加函数/宏</a></p></li>
-<li><p><a class="reference internal" href="#adding-to-extension-points" id="id13">Adding to extension points</a></p></li>
+<li><p><a class="reference internal" href="#adding-to-extension-points" id="id13">添加到扩展点</a></p></li>
 <li><p><a class="reference internal" href="#adding-extension-points" id="id14">Adding extension points</a></p></li>
 </ul>
 </li>
@@ -630,16 +630,15 @@
 <p>可以使用 <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> 注册附加的宏/函数，并以多种方式进行扩展。</p>
 <div class="section" id="adding-a-function-macro-to-ament">
 <h3><a class="toc-backref" href="#id12">向 ament 添加函数/宏</a><a class="headerlink" href="#adding-a-function-macro-to-ament" title="永久链接至标题"></a></h3>
-<p>Extending ament will often times mean that you want to have some functions available to other packages.
-The best way to provide the macro to client packages is to register it with ament.</p>
-<p>This can be done by appending the <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}_CONFIG_EXTRAS</span></code> variable, which is used by <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code> via</p>
+<p>扩展ament通常意味着您希望其他软件包可以使用某些函数。向客户端软件包提供宏的最佳方法是将其注册到ament中。</p>
+<p>可以通过追加``${PROJECT_NAME}_CONFIG_EXTRAS``变量来实现，该变量由``ament_package()``使用，通过以下方式：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="s">_CONFIG_EXTRAS</span>
 <span class="w">  </span><span class="s">path/to/file.cmake</span><span class="s2">&quot;</span>
 <span class="s2">  other/pathto/file.cmake&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Alternatively, you can directly add the files to the <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code> call:</p>
+<p>或者，您可以直接将文件添加到``ament_package()``调用中：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ament_package</span><span class="p">(</span><span class="s">CONFIG_EXTRAS</span>
 <span class="w">  </span><span class="s">path/to/file.cmake</span>
 <span class="w">  </span><span class="s">other/pathto/file.cmake</span>
@@ -648,7 +647,7 @@ The best way to provide the macro to client packages is to register it with amen
 </div>
 </div>
 <div class="section" id="adding-to-extension-points">
-<h3><a class="toc-backref" href="#id13">Adding to extension points</a><a class="headerlink" href="#adding-to-extension-points" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id13">添加到扩展点</a><a class="headerlink" href="#adding-to-extension-points" title="永久链接至标题"></a></h3>
 <p>In addition to simple files with functions that can be used in other packages, you can also add extensions to ament.
 Those extensions are scripts which are executed with the function which defines the extension point.
 The most common use-case for ament extensions is probably registering rosidl message generators:
