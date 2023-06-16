@@ -754,10 +754,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">SKIP_INSTALL</span></code>：跳过安装标记文件。</p></li>
 </ul>
 <p>由于每个软件包只存在一个标记文件，如果同一项目调用了两次CMake函数/宏，则通常会出现问题。然而，对于大型项目，最好将调用注册资源的操作拆分为多次。</p>
-<p>Therefore, it is best practice to let a macro registering a resource such as <code class="docutils literal notranslate"><span class="pre">register_rviz_ogre_media_exports.cmake</span></code> only fill some variables.
-The real call to <code class="docutils literal notranslate"><span class="pre">ament_index_register_resource</span></code> can then be added within an ament extension to <code class="docutils literal notranslate"><span class="pre">ament_package</span></code>.
-Since there must only ever be one call to <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> per project, there will always only be one place where the resource gets registered.
-In the case of <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code> this amounts to the following strategy:</p>
+<p>因此，最佳实践是让一个注册资源的宏，例如 <code class="docutils literal notranslate"><span class="pre">register_rviz_ogre_media_exports.cmake</span></code>，仅填充一些变量。然后，在 <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> 的扩展中添加对 <code class="docutils literal notranslate"><span class="pre">ament_index_register_resource</span></code> 的真实调用。由于每个项目只能有一次对 <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> 的调用，因此资源的注册始终只有一个位置。对于 <code class="docutils literal notranslate"><span class="pre">rviz_ogre_media_exports</span></code>，这就是以下策略：</p>
 <ul class="simple">
 <li><p>The macro <code class="docutils literal notranslate"><span class="pre">register_rviz_ogre_media_exports</span></code> takes a list of folders and appends them to a variable called <code class="docutils literal notranslate"><span class="pre">OGRE_MEDIA_RESOURCE_FILE</span></code>.</p></li>
 <li><p>Another macro called <code class="docutils literal notranslate"><span class="pre">register_rviz_ogre_media_exports_hook</span></code> calls <code class="docutils literal notranslate"><span class="pre">ament_index_register_resource</span></code> if <code class="docutils literal notranslate"><span class="pre">${OGRE_MEDIA_RESOURCE_FILE}</span></code> is non-empty.</p></li>
