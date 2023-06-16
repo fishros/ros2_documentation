@@ -383,7 +383,7 @@
 <li><p><a class="reference internal" href="#target-file-system" id="id4">目标文件系统</a></p></li>
 <li><p><a class="reference internal" href="#build-process" id="id5">构建过程</a></p></li>
 <li><p><a class="reference internal" href="#cross-compiling-examples-for-arm" id="id6">为 Arm 进行交叉编译示例</a></p></li>
-<li><p><a class="reference internal" href="#automated-cross-compilation" id="id7">Automated Cross-compilation</a></p></li>
+<li><p><a class="reference internal" href="#automated-cross-compilation" id="id7">自动交叉编译</a></p></li>
 <li><p><a class="reference internal" href="#cross-compiling-against-a-pre-built-ros-2" id="id8">Cross-compiling against a pre-built ROS 2</a></p></li>
 <li><p><a class="reference internal" href="#run-on-the-target" id="id9">Run on the target</a></p></li>
 </ul>
@@ -589,15 +589,14 @@ colcon build --merge-install <span class="se">\</span>
 </div>
 </div>
 <div class="section" id="automated-cross-compilation">
-<h3><a class="toc-backref" href="#id7">Automated Cross-compilation</a><a class="headerlink" href="#automated-cross-compilation" title="永久链接至标题"></a></h3>
-<p>All the steps above are also included into a Dockerfile and can be used for automation/CI.</p>
-<p>First, download the dockerfile and build the image:</p>
+<h3><a class="toc-backref" href="#id7">自动交叉编译</a><a class="headerlink" href="#automated-cross-compilation" title="永久链接至标题"></a></h3>
+<p>上述所有步骤也包含在一个Dockerfile中，可以用于自动化/持续集成。</p>
+<p>首先，下载Dockerfile并构建镜像：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/ros-tooling/cross_compile/master/Dockerfile_cc_for_arm
 docker build -t ros2-crosscompiler:latest - &lt; Dockerfile_cc_for_arm
 </pre></div>
 </div>
-<p>Now run the image with:
-(it will take a while !)</p>
+<p>现在运行镜像：（这将需要一些时间！）</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -it --name ros2_cc <span class="se">\</span>
     -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\</span>
     ros2-crosscompiler:latest
