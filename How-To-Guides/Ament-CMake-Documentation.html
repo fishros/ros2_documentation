@@ -503,21 +503,18 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ament_export_targets</span></code> 宏将 CMake 的目标导出。这是必要的，以便允许库的客户端使用 <code class="docutils literal notranslate"><span class="pre">target_link_libraries(client</span> <span class="pre">my_library::my_library)</span></code> 语法。<code class="docutils literal notranslate"><span class="pre">ament_export_targets</span></code> 可以在 install 调用中使用一个名为 <code class="docutils literal notranslate"><span class="pre">EXPORT</span></code> 的任意目标列表，并添加一个额外的选项 <code class="docutils literal notranslate"><span class="pre">HAS_LIBRARY_TARGET</span></code>，它将潜在的库添加到环境变量中。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ament_export_dependencies</span></code> 将依赖项导出到下游包。这是必要的，这样库的使用者也不必为这些依赖项调用 <code class="docutils literal notranslate"><span class="pre">find_package</span></code>。</p></li>
-<li><p>The first <code class="docutils literal notranslate"><span class="pre">install</span></code> commands installs the header files which should be available to clients.</p></li>
+<li><p>第一个 <code class="docutils literal notranslate"><span class="pre">install</span></code> 命令安装了应该对客户端可用的头文件。</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">ament_export_targets</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_export_dependencies</span></code>, or other ament commands from a CMake subdirectory will not work as expected.
-This is because the CMake subdirectory has no way of setting necessary variables in the parent scope where <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> is called.</p>
+<p>从CMake子目录调用``ament_export_targets``、<a href="#id1"><span class="problematic" id="id2">``</span></a>ament_export_dependencies``或其他ament命令将不会按预期工作。这是因为CMake子目录无法在调用``ament_package``的父范围中设置必要的变量。</p>
 </div>
 <ul class="simple">
-<li><p>The last large install command installs the library.
-Archive and library files will be exported to the lib folder, runtime binaries will be installed to the bin folder and the path to installed headers is <code class="docutils literal notranslate"><span class="pre">include</span></code>.</p></li>
+<li><p>最后一个大型安装命令安装库。存档和库文件将被导出到lib文件夹，运行时二进制文件将被安装到bin文件夹，已安装头文件的路径为``include``。</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Windows DLLs are treated as runtime artifacts and installed into the <code class="docutils literal notranslate"><span class="pre">RUNTIME</span> <span class="pre">DESTINATION</span></code> folder.
-It is therefore advised to not leave out the <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> install even when developing libraries on Unix based systems.</p>
+<p>Windows DLL被视为运行时工件，并安装到``RUNTIME DESTINATION``文件夹中。因此，建议即使在基于Unix的系统上开发库时也不要忽略``RUNTIME``安装。</p>
 </div>
 <ul class="simple">
 <li><p>Regarding the <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">directory</span></code>, the install command only adds information to CMake, it does not actually install the includes folder.
