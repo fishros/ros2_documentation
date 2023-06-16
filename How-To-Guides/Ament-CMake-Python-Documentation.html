@@ -418,15 +418,12 @@
 <span class="nb">ament_python_install_package</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The argument to <code class="docutils literal notranslate"><span class="pre">ament_python_install_package()</span></code> is the name of the directory alongside the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> that contains the Python file.
-In this case, it is <code class="docutils literal notranslate"><span class="pre">my_project</span></code>, or <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ament_python_install_package()</span></code> 的参数是与包含 Python 文件的 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 并列的目录的名称。在这种情况下，它是 <code class="docutils literal notranslate"><span class="pre">my_project</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}</span></code>。</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces</span></code> and <code class="docutils literal notranslate"><span class="pre">ament_python_install_package</span></code> in the same CMake project does not work.
-See this <a class="reference external" href="https://github.com/ros2/rosidl_python/issues/141">Github issue</a> for more info. It is best practice to instead
-separate out the message generation into a separate package.</p>
+<p>在同一个 CMake 项目中调用 <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ament_python_install_package</span></code> 是不起作用的。请参阅此 <a class="reference external" href="https://github.com/ros2/rosidl_python/issues/141">Github 问题</a> 了解更多信息。最佳实践是将消息生成分离到一个单独的包中。</p>
 </div>
-<p>Then, another Python package that correctly depends on <code class="docutils literal notranslate"><span class="pre">my_project</span></code> can use it as a normal Python module:</p>
+<p>然后，另一个正确依赖于 <code class="docutils literal notranslate"><span class="pre">my_project</span></code> 的 Python 包可以将其作为普通的 Python 模块使用：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_project.my_script</span> <span class="kn">import</span> <span class="n">my_function</span>
 </pre></div>
 </div>
