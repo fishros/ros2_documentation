@@ -557,9 +557,9 @@
 <p>由于Linux、Mac和Windows都是官方支持的平台，为了最大限度地发挥作用，任何软件包也应该在Windows上构建。Windows库格式强制执行符号可见性：应该由库显式导出要从客户端使用的每个符号（并且数据符号需要隐式导入）。</p>
 <p>为了与Clang和GCC构建兼容，建议使用`GCC维基 &lt;<a class="reference external" href="https://gcc.gnu.org/wiki/Visibility">https://gcc.gnu.org/wiki/Visibility</a>&gt;`__中的逻辑。要在名为``my_library``的软件包中使用它：</p>
 <ul class="simple">
-<li><p>Copy the logic in the link into a header file called <code class="docutils literal notranslate"><span class="pre">visibility_control.hpp</span></code>.</p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">DLL</span></code> by <code class="docutils literal notranslate"><span class="pre">MY_LIBRARY</span></code> (for an example, see visibility control of <a class="reference external" href="https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp">rviz_rendering</a>).</p></li>
-<li><p>Use the macros &quot;MY_LIBRARY_PUBLIC&quot; for all symbols you need to export (i.e. classes or functions).</p></li>
+<li><p>将链接中的逻辑复制到名为``visibility_control.hpp``的头文件中。</p></li>
+<li><p>将``DLL``替换为``MY_LIBRARY``（例如，查看`rviz_rendering的可见性控制 &lt;<a class="reference external" href="https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp">https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp</a>&gt;`__）。</p></li>
+<li><p>对于需要导出的所有符号（例如类或函数），请使用宏&quot;MY_LIBRARY_PUBLIC&quot;。</p></li>
 <li><p>In the project <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> use:</p></li>
 </ul>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">my_library</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s2">&quot;MY_LIBRARY_BUILDING_LIBRARY&quot;</span><span class="p">)</span>
