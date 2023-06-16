@@ -518,14 +518,10 @@
 </div>
 <ul class="simple">
 <li><p>关于``include directory``，安装命令只是向CMake添加信息，实际上并没有安装包含文件夹。这是通过复制头文件来实现的，方法是使用``install(DIRECTORY &lt;dir&gt; DESTINATION &lt;dest&gt;)``，如上所述。</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">EXPORT</span></code> notation of the install call requires additional attention:
-It installs the CMake files for the <code class="docutils literal notranslate"><span class="pre">my_library</span></code> target.
-It is named exactly like the argument in <code class="docutils literal notranslate"><span class="pre">ament_export_targets</span></code> and could be named like the library.
-However, this will then prohibit using the <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code> way of including your library.
-To allow for full flexibility, it is advised to prepend the export target with something like <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;Targets</span></code>.</p></li>
-<li><p>All install paths are relative to <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code>, which is already set correctly by colcon/ament</p></li>
+<li><p>安装调用中``EXPORT``标注需要额外注意：它安装了``my_library``目标的CMake文件。它的名称与``ament_export_targets``中的参数完全相同，并且可以与库的名称相同。然而，这将阻止使用``ament_target_dependencies``包含库的方式。为了实现完全的灵活性，建议在导出目标之前添加类似``&lt;target&gt;Targets``的内容。</p></li>
+<li><p>所有安装路径都相对于``CMAKE_INSTALL_PREFIX``，colcon/ament已经正确设置了该值。</p></li>
 </ul>
-<p>There are two additional functions which can be used but are superfluous for target based installs:</p>
+<p>还有两个可以使用但对于基于目标的安装来说是多余的函数：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ament_export_include_directories</span><span class="p">(</span><span class="s">include</span><span class="p">)</span>
 <span class="nb">ament_export_libraries</span><span class="p">(</span><span class="s">my_library</span><span class="p">)</span>
 </pre></div>
