@@ -690,13 +690,8 @@
 <div class="section" id="the-ament-index-explained">
 <h3><a class="toc-backref" href="#id16">解释ament索引</a><a class="headerlink" href="#the-ament-index-explained" title="永久链接至标题"></a></h3>
 <p>有关设计和意图的详细信息，请参阅`此处 &lt;<a class="reference external" href="https://github.com/ament/ament_cmake/blob/humble/ament_cmake_core/doc/resource_index.md">https://github.com/ament/ament_cmake/blob/humble/ament_cmake_core/doc/resource_index.md</a>&gt;`__</p>
-<p>In principle, the ament index is contained in a folder within the install/share folder of your package.
-It contains shallow subfolders named after different types of resources.
-Within the subfolder, each package providing said resource is referenced by name with a &quot;marker file&quot;.
-The file may contain whatever content necessary to obtain the resources, e.g. relative paths to the installation directories of the resource, it may also be simply empty.</p>
-<p>To give an example, consider providing display plugins for RViz:
-When providing RViz plugins in a project named <code class="docutils literal notranslate"><span class="pre">my_rviz_displays</span></code> which will be read by the pluginlib, you will provide a <code class="docutils literal notranslate"><span class="pre">plugin_description.xml</span></code> file, which will be installed and used by the pluginlib to load the plugins.
-To achieve this, the plugin_description.xml is registered as a resource in the resource_index via</p>
+<p>原则上，ament索引包含在您的软件包的install/share文件夹中的一个文件夹中。它包含以不同类型资源命名的浅层子文件夹。在子文件夹内，每个提供该资源的软件包都以“标记文件”的形式引用。该文件可以包含获取资源所需的任何内容，例如资源的安装目录的相对路径，也可以是空的。</p>
+<p>举个例子，考虑为RViz提供显示插件：在名为``my_rviz_displays``的项目中提供RViz插件，这些插件将被pluginlib读取，您将提供一个``plugin_description.xml``文件，该文件将被安装和用于pluginlib来加载插件。为了实现这一点，通过资源索引将plugin_description.xml注册为资源</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pluginlib_export_plugin_description_file</span><span class="p">(</span><span class="s">rviz_common</span><span class="w"> </span><span class="s">plugins_description.xml</span><span class="p">)</span>
 </pre></div>
 </div>
