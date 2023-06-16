@@ -385,7 +385,7 @@
 <ul>
 <li><p><a class="reference internal" href="#basic-project-outline" id="id2">基本项目概述</a></p></li>
 <li><p><a class="reference internal" href="#using-ament-cmake-python" id="id3">使用ament_cmake_python</a></p></li>
-<li><p><a class="reference internal" href="#using-ament-cmake-pytest" id="id4">Using ament_cmake_pytest</a></p></li>
+<li><p><a class="reference internal" href="#using-ament-cmake-pytest" id="id4">使用 ament_cmake_pytest</a></p></li>
 </ul>
 </li>
 </ul>
@@ -430,13 +430,12 @@
 <p>假设 <code class="docutils literal notranslate"><span class="pre">my_script.py</span></code> 包含一个名为 <code class="docutils literal notranslate"><span class="pre">my_function()</span></code> 的函数。</p>
 </div>
 <div class="section" id="using-ament-cmake-pytest">
-<h3><a class="toc-backref" href="#id4">Using ament_cmake_pytest</a><a class="headerlink" href="#using-ament-cmake-pytest" title="永久链接至标题"></a></h3>
-<p>The package <code class="docutils literal notranslate"><span class="pre">ament_cmake_pytest</span></code> is used to make tests discoverable to <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.
-The package must declare a test dependency on <code class="docutils literal notranslate"><span class="pre">ament_cmake_pytest</span></code> in its <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.</p>
+<h3><a class="toc-backref" href="#id4">使用 ament_cmake_pytest</a><a class="headerlink" href="#using-ament-cmake-pytest" title="永久链接至标题"></a></h3>
+<p>包 <code class="docutils literal notranslate"><span class="pre">ament_cmake_pytest</span></code> 用于使测试在 <code class="docutils literal notranslate"><span class="pre">cmake</span></code> 中可被发现。包必须在其 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中声明对 <code class="docutils literal notranslate"><span class="pre">ament_cmake_pytest</span></code> 的测试依赖。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;test_depend&gt;</span>ament_cmake_pytest<span class="nt">&lt;/test_depend&gt;</span>
 </pre></div>
 </div>
-<p>Say the package has a file structure like below, with tests in the <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder.</p>
+<p>假设该包的文件结构如下所示，其中的测试位于 <code class="docutils literal notranslate"><span class="pre">tests</span></code> 文件夹中。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
 ├── CMakeLists.txt
 ├── my_project
