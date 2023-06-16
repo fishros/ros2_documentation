@@ -562,14 +562,13 @@ docker rm arm_sysroot
 <span class="nb">export</span> <span class="nv">PYTHON_SOABI</span><span class="o">=</span>cpython-36m-<span class="nv">$TARGET_TRIPLE</span>
 </pre></div>
 </div>
-<p>The following packages still cause errors during the cross-compilation (under investigation) and must be disabled for now.</p>
+<p>以下软件包在交叉编译过程中仍然导致错误（正在调查中），现在必须禁用它们。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch <span class="se">\</span>
     ros2_ws/src/ros2/rviz/COLCON_IGNORE <span class="se">\</span>
     ros2_ws/src/ros-visualization/COLCON_IGNORE
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">Poco</span></code> pre-built has a known issue where it is searching for <code class="docutils literal notranslate"><span class="pre">libz</span></code> and <code class="docutils literal notranslate"><span class="pre">libpcre</span></code> on the host system instead of SYSROOT.
-As a workaround for the moment, please link both libraries into the the host's file-system.</p>
+<p>预构建的 <code class="docutils literal notranslate"><span class="pre">Poco</span></code> 存在一个已知问题，它在主机系统上搜索 <code class="docutils literal notranslate"><span class="pre">libz</span></code> 和 <code class="docutils literal notranslate"><span class="pre">libpcre</span></code> 而不是 SYSROOT。暂时的解决方法是，请将这两个库链接到主机的文件系统中。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p /usr/lib/<span class="nv">$TARGET_TRIPLE</span>
 ln -s <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/sysroot_docker/lib/<span class="nv">$TARGET_TRIPLE</span>/libz.so.1 /usr/lib/<span class="nv">$TARGET_TRIPLE</span>/libz.so
 ln -s <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/sysroot_docker/lib/<span class="nv">$TARGET_TRIPLE</span>/libpcre.so.3 /usr/lib/<span class="nv">$TARGET_TRIPLE</span>/libpcre.so
