@@ -529,13 +529,15 @@ git clone https://github.com/ros-tooling/cross_compile.git -b <span class="m">0<
 </div>
 </div>
 <div class="section" id="prepare-the-sysroot">
-<h4>3. 准备 sysroot<a class="headerlink" href="#prepare-the-sysroot" title="永久链接至标题"></a></h4>
-<p>使用Docker和qemu构建带有所有ROS 2依赖项的arm Ubuntu镜像：将``qemu-static``二进制文件复制到工作空间。它将用于使用Docker在目标文件系统上安装ROS 2依赖项。</p>
+<h4>3. Prepare the sysroot<a class="headerlink" href="#prepare-the-sysroot" title="永久链接至标题"></a></h4>
+<p>Build an arm Ubuntu image with all the ROS 2 dependencies using Docker and qemu:
+Copy the <code class="docutils literal notranslate"><span class="pre">qemu-static</span></code> binary to the workspace.
+It will be used to install the ROS 2 dependencies on the target file-system with docker.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir qemu-user-static
 cp /usr/bin/qemu-*-static qemu-user-static
 </pre></div>
 </div>
-<p>ROS 2的标准:doc:<code class="xref any docutils literal notranslate"><span class="pre">设置</span> <span class="pre">&lt;../Installation/Alternatives/Ubuntu-Development-Setup&gt;`过程在arm</span> <span class="pre">docker内运行。这得益于``qemu-static`</span></code>，它将模拟一个arm机器。使用的基础镜像是来自Docker Hub的Ubuntu Bionic。</p>
+<p>The standard <a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html"><span class="doc">setup</span></a> process of ROS 2 is run inside an arm docker. This is possible thanks to <code class="docutils literal notranslate"><span class="pre">qemu-static</span></code>, which will emulate an arm machine. The base image used is an Ubuntu Bionic from Docker Hub.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t arm_ros2:latest -f ros2_ws/src/ros2/cross_compile/sysroot/Dockerfile_ubuntu_arm .
 docker run --name arm_sysroot arm_ros2:latest
 </pre></div>
