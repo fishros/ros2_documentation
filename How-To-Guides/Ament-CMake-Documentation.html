@@ -438,9 +438,9 @@
 </div>
 <div class="section" id="adding-files-and-headers">
 <h3><a class="toc-backref" href="#id3">添加文件和头文件</a><a class="headerlink" href="#adding-files-and-headers" title="永久链接至标题"></a></h3>
-<p>There are two main targets to build: libraries and executables which are built by <code class="docutils literal notranslate"><span class="pre">add_library</span></code> and <code class="docutils literal notranslate"><span class="pre">add_executable</span></code> respectively.</p>
-<p>With the separation of header files and implementation in C/C++, it is not always necessary to add both files as argument to <code class="docutils literal notranslate"><span class="pre">add_library</span></code>/ <code class="docutils literal notranslate"><span class="pre">add_executable</span></code>.</p>
-<p>The following best practice is proposed:</p>
+<p>有两个主要的构建目标：库和可执行文件分别通过``add_library``和``add_executable``构建。</p>
+<p>在C/C++中，由于头文件和实现文件的分离，不一定需要将这两个文件都作为``add_library``/ <a href="#id1"><span class="problematic" id="id2">``</span></a>add_executable``的参数添加进去。</p>
+<p>建议采用以下最佳实践：</p>
 <ul class="simple">
 <li><p>if you are building a library, put all headers which should be usable by clients and therefore must be installed into a subdirectory of the <code class="docutils literal notranslate"><span class="pre">include</span></code> folder named like the package, while all other files (<code class="docutils literal notranslate"><span class="pre">.c/.cpp</span></code> and header files which should not be exported) are inside the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p></li>
 <li><p>only cpp files are explicitly referenced in the call to <code class="docutils literal notranslate"><span class="pre">add_library</span></code> or <code class="docutils literal notranslate"><span class="pre">add_executable</span></code></p></li>
