@@ -251,7 +251,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">通过命令行向节点传递ROS参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Sync-Vs-Async.html">Synchronous vs. asynchronous service clients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DDS-tuning.html">DDS调优信息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2: Overriding QoS Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Cross-compilation.html">交叉编译</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Releasing/Releasing-a-Package.html">Releasing a Package</a><ul>
@@ -441,10 +441,10 @@ use_sim_time
 </div>
 </div>
 <div class="section" id="setting-parameters-from-yaml-files">
-<h3>Setting parameters from YAML files<a class="headerlink" href="#setting-parameters-from-yaml-files" title="永久链接至标题"></a></h3>
-<p>Parameters can be set from the command-line in the form of yaml files.</p>
-<p><a class="reference external" href="https://github.com/ros2/rcl/tree/humble/rcl_yaml_param_parser">See here</a> for examples of the yaml file syntax.</p>
-<p>As an example, save the following as <code class="docutils literal notranslate"><span class="pre">demo_params.yaml</span></code>:</p>
+<h3>从YAML文件中设置参数<a class="headerlink" href="#setting-parameters-from-yaml-files" title="永久链接至标题"></a></h3>
+<p>参数可以以yaml文件的形式通过命令行设置。</p>
+<p>有关yaml文件语法的示例，请参阅此处 &lt;<a class="reference external" href="https://github.com/ros2/rcl/tree/humble/rcl_yaml_param_parser">https://github.com/ros2/rcl/tree/humble/rcl_yaml_param_parser</a>&gt;。</p>
+<p>例如，将以下内容保存为 <code class="docutils literal notranslate"><span class="pre">demo_params.yaml</span></code> 文件：</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameter_blackboard</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="nt">some_int</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span><span class="w"></span>
@@ -454,8 +454,8 @@ use_sim_time
 <span class="w">            </span><span class="nt">some_doubles </span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">3.14</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.718</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then either declare the parameters within your node with <code class="docutils literal notranslate"><span class="pre">declare_parameter</span></code>  or <code class="docutils literal notranslate"><span class="pre">declare_parameters</span></code> (see <a class="reference external" href="https://docs.ros2.org/foxy/api/rclcpp/classrclcpp_1_1Node.html#a095ea977b26e7464d9371efea5f36c42">documentation</a> for function signatures), or <a class="reference external" href="https://docs.ros2.org/foxy/api/rclcpp/classrclcpp_1_1NodeOptions.html#a094ceb7af7c9b358ec007a4b8e14d40d">set the node to automatically declare parameters</a> if they were passed in via a command line override.</p>
-<p>Then run the following:</p>
+<p>然后，您可以在节点内使用 <code class="docutils literal notranslate"><span class="pre">declare_parameter</span></code> 或 <a href="#id1"><span class="problematic" id="id2">``</span></a>declare_parameters``（请参阅 <a class="reference external" href="https://docs.ros2.org/foxy/api/rclcpp/classrclcpp_1_1Node.html#a095ea977b26e7464d9371efea5f36c42">文档</a> 了解函数签名）声明参数，或者如果通过命令行覆盖传递了参数，则可以 <a class="reference external" href="https://docs.ros2.org/foxy/api/rclcpp/classrclcpp_1_1NodeOptions.html#a094ceb7af7c9b358ec007a4b8e14d40d">设置节点自动声明参数</a>。</p>
+<p>然后运行以下命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp parameter_blackboard --ros-args --params-file demo_params.yaml
 </pre></div>
 </div>
