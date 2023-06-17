@@ -275,7 +275,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-callback-groups.html">Using Callback Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RQt-Source-Install.html">从源代码构建 RQt</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt</a></li>
@@ -398,23 +398,23 @@ root@&lt;container-id&gt;:/#
 <span class="o">(</span>you will see a list of &lt;package&gt; &lt;executable&gt;<span class="o">)</span>
 </pre></div>
 </div>
-<p>Run a minimal example of 2 C++ nodes (1 topic subscriber <code class="docutils literal notranslate"><span class="pre">listener</span></code>, 1 topic publisher <code class="docutils literal notranslate"><span class="pre">talker</span></code>) from the package <code class="docutils literal notranslate"><span class="pre">demo_nodes_cpp</span></code> in this container:</p>
+<p>在此容器中运行一个名为 <code class="docutils literal notranslate"><span class="pre">demo_nodes_cpp</span></code> 的软件包中的两个C++节点（一个主题订阅者 <code class="docutils literal notranslate"><span class="pre">listener</span></code>，一个主题发布者 <code class="docutils literal notranslate"><span class="pre">talker</span></code>）的最简示例：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp listener <span class="p">&amp;</span>
 ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-two-nodes-in-two-separate-docker-containers">
-<h2>Run two nodes in two separate docker containers<a class="headerlink" href="#run-two-nodes-in-two-separate-docker-containers" title="永久链接至标题"></a></h2>
-<p>Open a terminal. Run the image in a container in interactive mode and launch a topic publisher (executable <code class="docutils literal notranslate"><span class="pre">talker</span></code> from the package <code class="docutils literal notranslate"><span class="pre">demo_nodes_cpp</span></code>) with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>:</p>
+<h2>在两个单独的Docker容器中运行两个节点。<a class="headerlink" href="#run-two-nodes-in-two-separate-docker-containers" title="永久链接至标题"></a></h2>
+<p>打开一个终端。以交互模式在容器中运行图像，并使用 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 启动一个主题发布者（软件包 <code class="docutils literal notranslate"><span class="pre">demo_nodes_cpp</span></code> 中的可执行文件 <code class="docutils literal notranslate"><span class="pre">talker</span></code>）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -it --rm osrf/ros:humble-desktop ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
-<p>Open a second terminal. Run the image in a container in interactive mode and launch a topic subscriber (executable <code class="docutils literal notranslate"><span class="pre">listener</span></code> from the package <code class="docutils literal notranslate"><span class="pre">demo_nodes_cpp</span></code>)  with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>:</p>
+<p>打开第二个终端。以交互模式在容器中运行图像，并使用 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 启动一个主题订阅者（软件包 <code class="docutils literal notranslate"><span class="pre">demo_nodes_cpp</span></code> 中的可执行文件 <code class="docutils literal notranslate"><span class="pre">listener</span></code>）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -it --rm osrf/ros:humble-desktop ros2 run demo_nodes_cpp listener
 </pre></div>
 </div>
-<p>As an alternative to the command line invocation, you can create a <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file (here version 2) with the following (minimal) content:</p>
+<p>作为命令行调用的替代方案，您可以创建一个名为``docker-compose.yml``的文件（版本2），其内容如下（最小化）：</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span><span class="w"></span>
 
 <span class="nt">services</span><span class="p">:</span><span class="w"></span>
@@ -428,7 +428,7 @@ ros2 run demo_nodes_cpp talker
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">talker</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To run the containers call <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span></code> in the same directory. You can close the containers with <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code>.</p>
+<p>要运行容器，请在相同目录中调用``docker compose up``。您可以使用``Ctrl+C``关闭容器。</p>
 </div>
 </div>
 
