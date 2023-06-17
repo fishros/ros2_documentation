@@ -382,19 +382,17 @@
 <dd><p><a class="reference external" href="https://help.ubuntu.com/community/MetaPackages">https://help.ubuntu.com/community/MetaPackages</a></p>
 </dd>
 </dl>
-<p>The different variants in ROS 2 are specified in <a class="reference external" href="https://ros.org/reps/rep-2001.html">REP-2001</a>.</p>
-<p>In addition to the official variants, there may be metapackages for specific institutions or robots as described in <a class="reference external" href="https://www.ros.org/reps/rep-0108.html#institution-specific">REP-108</a>.</p>
+<p>ROS 2中的不同变体在`REP-2001 &lt;<a class="reference external" href="https://ros.org/reps/rep-2001.html">https://ros.org/reps/rep-2001.html</a>&gt;`_中有详细说明。</p>
+<p>除了官方的变体外，还可能存在针对特定机构或机器人的元包，如`REP-108 &lt;<a class="reference external" href="https://www.ros.org/reps/rep-0108.html#institution-specific">https://www.ros.org/reps/rep-0108.html#institution-specific</a>&gt;`_中所述。</p>
 <div class="section" id="adding-variants">
-<h2>Adding variants<a class="headerlink" href="#adding-variants" title="永久链接至标题"></a></h2>
-<p>Additional variants that are of general use to the ROS community can be proposed by contributing an update to <a class="reference external" href="https://github.com/ros-infrastructure/rep/blob/master/rep-2001.rst">REP-2001 via pull request</a> describing the packages included in the new variant.
-Institution and robot specific variants can be published directly by their respective maintainers and no update to REP-2001 is required.</p>
+<h2>添加变体<a class="headerlink" href="#adding-variants" title="永久链接至标题"></a></h2>
+<p>对于ROS社区有用的其他变体可以通过向`REP-2001提出更新的方式 &lt;<a class="reference external" href="https://github.com/ros-infrastructure/rep/blob/master/rep-2001.rst">https://github.com/ros-infrastructure/rep/blob/master/rep-2001.rst</a>&gt;`_ 来提议。在更新中描述所包含的新变体中的软件包。机构和机器人特定的变体可以直接由各自的维护者发布，不需要对REP-2001进行更新。</p>
 </div>
 <div class="section" id="creating-project-specific-variants">
-<h2>Creating project-specific variants<a class="headerlink" href="#creating-project-specific-variants" title="永久链接至标题"></a></h2>
-<p>If you are creating ROS packages to use privately in your own projects, you can create variants specific to your projects using the official variants as examples.
-To do so you need only create two files:</p>
+<h2>创建项目特定的变体<a class="headerlink" href="#creating-project-specific-variants" title="永久链接至标题"></a></h2>
+<p>如果您在自己的项目中创建ROS软件包供私人使用，您可以使用官方的变体作为示例来创建特定于您的项目的变体。要做到这一点，您只需要创建两个文件：</p>
 <ol class="arabic simple">
-<li><p>A minimal variant package is created as a package with the <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> build type, a <code class="docutils literal notranslate"><span class="pre">buildtool_depend</span></code> on <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> and <code class="docutils literal notranslate"><span class="pre">exec_depend</span></code> entries for each package you want to include in the variant.</p></li>
+<li><p>创建一个最小化变体包作为具有 <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> 构建类型的包，其中 <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> 有一个 <code class="docutils literal notranslate"><span class="pre">buildtool_depend</span></code>，并为每个要包含在变体中的包添加 <code class="docutils literal notranslate"><span class="pre">exec_depend</span></code> 条目。</p></li>
 </ol>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="cp">&lt;?xml-model href=&quot;http://download.ros.org/schema/package_format2.xsd&quot; schematypens=&quot;http://www.w3.org/2001/XMLSchema&quot;?&gt;</span>
@@ -416,7 +414,7 @@ To do so you need only create two files:</p>
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li><p>A minimal ament_cmake package includes a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> which registers the package.xml as an ament package for use in ROS 2.</p></li>
+<li><p>一个最小化的 ament_cmake 包包括一个 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 文件，将 package.xml 注册为 ament 包，以便在 ROS 2 中使用。</p></li>
 </ol>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
 
@@ -426,10 +424,10 @@ To do so you need only create two files:</p>
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li><p>You can then build and install your variant package alongside your other private packages.</p></li>
+<li><p>然后，您可以将您的变体包与其他私有包一起构建和安装。</p></li>
 </ol>
 <div class="section" id="creating-custom-variants-with-platform-specific-tools">
-<h3>Creating custom variants with platform-specific tools<a class="headerlink" href="#creating-custom-variants-with-platform-specific-tools" title="永久链接至标题"></a></h3>
+<h3>使用特定于平台的工具创建自定义变体。<a class="headerlink" href="#creating-custom-variants-with-platform-specific-tools" title="永久链接至标题"></a></h3>
 <p>Some platforms have tools for creating basic packages that do not require a full ROS build farm environment or equivalent infrastructure.
 It is possible to use these tools to create platform-dependent variants.
 This approach does not include support for ROS packaging tools and is platform dependent but requires much less infrastructure to produce if you are creating collections of existing packages rather than a mix of public and private ROS packages.
