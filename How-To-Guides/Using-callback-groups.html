@@ -383,7 +383,7 @@
 <li><p><a class="reference internal" href="#about-callbacks" id="id2">关于回调</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#controlling-execution" id="id3">Controlling execution</a></p></li>
+<li><p><a class="reference internal" href="#controlling-execution" id="id3">控制执行</a></p></li>
 <li><p><a class="reference internal" href="#avoiding-deadlocks" id="id4">Avoiding deadlocks</a></p></li>
 <li><p><a class="reference internal" href="#examples" id="id5">示例</a></p>
 <ul>
@@ -434,35 +434,21 @@
 <li><p>定时器回调，</p></li>
 <li><p>服务回调（用于在服务器中执行服务请求），</p></li>
 <li><p>动作服务器和客户端中的不同回调，</p></li>
-<li><p>done-callbacks of Futures.</p></li>
+<li><p>Futures的完成回调。</p></li>
 </ul>
-<p>Below are a couple important points about callbacks that should be kept
-in mind when working with callback groups.</p>
+<p>以下是在使用回调组时需要记住的一些重要要点。</p>
 <ul class="simple">
-<li><p>Almost everything in ROS 2 is a callback!
-Every function that is run by an executor is, by definition, a callback.
-The non-callback functions in a ROS 2 system are found mainly at
-the edge of the system (user and sensor inputs etc).</p></li>
-<li><p>Sometimes the callbacks are hidden and their presence may not be obvious
-from the user/developer API.
-This is the case especially with any kind of “synchronous” call to a
-service or an action (in rclpy).
-For example, the synchronous call <code class="docutils literal notranslate"><span class="pre">Client.call(request)</span></code> to a service
-adds a Future's done-callback that needs to be executed during the
-execution of the function call, but this callback is not directly
-visible to the user.</p></li>
+<li><p>在ROS 2中，几乎所有的东西都是回调！每个由执行器运行的函数都是回调的定义。在ROS 2系统中，非回调函数主要位于系统的边缘（用户和传感器输入等）。</p></li>
+<li><p>有时，回调是隐藏的，从用户/开发者API来看可能并不明显。这尤其适用于对服务或操作进行任何类型的“同步”调用（在rclpy中）。例如，对服务进行同步调用``Client.call(request)``会添加一个Future的完成回调，该回调需要在函数调用期间执行，但此回调对用户来说不直接可见。</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="controlling-execution">
-<h2><a class="toc-backref" href="#id3">Controlling execution</a><a class="headerlink" href="#controlling-execution" title="永久链接至标题"></a></h2>
-<p>In order to control execution with callback groups, one can consider the
-following guidelines.</p>
-<p>For the interaction of an individual callback with itself:</p>
+<h2><a class="toc-backref" href="#id3">控制执行</a><a class="headerlink" href="#controlling-execution" title="永久链接至标题"></a></h2>
+<p>为了使用回调组来控制执行，可以考虑以下准则。</p>
+<p>对于一个回调函数与其自身的交互：</p>
 <ul class="simple">
-<li><p>Register it to a Reentrant Callback Group if it should be executed in parallel to itself.
-An example case could be an action/service server that needs to be able to
-process several action calls in parallel to each other.</p></li>
+<li><p>如果希望它能够与自身并行执行，将其注册到一个可重入回调组中。例如，一个需要能够并行处理多个动作调用的动作/服务服务器。</p></li>
 <li><p>Register it to a Mutually Exclusive Callback Group if it should <strong>never</strong> be executed in parallel to itself.
 An example case could be a timer callback that runs a control loop that publishes control commands.</p></li>
 </ul>
