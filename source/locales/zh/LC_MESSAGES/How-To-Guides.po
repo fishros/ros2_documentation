@@ -5602,62 +5602,62 @@ msgstr "导致这种情况的原因是计时器回调和客户端使用了相同
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:439
 msgid "Solution"
-msgstr "Solution"
+msgstr "解决方案"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:441
 msgid "We can fix this easily - for example - by assigning the timer and client to different callback groups. Thus, let us change the first two lines of the client node's constructor to be as follows (everything else shall stay the same):"
-msgstr "We can fix this easily - for example - by assigning the timer and client to different callback groups. Thus, let us change the first two lines of the client node's constructor to be as follows (everything else shall stay the same):"
+msgstr "我们可以很容易地解决这个问题 - 例如 - 通过将定时器和客户端分配给不同的回调组。因此，让我们将客户端节点构造函数的前两行更改为如下（其他所有内容保持不变）："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:462
 msgid "Now we get the expected result, i.e. the timer fires repeatedly and each service call gets the result as it should:"
-msgstr "Now we get the expected result, i.e. the timer fires repeatedly and each service call gets the result as it should:"
+msgstr "现在我们得到了预期的结果，即定时器重复触发，并且每个服务调用都按照应有的方式得到结果："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:493
 msgid "One might consider if just avoiding the node's default callback group is enough. This is not the case: replacing the default group by a different Mutually Exclusive group changes nothing. Thus, the following configuration also leads to the previously discovered deadlock."
-msgstr "One might consider if just avoiding the node's default callback group is enough. This is not the case: replacing the default group by a different Mutually Exclusive group changes nothing. Thus, the following configuration also leads to the previously discovered deadlock."
+msgstr "有人可能会考虑是否仅仅避免使用节点的默认回调组就足够了。但事实并非如此：用不同的互斥组替换默认组并没有改变什么。因此，以下配置也会导致之前发现的死锁问题。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:516
 msgid "In fact, the exact condition with which everything works in this case is that the timer and client must not belong to the same Mutually Exclusive group. Hence, all of the following configurations (and some others as well) produce the desired outcome where the timer fires repeatedly and service calls are completed."
-msgstr "In fact, the exact condition with which everything works in this case is that the timer and client must not belong to the same Mutually Exclusive group. Hence, all of the following configurations (and some others as well) produce the desired outcome where the timer fires repeatedly and service calls are completed."
+msgstr "事实上，在这种情况下，一切正常工作的确切条件是计时器和客户端不能属于同一互斥组。因此，以下所有配置（以及其他一些配置）都会产生所需的结果，即计时器重复触发并完成服务调用。"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:2
 msgid "Using ``ros1_bridge`` with upstream ROS on Ubuntu 22.04"
-msgstr "Using ``ros1_bridge`` with upstream ROS on Ubuntu 22.04"
+msgstr "在Ubuntu 22.04上使用``ros1_bridge``和上游ROS"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:8
 msgid "The release of ROS 2 Humble (and Rolling) on Ubuntu 22.04 Jammy Jellyfish marks the first ROS 2 release on a platform with no official ROS 1 release. While ROS 1 Noetic will continue to be supported through the duration of its `long term support window <https://www.ros.org/reps/rep-0003.html#noetic-ninjemys-may-2020-may-2025>`__, it will only target Ubuntu 20.04. Alternatively, there are `upstream variants of ROS 1 packages <https://packages.ubuntu.com/jammy/ros-desktop>`__ in Debian and Ubuntu that are not maintained as an official distribution by the ROS maintainers."
-msgstr "The release of ROS 2 Humble (and Rolling) on Ubuntu 22.04 Jammy Jellyfish marks the first ROS 2 release on a platform with no official ROS 1 release. While ROS 1 Noetic will continue to be supported through the duration of its `long term support window <https://www.ros.org/reps/rep-0003.html#noetic-ninjemys-may-2020-may-2025>`__, it will only target Ubuntu 20.04. Alternatively, there are `upstream variants of ROS 1 packages <https://packages.ubuntu.com/jammy/ros-desktop>`__ in Debian and Ubuntu that are not maintained as an official distribution by the ROS maintainers."
+msgstr "在Ubuntu 22.04 Jammy Jellyfish上发布的ROS 2 Humble（和Rolling）标志着首个在没有官方ROS 1版本的平台上发布的ROS 2版本。虽然ROS 1 Noetic将在其`长期支持窗口 <https://www.ros.org/reps/rep-0003.html#noetic-ninjemys-may-2020-may-2025>`__ 内继续得到支持，但它只针对Ubuntu 20.04。或者，Debian和Ubuntu中存在一些`ROS 1软件包的上游变体 <https://packages.ubuntu.com/jammy/ros-desktop>`__，它们不作为ROS维护者的官方发行版进行维护。"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:12
 msgid "This guide outlines the current mechanism for bridging ROS 2 releases with these upstream packages on Ubuntu 22.04 Jammy Jellyfish. This provides a migration path for users who still depend on ROS 1, but desire moving to newer ROS 2 and Ubuntu releases."
-msgstr "This guide outlines the current mechanism for bridging ROS 2 releases with these upstream packages on Ubuntu 22.04 Jammy Jellyfish. This provides a migration path for users who still depend on ROS 1, but desire moving to newer ROS 2 and Ubuntu releases."
+msgstr "本指南概述了在Ubuntu 22.04 Jammy Jellyfish上使用这些上游软件包进行ROS 2版本桥接的当前机制。这为仍然依赖ROS 1但希望迁移到更新的ROS 2和Ubuntu版本的用户提供了一条迁移路径。"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:16
 msgid "ROS 2 via Debian packages"
-msgstr "ROS 2 via Debian packages"
+msgstr "通过Debian软件包使用ROS 2"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:18
 msgid "Installing :doc:`ROS 2 from Debian packages <../Installation/Ubuntu-Install-Debians>` currently does not work for ROS 2 on Ubuntu Jammy. The version of ``catkin-pkg-modules`` available in the Ubuntu repository conflicts with that in the ROS 2 package repository."
-msgstr "Installing :doc:`ROS 2 from Debian packages <../Installation/Ubuntu-Install-Debians>` currently does not work for ROS 2 on Ubuntu Jammy. The version of ``catkin-pkg-modules`` available in the Ubuntu repository conflicts with that in the ROS 2 package repository."
+msgstr "目前无法在Ubuntu Jammy上通过Debian软件包安装ROS 2。Ubuntu软件仓库中可用的``catkin-pkg-modules``版本与ROS 2软件包仓库中的版本存在冲突。"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:21
 msgid "If the ROS 2 apt repository is in the available apt repositories (``/etc/apt/sources.list.d``), no ROS 1 packages will be installable. The error will be:"
-msgstr "If the ROS 2 apt repository is in the available apt repositories (``/etc/apt/sources.list.d``), no ROS 1 packages will be installable. The error will be:"
+msgstr "如果ROS 2的apt仓库在可用的apt仓库（``/etc/apt/sources.list.d``）中，将无法安装任何ROS 1软件包。错误信息如下："
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:40
 msgid "To correct this, remove packages.ros.org from your ``sources.list``. If you were following the ROS 2 installation guide, simply remove ``/etc/apt/sources.list.d/ros2.list``"
-msgstr "To correct this, remove packages.ros.org from your ``sources.list``. If you were following the ROS 2 installation guide, simply remove ``/etc/apt/sources.list.d/ros2.list``"
+msgstr "要修正此问题，请从您的``sources.list``文件中移除packages.ros.org。如果您遵循了ROS 2安装指南，只需移除``/etc/apt/sources.list.d/ros2.list``文件即可。"
 
 
 #: ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:43
