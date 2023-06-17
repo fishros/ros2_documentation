@@ -5502,62 +5502,62 @@ msgstr "避免死锁"
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:139
 msgid "Setting up callback groups of a node incorrectly can lead to deadlocks (or other unwanted behavior), especially if one desires to use synchronous calls to services or actions. Indeed, even the API documentation of ROS 2 mentions that synchronous calls to actions or services should not be done in callbacks, because it can lead to deadlocks. While using asynchronous calls is indeed safer in this regard, synchronous calls can also be made to work. On the other hand, synchronous calls also have their advantages, such as making the code simpler and easier to understand. Hence, this section provides some guidelines on how to set up a node's callback groups correctly in order to avoid deadlocks."
-msgstr "Setting up callback groups of a node incorrectly can lead to deadlocks (or other unwanted behavior), especially if one desires to use synchronous calls to services or actions. Indeed, even the API documentation of ROS 2 mentions that synchronous calls to actions or services should not be done in callbacks, because it can lead to deadlocks. While using asynchronous calls is indeed safer in this regard, synchronous calls can also be made to work. On the other hand, synchronous calls also have their advantages, such as making the code simpler and easier to understand. Hence, this section provides some guidelines on how to set up a node's callback groups correctly in order to avoid deadlocks."
+msgstr "设置节点的回调组不正确可能会导致死锁（或其他不希望的行为），特别是如果希望在回调中使用同步调用服务或动作。事实上，ROS 2 的 API 文档甚至提到在回调中不应该进行同步调用动作或服务，因为这可能会导致死锁。虽然在这方面使用异步调用确实更安全，但同步调用也可以正常工作。另一方面，同步调用也有其优点，例如使代码更简单易懂。因此，本节提供了一些关于如何正确设置节点的回调组以避免死锁的指南。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:152
 msgid "First thing to note here is that every node's default callback group is a Mutually Exclusive Callback Group. If the user does not specify any other callback group when creating a timer, subscription, client etc., any callbacks created then or later by these entities will use the node's default callback group. Furthermore, if everything in a node uses the same Mutually Exclusive Callback Group, that node essentially acts as if it was handled by a Single-Threaded Executor, even if a multi-threaded one is specified! Thus, whenever one decides to use a Multi-Threaded Executor, some callback group(s) should always be specified in order for the executor choice to make sense."
-msgstr "First thing to note here is that every node's default callback group is a Mutually Exclusive Callback Group. If the user does not specify any other callback group when creating a timer, subscription, client etc., any callbacks created then or later by these entities will use the node's default callback group. Furthermore, if everything in a node uses the same Mutually Exclusive Callback Group, that node essentially acts as if it was handled by a Single-Threaded Executor, even if a multi-threaded one is specified! Thus, whenever one decides to use a Multi-Threaded Executor, some callback group(s) should always be specified in order for the executor choice to make sense."
+msgstr "这里需要注意的第一点是，每个节点的默认回调组是互斥的回调组（Mutually Exclusive Callback Group）。如果用户在创建定时器、订阅、客户端等时没有指定其他回调组，那么这些实体创建的任何回调都将使用节点的默认回调组。此外，如果节点中的所有内容都使用相同的互斥回调组，即使指定了多线程执行器，该节点实际上也会像单线程执行器一样处理！因此，当决定使用多线程执行器时，应始终指定一个或多个回调组，以使执行器的选择有意义。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:164
 msgid "With the above in mind, here are a couple guidelines to help avoid deadlocks:"
-msgstr "With the above in mind, here are a couple guidelines to help avoid deadlocks:"
+msgstr "在上述内容的基础上，以下是一些指南，可帮助避免死锁："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:166
 msgid "If you make a synchronous call in any type of a callback, this callback and the client making the call need to belong to"
-msgstr "If you make a synchronous call in any type of a callback, this callback and the client making the call need to belong to"
+msgstr "如果在任何类型的回调中进行同步调用，该回调和进行调用的客户端需要属于"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:169
 msgid "different callback groups (of any type), or"
-msgstr "different callback groups (of any type), or"
+msgstr "不同的回调组（任意类型），或者"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:170
 msgid "a Reentrant Callback Group."
-msgstr "a Reentrant Callback Group."
+msgstr "一个可重入回调组。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:172
 msgid "If the above configuration is not possible due to other requirements - such as thread-safety and/or blocking of other callbacks while waiting for the result (or if you want to make absolutely sure that there is never a possibility of a deadlock), use asynchronous calls."
-msgstr "If the above configuration is not possible due to other requirements - such as thread-safety and/or blocking of other callbacks while waiting for the result (or if you want to make absolutely sure that there is never a possibility of a deadlock), use asynchronous calls."
+msgstr "如果由于其他要求（如线程安全和/或在等待结果时阻塞其他回调）而无法满足上述配置要求，或者您希望确保绝对不会发生死锁的可能性，请使用异步调用。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:177
 msgid "Failing the first point will always cause a deadlock. An example of such a case would be making a synchronous service call in a timer callback (see the next section for an example)."
-msgstr "Failing the first point will always cause a deadlock. An example of such a case would be making a synchronous service call in a timer callback (see the next section for an example)."
+msgstr "不满足第一个要点将始终导致死锁。这种情况的一个示例是在定时器回调中进行同步服务调用（请参阅下一节的示例）。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:185
 msgid "Let us look at some simple examples of different callback group setups. The following demo code considers calling a service synchronously in a timer callback."
-msgstr "Let us look at some simple examples of different callback group setups. The following demo code considers calling a service synchronously in a timer callback."
+msgstr "让我们来看一些不同回调组设置的简单示例。下面的演示代码考虑在计时器回调中同步调用一个服务。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:190
 msgid "Demo code"
-msgstr "Demo code"
+msgstr "演示代码"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:192
 msgid "We have two nodes - one providing a simple service:"
-msgstr "We have two nodes - one providing a simple service:"
+msgstr "我们有两个节点 - 一个提供简单服务："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:277
 msgid "and another containing a client to the service along with a timer for making service calls:"
-msgstr "and another containing a client to the service along with a timer for making service calls:"
+msgstr "另一个包含一个客户端和一个用于进行服务调用的计时器："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:284
