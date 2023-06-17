@@ -378,8 +378,8 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#prerequisites" id="id1">先决条件</a></p></li>
-<li><p><a class="reference internal" href="#specifying-rmw-implementations" id="id2">Specifying RMW implementations</a></p></li>
-<li><p><a class="reference internal" href="#adding-rmw-implementations-to-your-workspace" id="id3">Adding RMW implementations to your workspace</a></p></li>
+<li><p><a class="reference internal" href="#specifying-rmw-implementations" id="id2">指定RMW实现</a></p></li>
+<li><p><a class="reference internal" href="#adding-rmw-implementations-to-your-workspace" id="id3">将 RMW 实现添加到您的工作空间中</a></p></li>
 <li><p><a class="reference internal" href="#troubleshooting" id="id4">Troubleshooting</a></p>
 <ul>
 <li><p><a class="reference internal" href="#checking-the-current-rmw" id="id5">Checking the Current RMW</a></p></li>
@@ -392,15 +392,15 @@
 <p>本页面介绍了默认的RMW实现以及如何指定替代实现。</p>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id1">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>You should have already read the <a class="reference internal" href="../Concepts/About-Different-Middleware-Vendors.html"><span class="doc">DDS and ROS middleware implementations page</span></a>.</p>
+<p>你应该已经阅读了:doc:<a class="reference internal" href="../Concepts/About-Different-Middleware-Vendors.html"><span class="doc">DDS和ROS中间件实现页面</span></a>。</p>
 </div>
 <div class="section" id="specifying-rmw-implementations">
-<h2><a class="toc-backref" href="#id2">Specifying RMW implementations</a><a class="headerlink" href="#specifying-rmw-implementations" title="永久链接至标题"></a></h2>
-<p>To have multiple RMW implementations available for use you must have installed the ROS 2 binaries and any additional dependencies for specific RMW implementations, or built ROS 2 from source with multiple RMW implementations in the workspace (the RMW implementations are included in the build by default if their compile-time dependencies are met). See <a class="reference internal" href="../Installation/DDS-Implementations.html"><span class="doc">Install DDS implementations</span></a>.</p>
+<h2><a class="toc-backref" href="#id2">指定RMW实现</a><a class="headerlink" href="#specifying-rmw-implementations" title="永久链接至标题"></a></h2>
+<p>要使用多个RMW实现，您必须安装ROS 2二进制文件和特定RMW实现的任何附加依赖项，或者从源代码构建ROS 2并在工作空间中使用多个RMW实现（如果编译时依赖项满足，则默认包括RMW实现在构建中）。参见:doc:<a class="reference internal" href="../Installation/DDS-Implementations.html"><span class="doc">安装DDS实现</span></a>。</p>
 <hr class="docutils" />
-<p>Both C++ and Python nodes support an environment variable <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> that allows the user to select the RMW implementation to use when running ROS 2 applications.</p>
-<p>The user may set this variable to a specific implementation identifier, such as <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code>, or <code class="docutils literal notranslate"><span class="pre">rmw_gurumdds_cpp</span></code>.</p>
-<p>For example, to run the talker demo using the C++ talker and Python listener with the Connext RMW implementation:</p>
+<p>C++和Python节点都支持一个环境变量``RMW_IMPLEMENTATION``，允许用户在运行ROS 2应用程序时选择要使用的RMW实现。</p>
+<p>用户可以将此变量设置为特定的实现标识符，例如 <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code>、<code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code>、<code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 或 <code class="docutils literal notranslate"><span class="pre">rmw_gurumdds_cpp</span></code>。</p>
+<p>例如，要使用C++ talker 和 Python listener 以 Connext RMW 实现运行 talker 示例：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_connextdds ros2 run demo_nodes_cpp talker
 
@@ -425,11 +425,8 @@ ros2 run demo_nodes_py listener
 </div></div>
 </div>
 <div class="section" id="adding-rmw-implementations-to-your-workspace">
-<h2><a class="toc-backref" href="#id3">Adding RMW implementations to your workspace</a><a class="headerlink" href="#adding-rmw-implementations-to-your-workspace" title="永久链接至标题"></a></h2>
-<p>Suppose that you have built your ROS 2 workspace with only Fast DDS installed and therefore only the Fast DDS RMW implementation built.
-The last time your workspace was built, any other RMW implementation packages, <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> for example, were probably unable to find installations of the relevant DDS implementations.
-If you then install an additional DDS implementation, Connext for example, you will need to re-trigger the check for a Connext installation that occurs when the Connext RMW implementation is being built.
-You can do this by specifying the <code class="docutils literal notranslate"><span class="pre">--cmake-clean-cache</span></code> flag on your next workspace build, and you should see that the RMW implementation package then gets built for the newly installed DDS implementation.</p>
+<h2><a class="toc-backref" href="#id3">将 RMW 实现添加到您的工作空间中</a><a class="headerlink" href="#adding-rmw-implementations-to-your-workspace" title="永久链接至标题"></a></h2>
+<p>假设您已经构建了只安装了 Fast DDS 的 ROS 2 工作空间，因此只有 Fast DDS RMW 实现被构建。上次构建工作空间时，其他任何 RMW 实现包（例如 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code>）可能都无法找到相关 DDS 实现的安装。如果您随后安装了额外的 DDS 实现，例如 Connext，您将需要重新触发构建 Connext RMW 实现时的 Connext 安装检查。您可以在下一个工作空间构建中指定 <code class="docutils literal notranslate"><span class="pre">--cmake-clean-cache</span></code> 标志来执行此操作，并且您应该看到 RMW 实现包将为新安装的 DDS 实现进行构建。</p>
 <p>It is possible to run into a problem when &quot;rebuilding&quot; the workspace with an additional RMW implementation using the <code class="docutils literal notranslate"><span class="pre">--cmake-clean-cache</span></code> option where the build complains about the default RMW implementation changing.
 To resolve this, you can either set the default implementation to what is was before with the <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> CMake argument or you can delete the build folder for packages that complain and continue the build with <code class="docutils literal notranslate"><span class="pre">--packages-start</span> <span class="pre">&lt;package</span> <span class="pre">name&gt;</span></code>.</p>
 </div>
