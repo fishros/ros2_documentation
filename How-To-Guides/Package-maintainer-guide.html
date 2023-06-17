@@ -378,9 +378,9 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#reviews" id="id1">评论</a></p></li>
-<li><p><a class="reference internal" href="#continuous-integration" id="id2">Continuous Integration</a></p>
+<li><p><a class="reference internal" href="#continuous-integration" id="id2">持续集成</a></p>
 <ul>
-<li><p><a class="reference internal" href="#pr-builds-https-build-ros2-org-view-rpr" id="id3">PR builds (https://build.ros2.org/view/Rpr)</a></p></li>
+<li><p><a class="reference internal" href="#pr-builds-https-build-ros2-org-view-rpr" id="id3">PR构建（https://build.ros2.org/view/Rpr）</a></p></li>
 <li><p><a class="reference internal" href="#ci-builds-https-ci-ros2-org" id="id4">CI builds (https://ci.ros2.org)</a></p></li>
 </ul>
 </li>
@@ -412,23 +412,18 @@
 </div></blockquote>
 </li>
 <li><p>为错误/功能添加测试</p></li>
-<li><p>Adds documentation for new features</p></li>
-<li><p>Clean Continuous Integration run</p></li>
-<li><p>Targets default branch (usually &quot;rolling&quot;)</p></li>
-<li><p>Has at least one approval from a maintainer that is not the author</p></li>
+<li><p>增加新功能的文档</p></li>
+<li><p>清理持续集成运行</p></li>
+<li><p>目标是默认分支（通常是“rolling”）</p></li>
+<li><p>至少有一位维护者（非作者）的批准</p></li>
 </ul>
 </div>
 <div class="section" id="continuous-integration">
-<h2><a class="toc-backref" href="#id2">Continuous Integration</a><a class="headerlink" href="#continuous-integration" title="永久链接至标题"></a></h2>
-<p>All incoming code to ROS 2 core repositories must be run through Continuous Integration.
-ROS 2 currently has two separate CI systems, and it is required that PRs pass both of them before merging.</p>
+<h2><a class="toc-backref" href="#id2">持续集成</a><a class="headerlink" href="#continuous-integration" title="永久链接至标题"></a></h2>
+<p>所有提交到ROS 2核心仓库的代码都必须通过持续集成进行运行。目前ROS 2有两个独立的持续集成系统，要求在合并之前必须通过这两个系统的PR（拉取请求）。</p>
 <div class="section" id="pr-builds-https-build-ros2-org-view-rpr">
-<h3>PR builds (<a class="reference external" href="https://build.ros2.org/view/Rpr">https://build.ros2.org/view/Rpr</a>)<a class="headerlink" href="#pr-builds-https-build-ros2-org-view-rpr" title="永久链接至标题"></a></h3>
-<p>ROS 2 PR (Pull Request) builds run automatically every time a pull request is opened.
-These builds run a build and test of this package, and this package only.
-This means that it does not build any dependencies, and it also does not build any packages that depend upon this package.
-These builds are good for quick feedback to see if the change passes linters, unit tests, etc.
-There are two major problems with them:</p>
+<h3>PR构建（<a class="reference external" href="https://build.ros2.org/view/Rpr">https://build.ros2.org/view/Rpr</a>）<a class="headerlink" href="#pr-builds-https-build-ros2-org-view-rpr" title="永久链接至标题"></a></h3>
+<p>ROS 2的PR（拉取请求）构建在每次打开拉取请求时会自动运行。这些构建只会构建和测试该软件包本身，不会构建任何依赖项，也不会构建依赖于该软件包的任何其他软件包。这些构建适用于快速反馈，以查看更改是否通过了代码检查、单元测试等。然而，它们存在两个主要问题：</p>
 <ul class="simple">
 <li><p>These builds do not work across multiple repositories (so won't work for adding or changing an API, etc)</p></li>
 <li><p>These tests only run on Linux (they won't run on macOS or Windows)</p></li>
