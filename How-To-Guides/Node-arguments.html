@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Passing ROS arguments to nodes via the command-line &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>通过命令行向节点传递ROS参数 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -248,7 +248,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Passing ROS arguments to nodes via the command-line</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">通过命令行向节点传递ROS参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Sync-Vs-Async.html">Synchronous vs. asynchronous service clients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DDS-tuning.html">DDS调优信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2: Overriding QoS Policies</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Passing ROS arguments to nodes via the command-line</li>
+      <li>通过命令行向节点传递ROS参数</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Node-arguments.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,28 +372,24 @@
 
 
   <div class="section" id="passing-ros-arguments-to-nodes-via-the-command-line">
-<h1>Passing ROS arguments to nodes via the command-line<a class="headerlink" href="#passing-ros-arguments-to-nodes-via-the-command-line" title="永久链接至标题"></a></h1>
+<h1>通过命令行向节点传递ROS参数<a class="headerlink" href="#passing-ros-arguments-to-nodes-via-the-command-line" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#name-remapping" id="id1">Name remapping</a></p></li>
+<li><p><a class="reference internal" href="#name-remapping" id="id1">名称重映射</a></p></li>
 <li><p><a class="reference internal" href="#logger-configuration" id="id2">Logger configuration</a></p></li>
 <li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
 </ul>
 </div>
-<p>All ROS nodes take a set of arguments that allow various properties to be reconfigured.
-Examples include configuring the name/namespace of the node, topic/service names used, and parameters on the node.
-All ROS-specific arguments have to be specified after a <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> flag:</p>
+<p>所有ROS节点都接受一组参数，允许重新配置各种属性。例如，配置节点的名称/命名空间、使用的话题/服务名称和节点上的参数。所有ROS特定的参数都必须在``--ros-args``标志之后指定：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run my_package node_executable --ros-args ...
 </pre></div>
 </div>
-<p>For more details, see <a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html">this design doc</a>.</p>
+<p>更多详细信息，请参阅`这个设计文档 &lt;<a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html">https://design.ros2.org/articles/ros_command_line_arguments.html</a>&gt;`__。</p>
 <div class="section" id="name-remapping">
-<h2><a class="toc-backref" href="#id1">Name remapping</a><a class="headerlink" href="#name-remapping" title="永久链接至标题"></a></h2>
-<p>Names within a node (e.g. topics/services) can be remapped using the syntax <code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">&lt;old</span> <span class="pre">name&gt;:=&lt;new</span> <span class="pre">name&gt;</span></code>.
-The name/namespace of the node itself can be remapped using <code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">__node:=&lt;new</span> <span class="pre">node</span> <span class="pre">name&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">__ns:=&lt;new</span> <span class="pre">node</span> <span class="pre">namespace&gt;</span></code>.</p>
-<p>Note that these remappings are &quot;static&quot; remappings, in that they apply for the lifetime of the node.
-&quot;Dynamic&quot; remapping of names after nodes have been started is not yet supported.</p>
+<h2><a class="toc-backref" href="#id1">名称重映射</a><a class="headerlink" href="#name-remapping" title="永久链接至标题"></a></h2>
+<p>可以使用语法``-r &lt;旧名称&gt;:=&lt;新名称&gt;``对节点内的名称（例如：topics/services）进行重映射。节点本身的名称/命名空间可以使用``-r __node:=&lt;新节点名称&gt;``和``-r __ns:=&lt;新节点命名空间&gt;``进行重映射。</p>
+<p>请注意，这些重映射是&quot;静态&quot;重映射，即它们在节点的生命周期内生效。目前尚不支持在节点启动后动态重映射名称。</p>
 <p>See <a class="reference external" href="https://design.ros2.org/articles/static_remapping.html">this design doc</a> for more details on remapping arguments (not all functionality is available yet).</p>
 <div class="section" id="example">
 <h3>示例<a class="headerlink" href="#example" title="永久链接至标题"></a></h3>
