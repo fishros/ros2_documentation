@@ -449,19 +449,18 @@ sudo apt install python3-colcon* --only-upgrade  <span class="c1"># upgrade inst
 <p><a class="reference external" href="https://github.com/pyenv/pyenv/wiki#how-to-build-cpython-with-framework-support-on-os-x">https://github.com/pyenv/pyenv/wiki#how-to-build-cpython-with-framework-support-on-os-x</a></p>
 </div>
 <div class="section" id="library-not-loaded-image-not-found">
-<h3>Library not loaded; image not found<a class="headerlink" href="#library-not-loaded-image-not-found" title="永久链接至标题"></a></h3>
-<p>If you are seeing library loading issues at runtime (either running tests or running nodes), such as the following:</p>
+<h3>无法加载库文件；找不到图像<a class="headerlink" href="#library-not-loaded-image-not-found" title="永久链接至标题"></a></h3>
+<p>如果您在运行时（无论是运行测试还是运行节点）遇到库加载问题，例如以下情况：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ImportError: dlopen<span class="o">(</span>.../ros2_&lt;distro&gt;/ros2-osx/lib/python3.7/site-packages/rclpy/_rclpy.cpython-37m-darwin.so, <span class="m">2</span><span class="o">)</span>: Library not loaded: @rpath/librcl_interfaces__rosidl_typesupport_c.dylib
   Referenced from: .../ros2_&lt;distro&gt;/ros2-osx/lib/python3.7/site-packages/rclpy/_rclpy.cpython-37m-darwin.so
   Reason: image not found
 </pre></div>
 </div>
-<p>Then you probably have System Integrity Protection enabled.
-Follow <a class="reference external" href="https://developer.apple.com/library/content/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html">these instructions</a> to disable System Integrity Protection (SIP).</p>
+<p>那么您可能已启用系统完整性保护（System Integrity Protection）。按照 <a class="reference external" href="https://developer.apple.com/library/content/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html">这些说明</a> 禁用系统完整性保护（SIP）。</p>
 </div>
 <div class="section" id="qt-build-error-unknown-type-name-q-enum">
-<h3>Qt build error: <code class="docutils literal notranslate"><span class="pre">unknown</span> <span class="pre">type</span> <span class="pre">name</span> <span class="pre">'Q_ENUM'</span></code><a class="headerlink" href="#qt-build-error-unknown-type-name-q-enum" title="永久链接至标题"></a></h3>
-<p>If you see build errors related to Qt, e.g.:</p>
+<h3>Qt构建错误：<code class="docutils literal notranslate"><span class="pre">unknown</span> <span class="pre">type</span> <span class="pre">name</span> <span class="pre">'Q_ENUM'</span></code><a class="headerlink" href="#qt-build-error-unknown-type-name-q-enum" title="永久链接至标题"></a></h3>
+<p>如果您遇到与Qt相关的构建错误，例如：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>In file included from /usr/local/opt/qt/lib/QtGui.framework/Headers/qguiapplication.h:46:
 /usr/local/opt/qt/lib/QtGui.framework/Headers/qinputmethod.h:87:5: error:
       unknown <span class="nb">type</span> name <span class="s1">&#39;Q_ENUM&#39;</span>
@@ -469,11 +468,11 @@ Follow <a class="reference external" href="https://developer.apple.com/library/c
     ^
 </pre></div>
 </div>
-<p>you may be using qt4 instead of qt5: see <a class="reference external" href="https://github.com/ros2/ros2/issues/441">https://github.com/ros2/ros2/issues/441</a></p>
+<p>可能是因为您正在使用Qt4而不是Qt5，请参考https://github.com/ros2/ros2/issues/441</p>
 </div>
 <div class="section" id="missing-symbol-when-opencv-and-therefore-libjpeg-libtiff-and-libpng-are-installed-with-homebrew">
-<h3>Missing symbol when opencv (and therefore libjpeg, libtiff, and libpng) are installed with Homebrew<a class="headerlink" href="#missing-symbol-when-opencv-and-therefore-libjpeg-libtiff-and-libpng-are-installed-with-homebrew" title="永久链接至标题"></a></h3>
-<p>If you have opencv installed you might get this:</p>
+<h3>当使用Homebrew安装opencv（因此也安装了libjpeg、libtiff和libpng）时出现缺少符号的情况<a class="headerlink" href="#missing-symbol-when-opencv-and-therefore-libjpeg-libtiff-and-libpng-are-installed-with-homebrew" title="永久链接至标题"></a></h3>
+<p>如果您已安装opencv，可能会出现以下情况：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dyld: Symbol not found: __cg_jpeg_resync_to_restart
   Referenced from: /System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO
   Expected <span class="k">in</span>: /usr/local/lib/libJPEG.dylib
@@ -481,22 +480,21 @@ Follow <a class="reference external" href="https://developer.apple.com/library/c
 /bin/sh: line <span class="m">1</span>: <span class="m">25274</span> Trace/BPT trap: <span class="m">5</span>       /usr/local/bin/cmake
 </pre></div>
 </div>
-<p>If so, to build you'll have to do this:</p>
+<p>如果是这样，要构建，你需要执行以下步骤：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brew unlink libpng libtiff libjpeg
 </pre></div>
 </div>
-<p>But this will break opencv, so you'll also need to update it to continue working:</p>
+<p>但这将会破坏OpenCV，所以你还需要更新它以继续工作：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo install_name_tool -change /usr/local/lib/libjpeg.8.dylib /usr/local/opt/jpeg/lib/libjpeg.8.dylib /usr/local/lib/libopencv_highgui.2.4.dylib
 $ sudo install_name_tool -change /usr/local/lib/libpng16.16.dylib /usr/local/opt/libpng/lib/libpng16.16.dylib /usr/local/lib/libopencv_highgui.2.4.dylib
 $ sudo install_name_tool -change /usr/local/lib/libtiff.5.dylib /usr/local/opt/libtiff/lib/libtiff.5.dylib /usr/local/lib/libopencv_highgui.2.4.dylib
 $ sudo install_name_tool -change /usr/local/lib/libjpeg.8.dylib /usr/local/opt/jpeg/lib/libjpeg.8.dylib /usr/local/Cellar/libtiff/4.0.4/lib/libtiff.5.dylib
 </pre></div>
 </div>
-<p>The first command is necessary to avoid things built against the system libjpeg (etc.) from getting the version in /usr/local/lib.
-The others are updating things built by Homebrew so that they can find the version of libjpeg (etc.) without having them in /usr/local/lib.</p>
+<p>第一个命令是为了避免使用系统libjpeg（等等）构建的内容获取到/usr/local/lib中的版本。其他命令是为了更新由Homebrew构建的内容，使其能够找到libjpeg（等等）的版本，而不必将它们放在/usr/local/lib中。</p>
 </div>
 <div class="section" id="xcode-select-error-tool-xcodebuild-requires-xcode-but-active-developer-directory-is-a-command-line-instance">
-<h3>Xcode-select error: tool <code class="docutils literal notranslate"><span class="pre">xcodebuild</span></code> requires Xcode, but active developer directory is a command line instance<a class="headerlink" href="#xcode-select-error-tool-xcodebuild-requires-xcode-but-active-developer-directory-is-a-command-line-instance" title="永久链接至标题"></a></h3>
+<h3>Xcode-select错误：工具``xcodebuild``需要Xcode，但活动开发人员目录是一个命令行实例<a class="headerlink" href="#xcode-select-error-tool-xcodebuild-requires-xcode-but-active-developer-directory-is-a-command-line-instance" title="永久链接至标题"></a></h3>
 <p>If you recently installed Xcode, you may encounter this error:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Xcode: xcode-select: error: tool <span class="s1">&#39;xcodebuild&#39;</span> requires Xcode,
 but active developer directory <span class="s1">&#39;/Library/Developer/CommandLineTools&#39;</span> is a <span class="nb">command</span> line tools instance
