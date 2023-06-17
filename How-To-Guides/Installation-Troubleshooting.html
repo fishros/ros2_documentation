@@ -388,50 +388,44 @@
 <p>通用故障排除技巧适用于所有平台。</p>
 <div class="section" id="enable-multicast">
 <h3>启用多播<a class="headerlink" href="#enable-multicast" title="永久链接至标题"></a></h3>
-<p>In order to communicate successfully via DDS, the used network interface has to be multicast enabled.
-We've seen in past experiences that this might not necessarily be enabled by default (on Ubuntu or OSX) when using the loopback adapter.
-See the <a class="reference external" href="https://github.com/ros2/ros2/issues/552">original issue</a> or a <a class="reference external" href="https://answers.ros.org/question/300370/ros2-talker-cannot-communicate-with-listener/">conversation on ros-answers</a>.
-You can verify that your current setup allows multicast with the ROS 2 tool:</p>
-<p>In Terminal 1:</p>
+<p>为了通过DDS成功通信，使用的网络接口必须启用组播功能。在过去的经验中，我们发现当使用环回适配器（在Ubuntu或OSX上）时，默认情况下可能未启用组播功能。请参阅 <a class="reference external" href="https://github.com/ros2/ros2/issues/552">原始问题</a> 或 <a class="reference external" href="https://answers.ros.org/question/300370/ros2-talker-cannot-communicate-with-listener/">ros-answers 上的讨论</a>。您可以使用ROS 2工具验证您当前的设置是否允许组播：</p>
+<p>在终端1中：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 multicast receive
 </pre></div>
 </div>
-<p>In Terminal 2:</p>
+<p>在终端2中：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 multicast send
 </pre></div>
 </div>
-<p>If the first command did not return a response similar to:</p>
+<p>如果第一个命令没有返回类似以下内容的响应</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Received from xx.xxx.xxx.xx:43751: <span class="s1">&#39;Hello World!&#39;</span>
 </pre></div>
 </div>
-<p>then you will need to update your firewall configuration to allow multicast using <a class="reference external" href="https://help.ubuntu.com/community/UFW">ufw</a>.</p>
+<p>如果需要使用多播，您需要更新防火墙配置以允许多播，使用 <a class="reference external" href="https://help.ubuntu.com/community/UFW">ufw</a> 命令。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ufw allow <span class="k">in</span> proto udp to <span class="m">224</span>.0.0.0/4
 sudo ufw allow <span class="k">in</span> proto udp from <span class="m">224</span>.0.0.0/4
 </pre></div>
 </div>
-<p>You can check if the multicast flag is enabled for your network interface using the <code class="code docutils literal notranslate"><span class="pre">ifconfig</span></code> tool and looking for <code class="code docutils literal notranslate"><span class="pre">MULITCAST</span></code> in the flags section:</p>
+<p>您可以使用 <code class="code docutils literal notranslate"><span class="pre">ifconfig</span></code> 工具检查您的网络接口是否启用了多播标志，在 flags 部分查找 <code class="code docutils literal notranslate"><span class="pre">MULTICAST</span></code>：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eno1: <span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;...,MULTICAST&gt;
    ...
 </pre></div>
 </div>
 </div>
 <div class="section" id="import-failing-without-library-present-on-the-system">
-<h3>Import failing without library present on the system<a class="headerlink" href="#import-failing-without-library-present-on-the-system" title="永久链接至标题"></a></h3>
-<p>Sometimes <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> fails to be imported because the expected C extension libraries are not found.
-If so, compare the libraries present in the directory with the one mentioned in the error message.
-Assuming a file with a similar name exists (same prefix like <code class="docutils literal notranslate"><span class="pre">_rclpy.</span></code> and same suffix like <code class="docutils literal notranslate"><span class="pre">.so</span></code> but a different Python version / architecture) you are using a different Python interpreter than which was used to build the C extension.
-Be sure to use the same Python interpreter as the one used to build the binary.</p>
-<p>For example, such a mismatch can crop up after an update of the OS. Then, rebuilding the workspace may fix the issue.</p>
+<h3>导入失败，因为系统上没有找到所需的库。<a class="headerlink" href="#import-failing-without-library-present-on-the-system" title="永久链接至标题"></a></h3>
+<p>有时候，<code class="docutils literal notranslate"><span class="pre">rclpy</span></code> 导入失败是因为找不到预期的 C 扩展库。如果是这样，请将目录中存在的库与错误消息中提到的库进行比较。假设存在一个类似的文件（具有相同的前缀，例如 <code class="docutils literal notranslate"><span class="pre">_rclpy.</span></code>，和相同的后缀，例如 <code class="docutils literal notranslate"><span class="pre">.so</span></code>，但使用的是不同的 Python 版本/架构），则表示您正在使用与用于构建 C 扩展的 Python 解释器不同的 Python 解释器。请确保使用与构建二进制文件时相同的 Python 解释器。</p>
+<p>例如，在操作系统更新后可能会出现这样的不匹配问题。然后，重建工作区可能会解决这个问题。</p>
 </div>
 </div>
 <div class="section" id="linux">
 <span id="linux-troubleshooting"></span><h2><a class="toc-backref" href="#id2">Linux</a><a class="headerlink" href="#linux" title="永久链接至标题"></a></h2>
 <div class="section" id="internal-compiler-error">
-<h3>Internal compiler error<a class="headerlink" href="#internal-compiler-error" title="永久链接至标题"></a></h3>
-<p>If you experience an ICE when trying to compile on a memory constrained platform like a Raspberry PI you might want to build single threaded (prefix the build invocation with <code class="docutils literal notranslate"><span class="pre">MAKEFLAGS=-j1</span></code>).</p>
+<h3>内部编译器错误<a class="headerlink" href="#internal-compiler-error" title="永久链接至标题"></a></h3>
+<p>如果在像树莓派这样的内存受限平台上尝试编译时遇到内部编译器错误（ICE），您可能希望使用单线程构建（在构建命令前加上 <code class="docutils literal notranslate"><span class="pre">MAKEFLAGS=-j1</span></code>）。</p>
 </div>
 <div class="section" id="out-of-memory">
-<h3>Out of memory<a class="headerlink" href="#out-of-memory" title="永久链接至标题"></a></h3>
+<h3>内存不足<a class="headerlink" href="#out-of-memory" title="永久链接至标题"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> in its current form requires 4Gb of free RAM to compile.
 If you don't have that amount of RAM available it's suggested to use <code class="docutils literal notranslate"><span class="pre">COLCON_IGNORE</span></code> in that folder and skip its compilation.</p>
 </div>
