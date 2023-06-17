@@ -378,7 +378,7 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#launch-file-examples" id="id1">启动文件示例</a></p></li>
-<li><p><a class="reference internal" href="#using-the-launch-files-from-the-command-line" id="id2">Using the Launch files from the command line</a></p></li>
+<li><p><a class="reference internal" href="#using-the-launch-files-from-the-command-line" id="id2">通过命令行使用启动文件</a></p></li>
 <li><p><a class="reference internal" href="#python-xml-or-yaml-which-should-i-use" id="id3">Python, XML, or YAML: Which should I use?</a></p></li>
 </ul>
 </div>
@@ -392,7 +392,7 @@
 <li><p>在另一个命名空间中包含另一个启动文件</p></li>
 <li><p>启动一个节点并设置其命名空间</p></li>
 <li><p>启动一个节点，设置其命名空间，并在该节点中设置参数（使用 args 参数）</p></li>
-<li><p>Create a node to remap messages from one topic to another</p></li>
+<li><p>创建一个节点，将消息从一个话题重新映射到另一个话题</p></li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-WE1M" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-WE1M" name="WE1M" role="tab" tabindex="-1">XML</button><button aria-controls="panel-0-WUFNTA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-WUFNTA==" name="WUFNTA==" role="tab" tabindex="-1">YAML</button></div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example.launch.py</span>
@@ -602,34 +602,32 @@
 </div></div>
 </div>
 <div class="section" id="using-the-launch-files-from-the-command-line">
-<h2><a class="toc-backref" href="#id2">Using the Launch files from the command line</a><a class="headerlink" href="#using-the-launch-files-from-the-command-line" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">通过命令行使用启动文件</a><a class="headerlink" href="#using-the-launch-files-from-the-command-line" title="永久链接至标题"></a></h2>
 <div class="section" id="launching">
-<h3>Launching<a class="headerlink" href="#launching" title="永久链接至标题"></a></h3>
-<p>Any of the launch files above can be run with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span></code>.
-To try them locally, you can either create a new package and use</p>
+<h3>启动中<a class="headerlink" href="#launching" title="永久链接至标题"></a></h3>
+<p>上述任意一个启动文件都可以使用``ros2 launch``命令来运行。如果要在本地尝试它们，您可以创建一个新的软件包并使用</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch &lt;package_name&gt; &lt;launch_file_name&gt;</span>
 </pre></div>
 </div>
-<p>or run the file directly by specifying the path to the launch file</p>
+<p>或者直接通过指定启动文件的路径来运行该文件</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch &lt;path_to_launch_file&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="setting-arguments">
-<h3>Setting arguments<a class="headerlink" href="#setting-arguments" title="永久链接至标题"></a></h3>
-<p>To set the arguments that are passed to the launch file, you should use <code class="docutils literal notranslate"><span class="pre">key:=value</span></code> syntax.
-For example, you can set the value of <code class="docutils literal notranslate"><span class="pre">background_r</span></code> in the following way:</p>
+<h3>设置参数<a class="headerlink" href="#setting-arguments" title="永久链接至标题"></a></h3>
+<p>要设置传递给启动文件的参数，应该使用 <code class="docutils literal notranslate"><span class="pre">key:=value</span></code> 语法。例如，可以按照以下方式设置 <code class="docutils literal notranslate"><span class="pre">background_r</span></code> 的值：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch &lt;package_name&gt; &lt;launch_file_name&gt; background_r:=255</span>
 </pre></div>
 </div>
-<p>or</p>
+<p>或</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch &lt;path_to_launch_file&gt; background_r:=255</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="controlling-the-turtles">
-<h3>Controlling the turtles<a class="headerlink" href="#controlling-the-turtles" title="永久链接至标题"></a></h3>
-<p>To test that the remapping is working, you can control the turtles by running the following command in another terminal:</p>
+<h3>控制海龟<a class="headerlink" href="#controlling-the-turtles" title="永久链接至标题"></a></h3>
+<p>为了测试重映射是否起作用，可以在另一个终端中运行以下命令来控制海龟：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key --ros-args --remap __ns:=/turtlesim1</span>
 </pre></div>
 </div>
