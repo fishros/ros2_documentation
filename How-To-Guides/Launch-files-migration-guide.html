@@ -563,8 +563,8 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>不允许使用 <code class="docutils literal notranslate"><span class="pre">value</span></code> 属性。请使用 <code class="docutils literal notranslate"><span class="pre">let</span></code> 标签代替。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code> is now <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></li>
-<li><p>When nested within an <code class="docutils literal notranslate"><span class="pre">include</span></code> tag, <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">unless</span></code> attributes aren't allowed.</p></li>
+<li><p>现在，<code class="docutils literal notranslate"><span class="pre">doc</span></code> 变为 <code class="docutils literal notranslate"><span class="pre">description</span></code>。</p></li>
+<li><p>当嵌套在 <code class="docutils literal notranslate"><span class="pre">include</span></code> 标签内时，不允许使用 <code class="docutils literal notranslate"><span class="pre">if</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unless</span></code> 属性。</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -584,29 +584,25 @@
 </div>
 </div>
 <div class="section" id="passing-an-argument-to-the-launch-file">
-<h4>Passing an argument to the launch file<a class="headerlink" href="#passing-an-argument-to-the-launch-file" title="永久链接至标题"></a></h4>
-<p>In the XML launch file above, the <code class="docutils literal notranslate"><span class="pre">topic_name</span></code> defaults to the name <code class="docutils literal notranslate"><span class="pre">chatter</span></code>, but can be configured on the command-line.
-Assuming the above launch configuration is in a file named <code class="docutils literal notranslate"><span class="pre">mylaunch.xml</span></code>, a different topic name can be used by launching it with the following:</p>
+<h4>向启动文件传递参数<a class="headerlink" href="#passing-an-argument-to-the-launch-file" title="永久链接至标题"></a></h4>
+<p>在上述 XML 启动文件中，<code class="docutils literal notranslate"><span class="pre">topic_name</span></code> 默认为 <code class="docutils literal notranslate"><span class="pre">chatter</span></code>，但可以通过命令行进行配置。假设上述启动配置保存在名为 <code class="docutils literal notranslate"><span class="pre">mylaunch.xml</span></code> 的文件中，可以通过以下命令启动并使用不同的主题名称：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch mylaunch.xml topic_name:<span class="o">=</span>custom_topic_name
 </pre></div>
 </div>
-<p>There is some additional information about passing command-line arguments in <a class="reference internal" href="../Tutorials/Intermediate/Launch/Using-Substitutions.html"><span class="doc">Using Substitutions</span></a>.</p>
+<p>关于在 <a class="reference internal" href="../Tutorials/Intermediate/Launch/Using-Substitutions.html"><span class="doc">使用替换</span></a> 中传递命令行参数，有一些额外的信息。</p>
 </div>
 </div>
 <div class="section" id="env">
 <h3>env<a class="headerlink" href="#env" title="永久链接至标题"></a></h3>
 <ul>
-<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/env">Available in ROS 1</a>.</p></li>
-<li><p>Sets an environment variable.</p></li>
-<li><p>It has been replaced with <code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">set_env</span></code> and <code class="docutils literal notranslate"><span class="pre">unset_env</span></code>:</p>
+<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/env">在 ROS 1 中可用</a>。</p></li>
+<li><p>设置环境变量。</p></li>
+<li><p>已被替换为 <code class="docutils literal notranslate"><span class="pre">env</span></code>、<code class="docutils literal notranslate"><span class="pre">set_env</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unset_env</span></code>：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">env</span></code> can only be used nested in a <code class="docutils literal notranslate"><span class="pre">node</span></code> or <code class="docutils literal notranslate"><span class="pre">executable</span></code> tag.
-<code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">unless</span></code> tags aren't supported.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">set_env</span></code> can be nested within the root tag <code class="docutils literal notranslate"><span class="pre">launch</span></code> or in <code class="docutils literal notranslate"><span class="pre">group</span></code> tags.
-It accepts the same attributes as <code class="docutils literal notranslate"><span class="pre">env</span></code>, and also <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">unless</span></code> tags.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unset_env</span></code> unsets an environment variable.
-It accepts a <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute and conditionals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">env</span></code> 只能嵌套在 <code class="docutils literal notranslate"><span class="pre">node</span></code> 或 <code class="docutils literal notranslate"><span class="pre">executable</span></code> 标签中。不支持 <code class="docutils literal notranslate"><span class="pre">if</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unless</span></code> 标签。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_env</span></code> 可以嵌套在根标签 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 或 <code class="docutils literal notranslate"><span class="pre">group</span></code> 标签中。它接受与 <code class="docutils literal notranslate"><span class="pre">env</span></code> 相同的属性，还支持 <code class="docutils literal notranslate"><span class="pre">if</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unless</span></code> 标签。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unset_env</span></code> 取消设置环境变量。它接受一个 <code class="docutils literal notranslate"><span class="pre">name</span></code> 属性和条件语句。</p></li>
 </ul>
 </div></blockquote>
 </li>
