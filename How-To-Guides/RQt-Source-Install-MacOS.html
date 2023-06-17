@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Building RQt from source on Windows 10" href="RQt-Source-Install-Windows10.html" />
+    <link rel="next" title="在 Windows 10 上从源代码构建 RQt" href="RQt-Source-Install-Windows10.html" />
     <link rel="prev" title="从源代码构建 RQt" href="RQt-Source-Install.html" /> 
 </head>
 
@@ -278,7 +278,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed]</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="RQt-Source-Install.html">从源代码构建 RQt</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">在 macOS 上从源代码构建 RQt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="RQt-Source-Install-Windows10.html">Building RQt from source on Windows 10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt</a></li>
 </ul>
 </li>
 </ul>
@@ -377,12 +377,11 @@
 <p>本页提供了在 macOS 上从源代码构建 RQt 的具体信息。在继续查看 <a class="reference internal" href="RQt-Source-Install.html"><span class="doc">RQt 源码安装</span></a> 页面之前，请按照这些说明进行操作。</p>
 <div class="section" id="system-requirements">
 <h2>系统要求<a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
-<p>RQt is supported on macOS 10.12, but 10.13 also seems to work.</p>
+<p>RQt 在 macOS 10.12 上受支持，但似乎在 10.13 上也可以工作。</p>
 </div>
 <div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="永久链接至标题"></a></h2>
-<p>The primary dependencies of the RQt package are sip and PyQt5.
-PySide2 may be supported in the future.</p>
+<h2>依赖项<a class="headerlink" href="#dependencies" title="永久链接至标题"></a></h2>
+<p>RQt 包的主要依赖项是 sip 和 PyQt5。将来可能支持 PySide2。</p>
 <div class="section" id="install-dependencies">
 <h3>安装依赖项<a class="headerlink" href="#install-dependencies" title="永久链接至标题"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brew install sip pyqt5
@@ -391,8 +390,7 @@ $ python3 -m pip install pygraphviz pydot
 $ brew link --force qt
 </pre></div>
 </div>
-<p>This is the quickest solution but may cause issues when upgrading Qt or if other packages are expecting Qt 4.
-Another option is to update your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to include the Qt install location:</p>
+<p>这是最快的解决方案，但在升级 Qt 或其他包需要 Qt 4 的情况下可能会出现问题。另一种选择是更新您的 <code class="docutils literal notranslate"><span class="pre">PATH</span></code> 和 <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code>，将 Qt 安装位置包括在内：</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew --prefix qt<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 $ <span class="nb">export</span> <span class="nv">CMAKE_PREFIX_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>brew --prefix qt<span class="k">)</span><span class="s2">:</span><span class="nv">$CMAKE_PREFIX_PATH</span><span class="s2">&quot;</span>
@@ -402,8 +400,8 @@ $ <span class="nb">export</span> <span class="nv">CMAKE_PREFIX_PATH</span><span 
 </div>
 </div>
 <div class="section" id="install-rqt-by-source">
-<h2>Install RQt by source<a class="headerlink" href="#install-rqt-by-source" title="永久链接至标题"></a></h2>
-<p>Continue with the <a class="reference internal" href="RQt-Source-Install.html"><span class="doc">RQt source install page</span></a>.</p>
+<h2>通过源代码安装 RQt<a class="headerlink" href="#install-rqt-by-source" title="永久链接至标题"></a></h2>
+<p>继续查看 <a class="reference internal" href="RQt-Source-Install.html"><span class="doc">RQt 源代码安装页面</span></a>。</p>
 </div>
 </div>
 
@@ -413,7 +411,7 @@ $ <span class="nb">export</span> <span class="nv">CMAKE_PREFIX_PATH</span><span 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="RQt-Source-Install.html" class="btn btn-neutral float-left" title="从源代码构建 RQt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="RQt-Source-Install-Windows10.html" class="btn btn-neutral float-right" title="Building RQt from source on Windows 10" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="RQt-Source-Install-Windows10.html" class="btn btn-neutral float-right" title="在 Windows 10 上从源代码构建 RQt" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
