@@ -2142,62 +2142,62 @@ msgstr "如果您正在使用二进制文件进行安装，则可能需要更新
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:272
 msgid "If you are still having issues, you can use the `Dependencies <https://github.com/lucasg/Dependencies>`_ tool to determine which dependencies are missing on your system. Use the tool to load the corresponding ``.pyd`` file, and it should report unavailable ``DLL`` modules. Be sure that the current workspace is sourced before you execute the tool, otherwise there will be unresolved ROS DLL files. Use this information to install additional dependencies or adjust your path as necessary."
-msgstr "If you are still having issues, you can use the `Dependencies <https://github.com/lucasg/Dependencies>`_ tool to determine which dependencies are missing on your system. Use the tool to load the corresponding ``.pyd`` file, and it should report unavailable ``DLL`` modules. Be sure that the current workspace is sourced before you execute the tool, otherwise there will be unresolved ROS DLL files. Use this information to install additional dependencies or adjust your path as necessary."
+msgstr "如果您仍然遇到问题，您可以使用 `Dependencies <https://github.com/lucasg/Dependencies>`_ 工具来确定您的系统缺少哪些依赖项。使用该工具加载相应的 ``.pyd`` 文件，它将报告不可用的 ``DLL`` 模块。在执行工具之前，请确保当前的工作空间已被激活，否则将出现未解决的 ROS DLL 文件。根据这些信息安装额外的依赖项或根据需要调整您的路径。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:278
 msgid "CMake error setting modification time"
-msgstr "CMake error setting modification time"
+msgstr "CMake 错误设置修改时间"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:280
 msgid "If you run into the CMake error ``file INSTALL cannot set modification time on ...`` when installing files it is likely that an anti virus software or Windows Defender are interfering with the build. E.g. for Windows Defender you can list the workspace location to be excluded to prevent it from scanning those files."
-msgstr "If you run into the CMake error ``file INSTALL cannot set modification time on ...`` when installing files it is likely that an anti virus software or Windows Defender are interfering with the build. E.g. for Windows Defender you can list the workspace location to be excluded to prevent it from scanning those files."
+msgstr "如果在安装文件时遇到 CMake 错误 ``file INSTALL cannot set modification time on ...``，很可能是由于杀毒软件或 Windows Defender 干扰了构建过程。例如，对于 Windows Defender，您可以将工作空间位置列入排除列表，以防止其扫描这些文件。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:283
 msgid "260 character path limit"
-msgstr "260 character path limit"
+msgstr "260 字符路径限制"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:290
 msgid "Depending on your directory hierarchy, you may see path length limit errors when building ROS 2 from source or your own libraries."
-msgstr "Depending on your directory hierarchy, you may see path length limit errors when building ROS 2 from source or your own libraries."
+msgstr "根据您的目录层次结构，在从源代码构建ROS 2或您自己的库时，可能会出现路径长度限制错误。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:292
 msgid "To allow deeper path lengths:"
-msgstr "To allow deeper path lengths:"
+msgstr "要允许更深的路径长度："
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:294
 msgid "Run ``regedit.exe``, navigate to ``Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\FileSystem``, and set ``LongPathsEnabled`` to 0x00000001 (1)."
-msgstr "Run ``regedit.exe``, navigate to ``Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\FileSystem``, and set ``LongPathsEnabled`` to 0x00000001 (1)."
+msgstr "运行 ``regedit.exe``，导航至 ``Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\FileSystem``，并将 ``LongPathsEnabled`` 设置为 0x00000001（1）。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:296
 msgid "Hit the windows key and type ``Edit Group Policy``. Navigate to Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem. Right click ``Enable Win32 long paths``, click Edit. In the dialog, select Enabled and click OK."
-msgstr "Hit the windows key and type ``Edit Group Policy``. Navigate to Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem. Right click ``Enable Win32 long paths``, click Edit. In the dialog, select Enabled and click OK."
+msgstr "按下 Windows 键并输入 ``Edit Group Policy``。导航至 Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem。右键单击 ``Enable Win32 long paths``，点击编辑。在对话框中，选择已启用并点击确定。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:301
 msgid "Close and open your terminal to reset the environment and try building again."
-msgstr "Close and open your terminal to reset the environment and try building again."
+msgstr "关闭并重新打开终端以重置环境，并尝试重新构建。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:304
 msgid "CMake packages unable to find asio, tinyxml2, tinyxml, or eigen"
-msgstr "CMake packages unable to find asio, tinyxml2, tinyxml, or eigen"
+msgstr "CMake软件包无法找到asio、tinyxml2、tinyxml或eigen。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:306
 msgid "We've seen that sometimes the chocolatey packages for ``asio``, ``tinyxml2``, etc. do not add important registry entries and CMake will be unable to find them when building ROS 2. We've not yet been able to identify the root cause, but uninstalling the chocolatey packages (with ``-n`` if the uninstall fails the first time), and then reinstalling them will fix the issue."
-msgstr "We've seen that sometimes the chocolatey packages for ``asio``, ``tinyxml2``, etc. do not add important registry entries and CMake will be unable to find them when building ROS 2. We've not yet been able to identify the root cause, but uninstalling the chocolatey packages (with ``-n`` if the uninstall fails the first time), and then reinstalling them will fix the issue."
+msgstr "我们发现有时候``asio``、``tinyxml2``等的chocolatey软件包没有添加重要的注册表项，导致在构建ROS 2时CMake无法找到它们。我们还没有找到根本原因，但是卸载chocolatey软件包（如果首次卸载失败，则使用``-n``参数），然后重新安装它们可以解决这个问题。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:310
 msgid "patch.exe opens a new command window and asks for administrator"
-msgstr "patch.exe opens a new command window and asks for administrator"
+msgstr "patch.exe会打开一个新的命令窗口并要求管理员权限。"
 
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:312
