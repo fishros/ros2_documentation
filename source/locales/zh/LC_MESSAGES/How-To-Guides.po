@@ -3442,62 +3442,62 @@ msgstr "如果代码库中的一个或多个软件包不包含 CHANGELOG.rst 文
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:117
 msgid "The next step is to bump the version in the package.xml and the changelog files with the following command:"
-msgstr "The next step is to bump the version in the package.xml and the changelog files with the following command:"
+msgstr "下一步是使用以下命令在package.xml和changelog文件中增加版本号："
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:123
 msgid "This command will find all of the packages in the repository, check that the changelogs exist, check that there are no uncommitted local changes, increment the version in the package.xml files, and commit/tag the changes with a bloom-compatible tag. Using this command is the best way to ensure the release versions are consistent and compatible with bloom. By default, ``catkin_prepare_release`` will bump the patch version of the packages, e.g. 0.1.1 -> 0.1.2 . However, it can also bump the minor or major number, or even have an exact version set. See the help output from ``catkin_prepare_release`` for more information."
-msgstr "This command will find all of the packages in the repository, check that the changelogs exist, check that there are no uncommitted local changes, increment the version in the package.xml files, and commit/tag the changes with a bloom-compatible tag. Using this command is the best way to ensure the release versions are consistent and compatible with bloom. By default, ``catkin_prepare_release`` will bump the patch version of the packages, e.g. 0.1.1 -> 0.1.2 . However, it can also bump the minor or major number, or even have an exact version set. See the help output from ``catkin_prepare_release`` for more information."
+msgstr "该命令将查找存储库中的所有软件包，检查changelog是否存在，检查是否有未提交的本地更改，增加package.xml文件中的版本号，并使用与bloom兼容的标签提交/标记更改。使用此命令是确保发布版本与bloom一致且兼容的最佳方式。默认情况下，`catkin_prepare_release`会增加软件包的修补版本，例如 0.1.1 -> 0.1.2。然而，它也可以增加次要版本号或主要版本号，甚至可以设置一个精确的版本号。有关更多信息，请参阅`catkin_prepare_release`的帮助输出。"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:129
 msgid "Assuming the above was successful, a source release has been made."
-msgstr "Assuming the above was successful, a source release has been made."
+msgstr "假设上述步骤成功，已经进行了源代码的发布。"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:132
 msgid "Binary release"
-msgstr "Binary release"
+msgstr "二进制发布"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:134
 msgid "The next step is to use the ``bloom-release`` command to create a binary release. For full instructions on how to use bloom, please see http://wiki.ros.org/bloom. To do a binary release of a package, run:"
-msgstr "The next step is to use the ``bloom-release`` command to create a binary release. For full instructions on how to use bloom, please see http://wiki.ros.org/bloom. To do a binary release of a package, run:"
+msgstr "下一步是使用 ``bloom-release`` 命令创建二进制发布。有关如何使用 bloom 的完整说明，请参阅 http://wiki.ros.org/bloom。要对软件包进行二进制发布，请运行以下命令："
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:142
 msgid "For instance, to release the ``rclcpp`` repository to the Humble distribution, the command would be:"
-msgstr "For instance, to release the ``rclcpp`` repository to the Humble distribution, the command would be:"
+msgstr "例如，要将 ``rclcpp`` 软件库发布到 Humble 发行版，命令如下："
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:148
 msgid "This command will fetch the release repository, make the necessary changes to make the release, push the changes to the release repository, and finally open a pull request to https://github.com/ros/rosdistro ."
-msgstr "This command will fetch the release repository, make the necessary changes to make the release, push the changes to the release repository, and finally open a pull request to https://github.com/ros/rosdistro ."
+msgstr "此命令将获取发布软件库，进行必要的更改以进行发布，将更改推送到发布软件库，最后会向 https://github.com/ros/rosdistro 发送一个拉取请求。"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:151
 msgid "Backporting to released distributions"
-msgstr "Backporting to released distributions"
+msgstr "向已发布的发行版进行回溯"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:153
 msgid "All incoming changes should first land on the development branch. Once a change has been merged onto the development branch, it can be considered for backporting to released distributions. However, any backported code must not break `API <https://en.wikipedia.org/wiki/API>`__ or `ABI <https://en.wikipedia.org/wiki/Application_binary_interface>`__ in a released distribution. If a change can be backported without breaking API or ABI, then a new pull request targeting the appropriate branch should be created. The new pull request should be added to the appropriate distributions project board at https://github.com/orgs/ros2/projects. The new pull request should have all of the steps run as before, but making sure to target the distribution in question for CI, etc."
-msgstr "All incoming changes should first land on the development branch. Once a change has been merged onto the development branch, it can be considered for backporting to released distributions. However, any backported code must not break `API <https://en.wikipedia.org/wiki/API>`__ or `ABI <https://en.wikipedia.org/wiki/Application_binary_interface>`__ in a released distribution. If a change can be backported without breaking API or ABI, then a new pull request targeting the appropriate branch should be created. The new pull request should be added to the appropriate distributions project board at https://github.com/orgs/ros2/projects. The new pull request should have all of the steps run as before, but making sure to target the distribution in question for CI, etc."
+msgstr "所有传入的更改应首先落在开发分支上。一旦将更改合并到开发分支上，可以考虑将其回溯到发布的发行版中。然而，任何回溯的代码都不能在发布的发行版中破坏`API <https://en.wikipedia.org/wiki/API>`__或`ABI <https://en.wikipedia.org/wiki/Application_binary_interface>`__。如果可以在不破坏API或ABI的情况下回溯更改，那么应创建一个针对相应分支的新拉取请求。新的拉取请求应添加到 https://github.com/orgs/ros2/projects 上的相应发行版项目板中。新的拉取请求应按照之前的步骤运行，但要确保针对CI等问题的目标分发。"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:161
 msgid "Responding to issues"
-msgstr "Responding to issues"
+msgstr "回应问题"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:163
 msgid "Package maintainers should also look at incoming issues on the repository and triage the problems that users are having."
-msgstr "Package maintainers should also look at incoming issues on the repository and triage the problems that users are having."
+msgstr "软件包维护者还应查看存储库上的问题，并对用户遇到的问题进行分类。"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:165
 msgid "For issues that look like questions, the issue should be closed and the user redirected to https://answers.ros.org."
-msgstr "For issues that look like questions, the issue should be closed and the user redirected to https://answers.ros.org."
+msgstr "对于看起来像问题的问题，应关闭问题并将用户重定向到 https://answers.ros.org。"
 
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:167
