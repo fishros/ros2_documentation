@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating YAML parameter files from ROS 1 to ROS 2 &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>将YAML参数文件从ROS 1迁移到ROS 2 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -247,7 +247,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">将YAML参数文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Node-arguments.html">通过命令行向节点传递ROS参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Sync-Vs-Async.html">Synchronous vs. asynchronous service clients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DDS-tuning.html">DDS调优信息</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Migrating YAML parameter files from ROS 1 to ROS 2</li>
+      <li>将YAML参数文件从ROS 1迁移到ROS 2</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Parameters-YAML-files-migration-guide.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,22 +372,20 @@
 
 
   <div class="section" id="migrating-yaml-parameter-files-from-ros-1-to-ros-2">
-<span id="yaml-ros1-ros2"></span><h1>Migrating YAML parameter files from ROS 1 to ROS 2<a class="headerlink" href="#migrating-yaml-parameter-files-from-ros-1-to-ros-2" title="永久链接至标题"></a></h1>
-<p>This guide describes how to adapt ROS 1 parameters files for ROS 2.</p>
+<span id="yaml-ros1-ros2"></span><h1>将YAML参数文件从ROS 1迁移到ROS 2<a class="headerlink" href="#migrating-yaml-parameter-files-from-ros-1-to-ros-2" title="永久链接至标题"></a></h1>
+<p>本指南介绍如何调整ROS 1参数文件以适应ROS 2。</p>
 <div class="section" id="yaml-file-example">
-<h2>YAML file example<a class="headerlink" href="#yaml-file-example" title="永久链接至标题"></a></h2>
-<p>YAML is used to write parameters files in both ROS 1 and ROS 2.
-The main difference in ROS 2 is that node names must be used to address parameters.
-In addition to the fully qualified node name, we use the key &quot;ros__parameters&quot; to signal the start of parameters for the node.</p>
-<p>For example, here is a parameters file in ROS 1:</p>
+<h2>YAML文件示例<a class="headerlink" href="#yaml-file-example" title="永久链接至标题"></a></h2>
+<p>在ROS 1和ROS 2中都使用YAML编写参数文件。在ROS 2中的主要区别是必须使用节点名称来引用参数。除了完全限定的节点名称外，我们还使用键“ros__parameters”来表示节点参数的起始。</p>
+<p>例如，这是一个在ROS 1中的参数文件示例：</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">lidar_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"></span>
 <span class="nt">lidar_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
 <span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">11312</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11311</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">21311</span><span class="p p-Indicator">]</span><span class="w"></span>
 <span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Let's assume that the first two parameters are for a node named <code class="docutils literal notranslate"><span class="pre">/lidar_ns/lidar_node_name</span></code>, the next parameter is for a node named <code class="docutils literal notranslate"><span class="pre">/imu</span></code>, and the last parameter we want to set on both nodes.</p>
-<p>We would construct our ROS 2 parameters file as follows:</p>
+<p>假设前两个参数是给名为 <code class="docutils literal notranslate"><span class="pre">/lidar_ns/lidar_node_name</span></code> 的节点使用的，下一个参数是给名为 <code class="docutils literal notranslate"><span class="pre">/imu</span></code> 的节点使用的，最后一个参数我们想要在这两个节点上设置。</p>
+<p>我们将按照以下方式构建我们的ROS 2参数文件：</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">/lidar_ns</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">lidar_node_name</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
@@ -401,14 +399,14 @@ In addition to the fully qualified node name, we use the key &quot;ros__paramete
 <span class="w">    </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Note the use of wildcards (<code class="docutils literal notranslate"><span class="pre">/**</span></code>) to indicate that the parameter <code class="docutils literal notranslate"><span class="pre">debug</span></code> should be set on any node in any namespace.</p>
+<p>注意使用通配符（<code class="docutils literal notranslate"><span class="pre">/**</span></code>）来表示参数 <code class="docutils literal notranslate"><span class="pre">debug</span></code> 应该在任何命名空间中的任何节点上设置。</p>
 </div>
 <div class="section" id="feature-parity">
-<h2>Feature parity<a class="headerlink" href="#feature-parity" title="永久链接至标题"></a></h2>
-<p>Some features of ROS 1 parameters files do not exist in ROS 2:</p>
+<h2>功能对等<a class="headerlink" href="#feature-parity" title="永久链接至标题"></a></h2>
+<p>ROS 1参数文件的一些功能在ROS 2中不存在:</p>
 <ul class="simple">
-<li><p>Mixed types in a list is not supported yet (<a class="reference external" href="https://github.com/ros2/rcl/issues/463">related issue</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">deg</span></code> and <code class="docutils literal notranslate"><span class="pre">rad</span></code> substitutions are not supported</p></li>
+<li><p>列表中的混合类型尚不支持 (<a class="reference external" href="https://github.com/ros2/rcl/issues/463">相关问题</a>)</p></li>
+<li><p>不支持``deg``和``rad``的替换</p></li>
 </ul>
 </div>
 </div>
