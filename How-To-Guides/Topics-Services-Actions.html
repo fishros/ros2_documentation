@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Topics vs Services vs Actions &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>主题 vs 服务 vs 动作 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -261,14 +261,14 @@
 <li class="toctree-l3"><a class="reference internal" href="Releasing/Release-Track.html">发布跟踪</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Using-Python-Packages.html">Using Python Packages with ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-Python-Packages.html">在ROS 2中使用Python包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Package-maintainer-guide.html">ROS 2软件包维护人员指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Topics vs Services vs Actions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">主题 vs 服务 vs 动作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">Using variants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Topics vs Services vs Actions</li>
+      <li>主题 vs 服务 vs 动作</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Topics-Services-Actions.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,40 +372,38 @@
 
 
   <div class="section" id="topics-vs-services-vs-actions">
-<span id="topicsservicesactions"></span><h1>Topics vs Services vs Actions<a class="headerlink" href="#topics-vs-services-vs-actions" title="永久链接至标题"></a></h1>
+<span id="topicsservicesactions"></span><h1>主题 vs 服务 vs 动作<a class="headerlink" href="#topics-vs-services-vs-actions" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#topics" id="id1">Topics</a></p></li>
-<li><p><a class="reference internal" href="#services" id="id2">Services</a></p></li>
-<li><p><a class="reference internal" href="#actions" id="id3">Actions</a></p></li>
+<li><p><a class="reference internal" href="#topics" id="id1">主题</a></p></li>
+<li><p><a class="reference internal" href="#services" id="id2">服务</a></p></li>
+<li><p><a class="reference internal" href="#actions" id="id3">动作</a></p></li>
 </ul>
 </div>
-<p>When designing a system there are three primary styles of interfaces.
-The specifications for the content is in the <a class="reference internal" href="../Concepts/About-ROS-Interfaces.html"><span class="doc">Interfaces Overview</span></a>.
-This is written to provide the reader with guidelines about when to use each type of interface.</p>
+<p>在设计系统时，有三种主要的接口风格。有关内容的规范在 <a class="reference internal" href="../Concepts/About-ROS-Interfaces.html"><span class="doc">接口概述</span></a> 中。这些指南旨在为读者提供关于何时使用每种类型接口的准则。</p>
 <div class="section" id="topics">
-<h2><a class="toc-backref" href="#id1">Topics</a><a class="headerlink" href="#topics" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id1">主题</a><a class="headerlink" href="#topics" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Should be used for continuous data streams (sensor data, robot state, ...).</p></li>
-<li><p>Are for continuous data flow. Data might be published and subscribed at any time independent of any senders/receivers. Many to many connection. Callbacks receive data once it is available. The publisher decides when data is sent.</p></li>
+<li><p>应该用于连续的数据流（传感器数据、机器人状态等）。</p></li>
+<li><p>适用于连续的数据流。数据可以在任何时间发布和订阅，独立于任何发送者/接收者。多对多的连接。回调函数在数据可用时接收数据。发布者决定何时发送数据。</p></li>
 </ul>
 </div>
 <div class="section" id="services">
-<h2><a class="toc-backref" href="#id2">Services</a><a class="headerlink" href="#services" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">服务</a><a class="headerlink" href="#services" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Should be used for remote procedure calls that terminate quickly, e.g. for querying the state of a node or doing a quick calculation such as IK. They should never be used for longer running processes, in particular processes that might be required to preempt if exceptional situations occur and they should never change or depend on state to avoid unwanted side effects for other nodes.</p></li>
-<li><p>Simple blocking call. Mostly used for comparably fast tasks as requesting specific data. Semantically for processing requests.</p></li>
+<li><p>应用于快速终止的远程过程调用，例如查询节点状态或进行快速计算，如逆运动学。不应用于较长时间运行的进程，特别是在出现异常情况时可能需要抢占的进程，并且不应根据状态进行更改或依赖状态，以避免对其他节点产生意外的副作用。</p></li>
+<li><p>简单的阻塞调用。主要用于相对较快的任务，如请求特定数据。语义上用于处理请求。</p></li>
 </ul>
 </div>
 <div class="section" id="actions">
-<h2><a class="toc-backref" href="#id3">Actions</a><a class="headerlink" href="#actions" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id3">动作</a><a class="headerlink" href="#actions" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Should be used for any discrete behavior that moves a robot or that runs for a longer time but provides feedback during execution.</p></li>
-<li><p>The most important property of actions is that they can be preempted and preemption should always be implemented cleanly by action servers.</p></li>
-<li><p>Actions can keep state for the lifetime of a goal, i.e. if executing two action goals in parallel on the same server, for each client a separate state instance can be kept since the goal is uniquely identified by its id.</p></li>
-<li><p>Slow perception routines which take several seconds to terminate or initiating a lower-level control mode are good use cases for actions.</p></li>
-<li><p>More complex non-blocking background processing. Used for longer tasks like execution of robot actions. Semantically for real-world actions.</p></li>
+<li><p>应该用于任何移动机器人或在执行过程中提供反馈的持续性行为。</p></li>
+<li><p>动作的最重要属性是可以被抢占，而且抢占应该始终由动作服务器进行干净地实现。</p></li>
+<li><p>动作可以在目标的生命周期内保持状态，即在同一个服务器上并行执行两个动作目标时，可以针对每个客户端保持单独的状态实例，因为目标由其 ID 唯一标识。</p></li>
+<li><p>慢的感知例程需要几秒钟才能终止或启动较低级别的控制模式，这是使用动作的好例子。</p></li>
+<li><p>更复杂的非阻塞后台处理。用于执行机器人动作等较长时间的任务。在语义上用于真实世界的动作。</p></li>
 </ul>
 </div>
 </div>
