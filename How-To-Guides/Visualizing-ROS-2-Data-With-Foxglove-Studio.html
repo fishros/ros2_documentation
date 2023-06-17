@@ -252,7 +252,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Sync-Vs-Async.html">同步与异步服务客户端</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DDS-tuning.html">DDS调优信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Cross-compilation.html">交叉编译</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Releasing/Releasing-a-Package.html">发布软件包</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Releasing/First-Time-Release.html">首次发布</a></li>
@@ -454,27 +454,20 @@
 <div class="section" id="other-basic-actions">
 <h2>其他基本操作。<a class="headerlink" href="#other-basic-actions" title="永久链接至标题"></a></h2>
 <div class="section" id="view-your-ros-graph">
-<h3>1 View your ROS graph<a class="headerlink" href="#view-your-ros-graph" title="永久链接至标题"></a></h3>
-<p><a class="reference external" href="https://foxglove.dev/download">Using the desktop app</a>, <a class="reference external" href="https://foxglove.dev/docs/studio/connection/native">connect</a> to your running ROS stack.
-Next, add a <a class="reference external" href="https://foxglove.dev/docs/studio/panels/topic-graph">Topic Graph</a> panel to your layout.
-If you've connected to your ROS stack correctly, you should now see a computational graph of your ROS nodes, topics, and services in that panel.
-Use the controls on the right side of the panel to select which topics to display or to toggle services.</p>
+<h3>1 查看ROS图<a class="headerlink" href="#view-your-ros-graph" title="永久链接至标题"></a></h3>
+<p>通过`桌面应用程序&lt;<a class="reference external" href="https://foxglove.dev/download">https://foxglove.dev/download</a>&gt;`__，<a href="#id1"><span class="problematic" id="id2">`</span></a>连接&lt;<a class="reference external" href="https://foxglove.dev/docs/studio/connection/native">https://foxglove.dev/docs/studio/connection/native</a>&gt;`__到正在运行的ROS堆栈。接下来，在布局中添加一个`主题图&lt;<a class="reference external" href="https://foxglove.dev/docs/studio/panels/topic-graph">https://foxglove.dev/docs/studio/panels/topic-graph</a>&gt;`__面板。如果已成功连接到ROS堆栈，则应该在该面板中看到ROS节点、主题和服务的计算图。使用面板右侧的控件选择要显示的主题或切换服务。</p>
 </div>
 <div class="section" id="view-and-edit-your-ros-params">
-<h3>2 View and edit your ROS params<a class="headerlink" href="#view-and-edit-your-ros-params" title="永久链接至标题"></a></h3>
-<p><a class="reference external" href="https://foxglove.dev/download">Using the desktop app</a>, <a class="reference external" href="https://foxglove.dev/docs/studio/connection/native">connect</a> to your running ROS stack.
-Next, add a <a class="reference external" href="https://foxglove.dev/docs/studio/panels/parameters">Parameters</a> panel to your layout.
-If you've connected to your ROS stack correctly, you should now see a live view of your current <code class="docutils literal notranslate"><span class="pre">rosparams</span></code>.
-You can edit these parameter values to publish <code class="docutils literal notranslate"><span class="pre">rosparam</span></code> updates back to your ROS stack.</p>
+<h3>2 查看和编辑ROS参数<a class="headerlink" href="#view-and-edit-your-ros-params" title="永久链接至标题"></a></h3>
+<p>通过`桌面应用程序&lt;<a class="reference external" href="https://foxglove.dev/download">https://foxglove.dev/download</a>&gt;`__，<code class="xref any docutils literal notranslate"><span class="pre">连接&lt;https://foxglove.dev/docs/studio/connection/native&gt;`__到正在运行的ROS堆栈。接下来，在布局中添加一个`参数&lt;https://foxglove.dev/docs/studio/panels/parameters&gt;`__面板。如果已成功连接到ROS堆栈，则应该实时查看当前的``rosparams`</span></code>。您可以编辑这些参数值，将``rosparam``更新发布回ROS堆栈。</p>
 </div>
 <div class="section" id="publish-messages-back-to-your-live-ros-stack">
-<h3>3 Publish messages back to your live ROS stack<a class="headerlink" href="#publish-messages-back-to-your-live-ros-stack" title="永久链接至标题"></a></h3>
-<p><a class="reference external" href="https://foxglove.dev/download">Using the desktop app</a>, <a class="reference external" href="https://foxglove.dev/docs/studio/connection/native">connect</a> to your running ROS stack.
-Next, add a <a class="reference external" href="https://foxglove.dev/docs/studio/panels/publish">Publish</a> panel to your layout.</p>
-<p>Specify the topic you want to publish on to infer its datatype and populate the text field with a JSON message template.</p>
-<p>Selecting a datatype in the dropdown of common ROS datatypes will also populate the text field with a JSON message template.</p>
-<p>Edit the template to customize your message before hitting &quot;Publish&quot;.</p>
-<a class="reference internal image-reference" href="../_images/publish.png"><img alt="Foxglove Studio's Publish panel" src="../_images/publish.png" style="width: 300px;" /></a>
+<h3>3 将消息发布回您的实时ROS堆栈<a class="headerlink" href="#publish-messages-back-to-your-live-ros-stack" title="永久链接至标题"></a></h3>
+<p>使用桌面应用程序 &lt;<a class="reference external" href="https://foxglove.dev/download">https://foxglove.dev/download</a>&gt;，<a class="reference external" href="https://foxglove.dev/docs/studio/connection/native">connect</a> 到正在运行的ROS堆栈。接下来，在您的布局中添加一个 <a class="reference external" href="https://foxglove.dev/docs/studio/panels/publish">Publish</a> 面板。</p>
+<p>指定您要发布的主题，以推断其数据类型，并使用JSON消息模板填充文本字段。</p>
+<p>在常见ROS数据类型的下拉菜单中选择数据类型，还将使用JSON消息模板填充文本字段。</p>
+<p>在点击“发布”之前，编辑模板以自定义您的消息。</p>
+<a class="reference internal image-reference" href="../_images/publish.png"><img alt="Foxglove Studio的发布面板" src="../_images/publish.png" style="width: 300px;" /></a>
 </div>
 </div>
 </div>
