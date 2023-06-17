@@ -375,36 +375,33 @@
   <div class="section" id="building-rqt-from-source-on-windows-10">
 <h1>在 Windows 10 上从源代码构建 RQt<a class="headerlink" href="#building-rqt-from-source-on-windows-10" title="永久链接至标题"></a></h1>
 <p>本页面提供了在 Windows 上从源代码构建 RQt 的特定信息。在继续查看 <a class="reference internal" href="RQt-Source-Install.html"><span class="doc">RQt 源代码安装页面</span></a> 之前，请按照这些说明进行操作。</p>
-<p>If you have not done so, follow the <a class="reference internal" href="../Installation/Alternatives/Windows-Development-Setup.html"><span class="doc">ROS 2 Windows Development Setup guide</span></a> before continuing.</p>
+<p>如果您还没有这样做，请在继续之前按照 <a class="reference internal" href="../Installation/Alternatives/Windows-Development-Setup.html"><span class="doc">ROS 2 Windows Development Setup guide</span></a> 进行设置。</p>
 <div class="section" id="system-requirements">
 <h2>系统要求<a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>Windows 10</p></li>
 <li><p>Visual Studio 15.7.6</p></li>
 </ul>
-<p>Currently Visual Studio 15.8 fails to build ROS 2 (<a class="reference external" href="https://github.com/osrf/osrf_testing_tools_cpp/issues/15">see issue</a>).
-Older versions of VS can be found <a class="reference external" href="https://docs.microsoft.com/en-us/visualstudio/productinfo/installing-an-earlier-release-of-vs2017">here</a>.</p>
+<p>当前的 Visual Studio 15.8 无法构建 ROS 2（<a class="reference external" href="https://github.com/osrf/osrf_testing_tools_cpp/issues/15">请参阅问题</a>）。可以在 <a class="reference external" href="https://docs.microsoft.com/en-us/visualstudio/productinfo/installing-an-earlier-release-of-vs2017">这里找到</a> 较旧版本的 VS。</p>
 </div>
 <div class="section" id="dependencies">
 <h2>依赖项<a class="headerlink" href="#dependencies" title="永久链接至标题"></a></h2>
-<p>The primary dependencies of the RQt package are sip and PyQt5.
-PySide2 may be supported in the future.
-Even though they are provided through PyPI and chocolatey, you must install them by source to get compatible versions.</p>
+<p>RQt软件包的主要依赖项是sip和PyQt5。PySide2可能在将来得到支持。尽管它们通过PyPI和chocolatey提供，但您必须通过源代码安装它们以获得兼容的版本。</p>
 <div class="section" id="install-sip-by-source">
-<h3>Install sip by source<a class="headerlink" href="#install-sip-by-source" title="永久链接至标题"></a></h3>
-<p>Download from <a class="reference external" href="https://www.riverbankcomputing.com/software/sip/download">https://www.riverbankcomputing.com/software/sip/download</a></p>
-<p>Run the x64 Native Tools Command Prompt as Administrator, and <code class="docutils literal notranslate"><span class="pre">cd</span></code> to the uncompressed source directory.</p>
-<p>Run:</p>
+<h3>通过源代码安装sip<a class="headerlink" href="#install-sip-by-source" title="永久链接至标题"></a></h3>
+<p>从https://www.riverbankcomputing.com/software/sip/download下载</p>
+<p>以管理员身份运行x64本机工具命令提示符，并``cd``到未压缩的源目录。</p>
+<p>运行：</p>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>python3 configure.py
 nmake
 nmake install
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">python3</span></code> is installed on your system as <code class="docutils literal notranslate"><span class="pre">python</span></code>, be sure to use that program name instead.</p>
+<p>如果您的系统上安装的是 <code class="docutils literal notranslate"><span class="pre">python3</span></code>，请确保使用该程序名称。</p>
 </div>
 <div class="section" id="install-pyqt5-by-source">
-<h3>Install PyQt5 by source<a class="headerlink" href="#install-pyqt5-by-source" title="永久链接至标题"></a></h3>
-<p>Download from <a class="reference external" href="https://www.riverbankcomputing.com/software/pyqt/download5">https://www.riverbankcomputing.com/software/pyqt/download5</a></p>
+<h3>通过源码安装 PyQt5<a class="headerlink" href="#install-pyqt5-by-source" title="永久链接至标题"></a></h3>
+<p>从 <a class="reference external" href="https://www.riverbankcomputing.com/software/pyqt/download5">https://www.riverbankcomputing.com/software/pyqt/download5</a> 下载</p>
 <p>Run the x64 Native Tools Command Prompt as Administrator, and <code class="docutils literal notranslate"><span class="pre">cd</span></code> to the uncompressed source directory.
 I ran into trouble with Qt 5.11.3 and PyQt5 compiling QtNfc, but it can be easily disabled.</p>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>python3 configure.py --disable QtNfc
