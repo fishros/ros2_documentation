@@ -626,26 +626,23 @@
 </div>
 </div>
 <div class="section" id="group">
-<h3>group<a class="headerlink" href="#group" title="永久链接至标题"></a></h3>
+<h3>组<a class="headerlink" href="#group" title="永久链接至标题"></a></h3>
 <ul>
-<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/group">Available in ROS 1</a>.</p></li>
-<li><p>Allows limiting the scope of launch configurations.
-Usually used together with <code class="docutils literal notranslate"><span class="pre">let</span></code>, <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">push_ros_namespace</span></code> tags.</p></li>
+<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/group">在ROS 1中可用</a>。</p></li>
+<li><p>允许限制启动配置的范围。通常与``let``、<a href="#id1"><span class="problematic" id="id2">``</span></a>include``和``push_ros_namespace``标签一起使用。</p></li>
 <li><p>与ROS 1的不同之处：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>There is no <code class="docutils literal notranslate"><span class="pre">ns</span></code> attribute.
-See the new <code class="docutils literal notranslate"><span class="pre">push_ros_namespace</span></code> tag as a workaround.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">clear_params</span></code> attribute isn't available.</p></li>
-<li><p>It doesn't accept <code class="docutils literal notranslate"><span class="pre">remap</span></code> nor <code class="docutils literal notranslate"><span class="pre">param</span></code> tags as children.</p></li>
+<li><p>没有``ns``属性。可以使用新的``push_ros_namespace``标签作为解决方法。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clear_params</span></code> 属性不可用。</p></li>
+<li><p>它不接受 <code class="docutils literal notranslate"><span class="pre">remap</span></code> 和 <code class="docutils literal notranslate"><span class="pre">param</span></code> 标签作为子节点。</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="section" id="launch-prefix-example">
 <span id="id6"></span><h4>示例<a class="headerlink" href="#launch-prefix-example" title="永久链接至标题"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">launch-prefix</span></code> configuration affects both <code class="docutils literal notranslate"><span class="pre">executable</span></code> and <code class="docutils literal notranslate"><span class="pre">node</span></code> tags' actions.
-This example will use <code class="docutils literal notranslate"><span class="pre">time</span></code> as a prefix if <code class="docutils literal notranslate"><span class="pre">use_time_prefix_in_talker</span></code> argument is <code class="docutils literal notranslate"><span class="pre">1</span></code>, only for the talker.</p>
+<p><code class="docutils literal notranslate"><span class="pre">launch-prefix</span></code> 配置会影响 <code class="docutils literal notranslate"><span class="pre">executable</span></code> 和 <code class="docutils literal notranslate"><span class="pre">node</span></code> 标签的操作。如果 <code class="docutils literal notranslate"><span class="pre">use_time_prefix_in_talker</span></code> 参数为 <code class="docutils literal notranslate"><span class="pre">1</span></code>，此示例将使用 <code class="docutils literal notranslate"><span class="pre">time</span></code> 作为前缀，仅适用于 talker。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
    <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;use_time_prefix_in_talker&quot;</span> <span class="na">default=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
    <span class="nt">&lt;group&gt;</span>
