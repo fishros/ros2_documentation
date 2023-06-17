@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synchronous vs. asynchronous service clients &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>同步与异步服务客户端 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -249,7 +249,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Node-arguments.html">通过命令行向节点传递ROS参数</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronous vs. asynchronous service clients</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">同步与异步服务客户端</a></li>
 <li class="toctree-l2"><a class="reference internal" href="DDS-tuning.html">DDS调优信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Synchronous vs. asynchronous service clients</li>
+      <li>同步与异步服务客户端</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Sync-Vs-Async.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,13 +372,13 @@
 
 
   <div class="section" id="synchronous-vs-asynchronous-service-clients">
-<span id="syncasync"></span><h1>Synchronous vs. asynchronous service clients<a class="headerlink" href="#synchronous-vs-asynchronous-service-clients" title="永久链接至标题"></a></h1>
-<p><strong>Level:</strong> Intermediate</p>
-<p><strong>Time:</strong> 10 minutes</p>
+<span id="syncasync"></span><h1>同步与异步服务客户端<a class="headerlink" href="#synchronous-vs-asynchronous-service-clients" title="永久链接至标题"></a></h1>
+<p><strong>级别：</strong> 中级</p>
+<p><strong>时间:</strong> 10分钟</p>
 <div class="contents local topic" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#introduction" id="id1">介绍</a></p></li>
 <li><p><a class="reference internal" href="#synchronous-calls" id="id2">1 Synchronous calls</a></p></li>
 <li><p><a class="reference internal" href="#sync-deadlock" id="id3">1.1 Sync deadlock</a></p></li>
 <li><p><a class="reference internal" href="#asynchronous-calls" id="id4">2 Asynchronous calls</a></p></li>
@@ -386,11 +386,9 @@
 </ul>
 </div>
 <div class="section" id="introduction">
-<h2><a class="toc-backref" href="#id1">Introduction</a><a class="headerlink" href="#introduction" title="永久链接至标题"></a></h2>
-<p>This guide is intended to warn users of the risks associated with the Python synchronous service client <code class="docutils literal notranslate"><span class="pre">call()</span></code> API.
-It is very easy to mistakenly cause deadlock when calling services synchronously, so we do not recommend using <code class="docutils literal notranslate"><span class="pre">call()</span></code>.</p>
-<p>We provide an example on how to use <code class="docutils literal notranslate"><span class="pre">call()</span></code> correctly for experienced users who wish to use synchronous calls and are aware of the pitfalls.
-We also highlight possible scenarios for deadlock that accompany it.</p>
+<h2><a class="toc-backref" href="#id1">介绍</a><a class="headerlink" href="#introduction" title="永久链接至标题"></a></h2>
+<p>本指南旨在提醒用户有关与Python同步服务客户端``call()`` API相关的风险。在调用服务时，很容易错误地导致死锁，因此我们不建议使用``call()``。</p>
+<p>对于希望使用同步调用并且了解其中陷阱的有经验的用户，我们提供了正确使用``call()``的示例。我们还强调了可能导致死锁的情景。</p>
 <p>Because we recommend avoiding sync calls, this guide will also address the features and usage of the recommended alternative, async calls (<code class="docutils literal notranslate"><span class="pre">call_async()</span></code>).</p>
 <p>The C++ service call API is only available in async, so the comparisons and examples in this guide pertain to Python services and clients.
 The definition of async given here generally applies to C++, with some exceptions.</p>
