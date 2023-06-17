@@ -421,24 +421,23 @@
 </div>
 <div class="section" id="cyclone-dds-tuning">
 <h2>Cyclone DDS调优<a class="headerlink" href="#cyclone-dds-tuning" title="永久链接至标题"></a></h2>
-<p><strong>Issue:</strong> Cyclone DDS is not delivering large messages reliably, despite using reliable settings and transferring over a wired network.</p>
-<p>This issue should be <a class="reference external" href="https://github.com/eclipse-cyclonedds/cyclonedds/issues/484">addressed soon</a>.
-Until then, we’ve come up with the following solution (debugged using <a class="reference external" href="https://github.com/jacobperron/pc_pipe">this test program</a>):</p>
-<p><strong>Solution:</strong> Increase the maximum Linux kernel receive buffer size and the minimum socket receive buffer size that Cyclone uses.</p>
-<p><em>Adjustments to solve for a 9MB message:</em></p>
-<p>Set the maximum receive buffer size, <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code>, by running:</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>问题：<a href="#id3"><span class="problematic" id="id4">**</span></a>尽管使用可靠的设置并通过有线网络传输，Cyclone DDS无法可靠地传递大消息。</p>
+<p>这个问题应该会很快得到解决。在那之前，我们提出了以下解决方案（使用`此测试程序 &lt;<a class="reference external" href="https://github.com/jacobperron/pc_pipe">https://github.com/jacobperron/pc_pipe</a>&gt;`_ 进行了调试）：</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>解决方案：<a href="#id3"><span class="problematic" id="id4">**</span></a>增加Cyclone使用的Linux内核最大接收缓冲区大小和最小套接字接收缓冲区大小。</p>
+<p><em>调整以解决9MB消息的问题：</em></p>
+<p>通过运行以下命令来设置最大接收缓冲区大小 <code class="xref any docutils literal notranslate"><span class="pre">rmem_max</span></code>：</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo sysctl -w net.core.rmem_max=2147483647</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Or permanently set it by editing the <code class="docutils literal notranslate"><span class="pre">/etc/sysctl.d/10-cyclone-max.conf</span></code> file to contain:</p>
+<p>或者通过编辑 <code class="xref any docutils literal notranslate"><span class="pre">/etc/sysctl.d/10-cyclone-max.conf</span></code> 文件并包含以下内容来永久设置：</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">net.core.rmem_max=2147483647</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Next, to set the minimum socket receive buffer size that Cyclone requests, write out a configuration file for Cyclone to use while starting, like so:</p>
+<p>然后，为了设置 Cyclone 请求的最小套接字接收缓冲区大小，请创建一个用于 Cyclone 启动时使用的配置文件，如下所示：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
 <span class="nt">&lt;CycloneDDS</span> <span class="na">xmlns=</span><span class="s">&quot;https://cdds.io/config&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://cdds.io/config</span>
 <span class="s">https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd&quot;</span><span class="nt">&gt;</span>
@@ -450,7 +449,7 @@ Until then, we’ve come up with the following solution (debugged using <a class
 <span class="nt">&lt;/CycloneDDS&gt;</span>
 </pre></div>
 </div>
-<p>Then, whenever you are going to run a node, set the following environment variable:</p>
+<p>然后，每当您要运行一个节点时，请设置以下环境变量：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">CYCLONEDDS_URI=file:///absolute/path/to/config_file.xml</span>
 </pre></div>
 </div>
@@ -459,7 +458,7 @@ Until then, we’ve come up with the following solution (debugged using <a class
 <h2>RTI Connext tuning<a class="headerlink" href="#rti-connext-tuning" title="永久链接至标题"></a></h2>
 <p><strong>Issue:</strong> Connext is not delivering large messages reliably, despite using reliable settings and transferring over a wired network.</p>
 <p><strong>Solution:</strong> This <a class="reference external" href="https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml">Connext QoS profile</a>, along with increasing the <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code> parameter.</p>
-<p>Set the maximum receive buffer size, <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code>, by running:</p>
+<p>通过运行以下命令来设置最大接收缓冲区大小 <code class="xref any docutils literal notranslate"><span class="pre">rmem_max</span></code>：</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo sysctl -w net.core.rmem_max=4194304</span>
 </pre></div>
