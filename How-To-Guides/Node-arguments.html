@@ -396,7 +396,7 @@ The name/namespace of the node itself can be remapped using <code class="docutil
 &quot;Dynamic&quot; remapping of names after nodes have been started is not yet supported.</p>
 <p>See <a class="reference external" href="https://design.ros2.org/articles/static_remapping.html">this design doc</a> for more details on remapping arguments (not all functionality is available yet).</p>
 <div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="永久链接至标题"></a></h3>
+<h3>示例<a class="headerlink" href="#example" title="永久链接至标题"></a></h3>
 <p>The following invocation will cause the <code class="docutils literal notranslate"><span class="pre">talker</span></code> node to be started under the node name <code class="docutils literal notranslate"><span class="pre">my_talker</span></code>, publishing on the topic named <code class="docutils literal notranslate"><span class="pre">my_topic</span></code> instead of the default of <code class="docutils literal notranslate"><span class="pre">chatter</span></code>.
 The namespace, which must start with a forward slash, is set to <code class="docutils literal notranslate"><span class="pre">/demo</span></code>, which means that topics are created in that namespace (<code class="docutils literal notranslate"><span class="pre">/demo/my_topic</span></code>), as opposed to globally (<code class="docutils literal notranslate"><span class="pre">/my_topic</span></code>).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args -r __ns:<span class="o">=</span>/demo -r __node:<span class="o">=</span>my_talker -r chatter:<span class="o">=</span>my_topic
