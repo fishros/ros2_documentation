@@ -564,37 +564,30 @@ $ sudo ln -s qt qt5
 <h3>即使系统中存在该库，导入仍然失败<a class="headerlink" href="#import-failing-even-with-library-present-on-the-system" title="永久链接至标题"></a></h3>
 <p>有时候由于系统上缺少某些 DLL 文件，导致无法导入 <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>。如果出现这种情况，请确保安装了 <a class="reference internal" href="../Installation/Windows-Install-Binary.html#windows-install-binary-installing-prerequisites"><span class="std std-ref">安装指南</span></a> 中“安装先决条件”部分列出的所有依赖项。</p>
 <p>如果您正在使用二进制文件进行安装，则可能需要更新您的依赖项：它们必须与用于构建二进制文件的版本相同。</p>
-<p>If you are still having issues, you can use the <a class="reference external" href="https://github.com/lucasg/Dependencies">Dependencies</a> tool to determine which dependencies are missing on your system.
-Use the tool to load the corresponding <code class="docutils literal notranslate"><span class="pre">.pyd</span></code> file, and it should report unavailable <code class="docutils literal notranslate"><span class="pre">DLL</span></code> modules.
-Be sure that the current workspace is sourced before you execute the tool, otherwise there will be unresolved ROS DLL files.
-Use this information to install additional dependencies or adjust your path as necessary.</p>
+<p>如果您仍然遇到问题，您可以使用 <a class="reference external" href="https://github.com/lucasg/Dependencies">Dependencies</a> 工具来确定您的系统缺少哪些依赖项。使用该工具加载相应的 <code class="docutils literal notranslate"><span class="pre">.pyd</span></code> 文件，它将报告不可用的 <code class="docutils literal notranslate"><span class="pre">DLL</span></code> 模块。在执行工具之前，请确保当前的工作空间已被激活，否则将出现未解决的 ROS DLL 文件。根据这些信息安装额外的依赖项或根据需要调整您的路径。</p>
 </div>
 <div class="section" id="cmake-error-setting-modification-time">
-<h3>CMake error setting modification time<a class="headerlink" href="#cmake-error-setting-modification-time" title="永久链接至标题"></a></h3>
-<p>If you run into the CMake error <code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">INSTALL</span> <span class="pre">cannot</span> <span class="pre">set</span> <span class="pre">modification</span> <span class="pre">time</span> <span class="pre">on</span> <span class="pre">...</span></code> when installing files it is likely that an anti virus software or Windows Defender are interfering with the build. E.g. for Windows Defender you can list the workspace location to be excluded to prevent it from scanning those files.</p>
+<h3>CMake 错误设置修改时间<a class="headerlink" href="#cmake-error-setting-modification-time" title="永久链接至标题"></a></h3>
+<p>如果在安装文件时遇到 CMake 错误 <code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">INSTALL</span> <span class="pre">cannot</span> <span class="pre">set</span> <span class="pre">modification</span> <span class="pre">time</span> <span class="pre">on</span> <span class="pre">...</span></code>，很可能是由于杀毒软件或 Windows Defender 干扰了构建过程。例如，对于 Windows Defender，您可以将工作空间位置列入排除列表，以防止其扫描这些文件。</p>
 </div>
 <div class="section" id="character-path-limit">
-<h3>260 character path limit<a class="headerlink" href="#character-path-limit" title="永久链接至标题"></a></h3>
+<h3>260 字符路径限制<a class="headerlink" href="#character-path-limit" title="永久链接至标题"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>The input line is too long.
 The syntax of the <span class="nb">command</span> is incorrect.
 </pre></div>
 </div>
-<p>Depending on your directory hierarchy, you may see path length limit errors when building ROS 2 from source or your own libraries.</p>
-<p>To allow deeper path lengths:</p>
-<p>Run <code class="docutils literal notranslate"><span class="pre">regedit.exe</span></code>, navigate to <code class="docutils literal notranslate"><span class="pre">Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem</span></code>, and set <code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code> to 0x00000001 (1).</p>
-<p>Hit the windows key and type <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Group</span> <span class="pre">Policy</span></code>.
-Navigate to Local Computer Policy &gt; Computer Configuration &gt; Administrative Templates &gt; System &gt; Filesystem.
-Right click <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Win32</span> <span class="pre">long</span> <span class="pre">paths</span></code>, click Edit.
-In the dialog, select Enabled and click OK.</p>
-<p>Close and open your terminal to reset the environment and try building again.</p>
+<p>根据您的目录层次结构，在从源代码构建ROS 2或您自己的库时，可能会出现路径长度限制错误。</p>
+<p>要允许更深的路径长度：</p>
+<p>运行 <code class="docutils literal notranslate"><span class="pre">regedit.exe</span></code>，导航至 <code class="docutils literal notranslate"><span class="pre">Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem</span></code>，并将 <code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code> 设置为 0x00000001（1）。</p>
+<p>按下 Windows 键并输入 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">Group</span> <span class="pre">Policy</span></code>。导航至 Local Computer Policy &gt; Computer Configuration &gt; Administrative Templates &gt; System &gt; Filesystem。右键单击 <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Win32</span> <span class="pre">long</span> <span class="pre">paths</span></code>，点击编辑。在对话框中，选择已启用并点击确定。</p>
+<p>关闭并重新打开终端以重置环境，并尝试重新构建。</p>
 </div>
 <div class="section" id="cmake-packages-unable-to-find-asio-tinyxml2-tinyxml-or-eigen">
-<h3>CMake packages unable to find asio, tinyxml2, tinyxml, or eigen<a class="headerlink" href="#cmake-packages-unable-to-find-asio-tinyxml2-tinyxml-or-eigen" title="永久链接至标题"></a></h3>
-<p>We've seen that sometimes the chocolatey packages for <code class="docutils literal notranslate"><span class="pre">asio</span></code>, <code class="docutils literal notranslate"><span class="pre">tinyxml2</span></code>, etc. do not add important registry entries and CMake will be unable to find them when building ROS 2.
-We've not yet been able to identify the root cause, but uninstalling the chocolatey packages (with <code class="docutils literal notranslate"><span class="pre">-n</span></code> if the uninstall fails the first time), and then reinstalling them will fix the issue.</p>
+<h3>CMake软件包无法找到asio、tinyxml2、tinyxml或eigen。<a class="headerlink" href="#cmake-packages-unable-to-find-asio-tinyxml2-tinyxml-or-eigen" title="永久链接至标题"></a></h3>
+<p>我们发现有时候``asio``、<code class="docutils literal notranslate"><span class="pre">tinyxml2``等的chocolatey软件包没有添加重要的注册表项，导致在构建ROS</span> <span class="pre">2时CMake无法找到它们。我们还没有找到根本原因，但是卸载chocolatey软件包（如果首次卸载失败，则使用</span></code>-n``参数），然后重新安装它们可以解决这个问题。</p>
 </div>
 <div class="section" id="patch-exe-opens-a-new-command-window-and-asks-for-administrator">
-<h3>patch.exe opens a new command window and asks for administrator<a class="headerlink" href="#patch-exe-opens-a-new-command-window-and-asks-for-administrator" title="永久链接至标题"></a></h3>
+<h3>patch.exe会打开一个新的命令窗口并要求管理员权限。<a class="headerlink" href="#patch-exe-opens-a-new-command-window-and-asks-for-administrator" title="永久链接至标题"></a></h3>
 <p>This will also cause the build of packages which need to use patch to fail, even you allow it to use administrator rights.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">choco</span> <span class="pre">uninstall</span> <span class="pre">patch;</span> <span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--cmake-clean-cache</span></code> - This is a bug in the <a class="reference external" href="https://chocolatey.org/packages/patch">GNU Patch For Windows package</a>. If this package is not installed, the build process will instead use the version of Patch distributed with git.</p></li>
