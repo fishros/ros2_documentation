@@ -408,39 +408,31 @@
 </div>
 <div class="section" id="ros2-param-set">
 <h2><a class="toc-backref" href="#id3"><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">set</span></code></a><a class="headerlink" href="#ros2-param-set" title="永久链接至标题"></a></h2>
-<p>This command will set the value of a particular parameter on a particular node.
-For most parameters, the type of the new value must be the same as the existing type.</p>
-<p>To set the value of a parameter on a node:</p>
+<p>此命令将在特定节点上设置特定参数的值。对于大多数参数而言，新值的类型必须与现有类型相同。</p>
+<p>要在节点上设置参数的值：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set /my_node use_sim_time false</span>
 </pre></div>
 </div>
-<p>The value that is passed on the command-line is in YAML, which allows arbitrary YAML expressions to be used.
-However, it also means that certain expressions will be interpreted differently than might be expected.
-For instance, if the parameter <code class="docutils literal notranslate"><span class="pre">my_string</span></code> on node <code class="docutils literal notranslate"><span class="pre">my_node</span></code> is of type string, the following will not work:</p>
+<p>在命令行中传递的值采用YAML格式，允许使用任意的YAML表达式。然而，这也意味着某些表达式的解释可能与预期不同。例如，如果节点``my_node``上的参数``my_string``是字符串类型，以下操作将不起作用：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set /my_node my_string off</span>
 </pre></div>
 </div>
-<p>That's because YAML is interpreting &quot;off&quot; as a boolean, and <code class="docutils literal notranslate"><span class="pre">my_string</span></code> is a string type.
-This can be worked around by using the YAML syntax for explicitly setting strings, e.g.:</p>
+<p>这是因为YAML将&quot;off&quot;解释为布尔值，而``my_string``是字符串类型。可以通过使用YAML语法来显式设置字符串来解决这个问题，例如：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros param set /my_node my_string &#39;!!str off&#39;</span>
 </pre></div>
 </div>
-<p>Additionally, YAML supports heterogeneous lists, containing (say) a string, a boolean, and an integer.
-However, ROS 2 parameters do not support heterogenous lists, so any YAML list that has multiple types will be interpreted as a string.
-Assuming that the parameter <code class="docutils literal notranslate"><span class="pre">my_int_array</span></code> on node <code class="docutils literal notranslate"><span class="pre">my_node</span></code> is of type integer array, the following will not work:</p>
+<p>此外，YAML支持包含（比如说）字符串、布尔值和整数的异构列表。然而，ROS 2参数不支持异构列表，所以任何包含多种类型的YAML列表都会被解释为字符串。假设节点``my_node``上的参数``my_int_array``是整数数组类型，下面的示例将无法工作：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros param set /my_node my_int_array &#39;[foo,off,1]&#39;</span>
 </pre></div>
 </div>
-<p>The following string typed parameter would work:</p>
+<p>下面的字符串类型参数可以工作：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros param set /my_node my_string &#39;[foo,off,1]&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ros2-param-delete">
 <h2><a class="toc-backref" href="#id4"><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">delete</span></code></a><a class="headerlink" href="#ros2-param-delete" title="永久链接至标题"></a></h2>
-<p>This command will remove a parameter from a particular node.
-However, note that this can only remove dynamic parameters (not declared parameters).
-See <a class="reference internal" href="../Concepts/About-ROS-2-Parameters.html"><span class="doc">the concept document</span></a> for more information.</p>
+<p>此命令将从特定节点中删除一个参数。然而，请注意，它只能删除动态参数（而不是声明的参数）。有关更多信息，请参阅:doc:<a class="reference internal" href="../Concepts/About-ROS-2-Parameters.html"><span class="doc">概念文档</span></a>。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param delete /my_node my_string</span>
 </pre></div>
 </div>
