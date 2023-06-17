@@ -1582,22 +1582,22 @@ msgstr "显著增加此参数的值是为了确保缓冲区永远不会完全填
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:66
 msgid "**Issue:** Sending custom messages with large variable-sized arrays of non-primitive types causes high serialization/deserialization overhead and CPU load. This can lead to stalling of the publisher due to excessive time spent in ``publish()`` and tools like ``ros2 topic hz`` under reporting the actual frequency of messages being received. Note that for example ``builtin_interfaces/Time`` is also considered a non-primitive type and will incur higher serialization overhead. Because of the increased serialization overhead, severe performance degradation can be observed when naively transitioning custom message types from ROS 1 to ROS 2."
-msgstr "**Issue:** Sending custom messages with large variable-sized arrays of non-primitive types causes high serialization/deserialization overhead and CPU load. This can lead to stalling of the publisher due to excessive time spent in ``publish()`` and tools like ``ros2 topic hz`` under reporting the actual frequency of messages being received. Note that for example ``builtin_interfaces/Time`` is also considered a non-primitive type and will incur higher serialization overhead. Because of the increased serialization overhead, severe performance degradation can be observed when naively transitioning custom message types from ROS 1 to ROS 2."
+msgstr "**问题：** 使用大型变量大小的非原始类型数组发送自定义消息会导致高度的序列化/反序列化开销和CPU负载。这可能导致发布者由于在“publish()”中花费过多时间而停滞，并且像“ros2 topic hz”这样的工具会低估接收到的消息实际频率。请注意，例如“builtin_interfaces/Time”也被视为非原始类型，并且将产生更高的序列化开销。由于增加的序列化开销，当从ROS 1天真地转换自定义消息类型到ROS 2时，可能会观察到严重的性能下降。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:71
 msgid "**Workaround:** Use multiple arrays of primitives instead of a single array of custom types, or pack into byte array as done e.g. in ``PointCloud2`` messages. For example, instead of defining a ``FooArray`` message as:"
-msgstr "**Workaround:** Use multiple arrays of primitives instead of a single array of custom types, or pack into byte array as done e.g. in ``PointCloud2`` messages. For example, instead of defining a ``FooArray`` message as:"
+msgstr "**解决方法：** 使用原始类型的多个数组代替单个自定义类型的数组，或者像“PointCloud2”消息中所做的那样打包成字节数组。例如，不要定义一个名为“FooArray”的消息，例如："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:78
 msgid "with ``Foo`` is defined as:"
-msgstr "with ``Foo`` is defined as:"
+msgstr "其中“Foo”被定义为："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:85
 msgid "Instead, define ``FooArray`` as:"
-msgstr "Instead, define ``FooArray`` as:"
+msgstr "相反，将“FooArray”定义为："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:93
