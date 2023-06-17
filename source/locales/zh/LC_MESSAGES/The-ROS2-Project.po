@@ -382,42 +382,42 @@ msgstr "**我收到来自构建工作失败的 Jenkins 邮件。我该怎么办�
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:86
 msgid "Go to the job that raised the issue. You find the link on top of the Jenkins email. Once you followed the link to the build job, click *Console Output* on the left, then click *Full Log*. This will give you the full console output of the failing build. Try to find the top-most error as it is usually the most important and other errors might be follow-ups."
-msgstr "Go to the job that raised the issue. You find the link on top of the Jenkins email. Once you followed the link to the build job, click *Console Output* on the left, then click *Full Log*. This will give you the full console output of the failing build. Try to find the top-most error as it is usually the most important and other errors might be follow-ups."
+msgstr "转到引发问题的作业。您可以在Jenkins电子邮件的顶部找到链接。一旦您点击链接进入构建作业，点击左侧的*Console Output*，然后点击*Full Log*。这将给您提供失败构建的完整控制台输出。尝试找到最顶部的错误，因为通常它是最重要的，其他错误可能是后续错误。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:91
 msgid "The bottom of the email might read ``'apt-src build [...]' failed. This is usually because of an error building the package.`` This usually hints at missing dependencies, see 2."
-msgstr "The bottom of the email might read ``'apt-src build [...]' failed. This is usually because of an error building the package.`` This usually hints at missing dependencies, see 2."
+msgstr "电子邮件底部可能会显示``'apt-src build [...]' failed. This is usually because of an error building the package.``这通常暗示缺少依赖项，请参阅2。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:94
 msgid "**I seem to be missing a dependency, how do I find out which one?**"
-msgstr "**I seem to be missing a dependency, how do I find out which one?**"
+msgstr "**我似乎缺少一个依赖项，我该如何找出是哪个依赖项？**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:96
 msgid "You basically have two options, a. is easier but may take several iterations, b. is more elaborate and gives you the full insight as well as local debugging."
-msgstr "You basically have two options, a. is easier but may take several iterations, b. is more elaborate and gives you the full insight as well as local debugging."
+msgstr "基本上有两种选择，a. 更简单，但可能需要多次迭代，b. 更详细，并且可以提供完整的了解以及本地调试。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:99
 msgid "Inspect the release job that raised the issue (see 1.) and localize the cmake dependency issue. To do so, browse to the cmake section, e.g., navigate to the *build binarydeb* section through the menu on the left in case of a ubuntu/debian build job. The *CMake Error* will typically hint at a dependency required by the cmake configuration but missing in the `package manifest`_. Once you have fixed the dependency in the manifest, do a new release of your package and wait for feedback from the build farms or..."
-msgstr "Inspect the release job that raised the issue (see 1.) and localize the cmake dependency issue. To do so, browse to the cmake section, e.g., navigate to the *build binarydeb* section through the menu on the left in case of a ubuntu/debian build job. The *CMake Error* will typically hint at a dependency required by the cmake configuration but missing in the `package manifest`_. Once you have fixed the dependency in the manifest, do a new release of your package and wait for feedback from the build farms or..."
+msgstr "检查引发问题的发布任务（参见 1.）并定位 cmake 依赖问题。为此，请浏览到 cmake 部分，例如，在 Ubuntu/Debian 构建任务中通过左侧菜单导航到“build binarydeb”部分。通常，*CMake Error* 会提示 cmake 配置所需的依赖项，在 `package manifest`_ 中缺失。修复 manifest 中的依赖项后，重新发布软件包并等待构建服务器的反馈或..."
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:105
 msgid "To get the full insight and faster, local debugging, you can `run the release jobs locally`_. This allows to iterate the manifest locally until all dependencies are fixed."
-msgstr "To get the full insight and faster, local debugging, you can `run the release jobs locally`_. This allows to iterate the manifest locally until all dependencies are fixed."
+msgstr "为了获得完整的了解和更快的本地调试，您可以在本地运行发布任务（`run the release jobs locally`_）。这样可以在本地迭代 manifest，直到所有依赖项都被修复。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:108
 msgid "**Why do release jobs fail when devel jobs / my github actions / my local builds succeed?**"
-msgstr "**Why do release jobs fail when devel jobs / my github actions / my local builds succeed?**"
+msgstr "**为什么发布任务失败，而开发任务 / 我的 GitHub Actions / 我的本地构建成功？**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:110
 msgid "There are several potential reasons for this. First, release jobs build against a minimal ROS installation to check if all dependencies are properly declared in the `package manifest`_. Devel jobs / github actions / local builds may be performed in an environment that has the dependencies already installed, therefore does not notice dependency issues. Second, they might build different versions of the source code. While devel jobs / github actions / local builds usually build the latest version from the *upstream* [2]_ repository, `release jobs`_ build the source code of the latest release, i.e. the source code in the respective *upstream* branches of the *release* repository [3]_."
-msgstr "There are several potential reasons for this. First, release jobs build against a minimal ROS installation to check if all dependencies are properly declared in the `package manifest`_. Devel jobs / github actions / local builds may be performed in an environment that has the dependencies already installed, therefore does not notice dependency issues. Second, they might build different versions of the source code. While devel jobs / github actions / local builds usually build the latest version from the *upstream* [2]_ repository, `release jobs`_ build the source code of the latest release, i.e. the source code in the respective *upstream* branches of the *release* repository [3]_."
+msgstr "这可能有几个潜在原因。首先，发布任务使用最小的 ROS 安装进行构建，以检查所有依赖项是否在 `package manifest`_ 中正确声明。开发任务 / GitHub Actions / 本地构建可能在已安装了依赖项的环境中执行，因此不会注意到依赖关系问题。其次，它们可能构建不同版本的源代码。而开发任务 / GitHub Actions / 本地构建通常构建来自 *upstream* [2]_ 存储库的最新版本，`release jobs`_ 则构建最新发布的源代码，即在 *release* 存储库 [3]_ 的相应 *upstream* 分支中的源代码。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Build-Farms.rst:121
