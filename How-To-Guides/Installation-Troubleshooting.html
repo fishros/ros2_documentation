@@ -495,35 +495,35 @@ $ sudo install_name_tool -change /usr/local/lib/libjpeg.8.dylib /usr/local/opt/j
 </div>
 <div class="section" id="xcode-select-error-tool-xcodebuild-requires-xcode-but-active-developer-directory-is-a-command-line-instance">
 <h3>Xcode-select错误：工具``xcodebuild``需要Xcode，但活动开发人员目录是一个命令行实例<a class="headerlink" href="#xcode-select-error-tool-xcodebuild-requires-xcode-but-active-developer-directory-is-a-command-line-instance" title="永久链接至标题"></a></h3>
-<p>If you recently installed Xcode, you may encounter this error:</p>
+<p>如果您最近安装了Xcode，可能会遇到此错误：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Xcode: xcode-select: error: tool <span class="s1">&#39;xcodebuild&#39;</span> requires Xcode,
 but active developer directory <span class="s1">&#39;/Library/Developer/CommandLineTools&#39;</span> is a <span class="nb">command</span> line tools instance
 </pre></div>
 </div>
-<p>To resolve this error, you will need to:</p>
+<p>要解决此错误，您需要执行以下操作：</p>
 <ol class="arabic simple">
-<li><p>Double check that you have the command line tool installed:</p></li>
+<li><p>请仔细检查是否安装了命令行工具：</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ xcode-select --install
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Accept the terms and conditions of Xcode by typing in terminal:</p></li>
+<li><p>在终端中输入以下命令接受Xcode的条款和条件：</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo xcodebuild -license accept
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Ensure Xcode app is in the <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> directory (NOT <code class="docutils literal notranslate"><span class="pre">/Users/{user}/Applications</span></code>)</p></li>
-<li><p>Point <code class="docutils literal notranslate"><span class="pre">xcode-select</span></code> to the Xcode app Developer directory using the following command:</p></li>
+<li><p>确保 Xcode 应用程序位于 <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> 目录下（而不是 <code class="docutils literal notranslate"><span class="pre">/Users/{user}/Applications</span></code>）</p></li>
+<li><p>使用以下命令将 <code class="docutils literal notranslate"><span class="pre">xcode-select</span></code> 指向 Xcode 应用程序的开发者目录：</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 </pre></div>
 </div>
 </div>
 <div class="section" id="qt-gui-cpp-error-sip-binding-generator-not-available">
-<h3>qt_gui_cpp error: SIP binding generator NOT available<a class="headerlink" href="#qt-gui-cpp-error-sip-binding-generator-not-available" title="永久链接至标题"></a></h3>
-<p>When building qt_gui_cpp there may be errors look like the following:</p>
+<h3>qt_gui_cpp 错误：SIP 绑定生成器不可用<a class="headerlink" href="#qt-gui-cpp-error-sip-binding-generator-not-available" title="永久链接至标题"></a></h3>
+<p>构建 qt_gui_cpp 时可能会出现以下类似的错误：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--- stderr: qt_gui_cpp
 
 CMake Error at src/CMakeLists.txt:10 <span class="o">(</span>message<span class="o">)</span>:
