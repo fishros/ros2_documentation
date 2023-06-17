@@ -6194,62 +6194,62 @@ msgstr "假设您已经构建了只安装了 Fast DDS 的 ROS 2 工作空间，�
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:73
 msgid "It is possible to run into a problem when \"rebuilding\" the workspace with an additional RMW implementation using the ``--cmake-clean-cache`` option where the build complains about the default RMW implementation changing. To resolve this, you can either set the default implementation to what is was before with the ``RMW_IMPLEMENTATION`` CMake argument or you can delete the build folder for packages that complain and continue the build with ``--packages-start <package name>``."
-msgstr "It is possible to run into a problem when \"rebuilding\" the workspace with an additional RMW implementation using the ``--cmake-clean-cache`` option where the build complains about the default RMW implementation changing. To resolve this, you can either set the default implementation to what is was before with the ``RMW_IMPLEMENTATION`` CMake argument or you can delete the build folder for packages that complain and continue the build with ``--packages-start <package name>``."
+msgstr "使用``--cmake-clean-cache``选项在添加额外的RMW实现时，重新构建工作空间可能会遇到问题，构建时会报告默认的RMW实现发生了变化。要解决这个问题，您可以通过``RMW_IMPLEMENTATION`` CMake参数将默认实现设置为之前的值，或者可以删除报错的包的构建文件夹，并使用``--packages-start <package name>``继续构建。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:77
 msgid "Troubleshooting"
-msgstr "Troubleshooting"
+msgstr "故障排除"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:80
 msgid "Checking the Current RMW"
-msgstr "Checking the Current RMW"
+msgstr "检查当前的RMW"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:82
 msgid "To check the RMW that is currently in use you simply check the ``RMW_IMPLEMENTATION`` environment variable. On Linux systems ``printenv`` prints the full list of environment variables. Other operating systems will have other procedures for viewing environment variables. If ``RMW_IMPLEMENTATION`` is not in the environment it is safe to assume you are using the default for your ROS distro, otherwise the current RMW is the value listed. The default RMW for each ROS Distro can be found in `REP-2000 <https://www.ros.org/reps/rep-2000.html#platforms-by-distribution>`_."
-msgstr "To check the RMW that is currently in use you simply check the ``RMW_IMPLEMENTATION`` environment variable. On Linux systems ``printenv`` prints the full list of environment variables. Other operating systems will have other procedures for viewing environment variables. If ``RMW_IMPLEMENTATION`` is not in the environment it is safe to assume you are using the default for your ROS distro, otherwise the current RMW is the value listed. The default RMW for each ROS Distro can be found in `REP-2000 <https://www.ros.org/reps/rep-2000.html#platforms-by-distribution>`_."
+msgstr "要检查当前使用的RMW，只需检查``RMW_IMPLEMENTATION``环境变量。在Linux系统上，``printenv``打印出完整的环境变量列表。其他操作系统将有其他查看环境变量的方法。如果环境中不存在``RMW_IMPLEMENTATION``，则可以安全地假设您正在使用ROS发行版的默认值，否则当前的RMW是所列值。每个ROS发行版的默认RMW可以在`REP-2000 <https://www.ros.org/reps/rep-2000.html#platforms-by-distribution>`_中找到。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:88
 msgid "Ensuring use of a particular RMW implementation"
-msgstr "Ensuring use of a particular RMW implementation"
+msgstr "确保使用特定的RMW实现"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:90
 msgid "If the ``RMW_IMPLEMENTATION`` environment variable is set to an RMW implementation for which support is not installed, you will see an error message similar to the following if you have only one implementation installed:"
-msgstr "If the ``RMW_IMPLEMENTATION`` environment variable is set to an RMW implementation for which support is not installed, you will see an error message similar to the following if you have only one implementation installed:"
+msgstr "如果``RMW_IMPLEMENTATION``环境变量设置为未安装支持的RMW实现，且你只安装了一个实现，则会看到类似以下错误消息："
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:96
 msgid "If you have support for multiple RMW implementations installed and you request use of one that is not installed, you will see something similar to:"
-msgstr "If you have support for multiple RMW implementations installed and you request use of one that is not installed, you will see something similar to:"
+msgstr "如果你安装了多个RMW实现并请求使用未安装的实现，则会看到类似的消息："
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:102
 msgid "If this occurs, double check that your ROS 2 installation includes support for the RMW implementation that you have specified in the ``RMW_IMPLEMENTATION`` environment variable."
-msgstr "If this occurs, double check that your ROS 2 installation includes support for the RMW implementation that you have specified in the ``RMW_IMPLEMENTATION`` environment variable."
+msgstr "如果出现这种情况，请仔细检查你的ROS 2安装是否包含你在``RMW_IMPLEMENTATION``环境变量中指定的RMW实现的支持。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:104
 msgid "If you want to switch between RMW implementations, verify that the ROS 2 daemon process is not running with the previous RMW implementation to avoid any issues between nodes and command line tools such as ``ros2 node``. For example, if you run:"
-msgstr "If you want to switch between RMW implementations, verify that the ROS 2 daemon process is not running with the previous RMW implementation to avoid any issues between nodes and command line tools such as ``ros2 node``. For example, if you run:"
+msgstr "如果您想在不同的RMW实现之间切换，请验证ROS 2守护进程未使用先前的RMW实现运行，以避免节点和命令行工具（如``ros2 node``）之间出现任何问题。例如，如果您运行以下命令："
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:111
 msgid "and"
-msgstr "and"
+msgstr "并且"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:117
 msgid "it will generate a daemon with a Fast DDS implementation:"
-msgstr "it will generate a daemon with a Fast DDS implementation:"
+msgstr "将生成一个使用Fast DDS实现的守护进程："
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:123
 msgid "Even if you run the command line tool again with the correct RMW implementation, the daemon's RMW implementation will not change and the ROS 2 command line tools will fail."
-msgstr "Even if you run the command line tool again with the correct RMW implementation, the daemon's RMW implementation will not change and the ROS 2 command line tools will fail."
+msgstr "即使您再次使用正确的RMW实现运行命令行工具，守护进程的RMW实现也不会更改，从而导致ROS 2命令行工具失败。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:125
