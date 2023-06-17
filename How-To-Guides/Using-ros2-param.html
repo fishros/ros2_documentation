@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the ros2 param command-line tool &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>使用``ros2 param``命令行工具 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -270,7 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">主题 vs 服务 vs 动作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">使用变体</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用``ros2 param``命令行工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</li>
+      <li>使用``ros2 param``命令行工具</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Using-ros2-param.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,7 +372,7 @@
 
 
   <div class="section" id="using-the-ros2-param-command-line-tool">
-<h1>Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool<a class="headerlink" href="#using-the-ros2-param-command-line-tool" title="永久链接至标题"></a></h1>
+<h1>使用``ros2 param``命令行工具<a class="headerlink" href="#using-the-ros2-param-command-line-tool" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
@@ -385,24 +385,23 @@
 <li><p><a class="reference internal" href="#ros2-param-load" id="id7"><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">load</span></code></a></p></li>
 </ul>
 </div>
-<p>Parameters in ROS 2 can be get, set, listed, and described through a set of services as described in <a class="reference internal" href="../Concepts/About-ROS-2-Parameters.html"><span class="doc">the concept document</span></a>.
-The <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool is a wrapper around these service calls that makes it easy to manipulate parameters from the command-line.</p>
+<p>在ROS 2中，可以通过一组服务来获取、设置、列出和描述参数，如:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>概念文档 &lt;../Concepts/About-ROS-2-Parameters&gt;`中所述。<a href="#id3"><span class="problematic" id="id4">``</span></a>ros2 param``命令行工具是对这些服务调用的封装，可方便地从命令行操作参数。</p>
 <div class="section" id="ros2-param-list">
 <h2><a class="toc-backref" href="#id1"><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">list</span></code></a><a class="headerlink" href="#ros2-param-list" title="永久链接至标题"></a></h2>
-<p>This command will list all of the available parameters on a given node, or on all discoverable nodes if no node is given.</p>
-<p>To get all of the parameters on a given node:</p>
+<p>此命令将列出给定节点上的所有可用参数，如果未指定节点，则列出所有可发现的节点的参数。</p>
+<p>要获取给定节点上的所有参数：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param list /my_node</span>
 </pre></div>
 </div>
-<p>To get all of the parameters on all nodes in the system (this can take a long time on a complicated network):</p>
+<p>要获取系统中所有节点的所有参数（在复杂网络上可能需要很长时间）：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param list</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ros2-param-get">
 <h2><a class="toc-backref" href="#id2"><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">get</span></code></a><a class="headerlink" href="#ros2-param-get" title="永久链接至标题"></a></h2>
-<p>This command will get the value of a particular parameter on a particular node.</p>
-<p>To get the value of a parameter on a node:</p>
+<p>该命令将获取特定节点上特定参数的值。</p>
+<p>要获取节点上参数的值：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param get /my_node use_sim_time</span>
 </pre></div>
 </div>
