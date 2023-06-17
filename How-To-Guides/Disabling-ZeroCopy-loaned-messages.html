@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Disabling Zero Copy Loaned Messages &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>禁用零拷贝借用消息 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -273,7 +273,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">Using variants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Disabling Zero Copy Loaned Messages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">禁用零拷贝借用消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">ROS 2 on Raspberry Pi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-callback-groups.html">Using Callback Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed]</a></li>
@@ -360,7 +360,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Disabling Zero Copy Loaned Messages</li>
+      <li>禁用零拷贝借用消息</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Disabling-ZeroCopy-loaned-messages.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,31 +373,29 @@
 
 
   <div class="section" id="disabling-zero-copy-loaned-messages">
-<span id="zerocopyloanedmessages"></span><h1>Disabling Zero Copy Loaned Messages<a class="headerlink" href="#disabling-zero-copy-loaned-messages" title="永久链接至标题"></a></h1>
+<span id="zerocopyloanedmessages"></span><h1>禁用零拷贝借用消息<a class="headerlink" href="#disabling-zero-copy-loaned-messages" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="contents">
-<p class="topic-title">Contents</p>
+<p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#how-to-disable-loaned-messages" id="id1">How to disable Loaned Messages</a></p></li>
+<li><p><a class="reference internal" href="#how-to-disable-loaned-messages" id="id1">如何禁用借用消息</a></p></li>
 </ul>
 </div>
-<p>See the <a class="reference external" href="https://design.ros2.org/articles/zero_copy.html">Loaned Messages</a> article for details on how loaned messages work.</p>
+<p>有关借用消息工作原理的详细信息，请参阅`借用消息&lt;<a class="reference external" href="https://design.ros2.org/articles/zero_copy.html">https://design.ros2.org/articles/zero_copy.html</a>&gt;`__文章。</p>
 <div class="section" id="how-to-disable-loaned-messages">
-<h2><a class="toc-backref" href="#id1">How to disable Loaned Messages</a><a class="headerlink" href="#how-to-disable-loaned-messages" title="永久链接至标题"></a></h2>
-<p>By default, <em>Loaned Messages</em> will try to borrow the memory from underlying middleware if it supports <em>Loaned Messages</em>.
-The <code class="docutils literal notranslate"><span class="pre">ROS_DISABLE_LOANED_MESSAGES</span></code> environment variable can be used to disable <em>Loaned Messages</em>, and fallback to normal publisher and subscription behavior, without any code changes or middleware configuration.
-You can set the environment variable with the following command:</p>
+<h2><a class="toc-backref" href="#id1">如何禁用借用消息</a><a class="headerlink" href="#how-to-disable-loaned-messages" title="永久链接至标题"></a></h2>
+<p>默认情况下，<em>借用消息</em> 将尝试从底层中间件借用内存，如果它支持*借用消息*。可以使用 <code class="docutils literal notranslate"><span class="pre">ROS_DISABLE_LOANED_MESSAGES</span></code> 环境变量来禁用*借用消息*，并回退到正常的发布者和订阅者行为，无需进行任何代码更改或中间件配置。您可以使用以下命令设置环境变量：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export ROS_DISABLE_LOANED_MESSAGES=1</span>
 </pre></div>
 </div>
-<p>To maintain this setting between shell sessions, you can add the command to your shell startup script:</p>
+<p>要在不同的 shell 会话之间保持此设置，您可以将该命令添加到您的 shell 启动脚本中：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &quot;export ROS_DISABLE_LOANED_MESSAGES=1&quot; &gt;&gt; ~/.bashrc</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export ROS_DISABLE_LOANED_MESSAGES=1</span>
 </pre></div>
 </div>
-<p>To maintain this setting between shell sessions, you can add the command to your shell startup script:</p>
+<p>要在不同的 shell 会话之间保持此设置，您可以将该命令添加到您的 shell 启动脚本中：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &quot;export ROS_DISABLE_LOANED_MESSAGES=1&quot; &gt;&gt; ~/.bash_profile</span>
 </pre></div>
 </div>
