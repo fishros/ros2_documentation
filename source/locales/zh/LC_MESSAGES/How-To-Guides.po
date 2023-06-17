@@ -1622,42 +1622,42 @@ msgstr "Cyclone DDS调优"
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:102
 msgid "**Issue:** Cyclone DDS is not delivering large messages reliably, despite using reliable settings and transferring over a wired network."
-msgstr "**Issue:** Cyclone DDS is not delivering large messages reliably, despite using reliable settings and transferring over a wired network."
+msgstr "**问题：**尽管使用可靠的设置并通过有线网络传输，Cyclone DDS无法可靠地传递大消息。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:104
 msgid "This issue should be `addressed soon <https://github.com/eclipse-cyclonedds/cyclonedds/issues/484>`_. Until then, we’ve come up with the following solution (debugged using `this test program <https://github.com/jacobperron/pc_pipe>`_):"
-msgstr "This issue should be `addressed soon <https://github.com/eclipse-cyclonedds/cyclonedds/issues/484>`_. Until then, we’ve come up with the following solution (debugged using `this test program <https://github.com/jacobperron/pc_pipe>`_):"
+msgstr "这个问题应该会很快得到解决。在那之前，我们提出了以下解决方案（使用`此测试程序 <https://github.com/jacobperron/pc_pipe>`_ 进行了调试）："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:107
 msgid "**Solution:** Increase the maximum Linux kernel receive buffer size and the minimum socket receive buffer size that Cyclone uses."
-msgstr "**Solution:** Increase the maximum Linux kernel receive buffer size and the minimum socket receive buffer size that Cyclone uses."
+msgstr "**解决方案：**增加Cyclone使用的Linux内核最大接收缓冲区大小和最小套接字接收缓冲区大小。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:109
 msgid "*Adjustments to solve for a 9MB message:*"
-msgstr "*Adjustments to solve for a 9MB message:*"
+msgstr "*调整以解决9MB消息的问题：*"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:111 ../../source/How-To-Guides/DDS-tuning.rst:150
 msgid "Set the maximum receive buffer size, ``rmem_max``, by running:"
-msgstr "Set the maximum receive buffer size, ``rmem_max``, by running:"
+msgstr "通过运行以下命令来设置最大接收缓冲区大小 `rmem_max`："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:117
 msgid "Or permanently set it by editing the ``/etc/sysctl.d/10-cyclone-max.conf`` file to contain:"
-msgstr "Or permanently set it by editing the ``/etc/sysctl.d/10-cyclone-max.conf`` file to contain:"
+msgstr "或者通过编辑 `/etc/sysctl.d/10-cyclone-max.conf` 文件并包含以下内容来永久设置："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:123
 msgid "Next, to set the minimum socket receive buffer size that Cyclone requests, write out a configuration file for Cyclone to use while starting, like so:"
-msgstr "Next, to set the minimum socket receive buffer size that Cyclone requests, write out a configuration file for Cyclone to use while starting, like so:"
+msgstr "然后，为了设置 Cyclone 请求的最小套接字接收缓冲区大小，请创建一个用于 Cyclone 启动时使用的配置文件，如下所示："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:137
 msgid "Then, whenever you are going to run a node, set the following environment variable:"
-msgstr "Then, whenever you are going to run a node, set the following environment variable:"
+msgstr "然后，每当您要运行一个节点时，请设置以下环境变量："
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:144
