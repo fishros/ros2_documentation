@@ -543,28 +543,26 @@
 <li><p>在ROS 1中可用，所包含的内容是有作用域的。在ROS 2中，它没有作用域。使用``group``标签来嵌套包含文件以进行作用域控制。</p></li>
 <li><p>不支持``ns``属性。参考``push_ros_namespace``标签的示例以获取解决方法。</p></li>
 <li><p>嵌套在``include``标签中的``arg``标签不支持条件语句（<code class="docutils literal notranslate"><span class="pre">if``或``unless</span></code>）。</p></li>
-<li><p>There is no support for nested <code class="docutils literal notranslate"><span class="pre">env</span></code> tags.
-<code class="docutils literal notranslate"><span class="pre">set_env</span></code> and <code class="docutils literal notranslate"><span class="pre">unset_env</span></code> can be used instead.</p></li>
-<li><p>Both <code class="docutils literal notranslate"><span class="pre">clear_params</span></code> and <code class="docutils literal notranslate"><span class="pre">pass_all_args</span></code> attributes aren't supported.</p></li>
+<li><p>不支持嵌套``env``标签。可以使用``set_env``和``unset_env``代替。</p></li>
+<li><p>不支持``clear_params``和``pass_all_args``属性。</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="section" id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="永久链接至标题"></a></h4>
-<p>See <a class="reference internal" href="#replacing-an-include-tag">Replacing an include tag</a>.</p>
+<h4>示例<a class="headerlink" href="#examples" title="永久链接至标题"></a></h4>
+<p>请参阅`替换 include 标签`_。</p>
 </div>
 </div>
 <div class="section" id="arg">
 <h3>arg<a class="headerlink" href="#arg" title="永久链接至标题"></a></h3>
 <ul>
-<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/arg">Available in ROS 1</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> is used for declaring a launch argument, or to pass an argument when using <code class="docutils literal notranslate"><span class="pre">include</span></code> tags.</p></li>
+<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/arg">在ROS 1中可用</a>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> 用于声明一个启动参数，或者在使用 <code class="docutils literal notranslate"><span class="pre">include</span></code> 标签时传递参数。</p></li>
 <li><p>与ROS 1的不同之处：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> attribute is not allowed.
-Use <code class="docutils literal notranslate"><span class="pre">let</span></code> tag for this.</p></li>
+<li><p>不允许使用 <code class="docutils literal notranslate"><span class="pre">value</span></code> 属性。请使用 <code class="docutils literal notranslate"><span class="pre">let</span></code> 标签代替。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code> is now <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></li>
 <li><p>When nested within an <code class="docutils literal notranslate"><span class="pre">include</span></code> tag, <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">unless</span></code> attributes aren't allowed.</p></li>
 </ul>
