@@ -627,14 +627,14 @@
 </li>
 <li><p>当函数调用不能在一行内容纳时，在开放的括号处换行（不在参数之间），并在下一行以2个空格缩进开始。对于更多的参数，继续使用2个空格缩进的格式进行下一行。注意，这一点在 <a class="reference external" href="https://google.github.io/styleguide/cppguide.html#Function_Calls">Google 风格指南</a> 上有内部矛盾。</p>
 <ul>
-<li><p>Same goes for <code class="docutils literal notranslate"><span class="pre">if</span></code> (and <code class="docutils literal notranslate"><span class="pre">while</span></code>, etc.) conditions that are too long to fit on one line.</p></li>
+<li><p>对于太长无法放在一行的``if``（以及``while``等）条件同样适用。</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="examples">
 <h4>示例<a class="headerlink" href="#examples" title="永久链接至标题"></a></h4>
-<p>This is OK:</p>
+<p>这是可以的：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -670,7 +670,7 @@
 <span class="w">  </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">bat</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This is <strong>not</strong> OK:</p>
+<p>这是**不**可以的：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -682,8 +682,8 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Use open braces rather than excessive indention, e.g. for distinguishing constructor code from constructor initializer lists</p>
-<p>This is OK:</p>
+<p>使用大括号而不是过多的缩进，例如用于区分构造函数中的代码和构造函数初始化列表</p>
+<p>这是可以的：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 2 space indent</span>
 <span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span><span class="w"></span>
@@ -703,7 +703,7 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This is <strong>not</strong> OK, even weird (the google way?):</p>
+<p>这是 <strong>不正确的</strong>，甚至很奇怪（Google 的方式？）：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 4 space indent</span>
 <span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span><span class="w"></span>
@@ -723,13 +723,13 @@
 </div>
 </div>
 <div class="section" id="linters">
-<h4>Linters<a class="headerlink" href="#linters" title="永久链接至标题"></a></h4>
-<p>We check these styles with a combination of Google's <a class="reference external" href="https://github.com/google/styleguide">cpplint.py</a> and <a class="reference external" href="https://github.com/uncrustify/uncrustify">uncrustify</a>.</p>
-<p>We provide command line tools with custom configurations:</p>
+<h4>代码检查工具<a class="headerlink" href="#linters" title="永久链接至标题"></a></h4>
+<p>我们使用 Google 的 <a class="reference external" href="https://github.com/google/styleguide">cpplint.py</a> 和 <a class="reference external" href="https://github.com/uncrustify/uncrustify">uncrustify</a> 的组合来检查这些风格。</p>
+<p>我们提供带有自定义配置的命令行工具：</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_clang_format/doc/index.rst">ament_clang_format</a>: <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_clang_format/ament_clang_format/configuration/.clang-format">configuration</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_clang_format/doc/index.rst">ament_clang_format</a>：<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_clang_format/ament_clang_format/configuration/.clang-format">configuration</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_cpplint/doc/index.rst">ament_cpplint</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_uncrustify/doc/index.rst">ament_uncrustify</a>: <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_uncrustify/ament_uncrustify/configuration/ament_code_style.cfg">configuration</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_uncrustify/doc/index.rst">ament_uncrustify</a>：<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_uncrustify/ament_uncrustify/configuration/ament_code_style.cfg">configuration</a></p></li>
 </ul>
 <p>Some formatters such as ament_uncrustify and ament_clang_format support <code class="docutils literal notranslate"><span class="pre">--reformat</span></code> options to apply changes in place.</p>
 <p>We also run other tools to detect and eliminate as many warnings as possible.
