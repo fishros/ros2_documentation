@@ -5422,42 +5422,42 @@ msgstr "动作服务器和客户端中的不同回调，"
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:86
 msgid "done-callbacks of Futures."
-msgstr "done-callbacks of Futures."
+msgstr "Futures的完成回调。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:88
 msgid "Below are a couple important points about callbacks that should be kept in mind when working with callback groups."
-msgstr "Below are a couple important points about callbacks that should be kept in mind when working with callback groups."
+msgstr "以下是在使用回调组时需要记住的一些重要要点。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:91
 msgid "Almost everything in ROS 2 is a callback! Every function that is run by an executor is, by definition, a callback. The non-callback functions in a ROS 2 system are found mainly at the edge of the system (user and sensor inputs etc)."
-msgstr "Almost everything in ROS 2 is a callback! Every function that is run by an executor is, by definition, a callback. The non-callback functions in a ROS 2 system are found mainly at the edge of the system (user and sensor inputs etc)."
+msgstr "在ROS 2中，几乎所有的东西都是回调！每个由执行器运行的函数都是回调的定义。在ROS 2系统中，非回调函数主要位于系统的边缘（用户和传感器输入等）。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:95
 msgid "Sometimes the callbacks are hidden and their presence may not be obvious from the user/developer API. This is the case especially with any kind of “synchronous” call to a service or an action (in rclpy). For example, the synchronous call ``Client.call(request)`` to a service adds a Future's done-callback that needs to be executed during the execution of the function call, but this callback is not directly visible to the user."
-msgstr "Sometimes the callbacks are hidden and their presence may not be obvious from the user/developer API. This is the case especially with any kind of “synchronous” call to a service or an action (in rclpy). For example, the synchronous call ``Client.call(request)`` to a service adds a Future's done-callback that needs to be executed during the execution of the function call, but this callback is not directly visible to the user."
+msgstr "有时，回调是隐藏的，从用户/开发者API来看可能并不明显。这尤其适用于对服务或操作进行任何类型的“同步”调用（在rclpy中）。例如，对服务进行同步调用``Client.call(request)``会添加一个Future的完成回调，该回调需要在函数调用期间执行，但此回调对用户来说不直接可见。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:106
 msgid "Controlling execution"
-msgstr "Controlling execution"
+msgstr "控制执行"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:108
 msgid "In order to control execution with callback groups, one can consider the following guidelines."
-msgstr "In order to control execution with callback groups, one can consider the following guidelines."
+msgstr "为了使用回调组来控制执行，可以考虑以下准则。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:111
 msgid "For the interaction of an individual callback with itself:"
-msgstr "For the interaction of an individual callback with itself:"
+msgstr "对于一个回调函数与其自身的交互："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:113
 msgid "Register it to a Reentrant Callback Group if it should be executed in parallel to itself. An example case could be an action/service server that needs to be able to process several action calls in parallel to each other."
-msgstr "Register it to a Reentrant Callback Group if it should be executed in parallel to itself. An example case could be an action/service server that needs to be able to process several action calls in parallel to each other."
+msgstr "如果希望它能够与自身并行执行，将其注册到一个可重入回调组中。例如，一个需要能够并行处理多个动作调用的动作/服务服务器。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:117
