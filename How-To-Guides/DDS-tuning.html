@@ -392,14 +392,12 @@
 </div>
 <p>减小此参数的值也会减少未接收到片段的时间窗口。该参数对所有传入的片段是全局的，因此需要考虑在每个环境中减小其值的可行性。</p>
 <p><strong>解决方案:</strong> 增加``ipfrag_high_thresh``参数的值。</p>
-<p><code class="docutils literal notranslate"><span class="pre">net.ipv4.ipfrag_high_thresh</span> <span class="pre">/</span> <span class="pre">/proc/sys/net/ipv4/ipfrag_high_thresh</span></code> (default: 262144 bytes):
-Maximum memory used to reassemble IP fragments.</p>
-<p>Increase the value, for example, to 128MB, by running:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>net.ipv4.ipfrag_high_thresh / /proc/sys/net/ipv4/ipfrag_high_thresh``（默认值：262144字节）：用于重新组装IP片段的最大内存使用量。</p>
+<p>通过运行以下命令，将值增加到128MB：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo sysctl net.ipv4.ipfrag_high_thresh=134217728     # (128 MB)</span>
 </pre></div>
 </div>
-<p>Significantly increasing this parameter’s value is an attempt to ensure that the buffer never becomes completely full.
-However, the value would likely have to be significantly high to hold all data received during the time window of <code class="docutils literal notranslate"><span class="pre">ipfrag_time</span></code>, assuming every UDP packet lacks one fragment.</p>
+<p>显著增加此参数的值是为了确保缓冲区永远不会完全填满。然而，假设每个UDP数据包都缺少一个片段，在``ipfrag_time``时间窗口内接收到的所有数据可能需要相当高的值来保存。</p>
 <p><strong>Issue:</strong> Sending custom messages with large variable-sized arrays of non-primitive types causes high serialization/deserialization overhead and CPU load.
 This can lead to stalling of the publisher due to excessive time spent in <code class="docutils literal notranslate"><span class="pre">publish()</span></code> and tools like <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">hz</span></code> under reporting the actual frequency of messages being received.
 Note that for example <code class="docutils literal notranslate"><span class="pre">builtin_interfaces/Time</span></code> is also considered a non-primitive type and will incur higher serialization overhead.
