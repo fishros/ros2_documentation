@@ -385,7 +385,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#merging-pull-requests" id="id5">合并拉取请求</a></p></li>
-<li><p><a class="reference internal" href="#keeping-ci-green" id="id6">Keeping CI green</a></p></li>
+<li><p><a class="reference internal" href="#keeping-ci-green" id="id6">保持 CI 绿色</a></p></li>
 <li><p><a class="reference internal" href="#making-releases" id="id7">Making releases</a></p>
 <ul>
 <li><p><a class="reference internal" href="#source-release" id="id8">Source release</a></p></li>
@@ -440,26 +440,23 @@
 <h2><a class="toc-backref" href="#id5">合并拉取请求</a><a class="headerlink" href="#merging-pull-requests" title="永久链接至标题"></a></h2>
 <p>只有满足以下所有条件时，才可以合并拉取请求：</p>
 <ul class="simple">
-<li><p>The DCO bot reports a passing result</p></li>
-<li><p>The PR build reports a passing result</p></li>
-<li><p>The CI build reports a passing result on all platforms</p></li>
-<li><p>The code has been reviewed and approved by at least one maintainer</p></li>
+<li><p>DCO 机器人报告通过的结果</p></li>
+<li><p>PR 构建报告通过的结果</p></li>
+<li><p>CI 构建在所有平台上报告通过的结果</p></li>
+<li><p>代码已被至少一名维护者审查并批准</p></li>
 </ul>
-<p>After a PR is merged, it will automatically get built with the next <a class="reference external" href="https://ci.ros2.org/view/nightly">nightlies</a>.
-It is highly recommended to check the nightlies after merging pull requests to ensure no regressions have occurred.</p>
+<p>合并了 PR 后，它将自动与下一个 <a class="reference external" href="https://ci.ros2.org/view/nightly">夜间构建版本</a> 一起构建。强烈建议在合并拉取请求后检查夜间构建版本，以确保没有发生回归。</p>
 </div>
 <div class="section" id="keeping-ci-green">
-<h2><a class="toc-backref" href="#id6">Keeping CI green</a><a class="headerlink" href="#keeping-ci-green" title="永久链接至标题"></a></h2>
-<p>The nightly jobs that run tests are typically much more comprehensive than what is done for individual pull requests.
-For this reason, there can be regressions that occur in the nightlies that were not seen in the CI jobs.
-It is a package maintainers responsibility to check for regressions in their packages at the following locations:</p>
+<h2><a class="toc-backref" href="#id6">保持 CI 绿色</a><a class="headerlink" href="#keeping-ci-green" title="永久链接至标题"></a></h2>
+<p>运行测试的夜间任务通常比为单个拉取请求执行的任务要全面得多。因此，在夜间构建版本中可能会发生在 CI 任务中未出现的回归。包维护者有责任在以下位置检查其包是否存在回归：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ci.ros2.org/view/nightly">https://ci.ros2.org/view/nightly</a></p></li>
 <li><p><a class="reference external" href="https://ci.ros2.org/view/packaging">https://ci.ros2.org/view/packaging</a></p></li>
 <li><p><a class="reference external" href="https://build.ros2.org/view/Rci">https://build.ros2.org/view/Rci</a></p></li>
 <li><p><a class="reference external" href="https://build.ros2.org/view/Rdev">https://build.ros2.org/view/Rdev</a></p></li>
 </ul>
-<p>For any problems that are found, new issues and/or pull requests on the relevant repositories should be opened.</p>
+<p>如发现任何问题，请在相关仓库上开启新的问题(issue)和/或拉取请求(pull requests)。</p>
 </div>
 <div class="section" id="making-releases">
 <h2><a class="toc-backref" href="#id7">Making releases</a><a class="headerlink" href="#making-releases" title="永久链接至标题"></a></h2>
