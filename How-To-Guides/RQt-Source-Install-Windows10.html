@@ -255,7 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Cross-compilation.html">交叉编译</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Releasing/Releasing-a-Package.html">Releasing a Package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Releasing/First-Time-Release.html">First Time Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Releasing/First-Time-Release.html">首次发布</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Releasing/Subsequent-Releases.html">Subsequent Releases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Releasing/Release-Team-Repository.html">Release Team / Repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Releasing/Release-Track.html">Release Track</a></li>
@@ -402,8 +402,7 @@ nmake install
 <div class="section" id="install-pyqt5-by-source">
 <h3>通过源码安装 PyQt5<a class="headerlink" href="#install-pyqt5-by-source" title="永久链接至标题"></a></h3>
 <p>从 <a class="reference external" href="https://www.riverbankcomputing.com/software/pyqt/download5">https://www.riverbankcomputing.com/software/pyqt/download5</a> 下载</p>
-<p>Run the x64 Native Tools Command Prompt as Administrator, and <code class="docutils literal notranslate"><span class="pre">cd</span></code> to the uncompressed source directory.
-I ran into trouble with Qt 5.11.3 and PyQt5 compiling QtNfc, but it can be easily disabled.</p>
+<p>以管理员身份运行 x64 本机工具命令提示符，并``cd``到未压缩的源目录。我在编译 QtNfc 时遇到了 Qt 5.11.3 和 PyQt5 的问题，但可以很容易地禁用它。</p>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>python3 configure.py --disable QtNfc
 nmake
 nmake install
@@ -411,24 +410,21 @@ nmake install
 </div>
 </div>
 <div class="section" id="test-that-it-works">
-<h3>Test that it works<a class="headerlink" href="#test-that-it-works" title="永久链接至标题"></a></h3>
-<p>If install occurred without failure, try the commands below.
-They should run without issue and you should see 4.19.13 as your <code class="docutils literal notranslate"><span class="pre">sip.exe</span></code> version.</p>
+<h3>测试它是否正常工作<a class="headerlink" href="#test-that-it-works" title="永久链接至标题"></a></h3>
+<p>如果安装没有出现错误，请尝试以下命令。它们应该能够正常运行，您应该看到您的``sip.exe``版本为 4.19.13。</p>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>sip -V
 python3 -c <span class="s2">&quot;from PyQt5 import QtCore&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="other-dependencies">
-<h3>Other dependencies<a class="headerlink" href="#other-dependencies" title="永久链接至标题"></a></h3>
-<p>Install GraphViz from <a class="reference external" href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html">https://graphviz.gitlab.io/_pages/Download/Download_windows.html</a>.</p>
-<p>Install <code class="docutils literal notranslate"><span class="pre">pydot</span></code> and <code class="docutils literal notranslate"><span class="pre">pyparsing</span></code>:</p>
+<h3>其他依赖项<a class="headerlink" href="#other-dependencies" title="永久链接至标题"></a></h3>
+<p>从 <a class="reference external" href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html">https://graphviz.gitlab.io/_pages/Download/Download_windows.html</a> 安装 GraphViz。</p>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">pydot</span></code> 和 <code class="docutils literal notranslate"><span class="pre">pyparsing</span></code>：</p>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>pip3 install pydot pyparsing
 </pre></div>
 </div>
-<p>PyGraphViz is a test dependency of <code class="docutils literal notranslate"><span class="pre">qt_dotgraph</span></code>, but it is currently unsupported on Windows and building by source is not straight forward.
-Manually merging this patch is the currently recommended solution (not verified):
-<a class="reference external" href="https://github.com/Kagami/pygraphviz/commit/fe442dc16accb629c3feaf157af75f67ccabbd6e">pygraphviz patch</a></p>
+<p>PyGraphViz 是 <code class="docutils literal notranslate"><span class="pre">qt_dotgraph</span></code> 的一个测试依赖项，但它目前不支持在 Windows 上构建，且通过源代码构建并不直接。手动合并此补丁是当前推荐的解决方案（未经验证）：<a class="reference external" href="https://github.com/Kagami/pygraphviz/commit/fe442dc16accb629c3feaf157af75f67ccabbd6e">pygraphviz 补丁</a></p>
 </div>
 </div>
 <div class="section" id="install-rqt-by-source">
