@@ -455,22 +455,20 @@
 </div>
 </div>
 <div class="section" id="rti-connext-tuning">
-<h2>RTI Connext tuning<a class="headerlink" href="#rti-connext-tuning" title="永久链接至标题"></a></h2>
-<p><strong>Issue:</strong> Connext is not delivering large messages reliably, despite using reliable settings and transferring over a wired network.</p>
-<p><strong>Solution:</strong> This <a class="reference external" href="https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml">Connext QoS profile</a>, along with increasing the <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code> parameter.</p>
+<h2>RTI Connext调优<a class="headerlink" href="#rti-connext-tuning" title="永久链接至标题"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>问题：<a href="#id3"><span class="problematic" id="id4">**</span></a>尽管使用可靠设置并通过有线网络传输，Connext无法可靠地传递大消息。</p>
+<p><strong>解决方案：</strong> 使用此 <a href="#id3"><span class="problematic" id="id4">`Connext QoS配置文件&lt;https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml&gt;`_</span></a> ，同时增加 <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code> 参数。</p>
 <p>通过运行以下命令来设置最大接收缓冲区大小 <code class="xref any docutils literal notranslate"><span class="pre">rmem_max</span></code>：</p>
 <blockquote>
 <div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo sysctl -w net.core.rmem_max=4194304</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>By tuning <code class="docutils literal notranslate"><span class="pre">net.core.rmem_max</span></code> to 4MB in the Linux kernel, the QoS profile can produce truly reliable behavior.</p>
-<p>This configuration has been proven to reliably deliver messages via SHMEM|UDPv4, and with just UDPv4 on a single machine.
-A multi-machine configuration was also tested with <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code> at 4MB and at 20MB (two machines connected with 1Gbps ethernet), with no dropped messages and average message delivery times of 700ms and 371ms, respectively.</p>
-<p>Without configuring the kernel’s <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code>, the same Connext QoS profile took up to 12 seconds for the data to be delivered.
-However, it always at least managed to complete the delivery.</p>
-<p><strong>Solution:</strong> Use the <a class="reference external" href="https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml">Connext QoS profile</a> <em>without</em> adjusting <code class="docutils literal notranslate"><span class="pre">rmem_max</span></code>.</p>
-<p>The ROS2TEST_QOS_PROFILES.xml file was configured using RTI’s documentation on <a class="reference external" href="https://community.rti.com/forum-topic/transfering-large-data-over-dds">configuring flow controllers</a>. It has slow, medium and fast flow controllers (seen in the Connext QoS profile link).</p>
+<p>通过将Linux内核中的 <code class="docutils literal notranslate"><span class="pre">net.core.rmem_max</span></code> 调整为4MB，QoS配置文件可以产生真正可靠的行为。</p>
+<p>这个配置经过验证，可靠地通过SHMEM|UDPv4传递消息，并且在单台机器上仅使用UDPv4。还进行了多机器配置的测试，<a href="#id1"><span class="problematic" id="id2">``</span></a>rmem_max``设置为4MB和20MB（两台机器通过1Gbps以太网连接），没有丢失消息，并且平均消息传递时间分别为700ms和371ms。</p>
+<p>在没有配置内核的``rmem_max``的情况下，相同的Connext QoS配置需要长达12秒才能传递数据。然而，它至少始终成功完成传递。</p>
+<p><strong>解决方案：</strong> 使用`Connext QoS配置文件&lt;<a class="reference external" href="https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml">https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml</a>&gt;`_，<a href="#id1"><span class="problematic" id="id2">*</span></a>不*调整``rmem_max``。</p>
+<p>ROS2TEST_QOS_PROFILES.xml文件是使用RTI的文档`配置流控制器&lt;<a class="reference external" href="https://community.rti.com/forum-topic/transfering-large-data-over-dds">https://community.rti.com/forum-topic/transfering-large-data-over-dds</a>&gt;`_进行配置的。它包含了慢速、中速和快速的流控制器（在Connext QoS配置文件链接中可见）。</p>
 <p>The medium flow controller produced the best results for our case.
 However, the controllers will still need to be tuned for the particular machine/network/environment they are operating in.
 The Connext flow controllers can be used to tune bandwidth and its aggressiveness for sending out data, though once the bandwidth of a particular setup is passed, performance will start to drop.</p>
