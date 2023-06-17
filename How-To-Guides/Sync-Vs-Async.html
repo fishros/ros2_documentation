@@ -379,8 +379,8 @@
 <p class="topic-title">内容</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#introduction" id="id1">介绍</a></p></li>
-<li><p><a class="reference internal" href="#synchronous-calls" id="id2">1 Synchronous calls</a></p></li>
-<li><p><a class="reference internal" href="#sync-deadlock" id="id3">1.1 Sync deadlock</a></p></li>
+<li><p><a class="reference internal" href="#synchronous-calls" id="id2">1 同步调用</a></p></li>
+<li><p><a class="reference internal" href="#sync-deadlock" id="id3">1.1 同步死锁</a></p></li>
 <li><p><a class="reference internal" href="#asynchronous-calls" id="id4">2 Asynchronous calls</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id5">Summary</a></p></li>
 </ul>
@@ -389,16 +389,13 @@
 <h2><a class="toc-backref" href="#id1">介绍</a><a class="headerlink" href="#introduction" title="永久链接至标题"></a></h2>
 <p>本指南旨在提醒用户有关与Python同步服务客户端``call()`` API相关的风险。在调用服务时，很容易错误地导致死锁，因此我们不建议使用``call()``。</p>
 <p>对于希望使用同步调用并且了解其中陷阱的有经验的用户，我们提供了正确使用``call()``的示例。我们还强调了可能导致死锁的情景。</p>
-<p>Because we recommend avoiding sync calls, this guide will also address the features and usage of the recommended alternative, async calls (<code class="docutils literal notranslate"><span class="pre">call_async()</span></code>).</p>
-<p>The C++ service call API is only available in async, so the comparisons and examples in this guide pertain to Python services and clients.
-The definition of async given here generally applies to C++, with some exceptions.</p>
+<p>因为我们建议避免使用同步调用，所以本指南还将介绍推荐替代方案异步调用（<code class="docutils literal notranslate"><span class="pre">call_async()</span></code>）的功能和用法。</p>
+<p>C++服务调用API仅支持异步调用，因此本指南中的比较和示例适用于Python服务和客户端。此处给出的异步定义通常也适用于C++，但存在一些例外情况。</p>
 </div>
 <div class="section" id="synchronous-calls">
-<h2><a class="toc-backref" href="#id2">1 Synchronous calls</a><a class="headerlink" href="#synchronous-calls" title="永久链接至标题"></a></h2>
-<p>A synchronous client will block the calling thread when sending a request to a service until a response has been received; nothing else can happen on that thread during the call.
-The call can take arbitrary amounts of time to complete.
-Once complete, the response returns directly to the client.</p>
-<p>The following is an example of how to correctly execute a synchronous service call from a client node, similar to the async node in the <a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html"><span class="doc">Simple Service and Client</span></a> tutorial.</p>
+<h2><a class="toc-backref" href="#id2">1 同步调用</a><a class="headerlink" href="#synchronous-calls" title="永久链接至标题"></a></h2>
+<p>在发送请求到服务时，同步客户端会阻塞调用线程，直到接收到响应；在调用过程中该线程无法执行其他任务。调用的完成时间可以是任意长。一旦完成，响应直接返回给客户端。</p>
+<p>以下是一个正确执行同步服务调用的示例，类似于教程中的异步节点（<a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html"><span class="doc">简单服务和客户端</span></a>）。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
 
@@ -443,12 +440,11 @@ Once complete, the response returns directly to the client.</p>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Note inside <code class="docutils literal notranslate"><span class="pre">main()</span></code> that the client calls <code class="docutils literal notranslate"><span class="pre">rclpy.spin</span></code> in a separate thread.
-Both <code class="docutils literal notranslate"><span class="pre">send_request</span></code> and <code class="docutils literal notranslate"><span class="pre">rclpy.spin</span></code> are blocking, so they need to be on separate threads.</p>
+<p>请注意，在 <code class="docutils literal notranslate"><span class="pre">main()</span></code> 中，客户端在单独的线程中调用 <code class="docutils literal notranslate"><span class="pre">rclpy.spin</span></code>。<code class="docutils literal notranslate"><span class="pre">send_request</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rclpy.spin</span></code> 都是阻塞的，因此它们需要在不同的线程中执行。</p>
 </div>
 <div class="section" id="sync-deadlock">
-<h2><a class="toc-backref" href="#id3">1.1 Sync deadlock</a><a class="headerlink" href="#sync-deadlock" title="永久链接至标题"></a></h2>
-<p>There are several ways that the synchronous <code class="docutils literal notranslate"><span class="pre">call()</span></code> API can cause deadlock.</p>
+<h2><a class="toc-backref" href="#id3">1.1 同步死锁</a><a class="headerlink" href="#sync-deadlock" title="永久链接至标题"></a></h2>
+<p>同步的 <code class="docutils literal notranslate"><span class="pre">call()</span></code> API 可能会导致死锁的几种方式。</p>
 <p>As mentioned in the comments of the example above, failing to create a separate thread to spin <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> is one cause of deadlock.
 When a client is blocking a thread waiting for a response, but the response can only be returned on that same thread, the client will never stop waiting, and nothing else can happen.</p>
 <p>Another cause of deadlock is blocking <code class="docutils literal notranslate"><span class="pre">rclpy.spin</span></code> by calling a service synchronously in a subscription, timer callback or service callback.
