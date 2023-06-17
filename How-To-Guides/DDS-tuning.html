@@ -123,7 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries.html">Beginner: Client libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html">Using <code class="docutils literal notranslate"><span class="pre">colcon</span></code> to build packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">Creating a workspace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">Creating a package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (Python)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">Writing a simple service and client (C++)</a></li>
@@ -241,7 +241,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../How-To-Guides.html">如何指南</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Installation-Troubleshooting.html">Installation troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Developing-a-ROS-2-Package.html">Developing a ROS 2 package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Developing-a-ROS-2-Package.html">开发ROS 2软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
@@ -469,9 +469,7 @@
 <p>在没有配置内核的``rmem_max``的情况下，相同的Connext QoS配置需要长达12秒才能传递数据。然而，它至少始终成功完成传递。</p>
 <p><strong>解决方案：</strong> 使用`Connext QoS配置文件&lt;<a class="reference external" href="https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml">https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml</a>&gt;`_，<a href="#id1"><span class="problematic" id="id2">*</span></a>不*调整``rmem_max``。</p>
 <p>ROS2TEST_QOS_PROFILES.xml文件是使用RTI的文档`配置流控制器&lt;<a class="reference external" href="https://community.rti.com/forum-topic/transfering-large-data-over-dds">https://community.rti.com/forum-topic/transfering-large-data-over-dds</a>&gt;`_进行配置的。它包含了慢速、中速和快速的流控制器（在Connext QoS配置文件链接中可见）。</p>
-<p>The medium flow controller produced the best results for our case.
-However, the controllers will still need to be tuned for the particular machine/network/environment they are operating in.
-The Connext flow controllers can be used to tune bandwidth and its aggressiveness for sending out data, though once the bandwidth of a particular setup is passed, performance will start to drop.</p>
+<p>中等流量控制器在我们的案例中产生了最好的结果。然而，控制器仍然需要根据它们所操作的特定机器/网络/环境进行调整。Connext流量控制器可以用来调整带宽及其发送数据的攻击性，尽管一旦超过特定设置的带宽，性能就会开始下降。</p>
 </div>
 </div>
 
