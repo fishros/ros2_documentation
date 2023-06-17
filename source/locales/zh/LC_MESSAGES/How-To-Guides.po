@@ -5362,62 +5362,62 @@ msgstr "这些回调组以不同的方式限制其回调函数的执行。简而
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:27
 msgid "Mutually Exclusive Callback Group prevents its callbacks from being executed in parallel - essentially making it as if the callbacks in the group were executed by a SingleThreadedExecutor."
-msgstr "Mutually Exclusive Callback Group prevents its callbacks from being executed in parallel - essentially making it as if the callbacks in the group were executed by a SingleThreadedExecutor."
+msgstr "互斥回调组阻止其回调并行执行 - 实际上使得回调组中的回调像由单线程执行器执行一样。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:30
 msgid "Reentrant Callback Group allows the executor to schedule and execute the group's callbacks in any way it sees fit, without restrictions. This means that, in addition to different callbacks being run parallel to each other, different instances of the same callback may also be executed concurrently."
-msgstr "Reentrant Callback Group allows the executor to schedule and execute the group's callbacks in any way it sees fit, without restrictions. This means that, in addition to different callbacks being run parallel to each other, different instances of the same callback may also be executed concurrently."
+msgstr "可重入回调组允许执行器按照任意方式调度和执行组中的回调，没有任何限制。这意味着，除了不同的回调之间可以并行运行外，同一个回调的不同实例也可以同时执行。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:35
 msgid "Callbacks belonging to different callback groups (of any type) can always be executed parallel to each other."
-msgstr "Callbacks belonging to different callback groups (of any type) can always be executed parallel to each other."
+msgstr "属于不同回调组（任何类型）的回调始终可以并行执行。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:38
 msgid "It is also important to keep in mind that different ROS 2 entities relay their callback group to all callbacks they spawn. For example, if one assigns a callback group to an action client, all callbacks created by the client will be assigned to that callback group."
-msgstr "It is also important to keep in mind that different ROS 2 entities relay their callback group to all callbacks they spawn. For example, if one assigns a callback group to an action client, all callbacks created by the client will be assigned to that callback group."
+msgstr "还要注意的是，不同的ROS 2实体将其回调组传递给它们生成的所有回调。例如，如果将回调组分配给一个动作客户端，客户端创建的所有回调都将分配给该回调组。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:43
 msgid "Callback groups can be created by a node's ``create_callback_group`` function in rclcpp and by calling the constructor of the group in rclpy. The callback group can then be passed as argument/option when creating a subscription, timer, etc."
-msgstr "Callback groups can be created by a node's ``create_callback_group`` function in rclcpp and by calling the constructor of the group in rclpy. The callback group can then be passed as argument/option when creating a subscription, timer, etc."
+msgstr "回调组可以通过节点的 ``create_callback_group`` 函数在 rclcpp 中创建，并通过在 rclpy 中调用组的构造函数进行创建。当创建订阅、定时器等时，可以将回调组作为参数/选项进行传递。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:69
 msgid "If the user does not specify any callback group when creating a subscription, timer, etc., this entity will be assigned to the node's default callback group. The default callback group is a Mutually Exclusive Callback Group and it can be queried via ``NodeBaseInterface::get_default_callback_group()`` in rclcpp and via ``Node.default_callback_group`` in rclpy."
-msgstr "If the user does not specify any callback group when creating a subscription, timer, etc., this entity will be assigned to the node's default callback group. The default callback group is a Mutually Exclusive Callback Group and it can be queried via ``NodeBaseInterface::get_default_callback_group()`` in rclcpp and via ``Node.default_callback_group`` in rclpy."
+msgstr "如果用户在创建订阅、定时器等时未指定任何回调组，则该实体将被分配给节点的默认回调组。默认回调组是一个互斥回调组，可以通过 ``NodeBaseInterface::get_default_callback_group()`` 在 rclcpp 中查询，并通过 ``Node.default_callback_group`` 在 rclpy 中查询。"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:76
 msgid "About callbacks"
-msgstr "About callbacks"
+msgstr "关于回调"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:78
 msgid "In the context of ROS 2 and executors, a callback means a function whose scheduling and execution is handled by an executor. Examples of callbacks in this context are"
-msgstr "In the context of ROS 2 and executors, a callback means a function whose scheduling and execution is handled by an executor. Examples of callbacks in this context are"
+msgstr "在 ROS 2 和执行器的上下文中，回调是指由执行器处理调度和执行的函数。在这个上下文中，回调的例子有："
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:82
 msgid "subscription callbacks (receiving and handling data from a topic),"
-msgstr "subscription callbacks (receiving and handling data from a topic),"
+msgstr "订阅回调（从主题接收和处理数据），"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:83
 msgid "timer callbacks,"
-msgstr "timer callbacks,"
+msgstr "定时器回调，"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:84
 msgid "service callbacks (for executing service requests in a server),"
-msgstr "service callbacks (for executing service requests in a server),"
+msgstr "服务回调（用于在服务器中执行服务请求），"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:85
 msgid "different callbacks in action servers and clients,"
-msgstr "different callbacks in action servers and clients,"
+msgstr "动作服务器和客户端中的不同回调，"
 
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:86
