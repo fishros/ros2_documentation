@@ -384,7 +384,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#controlling-execution" id="id3">控制执行</a></p></li>
-<li><p><a class="reference internal" href="#avoiding-deadlocks" id="id4">Avoiding deadlocks</a></p></li>
+<li><p><a class="reference internal" href="#avoiding-deadlocks" id="id4">避免死锁</a></p></li>
 <li><p><a class="reference internal" href="#examples" id="id5">示例</a></p>
 <ul>
 <li><p><a class="reference internal" href="#demo-code" id="id6">Demo code</a></p></li>
@@ -449,26 +449,21 @@
 <p>对于一个回调函数与其自身的交互：</p>
 <ul class="simple">
 <li><p>如果希望它能够与自身并行执行，将其注册到一个可重入回调组中。例如，一个需要能够并行处理多个动作调用的动作/服务服务器。</p></li>
-<li><p>Register it to a Mutually Exclusive Callback Group if it should <strong>never</strong> be executed in parallel to itself.
-An example case could be a timer callback that runs a control loop that publishes control commands.</p></li>
+<li><p>如果它**永远不应**与自身并行执行，请将其注册到一个互斥回调组中。一个示例情况可能是一个定时器回调，它运行一个控制循环以发布控制命令。</p></li>
 </ul>
-<p>For the interaction of different callbacks with each other:</p>
+<p>对于不同回调之间的相互作用：</p>
 <ul class="simple">
-<li><p>Register them to the same Mutually Exclusive Callback Group if they should <strong>never</strong> be executed in parallel.
-An example case could be that the callbacks are accessing shared critical and non-thread-safe resources.</p></li>
+<li><p>如果它们**永远不应**并行执行，请将它们注册到同一个互斥回调组中。一个示例情况可能是这些回调正在访问共享的关键资源和非线程安全资源。</p></li>
 </ul>
-<p>If they should be executed in parallel, you have two options,
-depending on whether the individual callbacks should be able to overlap themselves or not:</p>
+<p>如果它们应该并行执行，根据个别回调是否可以重叠，您有两个选择：</p>
 <ul class="simple">
-<li><p>Register them to different Mutually Exclusive Callback Groups (no overlap of the individual callbacks)</p></li>
-<li><p>Register them to a Reentrant Callback Group (overlap of the individual callbacks)</p></li>
+<li><p>将它们注册到不同的互斥回调组（个别回调之间不重叠）</p></li>
+<li><p>将它们注册到可重入回调组（个别回调之间有重叠）</p></li>
 </ul>
-<p>An example case of running different callbacks in parallel is a Node that has
-a synchronous service client and a timer calling this service.
-See the detailed example below.</p>
+<p>并行运行不同回调函数的一个示例情况是一个具有同步服务客户端和定时器调用该服务的节点。请参考下面的详细示例。</p>
 </div>
 <div class="section" id="avoiding-deadlocks">
-<h2><a class="toc-backref" href="#id4">Avoiding deadlocks</a><a class="headerlink" href="#avoiding-deadlocks" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id4">避免死锁</a><a class="headerlink" href="#avoiding-deadlocks" title="永久链接至标题"></a></h2>
 <p>Setting up callback groups of a node incorrectly can lead to deadlocks (or
 other unwanted behavior), especially if one desires to use synchronous calls to
 services or actions.
