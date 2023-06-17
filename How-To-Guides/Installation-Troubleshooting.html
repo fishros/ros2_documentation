@@ -273,7 +273,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">ROS 2 on Raspberry Pi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-callback-groups.html">Using Callback Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RQt-Source-Install.html">Building RQt from source</a><ul>
@@ -588,22 +588,20 @@ The syntax of the <span class="nb">command</span> is incorrect.
 </div>
 <div class="section" id="patch-exe-opens-a-new-command-window-and-asks-for-administrator">
 <h3>patch.exe会打开一个新的命令窗口并要求管理员权限。<a class="headerlink" href="#patch-exe-opens-a-new-command-window-and-asks-for-administrator" title="永久链接至标题"></a></h3>
-<p>This will also cause the build of packages which need to use patch to fail, even you allow it to use administrator rights.</p>
+<p>即使您允许使用管理员权限，这也会导致需要使用补丁的软件包构建失败。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">choco</span> <span class="pre">uninstall</span> <span class="pre">patch;</span> <span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--cmake-clean-cache</span></code> - This is a bug in the <a class="reference external" href="https://chocolatey.org/packages/patch">GNU Patch For Windows package</a>. If this package is not installed, the build process will instead use the version of Patch distributed with git.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">choco</span> <span class="pre">uninstall</span> <span class="pre">patch;</span> <span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--cmake-clean-cache</span></code> - 这是 <a class="reference external" href="https://chocolatey.org/packages/patch">GNU Patch For Windows package</a> 中的一个错误。如果未安装此软件包，构建过程将使用与 git 分发的 Patch 版本。</p></li>
 </ul>
 </div>
 <div class="section" id="failed-to-load-fast-rtps-shared-library">
-<h3>Failed to load Fast RTPS shared library<a class="headerlink" href="#failed-to-load-fast-rtps-shared-library" title="永久链接至标题"></a></h3>
-<p>Fast RTPS requires <code class="docutils literal notranslate"><span class="pre">msvcr20.dll</span></code>, which is part of the <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">C++</span> <span class="pre">Redistributable</span> <span class="pre">Packages</span> <span class="pre">for</span> <span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">2013</span></code>.
-Although it is usually installed by default in Windows 10, we know that some Windows 10-like versions don't have it installed by default (e.g.: Windows Server 2019).
-In case you don't have it installed, you can download it from <a class="reference external" href="https://www.microsoft.com/en-us/download/details.aspx?id=40784">here</a>.</p>
+<h3>无法加载 Fast RTPS 共享库<a class="headerlink" href="#failed-to-load-fast-rtps-shared-library" title="永久链接至标题"></a></h3>
+<p>Fast RTPS 需要 <code class="docutils literal notranslate"><span class="pre">msvcr20.dll</span></code>，它是 <a href="#id1"><span class="problematic" id="id2">``</span></a>Visual C++ Redistributable Packages for Visual Studio 201</p>
 </div>
 <div class="section" id="binary-installation-specific">
-<h3>Binary installation specific<a class="headerlink" href="#binary-installation-specific" title="永久链接至标题"></a></h3>
+<h3>二进制安装特定<a class="headerlink" href="#binary-installation-specific" title="永久链接至标题"></a></h3>
 <ul class="simple">
-<li><p>If your example does not start because of missing DLLs, please verify that all libraries from external dependencies such as OpenCV are located inside your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable.</p></li>
-<li><p>If you forget to call the <code class="docutils literal notranslate"><span class="pre">local_setup.bat</span></code> file from your terminal, the demo programs will most likely crash immediately.</p></li>
+<li><p>如果由于缺少 DLL 文件而无法启动示例，请验证所有外部依赖库（如 OpenCV）是否位于您的 <code class="docutils literal notranslate"><span class="pre">PATH</span></code> 变量中。</p></li>
+<li><p>如果您忘记从终端调用 <code class="docutils literal notranslate"><span class="pre">local_setup.bat</span></code> 文件，演示程序很可能会立即崩溃。</p></li>
 </ul>
 </div>
 </div>
