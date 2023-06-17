@@ -443,36 +443,18 @@
 <h2><a class="toc-backref" href="#id9">常见问题解答 (FAQ) 和故障排除</a><a class="headerlink" href="#frequency-asked-questions-faq-and-troubleshooting" title="永久链接至标题"></a></h2>
 <ol class="arabic">
 <li><p><strong>我收到来自构建工作失败的 Jenkins 邮件。我该怎么办？</strong></p>
-<p>Go to the job that raised the issue. You find the link on top of the Jenkins email.
-Once you followed the link to the build job, click <em>Console Output</em> on the left, then click
-<em>Full Log</em>. This will give you the full console output of the failing build. Try to find the
-top-most error as it is usually the most important and other errors might be follow-ups.</p>
-<p>The bottom of the email might read <code class="docutils literal notranslate"><span class="pre">'apt-src</span> <span class="pre">build</span> <span class="pre">[...]'</span> <span class="pre">failed.</span> <span class="pre">This</span> <span class="pre">is</span> <span class="pre">usually</span> <span class="pre">because</span> <span class="pre">of</span>
-<span class="pre">an</span> <span class="pre">error</span> <span class="pre">building</span> <span class="pre">the</span> <span class="pre">package.</span></code> This usually hints at missing dependencies, see 2.</p>
+<p>转到引发问题的作业。您可以在Jenkins电子邮件的顶部找到链接。一旦您点击链接进入构建作业，点击左侧的*Console Output*，然后点击*Full Log*。这将给您提供失败构建的完整控制台输出。尝试找到最顶部的错误，因为通常它是最重要的，其他错误可能是后续错误。</p>
+<p>电子邮件底部可能会显示``'apt-src build [...]' failed. This is usually because of an error building the package.``这通常暗示缺少依赖项，请参阅2。</p>
 </li>
-<li><p><strong>I seem to be missing a dependency, how do I find out which one?</strong></p>
-<p>You basically have two options, a. is easier but may take several iterations, b. is more
-elaborate and gives you the full insight as well as local debugging.</p>
+<li><p><strong>我似乎缺少一个依赖项，我该如何找出是哪个依赖项？</strong></p>
+<p>基本上有两种选择，a. 更简单，但可能需要多次迭代，b. 更详细，并且可以提供完整的了解以及本地调试。</p>
 <ol class="loweralpha simple">
-<li><p>Inspect the release job that raised the issue (see 1.) and localize the cmake dependency
-issue. To do so, browse to the cmake section, e.g., navigate to the <em>build binarydeb</em>
-section through the menu on the left in case of a ubuntu/debian build job. The <em>CMake Error</em>
-will typically hint at a dependency required by the cmake configuration but missing in the
-<a class="reference external" href="http://wiki.ros.org/Manifest">package manifest</a>. Once you have fixed the dependency in the manifest, do a new release
-of your package and wait for feedback from the build farms or...</p></li>
-<li><p>To get the full insight and faster, local debugging, you can <a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/release_jobs.rst#run-the-release-job-locally">run the release jobs locally</a>.
-This allows to iterate the manifest locally until all dependencies are fixed.</p></li>
+<li><p>检查引发问题的发布任务（参见 1.）并定位 cmake 依赖问题。为此，请浏览到 cmake 部分，例如，在 Ubuntu/Debian 构建任务中通过左侧菜单导航到“build binarydeb”部分。通常，<em>CMake Error</em> 会提示 cmake 配置所需的依赖项，在 <a class="reference external" href="http://wiki.ros.org/Manifest">package manifest</a> 中缺失。修复 manifest 中的依赖项后，重新发布软件包并等待构建服务器的反馈或...</p></li>
+<li><p>为了获得完整的了解和更快的本地调试，您可以在本地运行发布任务（<a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/release_jobs.rst#run-the-release-job-locally">run the release jobs locally</a>）。这样可以在本地迭代 manifest，直到所有依赖项都被修复。</p></li>
 </ol>
 </li>
-<li><p><strong>Why do release jobs fail when devel jobs / my github actions / my local builds succeed?</strong></p>
-<p>There are several potential reasons for this.
-First, release jobs build against a minimal ROS installation to check if all dependencies are
-properly declared in the <a class="reference external" href="http://wiki.ros.org/Manifest">package manifest</a>. Devel jobs / github actions / local builds may
-be performed in an environment that has the dependencies already installed, therefore does not
-notice dependency issues. Second, they might build different versions of the source code.
-While devel jobs / github actions / local builds usually build the latest version from the
-<em>upstream</em> <a class="footnote-reference brackets" href="#id6" id="id3">2</a> repository, <a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/release_jobs.rst">release jobs</a> build the source code of the latest release, i.e.
-the source code in the respective <em>upstream</em> branches of the <em>release</em> repository <a class="footnote-reference brackets" href="#id7" id="id4">3</a>.</p>
+<li><p><strong>为什么发布任务失败，而开发任务 / 我的 GitHub Actions / 我的本地构建成功？</strong></p>
+<p>这可能有几个潜在原因。首先，发布任务使用最小的 ROS 安装进行构建，以检查所有依赖项是否在 <a class="reference external" href="http://wiki.ros.org/Manifest">package manifest</a> 中正确声明。开发任务 / GitHub Actions / 本地构建可能在已安装了依赖项的环境中执行，因此不会注意到依赖关系问题。其次，它们可能构建不同版本的源代码。而开发任务 / GitHub Actions / 本地构建通常构建来自 <em>upstream</em> <a class="footnote-reference brackets" href="#id6" id="id3">2</a> 存储库的最新版本，<a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/release_jobs.rst">release jobs</a> 则构建最新发布的源代码，即在 <em>release</em> 存储库 <a class="footnote-reference brackets" href="#id7" id="id4">3</a> 的相应 <em>upstream</em> 分支中的源代码。</p>
 </li>
 </ol>
 </div>
