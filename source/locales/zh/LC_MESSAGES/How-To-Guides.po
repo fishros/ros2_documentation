@@ -5062,62 +5062,62 @@ msgstr "由于发送请求不会阻塞任何操作，可以使用循环在同一
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:139
 msgid "The :doc:`Simple Service and Client <../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client>` tutorial for Python illustrates how to perform an async service call and retrieve the ``future`` using a loop."
-msgstr "The :doc:`Simple Service and Client <../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client>` tutorial for Python illustrates how to perform an async service call and retrieve the ``future`` using a loop."
+msgstr "Python的教程 :doc:`简单的服务和客户端 <../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client>` 展示了如何使用循环执行异步服务调用并检索 ``future``。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:141
 msgid "The ``future`` can also be retrieved using a timer or callback, like in `this example <https://github.com/ros2/examples/blob/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client/client_async_callback.py>`_, a dedicated thread, or by another method. It is up to you, as the caller, to decide how to store ``future``, check on its status, and retrieve your response."
-msgstr "The ``future`` can also be retrieved using a timer or callback, like in `this example <https://github.com/ros2/examples/blob/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client/client_async_callback.py>`_, a dedicated thread, or by another method. It is up to you, as the caller, to decide how to store ``future``, check on its status, and retrieve your response."
+msgstr "``future`` 也可以使用定时器或回调来检索，就像在 `这个示例 <https://github.com/ros2/examples/blob/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client/client_async_callback.py>`_ 中一样，可以使用专用线程或其他方法。作为调用者，您可以自行决定如何存储 ``future``，检查其状态并检索响应。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:145
 msgid "Summary"
-msgstr "Summary"
+msgstr "摘要"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:147
 msgid "It is not recommended to implement a synchronous service client. They are susceptible to deadlock, but will not provide any indication of issue when deadlock occurs. If you must use synchronous calls, the example in section `1 Synchronous calls`_ is a safe method of doing so. You should also be aware of the conditions that cause deadlock outlined in section `1.1 Sync deadlock`_. We recommend using async service clients instead."
-msgstr "It is not recommended to implement a synchronous service client. They are susceptible to deadlock, but will not provide any indication of issue when deadlock occurs. If you must use synchronous calls, the example in section `1 Synchronous calls`_ is a safe method of doing so. You should also be aware of the conditions that cause deadlock outlined in section `1.1 Sync deadlock`_. We recommend using async service clients instead."
+msgstr "不推荐实现同步服务客户端。它们容易发生死锁，但当死锁发生时不会提供任何问题指示。如果必须使用同步调用，可以使用 `1 同步调用`_ 部分中的示例来安全地进行。您还应该了解在 `1.1 同步死锁`_ 部分中概述的导致死锁的条件。我们推荐使用异步服务客户端。"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:4
 msgid "Topics vs Services vs Actions"
-msgstr "Topics vs Services vs Actions"
+msgstr "主题 vs 服务 vs 动作"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:10
 msgid "When designing a system there are three primary styles of interfaces. The specifications for the content is in the :doc:`Interfaces Overview <../Concepts/About-ROS-Interfaces>`. This is written to provide the reader with guidelines about when to use each type of interface."
-msgstr "When designing a system there are three primary styles of interfaces. The specifications for the content is in the :doc:`Interfaces Overview <../Concepts/About-ROS-Interfaces>`. This is written to provide the reader with guidelines about when to use each type of interface."
+msgstr "在设计系统时，有三种主要的接口风格。有关内容的规范在 :doc:`接口概述 <../Concepts/About-ROS-Interfaces>` 中。这些指南旨在为读者提供关于何时使用每种类型接口的准则。"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:15
 msgid "Topics"
-msgstr "Topics"
+msgstr "主题"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:17
 msgid "Should be used for continuous data streams (sensor data, robot state, ...)."
-msgstr "Should be used for continuous data streams (sensor data, robot state, ...)."
+msgstr "应该用于连续的数据流（传感器数据、机器人状态等）。"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:18
 msgid "Are for continuous data flow. Data might be published and subscribed at any time independent of any senders/receivers. Many to many connection. Callbacks receive data once it is available. The publisher decides when data is sent."
-msgstr "Are for continuous data flow. Data might be published and subscribed at any time independent of any senders/receivers. Many to many connection. Callbacks receive data once it is available. The publisher decides when data is sent."
+msgstr "适用于连续的数据流。数据可以在任何时间发布和订阅，独立于任何发送者/接收者。多对多的连接。回调函数在数据可用时接收数据。发布者决定何时发送数据。"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:21
 msgid "Services"
-msgstr "Services"
+msgstr "服务"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:23
 msgid "Should be used for remote procedure calls that terminate quickly, e.g. for querying the state of a node or doing a quick calculation such as IK. They should never be used for longer running processes, in particular processes that might be required to preempt if exceptional situations occur and they should never change or depend on state to avoid unwanted side effects for other nodes."
-msgstr "Should be used for remote procedure calls that terminate quickly, e.g. for querying the state of a node or doing a quick calculation such as IK. They should never be used for longer running processes, in particular processes that might be required to preempt if exceptional situations occur and they should never change or depend on state to avoid unwanted side effects for other nodes."
+msgstr "应用于快速终止的远程过程调用，例如查询节点状态或进行快速计算，如逆运动学。不应用于较长时间运行的进程，特别是在出现异常情况时可能需要抢占的进程，并且不应根据状态进行更改或依赖状态，以避免对其他节点产生意外的副作用。"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:24
 msgid "Simple blocking call. Mostly used for comparably fast tasks as requesting specific data. Semantically for processing requests."
-msgstr "Simple blocking call. Mostly used for comparably fast tasks as requesting specific data. Semantically for processing requests."
+msgstr "简单的阻塞调用。主要用于相对较快的任务，如请求特定数据。语义上用于处理请求。"
 
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:27
