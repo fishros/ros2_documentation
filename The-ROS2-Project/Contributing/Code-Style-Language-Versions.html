@@ -602,30 +602,30 @@
 <ul class="simple">
 <li><p>永远不要在嵌套模板中添加空格</p>
 <ul>
-<li><p>Prefer <code class="docutils literal notranslate"><span class="pre">set&lt;list&lt;string&gt;&gt;</span></code> (C++11 feature) to <code class="docutils literal notranslate"><span class="pre">set&lt;list&lt;string&gt;</span> <span class="pre">&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">set&lt;</span> <span class="pre">list&lt;string&gt;</span> <span class="pre">&gt;</span></code></p></li>
+<li><p>更喜欢使用``set&lt;list&lt;string&gt;&gt;``（C++11特性），而不是``set&lt;list&lt;string&gt; &gt;``或``set&lt; list&lt;string&gt; &gt;``</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="always-use-braces">
-<h4>Always Use Braces<a class="headerlink" href="#always-use-braces" title="永久链接至标题"></a></h4>
+<h4>始终使用花括号<a class="headerlink" href="#always-use-braces" title="永久链接至标题"></a></h4>
 <ul class="simple">
-<li><p>Always use braces following <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">do</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, and <code class="docutils literal notranslate"><span class="pre">for</span></code>, even when the body is a single line.</p>
+<li><p>在``if``、<code class="docutils literal notranslate"><span class="pre">else</span></code>、<code class="docutils literal notranslate"><span class="pre">do</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>while``和``for``后始终使用花括号，即使主体只有一行。</p>
 <ul>
-<li><p>rationale: less opportunity for visual ambiguity and for complications due to use of macros in the body</p></li>
+<li><p>理由：减少视觉歧义的机会，避免由于主体中使用宏而导致的复杂情况。</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="open-versus-cuddled-braces">
-<h4>Open Versus Cuddled Braces<a class="headerlink" href="#open-versus-cuddled-braces" title="永久链接至标题"></a></h4>
+<h4>花括号的风格选择<a class="headerlink" href="#open-versus-cuddled-braces" title="永久链接至标题"></a></h4>
 <ul class="simple">
-<li><p>Use open braces for <code class="docutils literal notranslate"><span class="pre">function</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">enum</span></code>, and <code class="docutils literal notranslate"><span class="pre">struct</span></code> definitions, but cuddle braces on <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>, etc...</p>
+<li><p>对于 <code class="docutils literal notranslate"><span class="pre">function</span></code>、<code class="docutils literal notranslate"><span class="pre">class</span></code>、<code class="docutils literal notranslate"><span class="pre">enum</span></code> 和 <code class="docutils literal notranslate"><span class="pre">struct</span></code> 的定义，使用空格后的开放花括号，但是对于 <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code>、<code class="docutils literal notranslate"><span class="pre">while</span></code>、<code class="docutils literal notranslate"><span class="pre">for</span></code> 等语句使用相邻的花括号...</p>
 <ul>
-<li><p>Exception: when an <code class="docutils literal notranslate"><span class="pre">if</span></code> (or <code class="docutils literal notranslate"><span class="pre">while</span></code>, etc.) condition is long enough to require line-wrapping, then use an open brace (i.e., don't cuddle).</p></li>
+<li><p>例外情况：当 <code class="docutils literal notranslate"><span class="pre">if``（或</span> <span class="pre">``while</span></code> 等）条件太长需要换行时，使用开放花括号（即不相邻的形式）。</p></li>
 </ul>
 </li>
-<li><p>When a function call cannot fit on one line, wrap at the open parenthesis (not in between arguments) and start them on the next line with a 2-space indent.  Continue with the 2-space indent on subsequent lines for more arguments.  (Note that the <a class="reference external" href="https://google.github.io/styleguide/cppguide.html#Function_Calls">Google style guide</a> is internally contradictory on this point.)</p>
+<li><p>当函数调用不能在一行内容纳时，在开放的括号处换行（不在参数之间），并在下一行以2个空格缩进开始。对于更多的参数，继续使用2个空格缩进的格式进行下一行。注意，这一点在 <a class="reference external" href="https://google.github.io/styleguide/cppguide.html#Function_Calls">Google 风格指南</a> 上有内部矛盾。</p>
 <ul>
 <li><p>Same goes for <code class="docutils literal notranslate"><span class="pre">if</span></code> (and <code class="docutils literal notranslate"><span class="pre">while</span></code>, etc.) conditions that are too long to fit on one line.</p></li>
 </ul>
