@@ -3642,62 +3642,62 @@ msgstr "查看 `此 PR <https://github.com/ros-visualization/qt_gui_core/pull/14
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:34
 msgid "Code that uses ``__cplusplus`` and code that requires pluginlib"
-msgstr "Code that uses ``__cplusplus`` and code that requires pluginlib"
+msgstr "使用``__cplusplus``的代码和需要pluginlib的代码"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:36
 msgid "In some places, notably in the ROS 2 port of pluginlib, there is use of the ``__cplusplus`` flag. Unfortunately on Windows Visual Studio does not set this flag correctly regardless of the C++ standard that is actually being used. See `this page <https://docs.microsoft.com/en-us/cpp/build/reference/zc-cplusplus?view=vs-2017>`__ for more information."
-msgstr "In some places, notably in the ROS 2 port of pluginlib, there is use of the ``__cplusplus`` flag. Unfortunately on Windows Visual Studio does not set this flag correctly regardless of the C++ standard that is actually being used. See `this page <https://docs.microsoft.com/en-us/cpp/build/reference/zc-cplusplus?view=vs-2017>`__ for more information."
+msgstr "在某些地方，尤其是在pluginlib的ROS 2端口中，使用了``__cplusplus``标志。不幸的是，在Windows Visual Studio上，无论实际使用的C++标准是什么，都无法正确设置该标志。有关更多信息，请参阅`此页面<https://docs.microsoft.com/en-us/cpp/build/reference/zc-cplusplus?view=vs-2017>`__。"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:40
 msgid "To set it, you need to add the compile option ``/Zc:__cplusplus``."
-msgstr "To set it, you need to add the compile option ``/Zc:__cplusplus``."
+msgstr "要设置它，您需要添加编译选项``/Zc:__cplusplus``。"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:42
 msgid "For example, in CMake you could do something like this:"
-msgstr "For example, in CMake you could do something like this:"
+msgstr "例如，在CMake中，您可以这样做："
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:49
 msgid "Locations of build artifacts (before install)"
-msgstr "Locations of build artifacts (before install)"
+msgstr "构建产物的位置（安装前）"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:51
 msgid "This only came up during when building ``qt_gui_cpp``. In that package, a custom command depends on a target library in another part of the package. However, that library isn’t installed until build is complete. Windows builds in a ${configuration} directory. For example:"
-msgstr "This only came up during when building ``qt_gui_cpp``. In that package, a custom command depends on a target library in another part of the package. However, that library isn’t installed until build is complete. Windows builds in a ${configuration} directory. For example:"
+msgstr "这个问题只在构建 ``qt_gui_cpp`` 时出现。在这个软件包中，自定义命令依赖于软件包的另一个部分中的目标库。然而，在构建完成之前，该库不会被安装。Windows 构建位于 ${configuration} 目录中。例如："
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:56
 msgid "On Linux, ``qt_gui_cpp.a`` would be built in: <ros2_ws>/build/qt_gui_cpp/src/qt_gui_cpp/"
-msgstr "On Linux, ``qt_gui_cpp.a`` would be built in: <ros2_ws>/build/qt_gui_cpp/src/qt_gui_cpp/"
+msgstr "在 Linux 上，``qt_gui_cpp.a`` 将会构建在：<ros2_ws>/build/qt_gui_cpp/src/qt_gui_cpp/"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:59
 msgid "But on Windows ``qt_gui_cpp.lib`` is built in <ros2_ws>/build/qt_gui_cpp/src/qt_gui_cpp/Release"
-msgstr "But on Windows ``qt_gui_cpp.lib`` is built in <ros2_ws>/build/qt_gui_cpp/src/qt_gui_cpp/Release"
+msgstr "但是在 Windows 上，``qt_gui_cpp.lib`` 将会构建在：<ros2_ws>/build/qt_gui_cpp/src/qt_gui_cpp/Release"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:62
 msgid "For compatibility across platforms in this situation, use `CMake generator expressions <https://cmake.org/cmake/help/v3.5/manual/cmake-generator-expressions.7.html>`__. However, when you need a library to link against be sure to use ``$<TARGET_LINKER_FILE:_target>`` instead of ``$<TARGET_FILE:_target>``. The latter will find ``.dll`` files, which cannot be linked against on Windows. See an `example here <https://github.com/ros-visualization/qt_gui_core/pull/162/files>`__."
-msgstr "For compatibility across platforms in this situation, use `CMake generator expressions <https://cmake.org/cmake/help/v3.5/manual/cmake-generator-expressions.7.html>`__. However, when you need a library to link against be sure to use ``$<TARGET_LINKER_FILE:_target>`` instead of ``$<TARGET_FILE:_target>``. The latter will find ``.dll`` files, which cannot be linked against on Windows. See an `example here <https://github.com/ros-visualization/qt_gui_core/pull/162/files>`__."
+msgstr "为了在这种情况下实现跨平台兼容性，请使用 `CMake 生成器表达式 <https://cmake.org/cmake/help/v3.5/manual/cmake-generator-expressions.7.html>`__。然而，在需要链接库时，请确保使用 ``$<TARGET_LINKER_FILE:_target>`` 而不是 ``$<TARGET_FILE:_target>``。后者会找到 ``.dll`` 文件，在Windows上无法链接。参见 `此处的示例 <https://github.com/ros-visualization/qt_gui_core/pull/162/files>`__。"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:68
 msgid "Compiler and linker flags"
-msgstr "Compiler and linker flags"
+msgstr "编译器和链接器标志"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:70
 msgid "In general when porting to Windows, many packages might make use of additional compiler flags. You can find the Windows compiler flags on `Microsoft's documentation <https://docs.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=vs-2017>`__. The C++ compiler is called ``cl.exe``."
-msgstr "In general when porting to Windows, many packages might make use of additional compiler flags. You can find the Windows compiler flags on `Microsoft's documentation <https://docs.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=vs-2017>`__. The C++ compiler is called ``cl.exe``."
+msgstr "通常在移植到Windows时，许多软件包可能会使用额外的编译器标志。您可以在 `Microsoft 的文档 <https://docs.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=vs-2017>`__ 中找到Windows编译器标志。C++编译器称为 ``cl.exe``。"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:74
 msgid "For linker flags see `Microsoft's documentation <https://docs.microsoft.com/en-us/cpp/build/reference/linker-options?view=vs-2017>`__. The linker program is called ``link.exe``."
-msgstr "For linker flags see `Microsoft's documentation <https://docs.microsoft.com/en-us/cpp/build/reference/linker-options?view=vs-2017>`__. The linker program is called ``link.exe``."
+msgstr "有关链接器标志，请参阅 `Microsoft 的文档 <https://docs.microsoft.com/en-us/cpp/build/reference/linker-options?view=vs-2017>`__。链接器程序称为 ``link.exe``。"
 
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:77
