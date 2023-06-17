@@ -1662,42 +1662,42 @@ msgstr "然后，每当您要运行一个节点时，请设置以下环境变量
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:144
 msgid "RTI Connext tuning"
-msgstr "RTI Connext tuning"
+msgstr "RTI Connext调优"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:146
 msgid "**Issue:** Connext is not delivering large messages reliably, despite using reliable settings and transferring over a wired network."
-msgstr "**Issue:** Connext is not delivering large messages reliably, despite using reliable settings and transferring over a wired network."
+msgstr "**问题：**尽管使用可靠设置并通过有线网络传输，Connext无法可靠地传递大消息。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:148
 msgid "**Solution:** This `Connext QoS profile <https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml>`_, along with increasing the ``rmem_max`` parameter."
-msgstr "**Solution:** This `Connext QoS profile <https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml>`_, along with increasing the ``rmem_max`` parameter."
+msgstr "**解决方案：** 使用此 `Connext QoS配置文件<https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml>`_ ，同时增加 ``rmem_max`` 参数。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:156
 msgid "By tuning ``net.core.rmem_max`` to 4MB in the Linux kernel, the QoS profile can produce truly reliable behavior."
-msgstr "By tuning ``net.core.rmem_max`` to 4MB in the Linux kernel, the QoS profile can produce truly reliable behavior."
+msgstr "通过将Linux内核中的 ``net.core.rmem_max`` 调整为4MB，QoS配置文件可以产生真正可靠的行为。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:158
 msgid "This configuration has been proven to reliably deliver messages via SHMEM|UDPv4, and with just UDPv4 on a single machine. A multi-machine configuration was also tested with ``rmem_max`` at 4MB and at 20MB (two machines connected with 1Gbps ethernet), with no dropped messages and average message delivery times of 700ms and 371ms, respectively."
-msgstr "This configuration has been proven to reliably deliver messages via SHMEM|UDPv4, and with just UDPv4 on a single machine. A multi-machine configuration was also tested with ``rmem_max`` at 4MB and at 20MB (two machines connected with 1Gbps ethernet), with no dropped messages and average message delivery times of 700ms and 371ms, respectively."
+msgstr "这个配置经过验证，可靠地通过SHMEM|UDPv4传递消息，并且在单台机器上仅使用UDPv4。还进行了多机器配置的测试，``rmem_max``设置为4MB和20MB（两台机器通过1Gbps以太网连接），没有丢失消息，并且平均消息传递时间分别为700ms和371ms。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:161
 msgid "Without configuring the kernel’s ``rmem_max``, the same Connext QoS profile took up to 12 seconds for the data to be delivered. However, it always at least managed to complete the delivery."
-msgstr "Without configuring the kernel’s ``rmem_max``, the same Connext QoS profile took up to 12 seconds for the data to be delivered. However, it always at least managed to complete the delivery."
+msgstr "在没有配置内核的``rmem_max``的情况下，相同的Connext QoS配置需要长达12秒才能传递数据。然而，它至少始终成功完成传递。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:164
 msgid "**Solution:** Use the `Connext QoS profile <https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml>`_ *without* adjusting ``rmem_max``."
-msgstr "**Solution:** Use the `Connext QoS profile <https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml>`_ *without* adjusting ``rmem_max``."
+msgstr "**解决方案：** 使用`Connext QoS配置文件<https://github.com/jacobperron/pc_pipe/blob/master/etc/ROS2TEST_QOS_PROFILES.xml>`_，*不*调整``rmem_max``。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:166
 msgid "The ROS2TEST_QOS_PROFILES.xml file was configured using RTI’s documentation on `configuring flow controllers <https://community.rti.com/forum-topic/transfering-large-data-over-dds>`_. It has slow, medium and fast flow controllers (seen in the Connext QoS profile link)."
-msgstr "The ROS2TEST_QOS_PROFILES.xml file was configured using RTI’s documentation on `configuring flow controllers <https://community.rti.com/forum-topic/transfering-large-data-over-dds>`_. It has slow, medium and fast flow controllers (seen in the Connext QoS profile link)."
+msgstr "ROS2TEST_QOS_PROFILES.xml文件是使用RTI的文档`配置流控制器<https://community.rti.com/forum-topic/transfering-large-data-over-dds>`_进行配置的。它包含了慢速、中速和快速的流控制器（在Connext QoS配置文件链接中可见）。"
 
 
 #: ../../source/How-To-Guides/DDS-tuning.rst:168
