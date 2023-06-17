@@ -382,9 +382,9 @@
 <li><p><a class="reference internal" href="#source-structure" id="id3">源码结构</a></p></li>
 <li><p><a class="reference internal" href="#building-the-site-locally" id="id4">本地构建站点</a></p>
 <ul>
-<li><p><a class="reference internal" href="#building-the-site-for-one-branch" id="id5">Building the site for one branch</a></p></li>
-<li><p><a class="reference internal" href="#building-the-site-for-all-branches" id="id6">Building the site for all branches</a></p></li>
-<li><p><a class="reference internal" href="#checking-for-broken-links" id="id7">Checking for broken links</a></p></li>
+<li><p><a class="reference internal" href="#building-the-site-for-one-branch" id="id5">为一个分支构建网站</a></p></li>
+<li><p><a class="reference internal" href="#building-the-site-for-all-branches" id="id6">为所有分支构建站点</a></p></li>
+<li><p><a class="reference internal" href="#checking-for-broken-links" id="id7">检查损坏的链接</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#writing-pages" id="id8">Writing pages</a></p>
@@ -424,7 +424,7 @@
 </pre></div>
 </div>
 </div></div>
-<p>In order for Sphinx to be able to generate diagrams, the <code class="docutils literal notranslate"><span class="pre">dot</span></code> command must be available.</p>
+<p>为了使Sphinx能够生成图表，必须可用``dot``命令。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update ; sudo apt install graphviz</span>
 </pre></div>
@@ -432,38 +432,31 @@
 </div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">brew install graphviz</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>Download an installer from <a class="reference external" href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html">the Graphviz Download page</a> and install it.
-Make sure to allow the installer to add it to the Windows <code class="docutils literal notranslate"><span class="pre">%PATH%</span></code>, otherwise Sphinx will not be able to find it.</p>
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>从`Graphviz下载页面 &lt;<a class="reference external" href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html">https://graphviz.gitlab.io/_pages/Download/Download_windows.html</a>&gt;`__下载安装程序并安装。确保允许安装程序将其添加到Windows的``%PATH%``中，否则Sphinx将无法找到它。</p>
 </div></div>
 <div class="section" id="building-the-site-for-one-branch">
-<h3><a class="toc-backref" href="#id5">Building the site for one branch</a><a class="headerlink" href="#building-the-site-for-one-branch" title="永久链接至标题"></a></h3>
-<p>To build the site for just this branch, type <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> at the top-level of the repository.
-This is the recommended way to test out local changes.</p>
+<h3><a class="toc-backref" href="#id5">为一个分支构建网站</a><a class="headerlink" href="#building-the-site-for-one-branch" title="永久链接至标题"></a></h3>
+<p>要为此分支构建网站，只需在存储库的顶层键入``make html``。这是测试本地更改的推荐方式。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make html</span>
 </pre></div>
 </div>
-<p>The build process can take some time.
-To see the output, open <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code> in your browser.</p>
-<p>You can also run the documentation tests locally (using <a class="reference external" href="https://github.com/PyCQA/doc8">doc8</a>) with the following command:</p>
+<p>构建过程可能需要一些时间。要查看输出，请在浏览器中打开``build/html/index.html``。</p>
+<p>您还可以在本地运行文档测试（使用`doc8 &lt;<a class="reference external" href="https://github.com/PyCQA/doc8">https://github.com/PyCQA/doc8</a>&gt;`_），使用以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make test</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="building-the-site-for-all-branches">
-<h3><a class="toc-backref" href="#id6">Building the site for all branches</a><a class="headerlink" href="#building-the-site-for-all-branches" title="永久链接至标题"></a></h3>
-<p>To build the site for all branches, type <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">multiversion</span></code> from the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> branch.
-This has two drawbacks:</p>
+<h3><a class="toc-backref" href="#id6">为所有分支构建站点</a><a class="headerlink" href="#building-the-site-for-all-branches" title="永久链接至标题"></a></h3>
+<p>要为所有分支构建站点，请从``rolling``分支输入``make multiversion``命令。这有两个缺点：</p>
 <ol class="arabic simple">
-<li><p>The multiversion plugin doesn't understand how to do incremental builds, so it always rebuilds everything.
-This can be slow.</p></li>
-<li><p>When typing <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">multiversion</span></code>, it will always check out exactly the branches listed in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file.
-That means that local changes will not be shown.</p></li>
+<li><p>多版本插件不知道如何进行增量构建，因此它总是重新构建所有内容。这可能会很慢。</p></li>
+<li><p>当输入“make multiversion”时，它将始终检出在“conf.py”文件中列出的分支。这意味着本地更改将不会显示。</p></li>
 </ol>
-<p>To show local changes in the multiversion output, you must first commit the changes to a local branch.
-Then you must edit the <a class="reference external" href="https://github.com/ros2/ros2_documentation/blob/rolling/conf.py">conf.py</a> file and change the <code class="docutils literal notranslate"><span class="pre">smv_branch_whitelist</span></code> variable to point to your branch.</p>
+<p>要在多版本输出中显示本地更改，您必须先将更改提交到本地分支。然后，您必须编辑“conf.py &lt;<a class="reference external" href="https://github.com/ros2/ros2_documentation/blob/rolling/conf.py">https://github.com/ros2/ros2_documentation/blob/rolling/conf.py</a>&gt;`_”文件，并将“smv_branch_whitelist”变量更改为指向您的分支。</p>
 </div>
 <div class="section" id="checking-for-broken-links">
-<h3><a class="toc-backref" href="#id7">Checking for broken links</a><a class="headerlink" href="#checking-for-broken-links" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id7">检查损坏的链接</a><a class="headerlink" href="#checking-for-broken-links" title="永久链接至标题"></a></h3>
 <p>To check for broken links on the site, run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make linkcheck</span>
 </pre></div>
