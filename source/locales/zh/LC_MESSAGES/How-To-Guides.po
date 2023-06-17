@@ -5022,42 +5022,42 @@ msgstr "同步的 ``call()`` API 可能会导致死锁的几种方式。"
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:96
 msgid "As mentioned in the comments of the example above, failing to create a separate thread to spin ``rclpy`` is one cause of deadlock. When a client is blocking a thread waiting for a response, but the response can only be returned on that same thread, the client will never stop waiting, and nothing else can happen."
-msgstr "As mentioned in the comments of the example above, failing to create a separate thread to spin ``rclpy`` is one cause of deadlock. When a client is blocking a thread waiting for a response, but the response can only be returned on that same thread, the client will never stop waiting, and nothing else can happen."
+msgstr "如上例的评论中提到的，未能创建一个单独的线程来运行 ``rclpy`` 是造成死锁的一个原因。当客户端阻塞一个线程等待响应，但是响应只能在同一线程上返回时，客户端将永远等待，而其他任何操作都无法进行。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:99
 msgid "Another cause of deadlock is blocking ``rclpy.spin`` by calling a service synchronously in a subscription, timer callback or service callback. For example, if the synchronous client's ``send_request`` is placed in a callback:"
-msgstr "Another cause of deadlock is blocking ``rclpy.spin`` by calling a service synchronously in a subscription, timer callback or service callback. For example, if the synchronous client's ``send_request`` is placed in a callback:"
+msgstr "另一个造成死锁的原因是在订阅、定时器回调或服务回调中同步调用服务导致阻塞了 ``rclpy.spin``。例如，如果将同步客户端的 ``send_request`` 放在回调中："
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:113
 msgid "Deadlock occurs because ``rclpy.spin`` will not preempt the callback with the ``send_request`` call. In general, callbacks should only perform light and fast operations."
-msgstr "Deadlock occurs because ``rclpy.spin`` will not preempt the callback with the ``send_request`` call. In general, callbacks should only perform light and fast operations."
+msgstr "死锁发生是因为 ``rclpy.spin`` 不会在回调中与 ``send_request`` 调用进行抢占。一般情况下，回调函数应该只执行轻量且快速的操作。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:118
 msgid "When deadlock occurs, you will not receive any indication that the service is blocked. There will be no warning or exception thrown, no indication in the stack trace, and the call will not fail."
-msgstr "When deadlock occurs, you will not receive any indication that the service is blocked. There will be no warning or exception thrown, no indication in the stack trace, and the call will not fail."
+msgstr "当发生死锁时，你将不会收到任何关于服务被阻塞的指示。不会有警告或异常抛出，堆栈跟踪中也没有指示，调用也不会失败。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:122
 msgid "2 Asynchronous calls"
-msgstr "2 Asynchronous calls"
+msgstr "2 异步调用"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:124
 msgid "Async calls in ``rclpy`` are entirely safe and the recommended method of calling services. They can be made from anywhere without running the risk of blocking other ROS and non-ROS processes, unlike sync calls."
-msgstr "Async calls in ``rclpy`` are entirely safe and the recommended method of calling services. They can be made from anywhere without running the risk of blocking other ROS and non-ROS processes, unlike sync calls."
+msgstr "在 ``rclpy`` 中，异步调用是完全安全且推荐的调用服务的方法。与同步调用不同，它们可以在任何地方进行，而不会阻塞其他ROS和非ROS进程的运行风险。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:127
 msgid "An asynchronous client will immediately return ``future``, a value that indicates whether the call and response is finished (not the value of the response itself), after sending a request to a service. The returned ``future`` may be queried for a response at any time."
-msgstr "An asynchronous client will immediately return ``future``, a value that indicates whether the call and response is finished (not the value of the response itself), after sending a request to a service. The returned ``future`` may be queried for a response at any time."
+msgstr "在向服务发送请求后，异步客户端会立即返回一个表示调用和响应是否完成的 ``future`` 值（而不是响应本身的值）。可以随时查询返回的 ``future`` 是否有响应。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:130
 msgid "Since sending a request doesn’t block anything, a loop can be used to both spin ``rclpy`` and check ``future`` in the same thread, for example:"
-msgstr "Since sending a request doesn’t block anything, a loop can be used to both spin ``rclpy`` and check ``future`` in the same thread, for example:"
+msgstr "由于发送请求不会阻塞任何操作，可以使用循环在同一线程中既运行 ``rclpy`` 又检查 ``future``，例如："
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:139
