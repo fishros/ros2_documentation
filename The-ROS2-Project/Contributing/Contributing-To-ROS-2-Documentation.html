@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contributing to ROS 2 Documentation &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>为ROS 2文档做出贡献 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -319,7 +319,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Build-Farms.html">ROS构建农场</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Windows-Tips-and-Tricks.html">Windows Tips and Tricks</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Contributing to ROS 2 Documentation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">为ROS 2文档做出贡献</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Features.html">Features Status</a></li>
@@ -361,7 +361,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../The-ROS2-Project.html">ROS 2 项目</a> &raquo;</li>
           <li><a href="../Contributing.html">贡献</a> &raquo;</li>
-      <li>Contributing to ROS 2 Documentation</li>
+      <li>为ROS 2文档做出贡献</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,13 +374,13 @@
 
 
   <div class="section" id="contributing-to-ros-2-documentation">
-<h1>Contributing to ROS 2 Documentation<a class="headerlink" href="#contributing-to-ros-2-documentation" title="永久链接至标题"></a></h1>
+<h1>为ROS 2文档做出贡献<a class="headerlink" href="#contributing-to-ros-2-documentation" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#branch-structure" id="id2">Branch structure</a></p></li>
-<li><p><a class="reference internal" href="#source-structure" id="id3">Source structure</a></p></li>
-<li><p><a class="reference internal" href="#building-the-site-locally" id="id4">Building the site locally</a></p>
+<li><p><a class="reference internal" href="#branch-structure" id="id2">分支结构</a></p></li>
+<li><p><a class="reference internal" href="#source-structure" id="id3">源码结构</a></p></li>
+<li><p><a class="reference internal" href="#building-the-site-locally" id="id4">本地构建站点</a></p>
 <ul>
 <li><p><a class="reference internal" href="#building-the-site-for-one-branch" id="id5">Building the site for one branch</a></p></li>
 <li><p><a class="reference internal" href="#building-the-site-for-all-branches" id="id6">Building the site for all branches</a></p></li>
@@ -399,28 +399,21 @@
 </li>
 </ul>
 </div>
-<p>Contributions to this site are most welcome.
-This page explains how to contribute to ROS 2 Documentation.
-Please be sure to read the below sections carefully before contributing.</p>
-<p>The site is built using <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>, and more particularly using <a class="reference external" href="https://holzhaus.github.io/sphinx-multiversion/master/index.html">Sphinx multiversion</a>.</p>
+<p>对这个网站的贡献是非常受欢迎的。本页面说明如何为ROS 2文档做出贡献。在贡献之前，请务必仔细阅读下面的章节。</p>
+<p>该网站使用 <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> 构建，尤其使用了 <a class="reference external" href="https://holzhaus.github.io/sphinx-multiversion/master/index.html">Sphinx multiversion</a>。</p>
 <div class="section" id="branch-structure">
-<h2><a class="toc-backref" href="#id2">Branch structure</a><a class="headerlink" href="#branch-structure" title="永久链接至标题"></a></h2>
-<p>The source code of documentation is located in the <a class="reference external" href="https://github.com/ros2/ros2_documentation">ROS 2 Documentation GitHub repository</a>.
-This repository is set up with one branch per ROS 2 distribution to handle differences between the distributions.
-If a change is common to all ROS 2 distributions, it should be made to the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> branch (and then will be backported as appropriate).
-If a change is specific to a particular ROS 2 distribution, it should be made to the respective branch.</p>
+<h2><a class="toc-backref" href="#id2">分支结构</a><a class="headerlink" href="#branch-structure" title="永久链接至标题"></a></h2>
+<p>文档的源代码位于 <a class="reference external" href="https://github.com/ros2/ros2_documentation">ROS 2 文档 GitHub 仓库</a>。该仓库针对每个 ROS 2 版本分发设置了一个分支，以处理版本间的差异。如果一个更改适用于所有 ROS 2 版本，应该将其应用到 <code class="docutils literal notranslate"><span class="pre">rolling</span></code> 分支上（然后根据需要进行回溯合并）。如果一个更改仅适用于特定的 ROS 2 版本，应该将其应用到相应的分支上。</p>
 </div>
 <div class="section" id="source-structure">
-<h2><a class="toc-backref" href="#id3">Source structure</a><a class="headerlink" href="#source-structure" title="永久链接至标题"></a></h2>
-<p>The source files for the site are all located under the <code class="docutils literal notranslate"><span class="pre">source</span></code> subdirectory.
-Templates for various sphinx plugins are located under <code class="docutils literal notranslate"><span class="pre">source/_templates</span></code>.
-The root directory contains configuration and files required to locally build the site for testing.</p>
+<h2><a class="toc-backref" href="#id3">源码结构</a><a class="headerlink" href="#source-structure" title="永久链接至标题"></a></h2>
+<p>站点的源文件都位于 <code class="docutils literal notranslate"><span class="pre">source</span></code> 子目录下。各种 Sphinx 插件的模板位于 <code class="docutils literal notranslate"><span class="pre">source/_templates</span></code>。根目录包含用于本地构建站点进行测试的配置文件和文件。</p>
 </div>
 <div class="section" id="building-the-site-locally">
-<h2><a class="toc-backref" href="#id4">Building the site locally</a><a class="headerlink" href="#building-the-site-locally" title="永久链接至标题"></a></h2>
-<p>Start by installing requirements located in the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+<h2><a class="toc-backref" href="#id4">本地构建站点</a><a class="headerlink" href="#building-the-site-locally" title="永久链接至标题"></a></h2>
+<p>首先安装位于 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> 文件中的依赖项：</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>The next command does a user-specific install, which requires <code class="docutils literal notranslate"><span class="pre">~/.local/bin/</span></code> to be added to <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>:</p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>接下来的命令执行用户特定的安装，需要将 <code class="docutils literal notranslate"><span class="pre">~/.local/bin/</span></code> 添加到 <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> 中：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip3 install --user --upgrade -r requirements.txt</span>
 </pre></div>
 </div>
