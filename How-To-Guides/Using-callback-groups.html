@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Callback Groups &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>使用回调组 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -275,7 +275,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using Callback Groups</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用回调组</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RQt-Source-Install.html">从源代码构建 RQt</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt</a></li>
@@ -360,7 +360,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Using Callback Groups</li>
+      <li>使用回调组</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Using-callback-groups.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,16 +373,12 @@
 
 
   <div class="section" id="using-callback-groups">
-<h1>Using Callback Groups<a class="headerlink" href="#using-callback-groups" title="永久链接至标题"></a></h1>
-<p>When running a node in a Multi-Threaded Executor, ROS 2 offers callback
-groups as a tool for controlling the execution of different callbacks.
-This page is meant as a guide on how to use callback groups efficiently.
-It is assumed that the reader has a basic understanding
-about the concept of <a class="reference internal" href="../Concepts/About-Executors.html"><span class="doc">executors</span></a>.</p>
+<h1>使用回调组<a class="headerlink" href="#using-callback-groups" title="永久链接至标题"></a></h1>
+<p>在多线程执行器中运行节点时，ROS 2 提供了回调组作为控制不同回调执行的工具。本页面旨在指导如何高效使用回调组。假设读者对 <a class="reference internal" href="../Concepts/About-Executors.html"><span class="doc">执行器</span></a> 的概念有基本了解。</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#basics-of-callback-groups" id="id1">Basics of callback groups</a></p>
+<li><p><a class="reference internal" href="#basics-of-callback-groups" id="id1">回调组的基础知识</a></p>
 <ul>
 <li><p><a class="reference internal" href="#about-callbacks" id="id2">About callbacks</a></p></li>
 </ul>
@@ -399,17 +395,13 @@ about the concept of <a class="reference internal" href="../Concepts/About-Execu
 </ul>
 </div>
 <div class="section" id="basics-of-callback-groups">
-<h2><a class="toc-backref" href="#id1">Basics of callback groups</a><a class="headerlink" href="#basics-of-callback-groups" title="永久链接至标题"></a></h2>
-<p>When running a node in a Multi-Threaded Executor,
-ROS 2 offers two different types of callback groups for controlling
-execution of callbacks:</p>
+<h2><a class="toc-backref" href="#id1">回调组的基础知识</a><a class="headerlink" href="#basics-of-callback-groups" title="永久链接至标题"></a></h2>
+<p>在使用多线程执行器（Multi-Threaded Executor）运行节点时，ROS 2 提供了两种不同类型的回调组（callback groups）来控制回调函数的执行：</p>
 <ul class="simple">
-<li><p>Mutually Exclusive Callback Group</p></li>
-<li><p>Reentrant Callback Group</p></li>
+<li><p>互斥回调组（Mutually Exclusive Callback Group）</p></li>
+<li><p>可重入回调组（Reentrant Callback Group）</p></li>
 </ul>
-<p>These callback groups restrict the execution of their callbacks in
-different ways.
-In short:</p>
+<p>这些回调组以不同的方式限制其回调函数的执行。简而言之</p>
 <ul class="simple">
 <li><p>Mutually Exclusive Callback Group prevents its callbacks from being
 executed in parallel - essentially making it as if the callbacks in the group
