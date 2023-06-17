@@ -3162,42 +3162,42 @@ msgstr "**目标：**为录制和播放覆盖 Ros2Bag 的 QoS 配置文件设置
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:21
 msgid "With the introduction of DDS in ROS 2, Quality of Service (QoS) compatibility for publisher/subscriber nodes needs to be considered when recording and playing back data. More detail on how QoS works can be found :doc:`here <../Concepts/About-Quality-of-Service-Settings>`. For the purposes of this guide, it is sufficient to know that only the reliability and durability policies affect whether publishers/subscribers are compatible and can receive data from one other."
-msgstr "With the introduction of DDS in ROS 2, Quality of Service (QoS) compatibility for publisher/subscriber nodes needs to be considered when recording and playing back data. More detail on how QoS works can be found :doc:`here <../Concepts/About-Quality-of-Service-Settings>`. For the purposes of this guide, it is sufficient to know that only the reliability and durability policies affect whether publishers/subscribers are compatible and can receive data from one other."
+msgstr "随着DDS在ROS 2中的引入，在记录和回放数据时需要考虑发布者/订阅者节点的服务质量（QoS）兼容性。有关QoS工作原理的更多细节可以在此处找到：doc:`这里 <../Concepts/About-Quality-of-Service-Settings>`。对于本指南而言，只需知道可靠性和持久性策略会影响发布者/订阅者是否兼容并能够接收彼此的数据即可。"
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:25
 msgid "Ros2Bag adapts its requested/offered QoS profile when recording/playing data from a topic to prevent dropped messages. During playback, Ros2bag also attempts to preserve the policy originally offered by the topic. Certain situations may require specifying explicit QoS profile settings so Ros2Bag can record/playback topics. These QoS profile overrides can be specified via the CLI using the ``--qos-profile-overrides-path`` flag."
-msgstr "Ros2Bag adapts its requested/offered QoS profile when recording/playing data from a topic to prevent dropped messages. During playback, Ros2bag also attempts to preserve the policy originally offered by the topic. Certain situations may require specifying explicit QoS profile settings so Ros2Bag can record/playback topics. These QoS profile overrides can be specified via the CLI using the ``--qos-profile-overrides-path`` flag."
+msgstr "Ros2Bag在记录/播放主题数据时会根据需要调整其请求/提供的QoS配置文件，以防止丢失消息。在回放过程中，Ros2bag还会尝试保持主题最初提供的策略。在某些情况下，可能需要指定显式的QoS配置文件设置，以便Ros2Bag能够记录/播放主题。可以通过使用``--qos-profile-overrides-path``标志在CLI中指定这些QoS配置文件覆盖。"
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:31
 msgid "Using QoS Overrides"
-msgstr "Using QoS Overrides"
+msgstr "使用QoS配置文件覆盖"
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:33
 msgid "The YAML schema for the profile overrides is a dictionary of topic names with key/value pairs for each QoS policy:"
-msgstr "The YAML schema for the profile overrides is a dictionary of topic names with key/value pairs for each QoS policy:"
+msgstr "配置文件覆盖的YAML模式是一个包含主题名称的字典，每个QoS策略都有键值对："
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:44
 msgid "If a policy value is not specified, the value will fallback to the default used by Ros2Bag. If you specify a Duration based policy such as ``deadline`` or ``lifespan``, you will need to specify both seconds and nanoseconds. Policy values are determined by the policy’s short keys which can be found using ``ros2topic`` verbs such as ``ros2 topic pub --help``. All values are replicated below for reference."
-msgstr "If a policy value is not specified, the value will fallback to the default used by Ros2Bag. If you specify a Duration based policy such as ``deadline`` or ``lifespan``, you will need to specify both seconds and nanoseconds. Policy values are determined by the policy’s short keys which can be found using ``ros2topic`` verbs such as ``ros2 topic pub --help``. All values are replicated below for reference."
+msgstr "如果未指定策略值，该值将回退到Ros2Bag使用的默认值。如果您指定了基于持续时间的策略，例如``deadline``或``lifespan``，则需要同时指定秒和纳秒。策略值由策略的短键确定，可以使用``ros2topic``命令的动词（如``ros2 topic pub --help``）找到。下面列出了所有值以供参考。"
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:70
 msgid "Consider a topic ``/talker`` offering a ``transient_local`` Durability policy. ROS 2 publishers by default request ``volatile`` Durability."
-msgstr "Consider a topic ``/talker`` offering a ``transient_local`` Durability policy. ROS 2 publishers by default request ``volatile`` Durability."
+msgstr "考虑一个提供``transient_local``持续性策略的主题``/talker``。ROS 2发布者默认情况下请求``volatile``持续性。"
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:77
 msgid "In order for Ros2Bag to record the data, we would want to override the recording policy for that specific topic like so:"
-msgstr "In order for Ros2Bag to record the data, we would want to override the recording policy for that specific topic like so:"
+msgstr "为了让Ros2Bag记录数据，我们需要覆盖该特定主题的记录策略，操作如下："
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:86 ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:101
 msgid "And call it from the CLI:"
-msgstr "And call it from the CLI:"
+msgstr "然后从命令行调用它："
 
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:92
