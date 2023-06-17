@@ -380,10 +380,10 @@
 <li><p><a class="reference internal" href="#prerequisites" id="id1">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#specifying-rmw-implementations" id="id2">指定RMW实现</a></p></li>
 <li><p><a class="reference internal" href="#adding-rmw-implementations-to-your-workspace" id="id3">将 RMW 实现添加到您的工作空间中</a></p></li>
-<li><p><a class="reference internal" href="#troubleshooting" id="id4">Troubleshooting</a></p>
+<li><p><a class="reference internal" href="#troubleshooting" id="id4">故障排除</a></p>
 <ul>
-<li><p><a class="reference internal" href="#checking-the-current-rmw" id="id5">Checking the Current RMW</a></p></li>
-<li><p><a class="reference internal" href="#ensuring-use-of-a-particular-rmw-implementation" id="id6">Ensuring use of a particular RMW implementation</a></p></li>
+<li><p><a class="reference internal" href="#checking-the-current-rmw" id="id5">检查当前的RMW</a></p></li>
+<li><p><a class="reference internal" href="#ensuring-use-of-a-particular-rmw-implementation" id="id6">确保使用特定的RMW实现</a></p></li>
 <li><p><a class="reference internal" href="#rti-connext-on-osx-failure-due-to-insufficient-shared-memory-kernel-settings" id="id7">RTI Connext on OSX: Failure due to insufficient shared memory kernel settings</a></p></li>
 </ul>
 </li>
@@ -427,43 +427,38 @@ ros2 run demo_nodes_py listener
 <div class="section" id="adding-rmw-implementations-to-your-workspace">
 <h2><a class="toc-backref" href="#id3">将 RMW 实现添加到您的工作空间中</a><a class="headerlink" href="#adding-rmw-implementations-to-your-workspace" title="永久链接至标题"></a></h2>
 <p>假设您已经构建了只安装了 Fast DDS 的 ROS 2 工作空间，因此只有 Fast DDS RMW 实现被构建。上次构建工作空间时，其他任何 RMW 实现包（例如 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code>）可能都无法找到相关 DDS 实现的安装。如果您随后安装了额外的 DDS 实现，例如 Connext，您将需要重新触发构建 Connext RMW 实现时的 Connext 安装检查。您可以在下一个工作空间构建中指定 <code class="docutils literal notranslate"><span class="pre">--cmake-clean-cache</span></code> 标志来执行此操作，并且您应该看到 RMW 实现包将为新安装的 DDS 实现进行构建。</p>
-<p>It is possible to run into a problem when &quot;rebuilding&quot; the workspace with an additional RMW implementation using the <code class="docutils literal notranslate"><span class="pre">--cmake-clean-cache</span></code> option where the build complains about the default RMW implementation changing.
-To resolve this, you can either set the default implementation to what is was before with the <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> CMake argument or you can delete the build folder for packages that complain and continue the build with <code class="docutils literal notranslate"><span class="pre">--packages-start</span> <span class="pre">&lt;package</span> <span class="pre">name&gt;</span></code>.</p>
+<p>使用``--cmake-clean-cache``选项在添加额外的RMW实现时，重新构建工作空间可能会遇到问题，构建时会报告默认的RMW实现发生了变化。要解决这个问题，您可以通过``RMW_IMPLEMENTATION`` CMake参数将默认实现设置为之前的值，或者可以删除报错的包的构建文件夹，并使用``--packages-start &lt;package name&gt;``继续构建。</p>
 </div>
 <div class="section" id="troubleshooting">
-<h2><a class="toc-backref" href="#id4">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id4">故障排除</a><a class="headerlink" href="#troubleshooting" title="永久链接至标题"></a></h2>
 <div class="section" id="checking-the-current-rmw">
-<h3><a class="toc-backref" href="#id5">Checking the Current RMW</a><a class="headerlink" href="#checking-the-current-rmw" title="永久链接至标题"></a></h3>
-<p>To check the RMW that is currently in use you simply check the <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> environment variable. On Linux systems <code class="docutils literal notranslate"><span class="pre">printenv</span></code> prints the full list of environment variables.
-Other operating systems will have other procedures for viewing environment variables.
-If <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> is not in the environment it is safe to assume you are using the default for your ROS distro, otherwise the current RMW is the value listed.
-The default RMW for each ROS Distro can be found in <a class="reference external" href="https://www.ros.org/reps/rep-2000.html#platforms-by-distribution">REP-2000</a>.</p>
+<h3><a class="toc-backref" href="#id5">检查当前的RMW</a><a class="headerlink" href="#checking-the-current-rmw" title="永久链接至标题"></a></h3>
+<p>要检查当前使用的RMW，只需检查``RMW_IMPLEMENTATION``环境变量。在Linux系统上，<code class="docutils literal notranslate"><span class="pre">printenv``打印出完整的环境变量列表。其他操作系统将有其他查看环境变量的方法。如果环境中不存在``RMW_IMPLEMENTATION</span></code>，则可以安全地假设您正在使用ROS发行版的默认值，否则当前的RMW是所列值。每个ROS发行版的默认RMW可以在`REP-2000 &lt;<a class="reference external" href="https://www.ros.org/reps/rep-2000.html#platforms-by-distribution">https://www.ros.org/reps/rep-2000.html#platforms-by-distribution</a>&gt;`_中找到。</p>
 </div>
 <div class="section" id="ensuring-use-of-a-particular-rmw-implementation">
-<h3><a class="toc-backref" href="#id6">Ensuring use of a particular RMW implementation</a><a class="headerlink" href="#ensuring-use-of-a-particular-rmw-implementation" title="永久链接至标题"></a></h3>
-<p>If the <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> environment variable is set to an RMW implementation for which support is not installed, you will see an error message similar to the following if you have only one implementation installed:</p>
+<h3><a class="toc-backref" href="#id6">确保使用特定的RMW实现</a><a class="headerlink" href="#ensuring-use-of-a-particular-rmw-implementation" title="永久链接至标题"></a></h3>
+<p>如果``RMW_IMPLEMENTATION``环境变量设置为未安装支持的RMW实现，且你只安装了一个实现，则会看到类似以下错误消息：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Expected RMW implementation identifier of <span class="s1">&#39;rmw_connextdds&#39;</span> but instead found <span class="s1">&#39;rmw_fastrtps_cpp&#39;</span>, exiting with <span class="m">102</span>.
 </pre></div>
 </div>
-<p>If you have support for multiple RMW implementations installed and you request use of one that is not installed, you will see something similar to:</p>
+<p>如果你安装了多个RMW实现并请求使用未安装的实现，则会看到类似的消息：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Error getting RMW implementation identifier / RMW implementation not installed <span class="o">(</span>expected identifier of <span class="s1">&#39;rmw_connextdds&#39;</span><span class="o">)</span>, exiting with <span class="m">1</span>.
 </pre></div>
 </div>
-<p>If this occurs, double check that your ROS 2 installation includes support for the RMW implementation that you have specified in the <code class="docutils literal notranslate"><span class="pre">RMW_IMPLEMENTATION</span></code> environment variable.</p>
-<p>If you want to switch between RMW implementations, verify that the ROS 2 daemon process is not running with the previous RMW implementation to avoid any issues between nodes and command line tools such as <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span></code>.
-For example, if you run:</p>
+<p>如果出现这种情况，请仔细检查你的ROS 2安装是否包含你在``RMW_IMPLEMENTATION``环境变量中指定的RMW实现的支持。</p>
+<p>如果您想在不同的RMW实现之间切换，请验证ROS 2守护进程未使用先前的RMW实现运行，以避免节点和命令行工具（如``ros2 node``）之间出现任何问题。例如，如果您运行以下命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_connextdds ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
-<p>and</p>
+<p>并且</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 node list
 </pre></div>
 </div>
-<p>it will generate a daemon with a Fast DDS implementation:</p>
+<p>将生成一个使用Fast DDS实现的守护进程：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">21318</span> <span class="m">22</span>.0  <span class="m">0</span>.6 <span class="m">535896</span> <span class="m">55044</span> pts/8    Sl   <span class="m">16</span>:14   <span class="m">0</span>:00 /usr/bin/python3 /opt/ros/humble/bin/_ros2_daemon --rmw-implementation rmw_fastrtps_cpp --ros-domain-id <span class="m">0</span>
 </pre></div>
 </div>
-<p>Even if you run the command line tool again with the correct RMW implementation, the daemon's RMW implementation will not change and the ROS 2 command line tools will fail.</p>
+<p>即使您再次使用正确的RMW实现运行命令行工具，守护进程的RMW实现也不会更改，从而导致ROS 2命令行工具失败。</p>
 <p>To solve this, simply stop the daemon process:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 daemon stop
 </pre></div>
