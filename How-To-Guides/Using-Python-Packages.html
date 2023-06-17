@@ -269,7 +269,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">主题 vs 服务 vs 动作</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">Using variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">使用变体</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
@@ -379,7 +379,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#installing-via-rosdep" id="id1">通过``rosdep``进行安装</a></p></li>
 <li><p><a class="reference internal" href="#installing-via-a-package-manager" id="id2">通过软件包管理器安装</a></p></li>
-<li><p><a class="reference internal" href="#installing-via-a-virtual-environment" id="id3">Installing via a virtual environment</a></p></li>
+<li><p><a class="reference internal" href="#installing-via-a-virtual-environment" id="id3">通过虚拟环境安装</a></p></li>
 </ul>
 </div>
 <div class="admonition note">
@@ -416,13 +416,13 @@
 </div>
 </div>
 <div class="section" id="installing-via-a-virtual-environment">
-<h2><a class="toc-backref" href="#id3">Installing via a virtual environment</a><a class="headerlink" href="#installing-via-a-virtual-environment" title="永久链接至标题"></a></h2>
-<p>First, create a Colcon workspace:</p>
+<h2><a class="toc-backref" href="#id3">通过虚拟环境安装</a><a class="headerlink" href="#installing-via-a-virtual-environment" title="永久链接至标题"></a></h2>
+<p>首先，创建一个 Colcon 工作空间：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p ~/colcon_venv/src</span>
 <span class="go">cd ~/colcon_venv/</span>
 </pre></div>
 </div>
-<p>Then setup your virtual environment:</p>
+<p>然后设置您的虚拟环境：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Make a virtual env and activate it
 <span class="go">virtualenv -p python3 ./venv</span>
 <span class="go">source ./venv/bin/activate</span>
@@ -430,11 +430,11 @@
 <span class="go">touch ./venv/COLCON_IGNORE</span>
 </pre></div>
 </div>
-<p>Next, install the Python packages that you want in your virtual environment:</p>
+<p>接下来，在您的虚拟环境中安装所需的 Python 包：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m pip install gtsam pyserial… etc</span>
 </pre></div>
 </div>
-<p>Now you can build your workspace and run your python node that depends on packages installed in your virtual environment.</p>
+<p>现在你可以构建你的工作空间并运行依赖于虚拟环境中安装的包的 Python 节点。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Source Humble and build
 <span class="go">source /opt/ros/humble/setup.bash</span>
 <span class="go">colcon build</span>
@@ -442,7 +442,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>If you want to release your package using Bloom, you should add the packages you require to <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>, see the <a class="reference external" href="http://docs.ros.org/en/independent/api/rosdep/html/contributing_rules.html">rosdep key contribution guide</a>.</p>
+<p>如果你想使用 Bloom 发布你的包，你应该将你所需的包添加到 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 中，请参阅 <a class="reference external" href="http://docs.ros.org/en/independent/api/rosdep/html/contributing_rules.html">rosdep 关键字贡献指南</a>。</p>
 </div>
 </div>
 </div>
