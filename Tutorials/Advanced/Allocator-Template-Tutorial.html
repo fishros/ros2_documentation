@@ -380,7 +380,7 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#background" id="id1">Background</a></p></li>
+<li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
 <li><p><a class="reference internal" href="#writing-an-allocator" id="id2">Writing an allocator</a></p></li>
 <li><p><a class="reference internal" href="#writing-an-example-main" id="id3">Writing an example main</a></p></li>
 <li><p><a class="reference internal" href="#passing-an-allocator-to-the-intra-process-pipeline" id="id4">Passing an allocator to the intra-process pipeline</a></p></li>
@@ -391,7 +391,7 @@
 <p>This tutorial will teach you how to integrate a custom allocator for publishers and subscribers so that the default heap allocator is never called while your ROS nodes are executing.
 The code for this tutorial is available <a class="reference external" href="https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/topics/allocator_tutorial.cpp">here</a>.</p>
 <div class="section" id="background">
-<h2><a class="toc-backref" href="#id1">Background</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>Suppose you want to write real-time safe code, and you've heard about the many dangers of calling &quot;new&quot; during the real-time critical section, because the default heap allocator on most platforms is nondeterministic.</p>
 <p>By default, many C++ standard library structures will implicitly allocate memory as they grow, such as <code class="docutils literal notranslate"><span class="pre">std::vector</span></code>. However, these data structures also accept an &quot;Allocator&quot; template argument. If you specify a custom allocator to one of these data structures, it will use that allocator for you instead of the system allocator to grow or shrink the data structure. Your custom allocator could have a pool of memory preallocated on the stack, which might be better suited to real-time applications.</p>
 <p>In the ROS 2 C++ client library (rclcpp), we are following a similar philosophy to the C++ standard library. Publishers, subscribers, and the Executor accept an Allocator template parameter that controls allocations made by that entity during execution.</p>
