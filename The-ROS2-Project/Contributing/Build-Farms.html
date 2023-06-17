@@ -396,38 +396,33 @@
 <li><p><a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/devel_jobs.rst">devel jobs</a> 在轮询基础上构建和测试 ROS 软件包的单个存储库</p></li>
 <li><p><a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/devel_jobs.rst">pull_request jobs</a> 通过 Webhooks 触发在单个存储库中构建和测试 ROS 软件包</p></li>
 <li><p><a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/ci_jobs.rst">CI jobs</a> 跨存储库构建和测试 ROS 软件包，可选择使用其他 CI 作业的工件加快构建速度</p></li>
-<li><p><a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/doc_jobs.rst">doc jobs</a> generate the API documentation of packages and extract information from the manifests</p></li>
-<li><p><a class="reference external" href="https://github.com/ros-infrastructure/ros_buildfarm/blob/master/doc/jobs/miscellaneous_jobs.rst">miscellaneous jobs</a> perform maintenance tasks and generate informational data to visualize the
-status of the build farm and its generated artifacts</p></li>
+<li><p>「<code class="xref any docutils literal notranslate"><span class="pre">doc</span> <span class="pre">jobs</span></code>」_ 生成软件包的 API 文档，并从清单中提取信息</p></li>
+<li><p>「<code class="xref any docutils literal notranslate"><span class="pre">miscellaneous</span> <span class="pre">jobs</span></code>」_ 执行维护任务，并生成信息数据以可视化构建平台的状态及其生成的构件</p></li>
 </ul>
 <div class="section" id="creation-and-deployment">
-<h3>Creation and Deployment<a class="headerlink" href="#creation-and-deployment" title="永久链接至标题"></a></h3>
-<p>The above jobs are created and deployed when packages are <a class="reference external" href="http://wiki.ros.org/bloom">bloomed</a>, i.e. released for ROS
-1 or ROS 2.
-Once blooming is successful and a package is incorporated in one of the ROS
-distributions (via pull request to <a class="reference external" href="https://github.com/ros/rosdistro">rosdistro</a>), the according jobs will be spawned.
-The names of the jobs encode their type and purpose: <a class="footnote-reference brackets" href="#id5" id="id1">1</a></p>
+<h3>创建和部署<a class="headerlink" href="#creation-and-deployment" title="永久链接至标题"></a></h3>
+<p>上述工作是在软件包「开花」时创建和部署的，即发布到 ROS 1 或 ROS 2。一旦开花成功，并且软件包被纳入 ROS 发行版之一（通过对 <a class="reference external" href="https://github.com/ros/rosdistro">rosdistro</a> 提交拉取请求），相应的工作将会被创建。工作的名称编码了它们的类型和目的：<a class="footnote-reference brackets" href="#id5" id="id1">1</a></p>
 <ul>
-<li><p>release jobs:</p>
+<li><p>发布任务:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{distro}src_{platf}__{package}__{platform}__source</span></code> build source packages of releases</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{distro}bin_{platf}__{package}__{platform}__binary</span></code> build binary packages of releases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{distro}src_{platf}__{package}__{platform}__source</span></code> 构建发布的源代码包</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{distro}bin_{platf}__{package}__{platform}__binary</span></code> 构建发布的二进制包</p></li>
 </ul>
-<p>For instance, the binary packaging job of rclcpp on ROS 2 Iron (running on Ubuntu Jammy amd64) is named <code class="docutils literal notranslate"><span class="pre">Ibin_uJ64__rclcpp__ubuntu_jammy_amd64__binary</span></code>.</p>
+<p>例如，ROS 2 Iron 上 rclcpp 的二进制打包任务（在 Ubuntu Jammy amd64 上运行）被命名为 <code class="docutils literal notranslate"><span class="pre">Ibin_uJ64__rclcpp__ubuntu_jammy_amd64__binary</span></code>。</p>
 </div></blockquote>
 </li>
-<li><p>devel jobs:</p>
+<li><p>开发任务:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{distro}dev__{package}__{platform}</span></code> perform a CI build for the releasing branch</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{distro}dev__{package}__{platform}</span></code> 在发布分支上执行 CI 构建</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>pull_request jobs</p>
+<li><p>拉取请求任务:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{distro}pr__{package}__{platform}</span></code> perform a CI build for a pull request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{distro}pr__{package}__{platform}</span></code> 在拉取请求上执行 CI 构建</p></li>
 </ul>
 <p>For instance, the PR job for rclcpp on ROS 2 Iron (running on Ubuntu Jammy amd64) is named <code class="docutils literal notranslate"><span class="pre">Ipr__rclcpp__ubuntu_jammy_amd64</span></code>.</p>
 </div></blockquote>
