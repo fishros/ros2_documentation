@@ -272,7 +272,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">主题 vs 服务 vs 动作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">使用变体</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用回调组</a></li>
@@ -389,7 +389,7 @@
 <ul>
 <li><p><a class="reference internal" href="#demo-code" id="id6">演示代码</a></p></li>
 <li><p><a class="reference internal" href="#the-problem" id="id7">问题</a></p></li>
-<li><p><a class="reference internal" href="#solution" id="id8">Solution</a></p></li>
+<li><p><a class="reference internal" href="#solution" id="id8">解决方案</a></p></li>
 </ul>
 </li>
 </ul>
@@ -680,11 +680,8 @@
 <p>导致这种情况的原因是计时器回调和客户端使用了相同的互斥回调组（节点的默认组）。当进行服务调用时，客户端将其回调组传递给了Future对象（在Python版本中隐藏在调用方法内部），而该回调需要执行以便使服务调用的结果可用。但是，由于该回调和计时器回调位于相同的互斥组中，并且计时器回调仍在执行（等待服务调用的结果），因此该回调永远不会执行。卡住的计时器回调还会阻止它本身的任何其他执行，因此计时器不会第二次触发。</p>
 </div>
 <div class="section" id="solution">
-<h3><a class="toc-backref" href="#id8">Solution</a><a class="headerlink" href="#solution" title="永久链接至标题"></a></h3>
-<p>We can fix this easily - for example - by assigning the timer and client
-to different callback groups.
-Thus, let us change the first two lines of the client node's constructor
-to be as follows (everything else shall stay the same):</p>
+<h3><a class="toc-backref" href="#id8">解决方案</a><a class="headerlink" href="#solution" title="永久链接至标题"></a></h3>
+<p>我们可以很容易地解决这个问题 - 例如 - 通过将定时器和客户端分配给不同的回调组。因此，让我们将客户端节点构造函数的前两行更改为如下（其他所有内容保持不变）：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-4-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel group-tab" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">client_cb_group_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
 <span class="n">timer_cb_group_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
@@ -695,8 +692,7 @@ to be as follows (everything else shall stay the same):</p>
 </pre></div>
 </div>
 </div></div>
-<p>Now we get the expected result, i.e. the timer fires repeatedly and
-each service call gets the result as it should:</p>
+<p>现在我们得到了预期的结果，即定时器重复触发，并且每个服务调用都按照应有的方式得到结果：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-Q2xpZW50" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-Q2xpZW50" name="Q2xpZW50" role="tab" tabindex="0">Client</button><button aria-controls="panel-5-U2VydmVy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-U2VydmVy" name="U2VydmVy" role="tab" tabindex="-1">Server</button></div><div aria-labelledby="tab-5-Q2xpZW50" class="sphinx-tabs-panel group-tab" id="panel-5-Q2xpZW50" name="Q2xpZW50" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1653067523.431731177] [client_node]: Starting client node, shut down with CTRL-C</span>
 <span class="go">[INFO] [1653067524.431912821] [client_node]: Sending request</span>
@@ -719,12 +715,7 @@ each service call gets the result as it should:</p>
 </pre></div>
 </div>
 </div></div>
-<p>One might consider if just avoiding the node's default callback group
-is enough.
-This is not the case: replacing the default group by a
-different Mutually Exclusive group changes nothing.
-Thus, the following configuration also leads to the previously
-discovered deadlock.</p>
+<p>有人可能会考虑是否仅仅避免使用节点的默认回调组就足够了。但事实并非如此：用不同的互斥组替换默认组并没有改变什么。因此，以下配置也会导致之前发现的死锁问题。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-6-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel group-tab" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">client_cb_group_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
 <span class="n">timer_cb_group_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client_cb_group_</span><span class="p">;</span><span class="w"></span>
@@ -735,12 +726,7 @@ discovered deadlock.</p>
 </pre></div>
 </div>
 </div></div>
-<p>In fact, the exact condition with which everything works in this case
-is that the timer and client must not belong to the same
-Mutually Exclusive group.
-Hence, all of the following configurations (and some others as well)
-produce the desired outcome where the timer fires
-repeatedly and service calls are completed.</p>
+<p>事实上，在这种情况下，一切正常工作的确切条件是计时器和客户端不能属于同一互斥组。因此，以下所有配置（以及其他一些配置）都会产生所需的结果，即计时器重复触发并完成服务调用。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-7-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel group-tab" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">client_cb_group_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">Reentrant</span><span class="p">);</span><span class="w"></span>
 <span class="n">timer_cb_group_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client_cb_group_</span><span class="p">;</span><span class="w"></span>

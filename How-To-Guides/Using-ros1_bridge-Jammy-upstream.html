@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using ros1_bridge with upstream ROS on Ubuntu 22.04 &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>在Ubuntu 22.04上使用``ros1_bridge``和上游ROS &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -271,7 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">主题 vs 服务 vs 动作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-Variants.html">使用变体</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Using-callback-groups.html">使用回调组</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</li>
+      <li>在Ubuntu 22.04上使用``ros1_bridge``和上游ROS</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,25 +372,20 @@
 
 
   <div class="section" id="using-ros1-bridge-with-upstream-ros-on-ubuntu-22-04">
-<h1>Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04<a class="headerlink" href="#using-ros1-bridge-with-upstream-ros-on-ubuntu-22-04" title="永久链接至标题"></a></h1>
+<h1>在Ubuntu 22.04上使用``ros1_bridge``和上游ROS<a class="headerlink" href="#using-ros1-bridge-with-upstream-ros-on-ubuntu-22-04" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#ros-2-via-debian-packages" id="id1">ROS 2 via Debian packages</a></p></li>
+<li><p><a class="reference internal" href="#ros-2-via-debian-packages" id="id1">通过Debian软件包使用ROS 2</a></p></li>
 <li><p><a class="reference internal" href="#ros-2-from-source" id="id2">ROS 2 from source</a></p></li>
 </ul>
 </div>
-<p>The release of ROS 2 Humble (and Rolling) on Ubuntu 22.04 Jammy Jellyfish marks the first ROS 2 release on a platform with no official ROS 1 release.
-While ROS 1 Noetic will continue to be supported through the duration of its <a class="reference external" href="https://www.ros.org/reps/rep-0003.html#noetic-ninjemys-may-2020-may-2025">long term support window</a>, it will only target Ubuntu 20.04.
-Alternatively, there are <a class="reference external" href="https://packages.ubuntu.com/jammy/ros-desktop">upstream variants of ROS 1 packages</a> in Debian and Ubuntu that are not maintained as an official distribution by the ROS maintainers.</p>
-<p>This guide outlines the current mechanism for bridging ROS 2 releases with these upstream packages on Ubuntu 22.04 Jammy Jellyfish.
-This provides a migration path for users who still depend on ROS 1, but desire moving to newer ROS 2 and Ubuntu releases.</p>
+<p>在Ubuntu 22.04 Jammy Jellyfish上发布的ROS 2 Humble（和Rolling）标志着首个在没有官方ROS 1版本的平台上发布的ROS 2版本。虽然ROS 1 Noetic将在其`长期支持窗口 &lt;<a class="reference external" href="https://www.ros.org/reps/rep-0003.html#noetic-ninjemys-may-2020-may-2025">https://www.ros.org/reps/rep-0003.html#noetic-ninjemys-may-2020-may-2025</a>&gt;`__ 内继续得到支持，但它只针对Ubuntu 20.04。或者，Debian和Ubuntu中存在一些`ROS 1软件包的上游变体 &lt;<a class="reference external" href="https://packages.ubuntu.com/jammy/ros-desktop">https://packages.ubuntu.com/jammy/ros-desktop</a>&gt;`__，它们不作为ROS维护者的官方发行版进行维护。</p>
+<p>本指南概述了在Ubuntu 22.04 Jammy Jellyfish上使用这些上游软件包进行ROS 2版本桥接的当前机制。这为仍然依赖ROS 1但希望迁移到更新的ROS 2和Ubuntu版本的用户提供了一条迁移路径。</p>
 <div class="section" id="ros-2-via-debian-packages">
-<h2><a class="toc-backref" href="#id1">ROS 2 via Debian packages</a><a class="headerlink" href="#ros-2-via-debian-packages" title="永久链接至标题"></a></h2>
-<p>Installing <a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html"><span class="doc">ROS 2 from Debian packages</span></a> currently does not work for ROS 2 on Ubuntu Jammy.
-The version of <code class="docutils literal notranslate"><span class="pre">catkin-pkg-modules</span></code> available in the Ubuntu repository conflicts with that in the ROS 2 package repository.</p>
-<p>If the ROS 2 apt repository is in the available apt repositories (<code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d</span></code>), no ROS 1 packages will be installable.
-The error will be:</p>
+<h2><a class="toc-backref" href="#id1">通过Debian软件包使用ROS 2</a><a class="headerlink" href="#ros-2-via-debian-packages" title="永久链接至标题"></a></h2>
+<p>目前无法在Ubuntu Jammy上通过Debian软件包安装ROS 2。Ubuntu软件仓库中可用的``catkin-pkg-modules``版本与ROS 2软件包仓库中的版本存在冲突。</p>
+<p>如果ROS 2的apt仓库在可用的apt仓库（<code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d</span></code>）中，将无法安装任何ROS 1软件包。错误信息如下：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ apt install ros-core-dev
 Reading package lists... Done
 Building dependency tree... Done
@@ -406,8 +401,7 @@ The following packages have unmet dependencies:
 E: Unable to correct problems, you have held broken packages.
 </pre></div>
 </div>
-<p>To correct this, remove packages.ros.org from your <code class="docutils literal notranslate"><span class="pre">sources.list</span></code>.
-If you were following the ROS 2 installation guide, simply remove <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ros2.list</span></code></p>
+<p>要修正此问题，请从您的``sources.list``文件中移除packages.ros.org。如果您遵循了ROS 2安装指南，只需移除``/etc/apt/sources.list.d/ros2.list``文件即可。</p>
 <p>For now, to support <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code>, follow the instructions below for building ROS 2 from source.</p>
 </div>
 <div class="section" id="ros-2-from-source">
