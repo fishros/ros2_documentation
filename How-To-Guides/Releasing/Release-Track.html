@@ -254,7 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Cross-compilation.html">交叉编译</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="Releasing-a-Package.html">Releasing a Package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Releasing-a-Package.html">发布软件包</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="First-Time-Release.html">首次发布</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Subsequent-Releases.html">Subsequent Releases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Release-Team-Repository.html">发布团队/仓库</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南</a> &raquo;</li>
-          <li><a href="Releasing-a-Package.html">Releasing a Package</a> &raquo;</li>
+          <li><a href="Releasing-a-Package.html">发布软件包</a> &raquo;</li>
       <li>发布跟踪</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Releasing/Release-Track.rst" class="fa fa-github"> 在 GitHub 上修改</a>
@@ -388,8 +388,8 @@
 <li><p><a class="reference internal" href="#release-tag" id="id19">发布标签</a></p></li>
 <li><p><a class="reference internal" href="#upstream-devel-branch" id="id20">上游开发分支</a></p></li>
 <li><p><a class="reference internal" href="#ros-distro" id="id21">ROS发行版</a></p></li>
-<li><p><a class="reference internal" href="#patches-directory" id="id22">Patches Directory</a></p></li>
-<li><p><a class="reference internal" href="#release-repository-push-url" id="id23">Release Repository Push URL</a></p></li>
+<li><p><a class="reference internal" href="#patches-directory" id="id22">补丁目录</a></p></li>
+<li><p><a class="reference internal" href="#release-repository-push-url" id="id23">发布存储库推送 URL</a></p></li>
 </ul>
 </li>
 </ul>
@@ -521,18 +521,18 @@ Continue <span class="o">[</span>Y/n<span class="o">]</span>?
 </div>
 <div class="section" id="ros-distro">
 <span id="id9"></span><h3><a class="toc-backref" href="#id21">ROS发行版</a><a class="headerlink" href="#ros-distro" title="永久链接至标题"></a></h3>
-<p>This is the distribution you're planning on releasing the package into.</p>
+<p>这是你计划发布软件包的发行版。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ROS Distro:
    &lt;ROS distro&gt;
       This can be any valid ROS distro, e.g. indigo, kinetic, lunar, melodic
    <span class="o">[</span><span class="s1">&#39;indigo&#39;</span><span class="o">]</span>:
 </pre></div>
 </div>
-<p>If you plan on releasing into ROS humble, enter <code class="docutils literal notranslate"><span class="pre">humble</span></code>.</p>
+<p>如果你计划发布到ROS humble，请输入``humble``。</p>
 </div>
 <div class="section" id="patches-directory">
-<span id="id10"></span><h3><a class="toc-backref" href="#id22">Patches Directory</a><a class="headerlink" href="#patches-directory" title="永久链接至标题"></a></h3>
-<p>This is the directory where any additional patches to the releases are.</p>
+<span id="id10"></span><h3><a class="toc-backref" href="#id22">补丁目录</a><a class="headerlink" href="#patches-directory" title="永久链接至标题"></a></h3>
+<p>这是用于发布版本的任何额外补丁的目录。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Patches Directory:
    &lt;path <span class="k">in</span> bloom branch&gt;
       This can be any valid relative path <span class="k">in</span> the bloom branch. The contents
@@ -545,11 +545,10 @@ Continue <span class="o">[</span>Y/n<span class="o">]</span>?
    <span class="o">[</span>None<span class="o">]</span>:
 </pre></div>
 </div>
-<p>Adding additional patches to a release is a rarely used feature.
-For almost all packages, this should be left as the default <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>将额外的补丁添加到发布版本是一个很少使用的功能。对于几乎所有软件包，应该将其保留为默认值 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
 </div>
 <div class="section" id="release-repository-push-url">
-<span id="id11"></span><h3><a class="toc-backref" href="#id23">Release Repository Push URL</a><a class="headerlink" href="#release-repository-push-url" title="永久链接至标题"></a></h3>
+<span id="id11"></span><h3><a class="toc-backref" href="#id23">发布存储库推送 URL</a><a class="headerlink" href="#release-repository-push-url" title="永久链接至标题"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Release Repository Push URL:
    :<span class="o">{</span>none<span class="o">}</span>
       This indicates that the default release url should be used.
@@ -561,7 +560,7 @@ For almost all packages, this should be left as the default <code class="docutil
    <span class="o">[</span>None<span class="o">]</span>:
 </pre></div>
 </div>
-<p>Can be left as the default in most cases.</p>
+<p>在大多数情况下，可以将其保留为默认值。</p>
 </div>
 </div>
 </div>
