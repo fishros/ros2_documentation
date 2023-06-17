@@ -386,9 +386,9 @@
 </li>
 <li><p><a class="reference internal" href="#merging-pull-requests" id="id5">合并拉取请求</a></p></li>
 <li><p><a class="reference internal" href="#keeping-ci-green" id="id6">保持 CI 绿色</a></p></li>
-<li><p><a class="reference internal" href="#making-releases" id="id7">Making releases</a></p>
+<li><p><a class="reference internal" href="#making-releases" id="id7">发布版本</a></p>
 <ul>
-<li><p><a class="reference internal" href="#source-release" id="id8">Source release</a></p></li>
+<li><p><a class="reference internal" href="#source-release" id="id8">源代码发布</a></p></li>
 <li><p><a class="reference internal" href="#binary-release" id="id9">Binary release</a></p></li>
 </ul>
 </li>
@@ -459,21 +459,18 @@
 <p>如发现任何问题，请在相关仓库上开启新的问题(issue)和/或拉取请求(pull requests)。</p>
 </div>
 <div class="section" id="making-releases">
-<h2><a class="toc-backref" href="#id7">Making releases</a><a class="headerlink" href="#making-releases" title="永久链接至标题"></a></h2>
-<p>In order to get new features and bugfixes out to end users, the package maintainers must periodically do a release of the package (a release may also be requested on-demand from other maintainers).</p>
-<p>As outlined in the <a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html#semver"><span class="std std-ref">developer guide</span></a>, ROS 2 packages follow semver for version numbers.</p>
-<p>A release in ROS terms consists of two distinct steps: making a source release, and then making a binary release.</p>
+<h2><a class="toc-backref" href="#id7">发布版本</a><a class="headerlink" href="#making-releases" title="永久链接至标题"></a></h2>
+<p>为了将新功能和错误修复传递给最终用户，软件包维护人员必须定期发布软件包（也可以根据其他维护人员的要求按需发布）。</p>
+<p>如在开发人员指南的 <a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html#semver"><span class="std std-ref">版本号规范</span></a> 中所述，ROS 2 软件包遵循语义化版本号规范。</p>
+<p>在ROS术语中，发布分为两个不同的步骤：制作源代码版本和制作二进制版本。</p>
 <div class="section" id="source-release">
-<h3><a class="toc-backref" href="#id8">Source release</a><a class="headerlink" href="#source-release" title="永久链接至标题"></a></h3>
-<p>A source release creates a changelog and a tag in the relevant repository.</p>
-<p>The process starts by generating or updating CHANGELOG.rst files with the following command:</p>
+<h3><a class="toc-backref" href="#id8">源代码发布</a><a class="headerlink" href="#source-release" title="永久链接至标题"></a></h3>
+<p>源代码发布会在相关的代码库中创建一个变更日志和一个标签。</p>
+<p>该过程从使用以下命令生成或更新 CHANGELOG.rst 文件开始：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ catkin_generate_changelog
 </pre></div>
 </div>
-<p>If one or more packages in the repository don't have contain CHANGELOG.rst, add the <code class="docutils literal notranslate"><span class="pre">--all</span></code> option to populate all of the previous commits for each package.
-The <code class="docutils literal notranslate"><span class="pre">catkin_generate_changelog</span></code> command will simply populate the files with the commit logs from the repository.
-Since those commit logs aren't always appropriate for a changelog, it is recommended to edit CHANGELOG.rst and edit it to make it more readable.
-Once editing is done, it is important to commit the updated CHANGELOG.rst file to the repository.</p>
+<p>如果代码库中的一个或多个软件包不包含 CHANGELOG.rst 文件，则需要添加 <code class="docutils literal notranslate"><span class="pre">--all</span></code> 选项，以便为每个软件包填充所有先前的提交。<code class="docutils literal notranslate"><span class="pre">catkin_generate_changelog</span></code> 命令将简单地使用代码库中的提交日志填充这些文件。由于这些提交日志并不总是适合用作变更日志，建议编辑 CHANGELOG.rst 并将其编辑为更易读的格式。编辑完成后，重要的是将更新的 CHANGELOG.rst 文件提交到代码库中。</p>
 <p>The next step is to bump the version in the package.xml and the changelog files with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ catkin_prepare_release
 </pre></div>
