@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROS 2 Package Maintainer Guide &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>ROS 2软件包维护人员指南 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -265,7 +265,7 @@
 <li class="toctree-l2"><a class="reference internal" href="RQt-Port-Plugin-Windows.html">Porting RQt plugins to Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Run-2-nodes-in-single-or-separate-docker-containers.html">Running ROS 2 nodes in Docker [community-contributed]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS 2 Package Maintainer Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS 2软件包维护人员指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">Topics vs Services vs Actions</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../How-To-Guides.html">如何指南</a> &raquo;</li>
-      <li>ROS 2 Package Maintainer Guide</li>
+      <li>ROS 2软件包维护人员指南</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Package-maintainer-guide.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,13 +372,12 @@
 
 
   <div class="section" id="ros-2-package-maintainer-guide">
-<h1>ROS 2 Package Maintainer Guide<a class="headerlink" href="#ros-2-package-maintainer-guide" title="永久链接至标题"></a></h1>
-<p>Each package in the ROS 2 core has one or more maintainers that are responsibile for the general health of the package.
-This guide gives some information about the responsibilities of a ROS 2 core package maintainer.</p>
+<h1>ROS 2软件包维护人员指南<a class="headerlink" href="#ros-2-package-maintainer-guide" title="永久链接至标题"></a></h1>
+<p>ROS 2核心中的每个软件包都有一个或多个维护人员，负责维护软件包的整体健康状况。本指南介绍了ROS 2核心软件包维护人员的责任和一些信息。</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#reviews" id="id1">Reviews</a></p></li>
+<li><p><a class="reference internal" href="#reviews" id="id1">评论</a></p></li>
 <li><p><a class="reference internal" href="#continuous-integration" id="id2">Continuous Integration</a></p>
 <ul>
 <li><p><a class="reference internal" href="#pr-builds-https-build-ros2-org-view-rpr" id="id3">PR builds (https://build.ros2.org/view/Rpr)</a></p></li>
@@ -399,21 +398,20 @@ This guide gives some information about the responsibilities of a ROS 2 core pac
 </ul>
 </div>
 <div class="section" id="reviews">
-<h2><a class="toc-backref" href="#id1">Reviews</a><a class="headerlink" href="#reviews" title="永久链接至标题"></a></h2>
-<p>All incoming code to ROS 2 core repositories must be reviewed.
-The review is looking for:</p>
+<h2><a class="toc-backref" href="#id1">评论</a><a class="headerlink" href="#reviews" title="永久链接至标题"></a></h2>
+<p>所有提交到ROS 2核心仓库的代码都必须进行审核。审核会关注以下方面：</p>
 <ul>
-<li><p>Suitability in the package</p></li>
-<li><p>Correct code</p></li>
-<li><p>Conforms to developer guidelines:</p>
+<li><p>适用于该包的合适性</p></li>
+<li><p>正确的代码</p></li>
+<li><p>符合开发者指南要求：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html"><span class="doc">Developer Guide</span></a></p></li>
-<li><p><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html"><span class="doc">Code Style Guide</span></a></p></li>
+<li><p><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html"><span class="doc">开发者指南</span></a></p></li>
+<li><p><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html"><span class="doc">代码风格指南</span></a></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Adds tests for the bug/feature</p></li>
+<li><p>为错误/功能添加测试</p></li>
 <li><p>Adds documentation for new features</p></li>
 <li><p>Clean Continuous Integration run</p></li>
 <li><p>Targets default branch (usually &quot;rolling&quot;)</p></li>

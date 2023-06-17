@@ -265,7 +265,7 @@
 <li class="toctree-l2"><a class="reference internal" href="RQt-Port-Plugin-Windows.html">Porting RQt plugins to Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Run-2-nodes-in-single-or-separate-docker-containers.html">Running ROS 2 nodes in Docker [community-contributed]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Package-maintainer-guide.html">ROS 2 Package Maintainer Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Package-maintainer-guide.html">ROS 2软件包维护人员指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Topics-Services-Actions.html">Topics vs Services vs Actions</a></li>
@@ -434,7 +434,7 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag record -a -o my_bag --qos-profile-overrides-path durability_override.yaml</span>
 </pre></div>
 </div>
-<p>If we want to playback the bag file but with a different Reliability policy, we can specify one as such;</p>
+<p>如果我们想使用不同的可靠性策略回放bag文件，我们可以这样指定；</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># reliability_override.yaml</span><span class="w"></span>
 <span class="nt">/talker</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">reliability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">best_effort</span><span class="w"></span>
@@ -445,7 +445,7 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag play --qos-profile-overrides-path reliability_override.yaml my_bag</span>
 </pre></div>
 </div>
-<p>We can see the results with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span></code></p>
+<p>我们可以使用``ros2 topic``查看结果</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic echo --qos-reliability best_effort /talker std_msgs/String</span>
 </pre></div>
 </div>
