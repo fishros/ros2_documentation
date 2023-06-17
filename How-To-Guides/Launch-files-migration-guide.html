@@ -515,8 +515,8 @@
 <h3>remap<a class="headerlink" href="#remap" title="永久链接至标题"></a></h3>
 <ul class="simple">
 <li><p><a href="#id9"><span class="problematic" id="id10">`在ROS 1中可用&lt;https://wiki.ros.org/roslaunch/XML/remap&gt;`__</span></a>。</p></li>
-<li><p>Used to pass remapping rules to a node.</p></li>
-<li><p>It can only be used within <code class="docutils literal notranslate"><span class="pre">node</span></code> tags.</p></li>
+<li><p>用于将重新映射规则传递给节点。</p></li>
+<li><p>它只能在``node``标签内使用。</p></li>
 </ul>
 <div class="section" id="id3">
 <h4>示例<a class="headerlink" href="#id3" title="永久链接至标题"></a></h4>
@@ -533,19 +533,16 @@
 </div>
 </div>
 <div class="section" id="include">
-<h3>include<a class="headerlink" href="#include" title="永久链接至标题"></a></h3>
+<h3>包括<a class="headerlink" href="#include" title="永久链接至标题"></a></h3>
 <ul>
-<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/include">Available in ROS 1</a>.</p></li>
-<li><p>Allows including another launch file.</p></li>
+<li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/include">在ROS 1中可用</a>。</p></li>
+<li><p>允许包含另一个启动文件。</p></li>
 <li><p>与ROS 1的不同之处：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Available in ROS 1, included content was scoped.
-In ROS 2, it's not.
-Nest includes in <code class="docutils literal notranslate"><span class="pre">group</span></code> tags to scope them.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ns</span></code> attribute is not supported.
-See example of <code class="docutils literal notranslate"><span class="pre">push_ros_namespace</span></code> tag for a workaround.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> tags nested in an <code class="docutils literal notranslate"><span class="pre">include</span></code> tag don't support conditionals (<code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">unless</span></code>).</p></li>
+<li><p>在ROS 1中可用，所包含的内容是有作用域的。在ROS 2中，它没有作用域。使用``group``标签来嵌套包含文件以进行作用域控制。</p></li>
+<li><p>不支持``ns``属性。参考``push_ros_namespace``标签的示例以获取解决方法。</p></li>
+<li><p>嵌套在``include``标签中的``arg``标签不支持条件语句（<code class="docutils literal notranslate"><span class="pre">if``或``unless</span></code>）。</p></li>
 <li><p>There is no support for nested <code class="docutils literal notranslate"><span class="pre">env</span></code> tags.
 <code class="docutils literal notranslate"><span class="pre">set_env</span></code> and <code class="docutils literal notranslate"><span class="pre">unset_env</span></code> can be used instead.</p></li>
 <li><p>Both <code class="docutils literal notranslate"><span class="pre">clear_params</span></code> and <code class="docutils literal notranslate"><span class="pre">pass_all_args</span></code> attributes aren't supported.</p></li>
