@@ -6154,42 +6154,42 @@ msgstr "本页面介绍了默认的RMW实现以及如何指定替代实现。"
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:19
 msgid "You should have already read the :doc:`DDS and ROS middleware implementations page <../Concepts/About-Different-Middleware-Vendors>`."
-msgstr "You should have already read the :doc:`DDS and ROS middleware implementations page <../Concepts/About-Different-Middleware-Vendors>`."
+msgstr "你应该已经阅读了:doc:`DDS和ROS中间件实现页面 <../Concepts/About-Different-Middleware-Vendors>`。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:22
 msgid "Specifying RMW implementations"
-msgstr "Specifying RMW implementations"
+msgstr "指定RMW实现"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:24
 msgid "To have multiple RMW implementations available for use you must have installed the ROS 2 binaries and any additional dependencies for specific RMW implementations, or built ROS 2 from source with multiple RMW implementations in the workspace (the RMW implementations are included in the build by default if their compile-time dependencies are met). See :doc:`Install DDS implementations <../Installation/DDS-Implementations>`."
-msgstr "To have multiple RMW implementations available for use you must have installed the ROS 2 binaries and any additional dependencies for specific RMW implementations, or built ROS 2 from source with multiple RMW implementations in the workspace (the RMW implementations are included in the build by default if their compile-time dependencies are met). See :doc:`Install DDS implementations <../Installation/DDS-Implementations>`."
+msgstr "要使用多个RMW实现，您必须安装ROS 2二进制文件和特定RMW实现的任何附加依赖项，或者从源代码构建ROS 2并在工作空间中使用多个RMW实现（如果编译时依赖项满足，则默认包括RMW实现在构建中）。参见:doc:`安装DDS实现 <../Installation/DDS-Implementations>`。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:28
 msgid "Both C++ and Python nodes support an environment variable ``RMW_IMPLEMENTATION`` that allows the user to select the RMW implementation to use when running ROS 2 applications."
-msgstr "Both C++ and Python nodes support an environment variable ``RMW_IMPLEMENTATION`` that allows the user to select the RMW implementation to use when running ROS 2 applications."
+msgstr "C++和Python节点都支持一个环境变量``RMW_IMPLEMENTATION``，允许用户在运行ROS 2应用程序时选择要使用的RMW实现。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:30
 msgid "The user may set this variable to a specific implementation identifier, such as ``rmw_cyclonedds_cpp``, ``rmw_fastrtps_cpp``, ``rmw_connextdds``, or ``rmw_gurumdds_cpp``."
-msgstr "The user may set this variable to a specific implementation identifier, such as ``rmw_cyclonedds_cpp``, ``rmw_fastrtps_cpp``, ``rmw_connextdds``, or ``rmw_gurumdds_cpp``."
+msgstr "用户可以将此变量设置为特定的实现标识符，例如 ``rmw_cyclonedds_cpp``、``rmw_fastrtps_cpp``、``rmw_connextdds`` 或 ``rmw_gurumdds_cpp``。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:32
 msgid "For example, to run the talker demo using the C++ talker and Python listener with the Connext RMW implementation:"
-msgstr "For example, to run the talker demo using the C++ talker and Python listener with the Connext RMW implementation:"
+msgstr "例如，要使用C++ talker 和 Python listener 以 Connext RMW 实现运行 talker 示例："
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:66
 msgid "Adding RMW implementations to your workspace"
-msgstr "Adding RMW implementations to your workspace"
+msgstr "将 RMW 实现添加到您的工作空间中"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:68
 msgid "Suppose that you have built your ROS 2 workspace with only Fast DDS installed and therefore only the Fast DDS RMW implementation built. The last time your workspace was built, any other RMW implementation packages, ``rmw_connextdds`` for example, were probably unable to find installations of the relevant DDS implementations. If you then install an additional DDS implementation, Connext for example, you will need to re-trigger the check for a Connext installation that occurs when the Connext RMW implementation is being built. You can do this by specifying the ``--cmake-clean-cache`` flag on your next workspace build, and you should see that the RMW implementation package then gets built for the newly installed DDS implementation."
-msgstr "Suppose that you have built your ROS 2 workspace with only Fast DDS installed and therefore only the Fast DDS RMW implementation built. The last time your workspace was built, any other RMW implementation packages, ``rmw_connextdds`` for example, were probably unable to find installations of the relevant DDS implementations. If you then install an additional DDS implementation, Connext for example, you will need to re-trigger the check for a Connext installation that occurs when the Connext RMW implementation is being built. You can do this by specifying the ``--cmake-clean-cache`` flag on your next workspace build, and you should see that the RMW implementation package then gets built for the newly installed DDS implementation."
+msgstr "假设您已经构建了只安装了 Fast DDS 的 ROS 2 工作空间，因此只有 Fast DDS RMW 实现被构建。上次构建工作空间时，其他任何 RMW 实现包（例如 ``rmw_connextdds``）可能都无法找到相关 DDS 实现的安装。如果您随后安装了额外的 DDS 实现，例如 Connext，您将需要重新触发构建 Connext RMW 实现时的 Connext 安装检查。您可以在下一个工作空间构建中指定 ``--cmake-clean-cache`` 标志来执行此操作，并且您应该看到 RMW 实现包将为新安装的 DDS 实现进行构建。"
 
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:73
