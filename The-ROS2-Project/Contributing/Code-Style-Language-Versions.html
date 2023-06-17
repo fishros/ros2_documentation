@@ -527,28 +527,28 @@
 <ul class="simple">
 <li><p>放宽对所有类成员必须私有的要求，从而需要访问器</p>
 <ul>
-<li><p>rationale: this is overly constraining for user API design</p></li>
-<li><p>we should prefer private members, only making them public when they are needed</p></li>
-<li><p>we should consider using accessors before choosing to allow direct member access</p></li>
-<li><p>we should have a good reason for allowing direct member access, other than because it is convenient for us</p></li>
+<li><p>解释：这对用户API设计来说过于限制性。</p></li>
+<li><p>解释：我们应该更倾向于私有成员，只有在需要时才将它们设置为公开。</p></li>
+<li><p>解释：在选择允许直接成员访问之前，我们应该考虑使用访问器。</p></li>
+<li><p>解释：除了对我们方便之外，我们应该有一个充分的理由来允许直接成员访问。</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="exceptions">
-<h4>Exceptions<a class="headerlink" href="#exceptions" title="永久链接至标题"></a></h4>
+<h4>异常<a class="headerlink" href="#exceptions" title="永久链接至标题"></a></h4>
 <ul class="simple">
-<li><p>Exceptions are allowed</p>
+<li><p>允许使用异常</p>
 <ul>
-<li><p>rationale: this is a new codebase, so the legacy argument doesn't apply to us</p></li>
-<li><p>rationale: for user-facing API's it is more idiomatic C++ to have exceptions</p></li>
-<li><p>Exceptions in destructors should be explicitly avoided</p></li>
+<li><p>解释：这是一个全新的代码库，所以我们不适用于传统的论点</p></li>
+<li><p>解释：对于面向用户的 API，使用异常更符合 C++ 的习惯用法</p></li>
+<li><p>析构函数中应明确避免异常</p></li>
 </ul>
 </li>
-<li><p>We should consider avoiding Exceptions if we intend to wrap the resulting API in C</p>
+<li><p>如果我们打算在C中包装所得到的API，则应考虑避免异常</p>
 <ul>
-<li><p>rationale: it will make it easier to wrap in C</p></li>
-<li><p>rationale: most of our dependencies in code we intend to wrap in C do not use exceptions anyways</p></li>
+<li><p>理由：这将使在C中进行包装更容易</p></li>
+<li><p>理由：我们打算在C中包装的代码大多数不会使用异常</p></li>
 </ul>
 </li>
 </ul>
