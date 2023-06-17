@@ -380,7 +380,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#basics-of-callback-groups" id="id1">回调组的基础知识</a></p>
 <ul>
-<li><p><a class="reference internal" href="#about-callbacks" id="id2">About callbacks</a></p></li>
+<li><p><a class="reference internal" href="#about-callbacks" id="id2">关于回调</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#controlling-execution" id="id3">Controlling execution</a></p></li>
@@ -403,24 +403,12 @@
 </ul>
 <p>这些回调组以不同的方式限制其回调函数的执行。简而言之</p>
 <ul class="simple">
-<li><p>Mutually Exclusive Callback Group prevents its callbacks from being
-executed in parallel - essentially making it as if the callbacks in the group
-were executed by a SingleThreadedExecutor.</p></li>
-<li><p>Reentrant Callback Group allows the executor to schedule and execute
-the group's callbacks in any way it sees fit, without restrictions.
-This means that, in addition to different callbacks being run parallel
-to each other, different instances of the same callback may also be
-executed concurrently.</p></li>
-<li><p>Callbacks belonging to different callback groups (of any type) can always
-be executed parallel to each other.</p></li>
+<li><p>互斥回调组阻止其回调并行执行 - 实际上使得回调组中的回调像由单线程执行器执行一样。</p></li>
+<li><p>可重入回调组允许执行器按照任意方式调度和执行组中的回调，没有任何限制。这意味着，除了不同的回调之间可以并行运行外，同一个回调的不同实例也可以同时执行。</p></li>
+<li><p>属于不同回调组（任何类型）的回调始终可以并行执行。</p></li>
 </ul>
-<p>It is also important to keep in mind that different ROS 2 entities relay
-their callback group to all callbacks they spawn.
-For example, if one assigns a callback group to an action client,
-all callbacks created by the client will be assigned to that callback group.</p>
-<p>Callback groups can be created by a node's <code class="docutils literal notranslate"><span class="pre">create_callback_group</span></code>
-function in rclcpp and by calling the constructor of the group in rclpy.
-The callback group can then be passed as argument/option when creating a subscription, timer, etc.</p>
+<p>还要注意的是，不同的ROS 2实体将其回调组传递给它们生成的所有回调。例如，如果将回调组分配给一个动作客户端，客户端创建的所有回调都将分配给该回调组。</p>
+<p>回调组可以通过节点的 <code class="docutils literal notranslate"><span class="pre">create_callback_group</span></code> 函数在 rclcpp 中创建，并通过在 rclpy 中调用组的构造函数进行创建。当创建订阅、定时器等时，可以将回调组作为参数/选项进行传递。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">my_callback_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
 
@@ -437,21 +425,15 @@ The callback group can then be passed as argument/option when creating a subscri
 </pre></div>
 </div>
 </div></div>
-<p>If the user does not specify any callback group when creating a subscription,
-timer, etc., this entity will be assigned to the node's default callback group.
-The default callback group is a Mutually Exclusive Callback Group and it can be
-queried via <code class="docutils literal notranslate"><span class="pre">NodeBaseInterface::get_default_callback_group()</span></code> in rclcpp and
-via <code class="docutils literal notranslate"><span class="pre">Node.default_callback_group</span></code> in rclpy.</p>
+<p>如果用户在创建订阅、定时器等时未指定任何回调组，则该实体将被分配给节点的默认回调组。默认回调组是一个互斥回调组，可以通过 <code class="docutils literal notranslate"><span class="pre">NodeBaseInterface::get_default_callback_group()</span></code> 在 rclcpp 中查询，并通过 <code class="docutils literal notranslate"><span class="pre">Node.default_callback_group</span></code> 在 rclpy 中查询。</p>
 <div class="section" id="about-callbacks">
-<h3><a class="toc-backref" href="#id2">About callbacks</a><a class="headerlink" href="#about-callbacks" title="永久链接至标题"></a></h3>
-<p>In the context of ROS 2 and executors, a callback means a function whose
-scheduling and execution is handled by an executor.
-Examples of callbacks in this context are</p>
+<h3><a class="toc-backref" href="#id2">关于回调</a><a class="headerlink" href="#about-callbacks" title="永久链接至标题"></a></h3>
+<p>在 ROS 2 和执行器的上下文中，回调是指由执行器处理调度和执行的函数。在这个上下文中，回调的例子有：</p>
 <ul class="simple">
-<li><p>subscription callbacks (receiving and handling data from a topic),</p></li>
-<li><p>timer callbacks,</p></li>
-<li><p>service callbacks (for executing service requests in a server),</p></li>
-<li><p>different callbacks in action servers and clients,</p></li>
+<li><p>订阅回调（从主题接收和处理数据），</p></li>
+<li><p>定时器回调，</p></li>
+<li><p>服务回调（用于在服务器中执行服务请求），</p></li>
+<li><p>动作服务器和客户端中的不同回调，</p></li>
 <li><p>done-callbacks of Futures.</p></li>
 </ul>
 <p>Below are a couple important points about callbacks that should be kept
