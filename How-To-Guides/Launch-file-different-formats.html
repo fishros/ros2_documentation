@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Using ROS 2 launch to launch composable nodes" href="Launching-composable-nodes.html" />
-    <link rel="prev" title="Migrating launch files from ROS 1 to ROS 2" href="Launch-files-migration-guide.html" /> 
+    <link rel="prev" title="将启动文件从ROS 1迁移到ROS 2" href="Launch-files-migration-guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -245,7 +245,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Developing-a-ROS-2-Package.html">开发ROS 2软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Launching-composable-nodes.html">Using ROS 2 launch to launch composable nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
@@ -379,7 +379,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#launch-file-examples" id="id1">启动文件示例</a></p></li>
 <li><p><a class="reference internal" href="#using-the-launch-files-from-the-command-line" id="id2">通过命令行使用启动文件</a></p></li>
-<li><p><a class="reference internal" href="#python-xml-or-yaml-which-should-i-use" id="id3">Python, XML, or YAML: Which should I use?</a></p></li>
+<li><p><a class="reference internal" href="#python-xml-or-yaml-which-should-i-use" id="id3">Python、XML 或 YAML：我应该使用哪个？</a></p></li>
 </ul>
 </div>
 <p>ROS 2启动文件可以使用Python、XML和YAML编写。本指南展示了如何使用这些不同格式来完成相同的任务，并讨论了何时使用每种格式。</p>
@@ -634,20 +634,17 @@
 </div>
 </div>
 <div class="section" id="python-xml-or-yaml-which-should-i-use">
-<h2><a class="toc-backref" href="#id3">Python, XML, or YAML: Which should I use?</a><a class="headerlink" href="#python-xml-or-yaml-which-should-i-use" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id3">Python、XML 或 YAML：我应该使用哪个？</a><a class="headerlink" href="#python-xml-or-yaml-which-should-i-use" title="永久链接至标题"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Launch files in ROS 1 were written in XML, so XML may be the most familiar to people coming from ROS 1.
-To see what's changed, you can visit <a class="reference internal" href="Launch-files-migration-guide.html"><span class="doc">Migrating launch files from ROS 1 to ROS 2</span></a>.</p>
+<p>在 ROS 1 中，启动文件是用 XML 编写的，所以对于来自 ROS 1 的人来说，XML 可能更为熟悉。要了解发生了什么变化，您可以访问 <a class="reference internal" href="Launch-files-migration-guide.html"><span class="doc">将启动文件从ROS 1迁移到ROS 2</span></a>。</p>
 </div>
-<p>For most applications the choice of which ROS 2 launch format comes down to developer preference.
-However, if your launch file requires flexibility that you cannot achieve with XML or YAML, you can use Python to write your launch file.
-Using Python for ROS 2 launch is more flexible because of following two reasons:</p>
+<p>对于大多数应用程序而言，选择使用哪种 ROS 2 启动文件格式取决于开发人员的偏好。然而，如果您的启动文件需要 XML 或 YAML 无法实现的灵活性，您可以使用 Python 来编写启动文件。使用 Python 进行 ROS 2 启动更加灵活，原因如下：</p>
 <ul class="simple">
-<li><p>Python is a scripting language, and thus you can leverage the language and its libraries in your launch files.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/launch">ros2/launch</a> (general launch features) and <a class="reference external" href="https://github.com/ros2/launch_ros">ros2/launch_ros</a> (ROS 2 specific launch features) are written in Python and thus you have lower level access to launch features that may not be exposed by XML and YAML.</p></li>
+<li><p>Python 是一种脚本语言，因此您可以在启动文件中利用该语言及其库。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">`</span></a>ros2/launch &lt;<a class="reference external" href="https://github.com/ros2/launch">https://github.com/ros2/launch</a>&gt;`_（通用的启动功能）和`ros2/launch_ros &lt;<a class="reference external" href="https://github.com/ros2/launch_ros">https://github.com/ros2/launch_ros</a>&gt;`_（ROS 2特定的启动功能）都是用Python编写的，因此您可以以较低级别访问启动功能，这些功能可能不会通过XML和YAML暴露出来。</p></li>
 </ul>
-<p>That being said, a launch file written in Python may be more complex and verbose than one in XML or YAML.</p>
+<p>话虽如此，用Python编写的启动文件可能比XML或YAML中的启动文件更复杂且冗长。</p>
 </div>
 </div>
 
@@ -656,7 +653,7 @@ Using Python for ROS 2 launch is more flexible because of following two reasons:
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Launch-files-migration-guide.html" class="btn btn-neutral float-left" title="Migrating launch files from ROS 1 to ROS 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Launch-files-migration-guide.html" class="btn btn-neutral float-left" title="将启动文件从ROS 1迁移到ROS 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Launching-composable-nodes.html" class="btn btn-neutral float-right" title="Using ROS 2 launch to launch composable nodes" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
