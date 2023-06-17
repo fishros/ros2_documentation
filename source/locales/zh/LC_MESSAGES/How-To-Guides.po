@@ -4982,42 +4982,42 @@ msgstr "对于希望使用同步调用并且了解其中陷阱的有经验的用
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:29
 msgid "Because we recommend avoiding sync calls, this guide will also address the features and usage of the recommended alternative, async calls (``call_async()``)."
-msgstr "Because we recommend avoiding sync calls, this guide will also address the features and usage of the recommended alternative, async calls (``call_async()``)."
+msgstr "因为我们建议避免使用同步调用，所以本指南还将介绍推荐替代方案异步调用（``call_async()``）的功能和用法。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:31
 msgid "The C++ service call API is only available in async, so the comparisons and examples in this guide pertain to Python services and clients. The definition of async given here generally applies to C++, with some exceptions."
-msgstr "The C++ service call API is only available in async, so the comparisons and examples in this guide pertain to Python services and clients. The definition of async given here generally applies to C++, with some exceptions."
+msgstr "C++服务调用API仅支持异步调用，因此本指南中的比较和示例适用于Python服务和客户端。此处给出的异步定义通常也适用于C++，但存在一些例外情况。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:35
 msgid "1 Synchronous calls"
-msgstr "1 Synchronous calls"
+msgstr "1 同步调用"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:37
 msgid "A synchronous client will block the calling thread when sending a request to a service until a response has been received; nothing else can happen on that thread during the call. The call can take arbitrary amounts of time to complete. Once complete, the response returns directly to the client."
-msgstr "A synchronous client will block the calling thread when sending a request to a service until a response has been received; nothing else can happen on that thread during the call. The call can take arbitrary amounts of time to complete. Once complete, the response returns directly to the client."
+msgstr "在发送请求到服务时，同步客户端会阻塞调用线程，直到接收到响应；在调用过程中该线程无法执行其他任务。调用的完成时间可以是任意长。一旦完成，响应直接返回给客户端。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:41
 msgid "The following is an example of how to correctly execute a synchronous service call from a client node, similar to the async node in the :doc:`Simple Service and Client <../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client>` tutorial."
-msgstr "The following is an example of how to correctly execute a synchronous service call from a client node, similar to the async node in the :doc:`Simple Service and Client <../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client>` tutorial."
+msgstr "以下是一个正确执行同步服务调用的示例，类似于教程中的异步节点（:doc:`简单服务和客户端 </../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client>`）。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:88
 msgid "Note inside ``main()`` that the client calls ``rclpy.spin`` in a separate thread. Both ``send_request`` and ``rclpy.spin`` are blocking, so they need to be on separate threads."
-msgstr "Note inside ``main()`` that the client calls ``rclpy.spin`` in a separate thread. Both ``send_request`` and ``rclpy.spin`` are blocking, so they need to be on separate threads."
+msgstr "请注意，在 ``main()`` 中，客户端在单独的线程中调用 ``rclpy.spin``。``send_request`` 和 ``rclpy.spin`` 都是阻塞的，因此它们需要在不同的线程中执行。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:92
 msgid "1.1 Sync deadlock"
-msgstr "1.1 Sync deadlock"
+msgstr "1.1 同步死锁"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:94
 msgid "There are several ways that the synchronous ``call()`` API can cause deadlock."
-msgstr "There are several ways that the synchronous ``call()`` API can cause deadlock."
+msgstr "同步的 ``call()`` API 可能会导致死锁的几种方式。"
 
 
 #: ../../source/How-To-Guides/Sync-Vs-Async.rst:96
