@@ -380,7 +380,7 @@
 <li><p><a class="reference internal" href="#migrating-tags-from-ros-1-to-ros-2" id="id12">从ROS 1迁移到ROS 2的标签</a></p></li>
 <li><p><a class="reference internal" href="#new-tags-in-ros-2" id="id13">ROS 2中的新标签</a></p></li>
 <li><p><a class="reference internal" href="#replacing-an-include-tag" id="id14">替换了`include`标签</a></p></li>
-<li><p><a class="reference internal" href="#substitutions" id="id15">Substitutions</a></p></li>
+<li><p><a class="reference internal" href="#substitutions" id="id15">替换</a></p></li>
 <li><p><a class="reference internal" href="#id8" id="id16">类型推断规则</a></p></li>
 </ul>
 </div>
@@ -713,35 +713,28 @@
 </div>
 <div class="section" id="replacing-an-include-tag">
 <h2><a class="toc-backref" href="#id14">替换了`include`标签</a><a class="headerlink" href="#replacing-an-include-tag" title="永久链接至标题"></a></h2>
-<p>In order to include a launch file under a <strong>namespace</strong> as in ROS 1 then the <code class="docutils literal notranslate"><span class="pre">include</span></code> tags must be nested in a <code class="docutils literal notranslate"><span class="pre">group</span></code> tag.</p>
+<p>为了在ROS 1中像**命名空间**一样包含启动文件，则必须将``include``标签嵌套在``group``标签中。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;group&gt;</span>
    <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;another_launch_file&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/group&gt;</span>
 </pre></div>
 </div>
-<p>Then, instead of using the <code class="docutils literal notranslate"><span class="pre">ns</span></code> attribute, add the <code class="docutils literal notranslate"><span class="pre">push_ros_namespace</span></code> action tag to specify the namespace:</p>
+<p>然后，不再使用``ns``属性，而是添加``push_ros_namespace``操作标签来指定命名空间：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;group&gt;</span>
    <span class="nt">&lt;push_ros_namespace</span> <span class="na">namespace=</span><span class="s">&quot;my_ns&quot;</span><span class="nt">/&gt;</span>
    <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;another_launch_file&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/group&gt;</span>
 </pre></div>
 </div>
-<p>Nesting <code class="docutils literal notranslate"><span class="pre">include</span></code> tags under a <code class="docutils literal notranslate"><span class="pre">group</span></code> tag is only required when specifying a namespace</p>
+<p>只有在指定命名空间时才需要将``include``标签嵌套在``group``标签下。</p>
 </div>
 <div class="section" id="substitutions">
-<h2><a class="toc-backref" href="#id15">Substitutions</a><a class="headerlink" href="#substitutions" title="永久链接至标题"></a></h2>
-<p>Documentation about ROS 1's substitutions can be found in <a class="reference external" href="https://wiki.ros.org/roslaunch/XML">roslaunch XML wiki</a>.
-Substitutions syntax hasn't changed, i.e. it still follows the <code class="docutils literal notranslate"><span class="pre">$(substitution-name</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...)</span></code> pattern.
-There are, however, some changes w.r.t. ROS 1:</p>
+<h2><a class="toc-backref" href="#id15">替换</a><a class="headerlink" href="#substitutions" title="永久链接至标题"></a></h2>
+<p>关于ROS 1的替代方案的文档可以在 <a class="reference external" href="https://wiki.ros.org/roslaunch/XML">roslaunch XML wiki</a> 中找到。替代语法没有改变，仍然遵循 <code class="docutils literal notranslate"><span class="pre">$(substitution-name</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...)</span></code> 的模式。然而，与ROS 1相比，有一些变化：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">env</span></code> and <code class="docutils literal notranslate"><span class="pre">optenv</span></code> tags have been replaced by the <code class="docutils literal notranslate"><span class="pre">env</span></code> tag.
-<code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;)</span></code> will fail if the environment variable doesn't exist.
-<code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">'')</span></code> does the same as ROS 1's <code class="docutils literal notranslate"><span class="pre">$(optenv</span> <span class="pre">&lt;NAME&gt;)</span></code>.
-<code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">&lt;DEFAULT&gt;)</span></code> does the same as ROS 1's <code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">&lt;DEFAULT&gt;)</span></code> or <code class="docutils literal notranslate"><span class="pre">$(optenv</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">&lt;DEFAULT&gt;)</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">find</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">find-pkg-share</span></code> (substituting the share directory of an installed package).
-Alternatively <code class="docutils literal notranslate"><span class="pre">find-pkg-prefix</span></code> will return the root of an installed package.</p></li>
-<li><p>There is a new <code class="docutils literal notranslate"><span class="pre">exec-in-pkg</span></code> substitution.
-e.g.: <code class="docutils literal notranslate"><span class="pre">$(exec-in-pkg</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;exec_name&gt;)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">env</span></code> 和 <code class="docutils literal notranslate"><span class="pre">optenv</span></code> 标签已被 <code class="docutils literal notranslate"><span class="pre">env</span></code> 标签替代。如果环境变量不存在，<code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;)</span></code> 将失败。<code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">'')</span></code> 与ROS 1的 <code class="docutils literal notranslate"><span class="pre">$(optenv</span> <span class="pre">&lt;NAME&gt;)</span></code> 功能相同。<code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">&lt;DEFAULT&gt;)</span></code> 与ROS 1的 <code class="docutils literal notranslate"><span class="pre">$(env</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">&lt;DEFAULT&gt;)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$(optenv</span> <span class="pre">&lt;NAME&gt;</span> <span class="pre">&lt;DEFAULT&gt;)</span></code> 功能相同。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find</span></code> 被 <code class="docutils literal notranslate"><span class="pre">find-pkg-share</span></code> 替代（用于替代已安装包的共享目录）。或者，<code class="docutils literal notranslate"><span class="pre">find-pkg-prefix</span></code> 将返回已安装包的根目录。</p></li>
+<li><p>新增了一个 <code class="docutils literal notranslate"><span class="pre">exec-in-pkg</span></code> 替代。例如：<code class="docutils literal notranslate"><span class="pre">$(exec-in-pkg</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;exec_name&gt;)</span></code>。</p></li>
 <li><p>There is a new <code class="docutils literal notranslate"><span class="pre">find-exec</span></code> substitution.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">var</span></code>.
 It looks at configurations defined either with <code class="docutils literal notranslate"><span class="pre">arg</span></code> or <code class="docutils literal notranslate"><span class="pre">let</span></code> tag.</p></li>
