@@ -391,8 +391,8 @@
 <li><p><a class="reference internal" href="#issues" id="id9">问题</a></p></li>
 <li><p><a class="reference internal" href="#branches" id="id10">分支</a></p></li>
 <li><p><a class="reference internal" href="#pull-requests" id="id11">拉取请求</a></p></li>
-<li><p><a class="reference internal" href="#library-versioning" id="id12">Library versioning</a></p></li>
-<li><p><a class="reference internal" href="#development-process" id="id13">Development process</a></p></li>
+<li><p><a class="reference internal" href="#library-versioning" id="id12">库版本管理</a></p></li>
+<li><p><a class="reference internal" href="#development-process" id="id13">开发过程</a></p></li>
 <li><p><a class="reference internal" href="#changes-to-rmw-api" id="id14">Changes to RMW API</a></p></li>
 <li><p><a class="reference internal" href="#tracking-tasks" id="id15">Tracking tasks</a></p></li>
 <li><p><a class="reference internal" href="#programming-conventions" id="id16">Programming conventions</a></p></li>
@@ -646,38 +646,26 @@
 </li>
 <li><p>在合并拉取请求之前，所有的更改应该被压缩成少量的语义提交，以保持历史清晰。</p>
 <ul>
-<li><p>But avoid squashing commits while a pull request is under review.
-Your reviewers might not notice that you made the change, thereby introducing potential for confusion.
-Plus, you're going to squash before merging anyway; there's no benefit to doing it early.</p></li>
+<li><p>在审核期间避免压缩提交记录。您的审阅人员可能不会注意到您所做的更改，从而引入混淆的可能性。而且，无论如何在合并之前都要进行压缩；提前压缩没有任何好处。</p></li>
 </ul>
 </li>
-<li><p>Any developer is welcome to review and approve a pull request (see <a class="reference internal" href="#general-principles">General Principles</a>).</p></li>
-<li><p>When you are working on a change that is not ready for review or to be merged, use a draft pull request.
-When that change is ready for review, move the pull request out of the draft state.
-Note that if you want early feedback from specific people on a draft pull request, you can &#64; mention them in the pull request's description or in a comment on the pull request.</p></li>
-<li><p>If your pull request depends on other pull requests, link to each depended on pull request by adding <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Depends</span> <span class="pre">on</span> <span class="pre">&lt;link&gt;</span></code> at the top of your pull request's description.
-Doing so helps reviewers understand the context of the pull request.</p></li>
-<li><p>When you start reviewing a pull request, comment on the pull request so that other developers know that you're reviewing it.</p></li>
-<li><p>Pull-request review is not read-only, with the reviewer making comments and then waiting for the author to address them.
-As a reviewer, feel free to make minor improvements (typos, style issues, etc.) in-place.
-As the opener of a pull-request, if you are working in a fork, checking the box to <a class="reference external" href="https://github.com/blog/2247-improving-collaboration-with-forks">allow edits from upstream contributors</a> will assist with the aforementioned.
-As a reviewer, also feel free to make more substantial improvements, but consider putting them in a separate branch (either mention the new branch in a comment, or open another pull request from the new branch to the original branch).</p></li>
-<li><p>Any developer (the author, the reviewer, or somebody else) can merge any approved pull request.</p></li>
+<li><p>任何开发者都可以审核并批准拉取请求（请参阅 <a class="reference internal" href="#general-principles">General Principles</a>）。</p></li>
+<li><p>当您正在处理尚未准备好审核或合并的更改时，请使用草稿拉取请求。当这些更改准备好进行审核时，将拉取请求从草稿状态移出。请注意，如果您想从草稿拉取请求中获得特定人员的早期反馈意见，可以在拉取请求的描述或评论中提及他们。</p></li>
+<li><p>如果您的拉取请求依赖于其他拉取请求，请通过在拉取请求的描述顶部添加 <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Depends</span> <span class="pre">on</span> <span class="pre">&lt;link&gt;</span></code> 来链接到每个所依赖的拉取请求。这样做有助于审阅人员了解拉取请求的上下文。</p></li>
+<li><p>当您开始审查拉取请求时，请在拉取请求上发表评论，以便其他开发人员知道您正在进行审查。</p></li>
+<li><p>拉取请求审查不是只读的，审查人员会发表评论，然后等待作者处理。作为审查人员，可以自由地进行一些小的改进（拼写错误、样式问题等）。作为拉取请求的发起人，如果您在一个分支上工作，请勾选`允许来自上游贡献者的编辑 &lt;<a class="reference external" href="https://github.com/blog/2247-improving-collaboration-with-forks">https://github.com/blog/2247-improving-collaboration-with-forks</a>&gt;`__ 选项，这将有助于前述情况。作为审查人员，也可以自由地进行一些较大的改进，但考虑将它们放在一个单独的分支中（在评论中提到新的分支，或者从新分支向原始分支发起另一个拉取请求）。</p></li>
+<li><p>任何开发人员（作者、审查人员或其他人）都可以合并任何已批准的拉取请求。</p></li>
 </ul>
 </div>
 <div class="section" id="library-versioning">
-<h3><a class="toc-backref" href="#id12">Library versioning</a><a class="headerlink" href="#library-versioning" title="永久链接至标题"></a></h3>
-<p>We will version all libraries within a package together.
-This means that libraries inherit their version from the package.
-This keeps library and package versions from diverging and shares reasoning with the policy of releasing packages which share a repository together.
-If you need libraries to have different versions then consider splitting them into different packages.</p>
+<h3><a class="toc-backref" href="#id12">库版本管理</a><a class="headerlink" href="#library-versioning" title="永久链接至标题"></a></h3>
+<p>我们将同时对一个包中的所有库进行版本控制。这意味着库的版本继承自该包。这样可以防止库和包的版本分歧，并与共享同一个代码仓库的包发布策略保持一致。如果您需要库具有不同的版本，请考虑将它们拆分为不同的包。</p>
 </div>
 <div class="section" id="development-process">
-<h3><a class="toc-backref" href="#id13">Development process</a><a class="headerlink" href="#development-process" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id13">开发过程</a><a class="headerlink" href="#development-process" title="永久链接至标题"></a></h3>
 <ul class="simple">
-<li><p>The default branch (in most cases the rolling branch) must always build, pass all tests and compile without warnings.
-If at any time there is a regression it is the top priority to restore at least the previous state.</p></li>
-<li><p>Always build with tests enabled.</p></li>
+<li><p>默认分支（大多数情况下是滚动分支）必须始终构建，通过所有测试并且没有警告信息。如果出现任何回归问题，最重要的是至少恢复到先前的状态。</p></li>
+<li><p>始终使用启用了测试的构建。</p></li>
 <li><p>Always run tests locally after changes and before proposing them in a pull request.
 Besides using automated tests, also run the modified code path manually to ensure that the patch works as intended.</p></li>
 <li><p>Always run CI jobs for all platforms for every pull request and include links to the jobs in the pull request.</p></li>
