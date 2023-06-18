@@ -382,7 +382,7 @@
 <ul>
 <li><p><a class="reference internal" href="#package-manifests" id="id3">软件包清单</a></p></li>
 <li><p><a class="reference internal" href="#metapackages" id="id4">元软件包</a></p></li>
-<li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id5">Message, service, and action definitions</a></p></li>
+<li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id5">消息、服务和动作定义</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id6">Build system</a></p></li>
 <li><p><a class="reference internal" href="#update-source-code" id="id7">Update source code</a></p></li>
 </ul>
@@ -420,7 +420,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#package-manifests" id="id17">软件包清单</a></p></li>
 <li><p><a class="reference internal" href="#metapackages" id="id18">元软件包</a></p></li>
-<li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id19">Message, service, and action definitions</a></p></li>
+<li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id19">消息、服务和动作定义</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id20">Build system</a></p></li>
 <li><p><a class="reference internal" href="#update-source-code" id="id21">Update source code</a></p></li>
 </ul>
@@ -432,23 +432,17 @@
 </div>
 <div class="section" id="metapackages">
 <h3><a class="toc-backref" href="#id18">元软件包</a><a class="headerlink" href="#metapackages" title="永久链接至标题"></a></h3>
-<p>ROS 2 doesn't have a special package type for metapackages.
-Metapackages can still exist as regular packages that only contain runtime dependencies.
-When migrating metapackages from ROS 1, simply remove the <code class="docutils literal notranslate"><span class="pre">&lt;metapackage</span> <span class="pre">/&gt;</span></code> tag in your package manifest.</p>
+<p>ROS 2没有针对元包的特殊软件包类型。元包仍然可以作为仅包含运行时依赖项的常规软件包存在。在从ROS 1迁移元包时，只需在软件包清单中删除``&lt;metapackage /&gt;``标签。</p>
 </div>
 <div class="section" id="message-service-and-action-definitions">
-<h3><a class="toc-backref" href="#id19">Message, service, and action definitions</a><a class="headerlink" href="#message-service-and-action-definitions" title="永久链接至标题"></a></h3>
-<p>Message files must end in <code class="docutils literal notranslate"><span class="pre">.msg</span></code> and must be located in the subfolder <code class="docutils literal notranslate"><span class="pre">msg</span></code>.
-Service files must end in <code class="docutils literal notranslate"><span class="pre">.srv</span></code> and must be located in the subfolder <code class="docutils literal notranslate"><span class="pre">srv</span></code>.
-Actions files must end in <code class="docutils literal notranslate"><span class="pre">.action</span></code> and must be located in the subfolder <code class="docutils literal notranslate"><span class="pre">action</span></code>.</p>
-<p>These files might need to be updated to comply with the <a class="reference external" href="https://design.ros2.org/articles/interface_definition.html">ROS Interface definition</a>.
-Some primitive types have been removed and the types <code class="docutils literal notranslate"><span class="pre">duration</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code> which were builtin types in ROS 1 have been replaced with normal message definitions and must be used from the <a class="reference external" href="https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces">builtin_interfaces</a> package.
-Also some naming conventions are stricter than in ROS 1.</p>
-<p>In your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>:</p>
+<h3><a class="toc-backref" href="#id19">消息、服务和动作定义</a><a class="headerlink" href="#message-service-and-action-definitions" title="永久链接至标题"></a></h3>
+<p>消息文件必须以``.msg``结尾，并且必须位于子文件夹``msg``中。服务文件必须以``.srv``结尾，并且必须位于子文件夹``srv``中。动作文件必须以``.action``结尾，并且必须位于子文件夹``action``中。</p>
+<p>这些文件可能需要更新以符合`ROS接口定义&lt;<a class="reference external" href="https://design.ros2.org/articles/interface_definition.html">https://design.ros2.org/articles/interface_definition.html</a>&gt;`__。一些原始类型已被删除，ROS 1中的``duration``和``time``类型已被替换为普通消息定义，并且必须从`builtin_interfaces &lt;<a class="reference external" href="https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces">https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces</a>&gt;`__软件包中使用。此外，一些命名约定比ROS 1更严格。</p>
+<p>在你的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中:</p>
 <ul class="simple">
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;buildtool_depend&gt;rosidl_default_generators&lt;/buildtool_depend&gt;</span></code>.</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;rosidl_default_runtime&lt;/exec_depend&gt;</span></code>.</p></li>
-<li><p>For each dependent message package, add <code class="docutils literal notranslate"><span class="pre">&lt;depend&gt;message_package&lt;/depend&gt;</span></code>.</p></li>
+<li><p>添加 <code class="docutils literal notranslate"><span class="pre">&lt;buildtool_depend&gt;rosidl_default_generators&lt;/buildtool_depend&gt;</span></code>。</p></li>
+<li><p>添加 <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;rosidl_default_runtime&lt;/exec_depend&gt;</span></code>。</p></li>
+<li><p>对于每个依赖的消息包，添加 <code class="docutils literal notranslate"><span class="pre">&lt;depend&gt;message_package&lt;/depend&gt;</span></code>。</p></li>
 </ul>
 <p>In your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
 <ul class="simple">
