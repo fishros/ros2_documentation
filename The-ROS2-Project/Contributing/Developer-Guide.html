@@ -506,29 +506,27 @@
 <div class="section" id="change-control-process">
 <h3><a class="toc-backref" href="#id5">变更控制流程</a><a class="headerlink" href="#change-control-process" title="永久链接至标题"></a></h3>
 <ul class="simple">
-<li><p>All changes must go through a pull request.</p></li>
-<li><p>We will enforce the <a class="reference external" href="https://developercertificate.org/">Developer Certificate of Origin (DCO)</a> on pull requests in ROSCore repositories.</p>
+<li><p>所有更改都必须通过拉取请求进行。</p></li>
+<li><p>我们将在ROSCore仓库的拉取请求中执行`开发者证书 (DCO) &lt;<a class="reference external" href="https://developercertificate.org/">https://developercertificate.org/</a>&gt;`_ 的强制要求。</p>
 <ul>
-<li><p>It requires all commit messages to contain the <code class="docutils literal notranslate"><span class="pre">Signed-off-by</span></code> line with an email address that matches the commit author.</p></li>
-<li><p>You can pass <code class="docutils literal notranslate"><span class="pre">-s</span></code> / <code class="docutils literal notranslate"><span class="pre">--signoff</span></code> to the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> invocation or write the expected message manually (e.g. <code class="docutils literal notranslate"><span class="pre">Signed-off-by:</span> <span class="pre">Your</span> <span class="pre">Name</span> <span class="pre">Developer</span> <span class="pre">&lt;your.name&#64;example.com&gt;</span></code>).</p></li>
-<li><p>DCO is <em>not</em> required for pull requests that only address whitespace removal, typo correction, and other <a class="reference external" href="http://cr.openjdk.java.net/~jrose/draft/trivial-fixes.html">trivial changes</a>.</p></li>
+<li><p>它要求所有提交消息都包含与提交作者相匹配的``Signed-off-by``行及其电子邮件地址。</p></li>
+<li><p>您可以在``git commit``命令中添加``-s`` / <code class="docutils literal notranslate"><span class="pre">--signoff``参数或手动编写所需的消息（例如：``Signed-off-by:</span> <span class="pre">Your</span> <span class="pre">Name</span> <span class="pre">Developer</span> <span class="pre">&lt;your.name&#64;example.com&gt;</span></code>）。</p></li>
+<li><p>只涉及空格删除、拼写错误更正和其他 <a class="reference external" href="http://cr.openjdk.java.net/~jrose/draft/trivial-fixes.html">微小更改</a> 的拉取请求，不需要DCO。</p></li>
 </ul>
 </li>
-<li><p>Always run CI jobs for all <a class="reference external" href="https://www.ros.org/reps/rep-2000.html#support-tiers">tier 1 platforms</a> for every pull request and include links to jobs in the pull request.
-(If you don't have access to the Jenkins jobs someone will trigger the jobs for you.)</p></li>
-<li><p>A minimum of 1 approval from a fellow developer who did not author the pull request is required to consider it approved.
-Approval is required before merging.</p>
+<li><p>对于每个拉取请求，始终在所有 <a class="reference external" href="https://www.ros.org/reps/rep-2000.html#support-tiers">一级支持平台</a> 上运行CI作业，并在拉取请求中包含作业链接。（如果您无权访问Jenkins作业，将有人为您触发作业。）</p></li>
+<li><p>需要至少来自未参与拉取请求撰写的其他开发人员的1个批准才能被视为已批准。在合并之前需要批准。</p>
 <ul>
-<li><p>Packages may choose to increase this number.</p></li>
+<li><p>软件包可以选择增加此数字。</p></li>
 </ul>
 </li>
-<li><p>Any required changes to documentation (API documentation, feature documentation, release notes, etc.) must be proposed before merging related changes.</p></li>
+<li><p>在合并相关更改之前，必须先提出对文档（API文档、功能文档、发布说明等）所需的任何更改。</p></li>
 </ul>
 <div class="section" id="guidelines-for-backporting-prs">
-<h4>Guidelines for backporting PRs<a class="headerlink" href="#guidelines-for-backporting-prs" title="永久链接至标题"></a></h4>
-<p>When changing an older version of ROS:</p>
+<h4>关于回溯拉取请求的准则<a class="headerlink" href="#guidelines-for-backporting-prs" title="永久链接至标题"></a></h4>
+<p>在更改较旧版本的ROS时：</p>
 <ul class="simple">
-<li><p>Make sure the features or fixes are accepted and merged in the rolling branch before opening a PR to backport the changes to older versions.</p></li>
+<li><p>确保在向较旧版本回溯更改的拉取请求之前，这些功能或修复已被接受并合并到滚动分支中。</p></li>
 <li><p>When backporting to older versions, also consider backporting to any other <a class="reference internal" href="../../Releases.html"><span class="doc">still supported versions</span></a>, even non-LTS versions.</p></li>
 <li><p>If you are backporting a single PR in its entirety, title the backport PR &quot;[Distro] &lt;name of original PR&gt;&quot;.
 If backporting a subset of changes from one or multiple PRs, the title should be &quot;[Distro] &lt;description of changes&gt;&quot;.</p></li>
