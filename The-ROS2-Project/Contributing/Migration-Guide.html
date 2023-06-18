@@ -886,7 +886,7 @@ cp -a ~/ros1_talker/src/talker src
 </pre></div>
 </div>
 <p>使用rate对象进行休眠的方式保持不变。</p>
-<p>Putting it all together, the new <code class="docutils literal notranslate"><span class="pre">talker.cpp</span></code> looks like this:</p>
+<p>将所有内容组合在一起，新的 <code class="xref any docutils literal notranslate"><span class="pre">talker.cpp</span></code> 如下所示：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
 <span class="c1">// #include &quot;ros/ros.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
@@ -924,45 +924,35 @@ cp -a ~/ros1_talker/src/talker src
 </div>
 </div>
 <div class="section" id="changing-the-package-xml">
-<h4>Changing the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code><a class="headerlink" href="#changing-the-package-xml" title="永久链接至标题"></a></h4>
-<p>ROS 2 doesn't support format 1 of the package specification but only newer format versions (2 and higher).
-We start by specifying the format version in the <code class="docutils literal notranslate"><span class="pre">package</span></code> tag:</p>
+<h4>修改 <a class="reference internal" href="../../Concepts/About-Build-System.html#term-package.xml"><code class="xref any std std-term docutils literal notranslate"><span class="pre">package.xml</span></code></a><a class="headerlink" href="#changing-the-package-xml" title="永久链接至标题"></a></h4>
+<p>ROS 2 不支持包规范的格式1，只支持更新的格式版本（2及更高）。我们首先在 <a class="reference internal" href="../../Glossary.html#term-package"><code class="xref any std std-term docutils literal notranslate"><span class="pre">package</span></code></a> 标签中指定格式版本：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- &lt;package&gt; --&gt;</span>
 <span class="nt">&lt;package</span> <span class="na">format=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
 </pre></div>
 </div>
-<p>ROS 2 uses a newer version of <code class="docutils literal notranslate"><span class="pre">catkin</span></code>, called <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code>, which we specify in the
-<code class="docutils literal notranslate"><span class="pre">buildtool_depend</span></code> tag:</p>
+<p>ROS 2 使用名为 <code class="xref any docutils literal notranslate"><span class="pre">ament_cmake</span></code> 的较新版本 <code class="xref any docutils literal notranslate"><span class="pre">catkin</span></code>，我们在 <code class="xref any docutils literal notranslate"><span class="pre">buildtool_depend</span></code> 标签中进行了指定：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--  &lt;buildtool_depend&gt;catkin&lt;/buildtool_depend&gt; --&gt;</span>
   <span class="nt">&lt;buildtool_depend&gt;</span>ament_cmake<span class="nt">&lt;/buildtool_depend&gt;</span>
 </pre></div>
 </div>
-<p>In our build dependencies, instead of <code class="docutils literal notranslate"><span class="pre">roscpp</span></code> we use <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>, which provides
-the C++ API that we use.</p>
+<p>在我们的构建依赖项中，我们使用``rclcpp``代替了``roscpp``，它提供了我们使用的C++ API。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--  &lt;build_depend&gt;roscpp&lt;/build_depend&gt; --&gt;</span>
   <span class="nt">&lt;build_depend&gt;</span>rclcpp<span class="nt">&lt;/build_depend&gt;</span>
 </pre></div>
 </div>
-<p>We make the same addition in the run dependencies and also update from the
-<code class="docutils literal notranslate"><span class="pre">run_depend</span></code> tag to the <code class="docutils literal notranslate"><span class="pre">exec_depend</span></code> tag (part of the upgrade to version 2 of
-the package format):</p>
+<p>在运行时依赖项中，我们进行了相同的修改，并且还将``run_depend``标签更新为``exec_depend``标签（这是升级到软件包格式版本2的一部分）：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--  &lt;run_depend&gt;roscpp&lt;/run_depend&gt; --&gt;</span>
   <span class="nt">&lt;exec_depend&gt;</span>rclcpp<span class="nt">&lt;/exec_depend&gt;</span>
 <span class="cm">&lt;!--  &lt;run_depend&gt;std_msgs&lt;/run_depend&gt; --&gt;</span>
   <span class="nt">&lt;exec_depend&gt;</span>std_msgs<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>
 </div>
-<p>In ROS 1, we use <code class="docutils literal notranslate"><span class="pre">&lt;depend&gt;</span></code> to simplify specifying dependencies for both
-compile-time and runtime.
-We can do the same in ROS 2:</p>
+<p>在ROS 1中，我们使用``&lt;depend&gt;``来简化指定编译时和运行时的依赖关系。在ROS 2中，我们可以做同样的事情：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>rclcpp<span class="nt">&lt;/depend&gt;</span>
 <span class="nt">&lt;depend&gt;</span>std_msgs<span class="nt">&lt;/depend&gt;</span>
 </pre></div>
 </div>
-<p>We also need to tell the build tool what <em>kind</em> of package we are, so that it knows how
-to build us.
-Because we're using <code class="docutils literal notranslate"><span class="pre">ament</span></code> and CMake, we add the following lines to declare our
-build type to be <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code>:</p>
+<p>我们还需要告诉构建工具我们是哪种类型的软件包，以便它知道如何构建我们。因为我们使用``ament``和CMake，所以我们添加以下行来声明我们的构建类型为``ament_cmake``：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>
   <span class="nt">&lt;build_type&gt;</span>ament_cmake<span class="nt">&lt;/build_type&gt;</span>
 <span class="nt">&lt;/export&gt;</span>
