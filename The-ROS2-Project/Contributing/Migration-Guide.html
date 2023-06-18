@@ -549,8 +549,7 @@
 <div class="section" id="unit-tests">
 <h4>单元测试<a class="headerlink" href="#unit-tests" title="永久链接至标题"></a></h4>
 <p>如果您正在使用 gtest:</p>
-<p>Replace <code class="docutils literal notranslate"><span class="pre">CATKIN_ENABLE_TESTING</span></code> with <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>.
-Replace <code class="docutils literal notranslate"><span class="pre">catkin_add_gtest</span></code> with <code class="docutils literal notranslate"><span class="pre">ament_add_gtest</span></code>.</p>
+<p>将 <code class="docutils literal notranslate"><span class="pre">CATKIN_ENABLE_TESTING</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>。将 <code class="docutils literal notranslate"><span class="pre">catkin_add_gtest</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">ament_add_gtest</span></code>。</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">-   if (CATKIN_ENABLE_TESTING)</span><span class="w"></span>
 <span class="gd">-     find_package(GTest REQUIRED)  # or rostest</span><span class="w"></span>
 <span class="gd">-     include_directories(${GTEST_INCLUDE_DIRS})</span><span class="w"></span>
@@ -571,7 +570,7 @@ Replace <code class="docutils literal notranslate"><span class="pre">catkin_add_
 <span class="gi">+   endif()</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Add <code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;ament_cmake_gtest&lt;/test_depend&gt;</span></code> to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.</p>
+<p>在你的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中添加 <code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;ament_cmake_gtest&lt;/test_depend&gt;</span></code>。</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">-   &lt;test_depend&gt;rostest&lt;/test_depend&gt;</span><span class="w"></span>
 <span class="gi">+   &lt;test_depend&gt;ament_cmake_gtest&lt;/test_depend&gt;</span><span class="w"></span>
 </pre></div>
@@ -579,25 +578,22 @@ Replace <code class="docutils literal notranslate"><span class="pre">catkin_add_
 </div>
 <div class="section" id="linters">
 <h4>代码检查工具<a class="headerlink" href="#linters" title="永久链接至标题"></a></h4>
-<p>In ROS 2 we are working to maintain clean code using linters.
-The styles for different languages are defined in our <a class="reference internal" href="Developer-Guide.html"><span class="doc">Developer Guide</span></a>.</p>
-<p>If you are starting a project from scratch it is recommended to follow the style guide and turn on the automatic linter unit tests by adding these lines just below <code class="docutils literal notranslate"><span class="pre">if(BUILD_TESTING)</span></code> (until alpha 5 this was <code class="docutils literal notranslate"><span class="pre">AMENT_ENABLE_TESTING</span></code>).</p>
+<p>在ROS 2中，我们致力于使用代码检查工具来保持代码的整洁。不同语言的代码风格定义在我们的 <a class="reference internal" href="Developer-Guide.html"><span class="doc">开发人员指南</span></a> 中。</p>
+<p>如果你从头开始一个项目，建议遵循代码风格指南，并通过在 <code class="docutils literal notranslate"><span class="pre">if(BUILD_TESTING)</span></code> 下面添加以下代码来启用自动代码检查单元测试（在alpha 5之前为 <code class="docutils literal notranslate"><span class="pre">AMENT_ENABLE_TESTING</span></code>）。</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_lint_auto</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">ament_lint_auto_find_test_dependencies</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>You will also need to add the following dependencies to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>:</p>
+<p>您还需要将以下依赖项添加到您的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 文件中：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;test_depend&gt;</span>ament_lint_auto<span class="nt">&lt;/test_depend&gt;</span>
 <span class="nt">&lt;test_depend&gt;</span>ament_lint_common<span class="nt">&lt;/test_depend&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="continue-to-use-catkin-in-cmake">
-<h4>Continue to use <code class="docutils literal notranslate"><span class="pre">catkin</span></code> in CMake<a class="headerlink" href="#continue-to-use-catkin-in-cmake" title="永久链接至标题"></a></h4>
-<p>ROS 2 uses ament as the build system but for backward compatibility ROS 2 has a package called <code class="docutils literal notranslate"><span class="pre">catkin</span></code> which provides almost the same API as catkin in ROS 1.
-In order to use this backward compatibility API the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> must only be updated to call the function <code class="docutils literal notranslate"><span class="pre">catkin_ament_package()</span></code> <em>after</em> all targets.</p>
-<p><strong>NOTE: This has not been implemented yet and is only an idea at the moment.
-Due to the number of changes related to dependencies it has not yet been decided if this compatibility API is useful enough to justify the effort.</strong></p>
+<h4>继续在 CMake 中使用 <code class="docutils literal notranslate"><span class="pre">catkin</span></code><a class="headerlink" href="#continue-to-use-catkin-in-cmake" title="永久链接至标题"></a></h4>
+<p>ROS 2 使用 ament 作为构建系统，但为了向后兼容，ROS 2 有一个名为 <code class="docutils literal notranslate"><span class="pre">catkin</span></code> 的包，它提供了与 ROS 1 中的 catkin 几乎相同的 API。为了使用此向后兼容 API，<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 文件必须在所有目标之后 <em>仅</em> 更新为调用函数 <code class="docutils literal notranslate"><span class="pre">catkin_ament_package()</span></code>。</p>
+<p><strong>注意：目前尚未实施此功能，目前仅为想法。由于与依赖项相关的更改数量较多，尚未确定此兼容性 API 是否足够有用以证明付出努力的价值。</strong></p>
 </div>
 </div>
 <div class="section" id="update-source-code">
