@@ -4187,62 +4187,62 @@ msgstr "我们还需要告诉构建工具我们是哪种类型的软件包，以
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:756
 msgid "Putting it all together, our ``package.xml`` now looks like this:"
-msgstr "Putting it all together, our ``package.xml`` now looks like this:"
+msgstr "将所有内容放在一起，我们的``package.xml``现在看起来像这样："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:779
 msgid "**TODO: show simpler version of this file just using the ``<depend>`` tag, which is enabled by version 2 of the package format (also supported in ``catkin`` so, strictly speaking, orthogonal to ROS 2).**"
-msgstr "**TODO: show simpler version of this file just using the ``<depend>`` tag, which is enabled by version 2 of the package format (also supported in ``catkin`` so, strictly speaking, orthogonal to ROS 2).**"
+msgstr "**TODO: 展示一个更简化的文件版本，只使用``<depend>``标签，这在版本2的包格式中是可用的（也在``catkin``中支持，严格来说与ROS 2无关）。**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:784
 msgid "Changing the CMake code"
-msgstr "Changing the CMake code"
+msgstr "修改CMake代码"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:786
 msgid "ROS 2 relies on a higher version of CMake:"
-msgstr "ROS 2 relies on a higher version of CMake:"
+msgstr "ROS 2依赖于更高版本的CMake："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:793
 msgid "ROS 2 relies on the C++14 standard. Depending on what compiler you're using, support for C++14 might not be enabled by default. Using ``gcc`` 5.3 (which is what is used on Ubuntu Xenial), we need to enable it explicitly, which we do by adding this line near the top of the file:"
-msgstr "ROS 2 relies on the C++14 standard. Depending on what compiler you're using, support for C++14 might not be enabled by default. Using ``gcc`` 5.3 (which is what is used on Ubuntu Xenial), we need to enable it explicitly, which we do by adding this line near the top of the file:"
+msgstr "ROS 2 依赖于 C++14 标准。根据你使用的编译器，对于 C++14 的支持可能默认没有启用。在使用 ``gcc`` 5.3（Ubuntu Xenial 上使用的版本）时，我们需要显式启用它，可以通过在文件顶部附近添加以下行来实现："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:803
 msgid "The preferred way to work on all platforms is this:"
-msgstr "The preferred way to work on all platforms is this:"
+msgstr "在所有平台上工作的首选方式如下："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:814
 msgid "Using ``catkin``, we specify the packages we want to build against by passing them as ``COMPONENTS`` arguments when initially finding ``catkin`` itself. With ``ament_cmake``, we find each package individually, starting with ``ament_cmake``:"
-msgstr "Using ``catkin``, we specify the packages we want to build against by passing them as ``COMPONENTS`` arguments when initially finding ``catkin`` itself. With ``ament_cmake``, we find each package individually, starting with ``ament_cmake``:"
+msgstr "使用 ``catkin``，我们通过将要构建的包作为 ``COMPONENTS`` 参数传递给初始查找 ``catkin`` 本身的命令来指定要构建的包。对于 ``ament_cmake``，我们逐个查找每个包，从 ``ament_cmake`` 开始："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:825
 msgid "System dependencies can be found as before:"
-msgstr "System dependencies can be found as before:"
+msgstr "系统依赖项与以前一样可以找到："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:831
 msgid "We call ``catkin_package()`` to auto-generate things like CMake configuration files for other packages that use our package. Whereas that call happens *before* specifying targets to build, we now call the analogous ``ament_package()`` *after* the targets:"
-msgstr "We call ``catkin_package()`` to auto-generate things like CMake configuration files for other packages that use our package. Whereas that call happens *before* specifying targets to build, we now call the analogous ``ament_package()`` *after* the targets:"
+msgstr "我们使用 ``catkin_package()`` 来自动生成像 CMake 配置文件这样的东西，以供使用我们包的其他包使用。与构建目标之前的调用相反，现在我们在目标之后调用类似的 ``ament_package()``："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:842
 msgid "The only directories that need to be manually included are local directories and dependencies that are not ament packages:"
-msgstr "The only directories that need to be manually included are local directories and dependencies that are not ament packages:"
+msgstr "唯一需要手动包含的目录是本地目录和不是 ament 包的依赖项："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:850
 msgid "A better alternative is to specify include directories for each target individually, rather than including all the directories for all targets:"
-msgstr "A better alternative is to specify include directories for each target individually, rather than including all the directories for all targets:"
+msgstr "更好的选择是为每个目标单独指定包含目录，而不是为所有目标包含所有目录："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:857
 msgid "Similar to how we found each dependent package separately, we need to link each one to the build target. To link with dependent packages that are ament packages, instead of using ``target_link_libraries()``, ``ament_target_dependencies()`` is a more concise and more thorough way of handling build flags. It automatically handles both the include directories defined in ``_INCLUDE_DIRS`` and linking libraries defined in ``_LIBRARIES``."
-msgstr "Similar to how we found each dependent package separately, we need to link each one to the build target. To link with dependent packages that are ament packages, instead of using ``target_link_libraries()``, ``ament_target_dependencies()`` is a more concise and more thorough way of handling build flags. It automatically handles both the include directories defined in ``_INCLUDE_DIRS`` and linking libraries defined in ``_LIBRARIES``."
+msgstr "类似于我们单独找到每个依赖包的方式，我们需要将每个依赖包链接到构建目标上。对于 ament 包作为依赖包的链接，不使用 ``target_link_libraries()``，而是使用 ``ament_target_dependencies()`` 是处理构建标志更简洁和更彻底的方式。它自动处理 ``_INCLUDE_DIRS`` 中定义的包含目录和 ``_LIBRARIES`` 中定义的链接库。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:872
