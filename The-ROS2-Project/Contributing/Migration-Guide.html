@@ -515,12 +515,12 @@
 <li><p>将``add_message_files``、<a href="#id1"><span class="problematic" id="id2">``</span></a>add_service_files``和``generate_messages``的调用替换为`rosidl_generate_interfaces &lt;<a class="reference external" href="https://github.com/ros2/rosidl/blob/humble/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake">https://github.com/ros2/rosidl/blob/humble/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake</a>&gt;`__。</p>
 <ul>
 <li><p>第一个参数是``target_name``。如果你只构建一个库，那么它是``${PROJECT_NAME}``。</p></li>
-<li><p>Followed by the list of message filenames, relative to the package root.</p>
+<li><p>接着是相对于软件包根目录的消息文件名列表。</p>
 <ul class="simple">
-<li><p>If you will be using the list of filenames multiple times, it is recommended to compose a list of message files and pass the list to the function for clarity.</p></li>
+<li><p>如果您将多次使用文件名列表，则建议为清晰起见编写一个消息文件列表，并将其传递给函数。</p></li>
 </ul>
 </li>
-<li><p>The final multi-value-keyword argument fpr <code class="docutils literal notranslate"><span class="pre">generate_messages</span></code> is <code class="docutils literal notranslate"><span class="pre">DEPENDENCIES</span></code> which requires the list of dependent message packages.</p>
+<li><p>最后一个多值关键字参数是``generate_messages``的``DEPENDENCIES``，需要依赖消息软件包的列表。</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">rosidl_generate_interfaces</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span>
 <span class="w">  </span><span class="o">${</span><span class="nv">msg_files</span><span class="o">}</span>
 <span class="w">  </span><span class="s">DEPENDENCIES</span><span class="w"> </span><span class="s">std_msgs</span>
@@ -530,17 +530,16 @@
 </li>
 </ul>
 </li>
-<li><p>Remove any occurrences of the <em>devel space</em>.
-Related CMake variables like <code class="docutils literal notranslate"><span class="pre">CATKIN_DEVEL_PREFIX</span></code> do not exist anymore.</p>
+<li><p>删除所有*devel空间*的出现。相关的CMake变量，如``CATKIN_DEVEL_PREFIX``，已不再存在。</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">CATKIN_DEPENDS</span></code> and <code class="docutils literal notranslate"><span class="pre">DEPENDS</span></code> arguments are passed to the new function <a class="reference external" href="https://github.com/ament/ament_cmake/blob/humble/ament_cmake_export_dependencies/cmake/ament_export_dependencies.cmake">ament_export_dependencies</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_DEPENDS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">DEPENDS</span></code> 参数被传递给新的函数 <a class="reference external" href="https://github.com/ament/ament_cmake/blob/humble/ament_cmake_export_dependencies/cmake/ament_export_dependencies.cmake">ament_export_dependencies</a>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_BIN_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">bin</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_INCLUDE_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">include</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_LIB_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">lib</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_LIBEXEC_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">lib</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_SHARE_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">share</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_PACKAGE_BIN_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">lib/${PROJECT_NAME}</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_PACKAGE_INCLUDE_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">include/${PROJECT_NAME}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_LIBEXEC_DESTINATION</span></code>：<code class="docutils literal notranslate"><span class="pre">lib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_GLOBAL_SHARE_DESTINATION</span></code>：<code class="docutils literal notranslate"><span class="pre">share</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_PACKAGE_BIN_DESTINATION</span></code>：<code class="docutils literal notranslate"><span class="pre">lib/${PROJECT_NAME}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_PACKAGE_INCLUDE_DESTINATION</span></code>：<code class="docutils literal notranslate"><span class="pre">include/${PROJECT_NAME}</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_PACKAGE_LIB_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">lib</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CATKIN_PACKAGE_SHARE_DESTINATION</span></code>: <code class="docutils literal notranslate"><span class="pre">share/${PROJECT_NAME}</span></code></p></li>
 </ul>
