@@ -393,19 +393,17 @@
 </ul>
 <p><strong>问题</strong>：</p>
 <ul class="simple">
-<li><p>Library level static code analysis is not run as part of the package build procedure.</p></li>
-<li><p>Library level static code analysis needs to be executed manually.</p></li>
-<li><p>Risk of forgetting to execute library level static code analysis before building
-a new package version.</p></li>
+<li><p>在软件包构建过程中，不会运行库级静态代码分析。</p></li>
+<li><p>需要手动执行库级静态代码分析。</p></li>
+<li><p>在构建新的软件包版本之前，有可能会忘记执行库级静态代码分析。</p></li>
 </ul>
-<p><strong>Solution</strong>:</p>
+<p><strong>解决方案</strong>：</p>
 <ul class="simple">
-<li><p>Use the integration capabilities of <code class="docutils literal notranslate"><span class="pre">ament</span></code> to execute static code analysis as
-part of the package build procedure.</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">ament</span></code> 的集成能力，在软件包构建过程中执行静态代码分析。</p></li>
 </ul>
-<p><strong>Implementation</strong>:</p>
+<p><strong>实现</strong>：</p>
 <ul class="simple">
-<li><p>Insert into the packages <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p></li>
+<li><p>将其插入到软件包的 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 文件中。</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
 <span class="k">if</span><span class="o">(</span>BUILD_TESTING<span class="o">)</span>
@@ -417,7 +415,7 @@ endif<span class="o">()</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Insert the <code class="docutils literal notranslate"><span class="pre">ament_lint</span></code> test dependencies into the packages <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file.</p></li>
+<li><p>将 <code class="docutils literal notranslate"><span class="pre">ament_lint</span></code> 的测试依赖项插入到软件包的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 文件中。</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
 &lt;package <span class="nv">format</span><span class="o">=</span><span class="s2">&quot;2&quot;</span>&gt;
@@ -428,7 +426,7 @@ endif<span class="o">()</span>
 &lt;/package&gt;
 </pre></div>
 </div>
-<p><strong>Examples</strong>:</p>
+<p><strong>示例</strong>:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>:</p>
 <ul>
