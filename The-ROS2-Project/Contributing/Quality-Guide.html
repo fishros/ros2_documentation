@@ -481,8 +481,8 @@ endif<span class="o">()</span>
 <p><strong>实施方法：</strong></p>
 <p>这里提供的代码迁移建议并不完整 - 在编写（或注释现有）线程代码时，建议根据您的使用情况尽可能多地使用注释。然而，这个逐步过程是一个很好的起点！</p>
 <ul>
-<li><p>Enabling Analysis for Package/Target</p>
-<p>When the C++ compiler is Clang, enable the <code class="docutils literal notranslate"><span class="pre">-Wthread-safety</span></code> flag. Example below for CMake-based projects</p>
+<li><p>启用包/目标的分析功能</p>
+<p>当C++编译器为Clang时，启用``-Wthread-safety``标志。以下是基于CMake的项目示例</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_CXX_COMPILER_ID</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">&quot;Clang&quot;</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wthread-safety</span><span class="p">)</span><span class="w">   </span><span class="c"># for your whole package</span>
 <span class="w">  </span><span class="nb">target_compile_options</span><span class="p">(</span><span class="o">${</span><span class="nv">MY_TARGET</span><span class="o">}</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">-Wthread-safety</span><span class="p">)</span><span class="w">  </span><span class="c"># for a single library or executable</span>
@@ -490,12 +490,12 @@ endif<span class="o">()</span>
 </pre></div>
 </div>
 </li>
-<li><p>Annotating Code</p>
+<li><p>注释代码</p>
 <ul>
-<li><p>Step 1 - Annotate data members</p>
+<li><p>步骤1 - 注释数据成员</p>
 <ul class="simple">
-<li><p>Find anywhere that <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code> is used to protect some member data</p></li>
-<li><p>Add the <code class="docutils literal notranslate"><span class="pre">RCPPUTILS_TSA_GUARDED_BY(mutex_name)</span></code> annotation to the data that is protected by the mutex</p></li>
+<li><p>找到任何使用 <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code> 保护某些成员数据的地方</p></li>
+<li><p>在由互斥锁保护的数据上添加 <code class="docutils literal notranslate"><span class="pre">RCPPUTILS_TSA_GUARDED_BY(mutex_name)</span></code> 注释</p></li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Foo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="k">public</span><span class="o">:</span><span class="w"></span>
@@ -515,9 +515,9 @@ endif<span class="o">()</span>
 </pre></div>
 </div>
 </li>
-<li><p>Step 2 - Fix Warnings</p>
+<li><p>步骤2 - 修复警告</p>
 <ul class="simple">
-<li><p>In the above example - <code class="docutils literal notranslate"><span class="pre">Foo::get</span></code> will produce a compiler warning! To fix it, lock before returning bar</p></li>
+<li><p>在上面的示例中，<code class="docutils literal notranslate"><span class="pre">Foo::get</span></code> 会产生编译器警告！为了修复它，在返回 bar 之前进行锁定</p></li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">get</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span><span class="w"></span>
