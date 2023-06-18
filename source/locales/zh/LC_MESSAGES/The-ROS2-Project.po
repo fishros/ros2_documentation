@@ -3447,42 +3447,42 @@ msgstr "元软件包"
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:48
 msgid "ROS 2 doesn't have a special package type for metapackages. Metapackages can still exist as regular packages that only contain runtime dependencies. When migrating metapackages from ROS 1, simply remove the ``<metapackage />`` tag in your package manifest."
-msgstr "ROS 2 doesn't have a special package type for metapackages. Metapackages can still exist as regular packages that only contain runtime dependencies. When migrating metapackages from ROS 1, simply remove the ``<metapackage />`` tag in your package manifest."
+msgstr "ROS 2没有针对元包的特殊软件包类型。元包仍然可以作为仅包含运行时依赖项的常规软件包存在。在从ROS 1迁移元包时，只需在软件包清单中删除``<metapackage />``标签。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:53
 msgid "Message, service, and action definitions"
-msgstr "Message, service, and action definitions"
+msgstr "消息、服务和动作定义"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:55
 msgid "Message files must end in ``.msg`` and must be located in the subfolder ``msg``. Service files must end in ``.srv`` and must be located in the subfolder ``srv``. Actions files must end in ``.action`` and must be located in the subfolder ``action``."
-msgstr "Message files must end in ``.msg`` and must be located in the subfolder ``msg``. Service files must end in ``.srv`` and must be located in the subfolder ``srv``. Actions files must end in ``.action`` and must be located in the subfolder ``action``."
+msgstr "消息文件必须以``.msg``结尾，并且必须位于子文件夹``msg``中。服务文件必须以``.srv``结尾，并且必须位于子文件夹``srv``中。动作文件必须以``.action``结尾，并且必须位于子文件夹``action``中。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:59
 msgid "These files might need to be updated to comply with the `ROS Interface definition <https://design.ros2.org/articles/interface_definition.html>`__. Some primitive types have been removed and the types ``duration`` and ``time`` which were builtin types in ROS 1 have been replaced with normal message definitions and must be used from the `builtin_interfaces <https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces>`__ package. Also some naming conventions are stricter than in ROS 1."
-msgstr "These files might need to be updated to comply with the `ROS Interface definition <https://design.ros2.org/articles/interface_definition.html>`__. Some primitive types have been removed and the types ``duration`` and ``time`` which were builtin types in ROS 1 have been replaced with normal message definitions and must be used from the `builtin_interfaces <https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces>`__ package. Also some naming conventions are stricter than in ROS 1."
+msgstr "这些文件可能需要更新以符合`ROS接口定义<https://design.ros2.org/articles/interface_definition.html>`__。一些原始类型已被删除，ROS 1中的``duration``和``time``类型已被替换为普通消息定义，并且必须从`builtin_interfaces <https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces>`__软件包中使用。此外，一些命名约定比ROS 1更严格。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:63
 msgid "In your ``package.xml``:"
-msgstr "In your ``package.xml``:"
+msgstr "在你的 ``package.xml`` 中:"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:66
 msgid "Add ``<buildtool_depend>rosidl_default_generators</buildtool_depend>``."
-msgstr "Add ``<buildtool_depend>rosidl_default_generators</buildtool_depend>``."
+msgstr "添加 ``<buildtool_depend>rosidl_default_generators</buildtool_depend>``。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:67
 msgid "Add ``<exec_depend>rosidl_default_runtime</exec_depend>``."
-msgstr "Add ``<exec_depend>rosidl_default_runtime</exec_depend>``."
+msgstr "添加 ``<exec_depend>rosidl_default_runtime</exec_depend>``。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:68
 msgid "For each dependent message package, add ``<depend>message_package</depend>``."
-msgstr "For each dependent message package, add ``<depend>message_package</depend>``."
+msgstr "对于每个依赖的消息包，添加 ``<depend>message_package</depend>``。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:70
