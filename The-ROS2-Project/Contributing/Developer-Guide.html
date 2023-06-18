@@ -453,19 +453,16 @@
 </li>
 </ul>
 <div class="section" id="caveats">
-<h4>Caveats<a class="headerlink" href="#caveats" title="永久链接至标题"></a></h4>
-<p>These rules are <em>best-effort</em>.
-In unlikely, extreme cases, it may be necessary to break API within a major version/distribution.
-Whether an unplanned break increments the major or minor version will be assessed on a case-by-case basis.</p>
-<p>For example, consider a situation involving released X-turtle, corresponding to major version <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>, and released Y-turtle, corresponding to major version <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>.</p>
-<p>If an API-breaking fix is identified to be absolutely necessary in X-turtle, bumping to <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> is obviously not an option because <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> already exists.</p>
-<p>The solutions for handling X-turtle's version in such a case, both non-ideal, are:</p>
+<h4>注意事项<a class="headerlink" href="#caveats" title="永久链接至标题"></a></h4>
+<p>这些规则是*尽力而为*的。在极端情况下，可能需要在一个主要版本/发布中打破API的兼容性。对于非计划中的兼容性断裂，是将主版本号还是次版本号增加将根据具体情况进行评估。</p>
+<p>例如，考虑一个涉及发布的 X-turtle 和对应的主版本号为``1.0.0``的 Y-turtle 的情况。</p>
+<p>如果在 X-turtle 中发现必须打破API兼容性的问题，显然不能选择升级到``2.0.0``，因为``2.0.0``已经存在。</p>
+<p>在这种情况下处理X-turtle版本的解决方案，都是非理想的，包括：</p>
 <ol class="arabic simple">
-<li><p>Bumping X-turtle's minor version: non-ideal because it violates SemVer's principle that breaking changes must bump the major version.</p></li>
-<li><p>Bumping X-turtle's major version past Y-turtle (to <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>): non-ideal because the older distro's version would become higher than the already-available version of a newer distro, which would invalidate/break version-specific conditional code.</p></li>
+<li><p>增加X-turtle的次要版本：非理想，因为它违反了语义化版本规范（SemVer）中破坏性变更必须增加主要版本的原则。</p></li>
+<li><p>将X-turtle的主要版本升级到超过Y-turtle（<code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>）：非理想，因为旧发行版的版本将会高于已有的新发行版版本，这将使得特定版本条件代码失效/破坏。</p></li>
 </ol>
-<p>The developer will have to decide which solution to use, or more importantly, which principle they are willing to break.
-We cannot suggest one or the other, but in either case we do require that explicit measures be taken to communicate the disruption and its explanation to users manually (beyond just the version increment).</p>
+<p>开发人员将需要决定使用哪种解决方案，或者更重要的是，他们愿意违背哪个原则。我们不能建议选用其中一种，但无论哪种情况，我们都要求采取明确的措施手动向用户传达中断情况及其解释（不仅仅是版本号的增加）。</p>
 <p>If there were no Y-turtle, even though the fix would technically just be a patch, X-turtle would have to bump to <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>.
 This case adheres to SemVer, but breaks from our own rule that major increments should not be introduced in a released distribution.</p>
 <p>This is why we consider the versioning rules <em>best-effort</em>.
