@@ -3387,27 +3387,27 @@ msgstr "生成 HTML，以便轻松可视化和标注覆盖的代码行。"
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:7
 msgid "Migration guide from ROS 1"
-msgstr "Migration guide from ROS 1"
+msgstr "从ROS 1迁移指南"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:13
 msgid "There are two different kinds of package migrations:"
-msgstr "There are two different kinds of package migrations:"
+msgstr "有两种不同类型的包迁移："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:15
 msgid "Migrating the source code of an existing package from ROS 1 to ROS 2 with the intent that a significant part of the source code will stay the same or at least similar. An example for this could be `pluginlib <https://github.com/ros/pluginlib>`_ where the source code is maintained in different branches within the same repository and commonly patches can be ported between those branches when necessary."
-msgstr "Migrating the source code of an existing package from ROS 1 to ROS 2 with the intent that a significant part of the source code will stay the same or at least similar. An example for this could be `pluginlib <https://github.com/ros/pluginlib>`_ where the source code is maintained in different branches within the same repository and commonly patches can be ported between those branches when necessary."
+msgstr "将现有包的源代码从ROS 1迁移到ROS 2，并且意图是源代码的大部分保持相同或至少相似。一个例子是`pluginlib <https://github.com/ros/pluginlib>`_，其中源代码在同一存储库的不同分支中维护，常见的补丁可以在需要时在这些分支之间移植。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:17
 msgid "Implementing the same or similar functionality of a ROS 1 package for ROS 2 but with the assumption that the source code will be significantly different. An example for this could be `roscpp <https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp>`_ in ROS 1 and `rclcpp <https://github.com/ros2/rclcpp/tree/rolling/rclcpp>`_ in ROS 2 which are separate repositories and don't share any code."
-msgstr "Implementing the same or similar functionality of a ROS 1 package for ROS 2 but with the assumption that the source code will be significantly different. An example for this could be `roscpp <https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp>`_ in ROS 1 and `rclcpp <https://github.com/ros2/rclcpp/tree/rolling/rclcpp>`_ in ROS 2 which are separate repositories and don't share any code."
+msgstr "为ROS 2实现与ROS 1包相同或相似的功能，但假设源代码将有显着差异。一个例子是ROS 1中的`roscpp <https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp>`_和ROS 2中的`rclcpp <https://github.com/ros2/rclcpp/tree/rolling/rclcpp>`_，它们是单独的存储库，不共享任何代码。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:20
 msgid "This article focuses on the former case and describes the high-level steps to migrate a ROS 1 package to ROS 2. It does not aim to be a step-by-step migration instruction and is not considered the *final* \"solution\". Future versions will aim to make migration smoother and less effort up to the point of maintaining a single package from the same branch for ROS 1 as well as ROS 2."
-msgstr "This article focuses on the former case and describes the high-level steps to migrate a ROS 1 package to ROS 2. It does not aim to be a step-by-step migration instruction and is not considered the *final* \"solution\". Future versions will aim to make migration smoother and less effort up to the point of maintaining a single package from the same branch for ROS 1 as well as ROS 2."
+msgstr "本文重点介绍前一种情况，并描述了将ROS 1软件包迁移到ROS 2的高级步骤。它不旨在成为逐步迁移指南，并不被视为“最终”解决方案。未来的版本将旨在使迁移过程更加顺利，并减少维护ROS 1和ROS 2相同分支上的单个软件包所需的工作量。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:25
@@ -3417,32 +3417,32 @@ msgstr "先决条件"
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:27
 msgid "Before being able to migrate a ROS 1 package to ROS 2 all of its dependencies must be available in ROS 2."
-msgstr "Before being able to migrate a ROS 1 package to ROS 2 all of its dependencies must be available in ROS 2."
+msgstr "在将ROS 1软件包迁移到ROS 2之前，必须在ROS 2中提供所有依赖项。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:30
 msgid "Migration steps"
-msgstr "Migration steps"
+msgstr "迁移步骤"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:37
 msgid "Package manifests"
-msgstr "Package manifests"
+msgstr "软件包清单"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:39
 msgid "ROS 2 doesn't support format 1 of the package specification but only newer format versions (2 and higher). Therefore the ``package.xml`` file must be updated to at least format 2 if it uses format 1. Since ROS 1 supports all formats it is safe to perform that conversion in the ROS 1 package."
-msgstr "ROS 2 doesn't support format 1 of the package specification but only newer format versions (2 and higher). Therefore the ``package.xml`` file must be updated to at least format 2 if it uses format 1. Since ROS 1 supports all formats it is safe to perform that conversion in the ROS 1 package."
+msgstr "ROS 2不支持软件包规范的格式1，而仅支持更新的格式版本（2及更高）。因此，如果软件包使用格式1，则必须将``package.xml``文件更新至至少格式2。由于ROS 1支持所有格式，因此在ROS 1软件包中执行此转换是安全的。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:43
 msgid "Some packages might have different names in ROS 2 so the dependencies might need to be updated accordingly."
-msgstr "Some packages might have different names in ROS 2 so the dependencies might need to be updated accordingly."
+msgstr "在ROS 2中，某些软件包的名称可能不同，因此需要相应地更新依赖关系。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:46
 msgid "Metapackages"
-msgstr "Metapackages"
+msgstr "元软件包"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:48
