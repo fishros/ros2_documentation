@@ -396,7 +396,7 @@
 <li><p><a class="reference internal" href="#changes-to-rmw-api" id="id14">RMW API的更改</a></p></li>
 <li><p><a class="reference internal" href="#tracking-tasks" id="id15">跟踪任务</a></p></li>
 <li><p><a class="reference internal" href="#programming-conventions" id="id16">编程约定</a></p></li>
-<li><p><a class="reference internal" href="#filesystem-layout" id="id17">Filesystem layout</a></p></li>
+<li><p><a class="reference internal" href="#filesystem-layout" id="id17">文件系统布局</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#developer-workflow" id="id18">Developer Workflow</a></p></li>
@@ -698,22 +698,21 @@
 <h3><a class="toc-backref" href="#id16">编程约定</a><a class="headerlink" href="#programming-conventions" title="永久链接至标题"></a></h3>
 <ul class="simple">
 <li><p>防御式编程：确保尽早持有假设。例如，检查每个返回代码，并确保至少抛出异常，直到处理情况更加优雅为止。</p></li>
-<li><p>All error messages must be directed to <code class="docutils literal notranslate"><span class="pre">stderr</span></code>.</p></li>
-<li><p>Declare variables in the narrowest scope possible.</p></li>
-<li><p>Keep group of items (dependencies, imports, includes, etc.) ordered alphabetically.</p></li>
+<li><p>所有错误消息必须指向 <code class="docutils literal notranslate"><span class="pre">stderr</span></code>。</p></li>
+<li><p>在尽可能狭窄的范围内声明变量。</p></li>
+<li><p>保持一组项目（依赖项、导入项、包含项等）按字母顺序排列。</p></li>
 </ul>
 <div class="section" id="c-specific">
-<h4>C++ specific<a class="headerlink" href="#c-specific" title="永久链接至标题"></a></h4>
+<h4>特定于 C++。<a class="headerlink" href="#c-specific" title="永久链接至标题"></a></h4>
 <ul class="simple">
-<li><p>Avoid using direct streaming (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>) to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> / <code class="docutils literal notranslate"><span class="pre">stderr</span></code> to prevent interleaving between multiple threads.</p></li>
-<li><p>Avoid using references for <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code> since that subverts the reference counting.
-If the original instance goes out of scope and the reference is being used it accesses freed memory.</p></li>
+<li><p>避免直接将流 (<code class="xref any docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>) 输出到 <code class="xref any docutils literal notranslate"><span class="pre">stdout</span></code>/<code class="xref any docutils literal notranslate"><span class="pre">stderr</span></code>，以防止多个线程之间的交错。</p></li>
+<li><p>避免使用引用来操作 <code class="xref any docutils literal notranslate"><span class="pre">std::shared_ptr</span></code>，因为这会破坏引用计数。如果原始实例超出作用域且引用正在使用中，它将访问已释放的内存。</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="filesystem-layout">
-<h3><a class="toc-backref" href="#id17">Filesystem layout</a><a class="headerlink" href="#filesystem-layout" title="永久链接至标题"></a></h3>
-<p>The filesystem layout of packages and repositories should follow the same conventions in order to provide a consistent experience for users browsing our source code.</p>
+<h3><a class="toc-backref" href="#id17">文件系统布局</a><a class="headerlink" href="#filesystem-layout" title="永久链接至标题"></a></h3>
+<p>软件包和存储库的文件系统布局应遵循相同的约定，以便为浏览我们的源代码的用户提供一致的体验。</p>
 <div class="section" id="package-layout">
 <h4>Package layout<a class="headerlink" href="#package-layout" title="永久链接至标题"></a></h4>
 <ul class="simple">
