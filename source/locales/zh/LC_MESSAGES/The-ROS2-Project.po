@@ -5127,42 +5127,42 @@ msgstr "在Windows上以调试模式构建时，有几个非常重要的变化�
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:156
 msgid "Forward-slash vs. back-slash"
-msgstr "Forward-slash vs. back-slash"
+msgstr "正斜杠 vs. 反斜杠"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:157
 msgid "In Windows the default path separator is a backslash (``\\``), which differs from the forward-slash (``/``) used in Linux and macOS. Most of the Windows APIs can deal with either as a path separator, but this is not universally true. For instance, the ``cmd.exe`` shell can only do tab-completion when using the backslash character, not the forward-slash. For maximum compatibility on Windows, a backslash should always be used as the path separator on Windows."
-msgstr "In Windows the default path separator is a backslash (``\\``), which differs from the forward-slash (``/``) used in Linux and macOS. Most of the Windows APIs can deal with either as a path separator, but this is not universally true. For instance, the ``cmd.exe`` shell can only do tab-completion when using the backslash character, not the forward-slash. For maximum compatibility on Windows, a backslash should always be used as the path separator on Windows."
+msgstr "在Windows中，默认的路径分隔符是反斜杠（``\\``），这与Linux和macOS中使用的正斜杠（``/``）不同。大多数Windows API可以处理正斜杠或反斜杠作为路径分隔符，但这并非普遍适用。例如，``cmd.exe`` shell只能在使用反斜杠字符时进行制表符补全，而不能使用正斜杠。为了在Windows上实现最大的兼容性，应始终使用反斜杠作为路径分隔符。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:163
 msgid "Patching vendored packages"
-msgstr "Patching vendored packages"
+msgstr "修补供应商提供的软件包"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:164
 msgid "When vendoring a package in ROS 2, it is often necessary to apply a patch to fix a bug, add a feature, etc. The typical way to do this is to modify the ``ExternalProject_add`` call to add a ``PATCH`` command, using the ``patch`` executable. Unfortunately, the ``patch`` executable as delivered by chocolatey requires Administrator access to run. The workaround is to use ``git apply-patch`` when applying patches to external projects."
-msgstr "When vendoring a package in ROS 2, it is often necessary to apply a patch to fix a bug, add a feature, etc. The typical way to do this is to modify the ``ExternalProject_add`` call to add a ``PATCH`` command, using the ``patch`` executable. Unfortunately, the ``patch`` executable as delivered by chocolatey requires Administrator access to run. The workaround is to use ``git apply-patch`` when applying patches to external projects."
+msgstr "在ROS 2中供应商化软件包时，通常需要应用补丁来修复错误、添加功能等。通常的做法是修改``ExternalProject_add``调用以添加``PATCH``命令，并使用``patch``可执行文件。不幸的是，通过chocolatey安装的``patch``可执行文件需要管理员权限才能运行。解决方法是在应用补丁到外部项目时使用``git apply-patch``。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:169
 msgid "``git apply-patch`` has its own issues in that it only works properly when applied to a git repository. For that reason, external projects should always use the ``GIT`` method to obtain the project and then use the ``PATCH_COMMAND`` to invoke ``git apply-patch``."
-msgstr "``git apply-patch`` has its own issues in that it only works properly when applied to a git repository. For that reason, external projects should always use the ``GIT`` method to obtain the project and then use the ``PATCH_COMMAND`` to invoke ``git apply-patch``."
+msgstr "``git apply-patch``在应用到git仓库时才能正常工作，因此外部项目应始终使用``GIT``方法获取项目，然后使用``PATCH_COMMAND``来调用``git apply-patch``。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:172
 msgid "An example usage of all of the above looks something like:"
-msgstr "An example usage of all of the above looks something like:"
+msgstr "以上所有内容的示例用法如下："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:193
 msgid "Windows slow timers (slowness in general)"
-msgstr "Windows slow timers (slowness in general)"
+msgstr "Windows慢定时器（一般情况下较慢）"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:194
 msgid "Software running on Windows is, in general, much slower than that running on Linux. This is due to a number of factors, from the default time slice (every 20 ms, according to the `documentation <https://docs.microsoft.com/en-us/windows/win32/procthread/multitasking>`__), to the number of anti-virus and anti-malware processes running, to the number of background processes running. Because of all of this, tests should *never* expect tight timing on Windows. All tests should have generous timeouts, and only expect events to happen eventually (this will also prevent tests from being flakey on Linux)."
-msgstr "Software running on Windows is, in general, much slower than that running on Linux. This is due to a number of factors, from the default time slice (every 20 ms, according to the `documentation <https://docs.microsoft.com/en-us/windows/win32/procthread/multitasking>`__), to the number of anti-virus and anti-malware processes running, to the number of background processes running. Because of all of this, tests should *never* expect tight timing on Windows. All tests should have generous timeouts, and only expect events to happen eventually (this will also prevent tests from being flakey on Linux)."
+msgstr "在Windows上运行的软件通常比在Linux上运行的软件要慢得多。这是由于多个因素造成的，包括默认的时间片段（根据 `文档 <https://docs.microsoft.com/en-us/windows/win32/procthread/multitasking>`__，每20毫秒一次），运行的反病毒和反恶意软件进程的数量以及后台进程的数量。因此，在Windows上的测试*永远不应该*对严格的计时有期望值。所有测试都应该有充足的超时时间，并且只期望事件最终会发生（这也可以防止在Linux上测试出现不稳定的情况）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst:200
