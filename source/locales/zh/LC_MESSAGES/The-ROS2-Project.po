@@ -4927,62 +4927,62 @@ msgstr "您正在开发/调试多线程的C++生产代码。"
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:224
 msgid "You use pthreads or C++11 threading + llvm libc++ (in case of ThreadSanitizer)."
-msgstr "You use pthreads or C++11 threading + llvm libc++ (in case of ThreadSanitizer)."
+msgstr "您使用 pthreads 或 C++11 线程 + llvm libc++（在 ThreadSanitizer 的情况下）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:225
 msgid "You do not use Libc/libstdc++ static linking (in case of ThreadSanitizer)."
-msgstr "You do not use Libc/libstdc++ static linking (in case of ThreadSanitizer)."
+msgstr "您不使用 Libc/libstdc++ 的静态链接（在 ThreadSanitizer 的情况下）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:226
 msgid "You do not build non-position-independent executables (in case of ThreadSanitizer)."
-msgstr "You do not build non-position-independent executables (in case of ThreadSanitizer)."
+msgstr "您不构建非位置无关的可执行文件（在 ThreadSanitizer 的情况下）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:231
 msgid "Data races and deadlocks cannot be detected using static analysis (reason: limitation of static analysis)."
-msgstr "Data races and deadlocks cannot be detected using static analysis (reason: limitation of static analysis)."
+msgstr "使用静态分析无法检测数据竞争和死锁（原因：静态分析的限制）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:232
 msgid "Data races and deadlocks must not show up during development debugging / testing (reason: usually not all possible control paths through production code exercised)."
-msgstr "Data races and deadlocks must not show up during development debugging / testing (reason: usually not all possible control paths through production code exercised)."
+msgstr "在开发调试/测试期间不应出现数据竞争和死锁（原因：通常不会对生产代码中的所有可能控制路径进行测试）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:236
 msgid "Use a dynamic analysis tool which focuses on finding data races and deadlocks (here clang ThreadSanitizer)."
-msgstr "Use a dynamic analysis tool which focuses on finding data races and deadlocks (here clang ThreadSanitizer)."
+msgstr "使用一个专注于查找数据竞争和死锁的动态分析工具（例如 clang ThreadSanitizer）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:240
 msgid "Compile and link the production code with clang using the option ``-fsanitize=thread`` (this instruments the production code)."
-msgstr "Compile and link the production code with clang using the option ``-fsanitize=thread`` (this instruments the production code)."
+msgstr "使用选项“-fsanitize=thread”将生产代码编译和链接到 clang 中（这会对生产代码进行插桩）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:241
 msgid "In case different production code shall be executed during analysis consider conditional compilation e.g. `ThreadSanitizers _has_feature(thread_sanitizer) <https://clang.llvm.org/docs/ThreadSanitizer.html#has-feature-thread-sanitizer>`__."
-msgstr "In case different production code shall be executed during analysis consider conditional compilation e.g. `ThreadSanitizers _has_feature(thread_sanitizer) <https://clang.llvm.org/docs/ThreadSanitizer.html#has-feature-thread-sanitizer>`__."
+msgstr "如果在分析期间需要执行不同的生产代码，请考虑条件编译，例如 ThreadSanitizers `_has_feature(thread_sanitizer) <https://clang.llvm.org/docs/ThreadSanitizer.html#has-feature-thread-sanitizer>`__。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:242
 msgid "In case some code shall not be instrumented consider `ThreadSanitizers _/*attribute*/_((no_sanitize(\"thread\"))) <https://clang.llvm.org/docs/ThreadSanitizer.html#attribute-no-sanitize-thread>`__."
-msgstr "In case some code shall not be instrumented consider `ThreadSanitizers _/*attribute*/_((no_sanitize(\"thread\"))) <https://clang.llvm.org/docs/ThreadSanitizer.html#attribute-no-sanitize-thread>`__."
+msgstr "如果有些代码不需要进行插桩，考虑使用 `ThreadSanitizers _/*attribute*/_((no_sanitize(\"thread\"))) <https://clang.llvm.org/docs/ThreadSanitizer.html#attribute-no-sanitize-thread>`__。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:243
 msgid "In case some files shall not be instrumented consider file or function-level exclusion `ThreadSanitizers blacklisting <https://clang.llvm.org/docs/ThreadSanitizer.html#ignorelist>`__, more specific: `ThreadSanitizers Sanitizer Special Case List <https://clang.llvm.org/docs/SanitizerSpecialCaseList.html>`__ or with `ThreadSanitizers no_sanitize(\"thread\") <https://clang.llvm.org/docs/ThreadSanitizer.html#ignorelist>`__ and use the option ``--fsanitize-blacklist``."
-msgstr "In case some files shall not be instrumented consider file or function-level exclusion `ThreadSanitizers blacklisting <https://clang.llvm.org/docs/ThreadSanitizer.html#ignorelist>`__, more specific: `ThreadSanitizers Sanitizer Special Case List <https://clang.llvm.org/docs/SanitizerSpecialCaseList.html>`__ or with `ThreadSanitizers no_sanitize(\"thread\") <https://clang.llvm.org/docs/ThreadSanitizer.html#ignorelist>`__ and use the option ``--fsanitize-blacklist``."
+msgstr "如果有些文件或函数不需要进行插桩，考虑使用文件级别或函数级别的排除 `ThreadSanitizers黑名单 <https://clang.llvm.org/docs/ThreadSanitizer.html#ignorelist>`__，更具体地说，使用 `ThreadSanitizers Sanitizer特例列表 <https://clang.llvm.org/docs/SanitizerSpecialCaseList.html>`__ 或者使用 `ThreadSanitizers no_sanitize(\"thread\") <https://clang.llvm.org/docs/ThreadSanitizer.html#ignorelist>`__ 并且使用选项 ``--fsanitize-blacklist``。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:245
 msgid "**Resulting context:**"
-msgstr "**Resulting context:**"
+msgstr "**结果上下文：**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:247
 msgid "Higher chance to find data races and deadlocks in production code before deploying it."
-msgstr "Higher chance to find data races and deadlocks in production code before deploying it."
+msgstr "在部署之前，生产代码中更有可能发现数据竞争和死锁问题。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:248
