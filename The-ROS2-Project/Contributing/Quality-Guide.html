@@ -378,7 +378,7 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#static-code-analysis-as-part-of-the-ament-package-build" id="id1">作为ament软件包构建的一部分的静态代码分析</a></p></li>
-<li><p><a class="reference internal" href="#static-thread-safety-analysis-via-code-annotation" id="id2">Static Thread Safety Analysis via Code Annotation</a></p></li>
+<li><p><a class="reference internal" href="#static-thread-safety-analysis-via-code-annotation" id="id2">通过代码注释进行静态线程安全性分析</a></p></li>
 <li><p><a class="reference internal" href="#dynamic-analysis-data-races-deadlocks" id="id3">Dynamic analysis (data races &amp; deadlocks)</a></p></li>
 </ul>
 </div>
@@ -441,15 +441,15 @@ endif<span class="o">()</span>
 </ul>
 </li>
 </ul>
-<p><strong>Resulting context</strong>:</p>
+<p><strong>产生的上下文</strong>：</p>
 <ul class="simple">
-<li><p>The static code analysis tools supported by <code class="docutils literal notranslate"><span class="pre">ament</span></code> are run as part of the package build.</p></li>
-<li><p>Static code analysis tools not supported by <code class="docutils literal notranslate"><span class="pre">ament</span></code> need to be executed separately.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>ament``支持的静态代码分析工具是作为软件包构建的一部分运行的。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>ament``不支持的静态代码分析工具需要单独执行。</p></li>
 </ul>
 </div>
 <div class="section" id="static-thread-safety-analysis-via-code-annotation">
-<h2><a class="toc-backref" href="#id2">Static Thread Safety Analysis via Code Annotation</a><a class="headerlink" href="#static-thread-safety-analysis-via-code-annotation" title="永久链接至标题"></a></h2>
-<p><strong>Context:</strong></p>
+<h2><a class="toc-backref" href="#id2">通过代码注释进行静态线程安全性分析</a><a class="headerlink" href="#static-thread-safety-analysis-via-code-annotation" title="永久链接至标题"></a></h2>
+<p><strong>上下文：</strong></p>
 <ul class="simple">
 <li><p>You are developing/debugging your multithreaded C++ production code</p></li>
 <li><p>You access data from multiple threads in C++ code</p></li>
@@ -580,7 +580,7 @@ However, this step-by-step is a great place to start!</p>
 </div>
 <div class="section" id="dynamic-analysis-data-races-deadlocks">
 <h2><a class="toc-backref" href="#id3">Dynamic analysis (data races &amp; deadlocks)</a><a class="headerlink" href="#dynamic-analysis-data-races-deadlocks" title="永久链接至标题"></a></h2>
-<p><strong>Context:</strong></p>
+<p><strong>上下文：</strong></p>
 <ul class="simple">
 <li><p>You are developing/debugging your multithreaded C++ production code.</p></li>
 <li><p>You use pthreads or C++11 threading + llvm libc++ (in case of ThreadSanitizer).</p></li>
