@@ -43,7 +43,7 @@ jobs:
 
       - name: Download conf.doc
         run: wget https://raw.githubusercontent.com/fishros/ros2_documentation/config/conf.py -O conf.py && sed -i 's/ROS_DISTRO/humble/g' conf.py 
-
+  
       - name: Build the po doc
         run: sphinx-build -b html -c . -D language=zh source build/html/zh
 
@@ -53,3 +53,6 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_dir: ./build/html/zh
           publish_branch: gh-pages-cn-humble
+          
+      - name: Deploy to fishros.org
+        run: echo `curl "http://fishros.org/deploy/github/action?url=git@github.com:fishros/ros2_documentation.git&branch=gh-pages-cn-humble&repository=ros2_documentation&directory=&prefix=ros2/humble"`
