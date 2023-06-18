@@ -385,9 +385,9 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#debug-builds" id="id5">调试构建</a></p></li>
-<li><p><a class="reference internal" href="#forward-slash-vs-back-slash" id="id6">Forward-slash vs. back-slash</a></p></li>
-<li><p><a class="reference internal" href="#patching-vendored-packages" id="id7">Patching vendored packages</a></p></li>
-<li><p><a class="reference internal" href="#windows-slow-timers-slowness-in-general" id="id8">Windows slow timers (slowness in general)</a></p></li>
+<li><p><a class="reference internal" href="#forward-slash-vs-back-slash" id="id6">正斜杠 vs. 反斜杠</a></p></li>
+<li><p><a class="reference internal" href="#patching-vendored-packages" id="id7">修补供应商提供的软件包</a></p></li>
+<li><p><a class="reference internal" href="#windows-slow-timers-slowness-in-general" id="id8">Windows慢定时器（一般情况下较慢）</a></p></li>
 <li><p><a class="reference internal" href="#shells" id="id9">Shells</a></p></li>
 </ul>
 </div>
@@ -478,21 +478,14 @@
 <p>在Windows上以调试模式构建时，有几个非常重要的变化。首先，所有的DLL库都会自动在库名称后面添加``_d``。因此，如果库的名称是``libfoo.dll``，在调试模式下它将变成``libfoo_d.dll``。Windows的动态链接器也会寻找具有该形式的库，因此它将不会找到没有``_d``前缀的库。此外，Windows在调试模式下打开了一整套编译时和运行时的检查，比发布构建更为严格。因此，建议在许多拉取请求上运行Windows调试构建并进行测试。</p>
 </div>
 <div class="section" id="forward-slash-vs-back-slash">
-<h2><a class="toc-backref" href="#id6">Forward-slash vs. back-slash</a><a class="headerlink" href="#forward-slash-vs-back-slash" title="永久链接至标题"></a></h2>
-<p>In Windows the default path separator is a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>), which differs from the forward-slash (<code class="docutils literal notranslate"><span class="pre">/</span></code>) used in Linux and macOS.
-Most of the Windows APIs can deal with either as a path separator, but this is not universally true.
-For instance, the <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> shell can only do tab-completion when using the backslash character, not the forward-slash.
-For maximum compatibility on Windows, a backslash should always be used as the path separator on Windows.</p>
+<h2><a class="toc-backref" href="#id6">正斜杠 vs. 反斜杠</a><a class="headerlink" href="#forward-slash-vs-back-slash" title="永久链接至标题"></a></h2>
+<p>在Windows中，默认的路径分隔符是反斜杠（<code class="docutils literal notranslate"><span class="pre">\</span></code>），这与Linux和macOS中使用的正斜杠（<code class="docutils literal notranslate"><span class="pre">/</span></code>）不同。大多数Windows API可以处理正斜杠或反斜杠作为路径分隔符，但这并非普遍适用。例如，<code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> shell只能在使用反斜杠字符时进行制表符补全，而不能使用正斜杠。为了在Windows上实现最大的兼容性，应始终使用反斜杠作为路径分隔符。</p>
 </div>
 <div class="section" id="patching-vendored-packages">
-<h2><a class="toc-backref" href="#id7">Patching vendored packages</a><a class="headerlink" href="#patching-vendored-packages" title="永久链接至标题"></a></h2>
-<p>When vendoring a package in ROS 2, it is often necessary to apply a patch to fix a bug, add a feature, etc.
-The typical way to do this is to modify the <code class="docutils literal notranslate"><span class="pre">ExternalProject_add</span></code> call to add a <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> command, using the <code class="docutils literal notranslate"><span class="pre">patch</span></code> executable.
-Unfortunately, the <code class="docutils literal notranslate"><span class="pre">patch</span></code> executable as delivered by chocolatey requires Administrator access to run.
-The workaround is to use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">apply-patch</span></code> when applying patches to external projects.</p>
-<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">apply-patch</span></code> has its own issues in that it only works properly when applied to a git repository.
-For that reason, external projects should always use the <code class="docutils literal notranslate"><span class="pre">GIT</span></code> method to obtain the project and then use the <code class="docutils literal notranslate"><span class="pre">PATCH_COMMAND</span></code> to invoke <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">apply-patch</span></code>.</p>
-<p>An example usage of all of the above looks something like:</p>
+<h2><a class="toc-backref" href="#id7">修补供应商提供的软件包</a><a class="headerlink" href="#patching-vendored-packages" title="永久链接至标题"></a></h2>
+<p>在ROS 2中供应商化软件包时，通常需要应用补丁来修复错误、添加功能等。通常的做法是修改``ExternalProject_add``调用以添加``PATCH``命令，并使用``patch``可执行文件。不幸的是，通过chocolatey安装的``patch``可执行文件需要管理员权限才能运行。解决方法是在应用补丁到外部项目时使用``git apply-patch``。</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">apply-patch``在应用到git仓库时才能正常工作，因此外部项目应始终使用``GIT``方法获取项目，然后使用``PATCH_COMMAND``来调用``git</span> <span class="pre">apply-patch</span></code>。</p>
+<p>以上所有内容的示例用法如下：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ExternalProject_Add</span><span class="p">(</span><span class="s">mylibrary-</span><span class="o">${</span><span class="nv">version</span><span class="o">}</span>
 <span class="w">  </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/lib/mylibrary.git</span>
 <span class="w">  </span><span class="s">GIT_TAG</span><span class="w"> </span><span class="o">${</span><span class="nv">version</span><span class="o">}</span>
@@ -512,11 +505,8 @@ For that reason, external projects should always use the <code class="docutils l
 </div>
 </div>
 <div class="section" id="windows-slow-timers-slowness-in-general">
-<h2><a class="toc-backref" href="#id8">Windows slow timers (slowness in general)</a><a class="headerlink" href="#windows-slow-timers-slowness-in-general" title="永久链接至标题"></a></h2>
-<p>Software running on Windows is, in general, much slower than that running on Linux.
-This is due to a number of factors, from the default time slice (every 20 ms, according to the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/procthread/multitasking">documentation</a>), to the number of anti-virus and anti-malware processes running, to the number of background processes running.
-Because of all of this, tests should <em>never</em> expect tight timing on Windows.
-All tests should have generous timeouts, and only expect events to happen eventually (this will also prevent tests from being flakey on Linux).</p>
+<h2><a class="toc-backref" href="#id8">Windows慢定时器（一般情况下较慢）</a><a class="headerlink" href="#windows-slow-timers-slowness-in-general" title="永久链接至标题"></a></h2>
+<p>在Windows上运行的软件通常比在Linux上运行的软件要慢得多。这是由于多个因素造成的，包括默认的时间片段（根据 <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/procthread/multitasking">文档</a>，每20毫秒一次），运行的反病毒和反恶意软件进程的数量以及后台进程的数量。因此，在Windows上的测试*永远不应该*对严格的计时有期望值。所有测试都应该有充足的超时时间，并且只期望事件最终会发生（这也可以防止在Linux上测试出现不稳定的情况）。</p>
 </div>
 <div class="section" id="shells">
 <h2><a class="toc-backref" href="#id9">Shells</a><a class="headerlink" href="#shells" title="永久链接至标题"></a></h2>
