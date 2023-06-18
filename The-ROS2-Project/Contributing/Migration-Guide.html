@@ -683,22 +683,22 @@
 <h5>线程/互斥锁<a class="headerlink" href="#thread-mutexes" title="永久链接至标题"></a></h5>
 <p>在ROS代码库中，<code class="docutils literal notranslate"><span class="pre">boost::thread</span></code> 中的互斥锁是另一个常见的boost部分。</p>
 <ul class="simple">
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">boost::mutex::scoped_lock</span></code> with <code class="docutils literal notranslate"><span class="pre">std::unique_lock&lt;std::mutex&gt;</span></code></p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">boost::mutex</span></code> with <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code></p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;boost/thread/mutex.hpp&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;mutex&gt;</span></code></p></li>
+<li><p>将``boost::mutex::scoped_lock``替换为``std::unique_lock&lt;std::mutex&gt;``</p></li>
+<li><p>将``boost::mutex``替换为``std::mutex``</p></li>
+<li><p>将``#include &lt;boost/thread/mutex.hpp&gt;``替换为``#include &lt;mutex&gt;``</p></li>
 </ul>
 </div>
 <div class="section" id="unordered-map">
-<h5>Unordered Map<a class="headerlink" href="#unordered-map" title="永久链接至标题"></a></h5>
-<p>Replace:</p>
+<h5>无序映射<a class="headerlink" href="#unordered-map" title="永久链接至标题"></a></h5>
+<p>替换:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;boost/unordered_map.hpp&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;unordered_map&gt;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">boost::unordered_map</span></code> with <code class="docutils literal notranslate"><span class="pre">std::unordered_map</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;boost/unordered_map.hpp&gt;</span></code> 为 <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;unordered_map&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boost::unordered_map</span></code> 为 <code class="docutils literal notranslate"><span class="pre">std::unordered_map</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="function">
-<h5>function<a class="headerlink" href="#function" title="永久链接至标题"></a></h5>
-<p>Replace:</p>
+<h5>函数<a class="headerlink" href="#function" title="永久链接至标题"></a></h5>
+<p>替换:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;boost/function.hpp&gt;</span></code>  with <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;functional&gt;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">boost::function</span></code> with <code class="docutils literal notranslate"><span class="pre">std::function</span></code></p></li>
