@@ -434,23 +434,21 @@
 <p>我们将使用`语义化版本指南 &lt;<a class="reference external" href="http://semver.org/">http://semver.org/</a>&gt;`__（<code class="docutils literal notranslate"><span class="pre">semver</span></code>）进行版本管理。</p>
 <p>我们还将遵守一些基于``semver``的ROS特定规则，这些规则是在``semver``完整意义上建立的。</p>
 <ul class="simple">
-<li><p>Major version increments (i.e. breaking changes) should not be made within a released ROS distribution.</p>
+<li><p>不应该在已发布的ROS发行版中进行主要版本增加（即破坏性变更）</p>
 <ul>
-<li><p>Patch (interface-preserving) and minor (non-breaking) version increments do not break compatibility, so these sorts of changes <em>are</em> allowed within a release.</p></li>
-<li><p>Major ROS releases are the best time to release breaking changes.
-If a core package needs multiple breaking changes, they should be merged into their integration branch (e.g. rolling) to allow catching problems in CI quickly, but released together to reduce the number of major releases for ROS users.</p></li>
-<li><p>Though major increments require a new distribution, a new distribution does not necessarily require a major bump (if development and release can happen without breaking API).</p></li>
+<li><p>补丁（保持接口兼容）和次要（非破坏性）版本增加不会破坏兼容性，因此此类更改*允许*在发布中进行</p></li>
+<li><p>主要ROS版本是发布破坏性变更的最佳时机。如果核心包需要多个破坏性变更，则应将它们合并到集成分支（例如rolling）中，以便快速在CI中发现问题，但同时发布以减少ROS用户的主要发布数量</p></li>
+<li><p>尽管主要增量需要新的发行版，但新的发行版并不一定需要进行主要更新（如果开发和发布可以在不破坏API的情况下进行）</p></li>
 </ul>
 </li>
-<li><p>For compiled code, the ABI is considered part of the public interface.
-Any change that requires recompiling dependent code is considered major (breaking).</p>
+<li><p>对于编译代码，ABI（应用二进制接口）被视为公共接口的一部分。任何需要重新编译依赖代码的更改都被视为主要更改（破坏性的）</p>
 <ul>
-<li><p>ABI breaking changes <em>can</em> be made in a minor version bump <em>before</em> a distribution release (getting added to the rolling release).</p></li>
+<li><p>ABI破坏性更改可以在次要版本升级之前（加入滚动发布）进行</p></li>
 </ul>
 </li>
-<li><p>We enforce API stability for core packages in Dashing and Eloquent even though their major version components are <code class="docutils literal notranslate"><span class="pre">0</span></code>, despite <a class="reference external" href="https://semver.org/#spec-item-4">SemVer's specification</a> regarding initial development.</p>
+<li><p>尽管 Dashing 和 Eloquent 的主要版本组件为``0``，我们仍对核心包的API稳定性进行强制执行，尽管 <a class="reference external" href="https://semver.org/#spec-item-4">SemVer 规范</a> 中有关初始开发的规定</p>
 <ul>
-<li><p>Subsequently, packages should strive to reach a mature state and increase to version <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code> so to match <code class="docutils literal notranslate"><span class="pre">semver's</span></code> specifications.</p></li>
+<li><p>随后，软件包应努力达到成熟状态并增加到版本``1.0.0``以符合``semver``的规范</p></li>
 </ul>
 </li>
 </ul>
