@@ -1026,21 +1026,17 @@
 </div>
 <div class="section" id="how-to-read-the-coverage-rate-from-the-buildfarm-report">
 <span id="read-coverage-report"></span><h3><a class="toc-backref" href="#id23">如何从构建工厂报告中读取覆盖率</a><a class="headerlink" href="#how-to-read-the-coverage-rate-from-the-buildfarm-report" title="永久链接至标题"></a></h3>
-<p>To see the coverage report for a given package:</p>
+<p>查看给定包的覆盖率报告：</p>
 <ul class="simple">
-<li><p>When the <code class="docutils literal notranslate"><span class="pre">ci_linux_coverage</span></code> build finishes, click on <code class="docutils literal notranslate"><span class="pre">Coverage</span> <span class="pre">Report</span></code></p></li>
-<li><p>Scroll down to the <code class="docutils literal notranslate"><span class="pre">Coverage</span> <span class="pre">Breakdown</span> <span class="pre">by</span> <span class="pre">Package</span></code> table</p></li>
-<li><p>In the table, look at the first column called &quot;Name&quot;</p></li>
+<li><p>当``ci_linux_coverage``构建完成后，点击``Coverage Report``</p></li>
+<li><p>向下滚动到``Coverage Breakdown by Package``表格</p></li>
+<li><p>在表格中，查看名为&quot;Name&quot;的第一列</p></li>
 </ul>
-<p>The coverage reports in the buildfarm include all the packages that were used in the ROS workspace.
-The coverage report includes different paths corresponding to the same package:</p>
+<p>构建工厂中的覆盖率报告包括在ROS工作空间中使用的所有软件包。覆盖率报告包括与同一软件包对应的不同路径：</p>
 <ul class="simple">
-<li><p>Name entries with the form: <code class="docutils literal notranslate"><span class="pre">src.*.&lt;repository_name&gt;.&lt;package_name&gt;.*</span></code>
-These correspond to the unit test runs available in a package against its own source code</p></li>
-<li><p>Name entries with the form: <code class="docutils literal notranslate"><span class="pre">build.&lt;repository_name&gt;.&lt;package_name&gt;.*</span></code>
-These correspond to the unit test runs available in a package against its files generated at building or configuring time</p></li>
-<li><p>Name entries with the form: <code class="docutils literal notranslate"><span class="pre">install.&lt;package_name&gt;.*</span></code>
-These correspond to the system/integration tests coming from testing runs of other packages</p></li>
+<li><p>以以下形式的名称条目: <code class="docutils literal notranslate"><span class="pre">src.*.&lt;repository_name&gt;.&lt;package_name&gt;.*</span></code>。这些对应于针对软件包自身源代码的单元测试运行</p></li>
+<li><p>以以下形式的名称条目: <code class="docutils literal notranslate"><span class="pre">build.&lt;repository_name&gt;.&lt;package_name&gt;.*</span></code>。这些对应于针对构建或配置时生成的文件的软件包的单元测试运行</p></li>
+<li><p>以以下形式的名称条目: <code class="docutils literal notranslate"><span class="pre">install.&lt;package_name&gt;.*</span></code>。这些对应于来自其他软件包的测试运行的系统/集成测试</p></li>
 </ul>
 </div>
 <div class="section" id="how-to-calculate-the-coverage-rate-from-the-buildfarm-report">
@@ -1057,7 +1053,7 @@ These correspond to the system/integration tests coming from testing runs of oth
 <p>Alternative: get the combined unit coverage rate from coverage report (require manual calculation):</p>
 <ul class="simple">
 <li><p>When the ci_linux_coverage build finishes, click on <code class="docutils literal notranslate"><span class="pre">Cobertura</span> <span class="pre">Coverage</span> <span class="pre">Report</span></code></p></li>
-<li><p>Scroll down to the <code class="docutils literal notranslate"><span class="pre">Coverage</span> <span class="pre">Breakdown</span> <span class="pre">by</span> <span class="pre">Package</span></code> table</p></li>
+<li><p>向下滚动到``Coverage Breakdown by Package``表格</p></li>
 <li><p>In the table, under the first column &quot;Name&quot;, look for (where &lt;package_name&gt; is your package under testing):</p>
 <ul>
 <li><p>all the directories under the pattern <code class="docutils literal notranslate"><span class="pre">src.*.&lt;repository_name&gt;.&lt;package_name&gt;.*</span></code> grab the two absolute values in the column &quot;Lines&quot;.</p></li>
