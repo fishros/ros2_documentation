@@ -451,28 +451,25 @@ endif<span class="o">()</span>
 <h2><a class="toc-backref" href="#id2">通过代码注释进行静态线程安全性分析</a><a class="headerlink" href="#static-thread-safety-analysis-via-code-annotation" title="永久链接至标题"></a></h2>
 <p><strong>上下文：</strong></p>
 <ul class="simple">
-<li><p>You are developing/debugging your multithreaded C++ production code</p></li>
-<li><p>You access data from multiple threads in C++ code</p></li>
+<li><p>您正在开发/调试多线程的C++生产代码</p></li>
+<li><p>您在C++代码中从多个线程访问数据</p></li>
 </ul>
-<p><strong>Problem:</strong></p>
+<p><strong>问题：</strong></p>
 <ul class="simple">
-<li><p>Data races and deadlocks can lead to critical bugs.</p></li>
+<li><p>数据竞争和死锁可能导致关键错误。</p></li>
 </ul>
-<p><strong>Solution:</strong></p>
+<p><strong>解决方案:</strong></p>
 <ul class="simple">
-<li><p>Utilize Clang's static <a class="reference external" href="https://clang.llvm.org/docs/ThreadSafetyAnalysis.html">Thread Safety Analysis</a> by annotating threaded code</p></li>
+<li><p>通过为线程代码添加注释，利用Clang的静态`Thread Safety Analysis &lt;<a class="reference external" href="https://clang.llvm.org/docs/ThreadSafetyAnalysis.html">https://clang.llvm.org/docs/ThreadSafetyAnalysis.html</a>&gt;`__</p></li>
 </ul>
-<p><strong>Context For Implementation:</strong></p>
-<p>To enable Thread Safety Analysis, code must be annotated to let the compiler know more about the semantics of the code.
-These annotations are Clang-specific attributes - e.g. <code class="docutils literal notranslate"><span class="pre">__attribute__(capability()))</span></code>.
-Instead of using those attributes directly, ROS 2 provides preprocessor macros that are erased when using other compilers.</p>
-<p>These macros can be found in <a class="reference external" href="https://github.com/ros2/rcpputils/blob/humble/include/rcpputils/thread_safety_annotations.hpp">rcpputils/thread_safety_annotations.hpp</a></p>
+<p><strong>实现的上下文:</strong></p>
+<p>要启用线程安全分析，必须对代码进行注释，以便编译器了解代码的语义。这些注释是特定于Clang的属性，例如``__attribute__(capability()))``。ROS 2提供了预处理宏来代替直接使用这些属性，在使用其他编译器时这些宏会被擦除。</p>
+<p>这些宏可以在 <a class="reference external" href="https://github.com/ros2/rcpputils/blob/humble/include/rcpputils/thread_safety_annotations.hpp">rcpputils/thread_safety_annotations.hpp</a> 中找到</p>
 <dl class="simple">
-<dt>The Thread Safety Analysis documentation states</dt><dd><p>Thread safety analysis can be used with any threading library, but it does require that the threading API be wrapped in classes and methods which have the appropriate annotations</p>
+<dt>线程安全分析文档说明如下</dt><dd><p>线程安全分析可以与任何线程库一起使用，但需要将线程 API 包装在具有适当注释的类和方法中</p>
 </dd>
 </dl>
-<p>We have decided that we want ROS 2 developers to be able to use <code class="docutils literal notranslate"><span class="pre">std::</span></code> threading primitives directly for their development.
-We do not want to provide our own wrapped types as is suggested above.</p>
+<p>我们决定允许 ROS 2 开发人员直接使用 <code class="docutils literal notranslate"><span class="pre">std::</span></code> 线程原语进行开发，而不提供上述建议中的自定义包装类型</p>
 <p>There are three C++ standard libraries to be aware of</p>
 <ul class="simple">
 <li><p>The GNU standard library <code class="docutils literal notranslate"><span class="pre">libstdc++</span></code> - default on Linux, explicitly via the compiler option <code class="docutils literal notranslate"><span class="pre">-stdlib=libstdc++</span></code></p></li>
@@ -587,13 +584,13 @@ However, this step-by-step is a great place to start!</p>
 <li><p>You do not use Libc/libstdc++ static linking (in case of ThreadSanitizer).</p></li>
 <li><p>You do not build non-position-independent executables (in case of ThreadSanitizer).</p></li>
 </ul>
-<p><strong>Problem:</strong></p>
+<p><strong>问题：</strong></p>
 <ul class="simple">
-<li><p>Data races and deadlocks can lead to critical bugs.</p></li>
+<li><p>数据竞争和死锁可能导致关键错误。</p></li>
 <li><p>Data races and deadlocks cannot be detected using static analysis (reason: limitation of static analysis).</p></li>
 <li><p>Data races and deadlocks must not show up during development debugging / testing (reason: usually not all possible control paths through production code exercised).</p></li>
 </ul>
-<p><strong>Solution:</strong></p>
+<p><strong>解决方案:</strong></p>
 <ul class="simple">
 <li><p>Use a dynamic analysis tool which focuses on finding data races and deadlocks (here clang ThreadSanitizer).</p></li>
 </ul>
