@@ -501,22 +501,20 @@
 </li>
 <li><p>移动并更新``catkin_package``调用为：</p>
 <ul class="simple">
-<li><p>Invoke <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> instead but <strong>after</strong> all targets have been registered.</p></li>
-<li><p>The only valid argument for <a class="reference external" href="https://github.com/ament/ament_cmake/blob/humble/ament_cmake_core/cmake/core/ament_package.cmake">ament_package</a> is <code class="docutils literal notranslate"><span class="pre">CONFIG_EXTRAS</span></code>.
-All other arguments are covered by separate functions which all need to be invoked <em>before</em> <code class="docutils literal notranslate"><span class="pre">ament_package</span></code>:</p>
+<li><p>请改为调用``ament_package``，但是要在所有目标都注册之后调用。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ament_package``的唯一有效参数是``CONFIG_EXTRAS</span></code>。所有其他参数都由单独的函数处理，这些函数都需要在``ament_package``之前调用：</p>
 <ul>
-<li><p>Instead of passing <code class="docutils literal notranslate"><span class="pre">CATKIN_DEPENDS</span> <span class="pre">...</span></code> call <code class="docutils literal notranslate"><span class="pre">ament_export_dependencies(...)</span></code> before.</p></li>
-<li><p>Instead of passing <code class="docutils literal notranslate"><span class="pre">INCLUDE_DIRS</span> <span class="pre">...</span></code> call <code class="docutils literal notranslate"><span class="pre">ament_export_include_directories(...)</span></code> before.</p></li>
-<li><p>Instead of passing <code class="docutils literal notranslate"><span class="pre">LIBRARIES</span> <span class="pre">...</span></code> call <code class="docutils literal notranslate"><span class="pre">ament_export_libraries(...)</span></code> before.</p></li>
+<li><p>不要使用``CATKIN_DEPENDS ...``，而是在之前调用``ament_export_dependencies(...)``。</p></li>
+<li><p>不要使用``INCLUDE_DIRS ...``，而是在之前调用``ament_export_include_directories(...)``。</p></li>
+<li><p>在调用``LIBRARIES ...``之前，请使用``ament_export_libraries(...)``进行传递。</p></li>
 </ul>
 </li>
-<li><p><strong>TODO document ament_export_targets (``ament_export_interfaces`` in Eloquent and older)?</strong></p></li>
+<li><p><strong>TODO 文档化 ament_export_targets（在 Eloquent 和更早的版本中为 ``ament_export_interfaces``）?</strong></p></li>
 </ul>
 </li>
-<li><p>Replace the invocation of <code class="docutils literal notranslate"><span class="pre">add_message_files</span></code>, <code class="docutils literal notranslate"><span class="pre">add_service_files</span></code> and <code class="docutils literal notranslate"><span class="pre">generate_messages</span></code> with <a class="reference external" href="https://github.com/ros2/rosidl/blob/humble/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake">rosidl_generate_interfaces</a>.</p>
+<li><p>将``add_message_files``、<a href="#id1"><span class="problematic" id="id2">``</span></a>add_service_files``和``generate_messages``的调用替换为`rosidl_generate_interfaces &lt;<a class="reference external" href="https://github.com/ros2/rosidl/blob/humble/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake">https://github.com/ros2/rosidl/blob/humble/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake</a>&gt;`__。</p>
 <ul>
-<li><p>The first argument is the <code class="docutils literal notranslate"><span class="pre">target_name</span></code>.
-If you're building just one library it's <code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}</span></code></p></li>
+<li><p>第一个参数是``target_name``。如果你只构建一个库，那么它是``${PROJECT_NAME}``。</p></li>
 <li><p>Followed by the list of message filenames, relative to the package root.</p>
 <ul class="simple">
 <li><p>If you will be using the list of filenames multiple times, it is recommended to compose a list of message files and pass the list to the function for clarity.</p></li>
