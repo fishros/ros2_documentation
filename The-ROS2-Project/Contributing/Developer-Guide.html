@@ -386,7 +386,7 @@
 <li><p><a class="reference internal" href="#testing" id="id7">测试</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#general-practices" id="id8">General Practices</a></p>
+<li><p><a class="reference internal" href="#general-practices" id="id8">一般实践</a></p>
 <ul>
 <li><p><a class="reference internal" href="#issues" id="id9">Issues</a></p></li>
 <li><p><a class="reference internal" href="#branches" id="id10">Branches</a></p></li>
@@ -573,34 +573,27 @@
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>单元测试**应该始终位于被测试的软件包中，并且应该使用诸如``Mock``之类的工具，尝试在构建的场景中测试代码库的狭窄部分。单元测试不应引入非测试工具的测试依赖，例如 gtest、nosestest、pytest、mock 等...</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>集成测试**可以测试代码的各个部分之间或代码与系统之间的交互。它们通常以我们期望用户使用它们的方式测试软件接口。与单元测试类似，集成测试应该位于被测试的软件包中，除非绝对必要，否则不应引入非工具测试依赖，即所有非工具依赖都应在极端审查下才被允许，因此应尽量避免使用。</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>系统测试**旨在测试软件包之间的端到端情况，并应位于它们自己的软件包中，以避免软件包膨胀或耦合以及避免循环依赖。</p>
-<p>In general external or cross package test dependencies should be minimized to prevent circular dependencies and tightly coupled test packages.</p>
-<p>All packages should have some unit tests and possibly integration tests, but the degree to which they should have them is based on the package's quality category.
-The following subsections apply to 'Level 1' packages:</p>
+<p>通常情况下，应尽量减少外部或跨包的测试依赖，以避免循环依赖和紧密耦合的测试包。</p>
+<p>所有的包都应该有一些单元测试和可能的集成测试，但其数量取决于包的质量分类。以下小节适用于“Level 1”包：</p>
 <div class="section" id="code-coverage">
-<h4>Code coverage<a class="headerlink" href="#code-coverage" title="永久链接至标题"></a></h4>
-<p>We will provide line coverage, and achieve line coverage above 95%.
-If a lower percentage target is justifiable, it must be prominently documented.
-We may provide branch coverage, or exclude code from coverage (test code, debug code, etc.).
-We require that coverage increase or stay the same before merging a change, but it may be acceptable to make a change that decreases code coverage with proper justification (e.g. deleting code that was previously covered can cause the percentage to drop).</p>
+<h4>代码覆盖率<a class="headerlink" href="#code-coverage" title="永久链接至标题"></a></h4>
+<p>我们将提供行覆盖率，并保证行覆盖率达到95%以上。如果有合理降低百分比目标的情况，必须明确记录。我们可以提供分支覆盖率，或者将某些代码排除在覆盖率之外（测试代码、调试代码等）。在合并更改之前，我们要求覆盖率要增加或保持不变，但在适当的理由下，可能会接受降低代码覆盖率的更改（例如，删除以前覆盖的代码可能会导致百分比下降）。</p>
 </div>
 <div class="section" id="performance">
-<h4>Performance<a class="headerlink" href="#performance" title="永久链接至标题"></a></h4>
-<p>We strongly recommend performance tests, but recognize they don't make sense for some packages.
-If there are performance tests, we will choose to either check each change or before each release or both.
-We will also require justification for merging a change or making a release that lowers performance.</p>
+<h4>性能<a class="headerlink" href="#performance" title="永久链接至标题"></a></h4>
+<p>我们强烈建议进行性能测试，但我们也认识到对于某些软件包来说，这并没有意义。如果有性能测试，我们将选择在每次更改或发布之前进行检查，或者两者都要进行。我们还需要对降低性能的更改或发布进行合并的理由。</p>
 </div>
 <div class="section" id="linters-and-static-analysis">
-<h4>Linters and static analysis<a class="headerlink" href="#linters-and-static-analysis" title="永久链接至标题"></a></h4>
-<p>We will use <a class="reference internal" href="Code-Style-Language-Versions.html"><span class="doc">ROS code style</span></a> and enforce it with linters from <a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_lint_common/doc/index.rst">ament_lint_common</a>.
-All linters/static analysis that are part of <code class="docutils literal notranslate"><span class="pre">ament_lint_common</span></code> must be used.</p>
-<p>The <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_lint_auto/doc/index.rst">ament_lint_auto</a> documentation provides information on running <code class="docutils literal notranslate"><span class="pre">ament_lint_common</span></code>.</p>
+<h4>代码检查器和静态分析<a class="headerlink" href="#linters-and-static-analysis" title="永久链接至标题"></a></h4>
+<p>我们将使用:doc:<a class="reference internal" href="Code-Style-Language-Versions.html"><span class="doc">ROS代码风格</span></a>，并使用来自`ament_lint_common&lt;<a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_lint_common/doc/index.rst">https://github.com/ament/ament_lint/tree/humble/ament_lint_common/doc/index.rst</a>&gt;`_的代码检查器来强制执行。必须使用`ament_lint_common`的所有代码检查器和静态分析工具。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ament_lint_auto</span></code> 文档提供了关于运行 <code class="docutils literal notranslate"><span class="pre">ament_lint_common</span></code> 的信息。</p>
 </div>
 </div>
 </div>
 <div class="section" id="general-practices">
-<h2><a class="toc-backref" href="#id8">General Practices</a><a class="headerlink" href="#general-practices" title="永久链接至标题"></a></h2>
-<p>Some practices are common to all ROS 2 development.</p>
-<p>These practices don't affect package quality level as described in <a class="reference external" href="https://www.ros.org/reps/rep-2004.html">REP 2004</a>, but are still highly recommended for the development process.</p>
+<h2><a class="toc-backref" href="#id8">一般实践</a><a class="headerlink" href="#general-practices" title="永久链接至标题"></a></h2>
+<p>一些实践适用于所有 ROS 2 开发。</p>
+<p>这些实践不会影响软件包质量等级（如 <a class="reference external" href="https://www.ros.org/reps/rep-2004.html">REP 2004</a> 中所述），但在开发过程中仍然强烈推荐。</p>
 <div class="section" id="issues">
 <h3><a class="toc-backref" href="#id9">Issues</a><a class="headerlink" href="#issues" title="永久链接至标题"></a></h3>
 <p>When filing an issue please make sure to:</p>
