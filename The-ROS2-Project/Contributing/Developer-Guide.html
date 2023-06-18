@@ -394,8 +394,8 @@
 <li><p><a class="reference internal" href="#library-versioning" id="id12">库版本管理</a></p></li>
 <li><p><a class="reference internal" href="#development-process" id="id13">开发过程</a></p></li>
 <li><p><a class="reference internal" href="#changes-to-rmw-api" id="id14">RMW API的更改</a></p></li>
-<li><p><a class="reference internal" href="#tracking-tasks" id="id15">Tracking tasks</a></p></li>
-<li><p><a class="reference internal" href="#programming-conventions" id="id16">Programming conventions</a></p></li>
+<li><p><a class="reference internal" href="#tracking-tasks" id="id15">跟踪任务</a></p></li>
+<li><p><a class="reference internal" href="#programming-conventions" id="id16">编程约定</a></p></li>
 <li><p><a class="reference internal" href="#filesystem-layout" id="id17">Filesystem layout</a></p></li>
 </ul>
 </li>
@@ -679,36 +679,25 @@
 <li><p><a class="reference external" href="https://github.com/ros2/rmw_cyclonedds">rmw_cyclonedds</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rmw_fastrtps">rmw_fastrtps</a></p></li>
 </ul>
-<p>Updates for non-Tier 1 middleware libraries should also be considered if feasible (e.g. depending on the size of the change).
-See <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">REP-2000</a> for the list of middleware libraries and their tiers.</p>
+<p>如果可行的话，也应考虑更新非一级中间件库（例如，根据更改的大小）。有关中间件库及其等级的列表，请参阅 <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">REP-2000</a>。</p>
 </div>
 <div class="section" id="tracking-tasks">
-<h3><a class="toc-backref" href="#id15">Tracking tasks</a><a class="headerlink" href="#tracking-tasks" title="永久链接至标题"></a></h3>
-<p>To help organize work on ROS 2, the core ROS 2 development team uses kanban-style <a class="reference external" href="https://github.com/orgs/ros2/projects">GitHub project boards</a>.</p>
-<p>Not all issues and pull requests are tracked on the project boards, however.
-A board usually represents an upcoming release or specific project.
-Tickets can be browsed on a per-repo basis by browsing the <a class="reference external" href="https://github.com/ros2">ROS 2 repositories'</a> individual issue pages.</p>
-<p>The names and purposes of columns in any given ROS 2 project board vary, but typically follow the same general structure:</p>
+<h3><a class="toc-backref" href="#id15">跟踪任务</a><a class="headerlink" href="#tracking-tasks" title="永久链接至标题"></a></h3>
+<p>为了帮助组织ROS 2的工作，核心ROS 2开发团队使用看板式 <a class="reference external" href="https://github.com/orgs/ros2/projects">GitHub项目看板</a>。</p>
+<p>然而，并不是所有问题和拉取请求都在项目看板上跟踪。一个看板通常表示一个即将发布的版本或特定的项目。可以通过浏览 <a class="reference external" href="https://github.com/ros2">ROS 2存储库的个别问题页面</a> 来浏览票证。</p>
+<p>任何给定的ROS 2项目看板中的列名称和用途可能会有所不同，但通常遵循相同的一般结构：</p>
 <ul class="simple">
-<li><p><strong>To do</strong>:
-Issues that are relevant to the project, ready to be assigned</p></li>
-<li><p><strong>In progress</strong>:
-Active pull requests on which work is currently in progress</p></li>
-<li><p><strong>In review</strong>:
-Pull requests where work is complete and ready for review, and for those currently under active review</p></li>
-<li><p><strong>Done</strong>:
-Pull requests and related issues are merged/closed (for informational purposes)</p></li>
+<li><p><strong>待办事项</strong>：与项目相关的问题，可以分配处理</p></li>
+<li><p><strong>进行中</strong>：正在进行工作的活动拉取请求</p></li>
+<li><p><strong>审核中</strong>：工作已完成且准备好进行审核的拉取请求，以及目前正在进行主动审核的请求</p></li>
+<li><p><strong>完成</strong>：合并/关闭拉取请求和相关问题（仅供参考）</p></li>
 </ul>
-<p>To request permission to make changes, simply comment on the tickets you're interested in.
-Depending on the complexity, it might be useful to describe how you plan to address it.
-We will update the status (if you don't have the permission) and you can start working on a pull request.
-If you contribute regularly we will likely just grant you permission to manage the labels etc. yourself.</p>
+<p>如果要请求更改权限，请在您感兴趣的工单上发表评论即可。根据复杂程度，描述您打算如何解决问题可能会很有用。我们将更新状态（如果您没有权限），然后您可以开始处理拉取请求。如果您经常做出贡献，我们可能会直接授予您管理标签等权限。</p>
 </div>
 <div class="section" id="programming-conventions">
-<h3><a class="toc-backref" href="#id16">Programming conventions</a><a class="headerlink" href="#programming-conventions" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id16">编程约定</a><a class="headerlink" href="#programming-conventions" title="永久链接至标题"></a></h3>
 <ul class="simple">
-<li><p>Defensive programming: ensure that assumptions are held as early as possible.
-E.g. check every return code and make sure to at least throw an exception until the case is handled more gracefully.</p></li>
+<li><p>防御式编程：确保尽早持有假设。例如，检查每个返回代码，并确保至少抛出异常，直到处理情况更加优雅为止。</p></li>
 <li><p>All error messages must be directed to <code class="docutils literal notranslate"><span class="pre">stderr</span></code>.</p></li>
 <li><p>Declare variables in the narrowest scope possible.</p></li>
 <li><p>Keep group of items (dependencies, imports, includes, etc.) ordered alphabetically.</p></li>
