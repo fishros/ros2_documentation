@@ -4687,62 +4687,62 @@ msgstr "**上下文：**"
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:87
 msgid "You are developing/debugging your multithreaded C++ production code"
-msgstr "You are developing/debugging your multithreaded C++ production code"
+msgstr "您正在开发/调试多线程的C++生产代码"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:88
 msgid "You access data from multiple threads in C++ code"
-msgstr "You access data from multiple threads in C++ code"
+msgstr "您在C++代码中从多个线程访问数据"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:90 ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:228
 msgid "**Problem:**"
-msgstr "**Problem:**"
+msgstr "**问题：**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:92 ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:230
 msgid "Data races and deadlocks can lead to critical bugs."
-msgstr "Data races and deadlocks can lead to critical bugs."
+msgstr "数据竞争和死锁可能导致关键错误。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:94 ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:234
 msgid "**Solution:**"
-msgstr "**Solution:**"
+msgstr "**解决方案:**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:96
 msgid "Utilize Clang's static `Thread Safety Analysis <https://clang.llvm.org/docs/ThreadSafetyAnalysis.html>`__ by annotating threaded code"
-msgstr "Utilize Clang's static `Thread Safety Analysis <https://clang.llvm.org/docs/ThreadSafetyAnalysis.html>`__ by annotating threaded code"
+msgstr "通过为线程代码添加注释，利用Clang的静态`Thread Safety Analysis <https://clang.llvm.org/docs/ThreadSafetyAnalysis.html>`__"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:98
 msgid "**Context For Implementation:**"
-msgstr "**Context For Implementation:**"
+msgstr "**实现的上下文:**"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:101
 msgid "To enable Thread Safety Analysis, code must be annotated to let the compiler know more about the semantics of the code. These annotations are Clang-specific attributes - e.g. ``__attribute__(capability()))``. Instead of using those attributes directly, ROS 2 provides preprocessor macros that are erased when using other compilers."
-msgstr "To enable Thread Safety Analysis, code must be annotated to let the compiler know more about the semantics of the code. These annotations are Clang-specific attributes - e.g. ``__attribute__(capability()))``. Instead of using those attributes directly, ROS 2 provides preprocessor macros that are erased when using other compilers."
+msgstr "要启用线程安全分析，必须对代码进行注释，以便编译器了解代码的语义。这些注释是特定于Clang的属性，例如``__attribute__(capability()))``。ROS 2提供了预处理宏来代替直接使用这些属性，在使用其他编译器时这些宏会被擦除。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:105
 msgid "These macros can be found in `rcpputils/thread_safety_annotations.hpp <https://github.com/ros2/rcpputils/blob/humble/include/rcpputils/thread_safety_annotations.hpp>`__"
-msgstr "These macros can be found in `rcpputils/thread_safety_annotations.hpp <https://github.com/ros2/rcpputils/blob/humble/include/rcpputils/thread_safety_annotations.hpp>`__"
+msgstr "这些宏可以在 `rcpputils/thread_safety_annotations.hpp <https://github.com/ros2/rcpputils/blob/humble/include/rcpputils/thread_safety_annotations.hpp>`__ 中找到"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:108
 msgid "The Thread Safety Analysis documentation states"
-msgstr "The Thread Safety Analysis documentation states"
+msgstr "线程安全分析文档说明如下"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:108
 msgid "Thread safety analysis can be used with any threading library, but it does require that the threading API be wrapped in classes and methods which have the appropriate annotations"
-msgstr "Thread safety analysis can be used with any threading library, but it does require that the threading API be wrapped in classes and methods which have the appropriate annotations"
+msgstr "线程安全分析可以与任何线程库一起使用，但需要将线程 API 包装在具有适当注释的类和方法中"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:110
 msgid "We have decided that we want ROS 2 developers to be able to use ``std::`` threading primitives directly for their development. We do not want to provide our own wrapped types as is suggested above."
-msgstr "We have decided that we want ROS 2 developers to be able to use ``std::`` threading primitives directly for their development. We do not want to provide our own wrapped types as is suggested above."
+msgstr "我们决定允许 ROS 2 开发人员直接使用 ``std::`` 线程原语进行开发，而不提供上述建议中的自定义包装类型"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:113
