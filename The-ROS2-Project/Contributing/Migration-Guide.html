@@ -655,36 +655,33 @@
 </div>
 <div class="section" id="usages-of-ros-rate">
 <h4>ros::Rate的用法<a class="headerlink" href="#usages-of-ros-rate" title="永久链接至标题"></a></h4>
-<p>There is an equivalent type <code class="docutils literal notranslate"><span class="pre">rclcpp::Rate</span></code> object which is basically a drop in replacement for <code class="docutils literal notranslate"><span class="pre">ros::Rate</span></code>.</p>
+<p>有一个等效的类型 <code class="docutils literal notranslate"><span class="pre">rclcpp::Rate</span></code> 对象，基本上可以替换 <code class="docutils literal notranslate"><span class="pre">ros::Rate</span></code>。</p>
 </div>
 <div class="section" id="ros-client-library">
-<h4>ROS client library<a class="headerlink" href="#ros-client-library" title="永久链接至标题"></a></h4>
+<h4>ROS 客户端库<a class="headerlink" href="#ros-client-library" title="永久链接至标题"></a></h4>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Migration-Guide-Python.html">Python migration guide from ROS 1</a></li>
 </ul>
 </div>
-<p><strong>NOTE: Others to be written</strong></p>
+<p><strong>注意：其他待编写</strong></p>
 </div>
 <div class="section" id="boost">
 <h4>Boost<a class="headerlink" href="#boost" title="永久链接至标题"></a></h4>
-<p>Much of the functionality previously provided by Boost has been integrated into the C++ standard library.
-As such we would like to take advantage of the new core features and avoid the dependency on boost where possible.</p>
+<p>之前由 Boost 提供的许多功能已经集成到 C++ 标准库中。因此，我们希望尽可能利用新的核心功能，并避免对 Boost 的依赖。</p>
 <div class="section" id="shared-pointers">
-<h5>Shared Pointers<a class="headerlink" href="#shared-pointers" title="永久链接至标题"></a></h5>
-<p>To switch shared pointers from boost to standard C++ replace instances of:</p>
+<h5>共享指针<a class="headerlink" href="#shared-pointers" title="永久链接至标题"></a></h5>
+<p>将共享指针从 boost 转换为标准 C++，请替换以下实例：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;boost/shared_ptr.hpp&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;memory&gt;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">boost::shared_ptr</span></code> with <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;boost/shared_ptr.hpp&gt;</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;memory&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boost::shared_ptr</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code></p></li>
 </ul>
-<p>There may also be variants such as <code class="docutils literal notranslate"><span class="pre">weak_ptr</span></code> which you want to convert as well.</p>
-<p>Also it is recommended practice to use <code class="docutils literal notranslate"><span class="pre">using</span></code> instead of <code class="docutils literal notranslate"><span class="pre">typedef</span></code>.
-<code class="docutils literal notranslate"><span class="pre">using</span></code> has the ability to work better in templated logic.
-For details <a class="reference external" href="https://stackoverflow.com/questions/10747810/what-is-the-difference-between-typedef-and-using-in-c11">see here</a></p>
+<p>还可能存在诸如 <code class="docutils literal notranslate"><span class="pre">weak_ptr</span></code> 的变体，您也希望进行转换。</p>
+<p>此外，建议使用 <code class="docutils literal notranslate"><span class="pre">using</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">typedef</span></code>。<code class="docutils literal notranslate"><span class="pre">using</span></code> 在模板逻辑中能够更好地发挥作用。有关详细信息，请参阅 <a class="reference external" href="https://stackoverflow.com/questions/10747810/what-is-the-difference-between-typedef-and-using-in-c11">这里</a>。</p>
 </div>
 <div class="section" id="thread-mutexes">
-<h5>Thread/Mutexes<a class="headerlink" href="#thread-mutexes" title="永久链接至标题"></a></h5>
-<p>Another common part of boost used in ROS codebases are mutexes in <code class="docutils literal notranslate"><span class="pre">boost::thread</span></code>.</p>
+<h5>线程/互斥锁<a class="headerlink" href="#thread-mutexes" title="永久链接至标题"></a></h5>
+<p>在ROS代码库中，<code class="docutils literal notranslate"><span class="pre">boost::thread</span></code> 中的互斥锁是另一个常见的boost部分。</p>
 <ul class="simple">
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">boost::mutex::scoped_lock</span></code> with <code class="docutils literal notranslate"><span class="pre">std::unique_lock&lt;std::mutex&gt;</span></code></p></li>
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">boost::mutex</span></code> with <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code></p></li>
