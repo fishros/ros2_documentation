@@ -902,29 +902,26 @@
 <li><p>一旦达成共识：</p>
 <ul class="simple">
 <li><p>确保已合并`ros2/design &lt;<a class="reference external" href="https://github.com/ros2/design/">https://github.com/ros2/design/</a>&gt;`__的拉取请求（如果适用）</p></li>
-<li><p>Update and close the GitHub issue associated with this design task</p></li>
+<li><p>更新并关闭与此设计任务相关的 GitHub 问题</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="implementation">
 <h4>实施<a class="headerlink" href="#implementation" title="永久链接至标题"></a></h4>
-<p>Before starting, go through the <a class="reference internal" href="#pull-requests">Pull requests</a> section for best practices.</p>
+<p>开始之前，请参阅 <a class="reference internal" href="#pull-requests">Pull requests</a> 部分以了解最佳实践。</p>
 <ul class="simple">
-<li><p>For each repo to be modified:</p>
+<li><p>对于每个需要修改的存储库：</p>
 <ul>
-<li><p>Modify the code, go to the next step if finished or at regular intervals to backup your work.</p></li>
-<li><p><a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging">Self-review</a> your changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-i</span></code>.</p></li>
-<li><p>Create a new signed commit using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-s</span></code>.</p>
+<li><p>修改代码，完成后或定期备份工作，然后进入下一步。</p></li>
+<li><p><a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging">使用``git add -i``进行自我审查</a>，并将更改添加到暂存区。</p></li>
+<li><p>使用``git commit -s``创建一个新的带有签名的提交。</p>
 <ul>
-<li><p>A pull request should contain minimal semantically meaningful commits (for instance, a large number of 1-line commits is not acceptable).
-Create new fixup commits while iterating on feedback, or optionally, amend existing commits using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code> if you don't want to create a new commit every time.</p></li>
-<li><p>Each commit must have a properly written, meaningful, commit message.
-More instructions <a class="reference external" href="https://chris.beams.io/posts/git-commit/">here</a>.</p></li>
-<li><p>Moving files must be done in a separate commit, otherwise git may fail to accurately track the file history.</p></li>
-<li><p>Either the pull request description or the commit message must contain a reference to the related ros2 issue, so it gets automatically closed when the pull request is merged.
-See this <a class="reference external" href="https://help.github.com/articles/closing-issues-using-keywords/">doc</a> for more details.</p></li>
-<li><p>Push the new commits.</p></li>
+<li><p>一个拉取请求应该包含最少的语义化的有意义的提交（例如，大量的一行提交是不可接受的）。在反馈过程中创建新的修正提交，或者根据需要使用``git commit --amend``修正现有的提交，如果你不想每次都创建新的提交。</p></li>
+<li><p>每个提交必须有适当编写的、有意义的提交消息。更多说明请查看 <a class="reference external" href="https://chris.beams.io/posts/git-commit/">这里</a>。</p></li>
+<li><p>将文件移动操作放在单独的提交中进行，否则 Git 可能无法准确跟踪文件的历史记录。</p></li>
+<li><p>无论是拉取请求描述还是提交信息，都必须包含与相关 ros2 问题的引用，这样在合并拉取请求时会自动关闭它。有关更多详细信息，请参阅此 <a class="reference external" href="https://help.github.com/articles/closing-issues-using-keywords/">文档</a>。</p></li>
+<li><p>推送新的提交。</p></li>
 </ul>
 </li>
 </ul>
@@ -932,7 +929,7 @@ See this <a class="reference external" href="https://help.github.com/articles/cl
 </ul>
 </div>
 <div class="section" id="code-review">
-<h4>Code review<a class="headerlink" href="#code-review" title="永久链接至标题"></a></h4>
+<h4>代码审查。<a class="headerlink" href="#code-review" title="永久链接至标题"></a></h4>
 <p>Once the change is ready for code review:</p>
 <ul class="simple">
 <li><p>Open a pull request for each modified repository.</p>
