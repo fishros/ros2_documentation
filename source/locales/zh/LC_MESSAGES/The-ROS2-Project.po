@@ -4047,62 +4047,62 @@ msgstr "运行 ROS 1 节点"
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:520
 msgid "If there's not already one running, we start a ``roscore``, first sourcing the setup file from our ``catkin`` install tree (the system setup file at ``/opt/ros/jade/setup.bash`` would also work here):"
-msgstr "If there's not already one running, we start a ``roscore``, first sourcing the setup file from our ``catkin`` install tree (the system setup file at ``/opt/ros/jade/setup.bash`` would also work here):"
+msgstr "如果还没有一个在运行，我们首先启动 ``roscore``，并从我们的 ``catkin`` 安装目录中获取设置文件（这里也可以使用系统设置文件 ``/opt/ros/jade/setup.bash``）："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:529
 msgid "In another shell, we run the node from the ``catkin`` install space using ``rosrun``, again sourcing the setup file first (in this case it must be the one from our workspace):"
-msgstr "In another shell, we run the node from the ``catkin`` install space using ``rosrun``, again sourcing the setup file first (in this case it must be the one from our workspace):"
+msgstr "在另一个终端中，我们使用 ``rosrun`` 从 ``catkin`` 安装空间运行节点，再次首先获取设置文件（在这种情况下，必须是我们工作空间中的设置文件）："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:539
 msgid "Migrating to ROS 2"
-msgstr "Migrating to ROS 2"
+msgstr "迁移到ROS 2"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:541
 msgid "Let's start by creating a new workspace in which to work:"
-msgstr "Let's start by creating a new workspace in which to work:"
+msgstr "我们首先创建一个新的工作空间来进行工作："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:548
 msgid "We'll copy the source tree from our ROS 1 package into that workspace, where we can modify it:"
-msgstr "We'll copy the source tree from our ROS 1 package into that workspace, where we can modify it:"
+msgstr "我们将从我们的ROS 1软件包中复制源代码树到该工作空间中，在那里我们可以进行修改:"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:555
 msgid "Now we'll modify the C++ code in the node. The ROS 2 C++ library, called ``rclcpp``, provides a different API from that provided by ``roscpp``. The concepts are very similar between the two libraries, which makes the changes reasonably straightforward to make."
-msgstr "Now we'll modify the C++ code in the node. The ROS 2 C++ library, called ``rclcpp``, provides a different API from that provided by ``roscpp``. The concepts are very similar between the two libraries, which makes the changes reasonably straightforward to make."
+msgstr "现在我们将修改节点中的C++代码。ROS 2的C++库名为``rclcpp``，其提供的API与``roscpp``提供的API不同。这两个库之间的概念非常相似，这使得修改相对来说相当简单。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:562
 msgid "Included headers"
-msgstr "Included headers"
+msgstr "包含的头文件"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:564
 msgid "In place of ``ros/ros.h``, which gave us access to the ``roscpp`` library API, we need to include ``rclcpp/rclcpp.hpp``, which gives us access to the ``rclcpp`` library API:"
-msgstr "In place of ``ros/ros.h``, which gave us access to the ``roscpp`` library API, we need to include ``rclcpp/rclcpp.hpp``, which gives us access to the ``rclcpp`` library API:"
+msgstr "我们需要包含``rclcpp/rclcpp.hpp``来替代``ros/ros.h``，后者提供了对``roscpp``库API的访问权限，而前者则提供了对``rclcpp``库API的访问权限："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:573
 msgid "To get the ``std_msgs/String`` message definition, in place of ``std_msgs/String.h``, we need to include ``std_msgs/msg/string.hpp``:"
-msgstr "To get the ``std_msgs/String`` message definition, in place of ``std_msgs/String.h``, we need to include ``std_msgs/msg/string.hpp``:"
+msgstr "要获取``std_msgs/String``消息定义，我们需要包含``std_msgs/msg/string.hpp``，而不是``std_msgs/String.h``："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:582
 msgid "Changing C++ library calls"
-msgstr "Changing C++ library calls"
+msgstr "更改C++库调用"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:584
 msgid "Instead of passing the node's name to the library initialization call, we do the initialization, then pass the node name to the creation of the node object (we can use the ``auto`` keyword because now we're requiring a C++14 compiler):"
-msgstr "Instead of passing the node's name to the library initialization call, we do the initialization, then pass the node name to the creation of the node object (we can use the ``auto`` keyword because now we're requiring a C++14 compiler):"
+msgstr "不再将节点名称传递给库初始化调用，我们现在进行初始化，然后将节点名称传递给节点对象的创建（我们可以使用``auto``关键字，因为现在我们要求使用C++14编译器）："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:595
 msgid "The creation of the publisher and rate objects looks pretty similar, with some changes to the names of namespace and methods."
-msgstr "The creation of the publisher and rate objects looks pretty similar, with some changes to the names of namespace and methods."
+msgstr "发布者和速率对象的创建看起来非常相似，只是命名空间和方法的名称有一些变化。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Migration-Guide.rst:606
