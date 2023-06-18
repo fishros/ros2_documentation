@@ -388,7 +388,7 @@
 </li>
 <li><p><a class="reference internal" href="#general-practices" id="id8">一般实践</a></p>
 <ul>
-<li><p><a class="reference internal" href="#issues" id="id9">Issues</a></p></li>
+<li><p><a class="reference internal" href="#issues" id="id9">问题</a></p></li>
 <li><p><a class="reference internal" href="#branches" id="id10">Branches</a></p></li>
 <li><p><a class="reference internal" href="#pull-requests" id="id11">Pull requests</a></p></li>
 <li><p><a class="reference internal" href="#library-versioning" id="id12">Library versioning</a></p></li>
@@ -595,25 +595,16 @@
 <p>一些实践适用于所有 ROS 2 开发。</p>
 <p>这些实践不会影响软件包质量等级（如 <a class="reference external" href="https://www.ros.org/reps/rep-2004.html">REP 2004</a> 中所述），但在开发过程中仍然强烈推荐。</p>
 <div class="section" id="issues">
-<h3><a class="toc-backref" href="#id9">Issues</a><a class="headerlink" href="#issues" title="永久链接至标题"></a></h3>
-<p>When filing an issue please make sure to:</p>
+<h3><a class="toc-backref" href="#id9">问题</a><a class="headerlink" href="#issues" title="永久链接至标题"></a></h3>
+<p>在提交问题时，请确保：</p>
 <ul class="simple">
-<li><p>Include enough information for another person to understand the issue.
-In ROS 2, the following points are needed for narrowing down the cause of an issue.
-Testing with as many alternatives in each category as feasible will be especially helpful.</p>
+<li><p>提供足够的信息让其他人能够理解问题。在ROS 2中，以下几点对于缩小问题原因范围非常有帮助。在每个类别中尽可能尝试多种替代方案将特别有帮助。</p>
 <ul>
-<li><p><strong>The operating system and version.</strong>
-Reasoning: ROS 2 supports multiple platforms, and some bugs are specific to particular versions of operating systems/compilers.</p></li>
-<li><p><strong>The installation method.</strong>
-Reasoning: Some issues only manifest if ROS 2 has been installed from &quot;fat archives&quot; or from Debians.
-This can help us determine if the issue is with the packaging process.</p></li>
-<li><p><strong>The specific version of ROS 2.</strong>
-Reasoning: Some bugs may be present in a particular ROS 2 release and later fixed.
-It is important to know if your installation includes these fixes.</p></li>
-<li><p><strong>The DDS/RMW implementation being used</strong> (see <a class="reference internal" href="../../Concepts/About-Different-Middleware-Vendors.html"><span class="doc">this page</span></a> for how to determine which one).
-Reasoning: Communication issues may be specific to the underlying ROS middleware being used.</p></li>
-<li><p><strong>The ROS 2 client library being used.</strong>
-Reasoning: This helps us narrow down the layer in the stack at which the issue might be.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>操作系统及版本。<a href="#id3"><span class="problematic" id="id4">**</span></a>原因：ROS 2支持多个平台，某些错误可能只出现在特定版本的操作系统/编译器上。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>安装方法。<a href="#id3"><span class="problematic" id="id4">**</span></a>理由：某些问题只在使用“fat archives”或Debians安装ROS 2时才显现出来。这可以帮助我们确定问题是否与打包过程有关。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>ROS 2的具体版本。<a href="#id3"><span class="problematic" id="id4">**</span></a>理由：某些错误可能存在于特定的ROS 2版本中，后来被修复。了解您的安装是否包含这些修复非常重要。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>正在使用的DDS/RMW实现**（参见`此页面&lt;../../Concepts/About-Different-Middleware-Vendors&gt;`，以了解如何确定使用的是哪个）。理由：通信问题可能特定于所使用的基础ROS中间件。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>正在使用的ROS 2客户端库。<a href="#id3"><span class="problematic" id="id4">**</span></a>理由：这可以帮助我们缩小问题可能出现的堆栈层级范围。</p></li>
 </ul>
 </li>
 <li><p>Include a list of steps to reproduce the issue.</p></li>
