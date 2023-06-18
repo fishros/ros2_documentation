@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migration guide from ROS 1 &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>从ROS 1迁移指南 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -312,7 +312,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Developer-Guide.html">ROS 2开发者指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Code-Style-Language-Versions.html">代码风格和语言版本</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Quality-Guide.html">Quality guide: ensuring code quality</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migration guide from ROS 1</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">从ROS 1迁移指南</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Migration-Guide-Python.html">Python migration guide from ROS 1</a></li>
 </ul>
 </li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../The-ROS2-Project.html">ROS 2 项目</a> &raquo;</li>
           <li><a href="../Contributing.html">贡献</a> &raquo;</li>
-      <li>Migration guide from ROS 1</li>
+      <li>从ROS 1迁移指南</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/The-ROS2-Project/Contributing/Migration-Guide.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,15 +373,15 @@
 
 
   <div class="section" id="migration-guide-from-ros-1">
-<h1>Migration guide from ROS 1<a class="headerlink" href="#migration-guide-from-ros-1" title="永久链接至标题"></a></h1>
+<h1>从ROS 1迁移指南<a class="headerlink" href="#migration-guide-from-ros-1" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#prerequisites" id="id1">先决条件</a></p></li>
-<li><p><a class="reference internal" href="#migration-steps" id="id2">Migration steps</a></p>
+<li><p><a class="reference internal" href="#migration-steps" id="id2">迁移步骤</a></p>
 <ul>
-<li><p><a class="reference internal" href="#package-manifests" id="id3">Package manifests</a></p></li>
-<li><p><a class="reference internal" href="#metapackages" id="id4">Metapackages</a></p></li>
+<li><p><a class="reference internal" href="#package-manifests" id="id3">软件包清单</a></p></li>
+<li><p><a class="reference internal" href="#metapackages" id="id4">元软件包</a></p></li>
 <li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id5">Message, service, and action definitions</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id6">Build system</a></p></li>
 <li><p><a class="reference internal" href="#update-source-code" id="id7">Update source code</a></p></li>
@@ -404,40 +404,34 @@
 </li>
 </ul>
 </div>
-<p>There are two different kinds of package migrations:</p>
+<p>有两种不同类型的包迁移：</p>
 <ul class="simple">
-<li><p>Migrating the source code of an existing package from ROS 1 to ROS 2 with the intent that a significant part of the source code will stay the same or at least similar.
-An example for this could be <a class="reference external" href="https://github.com/ros/pluginlib">pluginlib</a> where the source code is maintained in different branches within the same repository and commonly patches can be ported between those branches when necessary.</p></li>
-<li><p>Implementing the same or similar functionality of a ROS 1 package for ROS 2 but with the assumption that the source code will be significantly different.
-An example for this could be <a class="reference external" href="https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp">roscpp</a> in ROS 1 and <a class="reference external" href="https://github.com/ros2/rclcpp/tree/rolling/rclcpp">rclcpp</a> in ROS 2 which are separate repositories and don't share any code.</p></li>
+<li><p>将现有包的源代码从ROS 1迁移到ROS 2，并且意图是源代码的大部分保持相同或至少相似。一个例子是`pluginlib &lt;<a class="reference external" href="https://github.com/ros/pluginlib">https://github.com/ros/pluginlib</a>&gt;`_，其中源代码在同一存储库的不同分支中维护，常见的补丁可以在需要时在这些分支之间移植。</p></li>
+<li><p>为ROS 2实现与ROS 1包相同或相似的功能，但假设源代码将有显着差异。一个例子是ROS 1中的`roscpp &lt;<a class="reference external" href="https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp">https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp</a>&gt;`_和ROS 2中的`rclcpp &lt;<a class="reference external" href="https://github.com/ros2/rclcpp/tree/rolling/rclcpp">https://github.com/ros2/rclcpp/tree/rolling/rclcpp</a>&gt;`_，它们是单独的存储库，不共享任何代码。</p></li>
 </ul>
-<p>This article focuses on the former case and describes the high-level steps to migrate a ROS 1 package to ROS 2.
-It does not aim to be a step-by-step migration instruction and is not considered the <em>final</em> &quot;solution&quot;.
-Future versions will aim to make migration smoother and less effort up to the point of maintaining a single package from the same branch for ROS 1 as well as ROS 2.</p>
+<p>本文重点介绍前一种情况，并描述了将ROS 1软件包迁移到ROS 2的高级步骤。它不旨在成为逐步迁移指南，并不被视为“最终”解决方案。未来的版本将旨在使迁移过程更加顺利，并减少维护ROS 1和ROS 2相同分支上的单个软件包所需的工作量。</p>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id1">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>Before being able to migrate a ROS 1 package to ROS 2 all of its dependencies must be available in ROS 2.</p>
+<p>在将ROS 1软件包迁移到ROS 2之前，必须在ROS 2中提供所有依赖项。</p>
 </div>
 <div class="section" id="migration-steps">
-<h2><a class="toc-backref" href="#id2">Migration steps</a><a class="headerlink" href="#migration-steps" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">迁移步骤</a><a class="headerlink" href="#migration-steps" title="永久链接至标题"></a></h2>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#package-manifests" id="id17">Package manifests</a></p></li>
-<li><p><a class="reference internal" href="#metapackages" id="id18">Metapackages</a></p></li>
+<li><p><a class="reference internal" href="#package-manifests" id="id17">软件包清单</a></p></li>
+<li><p><a class="reference internal" href="#metapackages" id="id18">元软件包</a></p></li>
 <li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id19">Message, service, and action definitions</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id20">Build system</a></p></li>
 <li><p><a class="reference internal" href="#update-source-code" id="id21">Update source code</a></p></li>
 </ul>
 </div>
 <div class="section" id="package-manifests">
-<h3><a class="toc-backref" href="#id17">Package manifests</a><a class="headerlink" href="#package-manifests" title="永久链接至标题"></a></h3>
-<p>ROS 2 doesn't support format 1 of the package specification but only newer format versions (2 and higher).
-Therefore the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file must be updated to at least format 2 if it uses format 1.
-Since ROS 1 supports all formats it is safe to perform that conversion in the ROS 1 package.</p>
-<p>Some packages might have different names in ROS 2 so the dependencies might need to be updated accordingly.</p>
+<h3><a class="toc-backref" href="#id17">软件包清单</a><a class="headerlink" href="#package-manifests" title="永久链接至标题"></a></h3>
+<p>ROS 2不支持软件包规范的格式1，而仅支持更新的格式版本（2及更高）。因此，如果软件包使用格式1，则必须将``package.xml``文件更新至至少格式2。由于ROS 1支持所有格式，因此在ROS 1软件包中执行此转换是安全的。</p>
+<p>在ROS 2中，某些软件包的名称可能不同，因此需要相应地更新依赖关系。</p>
 </div>
 <div class="section" id="metapackages">
-<h3><a class="toc-backref" href="#id18">Metapackages</a><a class="headerlink" href="#metapackages" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id18">元软件包</a><a class="headerlink" href="#metapackages" title="永久链接至标题"></a></h3>
 <p>ROS 2 doesn't have a special package type for metapackages.
 Metapackages can still exist as regular packages that only contain runtime dependencies.
 When migrating metapackages from ROS 1, simply remove the <code class="docutils literal notranslate"><span class="pre">&lt;metapackage</span> <span class="pre">/&gt;</span></code> tag in your package manifest.</p>
