@@ -958,7 +958,7 @@ cp -a ~/ros1_talker/src/talker src
 <span class="nt">&lt;/export&gt;</span>
 </pre></div>
 </div>
-<p>Putting it all together, our <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> now looks like this:</p>
+<p>将所有内容放在一起，我们的``package.xml``现在看起来像这样：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- &lt;package&gt; --&gt;</span>
 <span class="nt">&lt;package</span> <span class="na">format=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;name&gt;</span>talker<span class="nt">&lt;/name&gt;</span>
@@ -979,26 +979,20 @@ cp -a ~/ros1_talker/src/talker src
 <span class="nt">&lt;/package&gt;</span>
 </pre></div>
 </div>
-<p><strong>TODO: show simpler version of this file just using the ``&lt;depend&gt;`` tag, which is
-enabled by version 2 of the package format (also supported in ``catkin`` so,
-strictly speaking, orthogonal to ROS 2).</strong></p>
+<p><strong>TODO: 展示一个更简化的文件版本，只使用``&lt;depend&gt;``标签，这在版本2的包格式中是可用的（也在``catkin``中支持，严格来说与ROS 2无关）。</strong></p>
 </div>
 <div class="section" id="changing-the-cmake-code">
-<h4>Changing the CMake code<a class="headerlink" href="#changing-the-cmake-code" title="永久链接至标题"></a></h4>
-<p>ROS 2 relies on a higher version of CMake:</p>
+<h4>修改CMake代码<a class="headerlink" href="#changing-the-cmake-code" title="永久链接至标题"></a></h4>
+<p>ROS 2依赖于更高版本的CMake：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#cmake_minimum_required(VERSION 2.8.3)</span>
 cmake_minimum_required<span class="o">(</span>VERSION <span class="m">3</span>.5<span class="o">)</span>
 </pre></div>
 </div>
-<p>ROS 2 relies on the C++14 standard.
-Depending on what compiler you're using, support for C++14 might not be enabled
-by default.
-Using <code class="docutils literal notranslate"><span class="pre">gcc</span></code> 5.3 (which is what is used on Ubuntu Xenial), we need to enable it
-explicitly, which we do by adding this line near the top of the file:</p>
+<p>ROS 2 依赖于 C++14 标准。根据你使用的编译器，对于 C++14 的支持可能默认没有启用。在使用 <code class="docutils literal notranslate"><span class="pre">gcc</span></code> 5.3（Ubuntu Xenial 上使用的版本）时，我们需要显式启用它，可以通过在文件顶部附近添加以下行来实现：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">14</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The preferred way to work on all platforms is this:</p>
+<p>在所有平台上工作的首选方式如下：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">CMAKE_CXX_STANDARD</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">14</span><span class="p">)</span>
 <span class="nb">endif</span><span class="p">()</span>
@@ -1007,46 +1001,33 @@ explicitly, which we do by adding this line near the top of the file:</p>
 <span class="nb">endif</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Using <code class="docutils literal notranslate"><span class="pre">catkin</span></code>, we specify the packages we want to build against by passing them
-as <code class="docutils literal notranslate"><span class="pre">COMPONENTS</span></code> arguments when initially finding <code class="docutils literal notranslate"><span class="pre">catkin</span></code> itself.
-With <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code>, we find each package individually, starting with <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code>:</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">catkin</span></code>，我们通过将要构建的包作为 <code class="docutils literal notranslate"><span class="pre">COMPONENTS</span></code> 参数传递给初始查找 <code class="docutils literal notranslate"><span class="pre">catkin</span></code> 本身的命令来指定要构建的包。对于 <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code>，我们逐个查找每个包，从 <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> 开始：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">#find_package(catkin REQUIRED COMPONENTS roscpp std_msgs)</span>
 <span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">find_package</span><span class="p">(</span><span class="s">rclcpp</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">find_package</span><span class="p">(</span><span class="s">std_msgs</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>System dependencies can be found as before:</p>
+<p>系统依赖项与以前一样可以找到：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Boost</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">system</span><span class="w"> </span><span class="s">filesystem</span><span class="w"> </span><span class="s">thread</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We call <code class="docutils literal notranslate"><span class="pre">catkin_package()</span></code> to auto-generate things like CMake configuration
-files for other packages that use our package.
-Whereas that call happens <em>before</em> specifying targets to build, we now call the
-analogous <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code> <em>after</em> the targets:</p>
+<p>我们使用 <code class="docutils literal notranslate"><span class="pre">catkin_package()</span></code> 来自动生成像 CMake 配置文件这样的东西，以供使用我们包的其他包使用。与构建目标之前的调用相反，现在我们在目标之后调用类似的 <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code>：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># catkin_package()</span>
 <span class="c"># At the bottom of the file:</span>
 <span class="nb">ament_package</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The only directories that need to be manually included are local directories
-and dependencies that are not ament packages:</p>
+<p>唯一需要手动包含的目录是本地目录和不是 ament 包的依赖项：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">#include_directories(${catkin_INCLUDE_DIRS})</span>
 <span class="nb">include_directories</span><span class="p">(</span><span class="s">include</span><span class="w"> </span><span class="o">${</span><span class="nv">Boost_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>A better alternative is to specify include directories for each target
-individually, rather than including all the directories for all targets:</p>
+<p>更好的选择是为每个目标单独指定包含目录，而不是为所有目标包含所有目录：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_include_directories</span><span class="p">(</span><span class="s">target</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">include</span><span class="w"> </span><span class="o">${</span><span class="nv">Boost_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Similar to how we found each dependent package separately, we need to link
-each one to the build target.
-To link with dependent packages that are ament packages, instead of using
-<code class="docutils literal notranslate"><span class="pre">target_link_libraries()</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies()</span></code> is a more
-concise and more thorough way of handling build flags.
-It automatically handles both the include directories defined in
-<code class="docutils literal notranslate"><span class="pre">_INCLUDE_DIRS</span></code> and linking libraries defined in <code class="docutils literal notranslate"><span class="pre">_LIBRARIES</span></code>.</p>
+<p>类似于我们单独找到每个依赖包的方式，我们需要将每个依赖包链接到构建目标上。对于 ament 包作为依赖包的链接，不使用 <code class="docutils literal notranslate"><span class="pre">target_link_libraries()</span></code>，而是使用 <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies()</span></code> 是处理构建标志更简洁和更彻底的方式。它自动处理 <code class="docutils literal notranslate"><span class="pre">_INCLUDE_DIRS</span></code> 中定义的包含目录和 <code class="docutils literal notranslate"><span class="pre">_LIBRARIES</span></code> 中定义的链接库。</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">#target_link_libraries(talker ${catkin_LIBRARIES})</span>
 <span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">talker</span>
 <span class="w">  </span><span class="s">rclcpp</span>
