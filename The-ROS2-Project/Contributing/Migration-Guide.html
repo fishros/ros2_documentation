@@ -856,46 +856,36 @@ cp -a ~/ros1_talker/src/talker src
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Rate</span><span class="w"> </span><span class="nf">loop_rate</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To further control how message delivery is handled, a quality of service
-(<code class="docutils literal notranslate"><span class="pre">QoS</span></code>) profile could be passed in.
-The default profile is <code class="docutils literal notranslate"><span class="pre">rmw_qos_profile_default</span></code>.
-For more details, see the
-<a class="reference external" href="https://design.ros2.org/articles/qos.html">design document</a>
-and <a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html"><span class="doc">concept overview</span></a>.</p>
-<p>The creation of the outgoing message is different in the namespace:</p>
+<p>为了进一步控制消息传递的处理方式，可以传递一个质量服务（<code class="docutils literal notranslate"><span class="pre">QoS</span></code>）配置文件。默认配置文件是 <code class="docutils literal notranslate"><span class="pre">rmw_qos_profile_default</span></code>。更多详情，请参阅 <a class="reference external" href="https://design.ros2.org/articles/qos.html">设计文档</a> 和 <a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html"><span class="doc">概念概述</span></a>。</p>
+<p>在命名空间中，对传出消息的创建方式有所不同：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//  std_msgs::String msg;</span>
 <span class="w">  </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In place of <code class="docutils literal notranslate"><span class="pre">ros::ok()</span></code>, we call <code class="docutils literal notranslate"><span class="pre">rclcpp::ok()</span></code>:</p>
+<p>我们用 <code class="docutils literal notranslate"><span class="pre">rclcpp::ok()</span></code> 替代了 <code class="docutils literal notranslate"><span class="pre">ros::ok()</span></code>：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//  while (ros::ok())</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Inside the publishing loop, we access the <code class="docutils literal notranslate"><span class="pre">data</span></code> field as before:</p>
+<p>在发布循环中，我们仍然像之前一样访问 <code class="docutils literal notranslate"><span class="pre">data</span></code> 字段：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To print a console message, instead of using <code class="docutils literal notranslate"><span class="pre">ROS_INFO()</span></code>, we use
-<code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO()</span></code> and its various cousins.
-The key difference is that <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO()</span></code> takes a Logger object as the first
-argument.</p>
+<p>要打印控制台消息，不再使用``ROS_INFO()``，而是使用``RCLCPP_INFO()``及其各种相关函数。关键区别在于``RCLCPP_INFO()``将Logger对象作为第一个参数。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//    ROS_INFO(&quot;%s&quot;, msg.data.c_str());</span>
 <span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Publishing the message is the same as before:</p>
+<p>发布消息的方式与之前相同：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">chatter_pub</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Spinning (i.e., letting the communications system process any pending
-incoming/outgoing messages) is different in that the call now takes the node as
-an argument:</p>
+<p>循环（即让通信系统处理任何待处理的传入/传出消息）的方式不同，调用现在将节点作为参数：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">//    ros::spinOnce();</span>
 <span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin_some</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Sleeping using the rate object is unchanged.</p>
+<p>使用rate对象进行休眠的方式保持不变。</p>
 <p>Putting it all together, the new <code class="docutils literal notranslate"><span class="pre">talker.cpp</span></code> looks like this:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
 <span class="c1">// #include &quot;ros/ros.h&quot;</span>
