@@ -470,17 +470,16 @@ endif<span class="o">()</span>
 </dd>
 </dl>
 <p>我们决定允许 ROS 2 开发人员直接使用 <code class="docutils literal notranslate"><span class="pre">std::</span></code> 线程原语进行开发，而不提供上述建议中的自定义包装类型</p>
-<p>There are three C++ standard libraries to be aware of</p>
+<p>有三个 C++ 标准库需要注意</p>
 <ul class="simple">
-<li><p>The GNU standard library <code class="docutils literal notranslate"><span class="pre">libstdc++</span></code> - default on Linux, explicitly via the compiler option <code class="docutils literal notranslate"><span class="pre">-stdlib=libstdc++</span></code></p></li>
-<li><p>The LLVM standard library <code class="docutils literal notranslate"><span class="pre">libc++</span></code> (also called <code class="docutils literal notranslate"><span class="pre">libcxx</span></code> ) - default on macOS,  explicitly set by the compiler option <code class="docutils literal notranslate"><span class="pre">-stdlib=libc++</span></code></p></li>
-<li><p>The Windows C++ Standard Library - not relevant to this use case</p></li>
+<li><p>GNU 标准库 <code class="docutils literal notranslate"><span class="pre">libstdc++</span></code> - 在 Linux 上为默认选项，可以通过编译器选项 <code class="docutils literal notranslate"><span class="pre">-stdlib=libstdc++</span></code> 显式设置</p></li>
+<li><p>LLVM 标准库 <code class="docutils literal notranslate"><span class="pre">libc++``（也称为</span> <span class="pre">``libcxx</span></code>）- 在 macOS 上为默认选项，可以通过编译器选项 <code class="docutils literal notranslate"><span class="pre">-stdlib=libc++</span></code> 显式设置</p></li>
+<li><p>Windows C++ 标准库 - 对于此用例无关</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">libcxx</span></code> annotates its <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code> and <code class="docutils literal notranslate"><span class="pre">std::lock_guard</span></code> implementations for Thread Safety Analysis. When using GNU <code class="docutils literal notranslate"><span class="pre">libstdc++</span></code> , those annotations are not present, so Thread Safety Analysis cannot be used on non-wrapped <code class="docutils literal notranslate"><span class="pre">std::</span></code> types.</p>
-<p><em>Therefore, to use Thread Safety Analysis directly with</em> <code class="docutils literal notranslate"><span class="pre">std::</span></code> <em>types, we must use</em> <code class="docutils literal notranslate"><span class="pre">libcxx</span></code></p>
-<p><strong>Implementation:</strong></p>
-<p>The code migration suggestions here are by no means complete - when writing (or annotating existing) threaded code, you are encouraged to utilize as many of the annotations as is logical for your use case.
-However, this step-by-step is a great place to start!</p>
+<p><code class="docutils literal notranslate"><span class="pre">libcxx</span></code> 在其 <code class="docutils literal notranslate"><span class="pre">std::mutex</span></code> 和 <code class="docutils literal notranslate"><span class="pre">std::lock_guard</span></code> 实现中添加了线程安全分析的注释。当使用 GNU <code class="docutils literal notranslate"><span class="pre">libstdc++</span></code> 时，这些注释不存在，因此无法在未包装的 <code class="docutils literal notranslate"><span class="pre">std::</span></code> 类型上使用线程安全分析。</p>
+<p><em>因此，要直接使用线程安全分析与</em> <code class="docutils literal notranslate"><span class="pre">std::</span></code> <em>类型，我们必须使用</em> <code class="docutils literal notranslate"><span class="pre">libcxx</span></code></p>
+<p><strong>实施方法：</strong></p>
+<p>这里提供的代码迁移建议并不完整 - 在编写（或注释现有）线程代码时，建议根据您的使用情况尽可能多地使用注释。然而，这个逐步过程是一个很好的起点！</p>
 <ul>
 <li><p>Enabling Analysis for Package/Target</p>
 <p>When the C++ compiler is Clang, enable the <code class="docutils literal notranslate"><span class="pre">-Wthread-safety</span></code> flag. Example below for CMake-based projects</p>
@@ -594,7 +593,7 @@ However, this step-by-step is a great place to start!</p>
 <ul class="simple">
 <li><p>Use a dynamic analysis tool which focuses on finding data races and deadlocks (here clang ThreadSanitizer).</p></li>
 </ul>
-<p><strong>Implementation:</strong></p>
+<p><strong>实施方法：</strong></p>
 <ul class="simple">
 <li><p>Compile and link the production code with clang using the option <code class="docutils literal notranslate"><span class="pre">-fsanitize=thread</span></code> (this instruments the production code).</p></li>
 <li><p>In case different production code shall be executed during analysis consider conditional compilation e.g. <a class="reference external" href="https://clang.llvm.org/docs/ThreadSanitizer.html#has-feature-thread-sanitizer">ThreadSanitizers _has_feature(thread_sanitizer)</a>.</p></li>
