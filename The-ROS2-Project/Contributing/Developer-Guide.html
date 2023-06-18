@@ -381,7 +381,7 @@
 <li><p><a class="reference internal" href="#quality-practices" id="id3">质量实践</a></p>
 <ul>
 <li><p><a class="reference internal" href="#versioning" id="id4">版本管理</a></p></li>
-<li><p><a class="reference internal" href="#change-control-process" id="id5">Change control process</a></p></li>
+<li><p><a class="reference internal" href="#change-control-process" id="id5">变更控制流程</a></p></li>
 <li><p><a class="reference internal" href="#documentation" id="id6">Documentation</a></p></li>
 <li><p><a class="reference internal" href="#testing" id="id7">测试</a></p></li>
 </ul>
@@ -490,24 +490,21 @@
 <tr class="row-even"><td><p>X-turtle</p></td>
 <td><p>void foo();</p></td>
 </tr>
-<tr class="row-odd"><td><p>Y-turtle</p></td>
-<td><p>[[deprecated(&quot;use bar()&quot;)]] void foo(); &lt;br&gt; void bar();</p></td>
+<tr class="row-odd"><td><p>Y-龟</p></td>
+<td><p>[[已弃用(&quot;使用bar()&quot;)]] void foo(); &lt;br&gt; void bar();</p></td>
 </tr>
-<tr class="row-even"><td><p>Z-turtle</p></td>
+<tr class="row-even"><td><p>Z-龟</p></td>
 <td><p>void bar();</p></td>
 </tr>
 </tbody>
 </table>
-<p>We must not add deprecations after a distribution is released.
-Deprecations do not necessarily require a major version bump, though.
-A deprecation can be introduced in a minor version bump if the bump happens before the distro is released (similar to ABI breaking changes).</p>
-<p>For example, if X-turtle begins development as <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>, a deprecation can be added in <code class="docutils literal notranslate"><span class="pre">2.1.0</span></code> before X-turtle is released.</p>
-<p>We will attempt to maintain compatibility across distros as much as possible.
-However, like the caveats associated with SemVer, tick-tock or even deprecation in general may be impossible to completely adhere to in certain cases.</p>
+<p>在发行版发布之后，我们不能添加废弃项。然而，废弃项不一定需要引发主要版本的升级。如果在发行版发布之前进行次要版本的升级，就可以引入废弃项（类似于破坏ABI的更改）。</p>
+<p>例如，如果X-turtle作为``2.0.0``开始开发，可以在X-turtle发布之前的``2.1.0``中添加废弃项。</p>
+<p>我们将尽可能在不同发行版之间保持兼容性。然而，与语义化版本控制（SemVer）相关的注意事项一样，特定情况下可能无法完全遵守打勾或废弃项。</p>
 </div>
 </div>
 <div class="section" id="change-control-process">
-<h3><a class="toc-backref" href="#id5">Change control process</a><a class="headerlink" href="#change-control-process" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id5">变更控制流程</a><a class="headerlink" href="#change-control-process" title="永久链接至标题"></a></h3>
 <ul class="simple">
 <li><p>All changes must go through a pull request.</p></li>
 <li><p>We will enforce the <a class="reference external" href="https://developercertificate.org/">Developer Certificate of Origin (DCO)</a> on pull requests in ROSCore repositories.</p>
