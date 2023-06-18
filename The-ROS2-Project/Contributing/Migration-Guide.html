@@ -384,7 +384,7 @@
 <li><p><a class="reference internal" href="#metapackages" id="id4">元软件包</a></p></li>
 <li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id5">消息、服务和动作定义</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id6">构建系统</a></p></li>
-<li><p><a class="reference internal" href="#update-source-code" id="id7">Update source code</a></p></li>
+<li><p><a class="reference internal" href="#update-source-code" id="id7">更新源代码</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#parameters" id="id8">参数</a></p></li>
@@ -422,7 +422,7 @@
 <li><p><a class="reference internal" href="#metapackages" id="id18">元软件包</a></p></li>
 <li><p><a class="reference internal" href="#message-service-and-action-definitions" id="id19">消息、服务和动作定义</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id20">构建系统</a></p></li>
-<li><p><a class="reference internal" href="#update-source-code" id="id21">Update source code</a></p></li>
+<li><p><a class="reference internal" href="#update-source-code" id="id21">更新源代码</a></p></li>
 </ul>
 </div>
 <div class="section" id="package-manifests">
@@ -597,19 +597,17 @@
 </div>
 </div>
 <div class="section" id="update-source-code">
-<h3><a class="toc-backref" href="#id21">Update source code</a><a class="headerlink" href="#update-source-code" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id21">更新源代码</a><a class="headerlink" href="#update-source-code" title="永久链接至标题"></a></h3>
 <div class="section" id="messages-services-and-actions">
-<h4>Messages, services, and actions<a class="headerlink" href="#messages-services-and-actions" title="永久链接至标题"></a></h4>
-<p>The namespace of ROS 2 messages, services, and actions use a subnamespace (<code class="docutils literal notranslate"><span class="pre">msg</span></code>, <code class="docutils literal notranslate"><span class="pre">srv</span></code>, or <code class="docutils literal notranslate"><span class="pre">action</span></code>, respectively) after the package name.
-Therefore an include looks like: <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;my_interfaces/msg/my_message.hpp&gt;</span></code>.
-The C++ type is then named: <code class="docutils literal notranslate"><span class="pre">my_interfaces::msg::MyMessage</span></code>.</p>
-<p>Shared pointer types are provided as typedefs within the message structs: <code class="docutils literal notranslate"><span class="pre">my_interfaces::msg::MyMessage::SharedPtr</span></code> as well as <code class="docutils literal notranslate"><span class="pre">my_interfaces::msg::MyMessage::ConstSharedPtr</span></code>.</p>
-<p>For more details please see the article about the <a class="reference external" href="https://design.ros2.org/articles/generated_interfaces_cpp.html">generated C++ interfaces</a>.</p>
-<p>The migration requires includes to change by:</p>
+<h4>消息、服务和动作<a class="headerlink" href="#messages-services-and-actions" title="永久链接至标题"></a></h4>
+<p>ROS 2的消息、服务和动作的命名空间在包名后使用子命名空间（分别是``msg``、<code class="docutils literal notranslate"><span class="pre">srv``或``action</span></code>）。因此，一个包含语句的形式如下：<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;my_interfaces/msg/my_message.hpp&gt;</span></code>。C++类型的命名为：<code class="docutils literal notranslate"><span class="pre">my_interfaces::msg::MyMessage</span></code>。</p>
+<p>共享指针类型在消息结构体中作为typedef提供：<code class="docutils literal notranslate"><span class="pre">my_interfaces::msg::MyMessage::SharedPtr``以及``my_interfaces::msg::MyMessage::ConstSharedPtr</span></code>。</p>
+<p>更多详细信息请参阅有关`生成的C++接口 &lt;<a class="reference external" href="https://design.ros2.org/articles/generated_interfaces_cpp.html">https://design.ros2.org/articles/generated_interfaces_cpp.html</a>&gt;`__的文章。</p>
+<p>迁移需要通过以下方式更改包含：</p>
 <ul class="simple">
-<li><p>inserting the subfolder <code class="docutils literal notranslate"><span class="pre">msg</span></code> between the package name and message datatype</p></li>
-<li><p>changing the included filename from CamelCase to underscore separation</p></li>
-<li><p>changing from <code class="docutils literal notranslate"><span class="pre">*.h</span></code> to <code class="docutils literal notranslate"><span class="pre">*.hpp</span></code></p></li>
+<li><p>在包名称和消息数据类型之间插入子文件夹``msg``</p></li>
+<li><p>将包含的文件名从驼峰式更改为下划线分隔</p></li>
+<li><p>将``*.h``更改为``*.hpp``</p></li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ROS 1 style is in comments, ROS 2 follows, uncommented.</span>
 <span class="c1">// # include &lt;geometry_msgs/PointStamped.h&gt;</span>
@@ -619,12 +617,11 @@ The C++ type is then named: <code class="docutils literal notranslate"><span cla
 <span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">PointStamped</span><span class="w"> </span><span class="n">point_stamped</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The migration requires code to insert the <code class="docutils literal notranslate"><span class="pre">msg</span></code> namespace into all instances.</p>
+<p>迁移需要在所有实例中插入``msg``命名空间的代码。</p>
 </div>
 <div class="section" id="use-of-service-objects">
-<h4>Use of service objects<a class="headerlink" href="#use-of-service-objects" title="永久链接至标题"></a></h4>
-<p>Service callbacks in ROS 2 do not have boolean return values.
-Instead of returning false on failures, throwing exceptions is recommended.</p>
+<h4>使用服务对象<a class="headerlink" href="#use-of-service-objects" title="永久链接至标题"></a></h4>
+<p>ROS 2中的服务回调函数不具有布尔返回值。建议在失败时抛出异常，而不是返回false。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ROS 1 style is in comments, ROS 2 follows, uncommented.</span>
 <span class="c1">// #include &quot;nav_msgs/GetMap.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;nav_msgs/srv/get_map.hpp&quot;</span><span class="cp"></span>
