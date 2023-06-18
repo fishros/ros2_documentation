@@ -640,21 +640,21 @@
 </div>
 </div>
 <div class="section" id="usages-of-ros-time">
-<h4>Usages of ros::Time<a class="headerlink" href="#usages-of-ros-time" title="永久链接至标题"></a></h4>
-<p>For usages of <code class="docutils literal notranslate"><span class="pre">ros::Time</span></code>:</p>
+<h4>ros::Time的用法<a class="headerlink" href="#usages-of-ros-time" title="永久链接至标题"></a></h4>
+<p>关于``ros::Time``的用法：</p>
 <ul class="simple">
-<li><p>Replace all instances of <code class="docutils literal notranslate"><span class="pre">ros::Time</span></code> with <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code></p></li>
-<li><p>If your messages or code makes use of std_msgs::Time:</p>
+<li><p>将所有``ros::Time``的实例替换为``rclcpp::Time``</p></li>
+<li><p>如果您的消息或代码使用了std_msgs::Time：</p>
 <ul>
-<li><p>Convert all instances of std_msgs::Time to builtin_interfaces::msg::Time</p></li>
-<li><p>Convert all <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;std_msgs/time.h</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;builtin_interfaces/msg/time.hpp&quot;</span></code></p></li>
-<li><p>Convert all instances using the std_msgs::Time field <code class="docutils literal notranslate"><span class="pre">nsec</span></code> to the builtin_interfaces::msg::Time field <code class="docutils literal notranslate"><span class="pre">nanosec</span></code></p></li>
+<li><p>将所有的std_msgs::Time实例转换为builtin_interfaces::msg::Time</p></li>
+<li><p>将所有的#include &quot;std_msgs/time.h&quot;转换为#include &quot;builtin_interfaces/msg/time.hpp&quot;</p></li>
+<li><p>将所有使用std_msgs::Time字段``nsec``的实例转换为builtin_interfaces::msg::Time字段``nanosec``</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="usages-of-ros-rate">
-<h4>Usages of ros::Rate<a class="headerlink" href="#usages-of-ros-rate" title="永久链接至标题"></a></h4>
+<h4>ros::Rate的用法<a class="headerlink" href="#usages-of-ros-rate" title="永久链接至标题"></a></h4>
 <p>There is an equivalent type <code class="docutils literal notranslate"><span class="pre">rclcpp::Rate</span></code> object which is basically a drop in replacement for <code class="docutils literal notranslate"><span class="pre">ros::Rate</span></code>.</p>
 </div>
 <div class="section" id="ros-client-library">
