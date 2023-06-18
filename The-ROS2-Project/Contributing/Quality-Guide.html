@@ -526,27 +526,27 @@ endif<span class="o">()</span>
 </pre></div>
 </div>
 </li>
-<li><p>Step 3 - (Optional but Recommended) Refactor Existing Code to Private-Mutex Pattern</p>
-<p>A recommended pattern in threaded C++ code is to always keep your <code class="docutils literal notranslate"><span class="pre">mutex</span></code> as a <code class="docutils literal notranslate"><span class="pre">private:</span></code> member of the data structure. This makes data safety the concern of the containing structure, offloading that responsibility from users of the structure and minimizing the surface area of affected code.</p>
-<p>Making your locks private may require rethinking the interfaces to your data. This is a great exercise - here are a few things to consider</p>
+<li><p>步骤3 - （可选但建议）将现有代码重构为私有互斥模式</p>
+<p>在使用多线程的C++代码中，推荐的模式是将 <code class="docutils literal notranslate"><span class="pre">mutex</span></code> 作为数据结构的 <code class="docutils literal notranslate"><span class="pre">private:</span></code> 成员始终保留。这样可以使数据安全成为包含结构的责任，减轻了结构的使用者的责任，并最大程度地减少了受影响代码的表面积。</p>
+<p>将锁定操作设为私有可能需要重新思考数据的接口。这是一个很好的练习 - 下面是一些需要考虑的事项</p>
 <ul class="simple">
-<li><p>You may want to provide specialized interfaces for performing analysis that requires complex locking logic, e.g. counting members in a filtered set of a mutex-guarded map structure, instead of actually returning the underlying structure to consumers</p></li>
-<li><p>Consider copying to avoid blocking, where the amount of data is small. This can let other threads get on with accessing the shared data, which can potentially lead to better overall performance.</p></li>
+<li><p>您可能希望为执行需要复杂锁定逻辑的分析提供专门的接口，例如，在受互斥保护的映射结构的过滤集合中计算成员数，而不是实际返回底层结构给使用者。</p></li>
+<li><p>考虑进行复制以避免阻塞，当数据量较小时。这样可以让其他线程继续访问共享数据，从而可能带来更好的整体性能。</p></li>
 </ul>
 </li>
-<li><p>Step 4 - (Optional) Enable Negative Capability Analysis</p>
+<li><p>步骤4 - （可选）启用负能力分析</p>
 <p><a class="reference external" href="https://clang.llvm.org/docs/ThreadSafetyAnalysis.html#negative-capabilities">https://clang.llvm.org/docs/ThreadSafetyAnalysis.html#negative-capabilities</a></p>
-<p>Negative Capability Analysis lets you specify “this lock must not be held when calling this function”. It can reveal potential deadlock cases that other annotations cannot.</p>
+<p>负能力分析允许您指定“调用此函数时不得持有此锁”。它可以揭示其他注释无法发现的潜在死锁情况。</p>
 <ul class="simple">
-<li><p>Where you specified <code class="docutils literal notranslate"><span class="pre">-Wthread-safety</span></code>, add the additional flag <code class="docutils literal notranslate"><span class="pre">-Wthread-safety-negative</span></code></p></li>
-<li><p>On any function that acquires a lock, use the <code class="docutils literal notranslate"><span class="pre">RCPPUTILS_TSA_REQUIRES(!mutex)</span></code> pattern</p></li>
+<li><p>在您指定了``-Wthread-safety``的地方，添加额外的标志``-Wthread-safety-negative``</p></li>
+<li><p>在任何获取锁的函数中，使用``RCPPUTILS_TSA_REQUIRES(!mutex)``模式</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>How to run the analysis</p>
+<li><p>如何运行分析</p>
 <ul>
-<li><p>The ROS CI build farm runs a nightly job with <code class="docutils literal notranslate"><span class="pre">libcxx</span></code>, which will surface any issues in the ROS 2 core stack by being marked &quot;Unstable&quot; when Thread Safety Analysis raises warnings</p></li>
+<li><p>ROS CI构建系统每晚会运行一个带有``libcxx``的作业，在Thread Safety Analysis引发警告时，ROS 2核心堆栈中的任何问题都将被标记为&quot;不稳定&quot;</p></li>
 <li><p>For local runs, you have the following options, all equivalent</p>
 <ul>
 <li><p>Use the colcon <a class="reference external" href="https://github.com/colcon/colcon-mixin-repository/blob/master/clang-libcxx.mixin">clang-libcxx mixin</a> (see the <a class="reference external" href="https://github.com/colcon/colcon-mixin-repository/blob/master/README.md">documentation</a> for configuring mixins)</p>
