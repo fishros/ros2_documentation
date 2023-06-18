@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows Tips and Tricks &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>Windows提示和技巧 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -317,7 +317,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Build-Farms.html">ROS构建农场</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows Tips and Tricks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows提示和技巧</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献</a></li>
 </ul>
 </li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../The-ROS2-Project.html">ROS 2 项目</a> &raquo;</li>
           <li><a href="../Contributing.html">贡献</a> &raquo;</li>
-      <li>Windows Tips and Tricks</li>
+      <li>Windows提示和技巧</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,11 +373,11 @@
 
 
   <div class="section" id="windows-tips-and-tricks">
-<h1>Windows Tips and Tricks<a class="headerlink" href="#windows-tips-and-tricks" title="永久链接至标题"></a></h1>
+<h1>Windows提示和技巧<a class="headerlink" href="#windows-tips-and-tricks" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#maximum-path-length" id="id1">Maximum Path Length</a></p></li>
+<li><p><a class="reference internal" href="#maximum-path-length" id="id1">最大路径长度</a></p></li>
 <li><p><a class="reference internal" href="#symbol-visibility" id="id2">Symbol Visibility</a></p>
 <ul>
 <li><p><a class="reference internal" href="#visibility-control-headers" id="id3">Visibility Control Headers</a></p></li>
@@ -391,15 +391,10 @@
 <li><p><a class="reference internal" href="#shells" id="id9">Shells</a></p></li>
 </ul>
 </div>
-<p>ROS 2 supports Windows 10 as a Tier 1 platform, which means that all code that goes into the ROS 2 core must support Windows.
-For those used to traditional development on Linux or other Unix-like systems, developing on Windows can be a bit of a challenge.
-This document aims to lay out some of those differences.</p>
+<p>ROS 2将Windows 10作为一级平台支持，这意味着ROS 2核心中的所有代码必须支持Windows。对于习惯于在Linux或其他类Unix系统上进行传统开发的人来说，在Windows上进行开发可能有些挑战。本文档旨在阐述其中的一些区别。</p>
 <div class="section" id="maximum-path-length">
-<h2><a class="toc-backref" href="#id1">Maximum Path Length</a><a class="headerlink" href="#maximum-path-length" title="永久链接至标题"></a></h2>
-<p>By default, Windows has a <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation">maximum path length</a> of 260 characters.
-Practically speaking, 4 of those characters are always used by the drive letter, colon, initial backslash, and final NULL character.
-That means that only 256 characters are available for the <em>sum</em> of all parts of the path.
-This has two practical consequences for ROS 2:</p>
+<h2><a class="toc-backref" href="#id1">最大路径长度</a><a class="headerlink" href="#maximum-path-length" title="永久链接至标题"></a></h2>
+<p>默认情况下，Windows的`最大路径长度 &lt;<a class="reference external" href="https://docs.microsoft.com/zh-cn/windows/win32/fileio/maximum-file-path-limitation">https://docs.microsoft.com/zh-cn/windows/win32/fileio/maximum-file-path-limitation</a>&gt;`__为260个字符。实际上，其中的4个字符始终被驱动器字母、冒号、初始反斜杠和最后的NULL字符使用。这意味着仅有256个字符可用于路径的所有部分的*总和*。这对ROS 2有两个实际影响：</p>
 <ul class="simple">
 <li><p>Some of the ROS 2 internal path names are fairly long. Because of this, we always recommend using a short path name for the root of your ROS 2 directory, like <code class="docutils literal notranslate"><span class="pre">C:\dev</span></code>.</p></li>
 <li><p>When building ROS 2 from source, the default isolated build mode of colcon can generate very long path names. To avoid these very long path names, use <code class="docutils literal notranslate"><span class="pre">--merge-install</span></code> when building on Windows.</p></li>
