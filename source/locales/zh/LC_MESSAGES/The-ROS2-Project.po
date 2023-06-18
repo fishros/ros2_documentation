@@ -4827,32 +4827,32 @@ msgstr "在上面的示例中，``Foo::get`` 会产生编译器警告！为了�
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:175
 msgid "Step 3 - (Optional but Recommended) Refactor Existing Code to Private-Mutex Pattern"
-msgstr "Step 3 - (Optional but Recommended) Refactor Existing Code to Private-Mutex Pattern"
+msgstr "步骤3 - （可选但建议）将现有代码重构为私有互斥模式"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:177
 msgid "A recommended pattern in threaded C++ code is to always keep your ``mutex`` as a ``private:`` member of the data structure. This makes data safety the concern of the containing structure, offloading that responsibility from users of the structure and minimizing the surface area of affected code."
-msgstr "A recommended pattern in threaded C++ code is to always keep your ``mutex`` as a ``private:`` member of the data structure. This makes data safety the concern of the containing structure, offloading that responsibility from users of the structure and minimizing the surface area of affected code."
+msgstr "在使用多线程的C++代码中，推荐的模式是将 ``mutex`` 作为数据结构的 ``private:`` 成员始终保留。这样可以使数据安全成为包含结构的责任，减轻了结构的使用者的责任，并最大程度地减少了受影响代码的表面积。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:179
 msgid "Making your locks private may require rethinking the interfaces to your data. This is a great exercise - here are a few things to consider"
-msgstr "Making your locks private may require rethinking the interfaces to your data. This is a great exercise - here are a few things to consider"
+msgstr "将锁定操作设为私有可能需要重新思考数据的接口。这是一个很好的练习 - 下面是一些需要考虑的事项"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:181
 msgid "You may want to provide specialized interfaces for performing analysis that requires complex locking logic, e.g. counting members in a filtered set of a mutex-guarded map structure, instead of actually returning the underlying structure to consumers"
-msgstr "You may want to provide specialized interfaces for performing analysis that requires complex locking logic, e.g. counting members in a filtered set of a mutex-guarded map structure, instead of actually returning the underlying structure to consumers"
+msgstr "您可能希望为执行需要复杂锁定逻辑的分析提供专门的接口，例如，在受互斥保护的映射结构的过滤集合中计算成员数，而不是实际返回底层结构给使用者。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:182
 msgid "Consider copying to avoid blocking, where the amount of data is small. This can let other threads get on with accessing the shared data, which can potentially lead to better overall performance."
-msgstr "Consider copying to avoid blocking, where the amount of data is small. This can let other threads get on with accessing the shared data, which can potentially lead to better overall performance."
+msgstr "考虑进行复制以避免阻塞，当数据量较小时。这样可以让其他线程继续访问共享数据，从而可能带来更好的整体性能。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:184
 msgid "Step 4 - (Optional) Enable Negative Capability Analysis"
-msgstr "Step 4 - (Optional) Enable Negative Capability Analysis"
+msgstr "步骤4 - （可选）启用负能力分析"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:186
@@ -4862,27 +4862,27 @@ msgstr "https://clang.llvm.org/docs/ThreadSafetyAnalysis.html#negative-capabilit
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:188
 msgid "Negative Capability Analysis lets you specify “this lock must not be held when calling this function”. It can reveal potential deadlock cases that other annotations cannot."
-msgstr "Negative Capability Analysis lets you specify “this lock must not be held when calling this function”. It can reveal potential deadlock cases that other annotations cannot."
+msgstr "负能力分析允许您指定“调用此函数时不得持有此锁”。它可以揭示其他注释无法发现的潜在死锁情况。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:190
 msgid "Where you specified ``-Wthread-safety``, add the additional flag ``-Wthread-safety-negative``"
-msgstr "Where you specified ``-Wthread-safety``, add the additional flag ``-Wthread-safety-negative``"
+msgstr "在您指定了``-Wthread-safety``的地方，添加额外的标志``-Wthread-safety-negative``"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:191
 msgid "On any function that acquires a lock, use the ``RCPPUTILS_TSA_REQUIRES(!mutex)`` pattern"
-msgstr "On any function that acquires a lock, use the ``RCPPUTILS_TSA_REQUIRES(!mutex)`` pattern"
+msgstr "在任何获取锁的函数中，使用``RCPPUTILS_TSA_REQUIRES(!mutex)``模式"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:193
 msgid "How to run the analysis"
-msgstr "How to run the analysis"
+msgstr "如何运行分析"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:195
 msgid "The ROS CI build farm runs a nightly job with ``libcxx``, which will surface any issues in the ROS 2 core stack by being marked \"Unstable\" when Thread Safety Analysis raises warnings"
-msgstr "The ROS CI build farm runs a nightly job with ``libcxx``, which will surface any issues in the ROS 2 core stack by being marked \"Unstable\" when Thread Safety Analysis raises warnings"
+msgstr "ROS CI构建系统每晚会运行一个带有``libcxx``的作业，在Thread Safety Analysis引发警告时，ROS 2核心堆栈中的任何问题都将被标记为\"不稳定\""
 
 
 #: ../../source/The-ROS2-Project/Contributing/Quality-Guide.rst:196
