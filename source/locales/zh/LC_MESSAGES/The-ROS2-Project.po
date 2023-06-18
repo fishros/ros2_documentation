@@ -1757,47 +1757,47 @@ msgstr "开发人员将需要决定使用哪种解决方案，或者更重要的
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:86
 msgid "If there were no Y-turtle, even though the fix would technically just be a patch, X-turtle would have to bump to ``2.0.0``. This case adheres to SemVer, but breaks from our own rule that major increments should not be introduced in a released distribution."
-msgstr "If there were no Y-turtle, even though the fix would technically just be a patch, X-turtle would have to bump to ``2.0.0``. This case adheres to SemVer, but breaks from our own rule that major increments should not be introduced in a released distribution."
+msgstr "如果没有 Y-turtle，即使修复只是一个补丁，X-turtle 也必须升级到 ``2.0.0``。这种情况符合 SemVer 规则，但违反了我们自己的规定，即在发布的分发版中不应引入主要增量。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:89
 msgid "This is why we consider the versioning rules *best-effort*. As unlikely as the examples above are, it is important to accurately define our versioning system."
-msgstr "This is why we consider the versioning rules *best-effort*. As unlikely as the examples above are, it is important to accurately define our versioning system."
+msgstr "这就是为什么我们将版本规则视为“尽力而为”。尽管上述例子不太可能出现，但准确定义我们的版本系统非常重要。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:93
 msgid "Public API declaration"
-msgstr "Public API declaration"
+msgstr "公共 API 声明"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:95
 msgid "According to ``semver``, every package must clearly declare a public API. We will use the \"Public API Declaration\" section of the quality declaration of a package to declare what symbols are part of the public API."
-msgstr "According to ``semver``, every package must clearly declare a public API. We will use the \"Public API Declaration\" section of the quality declaration of a package to declare what symbols are part of the public API."
+msgstr "根据 ``semver``，每个软件包必须明确声明一个公共 API。我们将使用软件包的质量声明中的“公共 API 声明”部分来声明哪些符号是公共 API 的一部分。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:98
 msgid "For most C and C++ packages the declaration is any header that it installs. However, it is acceptable to define a set of symbols which are considered private. Avoiding private symbols in headers can help with ABI stability, but is not required."
-msgstr "For most C and C++ packages the declaration is any header that it installs. However, it is acceptable to define a set of symbols which are considered private. Avoiding private symbols in headers can help with ABI stability, but is not required."
+msgstr "对于大多数 C 和 C++ 包，声明是其安装的任何头文件。然而，定义一组被视为私有的符号也是可以接受的。在头文件中避免私有符号可以帮助实现 ABI 的稳定性，但并非必需。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:102
 msgid "For other languages like Python, a public API must be explicitly defined, so that it is clear what symbols can be relied on with respect to the versioning guidelines. The public API can also be extended to build artifacts like configuration variables, CMake config files, etc. as well as executables and command-line options and output. Any elements of the public API should be clearly stated in the package's documentation. If something you are using is not explicitly listed as part of the public API in the package's documentation, then you cannot depend on it not changing between minor or patch versions."
-msgstr "For other languages like Python, a public API must be explicitly defined, so that it is clear what symbols can be relied on with respect to the versioning guidelines. The public API can also be extended to build artifacts like configuration variables, CMake config files, etc. as well as executables and command-line options and output. Any elements of the public API should be clearly stated in the package's documentation. If something you are using is not explicitly listed as part of the public API in the package's documentation, then you cannot depend on it not changing between minor or patch versions."
+msgstr "对于其他语言如 Python，必须明确定义公共 API，以便清楚地知道哪些符号可以依赖于版本指南。公共 API 还可以扩展到构建工件，如配置变量、CMake 配置文件等，以及可执行文件、命令行选项和输出。包的文档应清楚地说明公共 API 的任何元素。如果你使用的内容在包的文档中没有明确列出作为公共 API 的一部分，那么你不能指望它在次要或修补版本之间不发生变化。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:108
 msgid "Deprecation strategy"
-msgstr "Deprecation strategy"
+msgstr "废弃策略"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:110
 msgid "Where possible, we will also use the tick-tock deprecation and migration strategy for major version increments. New deprecations will come in a new distribution release, accompanied by compiler warnings expressing that the functionality is being deprecated. In the next release, the functionality will be completely removed (no warnings)."
-msgstr "Where possible, we will also use the tick-tock deprecation and migration strategy for major version increments. New deprecations will come in a new distribution release, accompanied by compiler warnings expressing that the functionality is being deprecated. In the next release, the functionality will be completely removed (no warnings)."
+msgstr "在可能的情况下，我们还将使用主要版本增量的滴答滴答废弃和迁移策略。新的废弃将在新的发行版中提出，伴随着编译器警告，表示该功能正在被废弃。在下一个发布中，该功能将被完全移除（不再有警告）。"
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:114
 msgid "Example of function ``foo`` deprecated and replaced by function ``bar``:"
-msgstr "Example of function ``foo`` deprecated and replaced by function ``bar``:"
+msgstr "示例函数 ``foo`` 已弃用，并被函数 ``bar`` 替代："
 
 
 #: ../../source/The-ROS2-Project/Contributing/Developer-Guide.rst:117
