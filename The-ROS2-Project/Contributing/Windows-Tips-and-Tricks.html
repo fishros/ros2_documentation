@@ -378,9 +378,9 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#maximum-path-length" id="id1">最大路径长度</a></p></li>
-<li><p><a class="reference internal" href="#symbol-visibility" id="id2">Symbol Visibility</a></p>
+<li><p><a class="reference internal" href="#symbol-visibility" id="id2">符号可见性</a></p>
 <ul>
-<li><p><a class="reference internal" href="#visibility-control-headers" id="id3">Visibility Control Headers</a></p></li>
+<li><p><a class="reference internal" href="#visibility-control-headers" id="id3">可见性控制头文件</a></p></li>
 <li><p><a class="reference internal" href="#windows-export-all-symbols-target-property" id="id4">WINDOWS_EXPORT_ALL_SYMBOLS Target Property</a></p></li>
 </ul>
 </li>
@@ -396,18 +396,14 @@
 <h2><a class="toc-backref" href="#id1">最大路径长度</a><a class="headerlink" href="#maximum-path-length" title="永久链接至标题"></a></h2>
 <p>默认情况下，Windows的`最大路径长度 &lt;<a class="reference external" href="https://docs.microsoft.com/zh-cn/windows/win32/fileio/maximum-file-path-limitation">https://docs.microsoft.com/zh-cn/windows/win32/fileio/maximum-file-path-limitation</a>&gt;`__为260个字符。实际上，其中的4个字符始终被驱动器字母、冒号、初始反斜杠和最后的NULL字符使用。这意味着仅有256个字符可用于路径的所有部分的*总和*。这对ROS 2有两个实际影响：</p>
 <ul class="simple">
-<li><p>Some of the ROS 2 internal path names are fairly long. Because of this, we always recommend using a short path name for the root of your ROS 2 directory, like <code class="docutils literal notranslate"><span class="pre">C:\dev</span></code>.</p></li>
-<li><p>When building ROS 2 from source, the default isolated build mode of colcon can generate very long path names. To avoid these very long path names, use <code class="docutils literal notranslate"><span class="pre">--merge-install</span></code> when building on Windows.</p></li>
+<li><p>ROS 2内部路径名中有一些非常长。因此，我们始终建议将ROS 2目录的根目录路径名设置为简短，例如``C:dev``。</p></li>
+<li><p>在从源代码构建ROS 2时，colcon的默认隔离构建模式会生成非常长的路径名。为了避免这些非常长的路径名，在Windows上构建时请使用``--merge-install``。</p></li>
 </ul>
-<p><strong>Note</strong>: It is possible to change Windows to have much longer maximum path lengths.
-See <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later">this article</a> for more information.</p>
+<p><strong>注意</strong>：可以将Windows的最大路径长度更改为更长。请参阅`此文章 &lt;<a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later">https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd#enable-long-paths-in-windows-10-version-1607-and-later</a>&gt;`__ 获取更多信息。</p>
 </div>
 <div class="section" id="symbol-visibility">
-<span id="windows-symbol-visibility"></span><h2><a class="toc-backref" href="#id2">Symbol Visibility</a><a class="headerlink" href="#symbol-visibility" title="永久链接至标题"></a></h2>
-<p>The Microsoft Visual C++ Compiler (MSVC) exposes symbols from a Dynamic Link Library (DLL) only if they are explicitly exported.
-The clang and gcc compilers have an option to do the same, but it is off by default.
-As a result, when a library previously built on Linux is built on Windows, other libraries may be unable to resolve the external symbols.
-Below are examples of common error messages which can be caused by symbols not being exposed:</p>
+<span id="windows-symbol-visibility"></span><h2><a class="toc-backref" href="#id2">符号可见性</a><a class="headerlink" href="#symbol-visibility" title="永久链接至标题"></a></h2>
+<p>Microsoft Visual C++ 编译器（MSVC）仅在显式导出时才公开动态链接库（DLL）中的符号。clang 和 gcc 编译器也有一个选项可以做到相同的事情，但默认情况下是关闭的。因此，当在 Windows 上构建之前在 Linux 上构建的库时，其他库可能无法解析外部符号。以下是由于未公开符号而可能引起的常见错误消息示例：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">error C2448: &#39;__attribute__&#39;: function-style initializer appears to be a function definition</span>
 <span class="go">&#39;visibility&#39;: identifier not found</span>
 </pre></div>
@@ -417,16 +413,10 @@ Below are examples of common error messages which can be caused by symbols not b
 <span class="go">   couldn&#39;t be found</span>
 </pre></div>
 </div>
-<p>Symbol Visibility also impacts binary loading.
-If you are finding that a composable node does not run or a Qt Visualizer isn't working, it may be that the hosting process can not find an expected symbol export from the binary.
-To diagnose this on Windows, the Windows developer tools includes a program called Gflags to enable various options.
-One of those options is called <em>Loader Snaps</em> which enables you to detect load failures while debugging.
-Please visit the Microsoft Documentation for more information on <a class="reference external" href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/setting-and-clearing-image-file-flags">Gflags</a> and <a class="reference external" href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/show-loader-snaps">Loaders snaps</a>.</p>
-<p>Two solutions to export symbols on Windows are Visibility Control Headers and the <code class="docutils literal notranslate"><span class="pre">WINDOWS_EXPORT_ALL_SYMBOLS</span></code> property.
-Microsoft recommends ROS developers use Visibility Control Headers to control the export of symbols from a binary.
-Visibility Control Headers provide more control over the symbol export macro and offer other benefits including smaller binary size and reduced link times.</p>
+<p>符号可见性还会影响二进制加载。如果您发现一个可组合节点无法运行或 Qt 可视化器无法工作，可能是由于主机进程无法找到二进制中预期的符号导出。在 Windows 上诊断此问题，Windows 开发人员工具包括一个名为 Gflags 的程序，可启用各种选项。其中一个选项称为“Loader Snaps”，它允许您在调试时检测加载失败。有关更多信息，请访问微软文档中的 <a class="reference external" href="https://docs.microsoft.com/zh-cn/windows-hardware/drivers/debugger/setting-and-clearing-image-file-flags">Gflags</a> 和 <a class="reference external" href="https://docs.microsoft.com/zh-cn/windows-hardware/drivers/debugger/show-loader-snaps">Loader Snaps</a>。</p>
+<p>在 Windows 上导出符号的两种解决方案是可见性控制头文件和``WINDOWS_EXPORT_ALL_SYMBOLS`` 属性。Microsoft 建议 ROS 开发人员使用可见性控制头文件来控制从二进制中导出符号。可见性控制头文件提供对符号导出宏的更多控制，并提供其他优点，包括更小的二进制文件大小和较短的链接时间。</p>
 <div class="section" id="visibility-control-headers">
-<h3><a class="toc-backref" href="#id3">Visibility Control Headers</a><a class="headerlink" href="#visibility-control-headers" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id3">可见性控制头文件</a><a class="headerlink" href="#visibility-control-headers" title="永久链接至标题"></a></h3>
 <p>The purpose of Visibility Control Headers headers is to define a macro for each shared library which correctly declares symbols as dllimport or dllexport.
 This is decided based on whether the library is being consumed or being built itself.
 The logic in the macro also takes the compiler into account and includes logic to select the appropriate syntax.
