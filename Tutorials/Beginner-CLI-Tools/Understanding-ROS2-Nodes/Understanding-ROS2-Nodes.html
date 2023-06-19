@@ -450,23 +450,19 @@
 </pre></div>
 </div>
 <p>在这里，我们再次引用了“turtlesim”软件包，但这次我们的目标是名为“turtle_teleop_key”的可执行文件。</p>
-<p>Return to the terminal where you ran <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code> and run it again.
-You will now see the names of two active nodes:</p>
+<p>返回到之前运行``ros2 node list``的终端，再次运行该命令。你将会看到两个活动节点的名称：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtlesim</span>
 <span class="go">/teleop_turtle</span>
 </pre></div>
 </div>
 <div class="section" id="remapping">
-<h4>2.1 Remapping<a class="headerlink" href="#remapping" title="永久链接至标题"></a></h4>
-<p><a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html#name-remapping-rules">Remapping</a> allows you to reassign default node properties, like node name, topic names, service names, etc., to custom values.
-In the last tutorial, you used remapping on <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> to change the cmd_vel topic and target <strong>turtle2</strong>.</p>
-<p>Now, let's reassign the name of our <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node.
-In a new terminal, run the following command:</p>
+<h4>2.1 重映射<a class="headerlink" href="#remapping" title="永久链接至标题"></a></h4>
+<p><a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html#name-remapping-rules">重映射</a> 允许你重新分配默认节点属性，如节点名称、话题名称、服务名称等，以自定义的值。在上一个教程中，你在``turtle_teleop_key``上使用了重映射来改变``cmd_vel``话题和目标节点为**turtle2**。</p>
+<p>现在，让我们重新分配``/turtlesim``节点的名称。在一个新的终端中运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node --ros-args --remap __node:=my_turtle</span>
 </pre></div>
 </div>
-<p>Since you're calling <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> on turtlesim again, another turtlesim window will open.
-However, now if you return to the terminal where you ran <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code>, and run it again, you will see three node names:</p>
+<p>由于您再次调用``ros2 run``启动了turtlesim，将会打开另一个turtlesim窗口。但是，现在如果您返回到之前运行``ros2 node list``的终端，并再次运行该命令，您将看到三个节点名称：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/my_turtle</span>
 <span class="go">/turtlesim</span>
 <span class="go">/teleop_turtle</span>
@@ -476,16 +472,15 @@ However, now if you return to the terminal where you ran <code class="docutils l
 </div>
 <div class="section" id="ros2-node-info">
 <h3><a class="toc-backref" href="#id8">3. ros2节点信息</a><a class="headerlink" href="#ros2-node-info" title="永久链接至标题"></a></h3>
-<p>Now that you know the names of your nodes, you can access more information about them with:</p>
+<p>既然您知道了节点的名称，您可以使用以下命令访问有关它们的更多信息：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node info &lt;node_name&gt;</span>
 </pre></div>
 </div>
-<p>To examine your latest node, <code class="docutils literal notranslate"><span class="pre">my_turtle</span></code>, run the following command:</p>
+<p>要查看您最新的节点``my_turtle``，请运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node info /my_turtle</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">info</span></code> returns a list of subscribers, publishers, services, and actions. i.e. the ROS graph connections that interact with that node.
-The output should look like this:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>ros2 node info``返回订阅者、发布者、服务和动作的列表，即与该节点进行交互的ROS图连接。输出应该如下所示：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/my_turtle</span>
 <span class="go">  Subscribers:</span>
 <span class="go">    /parameter_events: rcl_interfaces/msg/ParameterEvent</span>
