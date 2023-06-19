@@ -603,13 +603,13 @@
 </pre></div>
 </div>
 </div></div>
-<p>Now the directory should have these files:</p>
+<p>现在目录中应该有以下文件:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">__init__.py  publisher_member_function.py  subscriber_member_function.py</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
 <h4>3.1 检查代码<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
-<p>Open the <code class="docutils literal notranslate"><span class="pre">subscriber_member_function.py</span></code> with your text editor.</p>
+<p>用文本编辑器打开 <code class="docutils literal notranslate"><span class="pre">subscriber_member_function.py</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 
@@ -649,9 +649,7 @@
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The subscriber node's code is nearly identical to the publisher's.
-The constructor creates a subscriber with the same arguments as the publisher.
-Recall from the <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics tutorial</span></a> that the topic name and message type used by the publisher and subscriber must match to allow them to communicate.</p>
+<p>订阅者节点的代码几乎与发布者节点相同。构造函数使用与发布者相同的参数创建一个订阅者。回顾一下:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>主题教程&lt;../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics&gt;`中提到的，发布者和订阅者使用的主题名称和消息类型必须匹配，以便它们能够进行通信。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
     <span class="n">String</span><span class="p">,</span>
     <span class="s1">&#39;topic&#39;</span><span class="p">,</span>
@@ -659,25 +657,22 @@ Recall from the <a class="reference internal" href="../Beginner-CLI-Tools/Unders
     <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The subscriber's constructor and callback don't include any timer definition, because it doesn't need one.
-Its callback gets called as soon as it receives a message.</p>
-<p>The callback definition simply prints an info message to the console, along with the data it received.
-Recall that the publisher defines <code class="docutils literal notranslate"><span class="pre">msg.data</span> <span class="pre">=</span> <span class="pre">'Hello</span> <span class="pre">World:</span> <span class="pre">%d'</span> <span class="pre">%</span> <span class="pre">self.i</span></code></p>
+<p>订阅者的构造函数和回调函数不包括任何定时器定义，因为它不需要。一旦接收到消息，它的回调函数就会被调用。</p>
+<p>回调函数的定义只是将一条信息和接收到的数据打印到控制台上。请回忆一下，发布者定义了``msg.data = 'Hello World: %d' % self.i``。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;I heard: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> definition is almost exactly the same, replacing the creation and spinning of the publisher with the subscriber.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>main``函数的定义几乎完全相同，只是将创建和运行发布者替换为订阅者。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">minimal_subscriber</span> <span class="o">=</span> <span class="n">MinimalSubscriber</span><span class="p">()</span>
 
 <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">minimal_subscriber</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Since this node has the same dependencies as the publisher, there's nothing new to add to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> file can also remain untouched.</p>
+<p>由于该节点与发布者具有相同的依赖关系，因此不需要向``package.xml``中添加任何新内容。<a href="#id1"><span class="problematic" id="id2">``</span></a>setup.cfg``文件也可以保持不变。</p>
 </div>
 <div class="section" id="id2">
-<h4>3.2 Add an entry point<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
+<h4>3.2 添加一个入口点<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
 <p>Reopen <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and add the entry point for the subscriber node below the publisher's entry point.
 The <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> field should now look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
