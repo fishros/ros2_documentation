@@ -10107,42 +10107,42 @@ msgstr "带有两个图像查看器的流水线"
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:349
 msgid "Now let's look at an example just like the one above, except it has two image view nodes. All the nodes are still in the same process, but now two image view windows should show up. (Note for macOS users: your image view windows might be on top of each other). Let's run it with the command:"
-msgstr "Now let's look at an example just like the one above, except it has two image view nodes. All the nodes are still in the same process, but now two image view windows should show up. (Note for macOS users: your image view windows might be on top of each other). Let's run it with the command:"
+msgstr "现在让我们看一个与上面相似的示例，只是这次有两个图像视图节点。所有节点仍然在同一个进程中，但现在应该会出现两个图像视图窗口。（注意 macOS 用户：你的图像视图窗口可能会重叠在一起）。让我们用以下命令运行它："
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:361
 msgid "Just like the last example, you can pause the rendering with the spacebar and continue by pressing the spacebar a second time. You can stop the updating to inspect the pointers written to the screen."
-msgstr "Just like the last example, you can pause the rendering with the spacebar and continue by pressing the spacebar a second time. You can stop the updating to inspect the pointers written to the screen."
+msgstr "与上一个示例一样，你可以使用空格键暂停渲染，再次按下空格键继续。你可以停止更新以检查写入屏幕的指针。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:363
 msgid "As you can see in the example image above, we have one image with all of the pointers the same and then another image with the same pointers as the first image for the first two entries, but the last pointer on the second image is different. To understand why this is happening consider the graph's topology:"
-msgstr "As you can see in the example image above, we have one image with all of the pointers the same and then another image with the same pointers as the first image for the first two entries, but the last pointer on the second image is different. To understand why this is happening consider the graph's topology:"
+msgstr "如上面的示例图所示，我们有一个图像，其中所有指针都相同，然后另一个图像的前两个条目与第一个图像的指针相同，但第二个图像的最后一个指针不同。要理解为什么会发生这种情况，请考虑图的拓扑结构："
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:370
 msgid "The link between the ``camera_node`` and the ``watermark_node`` can use the same pointer without copying because there is only one intra process subscription to which the message should be delivered. But for the link between the ``watermark_node`` and the two image view nodes the relationship is one to many, so if the image view nodes were using ``unique_ptr`` callbacks then it would be impossible to deliver the ownership of the same pointer to both. It can be, however, delivered to one of them. Which one would get the original pointer is not defined, but instead is simply the last to be delivered."
-msgstr "The link between the ``camera_node`` and the ``watermark_node`` can use the same pointer without copying because there is only one intra process subscription to which the message should be delivered. But for the link between the ``watermark_node`` and the two image view nodes the relationship is one to many, so if the image view nodes were using ``unique_ptr`` callbacks then it would be impossible to deliver the ownership of the same pointer to both. It can be, however, delivered to one of them. Which one would get the original pointer is not defined, but instead is simply the last to be delivered."
+msgstr "``camera_node`` 和 ``watermark_node`` 之间的链接可以使用相同的指针而不进行复制，因为只有一个进程内的订阅应将消息传递给该指针。但是，对于 ``watermark_node`` 和两个图像视图节点之间的链接，关系是一对多的，因此，如果图像视图节点使用 ``unique_ptr`` 回调，那么将不可能将同一指针的所有权分别传递给它们。然而，它可以被传递给其中一个。哪个节点会获得原始指针并没有定义，而是简单地取决于最后被传递的节点。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:372
 msgid "Note that the image view nodes are not subscribed with ``unique_ptr`` callbacks. Instead they are subscribed with ``const shared_ptr``\\ s. This means the system deliveres the same ``shared_ptr`` to both callbacks. When the first intraprocess subscription is handled, the internally stored ``unique_ptr`` is promoted to a ``shared_ptr``. Each of the callbacks will receive shared ownership of the same message."
-msgstr "Note that the image view nodes are not subscribed with ``unique_ptr`` callbacks. Instead they are subscribed with ``const shared_ptr``\\ s. This means the system deliveres the same ``shared_ptr`` to both callbacks. When the first intraprocess subscription is handled, the internally stored ``unique_ptr`` is promoted to a ``shared_ptr``. Each of the callbacks will receive shared ownership of the same message."
+msgstr "注意，图像视图节点没有使用``unique_ptr``回调函数进行订阅，而是使用``const shared_ptr``进行订阅。这意味着系统将向两个回调函数提供相同的``shared_ptr``。在处理第一个进程内订阅时，内部存储的``unique_ptr``将被提升为``shared_ptr``。每个回调函数将共享同一消息的所有权。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:375
 msgid "Pipeline with interprocess viewer"
-msgstr "Pipeline with interprocess viewer"
+msgstr "具有进程间查看器的流水线"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:377
 msgid "One other important thing to get right is to avoid interruption of the intra process zero-copy behavior when interprocess subscriptions are made. To test this we can run the first image pipeline demo, ``image_pipeline_all_in_one``, and then run an instance of the stand alone ``image_view_node`` (don't forget to prefix them with ``ros2 run intra_process_demo`` in the terminal). This will look something like this:"
-msgstr "One other important thing to get right is to avoid interruption of the intra process zero-copy behavior when interprocess subscriptions are made. To test this we can run the first image pipeline demo, ``image_pipeline_all_in_one``, and then run an instance of the stand alone ``image_view_node`` (don't forget to prefix them with ``ros2 run intra_process_demo`` in the terminal). This will look something like this:"
+msgstr "还有一件重要的事情需要注意，即在进行进程间订阅时，避免中断进程内的零拷贝行为。为了测试这一点，我们可以运行第一个图像流水线演示程序``image_pipeline_all_in_one``，然后运行一个独立的``image_view_node``实例（不要忘记在终端中加上``ros2 run intra_process_demo``前缀）。大致如下所示："
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:383
 msgid "It's hard to pause both images at the same time so the images may not line up, but the important thing to notice is that the ``image_pipeline_all_in_one`` image view shows the same address for each step. This means that the intra process zero-copy is preserved even when an external view is subscribed as well. You can also see that the interprocess image view has different process IDs for the first two lines of text and the process ID of the standalone image viewer in the third line of text."
-msgstr "It's hard to pause both images at the same time so the images may not line up, but the important thing to notice is that the ``image_pipeline_all_in_one`` image view shows the same address for each step. This means that the intra process zero-copy is preserved even when an external view is subscribed as well. You can also see that the interprocess image view has different process IDs for the first two lines of text and the process ID of the standalone image viewer in the third line of text."
+msgstr "很难同时暂停两个图像，因此图像可能不会对齐，但需要注意的重要事项是，``image_pipeline_all_in_one``图像视图显示了每个步骤的相同地址。这意味着即使订阅了外部视图，进程内的零拷贝仍然得到保留。您还可以看到进程间图像视图在文本的前两行具有不同的进程 ID，并且独立图像查看器的进程 ID 在第三行文本中。"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:7
