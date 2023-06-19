@@ -386,7 +386,7 @@
 <ul>
 <li><p><a class="reference internal" href="#setup" id="id4">1 设置</a></p></li>
 <li><p><a class="reference internal" href="#rqt-graph" id="id5">2 rqt_graph</a></p></li>
-<li><p><a class="reference internal" href="#ros2-topic-list" id="id6">3 ros2 topic list</a></p></li>
+<li><p><a class="reference internal" href="#ros2-topic-list" id="id6">3. ros2 topic list</a></p></li>
 <li><p><a class="reference internal" href="#ros2-topic-echo" id="id7">4 ros2 topic echo</a></p></li>
 <li><p><a class="reference internal" href="#ros2-topic-info" id="id8">5 ros2 topic info</a></p></li>
 <li><p><a class="reference internal" href="#ros2-interface-show" id="id9">6 ros2 interface show</a></p></li>
@@ -439,13 +439,12 @@
 <img alt="../../../_images/rqt_graph.png" src="../../../_images/rqt_graph.png" />
 <p>您应该能够看到上述的节点和主题，以及图形周围的两个操作（暂时忽略它们）。如果将鼠标悬停在中心的主题上，您会看到像上面图片中那样的颜色高亮显示。</p>
 <p>该图形描述了 <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> 节点和 <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> 节点之间如何通过一个主题进行通信。<code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> 节点将数据（您输入的按键操作来移动乌龟）发布到 <code class="docutils literal notranslate"><span class="pre">/turtle1/cmd_vel</span></code> 主题上，而 <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> 节点订阅该主题以接收数据。</p>
-<p>The highlighting feature of rqt_graph is very helpful when examining more complex systems with many nodes and topics connected in many different ways.</p>
-<p>rqt_graph is a graphical introspection tool.
-Now we'll look at some command line tools for introspecting topics.</p>
+<p>rqt_graph的突出显示功能在检查具有许多以多种不同方式连接的节点和主题的更复杂系统时非常有帮助。</p>
+<p>rqt_graph是一个图形化内省工具。现在我们将看一些用于内省主题的命令行工具。</p>
 </div>
 <div class="section" id="ros2-topic-list">
-<h3><a class="toc-backref" href="#id6">3 ros2 topic list</a><a class="headerlink" href="#ros2-topic-list" title="永久链接至标题"></a></h3>
-<p>Running the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">list</span></code> command in a new terminal will return a list of all the topics currently active in the system:</p>
+<h3><a class="toc-backref" href="#id6">3. ros2 topic list</a><a class="headerlink" href="#ros2-topic-list" title="永久链接至标题"></a></h3>
+<p>在新终端中运行``ros2 topic list``命令将返回系统中当前活动的所有主题的列表：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/parameter_events</span>
 <span class="go">/rosout</span>
 <span class="go">/turtle1/cmd_vel</span>
@@ -453,7 +452,7 @@ Now we'll look at some command line tools for introspecting topics.</p>
 <span class="go">/turtle1/pose</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">list</span> <span class="pre">-t</span></code> will return the same list of topics, this time with the topic type appended in brackets:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">list</span> <span class="pre">-t</span></code> 将返回相同的主题列表，这次在括号中附加了主题类型：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/parameter_events [rcl_interfaces/msg/ParameterEvent]</span>
 <span class="go">/rosout [rcl_interfaces/msg/Log]</span>
 <span class="go">/turtle1/cmd_vel [geometry_msgs/msg/Twist]</span>
@@ -461,10 +460,10 @@ Now we'll look at some command line tools for introspecting topics.</p>
 <span class="go">/turtle1/pose [turtlesim/msg/Pose]</span>
 </pre></div>
 </div>
-<p>These attributes, particularly the type, are how nodes know they're talking about the same information as it moves over topics.</p>
-<p>If you're wondering where all these topics are in rqt_graph, you can uncheck all the boxes under <strong>Hide:</strong></p>
+<p>特别是类型属性是节点了解它们正在通过主题传输相同信息的方式。</p>
+<p>如果你想知道在 rqt_graph 中所有这些主题的位置，在 <strong>隐藏：</strong> 下取消选中所有复选框：</p>
 <img alt="../../../_images/unhide.png" src="../../../_images/unhide.png" />
-<p>For now, though, leave those options checked to avoid confusion.</p>
+<p>不过现在，保留这些选项的选择以避免混淆。</p>
 </div>
 <div class="section" id="ros2-topic-echo">
 <h3><a class="toc-backref" href="#id7">4 ros2 topic echo</a><a class="headerlink" href="#ros2-topic-echo" title="永久链接至标题"></a></h3>
