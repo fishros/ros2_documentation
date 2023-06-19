@@ -391,8 +391,8 @@
 <li><p><a class="reference internal" href="#add-some-sources" id="id7">添加一些源文件</a></p></li>
 <li><p><a class="reference internal" href="#source-an-underlay" id="id8">源目录</a></p></li>
 <li><p><a class="reference internal" href="#build-the-workspace" id="id9">构建工作空间</a></p></li>
-<li><p><a class="reference internal" href="#run-tests" id="id10">Run tests</a></p></li>
-<li><p><a class="reference internal" href="#source-the-environment" id="id11">Source the environment</a></p></li>
+<li><p><a class="reference internal" href="#run-tests" id="id10">运行测试</a></p></li>
+<li><p><a class="reference internal" href="#source-the-environment" id="id11">加载环境变量</a></p></li>
 <li><p><a class="reference internal" href="#try-a-demo" id="id12">Try a demo</a></p></li>
 </ul>
 </li>
@@ -517,9 +517,9 @@
 </div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --symlink-install --merge-install</span>
 </pre></div>
 </div>
-<p>Windows doesn't allow long paths, so <code class="docutils literal notranslate"><span class="pre">merge-install</span></code> will combine all the paths into the <code class="docutils literal notranslate"><span class="pre">install</span></code> directory.</p>
+<p>Windows 不允许使用过长的路径，所以 <code class="docutils literal notranslate"><span class="pre">merge-install</span></code> 将会把所有路径合并到 <code class="docutils literal notranslate"><span class="pre">install</span></code> 目录中。</p>
 </div></div>
-<p>After the build is finished, we should see the <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">install</span></code>, and <code class="docutils literal notranslate"><span class="pre">log</span></code> directories:</p>
+<p>在构建完成后，我们应该能够看到 <code class="docutils literal notranslate"><span class="pre">build</span></code>、<code class="docutils literal notranslate"><span class="pre">install</span></code> 和 <code class="docutils literal notranslate"><span class="pre">log</span></code> 目录：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
 ├── build
 ├── install
@@ -531,8 +531,8 @@
 </div>
 </div>
 <div class="section" id="run-tests">
-<span id="colcon-run-the-tests"></span><h3><a class="toc-backref" href="#id10">Run tests</a><a class="headerlink" href="#run-tests" title="永久链接至标题"></a></h3>
-<p>To run tests for the packages we just built, run the following:</p>
+<span id="colcon-run-the-tests"></span><h3><a class="toc-backref" href="#id10">运行测试</a><a class="headerlink" href="#run-tests" title="永久链接至标题"></a></h3>
+<p>为了对刚刚构建的软件包运行测试，请执行以下操作：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test</span>
 </pre></div>
@@ -540,19 +540,16 @@
 </div><div aria-labelledby="tab-3-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>Remember to use a <code class="docutils literal notranslate"><span class="pre">x64</span> <span class="pre">Native</span> <span class="pre">Tools</span> <span class="pre">Command</span> <span class="pre">Prompt</span> <span class="pre">for</span> <span class="pre">VS</span> <span class="pre">2019</span></code> for executing the following command, as we are going to build a workspace.</p>
+</div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>请记得使用``x64 Native Tools Command Prompt for VS 2019``来执行下面的命令，因为我们要构建一个工作空间。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test --merge-install</span>
 </pre></div>
 </div>
-<p>You also need to specify <code class="docutils literal notranslate"><span class="pre">--merge-install</span></code> here since we used it for building above.</p>
+<p>在这里还需要指定``--merge-install``，因为我们在上面使用了它来进行构建。</p>
 </div></div>
 </div>
 <div class="section" id="source-the-environment">
-<span id="colcon-tutorial-source-the-environment"></span><h3><a class="toc-backref" href="#id11">Source the environment</a><a class="headerlink" href="#source-the-environment" title="永久链接至标题"></a></h3>
-<p>When colcon has completed building successfully, the output will be in the <code class="docutils literal notranslate"><span class="pre">install</span></code> directory.
-Before you can use any of the installed executables or libraries, you will need to add them to your path and library paths.
-colcon will have generated bash/bat files in the <code class="docutils literal notranslate"><span class="pre">install</span></code> directory to help set up the environment.
-These files will add all of the required elements to your path and library paths as well as provide any bash or shell commands exported by packages.</p>
+<span id="colcon-tutorial-source-the-environment"></span><h3><a class="toc-backref" href="#id11">加载环境变量</a><a class="headerlink" href="#source-the-environment" title="永久链接至标题"></a></h3>
+<p>当colcon成功构建完成后，输出将位于``install``目录中。在您可以使用任何已安装的可执行文件或库之前，您需要将它们添加到您的路径和库路径中。colcon会在``install``目录中生成bash/bat文件来帮助设置环境。这些文件将会将所有所需的元素添加到您的路径和库路径中，并提供由软件包导出的任何bash或shell命令。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-4-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-4-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> install/setup.bash
 </pre></div>
