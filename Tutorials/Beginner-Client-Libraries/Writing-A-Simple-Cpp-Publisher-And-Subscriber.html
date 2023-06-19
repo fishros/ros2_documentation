@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writing a simple publisher and subscriber (C++) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>编写一个简单的发布者和订阅者（C++） &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -125,7 +125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Creating-Your-First-ROS2-Package.html">创建软件包</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Writing a simple publisher and subscriber (C++)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">编写一个简单的发布者和订阅者（C++）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-A-Simple-Py-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (Python)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-A-Simple-Cpp-Service-And-Client.html">Writing a simple service and client (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-A-Simple-Py-Service-And-Client.html">Writing a simple service and client (Python)</a></li>
@@ -361,7 +361,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../Beginner-Client-Libraries.html">初学者：客户端库</a> &raquo;</li>
-      <li>Writing a simple publisher and subscriber (C++)</li>
+      <li>编写一个简单的发布者和订阅者（C++）</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,8 +374,8 @@
 
 
   <div class="section" id="writing-a-simple-publisher-and-subscriber-c">
-<span id="cpppubsub"></span><h1>Writing a simple publisher and subscriber (C++)<a class="headerlink" href="#writing-a-simple-publisher-and-subscriber-c" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Create and run a publisher and subscriber node using C++.</p>
+<span id="cpppubsub"></span><h1>编写一个简单的发布者和订阅者（C++）<a class="headerlink" href="#writing-a-simple-publisher-and-subscriber-c" title="永久链接至标题"></a></h1>
+<p><strong>目标：</strong> 使用C++创建并运行发布者和订阅者节点。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟</p>
 <div class="contents local topic" id="contents">
@@ -398,27 +398,24 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id3">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">Nodes</span></a> are executable processes that communicate over the ROS graph.
-In this tutorial, the nodes will pass information in the form of string messages to each other over a <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topic</span></a>.
-The example used here is a simple &quot;talker&quot; and &quot;listener&quot; system; one node publishes data and the other subscribes to the topic so it can receive that data.</p>
-<p>The code used in these examples can be found <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/topics">here</a>.</p>
+<p><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">节点</span></a> 是在 ROS 图中进行通信的可执行进程。在本教程中，节点将以字符串消息的形式相互传递信息，通过一个 <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">主题</span></a>。这里使用的示例是一个简单的 &quot;talker&quot; 和 &quot;listener&quot; 系统；一个节点发布数据，另一个节点订阅该主题以接收数据。</p>
+<p>这些示例中使用的代码可以在 <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/topics">这里</a> 找到。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id4">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>In previous tutorials, you learned how to <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">create a workspace</span></a> and <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">create a package</span></a>.</p>
+<p>在之前的教程中，你学会了如何 <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">创建工作空间</span></a> 和 <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">创建包</span></a>。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id5">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="create-a-package">
 <h3><a class="toc-backref" href="#id6">1 创建一个包</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
 <p>在一个新的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">源化你的 ROS 2 安装</span></a>，这样 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令才能正常工作。</p>
-<p>Navigate into the <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> directory created in a <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html#new-directory"><span class="std std-ref">previous tutorial</span></a>.</p>
-<p>Recall that packages should be created in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory, not the root of the workspace.
-So, navigate into <code class="docutils literal notranslate"><span class="pre">ros2_ws/src</span></code>, and run the package creation command:</p>
+<p>进入在 <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html#new-directory"><span class="std std-ref">上一个教程</span></a> 中创建的 <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> 目录。</p>
+<p>记住，包应该创建在 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录中，而不是工作空间的根目录。所以，进入 <code class="docutils literal notranslate"><span class="pre">ros2_ws/src</span></code> 目录，并运行包创建命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_cmake cpp_pubsub</span>
 </pre></div>
 </div>
-<p>Your terminal will return a message verifying the creation of your package <code class="docutils literal notranslate"><span class="pre">cpp_pubsub</span></code> and all its necessary files and folders.</p>
+<p>终端会返回一条消息，确认已创建名为 <code class="docutils literal notranslate"><span class="pre">cpp_pubsub</span></code> 的包及其所有必要的文件和文件夹。</p>
 <p>Navigate into <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/cpp_pubsub/src</span></code>.
 Recall that this is the directory in any CMake package where the source files containing executables belong.</p>
 </div>
