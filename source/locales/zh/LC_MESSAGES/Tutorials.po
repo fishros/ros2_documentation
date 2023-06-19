@@ -6952,62 +6952,62 @@ msgstr "2. 创建一个新目录"
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:84
 msgid "Best practice is to create a new directory for every new workspace. The name doesn't matter, but it is helpful to have it indicate the purpose of the workspace. Let's choose the directory name ``ros2_ws``, for \"development workspace\":"
-msgstr "Best practice is to create a new directory for every new workspace. The name doesn't matter, but it is helpful to have it indicate the purpose of the workspace. Let's choose the directory name ``ros2_ws``, for \"development workspace\":"
+msgstr "最佳实践是为每个新的工作空间创建一个新的目录。目录名称无关紧要，但是有助于表明工作空间的目的。让我们选择目录名为``ros2_ws``，表示\"开发工作空间\"："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:112
 msgid "Another best practice is to put any packages in your workspace into the ``src`` directory. The above code creates a ``src`` directory inside ``ros2_ws`` and then navigates into it."
-msgstr "Another best practice is to put any packages in your workspace into the ``src`` directory. The above code creates a ``src`` directory inside ``ros2_ws`` and then navigates into it."
+msgstr "另一个最佳实践是将工作空间中的任何包放置在``src``目录中。上述代码在``ros2_ws``内创建一个``src``目录，然后进入其中。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:117
 msgid "3 Clone a sample repo"
-msgstr "3 Clone a sample repo"
+msgstr "3 克隆示例仓库"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:119
 msgid "Ensure you're still in the ``ros2_ws/src`` directory before you clone."
-msgstr "Ensure you're still in the ``ros2_ws/src`` directory before you clone."
+msgstr "在克隆之前，请确保您仍在``ros2_ws/src``目录中。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:121
 msgid "In the rest of the beginner developer tutorials, you will create your own packages, but for now you will practice putting a workspace together using existing packages."
-msgstr "In the rest of the beginner developer tutorials, you will create your own packages, but for now you will practice putting a workspace together using existing packages."
+msgstr "在接下来的初学者开发者教程中，您将创建自己的软件包，但目前您将练习使用现有软件包组合一个工作空间。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:123
 msgid "If you went through the :doc:`Beginner: CLI Tools <../../Beginner-CLI-Tools>` tutorials, you'll be familiar with ``turtlesim``, one of the packages in `ros_tutorials <https://github.com/ros/ros_tutorials/>`__."
-msgstr "If you went through the :doc:`Beginner: CLI Tools <../../Beginner-CLI-Tools>` tutorials, you'll be familiar with ``turtlesim``, one of the packages in `ros_tutorials <https://github.com/ros/ros_tutorials/>`__."
+msgstr "如果您已经完成了 :doc:`初学者：CLI 工具 <../../Beginner-CLI-Tools>` 教程，您将熟悉 ``turtlesim``，它是 `ros_tutorials <https://github.com/ros/ros_tutorials/>`__ 中的一个软件包。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:125
 msgid "A repo can have multiple branches. You need to check out the one that targets your installed ROS 2 distro. When you clone this repo, add the ``-b`` argument followed by that branch."
-msgstr "A repo can have multiple branches. You need to check out the one that targets your installed ROS 2 distro. When you clone this repo, add the ``-b`` argument followed by that branch."
+msgstr "一个存储库可以有多个分支。您需要检出与您已安装的 ROS 2 发行版对应的分支。当您克隆这个存储库时，请添加 ``-b`` 参数，后跟该分支的名称。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:129
 msgid "In the ``ros2_ws/src`` directory, run the following command:"
-msgstr "In the ``ros2_ws/src`` directory, run the following command:"
+msgstr "在 ``ros2_ws/src`` 目录下运行以下命令："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:135
 msgid "Now ``ros_tutorials`` is cloned in your workspace.  The ``ros_tutorials`` repository contains the ``turtlesim`` package, which we'll use in the rest of this tutorial.  The other packages in this repository are not built because they contain a ``COLCON_IGNORE`` file."
-msgstr "Now ``ros_tutorials`` is cloned in your workspace.  The ``ros_tutorials`` repository contains the ``turtlesim`` package, which we'll use in the rest of this tutorial.  The other packages in this repository are not built because they contain a ``COLCON_IGNORE`` file."
+msgstr "现在在您的工作空间中克隆了 ``ros_tutorials`` 。``ros_tutorials`` 仓库包含了 ``turtlesim`` 包，我们将在本教程的剩余部分中使用它。此仓库中的其他包没有构建，因为它们包含一个 ``COLCON_IGNORE`` 文件。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:137
 msgid "So far you have populated your workspace with a sample package, but it isn't a fully-functional workspace yet. You need to resolve the dependencies first and then build the workspace."
-msgstr "So far you have populated your workspace with a sample package, but it isn't a fully-functional workspace yet. You need to resolve the dependencies first and then build the workspace."
+msgstr "到目前为止，您已经在工作空间中添加了一个示例包，但它还不是一个完全功能的工作空间。您需要先解决依赖关系，然后再构建工作空间。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:142
 msgid "4 Resolve dependencies"
-msgstr "4 Resolve dependencies"
+msgstr "4 解决依赖关系"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:144
 msgid "Before building the workspace, you need to resolve the package dependencies. You may have all the dependencies already, but best practice is to check for dependencies every time you clone. You wouldn't want a build to fail after a long wait only to realize that you have missing dependencies."
-msgstr "Before building the workspace, you need to resolve the package dependencies. You may have all the dependencies already, but best practice is to check for dependencies every time you clone. You wouldn't want a build to fail after a long wait only to realize that you have missing dependencies."
+msgstr "在构建工作空间之前，您需要解决包的依赖关系。您可能已经拥有了所有的依赖项，但最佳实践是每次克隆时都检查依赖关系。您不希望在长时间等待后构建失败，然后才意识到您缺少依赖项。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:148
