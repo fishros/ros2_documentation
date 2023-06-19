@@ -10012,37 +10012,37 @@ msgstr "https://github.com/ros2/demos/blob/humble/intra_process_demo/src/cyclic_
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:256
 msgid "Unlike the previous demo, this demo uses only one Node, instantiated twice with different names and configurations. The graph ends up being ``pipe1`` -> ``pipe2`` -> ``pipe1`` ... in a loop."
-msgstr "Unlike the previous demo, this demo uses only one Node, instantiated twice with different names and configurations. The graph ends up being ``pipe1`` -> ``pipe2`` -> ``pipe1`` ... in a loop."
+msgstr "与之前的演示不同，此演示只使用一个节点，使用不同的名称和配置实例化两次。图的结构为“pipe1” -> “pipe2” -> “pipe1”... 形成循环。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:259
 msgid "The line ``pipe1->pub->publish(msg);`` kicks the process off, but from then on the messages are passed back and forth between the nodes by each one calling publish within its own subscription callback."
-msgstr "The line ``pipe1->pub->publish(msg);`` kicks the process off, but from then on the messages are passed back and forth between the nodes by each one calling publish within its own subscription callback."
+msgstr "代码行“pipe1->pub->publish(msg);”启动了该过程，但之后消息通过每个节点在自己的订阅回调中调用publish来来回传递。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:261
 msgid "The expectation here is that the nodes pass the message back and forth, once a second, incrementing the value of the message each time. Because the message is being published and subscribed to as a ``unique_ptr`` the same message created at the beginning is continuously used."
-msgstr "The expectation here is that the nodes pass the message back and forth, once a second, incrementing the value of the message each time. Because the message is being published and subscribed to as a ``unique_ptr`` the same message created at the beginning is continuously used."
+msgstr "这里的期望是节点之间每秒传递消息一次，每次递增消息的值。由于消息作为“unique_ptr”发布和订阅，开始时创建的同一消息会不断使用。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:264
 msgid "To test those expectations, let's run it:"
-msgstr "To test those expectations, let's run it:"
+msgstr "为了测试这些期望，让我们运行它："
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:294
 msgid "You should see ever increasing numbers on each iteration, starting with 42... because 42, and the whole time it reuses the same message, as demonstrated by the pointer addresses which do not change, which avoids unnecessary copies."
-msgstr "You should see ever increasing numbers on each iteration, starting with 42... because 42, and the whole time it reuses the same message, as demonstrated by the pointer addresses which do not change, which avoids unnecessary copies."
+msgstr "你应该在每次迭代中看到不断增加的数字，从42开始...因为42，而且整个时间它重复使用相同的消息，如指针地址所示，它们不会改变，这避免了不必要的拷贝。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:297
 msgid "The image pipeline demo"
-msgstr "The image pipeline demo"
+msgstr "图像处理演示"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:299
 msgid "In this demo we'll use OpenCV to capture, annotate, and then view images."
-msgstr "In this demo we'll use OpenCV to capture, annotate, and then view images."
+msgstr "在这个演示中，我们将使用OpenCV来捕获、注释和查看图像。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:303
