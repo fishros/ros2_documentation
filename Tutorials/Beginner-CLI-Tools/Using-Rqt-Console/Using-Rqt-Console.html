@@ -386,7 +386,7 @@
 <ul>
 <li><p><a class="reference internal" href="#setup" id="id4">1 设置</a></p></li>
 <li><p><a class="reference internal" href="#messages-on-rqt-console" id="id5">rqt_console 上的 2 条消息</a></p></li>
-<li><p><a class="reference internal" href="#logger-levels" id="id6">3 Logger levels</a></p></li>
+<li><p><a class="reference internal" href="#logger-levels" id="id6">3个日志记录器级别</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id7">摘要</a></p></li>
@@ -423,19 +423,17 @@
 </div>
 <div class="section" id="messages-on-rqt-console">
 <h3><a class="toc-backref" href="#id5">rqt_console 上的 2 条消息</a><a class="headerlink" href="#messages-on-rqt-console" title="永久链接至标题"></a></h3>
-<p>To produce log messages for <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> to display, let's have the turtle run into the wall.
-In a new terminal, enter the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> command (discussed in detail in the <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics tutorial</span></a>) below:</p>
+<p>为了生成供``rqt_console``显示的日志消息，让乌龟撞到墙上。在新的终端中输入``ros2 topic pub``命令（在:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>主题教程 &lt;../Understanding-ROS2-Topics/Understanding-ROS2-Topics&gt;`中有详细讨论），如下所示：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic pub -r 1 /turtle1/cmd_vel geometry_msgs/msg/Twist &quot;{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0,y: 0.0,z: 0.0}}&quot;</span>
 </pre></div>
 </div>
-<p>Since the above command is publishing the topic at a steady rate, the turtle is continuously running into the wall.
-In <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> you will see the same message with the <code class="docutils literal notranslate"><span class="pre">Warn</span></code> severity level displayed over and over, like so:</p>
+<p>由于上述命令以固定速率发布主题，乌龟会持续撞墙。在``rqt_console``中，你会看到相同的消息以``Warn``严重级别一遍又一遍地显示，如下所示：</p>
 <img alt="../../../_images/warn.png" src="../../../_images/warn.png" />
-<p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in the terminal where you ran the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> command to stop your turtle from running into the wall.</p>
+<p>在你运行``ros2 topic pub``命令的终端中按下``Ctrl+C``，停止乌龟撞墙。</p>
 </div>
 <div class="section" id="logger-levels">
-<h3><a class="toc-backref" href="#id6">3 Logger levels</a><a class="headerlink" href="#logger-levels" title="永久链接至标题"></a></h3>
-<p>ROS 2's logger levels are ordered by severity:</p>
+<h3><a class="toc-backref" href="#id6">3个日志记录器级别</a><a class="headerlink" href="#logger-levels" title="永久链接至标题"></a></h3>
+<p>ROS 2的记录器级别按严重程度排序：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Fatal</span>
 <span class="go">Error</span>
 <span class="go">Warn</span>
@@ -443,16 +441,15 @@ In <code class="docutils literal notranslate"><span class="pre">rqt_console</spa
 <span class="go">Debug</span>
 </pre></div>
 </div>
-<p>There is no exact standard for what each level indicates, but it's safe to assume that:</p>
+<p>关于每个级别表示的确切标准并没有精确的规定，但可以安全地假设：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Fatal</span></code> messages indicate the system is going to terminate to try to protect itself from detriment.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Error</span></code> messages indicate significant issues that won't necessarily damage the system, but are preventing it from functioning properly.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Warn</span></code> messages indicate unexpected activity or non-ideal results that might represent a deeper issue, but don't harm functionality outright.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Info</span></code> messages indicate event and status updates that serve as a visual verification that the system is running as expected.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Debug</span></code> messages detail the entire step-by-step process of the system execution.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>Fatal``（致命）消息表明系统将终止以试图保护自身免受损害。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>Error``（错误）消息表示存在重要问题，这些问题不一定会损坏系统，但会阻止其正常运行。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Warn</span></code> 消息表示意外活动或非理想结果，可能表示更深层问题，但不会直接影响功能。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Info</span></code> 消息表示事件和状态更新，作为系统正常运行的可视验证。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Debug</span></code> 消息详细描述系统执行的每个步骤。</p></li>
 </ul>
-<p>The default level is <code class="docutils literal notranslate"><span class="pre">Info</span></code>.
-You will only see messages of the default severity level and more-severe levels.</p>
+<p>默认级别是 <code class="docutils literal notranslate"><span class="pre">Info</span></code>。只会看到默认严重级别和更严重级别的消息。</p>
 <p>Normally, only <code class="docutils literal notranslate"><span class="pre">Debug</span></code> messages are hidden because they're the only level less severe than <code class="docutils literal notranslate"><span class="pre">Info</span></code>.
 For example, if you set the default level to <code class="docutils literal notranslate"><span class="pre">Warn</span></code>, you would only see messages of severity <code class="docutils literal notranslate"><span class="pre">Warn</span></code>, <code class="docutils literal notranslate"><span class="pre">Error</span></code>, and <code class="docutils literal notranslate"><span class="pre">Fatal</span></code>.</p>
 <div class="section" id="set-the-default-logger-level">
