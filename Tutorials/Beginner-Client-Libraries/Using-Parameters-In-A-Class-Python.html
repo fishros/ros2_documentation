@@ -409,17 +409,16 @@
 <h3><a class="toc-backref" href="#id4">1 创建一个包</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
 <p>在一个新的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">源化你的 ROS 2 安装</span></a>，这样 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令才能正常工作。</p>
 <p>按照:ref:<a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html#new-directory"><span class="std std-ref">这些指示</span></a> 创建名为``ros2_ws``的新工作空间。</p>
-<p>Recall that packages should be created in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory, not the root of the workspace.
-Navigate into <code class="docutils literal notranslate"><span class="pre">ros2_ws/src</span></code> and create a new package:</p>
+<p>请记住，包应该在“src”目录中创建，而不是工作区的根目录。进入“ros2_ws/src”并创建一个新的包：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_python python_parameters --dependencies rclpy</span>
 </pre></div>
 </div>
 <p>Your terminal will return a message verifying the creation of your package <code class="docutils literal notranslate"><span class="pre">python_parameters</span></code> and all its necessary files and folders.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> argument will automatically add the necessary dependency lines to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.</p>
+<p>“--dependencies”参数将自动添加必要的依赖项行到“package.xml”和“CMakeLists.txt”中。</p>
 <div class="section" id="update-package-xml">
 <h4>1.1 更新 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code><a class="headerlink" href="#update-package-xml" title="永久链接至标题"></a></h4>
-<p>Because you used the <code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> option during package creation, you don't have to manually add dependencies to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> or <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.</p>
-<p>As always, though, make sure to add the description, maintainer email and name, and license information to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.</p>
+<p>因为您在包创建过程中使用了“--dependencies”选项，所以无需手动添加依赖项到“package.xml”或“CMakeLists.txt”中。</p>
+<p>同样，确保将描述、维护者电子邮件和姓名以及许可证信息添加到 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Python parameter tutorial<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
 <span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
