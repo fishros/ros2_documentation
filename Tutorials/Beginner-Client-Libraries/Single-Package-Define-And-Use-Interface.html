@@ -440,12 +440,11 @@
 <li><p>phone_number: 字符串类型</p></li>
 <li><p>phone_type: uint8 类型，具有多个已定义的命名常量值</p></li>
 </ul>
-<p>Note that it's possible to set default values for fields within a message definition.
-See <a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html"><span class="doc">About ROS 2 interfaces</span></a> for more ways you can customize interfaces.</p>
-<p>Next, we need to make sure that the msg file is turned into source code for C++, Python, and other languages.</p>
+<p>请注意，可以为消息定义中的字段设置默认值。详见 <a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html"><span class="doc">About ROS 2 interfaces</span></a> 以了解更多自定义接口的方式。</p>
+<p>接下来，我们需要确保将 msg 文件转换为 C++、Python 和其他语言的源代码。</p>
 <div class="section" id="build-a-msg-file">
-<h4>2.1 Build a msg file<a class="headerlink" href="#build-a-msg-file" title="永久链接至标题"></a></h4>
-<p>Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and add the following lines:</p>
+<h4>2.1 构建 msg 文件<a class="headerlink" href="#build-a-msg-file" title="永久链接至标题"></a></h4>
+<p>打开 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 并添加以下行：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;buildtool_depend&gt;</span>rosidl_default_generators<span class="nt">&lt;/buildtool_depend&gt;</span>
 
 <span class="nt">&lt;exec_depend&gt;</span>rosidl_default_runtime<span class="nt">&lt;/exec_depend&gt;</span>
@@ -453,13 +452,13 @@ See <a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html
 <span class="nt">&lt;member_of_group&gt;</span>rosidl_interface_packages<span class="nt">&lt;/member_of_group&gt;</span>
 </pre></div>
 </div>
-<p>Note that at build time, we need <code class="docutils literal notranslate"><span class="pre">rosidl_default_generators</span></code>, while at runtime, we only need <code class="docutils literal notranslate"><span class="pre">rosidl_default_runtime</span></code>.</p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and add the following lines:</p>
-<p>Find the package that generates message code from msg/srv files:</p>
+<p>请注意，在构建时我们需要``rosidl_default_generators``，而在运行时，我们只需要``rosidl_default_runtime``。</p>
+<p>打开``CMakeLists.txt``并添加以下行：</p>
+<p>找到生成消息代码的软件包：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">rosidl_default_generators</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Declare the list of messages you want to generate:</p>
+<p>声明您想要生成的消息列表：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">msg_files</span>
 <span class="w">  </span><span class="s2">&quot;msg/AddressBook.msg&quot;</span>
 <span class="p">)</span>
