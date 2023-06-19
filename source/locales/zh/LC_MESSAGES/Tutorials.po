@@ -7192,17 +7192,17 @@ msgstr "您可以看到叠加中的修改实际上没有对底层产生任何影
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:368
 msgid "In this tutorial, you sourced your main ROS 2 distro install as your underlay, and created an overlay by cloning and building packages in a new workspace. The overlay gets prepended to the path, and takes precedence over the underlay, as you saw with your modified turtlesim."
-msgstr "In this tutorial, you sourced your main ROS 2 distro install as your underlay, and created an overlay by cloning and building packages in a new workspace. The overlay gets prepended to the path, and takes precedence over the underlay, as you saw with your modified turtlesim."
+msgstr "在本教程中，您将ROS 2主要发行版安装为底层，并通过克隆和构建包在新的工作空间中创建一个覆盖层。覆盖层被添加到路径中，并且优先于底层，正如您通过修改后的turtlesim所看到的。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:371
 msgid "Using overlays is recommended for working on a small number of packages, so you don't have to put everything in the same workspace and rebuild a huge workspace on every iteration."
-msgstr "Using overlays is recommended for working on a small number of packages, so you don't have to put everything in the same workspace and rebuild a huge workspace on every iteration."
+msgstr "建议在处理少量包时使用覆盖层，这样您就不必将所有内容放在同一个工作空间中，并且不必在每次迭代中重新构建一个庞大的工作空间。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:376
 msgid "Now that you understand the details behind creating, building and sourcing your own workspace, you can learn how to :doc:`create your own packages <../Creating-Your-First-ROS2-Package>`."
-msgstr "Now that you understand the details behind creating, building and sourcing your own workspace, you can learn how to :doc:`create your own packages <../Creating-Your-First-ROS2-Package>`."
+msgstr "现在您已经了解了创建、构建和源化自己的工作空间的细节，您可以学习如何：:doc:`创建自己的软件包 <../Creating-Your-First-ROS2-Package>`。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:8
@@ -7212,32 +7212,32 @@ msgstr "创建软件包"
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:10
 msgid "**Goal:** Create a new package using either CMake or Python, and run its executable."
-msgstr "**Goal:** Create a new package using either CMake or Python, and run its executable."
+msgstr "**目标：** 使用CMake或Python创建一个新的包，并运行其可执行文件。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:24
 msgid "1 What is a ROS 2 package?"
-msgstr "1 What is a ROS 2 package?"
+msgstr "1 什么是ROS 2包？"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:26
 msgid "A package is an organizational unit for your ROS 2 code. If you want to be able to install your code or share it with others, then you'll need it organized in a package. With packages, you can release your ROS 2 work and allow others to build and use it easily."
-msgstr "A package is an organizational unit for your ROS 2 code. If you want to be able to install your code or share it with others, then you'll need it organized in a package. With packages, you can release your ROS 2 work and allow others to build and use it easily."
+msgstr "包是ROS 2代码的组织单元。如果您希望能够安装代码或与他人共享代码，那么您需要将其组织成一个包。通过包，您可以发布ROS 2工作并允许其他人轻松构建和使用它。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:30
 msgid "Package creation in ROS 2 uses ament as its build system and colcon as its build tool. You can create a package using either CMake or Python, which are officially supported, though other build types do exist."
-msgstr "Package creation in ROS 2 uses ament as its build system and colcon as its build tool. You can create a package using either CMake or Python, which are officially supported, though other build types do exist."
+msgstr "ROS 2中的包创建使用ament作为构建系统和colcon作为构建工具。您可以使用CMake或Python创建一个包，这两种方式得到官方支持，尽管还存在其他构建类型。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:34
 msgid "2 What makes up a ROS 2 package?"
-msgstr "2 What makes up a ROS 2 package?"
+msgstr "2 什么构成了一个ROS 2软件包?"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:36
 msgid "ROS 2 Python and CMake packages each have their own minimum required contents:"
-msgstr "ROS 2 Python and CMake packages each have their own minimum required contents:"
+msgstr "ROS 2的Python和CMake软件包各自有其最小要求的内容:"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:40 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:59 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:160 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:178 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:196 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:355 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:374 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:403 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:477
@@ -7247,7 +7247,7 @@ msgstr "CMake"
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:42
 msgid "``CMakeLists.txt`` file that describes how to build the code within the package"
-msgstr "``CMakeLists.txt`` file that describes how to build the code within the package"
+msgstr "``CMakeLists.txt``文件，描述了如何构建软件包内的代码"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:43
