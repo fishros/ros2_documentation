@@ -9527,62 +9527,62 @@ msgstr "3.2 添加一个入口点"
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:401
 msgid "Reopen ``setup.py`` and add the entry point for the subscriber node below the publisher's entry point. The ``entry_points`` field should now look like this:"
-msgstr "Reopen ``setup.py`` and add the entry point for the subscriber node below the publisher's entry point. The ``entry_points`` field should now look like this:"
+msgstr "重新打开 ``setup.py`` 并在发布者的入口点下方添加订阅者节点的入口点。现在，``entry_points`` 字段应该如下所示："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:417
 msgid "You likely already have the ``rclpy`` and ``std_msgs`` packages installed as part of your ROS 2 system. It's good practice to run ``rosdep`` in the root of your workspace (``ros2_ws``) to check for missing dependencies before building:"
-msgstr "You likely already have the ``rclpy`` and ``std_msgs`` packages installed as part of your ROS 2 system. It's good practice to run ``rosdep`` in the root of your workspace (``ros2_ws``) to check for missing dependencies before building:"
+msgstr "很可能您已经在ROS 2系统中安装了 ``rclpy`` 和 ``std_msgs`` 包。在构建之前，在工作空间的根目录（``ros2_ws``）中运行 ``rosdep`` 以检查缺失的依赖关系是一个好的做法："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:519
 msgid "You created two nodes to publish and subscribe to data over a topic. Before running them, you added their dependencies and entry points to the package configuration files."
-msgstr "You created two nodes to publish and subscribe to data over a topic. Before running them, you added their dependencies and entry points to the package configuration files."
+msgstr "您创建了两个节点，用于在话题上发布和订阅数据。在运行之前，您将它们的依赖关系和入口点添加到包配置文件中。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:531
 msgid "There are several ways you could write a publisher and subscriber in Python; check out the ``minimal_publisher`` and ``minimal_subscriber`` packages in the `ros2/examples <https://github.com/ros2/examples/tree/humble/rclpy/topics>`_ repo."
-msgstr "There are several ways you could write a publisher and subscriber in Python; check out the ``minimal_publisher`` and ``minimal_subscriber`` packages in the `ros2/examples <https://github.com/ros2/examples/tree/humble/rclpy/topics>`_ repo."
+msgstr "在Python中编写发布者和订阅者有几种方法；请查看 `ros2/examples <https://github.com/ros2/examples/tree/humble/rclpy/topics>`_ 存储库中的 ``minimal_publisher`` 和 ``minimal_subscriber`` 包。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:8
 msgid "Writing a simple service and client (Python)"
-msgstr "Writing a simple service and client (Python)"
+msgstr "编写一个简单的服务和客户端（Python）"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:10
 msgid "**Goal:** Create and run service and client nodes using Python."
-msgstr "**Goal:** Create and run service and client nodes using Python."
+msgstr "**目标：** 使用Python创建和运行服务和客户端节点。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:50
 msgid "Your terminal will return a message verifying the creation of your package ``py_srvcli`` and all its necessary files and folders."
-msgstr "Your terminal will return a message verifying the creation of your package ``py_srvcli`` and all its necessary files and folders."
+msgstr "您的终端将返回一条消息，确认已创建名为``py_srvcli``的包及其所有必要的文件和文件夹。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:52
 msgid "The ``--dependencies`` argument will automatically add the necessary dependency lines to ``package.xml``. ``example_interfaces`` is the package that includes `the .srv file <https://github.com/ros2/example_interfaces/blob/humble/srv/AddTwoInts.srv>`__ you will need to structure your requests and responses:"
-msgstr "The ``--dependencies`` argument will automatically add the necessary dependency lines to ``package.xml``. ``example_interfaces`` is the package that includes `the .srv file <https://github.com/ros2/example_interfaces/blob/humble/srv/AddTwoInts.srv>`__ you will need to structure your requests and responses:"
+msgstr "``--dependencies``参数将自动向``package.xml``添加必要的依赖项。``example_interfaces``是包含 `the .srv file <https://github.com/ros2/example_interfaces/blob/humble/srv/AddTwoInts.srv>`__ 的包，您将需要使用它来构建请求和响应的结构："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:67
 msgid "Because you used the ``--dependencies`` option during package creation, you don't have to manually add dependencies to ``package.xml``."
-msgstr "Because you used the ``--dependencies`` option during package creation, you don't have to manually add dependencies to ``package.xml``."
+msgstr "由于在包创建过程中使用了``--dependencies``选项，您无需手动将依赖项添加到``package.xml``文件中。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:78
 msgid "1.2 Update ``setup.py``"
-msgstr "1.2 Update ``setup.py``"
+msgstr "1.2 更新``setup.py``文件"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:80
 msgid "Add the same information to the ``setup.py`` file for the ``maintainer``, ``maintainer_email``, ``description`` and ``license`` fields:"
-msgstr "Add the same information to the ``setup.py`` file for the ``maintainer``, ``maintainer_email``, ``description`` and ``license`` fields:"
+msgstr "将相同的信息添加到``setup.py``文件的``maintainer``、``maintainer_email``、``description``和``license``字段中："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:92
 msgid "Inside the ``ros2_ws/src/py_srvcli/py_srvcli`` directory, create a new file called ``service_member_function.py`` and paste the following code within:"
-msgstr "Inside the ``ros2_ws/src/py_srvcli/py_srvcli`` directory, create a new file called ``service_member_function.py`` and paste the following code within:"
+msgstr "在``ros2_ws/src/py_srvcli/py_srvcli``目录中创建一个名为``service_member_function.py``的新文件，并将以下代码粘贴到其中："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:131
