@@ -564,7 +564,7 @@
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;more_interfaces/msg/address_book.hpp&quot;</span><span class="cp"></span>
 </pre></div>
 </div>
-<p>Create a node and an <code class="docutils literal notranslate"><span class="pre">AddressBook</span></code> publisher.</p>
+<p>创建一个节点和一个 <code class="docutils literal notranslate"><span class="pre">AddressBook</span></code> 发布者。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">AddressBookPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
@@ -577,36 +577,36 @@
 <span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">more_interfaces</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">AddressBook</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;address_book&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Create a callback to publish the messages periodically.</p>
+<p>创建一个定期发布消息的回调函数。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">publish_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Create an <code class="docutils literal notranslate"><span class="pre">AddressBook</span></code> message instance that we will later publish.</p>
+<p>创建一个 <code class="docutils literal notranslate"><span class="pre">AddressBook</span></code> 消息实例，稍后我们将发布它。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">more_interfaces</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">AddressBook</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Populate <code class="docutils literal notranslate"><span class="pre">AddressBook</span></code> fields.</p>
+<p>填充 <code class="docutils literal notranslate"><span class="pre">AddressBook</span></code> 字段。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">message</span><span class="p">.</span><span class="n">first_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="n">message</span><span class="p">.</span><span class="n">last_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="n">message</span><span class="p">.</span><span class="n">phone_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234567890&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="n">message</span><span class="p">.</span><span class="n">phone_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">PHONE_TYPE_MOBILE</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Finally send the message periodically.</p>
+<p>最后定期发送消息。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Publishing Contact</span><span class="se">\n</span><span class="s">First:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">first_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
 <span class="w">  </span><span class="s">&quot;  Last:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">last_name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 
 <span class="k">this</span><span class="o">-&gt;</span><span class="n">address_book_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Create a 1 second timer to call our <code class="docutils literal notranslate"><span class="pre">publish_msg</span></code> function every second.</p>
+<p>创建一个每秒调用``publish_msg``函数的1秒定时器。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">publish_msg</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-the-publisher">
-<h4>3.2 Build the publisher<a class="headerlink" href="#build-the-publisher" title="永久链接至标题"></a></h4>
-<p>We need to create a new target for this node in the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<h4>3.2 构建发布者。<a class="headerlink" href="#build-the-publisher" title="永久链接至标题"></a></h4>
+<p>我们需要在``CMakeLists.txt``中为该节点创建一个新的目标：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">rclcpp</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 
 <span class="nb">add_executable</span><span class="p">(</span><span class="s">publish_address_book</span><span class="w"> </span><span class="s">src/publish_address_book.cpp</span><span class="p">)</span>
