@@ -631,7 +631,7 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">publisher_member_function.cpp  subscriber_member_function.cpp</span>
 </pre></div>
 </div>
-<p>Open the <code class="docutils literal notranslate"><span class="pre">subscriber_member_function.cpp</span></code> with your text editor.</p>
+<p>使用文本编辑器打开 <code class="docutils literal notranslate"><span class="pre">subscriber_member_function.cpp</span></code>。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
@@ -666,10 +666,9 @@
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h4>3.1 Examine the code<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
-<p>The subscriber node's code is nearly identical to the publisher's.
-Now the node is named <code class="docutils literal notranslate"><span class="pre">minimal_subscriber</span></code>, and the constructor uses the node's <code class="docutils literal notranslate"><span class="pre">create_subscription</span></code> class to execute the callback.</p>
-<p>There is no timer because the subscriber simply responds whenever data is published to the <code class="docutils literal notranslate"><span class="pre">topic</span></code> topic.</p>
+<h4>3.1 检查代码<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
+<p>订阅者节点的代码与发布者几乎完全相同。现在节点被命名为 <code class="docutils literal notranslate"><span class="pre">minimal_subscriber</span></code>，构造函数使用节点的 <code class="docutils literal notranslate"><span class="pre">create_subscription</span></code> 类来执行回调函数。</p>
+<p>没有定时器，因为订阅者只会在数据被发布到 <code class="docutils literal notranslate"><span class="pre">topic</span></code> 主题时做出响应。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">MinimalSubscriber</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_subscriber&quot;</span><span class="p">)</span><span class="w"></span>
@@ -679,9 +678,9 @@ Now the node is named <code class="docutils literal notranslate"><span class="pr
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Recall from the <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topic tutorial</span></a> that the topic name and message type used by the publisher and subscriber must match to allow them to communicate.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">topic_callback</span></code> function receives the string message data published over the topic, and simply writes it to the console using the <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> macro.</p>
-<p>The only field declaration in this class is the subscription.</p>
+<p>回顾一下 <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">主题教程</span></a> 中提到，发布者和订阅者使用的主题名称和消息类型必须匹配，才能使它们进行通信。</p>
+<p><code class="docutils literal notranslate"><span class="pre">topic_callback</span></code> 函数接收通过主题发布的字符串消息数据，并使用 <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> 宏将其简单地写入控制台。</p>
+<p>这个类中仅有一个字段声明，即订阅。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
@@ -690,8 +689,7 @@ Now the node is named <code class="docutils literal notranslate"><span class="pr
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">subscription_</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> function is exactly the same, except now it spins the <code class="docutils literal notranslate"><span class="pre">MinimalSubscriber</span></code> node.
-For the publisher node, spinning meant starting the timer, but for the subscriber it simply means preparing to receive messages whenever they come.</p>
+<p><code class="docutils literal notranslate"><span class="pre">main</span></code> 函数完全相同，只是现在它旋转 <code class="docutils literal notranslate"><span class="pre">MinimalSubscriber</span></code> 节点。对于发布者节点，旋转意味着启动计时器，而对于订阅者节点，它只是准备在消息到来时接收消息。</p>
 <p>Since this node has the same dependencies as the publisher node, there's nothing new to add to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.</p>
 </div>
 <div class="section" id="id2">
