@@ -8047,62 +8047,62 @@ msgstr "打开您喜欢的编辑器，编辑``ros2_ws/src/polygon_base/include/p
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:77
 msgid "This code above should be pretty self-explanatory... we're creating an abstract class called ``RegularPolygon``. One thing to notice is the presence of the initialize method. With ``pluginlib``, a constructor without parameters is required, so if any parameters to the class are needed, we use the initialize method to pass them to the object."
-msgstr "This code above should be pretty self-explanatory... we're creating an abstract class called ``RegularPolygon``. One thing to notice is the presence of the initialize method. With ``pluginlib``, a constructor without parameters is required, so if any parameters to the class are needed, we use the initialize method to pass them to the object."
+msgstr "上面的代码应该很容易理解...我们正在创建一个名为``RegularPolygon``的抽象类。需要注意的一件事是存在初始化方法。在``pluginlib``中，需要一个没有参数的构造函数，所以如果需要类的任何参数，我们使用初始化方法将它们传递给对象。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:81
 msgid "We need to make this header available to other classes, so open ``ros2_ws/src/polygon_base/CMakeLists.txt`` for editing. Add the following lines after the ``ament_target_dependencies`` command:"
-msgstr "We need to make this header available to other classes, so open ``ros2_ws/src/polygon_base/CMakeLists.txt`` for editing. Add the following lines after the ``ament_target_dependencies`` command:"
+msgstr "我们需要使这个头文件对其他类可用，所以打开``ros2_ws/src/polygon_base/CMakeLists.txt``进行编辑。在``ament_target_dependencies``命令之后添加以下行："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:91
 msgid "And add this command before the ``ament_package`` command:"
-msgstr "And add this command before the ``ament_package`` command:"
+msgstr "在``ament_package``命令之前添加此命令："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:99
 msgid "We will return to this package later to write our test node."
-msgstr "We will return to this package later to write our test node."
+msgstr "我们将在稍后返回这个软件包来编写我们的测试节点。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:102
 msgid "2 Create the Plugin Package"
-msgstr "2 Create the Plugin Package"
+msgstr "2 创建插件包"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:104
 msgid "Now we're going to write two non-virtual implementations of our abstract class. Create a second empty package in your ``ros2_ws/src`` folder with the following command:"
-msgstr "Now we're going to write two non-virtual implementations of our abstract class. Create a second empty package in your ``ros2_ws/src`` folder with the following command:"
+msgstr "现在我们要编写两个非虚拟实现我们的抽象类。在 ``ros2_ws/src`` 文件夹中创建第二个空包，使用以下命令："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:112
 msgid "2.1 Source code for the plugins"
-msgstr "2.1 Source code for the plugins"
+msgstr "2.1 插件的源代码"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:114
 msgid "Open ``ros2_ws/src/polygon_plugins/src/polygon_plugins.cpp`` for editing, and paste the following inside of it:"
-msgstr "Open ``ros2_ws/src/polygon_plugins/src/polygon_plugins.cpp`` for editing, and paste the following inside of it:"
+msgstr "打开 ``ros2_ws/src/polygon_plugins/src/polygon_plugins.cpp`` 进行编辑，并将以下内容粘贴到其中："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:168
 msgid "The implementation of the Square and Triangle classes should be fairly straightforward: save the side length, and use it to calculate the area. The only piece that is pluginlib specific is the last three lines, which invokes some magical macros that register the classes as actual plugins. Let's go through the arguments to the ``PLUGINLIB_EXPORT_CLASS`` macro:"
-msgstr "The implementation of the Square and Triangle classes should be fairly straightforward: save the side length, and use it to calculate the area. The only piece that is pluginlib specific is the last three lines, which invokes some magical macros that register the classes as actual plugins. Let's go through the arguments to the ``PLUGINLIB_EXPORT_CLASS`` macro:"
+msgstr "Square和Triangle类的实现应该相对简单：保存边长，并使用它来计算面积。与pluginlib特定相关的部分是最后三行，它们调用了一些神奇的宏来将这些类注册为实际的插件。让我们来看看``PLUGINLIB_EXPORT_CLASS``宏的参数："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:172
 msgid "The fully-qualified type of the plugin class, in this case, ``polygon_plugins::Square``."
-msgstr "The fully-qualified type of the plugin class, in this case, ``polygon_plugins::Square``."
+msgstr "插件类的完全限定类型，在这种情况下为``polygon_plugins::Square``。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:173
 msgid "The fully-qualified type of the base class, in this case, ``polygon_base::RegularPolygon``."
-msgstr "The fully-qualified type of the base class, in this case, ``polygon_base::RegularPolygon``."
+msgstr "基类的完全限定类型，在这种情况下为``polygon_base::RegularPolygon``。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:176
 msgid "2.2 Plugin Declaration XML"
-msgstr "2.2 Plugin Declaration XML"
+msgstr "2.2 插件声明 XML"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:178
