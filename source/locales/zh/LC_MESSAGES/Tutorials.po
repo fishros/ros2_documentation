@@ -6032,62 +6032,62 @@ msgstr "在“/clear”服务的类型“Empty”上尝试一下："
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:188
 msgid "The ``---`` separates the request structure (above) from the response structure (below). But, as you learned earlier, the ``Empty`` type doesn't send or receive any data. So, naturally, its structure is blank."
-msgstr "The ``---`` separates the request structure (above) from the response structure (below). But, as you learned earlier, the ``Empty`` type doesn't send or receive any data. So, naturally, its structure is blank."
+msgstr "``---`` 分隔了请求结构（上方）和响应结构（下方）。但是，正如您之前学到的那样，``Empty`` 类型不发送或接收任何数据。因此，它的结构自然为空白。"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:192
 msgid "Let's introspect a service with a type that sends and receives data, like ``/spawn``. From the results of ``ros2 service list -t``, we know ``/spawn``'s type is ``turtlesim/srv/Spawn``."
-msgstr "Let's introspect a service with a type that sends and receives data, like ``/spawn``. From the results of ``ros2 service list -t``, we know ``/spawn``'s type is ``turtlesim/srv/Spawn``."
+msgstr "让我们来查看一个发送和接收数据的服务类型，比如 ``/spawn``。通过 ``ros2 service list -t`` 的结果，我们知道 ``/spawn`` 的类型是 ``turtlesim/srv/Spawn``。"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:195
 msgid "To see the request and response arguments of the ``/spawn`` service, run the command:"
-msgstr "To see the request and response arguments of the ``/spawn`` service, run the command:"
+msgstr "要查看 ``/spawn`` 服务的请求和响应参数，请运行以下命令："
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:212
 msgid "The information above the ``---`` line tells us the arguments needed to call ``/spawn``. ``x``, ``y`` and ``theta`` determine the 2D pose of the spawned turtle, and ``name`` is clearly optional."
-msgstr "The information above the ``---`` line tells us the arguments needed to call ``/spawn``. ``x``, ``y`` and ``theta`` determine the 2D pose of the spawned turtle, and ``name`` is clearly optional."
+msgstr "``---`` 行上方的信息告诉我们调用 ``/spawn`` 需要的参数。``x``、``y`` 和 ``theta`` 决定了生成的乌龟的二维姿态，而 ``name`` 显然是可选的。"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:215
 msgid "The information below the line isn't something you need to know in this case, but it can help you understand the data type of the response you get from the call."
-msgstr "The information below the line isn't something you need to know in this case, but it can help you understand the data type of the response you get from the call."
+msgstr "下划线以下的信息在这种情况下不是您需要了解的内容，但它可以帮助您理解调用返回的响应的数据类型。"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:218
 msgid "6 ros2 service call"
-msgstr "6 ros2 service call"
+msgstr "6 ros2 服务调用"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:220
 msgid "Now that you know what a service type is, how to find a service's type, and how to find the structure of that type's arguments, you can call a service using:"
-msgstr "Now that you know what a service type is, how to find a service's type, and how to find the structure of that type's arguments, you can call a service using:"
+msgstr "既然您知道了什么是服务类型，如何找到服务的类型，以及如何找到该类型参数的结构，您可以使用以下命令调用服务："
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:226
 msgid "The ``<arguments>`` part is optional. For example, you know that ``Empty`` typed services don't have any arguments:"
-msgstr "The ``<arguments>`` part is optional. For example, you know that ``Empty`` typed services don't have any arguments:"
+msgstr "``<arguments>`` 部分是可选的。例如，您知道 ``Empty`` 类型的服务没有任何参数："
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:233
 msgid "This command will clear the turtlesim window of any lines your turtle has drawn."
-msgstr "This command will clear the turtlesim window of any lines your turtle has drawn."
+msgstr "该命令将清除乌龟绘制的所有线条，使得乌龟仿真窗口变空白。"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:237
 msgid "Now let's spawn a new turtle by calling ``/spawn`` and setting arguments. Input ``<arguments>`` in a service call from the command-line need to be in YAML syntax."
-msgstr "Now let's spawn a new turtle by calling ``/spawn`` and setting arguments. Input ``<arguments>`` in a service call from the command-line need to be in YAML syntax."
+msgstr "现在让我们通过调用``/spawn``并设置参数来生成一个新的乌龟。在从命令行进行服务调用时，输入的``<arguments>``需要使用YAML语法。"
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:246
 msgid "You will get this method-style view of what's happening, and then the service response:"
-msgstr "You will get this method-style view of what's happening, and then the service response:"
+msgstr "您将会看到方法式的视图，了解正在发生的情况，然后获得服务的响应："
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:255
 msgid "Your turtlesim window will update with the newly spawned turtle right away:"
-msgstr "Your turtlesim window will update with the newly spawned turtle right away:"
+msgstr "您的乌龟仿真窗口将立即更新，显示新生成的乌龟："
 
 
 #: ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:262
