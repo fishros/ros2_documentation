@@ -390,7 +390,7 @@
 <li><p><a class="reference internal" href="#tasks" id="id5">任务</a></p>
 <ul>
 <li><p><a class="reference internal" href="#ros2-run" id="id6">1 ros2 run</a></p></li>
-<li><p><a class="reference internal" href="#ros2-node-list" id="id7">2 ros2 node list</a></p></li>
+<li><p><a class="reference internal" href="#ros2-node-list" id="id7">2 <code class="xref any docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code></a></p></li>
 <li><p><a class="reference internal" href="#ros2-node-info" id="id8">3. ros2节点信息</a></p></li>
 </ul>
 </li>
@@ -422,36 +422,34 @@
 <h2><a class="toc-backref" href="#id5">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="ros2-run">
 <h3><a class="toc-backref" href="#id6">1 ros2 run</a><a class="headerlink" href="#ros2-run" title="永久链接至标题"></a></h3>
-<p>The command <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> launches an executable from a package.</p>
+<p>命令``ros2 run``会从一个软件包中启动一个可执行文件。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run &lt;package_name&gt; &lt;executable_name&gt;</span>
 </pre></div>
 </div>
-<p>To run turtlesim, open a new terminal, and enter the following command:</p>
+<p>要运行turtlesim，请打开一个新的终端，并输入以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
 </pre></div>
 </div>
-<p>The turtlesim window will open, as you saw in the <a class="reference internal" href="../Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">previous tutorial</span></a>.</p>
-<p>Here, the package name is <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> and the executable name is <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code>.</p>
-<p>We still don't know the node name, however.
-You can find node names by using <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code></p>
+<p>turtlesim窗口将会打开，就像你在:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>上一个教程&lt;../Introducing-Turtlesim/Introducing-Turtlesim&gt;`中看到的那样。</p>
+<p>这里，包名是 <a class="reference internal" href="../Introducing-Turtlesim/Introducing-Turtlesim.html#turtlesim"><span class="std std-ref">使用``turtlesim``、ros2``和``rqt</span></a>，可执行文件名是 <code class="xref any docutils literal notranslate"><span class="pre">turtlesim_node</span></code>。</p>
+<p>然而，我们还不知道节点名称。您可以使用 <code class="xref any docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code> 命令查找节点名称。</p>
 </div>
 <div class="section" id="ros2-node-list">
-<h3><a class="toc-backref" href="#id7">2 ros2 node list</a><a class="headerlink" href="#ros2-node-list" title="永久链接至标题"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code> will show you the names of all running nodes.
-This is especially useful when you want to interact with a node, or when you have a system running many nodes and need to keep track of them.</p>
-<p>Open a new terminal while turtlesim is still running in the other one, and enter the following command:</p>
+<h3><a class="toc-backref" href="#id7">2 <code class="xref any docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code></a><a class="headerlink" href="#ros2-node-list" title="永久链接至标题"></a></h3>
+<p><code class="xref any docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code> 命令将显示所有正在运行的节点的名称。当您想与节点进行交互或者系统运行多个节点时需要跟踪它们时，这特别有用。</p>
+<p>在另一个终端中打开新的终端，同时 turtlesim 仍在运行，请输入以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node list</span>
 </pre></div>
 </div>
-<p>The terminal will return the node name:</p>
+<p>终端将返回节点名称：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtlesim</span>
 </pre></div>
 </div>
-<p>Open another new terminal and start the teleop node with the command:</p>
+<p>再打开一个新的终端，并使用以下命令启动 teleop 节点：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
 </pre></div>
 </div>
-<p>Here, we are referring to the <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> package again, but this time we target the executable named <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code>.</p>
+<p>在这里，我们再次引用了“turtlesim”软件包，但这次我们的目标是名为“turtle_teleop_key”的可执行文件。</p>
 <p>Return to the terminal where you ran <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code> and run it again.
 You will now see the names of two active nodes:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtlesim</span>
