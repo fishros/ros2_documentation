@@ -456,7 +456,7 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node info /turtlesim</span>
 </pre></div>
 </div>
-<p>Which will return a list of <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>'s subscribers, publishers, services, action servers and action clients:</p>
+<p>它将返回``/turtlesim``的订阅者、发布者、服务、动作服务器和动作客户端的列表：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtlesim</span>
 <span class="go">  Subscribers:</span>
 <span class="go">    /parameter_events: rcl_interfaces/msg/ParameterEvent</span>
@@ -487,10 +487,8 @@
 <span class="go">  Action Clients:</span>
 </pre></div>
 </div>
-<p>Notice that the <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code> action for <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> is under <code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Servers</span></code>.
-This means <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> responds to and provides feedback for the <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code> action.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> node has the name <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code> under <code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Clients</span></code> meaning that it sends goals for that action name.
-To see that, run:</p>
+<p>请注意，<code class="docutils literal notranslate"><span class="pre">/turtlesim``中的</span></code>/turtle1/rotate_absolute``动作位于``动作服务器``下。这意味着``/turtlesim``对``/turtle1/rotate_absolute``动作进行响应并提供反馈。</p>
+<p><code class="docutils literal notranslate"><span class="pre">/teleop_turtle``节点的名称为</span></code>/turtle1/rotate_absolute``，位于``动作客户端``下，这意味着它发送该动作名称的目标。要查看，请运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 node info /teleop_turtle</span>
 </pre></div>
 </div>
@@ -520,7 +518,7 @@ To see that, run:</p>
 </div>
 <div class="section" id="ros2-action-list">
 <h3><a class="toc-backref" href="#id7">4 ros2 action list</a><a class="headerlink" href="#ros2-action-list" title="永久链接至标题"></a></h3>
-<p>To identify all the actions in the ROS graph, run the command:</p>
+<p>要识别ROS图中的所有动作，请运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action list</span>
 </pre></div>
 </div>
@@ -528,13 +526,10 @@ To see that, run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtle1/rotate_absolute</span>
 </pre></div>
 </div>
-<p>This is the only action in the ROS graph right now.
-It controls the turtle's rotation, as you saw earlier.
-You also already know that there is one action client (part of <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code>) and one action server (part of <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>) for this action from using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">info</span> <span class="pre">&lt;node_name&gt;</span></code> command.</p>
+<p>目前ROS图中只有一个动作。它控制着乌龟的旋转，就像您之前看到的那样。您还已经知道，对于这个动作，有一个动作客户端（位于``/teleop_turtle``）和一个动作服务器（位于``/turtlesim``），可以使用``ros2 node info &lt;node_name&gt;``命令查看。</p>
 <div class="section" id="ros2-action-list-t">
 <h4>4.1 ros2 action list -t<a class="headerlink" href="#ros2-action-list-t" title="永久链接至标题"></a></h4>
-<p>Actions have types, similar to topics and services.
-To find <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code>'s type, run the command:</p>
+<p>动作也有类型，类似于主题和服务。要找到``/turtle1/rotate_absolute``的类型，请运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action list -t</span>
 </pre></div>
 </div>
@@ -542,17 +537,16 @@ To find <code class="docutils literal notranslate"><span class="pre">/turtle1/ro
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtle1/rotate_absolute [turtlesim/action/RotateAbsolute]</span>
 </pre></div>
 </div>
-<p>In brackets to the right of each action name (in this case only <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code>) is the action type, <code class="docutils literal notranslate"><span class="pre">turtlesim/action/RotateAbsolute</span></code>.
-You will need this when you want to execute an action from the command line or from code.</p>
+<p>在每个动作名称右侧的括号中（在这种情况下只有``/turtle1/rotate_absolute``），是动作类型``turtlesim/action/RotateAbsolute``。当你想要从命令行或代码中执行一个动作时，你将需要它。</p>
 </div>
 </div>
 <div class="section" id="ros2-action-info">
 <h3><a class="toc-backref" href="#id8">5 ros2 action info</a><a class="headerlink" href="#ros2-action-info" title="永久链接至标题"></a></h3>
-<p>You can further introspect the <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code> action with the command:</p>
+<p>你可以使用以下命令进一步检查``/turtle1/rotate_absolute``动作：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action info /turtle1/rotate_absolute</span>
 </pre></div>
 </div>
-<p>Which will return</p>
+<p>它将返回</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Action: /turtle1/rotate_absolute</span>
 <span class="go">Action clients: 1</span>
 <span class="go">    /teleop_turtle</span>
