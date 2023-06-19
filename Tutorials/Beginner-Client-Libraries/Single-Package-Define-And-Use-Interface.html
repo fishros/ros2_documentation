@@ -375,7 +375,7 @@
 
   <div class="section" id="implementing-custom-interfaces">
 <span id="singlepkginterface"></span><h1>实现自定义接口<a class="headerlink" href="#implementing-custom-interfaces" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn more ways to implement custom interfaces in ROS 2.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>了解在ROS 2中实现自定义接口的更多方法。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="contents">
@@ -399,18 +399,16 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>In a <a class="reference internal" href="Custom-ROS2-Interfaces.html"><span class="doc">previous tutorial</span></a>, you learned how to create custom msg and srv interfaces.</p>
-<p>While best practice is to declare interfaces in dedicated interface packages, sometimes it can be convenient to declare, create and use an interface all in one package.</p>
-<p>Recall that interfaces can currently only be defined in CMake packages.
-It is possible, however, to have Python libraries and nodes in CMake packages (using <a class="reference external" href="https://github.com/ament/ament_cmake/tree/humble/ament_cmake_python">ament_cmake_python</a>), so you could define interfaces and Python nodes together in one package.
-We'll use a CMake package and C++ nodes here for the sake of simplicity.</p>
-<p>This tutorial will focus on the msg interface type, but the steps here are applicable to all interface types.</p>
+<p>在之前的教程中，你学习了如何创建自定义的msg和srv接口。</p>
+<p>虽然最佳实践是在专用接口包中声明接口，但有时候在一个包中声明、创建和使用接口会更加方便。</p>
+<p>请注意，目前只能在CMake包中定义接口。然而，可以在CMake包中使用Python库和节点（使用`ament_cmake_python &lt;<a class="reference external" href="https://github.com/ament/ament_cmake/tree/humble/ament_cmake_python">https://github.com/ament/ament_cmake/tree/humble/ament_cmake_python</a>&gt;`_），因此你可以在一个包中同时定义接口和Python节点。为了简单起见，我们在这里使用一个CMake包和C++节点。</p>
+<p>本教程将重点介绍msg接口类型，但这里的步骤适用于所有接口类型。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>We assume you've reviewed the basics in the <a class="reference internal" href="Custom-ROS2-Interfaces.html"><span class="doc">创建自定义的 msg 和 srv 文件。</span></a> tutorial before working through this one.</p>
-<p>You should have <a class="reference internal" href="../../Installation.html"><span class="doc">ROS 2 installed</span></a>, a <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">workspace</span></a>, and an understanding of <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">creating packages</span></a>.</p>
-<p>As always, don't forget to <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source ROS 2</span></a> in every new terminal you open.</p>
+<p>我们假设您在完成本教程之前已经阅读了 <a class="reference internal" href="Custom-ROS2-Interfaces.html"><span class="doc">创建自定义的 msg 和 srv 文件。</span></a> 教程的基础知识。</p>
+<p>您应该已经安装了 <a class="reference internal" href="../../Installation.html"><span class="doc">ROS 2</span></a>，创建了一个 <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">工作空间</span></a>，并且了解了 <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">如何创建包</span></a>。</p>
+<p>一如既往，请不要忘记在每个新打开的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source ROS 2</span></a>。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
