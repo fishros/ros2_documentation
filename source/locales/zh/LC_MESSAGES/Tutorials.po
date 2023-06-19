@@ -9147,82 +9147,82 @@ msgstr "在每个终端中输入``Ctrl+C``来停止节点的旋转。"
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.rst:538
 msgid "You created two nodes to publish and subscribe to data over a topic. Before compiling and running them, you added their dependencies and executables to the package configuration files."
-msgstr "You created two nodes to publish and subscribe to data over a topic. Before compiling and running them, you added their dependencies and executables to the package configuration files."
+msgstr "你创建了两个节点，用于在一个话题上发布和订阅数据。在编译和运行之前，你将它们的依赖项和可执行文件添加到了软件包配置文件中。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.rst:544 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:525
 msgid "Next you'll create another simple ROS 2 package using the service/client model. Again, you can choose to write it in either :doc:`C++ <./Writing-A-Simple-Cpp-Service-And-Client>` or :doc:`Python <./Writing-A-Simple-Py-Service-And-Client>`."
-msgstr "Next you'll create another simple ROS 2 package using the service/client model. Again, you can choose to write it in either :doc:`C++ <./Writing-A-Simple-Cpp-Service-And-Client>` or :doc:`Python <./Writing-A-Simple-Py-Service-And-Client>`."
+msgstr "接下来，你将使用服务/客户端模型创建另一个简单的ROS 2软件包。同样，你可以选择使用 :doc:`C++ <./Writing-A-Simple-Cpp-Service-And-Client>` 或者 :doc:`Python <./Writing-A-Simple-Py-Service-And-Client>` 进行编写。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.rst:550
 msgid "There are several ways you could write a publisher and subscriber in C++; check out the ``minimal_publisher`` and ``minimal_subscriber`` packages in the `ros2/examples <https://github.com/ros2/examples/tree/humble/rclcpp/topics>`_ repo."
-msgstr "There are several ways you could write a publisher and subscriber in C++; check out the ``minimal_publisher`` and ``minimal_subscriber`` packages in the `ros2/examples <https://github.com/ros2/examples/tree/humble/rclcpp/topics>`_ repo."
+msgstr "有几种方式可以使用C++编写发布者和订阅者；你可以在 `ros2/examples <https://github.com/ros2/examples/tree/humble/rclcpp/topics>`_ 存储库中查看 ``minimal_publisher`` 和 ``minimal_subscriber`` 软件包。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:8
 msgid "Writing a simple service and client (C++)"
-msgstr "Writing a simple service and client (C++)"
+msgstr "编写一个简单的服务和客户端（C++）"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:10
 msgid "**Goal:** Create and run service and client nodes using C++."
-msgstr "**Goal:** Create and run service and client nodes using C++."
+msgstr "**目标:** 使用C++创建和运行服务和客户端节点。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:23 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:23
 msgid "When :doc:`nodes <../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes>` communicate using :doc:`services <../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services>`, the node that sends a request for data is called the client node, and the one that responds to the request is the service node. The structure of the request and response is determined by a ``.srv`` file."
-msgstr "When :doc:`nodes <../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes>` communicate using :doc:`services <../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services>`, the node that sends a request for data is called the client node, and the one that responds to the request is the service node. The structure of the request and response is determined by a ``.srv`` file."
+msgstr "当使用:doc:`services <../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services>`的方式进行通信时，发送请求数据的节点称为客户端节点，而响应请求的节点则是服务节点。请求和响应的结构由``.srv``文件确定。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:26 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:26
 msgid "The example used here is a simple integer addition system; one node requests the sum of two integers, and the other responds with the result."
-msgstr "The example used here is a simple integer addition system; one node requests the sum of two integers, and the other responds with the result."
+msgstr "这里使用的示例是一个简单的整数加法系统；一个节点请求两个整数的和，另一个节点返回结果。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:51
 msgid "Your terminal will return a message verifying the creation of your package ``cpp_srvcli`` and all its necessary files and folders."
-msgstr "Your terminal will return a message verifying the creation of your package ``cpp_srvcli`` and all its necessary files and folders."
+msgstr "您的终端将返回一个消息，验证您的包``cpp_srvcli``及其所有必要的文件和文件夹的创建。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:53
 msgid "The ``--dependencies`` argument will automatically add the necessary dependency lines to ``package.xml`` and ``CMakeLists.txt``. ``example_interfaces`` is the package that includes `the .srv file <https://github.com/ros2/example_interfaces/blob/humble/srv/AddTwoInts.srv>`__ you will need to structure your requests and responses:"
-msgstr "The ``--dependencies`` argument will automatically add the necessary dependency lines to ``package.xml`` and ``CMakeLists.txt``. ``example_interfaces`` is the package that includes `the .srv file <https://github.com/ros2/example_interfaces/blob/humble/srv/AddTwoInts.srv>`__ you will need to structure your requests and responses:"
+msgstr "``--dependencies``参数将自动向``package.xml``和``CMakeLists.txt``中添加必要的依赖项。``example_interfaces``是包含你需要构造请求和响应的`.srv文件 <https://github.com/ros2/example_interfaces/blob/humble/srv/AddTwoInts.srv>`__的包："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:63 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:62
 msgid "The first two lines are the parameters of the request, and below the dashes is the response."
-msgstr "The first two lines are the parameters of the request, and below the dashes is the response."
+msgstr "前两行是请求的参数，在破折号以下是响应。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:80 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:90
 msgid "2 Write the service node"
-msgstr "2 Write the service node"
+msgstr "2 编写服务节点"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:82
 msgid "Inside the ``ros2_ws/src/cpp_srvcli/src`` directory, create a new file called ``add_two_ints_server.cpp`` and paste the following code within:"
-msgstr "Inside the ``ros2_ws/src/cpp_srvcli/src`` directory, create a new file called ``add_two_ints_server.cpp`` and paste the following code within:"
+msgstr "在``ros2_ws/src/cpp_srvcli/src``目录中，创建一个名为``add_two_ints_server.cpp``的新文件，并粘贴以下代码："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:118
 msgid "The first two ``#include`` statements are your package dependencies."
-msgstr "The first two ``#include`` statements are your package dependencies."
+msgstr "前两个``#include``语句是你的包依赖项。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:120
 msgid "The ``add`` function adds two integers from the request and gives the sum to the response, while notifying the console of its status using logs."
-msgstr "The ``add`` function adds two integers from the request and gives the sum to the response, while notifying the console of its status using logs."
+msgstr "``add``函数从请求中添加两个整数，并将和发送到响应中，同时使用日志通知控制台其状态。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:133
 msgid "The ``main`` function accomplishes the following, line by line:"
-msgstr "The ``main`` function accomplishes the following, line by line:"
+msgstr "``main``函数逐行完成以下操作："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:135
 msgid "Initializes ROS 2 C++ client library:"
-msgstr "Initializes ROS 2 C++ client library:"
+msgstr "初始化ROS 2 C++客户端库："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:141
