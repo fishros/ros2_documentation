@@ -690,11 +690,11 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">main</span></code> 函数完全相同，只是现在它旋转 <code class="docutils literal notranslate"><span class="pre">MinimalSubscriber</span></code> 节点。对于发布者节点，旋转意味着启动计时器，而对于订阅者节点，它只是准备在消息到来时接收消息。</p>
-<p>Since this node has the same dependencies as the publisher node, there's nothing new to add to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.</p>
+<p>由于该节点与发布者节点具有相同的依赖关系，因此在``package.xml``中没有新内容可添加。</p>
 </div>
 <div class="section" id="id2">
 <h4>3.2 CMakeLists.txt<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>Reopen <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and add the executable and target for the subscriber node below the publisher's entries.</p>
+<p>重新打开``CMakeLists.txt``，在发布者的条目下面添加订阅者节点的可执行文件和目标。</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">listener</span><span class="w"> </span><span class="s">src/subscriber_member_function.cpp</span><span class="p">)</span>
 <span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">listener</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">std_msgs</span><span class="p">)</span>
 
@@ -704,13 +704,12 @@
 <span class="w">  </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Make sure to save the file, and then your pub/sub system should be ready.</p>
+<p>确保保存文件，然后您的发布/订阅系统就准备好了。</p>
 </div>
 </div>
 <div class="section" id="build-and-run">
 <span id="cpppubsub-build-and-run"></span><h3><a class="toc-backref" href="#id9">4 构建和运行</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
-<p>You likely already have the <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> and <code class="docutils literal notranslate"><span class="pre">std_msgs</span></code> packages installed as part of your ROS 2 system.
-It's good practice to run <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> in the root of your workspace (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>) to check for missing dependencies before building:</p>
+<p>很可能您已经在您的ROS 2系统中安装了``rclcpp``和``std_msgs``软件包。在构建之前，最好在您的工作空间根目录（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>）中运行``rosdep``来检查是否存在缺失的依赖项：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
 </pre></div>
@@ -718,7 +717,7 @@ It's good practice to run <code class="docutils literal notranslate"><span class
 </div><div aria-labelledby="tab-2-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>rosdep 只能在 Linux 上运行，所以您可以跳过下一步。</p>
 </div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>rosdep 只能在 Linux 上运行，所以您可以跳过下一步。</p>
 </div></div>
-<p>Still in the root of your workspace, <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, build your new package:</p>
+<p>仍然在您的工作空间根目录（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>）中，构建您的新软件包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select cpp_pubsub</span>
 </pre></div>
@@ -754,7 +753,7 @@ It's good practice to run <code class="docutils literal notranslate"><span class
 <span class="go">[INFO] [minimal_publisher]: Publishing: &quot;Hello World: 4&quot;</span>
 </pre></div>
 </div>
-<p>Open another terminal, source the setup files from inside <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> again, and then start the listener node:</p>
+<p>打开另一个终端，在``ros2_ws``内部再次source设置文件，然后启动监听节点：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run cpp_pubsub listener</span>
 </pre></div>
 </div>
@@ -766,7 +765,7 @@ It's good practice to run <code class="docutils literal notranslate"><span class
 <span class="go">[INFO] [minimal_subscriber]: I heard: &quot;Hello World: 14&quot;</span>
 </pre></div>
 </div>
-<p>Enter <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in each terminal to stop the nodes from spinning.</p>
+<p>在每个终端中输入``Ctrl+C``来停止节点的旋转。</p>
 </div>
 </div>
 <div class="section" id="summary">
