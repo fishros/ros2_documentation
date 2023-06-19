@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuring environment &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>配置环境 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="Using turtlesim, ros2, and rqt" href="Introducing-Turtlesim/Introducing-Turtlesim.html" />
-    <link rel="prev" title="Beginner: CLI tools" href="../Beginner-CLI-Tools.html" /> 
+    <link rel="prev" title="初学者：CLI 工具" href="../Beginner-CLI-Tools.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -108,8 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">教程</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../Beginner-CLI-Tools.html">Beginner: CLI tools</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Configuring environment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Beginner-CLI-Tools.html">初学者：CLI 工具</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">配置环境</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Introducing-Turtlesim/Introducing-Turtlesim.html">Using <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>, <code class="docutils literal notranslate"><span class="pre">ros2</span></code>, and <code class="docutils literal notranslate"><span class="pre">rqt</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">Understanding nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">Understanding topics</a></li>
@@ -360,8 +360,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
-          <li><a href="../Beginner-CLI-Tools.html">Beginner: CLI tools</a> &raquo;</li>
-      <li>Configuring environment</li>
+          <li><a href="../Beginner-CLI-Tools.html">初学者：CLI 工具</a> &raquo;</li>
+      <li>配置环境</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,9 +374,9 @@
 
 
   <div class="section" id="configuring-environment">
-<span id="configros2"></span><h1>Configuring environment<a class="headerlink" href="#configuring-environment" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> This tutorial will show you how to prepare your ROS 2 environment.</p>
-<p><strong>Tutorial level:</strong> Beginner</p>
+<span id="configros2"></span><h1>配置环境<a class="headerlink" href="#configuring-environment" title="永久链接至标题"></a></h1>
+<p><strong>目标:</strong> 本教程将向您展示如何准备您的ROS 2环境。</p>
+<p><strong>教程级别:</strong> 初学者</p>
 <p><strong>时间：</strong> 5分钟</p>
 <div class="contents local topic" id="contents">
 <p class="topic-title">内容</p>
@@ -396,23 +396,14 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>ROS 2 relies on the notion of combining workspaces using the shell environment.
-&quot;Workspace&quot; is a ROS term for the location on your system where you're developing with ROS 2.
-The core ROS 2 workspace is called the underlay.
-Subsequent local workspaces are called overlays.
-When developing with ROS 2, you will typically have several workspaces active concurrently.</p>
-<p>Combining workspaces makes developing against different versions of ROS 2, or against different sets of packages, easier.
-It also allows the installation of several ROS 2 distributions (or “distros”, e.g. Dashing and Eloquent) on the same computer and switching between them.</p>
-<p>This is accomplished by sourcing setup files every time you open a new shell, or by adding the source command to your shell startup script once.
-Without sourcing the setup files, you won't be able to access ROS 2 commands, or find or use ROS 2 packages.
-In other words, you won't be able to use ROS 2.</p>
+<p>ROS 2依赖于使用Shell环境组合工作空间的概念。&quot;工作空间&quot;是ROS中用于开发ROS 2的位置。核心ROS 2工作空间称为underlay。随后的本地工作空间称为overlays。在使用ROS 2进行开发时，通常会同时激活多个工作空间。</p>
+<p>合并工作空间使得针对不同版本的ROS 2或不同包集进行开发更加容易。它还允许在同一台计算机上安装多个ROS 2发行版（或“distros”，如Dashing和Eloquent），并在它们之间进行切换。</p>
+<p>这可以通过在每次打开新的Shell时源化设置文件，或者将source命令添加到Shell启动脚本中来实现。如果不源化设置文件，您将无法访问ROS 2命令，也无法找到或使用ROS 2包。换句话说，您将无法使用ROS 2。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>Before starting these tutorials, install ROS 2 by following the instructions on the ROS 2 <a class="reference internal" href="../../Installation.html"><span class="doc">安装</span></a> page.</p>
-<p>The commands used in this tutorial assume you followed the binary packages installation guide for your operating system (Debian packages for Linux).
-You can still follow along if you built from source, but the path to your setup files will likely be different.
-You also won't be able to use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ros-&lt;distro&gt;-&lt;package&gt;</span></code> command (used frequently in the beginner level tutorials) if you install from source.</p>
+<p>在开始这些教程之前，请按照ROS 2 :doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>../../Installation`页面上的说明安装ROS 2。</p>
+<p>本教程中使用的命令假设您按照操作系统的二进制包安装指南进行操作（Linux的Debian包）。如果您从源代码构建，仍然可以按照本教程进行操作，但是您的设置文件路径可能会不同。如果您从源代码安装，您还将无法使用“sudo apt install ros-&lt;distro&gt;-&lt;package&gt;”命令（在初学者级别教程中经常使用）。</p>
 <p>If you are using Linux or macOS, but are not already familiar with the shell, <a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/">this tutorial</a> will help.</p>
 </div>
 <div class="section" id="tasks">
@@ -568,7 +559,7 @@ This can be done in two ways: either sourcing the setup files in every new shell
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Beginner-CLI-Tools.html" class="btn btn-neutral float-left" title="Beginner: CLI tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Beginner-CLI-Tools.html" class="btn btn-neutral float-left" title="初学者：CLI 工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Introducing-Turtlesim/Introducing-Turtlesim.html" class="btn btn-neutral float-right" title="Using turtlesim, ros2, and rqt" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
