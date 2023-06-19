@@ -381,8 +381,8 @@
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p>
 <ul>
-<li><p><a class="reference internal" href="#install-colcon" id="id3">Install colcon</a></p></li>
-<li><p><a class="reference internal" href="#install-ros-2" id="id4">Install ROS 2</a></p></li>
+<li><p><a class="reference internal" href="#install-colcon" id="id3">安装 colcon</a></p></li>
+<li><p><a class="reference internal" href="#install-ros-2" id="id4">安装 ROS 2</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#basics" id="id5">基础知识</a></p>
@@ -402,21 +402,19 @@
 <li><p><a class="reference internal" href="#tips" id="id16">Tips</a></p></li>
 </ul>
 </div>
-<p><strong>Goal:</strong> Build a ROS 2 workspace with <code class="docutils literal notranslate"><span class="pre">colcon</span></code>.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>使用``colcon``构建一个ROS 2工作空间。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟</p>
-<p>This is a brief tutorial on how to create and build a ROS 2 workspace with <code class="docutils literal notranslate"><span class="pre">colcon</span></code>.
-It is a practical tutorial and not designed to replace the core documentation.</p>
+<p>这是一个简要教程，介绍如何使用``colcon``创建和构建ROS 2工作空间。它是一个实用教程，不旨在取代核心文档。</p>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">colcon</span></code> is an iteration on the ROS build tools <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_tools</span></code> and <code class="docutils literal notranslate"><span class="pre">ament_tools</span></code>.
-For more information on the design of colcon see <a class="reference external" href="https://design.ros2.org/articles/build_tool.html">this document</a>.</p>
-<p>The source code can be found in the <a class="reference external" href="https://github.com/colcon">colcon GitHub organization</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">colcon``是对ROS构建工具``catkin_make</span></code>、<code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>catkin_tools``和``ament_tools``的改进。有关colcon设计的更多信息，请参阅`此文档 &lt;<a class="reference external" href="https://design.ros2.org/articles/build_tool.html">https://design.ros2.org/articles/build_tool.html</a>&gt;`__。</p>
+<p>源代码可以在`colcon GitHub组织 &lt;<a class="reference external" href="https://github.com/colcon">https://github.com/colcon</a>&gt;`__中找到。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <div class="section" id="install-colcon">
-<h3><a class="toc-backref" href="#id3">Install colcon</a><a class="headerlink" href="#install-colcon" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id3">安装 colcon</a><a class="headerlink" href="#install-colcon" title="永久链接至标题"></a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install python3-colcon-common-extensions
 </pre></div>
@@ -430,23 +428,19 @@ For more information on the design of colcon see <a class="reference external" h
 </div></div>
 </div>
 <div class="section" id="install-ros-2">
-<h3><a class="toc-backref" href="#id4">Install ROS 2</a><a class="headerlink" href="#install-ros-2" title="永久链接至标题"></a></h3>
-<p>To build the samples, you will need to install ROS 2.</p>
-<p>Follow the <a class="reference internal" href="../../Installation.html"><span class="doc">installation instructions</span></a>.</p>
+<h3><a class="toc-backref" href="#id4">安装 ROS 2</a><a class="headerlink" href="#install-ros-2" title="永久链接至标题"></a></h3>
+<p>要构建示例，您需要安装 ROS 2。</p>
+<p>请按照 <a class="reference internal" href="../../Installation.html"><span class="doc">安装说明</span></a> 进行操作。</p>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
-<p>If installing from Debian packages, this tutorial requires the <a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html#linux-install-debians-install-ros-2-packages"><span class="std std-ref">desktop installation</span></a>.</p>
+<p>如果从Debian软件包安装，请参考 <a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html#linux-install-debians-install-ros-2-packages"><span class="std std-ref">桌面安装</span></a> 进行教程。</p>
 </div>
 </div>
 </div>
 <div class="section" id="basics">
 <h2><a class="toc-backref" href="#id5">基础知识</a><a class="headerlink" href="#basics" title="永久链接至标题"></a></h2>
-<p>A ROS workspace is a directory with a particular structure.
-Commonly there is a <code class="docutils literal notranslate"><span class="pre">src</span></code> subdirectory.
-Inside that subdirectory is where the source code of ROS packages will be located.
-Typically the directory starts otherwise empty.</p>
-<p>colcon does out of source builds.
-By default it will create the following directories as peers of the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory:</p>
+<p>ROS工作空间是一个具有特定结构的目录。通常有一个 <code class="docutils literal notranslate"><span class="pre">src</span></code> 子目录。在该子目录下是ROS软件包的源代码所在位置。通常该目录开始时为空。</p>
+<p>colcon进行外部构建。默认情况下，它会创建以下目录作为 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录的同级目录：</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">build</span></code> directory will be where intermediate files are stored.
 For each package a subfolder will be created in which e.g. CMake is being invoked.</p></li>
