@@ -561,10 +561,10 @@
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you can skip ahead to next step.</p>
-</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you can skip ahead to next step.</p>
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>rosdep 只能在 Linux 上运行，所以您可以跳过下一步。</p>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>rosdep 只能在 Linux 上运行，所以您可以跳过下一步。</p>
 </div></div>
-<p>Navigate back to the root of your workspace, <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, and build your new package:</p>
+<p>返回到您的工作空间的根目录 <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>，并构建您的新包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select cpp_parameters</span>
 </pre></div>
@@ -576,7 +576,7 @@
 </pre></div>
 </div>
 </div></div>
-<p>Open a new terminal, navigate to <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, and source the setup files:</p>
+<p>打开一个新的终端，导航到 <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>，并加载设置文件：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/setup.bash</span>
 </pre></div>
@@ -592,33 +592,30 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run cpp_parameters minimal_param_node</span>
 </pre></div>
 </div>
-<p>The terminal should return the following message every second:</p>
+<p>终端应该每秒返回以下消息：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [minimal_param_node]: Hello world!</span>
 </pre></div>
 </div>
-<p>Now you can see the default value of your parameter, but you want to be able to set it yourself.
-There are two ways to accomplish this.</p>
+<p>现在您可以看到参数的默认值，但您希望能够自己设置它。有两种方法可以实现这一点。</p>
 <div class="section" id="change-via-the-console">
-<h4>3.1 Change via the console<a class="headerlink" href="#change-via-the-console" title="永久链接至标题"></a></h4>
-<p>This part will use the knowledge you have gained from the <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">tutorial about parameters</span></a> and apply it to the node you have just created.</p>
-<p>Make sure the node is running:</p>
+<h4>3.1 通过控制台进行更改<a class="headerlink" href="#change-via-the-console" title="永久链接至标题"></a></h4>
+<p>本部分将使用您从 <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">参数教程</span></a> 中获得的知识，并将其应用到您刚刚创建的节点上。</p>
+<p>确保节点正在运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run cpp_parameters minimal_param_node</span>
 </pre></div>
 </div>
-<p>Open another terminal, source the setup files from inside <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> again, and enter the following line:</p>
+<p>在另一个终端中打开，再次从``ros2_ws``目录中加载设置文件，然后输入以下命令行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param list</span>
 </pre></div>
 </div>
-<p>There you will see the custom parameter <code class="docutils literal notranslate"><span class="pre">my_parameter</span></code>.
-To change it, simply run the following line in the console:</p>
+<p>在那里，您将看到自定义参数``my_parameter``。要进行更改，只需在控制台中运行以下命令行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set /minimal_param_node my_parameter earth</span>
 </pre></div>
 </div>
-<p>You know it went well if you got the output <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">parameter</span> <span class="pre">successful</span></code>.
-If you look at the other terminal, you should see the output change to <code class="docutils literal notranslate"><span class="pre">[INFO]</span> <span class="pre">[minimal_param_node]:</span> <span class="pre">Hello</span> <span class="pre">earth!</span></code></p>
+<p>如果您看到输出``Set parameter successful``，则表示更改成功。如果您查看另一个终端，您应该看到输出更改为``[INFO] [minimal_param_node]: Hello earth!``</p>
 </div>
 <div class="section" id="change-via-a-launch-file">
-<h4>3.2 Change via a launch file<a class="headerlink" href="#change-via-a-launch-file" title="永久链接至标题"></a></h4>
+<h4>3.2 通过启动文件进行更改<a class="headerlink" href="#change-via-a-launch-file" title="永久链接至标题"></a></h4>
 <p>You can also set the parameter in a launch file, but first you will need to add the launch directory.
 Inside the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/cpp_parameters/</span></code> directory, create a new directory called <code class="docutils literal notranslate"><span class="pre">launch</span></code>.
 In there, create a new file called <code class="docutils literal notranslate"><span class="pre">cpp_parameters_launch.py</span></code></p>
@@ -682,7 +679,7 @@ Below the lines you added earlier, add the following lines of code.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch cpp_parameters cpp_parameters_launch.py</span>
 </pre></div>
 </div>
-<p>The terminal should return the following message every second:</p>
+<p>终端应该每秒返回以下消息：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [custom_minimal_param_node]: Hello earth!</span>
 </pre></div>
 </div>
