@@ -9967,42 +9967,42 @@ msgstr "如果您查看 ``Producer`` 结构体中的“生产者”节点实现�
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:131
 msgid "The \"consumer\" node is a bit simpler, you can see its implementation in the ``Consumer`` struct, as it only subscribes to the \"number\" topic and prints the address and value of the message it receives."
-msgstr "The \"consumer\" node is a bit simpler, you can see its implementation in the ``Consumer`` struct, as it only subscribes to the \"number\" topic and prints the address and value of the message it receives."
+msgstr "``consumer``节点相对简单，可以在``Consumer``结构体中看到其实现，它只订阅\"number\"主题，并打印出接收到的消息的地址和值。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:133
 msgid "The expectation is that the producer will print out an address and value and the consumer will print out a matching address and value. This demonstrates that intra process communication is indeed working and unnecessary copies are avoided, at least for simple graphs."
-msgstr "The expectation is that the producer will print out an address and value and the consumer will print out a matching address and value. This demonstrates that intra process communication is indeed working and unnecessary copies are avoided, at least for simple graphs."
+msgstr "预期结果是生产者将打印出地址和值，而消费者将打印出匹配的地址和值。这证明了进程内通信确实起作用，并且至少对于简单的图形，避免了不必要的复制。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:136
 msgid "Let's run the demo by executing ``ros2 run intra_process_demo two_node_pipeline`` executable (don't forget to source the setup file first):"
-msgstr "Let's run the demo by executing ``ros2 run intra_process_demo two_node_pipeline`` executable (don't forget to source the setup file first):"
+msgstr "让我们通过执行``ros2 run intra_process_demo two_node_pipeline``可执行文件来运行演示（不要忘记先执行设置文件）："
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:154
 msgid "One thing you'll notice is that the messages tick along at about one per second. This is because we told the timer to fire at about once per second."
-msgstr "One thing you'll notice is that the messages tick along at about one per second. This is because we told the timer to fire at about once per second."
+msgstr "你会注意到一件事，消息大约每秒钟传递一次。这是因为我们告诉定时器大约每秒触发一次。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:157
 msgid "Also you may have noticed that the first message (with value ``0``) does not have a corresponding \"Received message ...\" line. This is because publish/subscribe is \"best effort\" and we do not have any \"latching\" like behavior enabled. This means that if the publisher publishes a message before the subscription has been established, the subscription will not receive that message. This race condition can result in the first few messages being lost. In this case, since they only come once per second, usually only the first message is lost."
-msgstr "Also you may have noticed that the first message (with value ``0``) does not have a corresponding \"Received message ...\" line. This is because publish/subscribe is \"best effort\" and we do not have any \"latching\" like behavior enabled. This means that if the publisher publishes a message before the subscription has been established, the subscription will not receive that message. This race condition can result in the first few messages being lost. In this case, since they only come once per second, usually only the first message is lost."
+msgstr "你可能已经注意到第一条消息（值为``0``）没有对应的\"Received message ...\"行。这是因为发布/订阅是\"尽力而为\"的，我们没有启用任何\"锁存\"行为。这意味着如果发布者在建立订阅之前发布一条消息，订阅将不会接收到该消息。这种竞争条件可能导致前几条消息丢失。在这种情况下，由于它们每秒只出现一次，通常只会丢失第一条消息。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:163
 msgid "Finally, you can see that \"Published message...\" and \"Received message ...\" lines with the same value also have the same address. This shows that the address of the message being received is the same as the one that was published and that it is not a copy. This is because we're publishing and subscribing with ``std::unique_ptr``\\ s which allow ownership of a message to be moved around the system safely. You can also publish and subscribe with ``const &`` and ``std::shared_ptr``, but zero-copy will not occur in that case."
-msgstr "Finally, you can see that \"Published message...\" and \"Received message ...\" lines with the same value also have the same address. This shows that the address of the message being received is the same as the one that was published and that it is not a copy. This is because we're publishing and subscribing with ``std::unique_ptr``\\ s which allow ownership of a message to be moved around the system safely. You can also publish and subscribe with ``const &`` and ``std::shared_ptr``, but zero-copy will not occur in that case."
+msgstr "最后，你可以看到具有相同值的\"Published message...\"和\"Received message ...\"行也具有相同的地址。这表明接收到的消息的地址与发布的消息相同，并且它不是一个副本。这是因为我们使用``std::unique_ptr``进行发布和订阅，它允许消息的所有权在系统中安全地移动。你也可以使用``const &``和``std::shared_ptr``进行发布和订阅，但在这种情况下不会进行零拷贝。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:169
 msgid "The cyclic pipeline demo"
-msgstr "The cyclic pipeline demo"
+msgstr "循环管道示例"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:171
 msgid "This demo is similar to the previous one, but instead of the producer creating a new message for each iteration, this demo only ever uses one message instance. This is achieved by creating a cycle in the graph and \"kicking off\" communication by externally making one of the nodes publish before spinning the executor:"
-msgstr "This demo is similar to the previous one, but instead of the producer creating a new message for each iteration, this demo only ever uses one message instance. This is achieved by creating a cycle in the graph and \"kicking off\" communication by externally making one of the nodes publish before spinning the executor:"
+msgstr "这个示例与之前的示例类似，但是不同的是，生产者在每次迭代中不会创建新的消息，而是始终使用同一个消息实例。通过在图中创建一个循环，并在旋转执行器之前通过外部方式使其中一个节点发布消息，可以实现这一点："
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:174
