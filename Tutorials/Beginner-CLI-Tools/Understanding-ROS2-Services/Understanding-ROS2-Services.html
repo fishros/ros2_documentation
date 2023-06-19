@@ -384,7 +384,7 @@
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id3">任务</a></p>
 <ul>
-<li><p><a class="reference internal" href="#setup" id="id4">1 Setup</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id4">1 设置</a></p></li>
 <li><p><a class="reference internal" href="#ros2-service-list" id="id5">2 ros2 service list</a></p></li>
 <li><p><a class="reference internal" href="#ros2-service-type" id="id6">3 ros2 service type</a></p></li>
 <li><p><a class="reference internal" href="#ros2-service-find" id="id7">4 ros2 service find</a></p></li>
@@ -409,18 +409,18 @@ While topics allow nodes to subscribe to data streams and get continual updates,
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>Some concepts mentioned in this tutorial, like <a class="reference internal" href="../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">Nodes</span></a> and <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">Topics</span></a>, were covered in previous tutorials in the series.</p>
 <p>You will need the <a class="reference internal" href="../Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim package</span></a>.</p>
-<p>As always, don't forget to source ROS 2 in <a class="reference internal" href="../Configuring-ROS2-Environment.html"><span class="doc">every new terminal you open</span></a>.</p>
+<p>像往常一样，在:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>每个新开的终端中 &lt;../Configuring-ROS2-Environment&gt;`都不要忘记加载ROS 2。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="setup">
-<h3><a class="toc-backref" href="#id4">1 Setup</a><a class="headerlink" href="#setup" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id4">1 设置</a><a class="headerlink" href="#setup" title="永久链接至标题"></a></h3>
 <p>Start up the two turtlesim nodes, <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> and <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code>.</p>
 <p>打开一个新的终端并运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
 </pre></div>
 </div>
-<p>Open another terminal and run:</p>
+<p>打开另一个终端并运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
 </pre></div>
 </div>
@@ -480,7 +480,7 @@ In a new terminal, enter the command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service list -t</span>
 </pre></div>
 </div>
-<p>Which will return:</p>
+<p>将返回：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/clear [std_srvs/srv/Empty]</span>
 <span class="go">/kill [turtlesim/srv/Kill]</span>
 <span class="go">/reset [std_srvs/srv/Empty]</span>
@@ -504,7 +504,7 @@ In a new terminal, enter the command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 service find std_srvs/srv/Empty</span>
 </pre></div>
 </div>
-<p>Which will return:</p>
+<p>将返回：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/clear</span>
 <span class="go">/reset</span>
 </pre></div>
@@ -520,7 +520,7 @@ In a new terminal, enter the command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 interface show std_srvs/srv/Empty</span>
 </pre></div>
 </div>
-<p>Which will return:</p>
+<p>将返回：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">---</span>
 </pre></div>
 </div>
@@ -533,7 +533,7 @@ From the results of <code class="docutils literal notranslate"><span class="pre"
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 interface show turtlesim/srv/Spawn</span>
 </pre></div>
 </div>
-<p>Which will return:</p>
+<p>将返回：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">float32 x</span>
 <span class="go">float32 y</span>
 <span class="go">float32 theta</span>
