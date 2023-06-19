@@ -562,18 +562,15 @@
 <div class="section" id="id1">
 <h4>3.1 检查代码<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
 <p>客户端唯一不同的``import``语句是``import sys``。客户端节点代码使用`sys.argv &lt;<a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.argv">https://docs.python.org/3/library/sys.html#sys.argv</a>&gt;`__ 来获取请求的命令行输入参数访问权限。</p>
-<p>The constructor definition creates a client with the same type and name as the service node.
-The type and name must match for the client and service to be able to communicate.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop in the constructor checks if a service matching the type and name of the client is available once a second.</p>
-<p>Below the constructor is the request definition, followed by <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
-<p>The only significant difference in the client's <code class="docutils literal notranslate"><span class="pre">main</span></code> is the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.
-The loop checks the <code class="docutils literal notranslate"><span class="pre">future</span></code> to see if there is a response from the service, as long as the system is running.
-If the service has sent a response, the result will be written in a log message.</p>
+<p>构造函数定义创建一个与服务节点相同类型和名称的客户端。客户端和服务必须具有匹配的类型和名称才能进行通信。</p>
+<p>构造函数中的``while``循环每秒检查是否有与客户端类型和名称匹配的服务可用。</p>
+<p>构造函数下方是请求定义，然后是``main``函数。</p>
+<p>客户端的``main``函数中唯一重要的区别是``while``循环。循环检查``future``以查看服务是否有响应，只要系统正在运行。如果服务发送了响应，结果将写入日志消息中。</p>
 </div>
 <div class="section" id="id2">
 <h4>3.2 添加一个入口点<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>Like the service node, you also have to add an entry point to be able to run the client node.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> field of your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file should look like this:</p>
+<p>像服务节点一样，您还必须添加一个入口点才能运行客户端节点。</p>
+<p>您的``setup.py``文件的``entry_points``字段应该如下所示：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s1">&#39;service = py_srvcli.service_member_function:main&#39;</span><span class="p">,</span>
@@ -614,9 +611,8 @@ If the service has sent a response, the result will be written in a log message.
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run py_srvcli service</span>
 </pre></div>
 </div>
-<p>The node will wait for the client's request.</p>
-<p>Open another terminal and source the setup files from inside <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> again.
-Start the client node, followed by any two integers separated by a space:</p>
+<p>节点将等待客户端的请求。</p>
+<p>打开另一个终端，并再次从``ros2_ws``内部源化设置文件。启动客户端节点，然后输入由一个空格分隔的两个整数：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run py_srvcli client 2 3</span>
 </pre></div>
 </div>
