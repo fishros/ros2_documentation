@@ -550,9 +550,8 @@
 <p>在这一步中，您可以使用之前教程中创建的软件包。对节点、<a href="#id1"><span class="problematic" id="id2">``</span></a>CMakeLists.txt``和``package.xml``文件进行一些简单的修改，即可使用您的新接口。</p>
 <div class="section" id="testing-num-msg-with-pub-sub">
 <h4>7.1 使用发布/订阅测<a class="headerlink" href="#testing-num-msg-with-pub-sub" title="永久链接至标题"></a></h4>
-<p>With a few modifications to the publisher/subscriber package created in a previous tutorial (<a class="reference internal" href="Writing-A-Simple-Cpp-Publisher-And-Subscriber.html"><span class="doc">C++</span></a> or <a class="reference internal" href="Writing-A-Simple-Py-Publisher-And-Subscriber.html"><span class="doc">Python</span></a>), you can see <code class="docutils literal notranslate"><span class="pre">Num.msg</span></code> in action.
-Since you'll be changing the standard string msg to a numerical one, the output will be slightly different.</p>
-<p><strong>Publisher</strong></p>
+<p>在之前的教程（<span class="xref std std-doc">C++</span>）中创建的发布者/订阅者包稍作修改，你就可以看到 <code class="docutils literal notranslate"><span class="pre">Num.msg</span></code> 的作用。由于你将把标准字符串消息更改为数值消息，输出结果将稍有不同。</p>
+<p><strong>发布者</strong></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-2-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
@@ -634,7 +633,7 @@ Since you'll be changing the standard string msg to a numerical one, the output 
 </pre></div>
 </div>
 </div></div>
-<p><strong>Subscriber</strong></p>
+<p><strong>订阅者</strong></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-3-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel group-tab" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
@@ -709,7 +708,7 @@ Since you'll be changing the standard string msg to a numerical one, the output 
 </div>
 </div></div>
 <p><strong>CMakeLists.txt</strong></p>
-<p>Add the following lines (C++ only):</p>
+<p>添加以下行（仅限C++）：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">#...</span>
 
 <span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
@@ -731,7 +730,7 @@ Since you'll be changing the standard string msg to a numerical one, the output 
 </pre></div>
 </div>
 <p><strong>package.xml</strong></p>
-<p>Add the following line:</p>
+<p>添加以下行：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-4-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel group-tab" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">depend</span><span class="o">&gt;</span><span class="n">tutorial_interfaces</span><span class="o">&lt;/</span><span class="n">depend</span><span class="o">&gt;</span><span class="w"></span>
 </pre></div>
@@ -740,7 +739,7 @@ Since you'll be changing the standard string msg to a numerical one, the output 
 </pre></div>
 </div>
 </div></div>
-<p>After making the above edits and saving all the changes, build the package:</p>
+<p>在进行上述编辑并保存所有更改后，构建包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-5-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel group-tab" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>On Linux/macOS:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select cpp_pubsub</span>
@@ -953,7 +952,7 @@ Since you'll be changing the original two integer request srv to a three integer
 </div>
 </div></div>
 <p><strong>CMakeLists.txt</strong></p>
-<p>Add the following lines (C++ only):</p>
+<p>添加以下行（仅限C++）：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">#...</span>
 
 <span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
@@ -977,7 +976,7 @@ Since you'll be changing the original two integer request srv to a three integer
 </pre></div>
 </div>
 <p><strong>package.xml</strong></p>
-<p>Add the following line:</p>
+<p>添加以下行：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-9-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-9-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-9-Qysr" class="sphinx-tabs-panel group-tab" id="panel-9-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">depend</span><span class="o">&gt;</span><span class="n">tutorial_interfaces</span><span class="o">&lt;/</span><span class="n">depend</span><span class="o">&gt;</span><span class="w"></span>
 </pre></div>
@@ -986,7 +985,7 @@ Since you'll be changing the original two integer request srv to a three integer
 </pre></div>
 </div>
 </div></div>
-<p>After making the above edits and saving all the changes, build the package:</p>
+<p>在进行上述编辑并保存所有更改后，构建包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-10-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-10-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-10-Qysr" class="sphinx-tabs-panel group-tab" id="panel-10-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>On Linux/macOS:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select cpp_srvcli</span>
