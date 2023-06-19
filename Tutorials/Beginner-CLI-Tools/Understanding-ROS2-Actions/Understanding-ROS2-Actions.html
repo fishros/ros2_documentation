@@ -390,7 +390,7 @@
 <li><p><a class="reference internal" href="#ros2-action-list" id="id7">4 ros2 action list</a></p></li>
 <li><p><a class="reference internal" href="#ros2-action-info" id="id8">5 ros2 action info</a></p></li>
 <li><p><a class="reference internal" href="#ros2-interface-show" id="id9">6 ros2 interface show</a></p></li>
-<li><p><a class="reference internal" href="#ros2-action-send-goal" id="id10">7 ros2 action send_goal</a></p></li>
+<li><p><a class="reference internal" href="#ros2-action-send-goal" id="id10">7. 使用 ros2 action send_goal</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id11">摘要</a></p></li>
@@ -554,14 +554,12 @@
 <span class="go">    /turtlesim</span>
 </pre></div>
 </div>
-<p>This tells us what we learned earlier from running <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">info</span></code> on each node:
-The <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> node has an action client and the <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node has an action server for the <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code> action.</p>
+<p>这告诉我们之前在每个节点上运行``ros2 node info``时学到的内容：<code class="docutils literal notranslate"><span class="pre">/teleop_turtle``节点具有一个动作客户端，而</span></code>/turtlesim``节点具有一个``/turtle1/rotate_absolute``动作的动作服务器。</p>
 </div>
 <div class="section" id="ros2-interface-show">
 <h3><a class="toc-backref" href="#id9">6 ros2 interface show</a><a class="headerlink" href="#ros2-interface-show" title="永久链接至标题"></a></h3>
-<p>One more piece of information you will need before sending or executing an action goal yourself is the structure of the action type.</p>
-<p>Recall that you identified <code class="docutils literal notranslate"><span class="pre">/turtle1/rotate_absolute</span></code>'s type when running the command <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">action</span> <span class="pre">list</span> <span class="pre">-t</span></code>.
-Enter the following command with the action type in your terminal:</p>
+<p>在发送或执行动作目标之前，您还需要了解动作类型的结构。</p>
+<p>回想一下，在运行命令``ros2 action list -t``时，您识别了``/turtle1/rotate_absolute``的类型。在终端中输入以下带有动作类型的命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 interface show turtlesim/action/RotateAbsolute</span>
 </pre></div>
 </div>
@@ -576,17 +574,15 @@ Enter the following command with the action type in your terminal:</p>
 <span class="go">float32 remaining</span>
 </pre></div>
 </div>
-<p>The section of this message above the first <code class="docutils literal notranslate"><span class="pre">---</span></code> is the structure (data type and name) of the goal request.
-The next section is the structure of the result.
-The last section is the structure of the feedback.</p>
+<p>在第一个 <code class="docutils literal notranslate"><span class="pre">---</span></code> 之上的部分是目标请求的结构（数据类型和名称）。接下来的部分是结果的结构。最后一部分是反馈的结构。</p>
 </div>
 <div class="section" id="ros2-action-send-goal">
-<h3><a class="toc-backref" href="#id10">7 ros2 action send_goal</a><a class="headerlink" href="#ros2-action-send-goal" title="永久链接至标题"></a></h3>
-<p>Now let's send an action goal from the command line with the following syntax:</p>
+<h3><a class="toc-backref" href="#id10">7. 使用 ros2 action send_goal</a><a class="headerlink" href="#ros2-action-send-goal" title="永久链接至标题"></a></h3>
+<p>现在让我们通过命令行发送一个动作目标，使用以下语法：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action send_goal &lt;action_name&gt; &lt;action_type&gt; &lt;values&gt;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;values&gt;</span></code> need to be in YAML format.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;values&gt;</span></code> 需要以 YAML 格式提供。</p>
 <p>Keep an eye on the turtlesim window, and enter the following command into your terminal:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute &quot;{theta: 1.57}&quot;</span>
 </pre></div>
