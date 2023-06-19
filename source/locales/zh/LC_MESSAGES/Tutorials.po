@@ -10287,52 +10287,52 @@ msgstr "日志记录器级别配置：编程方式"
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:227
 msgid "After 10 iterations the level of the logger will be set to ``DEBUG``, which will cause additional messages to be logged."
-msgstr "After 10 iterations the level of the logger will be set to ``DEBUG``, which will cause additional messages to be logged."
+msgstr "经过10次迭代，日志记录器的级别将被设置为``DEBUG``，这将导致额外的消息被记录。"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:229
 msgid "Some of these debug messages cause additional functions/expressions to be evaluated, which were previously skipped as ``DEBUG`` log calls were not enabled. See `the source code <https://github.com/ros2/demos/blob/humble/logging_demo/src/logger_usage_component.cpp>`__ of the demo for further explanation of the calls used, and see the rclcpp logging documentation for a full list of supported logging calls."
-msgstr "Some of these debug messages cause additional functions/expressions to be evaluated, which were previously skipped as ``DEBUG`` log calls were not enabled. See `the source code <https://github.com/ros2/demos/blob/humble/logging_demo/src/logger_usage_component.cpp>`__ of the demo for further explanation of the calls used, and see the rclcpp logging documentation for a full list of supported logging calls."
+msgstr "其中一些调试消息会导致评估额外的函数/表达式，这些函数/表达式在未启用``DEBUG``日志调用时以前被跳过。有关使用的调用的进一步解释，请参阅演示的`源代码 <https://github.com/ros2/demos/blob/humble/logging_demo/src/logger_usage_component.cpp>`__，并参阅 rclcpp 日志记录文档以获得支持的日志记录调用的完整列表。"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:233
 msgid "Logger level configuration: externally"
-msgstr "Logger level configuration: externally"
+msgstr "日志记录器级别配置：外部"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:235
 msgid "In the future there will be a generalized approach to external configuration of loggers at runtime (similar to how `rqt_logger_level <https://wiki.ros.org/rqt_logger_level>`__ in ROS 1 allows logger configuration via remote procedural calls). **This concept is not yet officially supported in ROS 2.** In the meantime, this demo provides an **example** service that can be called externally to request configuration of logger levels for known names of loggers in the process."
-msgstr "In the future there will be a generalized approach to external configuration of loggers at runtime (similar to how `rqt_logger_level <https://wiki.ros.org/rqt_logger_level>`__ in ROS 1 allows logger configuration via remote procedural calls). **This concept is not yet officially supported in ROS 2.** In the meantime, this demo provides an **example** service that can be called externally to request configuration of logger levels for known names of loggers in the process."
+msgstr "将来将会有一种通用方法来在运行时外部配置日志记录器（类似于 ROS 1 中通过远程过程调用允许日志记录器配置的方式，如 `rqt_logger_level <https://wiki.ros.org/rqt_logger_level>`__）。**目前，ROS 2 尚未正式支持这个概念。**与此同时，此演示提供了一个**示例**服务，可用于外部调用以请求配置进程中已知日志记录器的级别。"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:239
 msgid "The demo previously started is already running this example service. To set the level of the demo's logger back to ``INFO``\\ , call the service with:"
-msgstr "The demo previously started is already running this example service. To set the level of the demo's logger back to ``INFO``\\ , call the service with:"
+msgstr "之前启动的演示已经在运行这个示例服务。要将演示的日志记录器级别设置回``INFO``，请使用以下命令调用该服务："
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:246
 msgid "This service call will work on any logger that is running in the process provided that you know its name. This includes the loggers in the ROS 2 core, such as ``rcl`` (the common client library package). To enable debug logging for ``rcl``, call:"
-msgstr "This service call will work on any logger that is running in the process provided that you know its name. This includes the loggers in the ROS 2 core, such as ``rcl`` (the common client library package). To enable debug logging for ``rcl``, call:"
+msgstr "只要您知道日志记录器的名称，此服务调用将适用于正在运行的任何日志记录器，包括ROS 2核心中的日志记录器，如``rcl``（常见的客户端库包）。要为``rcl``启用调试日志记录，请执行以下命令："
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:254
 msgid "You should see debug output from ``rcl`` start to show."
-msgstr "You should see debug output from ``rcl`` start to show."
+msgstr "您应该会看到``rcl``的调试输出开始显示。"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:257
 msgid "Using the logger config component"
-msgstr "Using the logger config component"
+msgstr "使用日志记录器配置组件"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:259
 msgid "The server that responds to the logger configuration requests has been developed as a component so that it may be added to an existing composition-based system. For example, if you are using `a container to run your nodes <../Intermediate/Composition>`, to be able to configure your loggers you only need to request that it additionally load the ``logging_demo::LoggerConfig`` component into the container."
-msgstr "The server that responds to the logger configuration requests has been developed as a component so that it may be added to an existing composition-based system. For example, if you are using `a container to run your nodes <../Intermediate/Composition>`, to be able to configure your loggers you only need to request that it additionally load the ``logging_demo::LoggerConfig`` component into the container."
+msgstr "响应记录器配置请求的服务器已被开发为一个组件，以便可以将其添加到现有的基于组合的系统中。例如，如果您正在使用`容器运行您的节点<../Intermediate/Composition>`，为了能够配置您的记录器，您只需要请求将``logging_demo::LoggerConfig``组件额外加载到容器中。"
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:262
 msgid "As an example, if you want to debug the ``composition::Talker`` demo, you can start the talker as normal with:"
-msgstr "As an example, if you want to debug the ``composition::Talker`` demo, you can start the talker as normal with:"
+msgstr "例如，如果您想调试``composition::Talker``演示程序，您可以正常启动Talker，如下所示："
 
 
 #: ../../source/Tutorials/Demos/Logging-and-logger-configuration.rst:264
