@@ -490,8 +490,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">all_new_parameters</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Following the <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> is our <code class="docutils literal notranslate"><span class="pre">main</span></code>.
-Here ROS 2 is initialized, an instance of the <code class="docutils literal notranslate"><span class="pre">MinimalParam</span></code> class is constructed, and <code class="docutils literal notranslate"><span class="pre">rclpy.spin</span></code> starts processing data from the node.</p>
+<p>接下来是我们的``timer_callback``，紧接着是``main``函数。在这里，ROS 2被初始化，一个``MinimalParam``类的实例被构建，然后``rclpy.spin``开始处理来自节点的数据。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
     <span class="n">node</span> <span class="o">=</span> <span class="n">MinimalParam</span><span class="p">()</span>
@@ -503,9 +502,7 @@ Here ROS 2 is initialized, an instance of the <code class="docutils literal notr
 </div>
 <div class="section" id="optional-add-parameterdescriptor">
 <h5>2.1.1（可选）添加 ParameterDescriptor。<a class="headerlink" href="#optional-add-parameterdescriptor" title="永久链接至标题"></a></h5>
-<p>Optionally, you can set a descriptor for the parameter.
-Descriptors allow you to specify a text description of the parameter and its constraints, like making it read-only, specifying a range, etc.
-For that to work, the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> code has to be changed to:</p>
+<p>可选地，您可以为参数设置一个描述符。描述符允许您指定参数的文本描述以及其约束条件，比如将其设置为只读、指定范围等。为了使其工作，<a href="#id1"><span class="problematic" id="id2">``</span></a>__init__``代码必须进行如下更改：</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
 
 <span class="k">class</span> <span class="nc">MinimalParam</span><span class="p">(</span><span class="n">rclpy</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">Node</span><span class="p">):</span>
@@ -524,16 +521,15 @@ For that to work, the <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <div class="section" id="add-an-entry-point">
-<h4>2.2 Add an entry point<a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
-<p>Open the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file.
-Again, match the <code class="docutils literal notranslate"><span class="pre">maintainer</span></code>, <code class="docutils literal notranslate"><span class="pre">maintainer_email</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code> and <code class="docutils literal notranslate"><span class="pre">license</span></code> fields to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>:</p>
+<h4>2.2 添加入口点<a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
+<p>打开``setup.py``文件。再次，将``maintainer``、<code class="docutils literal notranslate"><span class="pre">maintainer_email</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>description``和``license``字段与您的``package.xml``相匹配：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">maintainer</span><span class="o">=</span><span class="s1">&#39;YourName&#39;</span><span class="p">,</span>
 <span class="n">maintainer_email</span><span class="o">=</span><span class="s1">&#39;you@email.com&#39;</span><span class="p">,</span>
 <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Python parameter tutorial&#39;</span><span class="p">,</span>
 <span class="n">license</span><span class="o">=</span><span class="s1">&#39;Apache License 2.0&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Add the following line within the <code class="docutils literal notranslate"><span class="pre">console_scripts</span></code> brackets of the <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> field:</p>
+<p>将以下行添加到``entry_points``字段的``console_scripts``括号内：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s1">&#39;minimal_param_node = python_parameters.python_parameters_node:main&#39;</span><span class="p">,</span>
@@ -541,7 +537,7 @@ Again, match the <code class="docutils literal notranslate"><span class="pre">ma
 <span class="p">},</span>
 </pre></div>
 </div>
-<p>Don't forget to save.</p>
+<p>不要忘记保存。</p>
 </div>
 </div>
 <div class="section" id="build-and-run">
@@ -589,7 +585,7 @@ Again, match the <code class="docutils literal notranslate"><span class="pre">ma
 <p>现在您可以看到参数的默认值，但您希望能够自己设置它。有两种方法可以实现这一点。</p>
 <div class="section" id="change-via-the-console">
 <h4>3.1 通过控制台进行更改<a class="headerlink" href="#change-via-the-console" title="永久链接至标题"></a></h4>
-<p>This part will use the knowledge you have gained from the <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">tutoral about parameters</span></a> and apply it to the node you have just created.</p>
+<p>这部分将使用你从:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>关于参数的教程&lt;../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters&gt;`中学到的知识，并将其应用到你刚刚创建的节点上。</p>
 <p>确保节点正在运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run python_parameters minimal_param_node</span>
 </pre></div>
@@ -602,15 +598,12 @@ Again, match the <code class="docutils literal notranslate"><span class="pre">ma
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set /minimal_param_node my_parameter earth</span>
 </pre></div>
 </div>
-<p>You know it went well if you get the output <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">parameter</span> <span class="pre">successful</span></code>.
-If you look at the other terminal, you should see the output change to <code class="docutils literal notranslate"><span class="pre">[INFO]</span> <span class="pre">[minimal_param_node]:</span> <span class="pre">Hello</span> <span class="pre">earth!</span></code></p>
-<p>Since the node afterwards set the parameter back to <code class="docutils literal notranslate"><span class="pre">world</span></code>, further outputs show  <code class="docutils literal notranslate"><span class="pre">[INFO]</span> <span class="pre">[minimal_param_node]:</span> <span class="pre">Hello</span> <span class="pre">world!</span></code></p>
+<p>如果你得到输出``Set parameter successful``，就表示运行成功。如果你查看另一个终端，你应该看到输出变为``[INFO] [minimal_param_node]: Hello earth!``</p>
+<p>由于后续节点将参数重新设置为“world”，后续的输出将显示为“[INFO] [minimal_param_node]: Hello world!”</p>
 </div>
 <div class="section" id="change-via-a-launch-file">
 <h4>3.2 通过启动文件进行更改<a class="headerlink" href="#change-via-a-launch-file" title="永久链接至标题"></a></h4>
-<p>You can also set parameters in a launch file, but first you will need to add a launch directory.
-Inside the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/python_parameters/</span></code> directory, create a new directory called <code class="docutils literal notranslate"><span class="pre">launch</span></code>.
-In there, create a new file called <code class="docutils literal notranslate"><span class="pre">python_parameters_launch.py</span></code></p>
+<p>您还可以在启动文件中设置参数，但首先需要添加一个启动目录。在“ros2_ws/src/python_parameters/”目录中，创建一个名为“launch”的新目录。在其中创建一个名为“python_parameters_launch.py”的新文件。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
 
@@ -629,8 +622,7 @@ In there, create a new file called <code class="docutils literal notranslate"><s
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>Here you can see that we set <code class="docutils literal notranslate"><span class="pre">my_parameter</span></code> to <code class="docutils literal notranslate"><span class="pre">earth</span></code> when we launch our node <code class="docutils literal notranslate"><span class="pre">parameter_node</span></code>.
-By adding the two lines below, we ensure our output is printed in our console.</p>
+<p>在这里，您可以看到当我们启动节点“parameter_node”时，我们将“my_parameter”设置为“earth”。通过添加下面的两行代码，我们确保在控制台中打印输出。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">output=&quot;screen&quot;,</span>
 <span class="go">emulate_tty=True,</span>
 </pre></div>

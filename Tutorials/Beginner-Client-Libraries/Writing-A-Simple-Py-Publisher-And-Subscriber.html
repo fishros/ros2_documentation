@@ -562,15 +562,14 @@ Queue size is a required QoS (quality of service) setting that limits the amount
 </div>
 <div class="section" id="add-an-entry-point">
 <h4>2.3 Add an entry point<a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
-<p>Open the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file.
-Again, match the <code class="docutils literal notranslate"><span class="pre">maintainer</span></code>, <code class="docutils literal notranslate"><span class="pre">maintainer_email</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code> and <code class="docutils literal notranslate"><span class="pre">license</span></code> fields to your <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>:</p>
+<p>打开``setup.py``文件。再次，将``maintainer``、<code class="docutils literal notranslate"><span class="pre">maintainer_email</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>description``和``license``字段与您的``package.xml``相匹配：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">maintainer</span><span class="o">=</span><span class="s1">&#39;YourName&#39;</span><span class="p">,</span>
 <span class="n">maintainer_email</span><span class="o">=</span><span class="s1">&#39;you@email.com&#39;</span><span class="p">,</span>
 <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Examples of minimal publisher/subscriber using rclpy&#39;</span><span class="p">,</span>
 <span class="n">license</span><span class="o">=</span><span class="s1">&#39;Apache License 2.0&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Add the following line within the <code class="docutils literal notranslate"><span class="pre">console_scripts</span></code> brackets of the <code class="docutils literal notranslate"><span class="pre">entry_points</span></code> field:</p>
+<p>将以下行添加到``entry_points``字段的``console_scripts``括号内：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
         <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s1">&#39;talker = py_pubsub.publisher_member_function:main&#39;</span><span class="p">,</span>
@@ -578,7 +577,7 @@ Again, match the <code class="docutils literal notranslate"><span class="pre">ma
 <span class="p">},</span>
 </pre></div>
 </div>
-<p>Don't forget to save.</p>
+<p>不要忘记保存。</p>
 </div>
 <div class="section" id="check-setup-cfg">
 <h4>2.4 Check setup.cfg<a class="headerlink" href="#check-setup-cfg" title="永久链接至标题"></a></h4>
