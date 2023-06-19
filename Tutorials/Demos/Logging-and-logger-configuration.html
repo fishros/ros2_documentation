@@ -397,8 +397,8 @@
 </li>
 <li><p><a class="reference internal" href="#logger-level-configuration-command-line" id="id12">日志级别配置：命令行</a></p>
 <ul>
-<li><p><a class="reference internal" href="#console-output-formatting" id="id13">Console output formatting</a></p></li>
-<li><p><a class="reference internal" href="#console-output-colorizing" id="id14">Console output colorizing</a></p></li>
+<li><p><a class="reference internal" href="#console-output-formatting" id="id13">控制台输出格式化</a></p></li>
+<li><p><a class="reference internal" href="#console-output-colorizing" id="id14">控制台输出着色</a></p></li>
 <li><p><a class="reference internal" href="#default-stream-for-console-output" id="id15">Default stream for console output</a></p></li>
 <li><p><a class="reference internal" href="#line-buffered-console-output" id="id16">Line buffered console output</a></p></li>
 </ul>
@@ -602,9 +602,8 @@ ros2 run logging_demo logging_demo_main
 </div>
 </div></div>
 <div class="section" id="console-output-formatting">
-<h3><a class="toc-backref" href="#id13">Console output formatting</a><a class="headerlink" href="#console-output-formatting" title="永久链接至标题"></a></h3>
-<p>If you would like more or less verbose formatting, you can use RCUTILS_CONSOLE_OUTPUT_FORMAT environment variable.
-For example, to additionally get the timestamp and location of the log calls, stop the demo and restart it with the environment variable set:</p>
+<h3><a class="toc-backref" href="#id13">控制台输出格式化</a><a class="headerlink" href="#console-output-formatting" title="永久链接至标题"></a></h3>
+<p>如果您希望获得更详细或更简洁的格式化输出，您可以使用RCUTILS_CONSOLE_OUTPUT_FORMAT环境变量。例如，要在日志调用中额外获取时间戳和位置，请停止演示并使用设置了该环境变量的方式重新启动它：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-8-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-8-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-8-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-8-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-8-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-8-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-8-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RCUTILS_CONSOLE_OUTPUT_FORMAT</span><span class="o">=</span><span class="s2">&quot;[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})&quot;</span>
 </pre></div>
@@ -617,14 +616,11 @@ ros2 run logging_demo logging_demo_main
 </pre></div>
 </div>
 </div></div>
-<p>You should see the timestamp in seconds and the function name, filename and line number additionally printed with each message.
-<em>The ``time`` option is only supported as of the ROS 2 Bouncy release.</em></p>
+<p>您应该看到每条消息中额外打印的以秒为单位的时间戳、函数名称、文件名和行号。<em>“time”选项仅在ROS 2 Bouncy版本及以后的版本中受支持。</em></p>
 </div>
 <div class="section" id="console-output-colorizing">
-<h3><a class="toc-backref" href="#id14">Console output colorizing</a><a class="headerlink" href="#console-output-colorizing" title="永久链接至标题"></a></h3>
-<p>By default, the output is colorized when it's targeting a terminal.
-If you would like to force enabling or disabling it, you can use the <code class="docutils literal notranslate"><span class="pre">RCUTILS_COLORIZED_OUTPUT</span></code> environment variable.
-For example:</p>
+<h3><a class="toc-backref" href="#id14">控制台输出着色</a><a class="headerlink" href="#console-output-colorizing" title="永久链接至标题"></a></h3>
+<p>默认情况下，当输出定向到终端时会进行着色。如果您想强制启用或禁用着色，可以使用``RCUTILS_COLORIZED_OUTPUT``环境变量。例如：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-9-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-9-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-9-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-9-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-9-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RCUTILS_COLORIZED_OUTPUT</span><span class="o">=</span><span class="m">0</span>  <span class="c1"># 1 for forcing it</span>
 </pre></div>
@@ -637,13 +633,10 @@ ros2 run logging_demo logging_demo_main
 </pre></div>
 </div>
 </div></div>
-<p>You should see that debug, warn, error and fatal logs aren't colorized now.</p>
+<p>您应该看到现在调试、警告、错误和致命错误日志没有进行着色。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>In Linux and MacOS forcing colorized output means that if you redirect the output to a file, the ansi escape color codes will appear on it.
-In windows the colorization method relies on console APIs.
-If it is forced you will get a new warning saying that colorization failed.
-The default behavior already checks if the output is a console or not, so forcing colorization is not recommended.</p>
+<p>在Linux和MacOS中，强制着色输出意味着如果您将输出重定向到文件中，将会出现ANSI转义颜色代码。在Windows中，着色方法依赖于控制台API。如果强制启用，您将收到一条新的警告，表示着色失败。默认行为已经检查输出是否为控制台，因此不建议强制着色。</p>
 </div>
 </div>
 <div class="section" id="default-stream-for-console-output">
