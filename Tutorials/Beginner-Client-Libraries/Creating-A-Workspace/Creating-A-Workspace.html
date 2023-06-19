@@ -387,8 +387,8 @@
 <ul>
 <li><p><a class="reference internal" href="#source-ros-2-environment" id="id4">1. 配置ROS 2环境</a></p></li>
 <li><p><a class="reference internal" href="#create-a-new-directory" id="id5">2. 创建一个新目录</a></p></li>
-<li><p><a class="reference internal" href="#clone-a-sample-repo" id="id6">3 Clone a sample repo</a></p></li>
-<li><p><a class="reference internal" href="#resolve-dependencies" id="id7">4 Resolve dependencies</a></p></li>
+<li><p><a class="reference internal" href="#clone-a-sample-repo" id="id6">3 克隆示例仓库</a></p></li>
+<li><p><a class="reference internal" href="#resolve-dependencies" id="id7">4 解决依赖关系</a></p></li>
 <li><p><a class="reference internal" href="#build-the-workspace-with-colcon" id="id8">5 Build the workspace with colcon</a></p></li>
 <li><p><a class="reference internal" href="#source-the-overlay" id="id9">6 Source the overlay</a></p></li>
 <li><p><a class="reference internal" href="#modify-the-overlay" id="id10">7 Modify the overlay</a></p></li>
@@ -437,9 +437,7 @@
 </div>
 <div class="section" id="create-a-new-directory">
 <span id="new-directory"></span><h3><a class="toc-backref" href="#id5">2. 创建一个新目录</a><a class="headerlink" href="#create-a-new-directory" title="永久链接至标题"></a></h3>
-<p>Best practice is to create a new directory for every new workspace.
-The name doesn't matter, but it is helpful to have it indicate the purpose of the workspace.
-Let's choose the directory name <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, for &quot;development workspace&quot;:</p>
+<p>最佳实践是为每个新的工作空间创建一个新的目录。目录名称无关紧要，但是有助于表明工作空间的目的。让我们选择目录名为``ros2_ws``，表示&quot;开发工作空间&quot;：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p ~/ros2_ws/src</span>
 <span class="go">cd ~/ros2_ws/src</span>
@@ -454,30 +452,24 @@ Let's choose the directory name <code class="docutils literal notranslate"><span
 </pre></div>
 </div>
 </div></div>
-<p>Another best practice is to put any packages in your workspace into the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.
-The above code creates a <code class="docutils literal notranslate"><span class="pre">src</span></code> directory inside <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> and then navigates into it.</p>
+<p>另一个最佳实践是将工作空间中的任何包放置在``src``目录中。上述代码在``ros2_ws``内创建一个``src``目录，然后进入其中。</p>
 </div>
 <div class="section" id="clone-a-sample-repo">
-<h3><a class="toc-backref" href="#id6">3 Clone a sample repo</a><a class="headerlink" href="#clone-a-sample-repo" title="永久链接至标题"></a></h3>
-<p>Ensure you're still in the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src</span></code> directory before you clone.</p>
-<p>In the rest of the beginner developer tutorials, you will create your own packages, but for now you will practice putting a workspace together using existing packages.</p>
-<p>If you went through the <a class="reference internal" href="../../Beginner-CLI-Tools.html"><span class="doc">Beginner: CLI Tools</span></a> tutorials, you'll be familiar with <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>, one of the packages in <a class="reference external" href="https://github.com/ros/ros_tutorials/">ros_tutorials</a>.</p>
-<p>A repo can have multiple branches.
-You need to check out the one that targets your installed ROS 2 distro.
-When you clone this repo, add the <code class="docutils literal notranslate"><span class="pre">-b</span></code> argument followed by that branch.</p>
-<p>In the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src</span></code> directory, run the following command:</p>
+<h3><a class="toc-backref" href="#id6">3 克隆示例仓库</a><a class="headerlink" href="#clone-a-sample-repo" title="永久链接至标题"></a></h3>
+<p>在克隆之前，请确保您仍在``ros2_ws/src``目录中。</p>
+<p>在接下来的初学者开发者教程中，您将创建自己的软件包，但目前您将练习使用现有软件包组合一个工作空间。</p>
+<p>如果您已经完成了 <a class="reference internal" href="../../Beginner-CLI-Tools.html"><span class="doc">初学者：CLI 工具</span></a> 教程，您将熟悉 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>，它是 <a class="reference external" href="https://github.com/ros/ros_tutorials/">ros_tutorials</a> 中的一个软件包。</p>
+<p>一个存储库可以有多个分支。您需要检出与您已安装的 ROS 2 发行版对应的分支。当您克隆这个存储库时，请添加 <code class="docutils literal notranslate"><span class="pre">-b</span></code> 参数，后跟该分支的名称。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">ros2_ws/src</span></code> 目录下运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/ros/ros_tutorials.git -b humble</span>
 </pre></div>
 </div>
-<p>Now <code class="docutils literal notranslate"><span class="pre">ros_tutorials</span></code> is cloned in your workspace.  The <code class="docutils literal notranslate"><span class="pre">ros_tutorials</span></code> repository contains the <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> package, which we'll use in the rest of this tutorial.  The other packages in this repository are not built because they contain a <code class="docutils literal notranslate"><span class="pre">COLCON_IGNORE</span></code> file.</p>
-<p>So far you have populated your workspace with a sample package, but it isn't a fully-functional workspace yet.
-You need to resolve the dependencies first and then build the workspace.</p>
+<p>现在在您的工作空间中克隆了 <code class="docutils literal notranslate"><span class="pre">ros_tutorials</span></code> 。<code class="docutils literal notranslate"><span class="pre">ros_tutorials</span></code> 仓库包含了 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 包，我们将在本教程的剩余部分中使用它。此仓库中的其他包没有构建，因为它们包含一个 <code class="docutils literal notranslate"><span class="pre">COLCON_IGNORE</span></code> 文件。</p>
+<p>到目前为止，您已经在工作空间中添加了一个示例包，但它还不是一个完全功能的工作空间。您需要先解决依赖关系，然后再构建工作空间。</p>
 </div>
 <div class="section" id="resolve-dependencies">
-<h3><a class="toc-backref" href="#id7">4 Resolve dependencies</a><a class="headerlink" href="#resolve-dependencies" title="永久链接至标题"></a></h3>
-<p>Before building the workspace, you need to resolve the package dependencies.
-You may have all the dependencies already, but best practice is to check for dependencies every time you clone.
-You wouldn't want a build to fail after a long wait only to realize that you have missing dependencies.</p>
+<h3><a class="toc-backref" href="#id7">4 解决依赖关系</a><a class="headerlink" href="#resolve-dependencies" title="永久链接至标题"></a></h3>
+<p>在构建工作空间之前，您需要解决包的依赖关系。您可能已经拥有了所有的依赖项，但最佳实践是每次克隆时都检查依赖关系。您不希望在长时间等待后构建失败，然后才意识到您缺少依赖项。</p>
 <p>From the root of your workspace (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>), run the following command:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd if you&#39;re still in the ``src`` directory with the ``ros_tutorials`` clone</span>
