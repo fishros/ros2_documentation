@@ -390,7 +390,7 @@
 <li><p><a class="reference internal" href="#ros2-param-set" id="id7">运行 ros2 param set 命令来执行第 4 步。</a></p></li>
 <li><p><a class="reference internal" href="#ros2-param-dump" id="id8">5 ros2 param dump</a></p></li>
 <li><p><a class="reference internal" href="#ros2-param-load" id="id9">6 ros2 param load</a></p></li>
-<li><p><a class="reference internal" href="#load-parameter-file-on-node-startup" id="id10">7 Load parameter file on node startup</a></p></li>
+<li><p><a class="reference internal" href="#load-parameter-file-on-node-startup" id="id10">7 在节点启动时加载参数文件</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id11">摘要</a></p></li>
@@ -487,17 +487,15 @@
 </div>
 <div class="section" id="ros2-param-dump">
 <h3><a class="toc-backref" href="#id8">5 ros2 param dump</a><a class="headerlink" href="#ros2-param-dump" title="永久链接至标题"></a></h3>
-<p>You can view all of a node's current parameter values by using the command:</p>
+<p>你可以使用以下命令查看节点的所有当前参数值：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param dump &lt;node_name&gt;</span>
 </pre></div>
 </div>
-<p>The command prints to the standard output (stdout) by default but you can also redirect the parameter values into a file to save them for later.
-To save your current configuration of <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>'s parameters into the file <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code>, enter the command:</p>
+<p>该命令默认将参数值打印到标准输出（stdout），但你也可以将参数值重定向到文件中以便以后使用。要将当前``/turtlesim``参数的配置保存到文件``turtlesim.yaml``中，请执行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param dump /turtlesim &gt; turtlesim.yaml</span>
 </pre></div>
 </div>
-<p>You will find a new file in the current working directory your shell is running in.
-If you open this file, you'll see the following content:</p>
+<p>你会在当前工作目录中找到一个新的文件，如果你打开这个文件，你会看到以下内容：</p>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/turtlesim</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span><span class="w"></span>
@@ -513,15 +511,15 @@ If you open this file, you'll see the following content:</p>
 <span class="w">    </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Dumping parameters comes in handy if you want to reload the node with the same parameters in the future.</p>
+<p>将参数转储非常方便，如果您希望将来重新加载具有相同参数的节点。</p>
 </div>
 <div class="section" id="ros2-param-load">
 <h3><a class="toc-backref" href="#id9">6 ros2 param load</a><a class="headerlink" href="#ros2-param-load" title="永久链接至标题"></a></h3>
-<p>You can load parameters from a file to a currently running node using the command:</p>
+<p>您可以使用以下命令将参数从文件加载到当前运行的节点：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param load &lt;node_name&gt; &lt;parameter_file&gt;</span>
 </pre></div>
 </div>
-<p>To load the <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code> file generated with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">dump</span></code> into <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node's parameters, enter the command:</p>
+<p>要将使用``ros2 param dump``生成的``turtlesim.yaml``文件加载到``/turtlesim``节点的参数中，请输入以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param load /turtlesim turtlesim.yaml</span>
 </pre></div>
 </div>
@@ -538,16 +536,16 @@ If you open this file, you'll see the following content:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Read-only parameters can only be modified at startup and not afterwards, that is why there are some warnings for the &quot;qos_overrides&quot; parameters.</p>
+<p>只读参数只能在启动时进行修改，不能在之后进行修改，这就是为什么“qos_overrides”参数会有一些警告。</p>
 </div>
 </div>
 <div class="section" id="load-parameter-file-on-node-startup">
-<h3><a class="toc-backref" href="#id10">7 Load parameter file on node startup</a><a class="headerlink" href="#load-parameter-file-on-node-startup" title="永久链接至标题"></a></h3>
-<p>To start the same node using your saved parameter values, use:</p>
+<h3><a class="toc-backref" href="#id10">7 在节点启动时加载参数文件</a><a class="headerlink" href="#load-parameter-file-on-node-startup" title="永久链接至标题"></a></h3>
+<p>要使用保存的参数值启动相同的节点，请使用以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run &lt;package_name&gt; &lt;executable_name&gt; --ros-args --params-file &lt;file_name&gt;</span>
 </pre></div>
 </div>
-<p>This is the same command you always use to start turtlesim, with the added flags <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> and <code class="docutils literal notranslate"><span class="pre">--params-file</span></code>, followed by the file you want to load.</p>
+<p>这是您启动turtlesim时经常使用的相同命令，只需添加``--ros-args``和``--params-file``标志，然后加上要加载的文件名。</p>
 <p>Stop your running turtlesim node, and try reloading it with your saved parameters, using:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node --ros-args --params-file turtlesim.yaml</span>
 </pre></div>
