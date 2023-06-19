@@ -9907,47 +9907,47 @@ msgstr "设置高效的进程内通信"
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:16
 msgid "ROS applications typically consist of a composition of individual \"nodes\" which perform narrow tasks and are decoupled from other parts of the system. This promotes fault isolation, faster development, modularity, and code reuse, but it often comes at the cost of performance. After ROS 1 was initially developed, the need for efficient composition of nodes became obvious and Nodelets were developed. In ROS 2 we aim to improve on the design of Nodelets by addressing some fundamental problems that required restructuring of nodes."
-msgstr "ROS applications typically consist of a composition of individual \"nodes\" which perform narrow tasks and are decoupled from other parts of the system. This promotes fault isolation, faster development, modularity, and code reuse, but it often comes at the cost of performance. After ROS 1 was initially developed, the need for efficient composition of nodes became obvious and Nodelets were developed. In ROS 2 we aim to improve on the design of Nodelets by addressing some fundamental problems that required restructuring of nodes."
+msgstr "ROS应用程序通常由一系列独立的“节点”组成，每个节点执行特定的任务，并与系统的其他部分解耦。这促进了故障隔离、更快的开发、模块化和代码重用，但通常会以性能为代价。在最初开发ROS 1后，人们意识到需要有效地组合节点，并因此开发了Nodelets。在ROS 2中，我们旨在改进Nodelets的设计，解决一些需要对节点进行重组的根本性问题。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:21
 msgid "In this demo we'll be highlighting how nodes can be composed manually, by defining the nodes separately but combining them in different process layouts without changing the node's code or limiting its abilities."
-msgstr "In this demo we'll be highlighting how nodes can be composed manually, by defining the nodes separately but combining them in different process layouts without changing the node's code or limiting its abilities."
+msgstr "在这个演示中，我们将重点介绍如何手动组合节点，通过分别定义节点，但在不更改节点的代码或限制其功能的情况下，将它们组合在不同的进程布局中。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:24
 msgid "Installing the demos"
-msgstr "Installing the demos"
+msgstr "安装演示"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:28
 msgid "If you've installed ROS 2 from packages, ensure that you have ``ros-humble-intra-process-demo`` installed. If you downloaded the archive or built ROS 2 from source, it will already be part of the installation."
-msgstr "If you've installed ROS 2 from packages, ensure that you have ``ros-humble-intra-process-demo`` installed. If you downloaded the archive or built ROS 2 from source, it will already be part of the installation."
+msgstr "如果你是通过包安装ROS 2，请确保已安装``ros-humble-intra-process-demo``。如果你从存档文件下载或从源代码构建ROS 2，它已经包含在安装中。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:32
 msgid "Running and understanding the demos"
-msgstr "Running and understanding the demos"
+msgstr "运行和理解演示"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:34
 msgid "There are a few different demos: some are toy problems designed to highlight features of the intra process communications functionality and some are end to end examples which use OpenCV and demonstrate the ability to recombine nodes into different configurations."
-msgstr "There are a few different demos: some are toy problems designed to highlight features of the intra process communications functionality and some are end to end examples which use OpenCV and demonstrate the ability to recombine nodes into different configurations."
+msgstr "有几个不同的演示：其中一些是玩具问题，旨在突出显示进程内通信功能的特点，另一些是端到端示例，使用OpenCV，并演示了将节点重新组合成不同配置的能力。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:37
 msgid "The two node pipeline demo"
-msgstr "The two node pipeline demo"
+msgstr "两个节点管道演示"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:39
 msgid "This demo is designed to show that the intra process publish/subscribe connection can result in zero-copy transport of messages when publishing and subscribing with ``std::unique_ptr``\\ s."
-msgstr "This demo is designed to show that the intra process publish/subscribe connection can result in zero-copy transport of messages when publishing and subscribing with ``std::unique_ptr``\\ s."
+msgstr "此演示旨在展示进程内发布/订阅连接在使用``std::unique_ptr``进行发布和订阅时可以实现零拷贝传输。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:41
 msgid "First let's take a look at the source:"
-msgstr "First let's take a look at the source:"
+msgstr "首先，让我们来看一下源代码:"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:43
@@ -9957,12 +9957,12 @@ msgstr "https://github.com/ros2/demos/blob/humble/intra_process_demo/src/two_nod
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:127
 msgid "As you can see by looking at the ``main`` function, we have a producer and a consumer node, we add them to a single threaded executor, and then call spin."
-msgstr "As you can see by looking at the ``main`` function, we have a producer and a consumer node, we add them to a single threaded executor, and then call spin."
+msgstr "通过查看 ``main`` 函数，您可以看到我们有一个生产者节点和一个消费者节点，我们将它们添加到一个单线程执行器中，然后调用 spin 函数。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:129
 msgid "If you look at the \"producer\" node's implementation in the ``Producer`` struct, you can see that we have created a publisher which publishes on the \"number\" topic and a timer which periodically creates a new message, prints out its address in memory and its content's value and then publishes it."
-msgstr "If you look at the \"producer\" node's implementation in the ``Producer`` struct, you can see that we have created a publisher which publishes on the \"number\" topic and a timer which periodically creates a new message, prints out its address in memory and its content's value and then publishes it."
+msgstr "如果您查看 ``Producer`` 结构体中的“生产者”节点实现，您会发现我们创建了一个在“number”主题上发布消息的发布者和一个定时器，该定时器周期性地创建一个新的消息，打印出它在内存中的地址和其内容的值，然后将其发布出去。"
 
 
 #: ../../source/Tutorials/Demos/Intra-Process-Communication.rst:131
