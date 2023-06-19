@@ -426,7 +426,7 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param list</span>
 </pre></div>
 </div>
-<p>You will see the node namespaces, <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> and <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>, followed by each node's parameters:</p>
+<p>您将看到节点命名空间``/teleop_turtle``和``/turtlesim``，然后是每个节点的参数：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/teleop_turtle:</span>
 <span class="go">  qos_overrides./parameter_events.publisher.depth</span>
 <span class="go">  qos_overrides./parameter_events.publisher.durability</span>
@@ -446,21 +446,21 @@
 <span class="go">  use_sim_time</span>
 </pre></div>
 </div>
-<p>Every node has the parameter <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code>; it's not unique to turtlesim.</p>
-<p>Based on their names, it looks like <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>'s parameters determine the background color of the turtlesim window using RGB color values.</p>
-<p>To determine a parameter's type, you can use <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">get</span></code>.</p>
+<p>每个节点都有参数``use_sim_time``；它不是 turtlesim 特有的。</p>
+<p>根据它们的名称，看起来``/turtlesim``的参数使用RGB颜色值来确定 turtlesim 窗口的背景色。</p>
+<p>要确定参数的类型，您可以使用``ros2 param get``命令。</p>
 </div>
 <div class="section" id="ros2-param-get">
 <h3><a class="toc-backref" href="#id6">3 ros2 param get</a><a class="headerlink" href="#ros2-param-get" title="永久链接至标题"></a></h3>
-<p>To display the type and current value of a parameter, use the command:</p>
+<p>要显示参数的类型和当前值，请使用以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param get &lt;node_name&gt; &lt;parameter_name&gt;</span>
 </pre></div>
 </div>
-<p>Let's find out the current value of <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>'s parameter <code class="docutils literal notranslate"><span class="pre">background_g</span></code>:</p>
+<p>让我们找出``/turtlesim``的参数``background_g``的当前值：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param get /turtlesim background_g</span>
 </pre></div>
 </div>
-<p>Which will return the value:</p>
+<p>将返回该值：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Integer value is: 86</span>
 </pre></div>
 </div>
