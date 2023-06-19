@@ -387,7 +387,7 @@
 <li><p><a class="reference internal" href="#setup" id="id4">1 设置</a></p></li>
 <li><p><a class="reference internal" href="#ros2-param-list" id="id5">2 ros2 param list</a></p></li>
 <li><p><a class="reference internal" href="#ros2-param-get" id="id6">3 ros2 param get</a></p></li>
-<li><p><a class="reference internal" href="#ros2-param-set" id="id7">4 ros2 param set</a></p></li>
+<li><p><a class="reference internal" href="#ros2-param-set" id="id7">运行 ros2 param set 命令来执行第 4 步。</a></p></li>
 <li><p><a class="reference internal" href="#ros2-param-dump" id="id8">5 ros2 param dump</a></p></li>
 <li><p><a class="reference internal" href="#ros2-param-load" id="id9">6 ros2 param load</a></p></li>
 <li><p><a class="reference internal" href="#load-parameter-file-on-node-startup" id="id10">7 Load parameter file on node startup</a></p></li>
@@ -464,27 +464,26 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Integer value is: 86</span>
 </pre></div>
 </div>
-<p>Now you know <code class="docutils literal notranslate"><span class="pre">background_g</span></code> holds an integer value.</p>
-<p>If you run the same command on <code class="docutils literal notranslate"><span class="pre">background_r</span></code> and <code class="docutils literal notranslate"><span class="pre">background_b</span></code>, you will get the values <code class="docutils literal notranslate"><span class="pre">69</span></code> and <code class="docutils literal notranslate"><span class="pre">255</span></code>, respectively.</p>
+<p>现在你知道 <code class="docutils literal notranslate"><span class="pre">background_g</span></code> 保存了一个整数值。</p>
+<p>如果你对 <code class="docutils literal notranslate"><span class="pre">background_r</span></code> 和 <code class="docutils literal notranslate"><span class="pre">background_b</span></code> 运行相同的命令，你将分别得到值 <code class="docutils literal notranslate"><span class="pre">69</span></code> 和 <code class="docutils literal notranslate"><span class="pre">255</span></code>。</p>
 </div>
 <div class="section" id="ros2-param-set">
-<h3><a class="toc-backref" href="#id7">4 ros2 param set</a><a class="headerlink" href="#ros2-param-set" title="永久链接至标题"></a></h3>
-<p>To change a parameter's value at runtime, use the command:</p>
+<h3><a class="toc-backref" href="#id7">运行 ros2 param set 命令来执行第 4 步。</a><a class="headerlink" href="#ros2-param-set" title="永久链接至标题"></a></h3>
+<p>要在运行时更改参数的值，请使用以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set &lt;node_name&gt; &lt;parameter_name&gt; &lt;value&gt;</span>
 </pre></div>
 </div>
-<p>Let's change <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code>'s background color:</p>
+<p>让我们改变 <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> 的背景颜色:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set /turtlesim background_r 150</span>
 </pre></div>
 </div>
-<p>Your terminal should return the message:</p>
+<p>你的终端应该返回以下信息:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Set parameter successful</span>
 </pre></div>
 </div>
-<p>And the background of your turtlesim window should change colors:</p>
+<p>然后你的 turtlesim 窗口的背景颜色会改变:</p>
 <img alt="../../../_images/set.png" src="../../../_images/set.png" />
-<p>Setting parameters with the <code class="docutils literal notranslate"><span class="pre">set</span></code> command will only change them in your current session, not permanently.
-However, you can save your settings and reload them the next time you start a node.</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">set</span></code> 命令设置参数只会在当前会话中生效，而不是永久生效。然而，你可以保存你的设置，并在下次启动节点时重新加载。</p>
 </div>
 <div class="section" id="ros2-param-dump">
 <h3><a class="toc-backref" href="#id8">5 ros2 param dump</a><a class="headerlink" href="#ros2-param-dump" title="永久链接至标题"></a></h3>
