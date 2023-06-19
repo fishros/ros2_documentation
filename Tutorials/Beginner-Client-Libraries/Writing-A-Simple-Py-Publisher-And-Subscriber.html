@@ -399,12 +399,12 @@
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id3">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>在本教程中，您将创建 <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">节点</span></a>，以字符串消息的形式通过 <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">话题</span></a> 互相传递信息。这里使用的示例是一个简单的“说话者”和“侦听者”系统；一个节点发布数据，另一个节点订阅该话题以接收数据。</p>
-<p>The code used in these examples can be found <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclpy/topics">here</a>.</p>
+<p>这些示例中使用的代码可以在 <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclpy/topics">这里</a> 找到。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id4">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>在之前的教程中，你学会了如何 <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">创建工作空间</span></a> 和 <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">创建包</span></a>。</p>
-<p>A basic understanding of Python is recommended, but not entirely necessary.</p>
+<p>建议具备对Python的基本理解，但并非完全必要。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id5">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
@@ -416,12 +416,11 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_python py_pubsub</span>
 </pre></div>
 </div>
-<p>Your terminal will return a message verifying the creation of your package <code class="docutils literal notranslate"><span class="pre">py_pubsub</span></code> and all its necessary files and folders.</p>
+<p>你的终端将返回一条消息，验证已创建名为 <code class="docutils literal notranslate"><span class="pre">py_pubsub</span></code> 的软件包及其所有必要的文件和文件夹。</p>
 </div>
 <div class="section" id="write-the-publisher-node">
 <h3><a class="toc-backref" href="#id7">2 编写发布者节点</a><a class="headerlink" href="#write-the-publisher-node" title="永久链接至标题"></a></h3>
-<p>Navigate into <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/py_pubsub/py_pubsub</span></code>.
-Recall that this directory is a <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">Python package</a> with the same name as the ROS 2 package it's nested in.</p>
+<p>进入 <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/py_pubsub/py_pubsub</span></code> 目录。请记住，该目录是一个与嵌套的ROS 2软件包同名的 <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">Python包</a>。</p>
 <p>通过输入以下命令下载示例 talker 代码：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</span>
@@ -439,8 +438,8 @@ Recall that this directory is a <a class="reference external" href="https://docs
 </pre></div>
 </div>
 </div></div>
-<p>Now there will be a new file named <code class="docutils literal notranslate"><span class="pre">publisher_member_function.py</span></code> adjacent to <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
-<p>Open the file using your preferred text editor.</p>
+<p>现在会在``__init__.py``旁边出现一个名为``publisher_member_function.py``的新文件。</p>
+<p>使用您偏爱的文本编辑器打开该文件。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 
@@ -484,25 +483,22 @@ Recall that this directory is a <a class="reference external" href="https://docs
 </div>
 <div class="section" id="examine-the-code">
 <h4>2.1 检查代码<a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
-<p>The first lines of code after the comments import <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> so its <code class="docutils literal notranslate"><span class="pre">Node</span></code> class can be used.</p>
+<p>在注释之后的第一行代码中导入``rclpy``，以便可以使用其``Node``类。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 </pre></div>
 </div>
-<p>The next statement imports the built-in string message type that the node uses to structure the data that it passes on the topic.</p>
+<p>下一条语句导入了内置的字符串消息类型，节点使用该类型来结构化在主题上传递的数据。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
 </pre></div>
 </div>
-<p>These lines represent the node's dependencies.
-Recall that dependencies have to be added to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>, which you'll do in the next section.</p>
-<p>Next, the <code class="docutils literal notranslate"><span class="pre">MinimalPublisher</span></code> class is created, which inherits from (or is a subclass of) <code class="docutils literal notranslate"><span class="pre">Node</span></code>.</p>
+<p>这些行表示节点的依赖关系。请记住，依赖项必须添加到``package.xml``中，在下一节中将进行此操作。</p>
+<p>接下来，创建了``MinimalPublisher``类，它继承自（或是``Node``的子类）。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MinimalPublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 </pre></div>
 </div>
-<p>Following is the definition of the class's constructor.
-<code class="docutils literal notranslate"><span class="pre">super().__init__</span></code> calls the <code class="docutils literal notranslate"><span class="pre">Node</span></code> class's constructor and gives it your node name, in this case <code class="docutils literal notranslate"><span class="pre">minimal_publisher</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">create_publisher</span></code> declares that the node publishes messages of type <code class="docutils literal notranslate"><span class="pre">String</span></code> (imported from the <code class="docutils literal notranslate"><span class="pre">std_msgs.msg</span></code> module), over a topic named <code class="docutils literal notranslate"><span class="pre">topic</span></code>, and that the &quot;queue size&quot; is 10.
-Queue size is a required QoS (quality of service) setting that limits the amount of queued messages if a subscriber is not receiving them fast enough.</p>
+<p>以下是该类构造函数的定义。<code class="docutils literal notranslate"><span class="pre">super().__init__``调用了``Node``类的构造函数，并向其传递了节点名称，本例中为``minimal_publisher</span></code>。</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>create_publisher``声明该节点发布类型为``String``（从``std_msgs.msg``模块导入），在名为``topic``的主题上，且“队列大小”为10。队列大小是一个必需的QoS（服务质量）设置，它限制了如果订阅者接收消息的速度不够快时，排队消息的数量。</p>
 <p>Next, a timer is created with a callback to execute every 0.5 seconds.
 <code class="docutils literal notranslate"><span class="pre">self.i</span></code> is a counter used in the callback.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
