@@ -386,7 +386,7 @@
 <li><p><a class="reference internal" href="#tasks" id="id5">任务</a></p>
 <ul>
 <li><p><a class="reference internal" href="#create-a-package" id="id6">1 创建一个包</a></p></li>
-<li><p><a class="reference internal" href="#write-the-publisher-node" id="id7">2 Write the publisher node</a></p></li>
+<li><p><a class="reference internal" href="#write-the-publisher-node" id="id7">2 编写发布者节点</a></p></li>
 <li><p><a class="reference internal" href="#write-the-subscriber-node" id="id8">3 Write the subscriber node</a></p></li>
 <li><p><a class="reference internal" href="#build-and-run" id="id9">4 构建和运行</a></p></li>
 </ul>
@@ -421,10 +421,10 @@ one node publishes data and the other subscribes to the topic so it can receive 
 <p>Your terminal will return a message verifying the creation of your package <code class="docutils literal notranslate"><span class="pre">py_pubsub</span></code> and all its necessary files and folders.</p>
 </div>
 <div class="section" id="write-the-publisher-node">
-<h3><a class="toc-backref" href="#id7">2 Write the publisher node</a><a class="headerlink" href="#write-the-publisher-node" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id7">2 编写发布者节点</a><a class="headerlink" href="#write-the-publisher-node" title="永久链接至标题"></a></h3>
 <p>Navigate into <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/py_pubsub/py_pubsub</span></code>.
 Recall that this directory is a <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#packages">Python package</a> with the same name as the ROS 2 package it's nested in.</p>
-<p>Download the example talker code by entering the following command:</p>
+<p>通过输入以下命令下载示例 talker 代码：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</span>
 </pre></div>
@@ -432,11 +432,11 @@ Recall that this directory is a <a class="reference external" href="https://docs
 </div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>In a Windows command line prompt:</p>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>在 Windows 命令行提示符中：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -sk https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py -o publisher_member_function.py</span>
 </pre></div>
 </div>
-<p>Or in powershell:</p>
+<p>或者在powershell中执行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py -o publisher_member_function.py</span>
 </pre></div>
 </div>
@@ -602,11 +602,11 @@ Enter the following code in your terminal:</p>
 </div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>In a Windows command line prompt:</p>
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>在 Windows 命令行提示符中：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -sk https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py -o subscriber_member_function.py</span>
 </pre></div>
 </div>
-<p>Or in powershell:</p>
+<p>或者在powershell中执行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py -o subscriber_member_function.py</span>
 </pre></div>
 </div>
