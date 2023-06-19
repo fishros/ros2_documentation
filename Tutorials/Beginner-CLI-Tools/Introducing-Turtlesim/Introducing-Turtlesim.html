@@ -520,20 +520,18 @@
 </div>
 </div>
 <p>要生成``turtle2``，您需要点击rqt窗口右上方的**Call**按钮调用该服务。</p>
-<p>If the service call was successful, you should see a new turtle (again with a random design) spawn at the coordinates you input for <strong>x</strong> and <strong>y</strong>.</p>
-<p>If you refresh the service list in rqt, you will also see that now there are services related to the new turtle, <code class="docutils literal notranslate"><span class="pre">/turtle2/...</span></code>, in addition to <code class="docutils literal notranslate"><span class="pre">/turtle1/...</span></code>.</p>
+<p>如果服务调用成功，您应该会看到一个新的海龟（带有随机设计）在您输入的 <strong>x</strong> 和 <strong>y</strong> 坐标处生成。</p>
+<p>如果您在rqt中刷新服务列表，您还会看到与新海龟相关的服务，例如 <code class="docutils literal notranslate"><span class="pre">/turtle2/...</span></code>，除了 <code class="docutils literal notranslate"><span class="pre">/turtle1/...</span></code>。</p>
 </div>
 <div class="section" id="try-the-set-pen-service">
-<h4>5.2 Try the set_pen service<a class="headerlink" href="#try-the-set-pen-service" title="永久链接至标题"></a></h4>
-<p>Now let's give <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> a unique pen using the <code class="docutils literal notranslate"><span class="pre">/set_pen</span></code> service:</p>
+<h4>5.2 尝试 set_pen 服务<a class="headerlink" href="#try-the-set-pen-service" title="永久链接至标题"></a></h4>
+<p>现在让我们使用 <code class="docutils literal notranslate"><span class="pre">/set_pen</span></code> 服务为 <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> 设置一个独特的画笔：</p>
 <img alt="../../../_images/set_pen.png" src="../../../_images/set_pen.png" />
-<p>The values for <strong>r</strong>, <strong>g</strong> and <strong>b</strong>, which are between 0 and 255, set the color of the pen <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> draws with, and <strong>width</strong> sets the thickness of the line.</p>
-<p>To have <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> draw with a distinct red line, change the value of <strong>r</strong> to 255, and the value of <strong>width</strong> to 5.
-Don't forget to call the service after updating the values.</p>
-<p>If you return to the terminal where <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> is running and press the arrow keys, you will see <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>'s pen has changed.</p>
+<p>在**r**、<a href="#id1"><span class="problematic" id="id2">**</span></a>g**和**b**的取值范围为0至255之间时，设置了画笔``turtle1``的颜色，而**width**设置了线条的粗细。</p>
+<p>要让``turtle1``画出明显的红色线条，将**r**的值改为255，将**width**的值改为5。更新数值后别忘了调用该服务。</p>
+<p>如果返回到运行``turtle_teleop_key``的终端并按下箭头键，你会看到``turtle1``的画笔已经改变了。</p>
 <img alt="../../../_images/new_pen.png" src="../../../_images/new_pen.png" />
-<p>You've probably also noticed that there's no way to move <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>.
-That's because there is no teleop node for <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>.</p>
+<p>你可能还注意到没有办法移动``turtle2``。这是因为``turtle2``没有对应的teleop节点。</p>
 </div>
 </div>
 <div class="section" id="remapping">
