@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creating a content filtering subscription &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>创建内容过滤订阅 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -227,7 +227,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">Understanding real-time programming</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">Experimenting with a dummy robot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Logging-and-logger-configuration.html">Logging</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating a content filtering subscription</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">创建内容过滤订阅</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a><ul>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../Demos.html">演示</a> &raquo;</li>
-      <li>Creating a content filtering subscription</li>
+      <li>创建内容过滤订阅</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Demos/Content-Filtering-Subscription.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,31 +373,28 @@
 
 
   <div class="section" id="creating-a-content-filtering-subscription">
-<h1>Creating a content filtering subscription<a class="headerlink" href="#creating-a-content-filtering-subscription" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Create a content filtering subscription.</p>
+<h1>创建内容过滤订阅<a class="headerlink" href="#creating-a-content-filtering-subscription" title="永久链接至标题"></a></h1>
+<p><strong>目标:</strong> 创建一个内容过滤订阅。</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>教程级别：<a href="#id3"><span class="problematic" id="id4">**</span></a>高级</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#overview" id="id2">Overview</a></p></li>
-<li><p><a class="reference internal" href="#rmw-support" id="id3">RMW Support</a></p></li>
+<li><p><a class="reference internal" href="#overview" id="id2">概述</a></p></li>
+<li><p><a class="reference internal" href="#rmw-support" id="id3">RMW支持</a></p></li>
 <li><p><a class="reference internal" href="#installing-the-demo" id="id4">Installing the demo</a></p></li>
 <li><p><a class="reference internal" href="#temperature-filtering-demo" id="id5">Temperature filtering demo</a></p></li>
 <li><p><a class="reference internal" href="#related-content" id="id6">相关内容</a></p></li>
 </ul>
 </div>
 <div class="section" id="overview">
-<h2><a class="toc-backref" href="#id2">Overview</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>ROS 2 applications typically consist of topics to transmit data from publishers to subscriptions.
-Basically, subscriptions receive all published data from publishers on the topic.
-But sometimes, a subscription might be interested in only a subset of the data which is being sent by publishers.
-A content filtering subscription allows to receive only the data of interest for the application.</p>
-<p>In this demo, we'll be highlighting how to create a content filtering subscription and how they work.</p>
+<h2><a class="toc-backref" href="#id2">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<p>ROS 2应用程序通常由主题组成，用于将数据从发布者传输到订阅者。基本上，订阅者接收来自主题发布者的所有已发布数据。但有时，订阅者可能只对发布者发送的数据的子集感兴趣。内容过滤订阅允许只接收应用程序所关注的数据。</p>
+<p>在这个演示中，我们将重点介绍如何创建一个内容过滤订阅以及它们的工作原理。</p>
 </div>
 <div class="section" id="rmw-support">
-<h2><a class="toc-backref" href="#id3">RMW Support</a><a class="headerlink" href="#rmw-support" title="永久链接至标题"></a></h2>
-<p>Content filtering subscriptions require RMW implementation support.</p>
+<h2><a class="toc-backref" href="#id3">RMW支持</a><a class="headerlink" href="#rmw-support" title="永久链接至标题"></a></h2>
+<p>内容过滤订阅需要RMW实现支持。</p>
 <table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">Content-Filtering-Subscription Support Status</span><a class="headerlink" href="#id1" title="永久链接至表格"></a></caption>
 <colgroup>
