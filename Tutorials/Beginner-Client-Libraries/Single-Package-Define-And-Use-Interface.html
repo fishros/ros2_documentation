@@ -388,7 +388,7 @@
 <li><p><a class="reference internal" href="#create-a-package" id="id4">1 创建一个包</a></p></li>
 <li><p><a class="reference internal" href="#create-a-msg-file" id="id5">2 创建一个消息文件</a></p></li>
 <li><p><a class="reference internal" href="#use-an-interface-from-the-same-package" id="id6">3 从同一软件包中使用接口</a></p></li>
-<li><p><a class="reference internal" href="#try-it-out" id="id7">4 Try it out</a></p></li>
+<li><p><a class="reference internal" href="#try-it-out" id="id7">4 尝试一下</a></p></li>
 <li><p><a class="reference internal" href="#extra-use-an-existing-interface-definition" id="id8">5 (Extra) Use an existing interface definition</a></p></li>
 </ul>
 </li>
@@ -619,22 +619,21 @@
 </div>
 </div>
 <div class="section" id="link-against-the-interface">
-<h4>3.3 Link against the interface<a class="headerlink" href="#link-against-the-interface" title="永久链接至标题"></a></h4>
-<p>In order to use the messages generated in the same package we need to use the following CMake code:</p>
+<h4>3.3 链接到接口<a class="headerlink" href="#link-against-the-interface" title="永久链接至标题"></a></h4>
+<p>为了在同一软件包中使用生成的消息，我们需要使用以下的CMake代码：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">rosidl_get_typesupport_target</span><span class="p">(</span><span class="s">cpp_typesupport_target</span>
 <span class="w">  </span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">rosidl_typesupport_cpp</span><span class="p">)</span>
 
 <span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">publish_address_book</span><span class="w"> </span><span class="s2">&quot;${cpp_typesupport_target}&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This finds the relevant generated C++ code from <code class="docutils literal notranslate"><span class="pre">AddressBook.msg</span></code> and allows your target to link against it.</p>
-<p>You may have noticed that this step was not necessary when the interfaces being used were from a different package that was built independently.
-This CMake code is only required when you want to use interfaces in the same package as the one in which they are defined.</p>
+<p>这将从``AddressBook.msg``中找到相关的生成的C++代码，并允许您的目标进行链接。</p>
+<p>您可能已经注意到，当使用的接口来自一个独立构建的不同软件包时，这个步骤是不必要的。只有当您想要在与接口定义的软件包相同的软件包中使用接口时，才需要这个CMake代码。</p>
 </div>
 </div>
 <div class="section" id="try-it-out">
-<h3><a class="toc-backref" href="#id7">4 Try it out</a><a class="headerlink" href="#try-it-out" title="永久链接至标题"></a></h3>
-<p>Return to the root of the workspace to build the package:</p>
+<h3><a class="toc-backref" href="#id7">4 尝试一下</a><a class="headerlink" href="#try-it-out" title="永久链接至标题"></a></h3>
+<p>返回到工作空间的根目录以构建包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
 <span class="go">colcon build --packages-up-to more_interfaces</span>
@@ -649,7 +648,7 @@ This CMake code is only required when you want to use interfaces in the same pac
 </pre></div>
 </div>
 </div></div>
-<p>Then source the workspace and run the publisher:</p>
+<p>然后运行以下命令激活工作空间并运行发布者：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/local_setup.bash</span>
 <span class="go">ros2 run more_interfaces publish_address_book</span>
@@ -663,7 +662,7 @@ This CMake code is only required when you want to use interfaces in the same pac
 <span class="go">ros2 run more_interfaces publish_address_book</span>
 </pre></div>
 </div>
-<p>Or using Powershell:</p>
+<p>或者使用 Powershell：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">install/local_setup.ps1</span>
 <span class="go">ros2 run more_interfaces publish_address_book</span>
 </pre></div>
@@ -684,7 +683,7 @@ This CMake code is only required when you want to use interfaces in the same pac
 <span class="go">ros2 topic echo /address_book</span>
 </pre></div>
 </div>
-<p>Or using Powershell:</p>
+<p>或者使用 Powershell：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">install/setup.ps1</span>
 <span class="go">ros2 topic echo /address_book</span>
 </pre></div>
