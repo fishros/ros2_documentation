@@ -390,9 +390,9 @@
 <li><p><a class="reference internal" href="#logging-demo" id="id7">日志演示</a></p></li>
 <li><p><a class="reference internal" href="#logging-directory-configuration" id="id8">日志目录配置</a></p></li>
 <li><p><a class="reference internal" href="#logger-level-configuration-programmatically" id="id9">日志记录器级别配置：编程方式</a></p></li>
-<li><p><a class="reference internal" href="#logger-level-configuration-externally" id="id10">Logger level configuration: externally</a></p>
+<li><p><a class="reference internal" href="#logger-level-configuration-externally" id="id10">日志记录器级别配置：外部</a></p>
 <ul>
-<li><p><a class="reference internal" href="#using-the-logger-config-component" id="id11">Using the logger config component</a></p></li>
+<li><p><a class="reference internal" href="#using-the-logger-config-component" id="id11">使用日志记录器配置组件</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#logger-level-configuration-command-line" id="id12">Logger level configuration: command line</a></p>
@@ -548,32 +548,25 @@ ros2 run logging_demo logging_demo_main
 </div>
 <div class="section" id="logger-level-configuration-programmatically">
 <h2><a class="toc-backref" href="#id9">日志记录器级别配置：编程方式</a><a class="headerlink" href="#logger-level-configuration-programmatically" title="永久链接至标题"></a></h2>
-<p>After 10 iterations the level of the logger will be set to <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, which will cause additional messages to be logged.</p>
-<p>Some of these debug messages cause additional functions/expressions to be evaluated, which were previously skipped as <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> log calls were not enabled.
-See <a class="reference external" href="https://github.com/ros2/demos/blob/humble/logging_demo/src/logger_usage_component.cpp">the source code</a> of the demo for further explanation of the calls used, and see the rclcpp logging documentation for a full list of supported logging calls.</p>
+<p>经过10次迭代，日志记录器的级别将被设置为``DEBUG``，这将导致额外的消息被记录。</p>
+<p>其中一些调试消息会导致评估额外的函数/表达式，这些函数/表达式在未启用``DEBUG``日志调用时以前被跳过。有关使用的调用的进一步解释，请参阅演示的`源代码 &lt;<a class="reference external" href="https://github.com/ros2/demos/blob/humble/logging_demo/src/logger_usage_component.cpp">https://github.com/ros2/demos/blob/humble/logging_demo/src/logger_usage_component.cpp</a>&gt;`__，并参阅 rclcpp 日志记录文档以获得支持的日志记录调用的完整列表。</p>
 </div>
 <div class="section" id="logger-level-configuration-externally">
-<h2><a class="toc-backref" href="#id10">Logger level configuration: externally</a><a class="headerlink" href="#logger-level-configuration-externally" title="永久链接至标题"></a></h2>
-<p>In the future there will be a generalized approach to external configuration of loggers at runtime (similar to how <a class="reference external" href="https://wiki.ros.org/rqt_logger_level">rqt_logger_level</a> in ROS 1 allows logger configuration via remote procedural calls).
-<strong>This concept is not yet officially supported in ROS 2.</strong>
-In the meantime, this demo provides an <strong>example</strong> service that can be called externally to request configuration of logger levels for known names of loggers in the process.</p>
-<p>The demo previously started is already running this example service.
-To set the level of the demo's logger back to <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, call the service with:</p>
+<h2><a class="toc-backref" href="#id10">日志记录器级别配置：外部</a><a class="headerlink" href="#logger-level-configuration-externally" title="永久链接至标题"></a></h2>
+<p>将来将会有一种通用方法来在运行时外部配置日志记录器（类似于 ROS 1 中通过远程过程调用允许日志记录器配置的方式，如 <a class="reference external" href="https://wiki.ros.org/rqt_logger_level">rqt_logger_level</a>）。<a href="#id1"><span class="problematic" id="id2">**</span></a>目前，ROS 2 尚未正式支持这个概念。<a href="#id3"><span class="problematic" id="id4">**</span></a>与此同时，此演示提供了一个**示例**服务，可用于外部调用以请求配置进程中已知日志记录器的级别。</p>
+<p>之前启动的演示已经在运行这个示例服务。要将演示的日志记录器级别设置回``INFO``，请使用以下命令调用该服务：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 service call /config_logger logging_demo/srv/ConfigLogger <span class="s2">&quot;{logger_name: &#39;logger_usage_demo&#39;, level: INFO}&quot;</span>
 </pre></div>
 </div>
-<p>This service call will work on any logger that is running in the process provided that you know its name.
-This includes the loggers in the ROS 2 core, such as <code class="docutils literal notranslate"><span class="pre">rcl</span></code> (the common client library package).
-To enable debug logging for <code class="docutils literal notranslate"><span class="pre">rcl</span></code>, call:</p>
+<p>只要您知道日志记录器的名称，此服务调用将适用于正在运行的任何日志记录器，包括ROS 2核心中的日志记录器，如``rcl``（常见的客户端库包）。要为``rcl``启用调试日志记录，请执行以下命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 service call /config_logger logging_demo/srv/ConfigLogger <span class="s2">&quot;{logger_name: &#39;rcl&#39;, level: DEBUG}&quot;</span>
 </pre></div>
 </div>
-<p>You should see debug output from <code class="docutils literal notranslate"><span class="pre">rcl</span></code> start to show.</p>
+<p>您应该会看到``rcl``的调试输出开始显示。</p>
 <div class="section" id="using-the-logger-config-component">
-<h3><a class="toc-backref" href="#id11">Using the logger config component</a><a class="headerlink" href="#using-the-logger-config-component" title="永久链接至标题"></a></h3>
-<p>The server that responds to the logger configuration requests has been developed as a component so that it may be added to an existing composition-based system.
-For example, if you are using <a class="reference internal" href="../Intermediate/Composition.html"><span class="doc">a container to run your nodes</span></a>, to be able to configure your loggers you only need to request that it additionally load the <code class="docutils literal notranslate"><span class="pre">logging_demo::LoggerConfig</span></code> component into the container.</p>
-<p>As an example, if you want to debug the <code class="docutils literal notranslate"><span class="pre">composition::Talker</span></code> demo, you can start the talker as normal with:</p>
+<h3><a class="toc-backref" href="#id11">使用日志记录器配置组件</a><a class="headerlink" href="#using-the-logger-config-component" title="永久链接至标题"></a></h3>
+<p>响应记录器配置请求的服务器已被开发为一个组件，以便可以将其添加到现有的基于组合的系统中。例如，如果您正在使用`容器运行您的节点&lt;../Intermediate/Composition&gt;`，为了能够配置您的记录器，您只需要请求将``logging_demo::LoggerConfig``组件额外加载到容器中。</p>
+<p>例如，如果您想调试``composition::Talker``演示程序，您可以正常启动Talker，如下所示：</p>
 <p>Shell 1:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container
 </pre></div>
