@@ -499,14 +499,11 @@
 </pre></div>
 </div>
 <p>这些行表示节点的依赖关系。请记住，依赖关系必须添加到``package.xml``和``CMakeLists.txt``中，在下一节中您将进行这些操作。</p>
-<p>The next line creates the node class <code class="docutils literal notranslate"><span class="pre">MinimalPublisher</span></code> by inheriting from <code class="docutils literal notranslate"><span class="pre">rclcpp::Node</span></code>.
-Every <code class="docutils literal notranslate"><span class="pre">this</span></code> in the code is referring to the node.</p>
+<p>下一行通过从``rclcpp::Node``继承来创建节点类``MinimalPublisher``。代码中的每个``this``都是指向该节点。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The public constructor names the node <code class="docutils literal notranslate"><span class="pre">minimal_publisher</span></code> and initializes <code class="docutils literal notranslate"><span class="pre">count_</span></code> to 0.
-Inside the constructor, the publisher is initialized with the <code class="docutils literal notranslate"><span class="pre">String</span></code> message type, the topic name <code class="docutils literal notranslate"><span class="pre">topic</span></code>, and the required queue size to limit messages in the event of a backup.
-Next, <code class="docutils literal notranslate"><span class="pre">timer_</span></code> is initialized, which causes the <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> function to be executed twice a second.</p>
+<p>公共构造函数将节点命名为``minimal_publisher``，并将``count_``初始化为0。在构造函数内部，使用``String``消息类型、主题名称``topic``以及必要的队列大小来初始化发布者。接下来，初始化了``timer_``，它导致``timer_callback``函数每秒执行两次。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">MinimalPublisher</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
@@ -517,8 +514,7 @@ Next, <code class="docutils literal notranslate"><span class="pre">timer_</span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> function is where the message data is set and the messages are actually published.
-The <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> macro ensures every published message is printed to the console.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>timer_callback``函数是设置消息数据并实际发布消息的地方。<a href="#id3"><span class="problematic" id="id4">``</span></a>RCLCPP_INFO``宏确保每个发布的消息都会打印到控制台。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
@@ -529,14 +525,13 @@ The <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</sp
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Last is the declaration of the timer, publisher, and counter fields.</p>
+<p>最后是定时器、发布者和计数器字段的声明。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
 <span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span><span class="w"></span>
 <span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Following the <code class="docutils literal notranslate"><span class="pre">MinimalPublisher</span></code> class is <code class="docutils literal notranslate"><span class="pre">main</span></code>, where the node actually executes.
-<code class="docutils literal notranslate"><span class="pre">rclcpp::init</span></code> initializes ROS 2, and <code class="docutils literal notranslate"><span class="pre">rclcpp::spin</span></code> starts processing data from the node, including callbacks from the timer.</p>
+<p>下面是``MinimalPublisher``类的定义，接着是``main``函数，其中节点实际执行。<a href="#id1"><span class="problematic" id="id2">``</span></a>rclcpp::init``用于初始化ROS 2，<a href="#id3"><span class="problematic" id="id4">``</span></a>rclcpp::spin``则开始处理来自节点的数据，包括定时器的回调函数。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
@@ -548,9 +543,9 @@ The <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</sp
 </div>
 </div>
 <div class="section" id="add-dependencies">
-<h4>2.2 Add dependencies<a class="headerlink" href="#add-dependencies" title="永久链接至标题"></a></h4>
-<p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/cpp_pubsub</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files have been created for you.</p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> with your text editor.</p>
+<h4>2.2 添加依赖项<a class="headerlink" href="#add-dependencies" title="永久链接至标题"></a></h4>
+<p>返回到``ros2_ws/src/cpp_pubsub``目录，这是``CMakeLists.txt``和``package.xml``文件所在的目录。这些文件已经为您创建好。</p>
+<p>用文本编辑器打开``package.xml``文件。</p>
 <p>As mentioned in the <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">previous tutorial</span></a>, make sure to fill in the <code class="docutils literal notranslate"><span class="pre">&lt;description&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;maintainer&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;license&gt;</span></code> tags:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Examples of minimal publisher/subscriber using rclcpp<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
