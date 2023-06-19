@@ -403,20 +403,20 @@
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>ROS 2将复杂系统分解为许多模块化节点。话题是ROS图中的重要组成部分，作为节点交换消息的总线。</p>
 <img alt="../../../_images/Topic-SinglePublisherandSingleSubscriber.gif" src="../../../_images/Topic-SinglePublisherandSingleSubscriber.gif" />
-<p>A node may publish data to any number of topics and simultaneously have subscriptions to any number of topics.</p>
+<p>一个节点可以向任意数量的主题发布数据，并同时订阅任意数量的主题。</p>
 <img alt="../../../_images/Topic-MultiplePublisherandMultipleSubscriber.gif" src="../../../_images/Topic-MultiplePublisherandMultipleSubscriber.gif" />
-<p>Topics are one of the main ways in which data is moved between nodes and therefore between different parts of the system.</p>
+<p>主题是数据在节点之间以及系统不同部分之间传递的主要方式之一。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>The <a class="reference internal" href="../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">previous tutorial</span></a> provides some useful background information on nodes that is built upon here.</p>
+<p>之前的教程&lt;../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes&gt;`提供了一些关于节点的有用背景信息，这里进一步构建了该信息。</p>
 <p>像往常一样，在:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>每个新开的终端中 &lt;../Configuring-ROS2-Environment&gt;`都不要忘记加载ROS 2。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="setup">
 <h3><a class="toc-backref" href="#id4">1 设置</a><a class="headerlink" href="#setup" title="永久链接至标题"></a></h3>
-<p>By now you should be comfortable starting up turtlesim.</p>
+<p>到目前为止，你应该已经熟悉如何启动turtlesim。</p>
 <p>打开一个新的终端并运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
 </pre></div>
@@ -425,22 +425,20 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
 </pre></div>
 </div>
-<p>Recall from the <a class="reference internal" href="../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">previous tutorial</span></a> that the names of these nodes are <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> and <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> by default.</p>
+<p>回顾一下之前的教程（<a class="reference internal" href="../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">上一个教程</span></a>），这些节点的名称默认情况下是``/turtlesim``和``/teleop_turtle``。</p>
 </div>
 <div class="section" id="rqt-graph">
 <h3><a class="toc-backref" href="#id5">2 rqt_graph</a><a class="headerlink" href="#rqt-graph" title="永久链接至标题"></a></h3>
-<p>Throughout this tutorial, we will use <code class="docutils literal notranslate"><span class="pre">rqt_graph</span></code> to visualize the changing nodes and topics, as well as the connections between them.</p>
-<p>The <a class="reference internal" href="../Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim tutorial</span></a> tells you how to install rqt and all its plugins, including <code class="docutils literal notranslate"><span class="pre">rqt_graph</span></code>.</p>
-<p>To run rqt_graph, open a new terminal and enter the command:</p>
+<p>在本教程中，我们将使用``rqt_graph``来可视化节点和话题的变化，以及它们之间的连接。</p>
+<p>在 <span class="xref std std-doc">turtlesim 教程 &lt;../Introducing-Turtlesim/Introducing-Turtlesim&gt;`中，介绍了如何安装 rqt 以及其包括的所有插件，包括``rqt_graph`</span>。</p>
+<p>要运行 rqt_graph，请打开一个新的终端并输入以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rqt_graph</span>
 </pre></div>
 </div>
-<p>You can also open rqt_graph by opening <code class="docutils literal notranslate"><span class="pre">rqt</span></code> and selecting <strong>Plugins</strong> &gt; <strong>Introspection</strong> &gt; <strong>Node Graph</strong>.</p>
+<p>您也可以通过打开 <code class="docutils literal notranslate"><span class="pre">rqt</span></code> 并选择 <strong>Plugins</strong> &gt; <strong>Introspection</strong> &gt; <strong>Node Graph</strong> 来打开 rqt_graph。</p>
 <img alt="../../../_images/rqt_graph.png" src="../../../_images/rqt_graph.png" />
-<p>You should see the above nodes and topic, as well as two actions around the periphery of the graph (let's ignore those for now).
-If you hover your mouse over the topic in the center, you'll see the color highlighting like in the image above.</p>
-<p>The graph is depicting how the <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node and the <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> node are communicating with each other over a topic.
-The <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> node is publishing data (the keystrokes you enter to move the turtle around) to the <code class="docutils literal notranslate"><span class="pre">/turtle1/cmd_vel</span></code> topic, and the <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node is subscribed to that topic to receive the data.</p>
+<p>您应该能够看到上述的节点和主题，以及图形周围的两个操作（暂时忽略它们）。如果将鼠标悬停在中心的主题上，您会看到像上面图片中那样的颜色高亮显示。</p>
+<p>该图形描述了 <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> 节点和 <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> 节点之间如何通过一个主题进行通信。<code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> 节点将数据（您输入的按键操作来移动乌龟）发布到 <code class="docutils literal notranslate"><span class="pre">/turtle1/cmd_vel</span></code> 主题上，而 <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> 节点订阅该主题以接收数据。</p>
 <p>The highlighting feature of rqt_graph is very helpful when examining more complex systems with many nodes and topics connected in many different ways.</p>
 <p>rqt_graph is a graphical introspection tool.
 Now we'll look at some command line tools for introspecting topics.</p>
