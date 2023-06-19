@@ -375,7 +375,7 @@
 
   <div class="section" id="creating-a-package">
 <span id="createpkg"></span><h1>创建软件包<a class="headerlink" href="#creating-a-package" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Create a new package using either CMake or Python, and run its executable.</p>
+<p><strong>目标：</strong> 使用CMake或Python创建一个新的包，并运行其可执行文件。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="contents">
@@ -383,8 +383,8 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p>
 <ul>
-<li><p><a class="reference internal" href="#what-is-a-ros-2-package" id="id2">1 What is a ROS 2 package?</a></p></li>
-<li><p><a class="reference internal" href="#what-makes-up-a-ros-2-package" id="id3">2 What makes up a ROS 2 package?</a></p></li>
+<li><p><a class="reference internal" href="#what-is-a-ros-2-package" id="id2">1 什么是ROS 2包？</a></p></li>
+<li><p><a class="reference internal" href="#what-makes-up-a-ros-2-package" id="id3">2 什么构成了一个ROS 2软件包?</a></p></li>
 <li><p><a class="reference internal" href="#packages-in-a-workspace" id="id4">3 Packages in a workspace</a></p></li>
 </ul>
 </li>
@@ -406,19 +406,16 @@
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <div class="section" id="what-is-a-ros-2-package">
-<h3><a class="toc-backref" href="#id2">1 What is a ROS 2 package?</a><a class="headerlink" href="#what-is-a-ros-2-package" title="永久链接至标题"></a></h3>
-<p>A package is an organizational unit for your ROS 2 code.
-If you want to be able to install your code or share it with others, then you'll need it organized in a package.
-With packages, you can release your ROS 2 work and allow others to build and use it easily.</p>
-<p>Package creation in ROS 2 uses ament as its build system and colcon as its build tool.
-You can create a package using either CMake or Python, which are officially supported, though other build types do exist.</p>
+<h3><a class="toc-backref" href="#id2">1 什么是ROS 2包？</a><a class="headerlink" href="#what-is-a-ros-2-package" title="永久链接至标题"></a></h3>
+<p>包是ROS 2代码的组织单元。如果您希望能够安装代码或与他人共享代码，那么您需要将其组织成一个包。通过包，您可以发布ROS 2工作并允许其他人轻松构建和使用它。</p>
+<p>ROS 2中的包创建使用ament作为构建系统和colcon作为构建工具。您可以使用CMake或Python创建一个包，这两种方式得到官方支持，尽管还存在其他构建类型。</p>
 </div>
 <div class="section" id="what-makes-up-a-ros-2-package">
-<h3><a class="toc-backref" href="#id3">2 What makes up a ROS 2 package?</a><a class="headerlink" href="#what-makes-up-a-ros-2-package" title="永久链接至标题"></a></h3>
-<p>ROS 2 Python and CMake packages each have their own minimum required contents:</p>
+<h3><a class="toc-backref" href="#id3">2 什么构成了一个ROS 2软件包?</a><a class="headerlink" href="#what-makes-up-a-ros-2-package" title="永久链接至标题"></a></h3>
+<p>ROS 2的Python和CMake软件包各自有其最小要求的内容:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Q01ha2U=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Q01ha2U=" name="Q01ha2U=" role="tab" tabindex="0">CMake</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Q01ha2U=" class="sphinx-tabs-panel group-tab" id="panel-0-Q01ha2U=" name="Q01ha2U=" role="tabpanel" tabindex="0"><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file that describes how to build the code within the package</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>CMakeLists.txt``文件，描述了如何构建软件包内的代码</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">include/&lt;package_name&gt;</span></code> directory containing the public headers for the package</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file containing meta information about the package</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> directory containing the source code for the package</p></li>
