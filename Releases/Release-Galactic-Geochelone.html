@@ -470,8 +470,8 @@ The <code class="docutils literal notranslate"><span class="pre">--log-level</sp
 <p>It is now possible to configure the logging directory through two environment variables: <code class="docutils literal notranslate"><span class="pre">ROS_LOG_DIR</span></code> and <code class="docutils literal notranslate"><span class="pre">ROS_HOME</span></code>.
 The logic is as follows:</p>
 <ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">$ROS_LOG_DIR</span></code> if <code class="docutils literal notranslate"><span class="pre">ROS_LOG_DIR</span></code> is set and not empty.</p></li>
-<li><p>Otherwise, use <code class="docutils literal notranslate"><span class="pre">$ROS_HOME/log</span></code>, using <code class="docutils literal notranslate"><span class="pre">~/.ros</span></code> for <code class="docutils literal notranslate"><span class="pre">ROS_HOME</span></code> if not set or if empty.</p></li>
+<li><p>如果设置了且非空，则使用 <code class="docutils literal notranslate"><span class="pre">$ROS_LOG_DIR</span></code>。</p></li>
+<li><p>否则，使用 <code class="docutils literal notranslate"><span class="pre">$ROS_HOME/log</span></code>。如果未设置或为空，则使用 <code class="docutils literal notranslate"><span class="pre">~/.ros</span></code> 作为 <code class="docutils literal notranslate"><span class="pre">ROS_HOME</span></code>。</p></li>
 </ul>
 <p>Thus the default value stays the same: <code class="docutils literal notranslate"><span class="pre">~/.ros/log</span></code>.</p>
 <p>Related PRs: <a class="reference external" href="https://github.com/ros2/rcl_logging/pull/53">ros2/rcl_logging#53</a> and <a class="reference external" href="https://github.com/ros2/launch/pull/460">ros2/launch#460</a>.</p>
