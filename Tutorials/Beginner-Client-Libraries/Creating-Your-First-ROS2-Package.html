@@ -416,19 +416,19 @@
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Q01ha2U=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Q01ha2U=" name="Q01ha2U=" role="tab" tabindex="0">CMake</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Q01ha2U=" class="sphinx-tabs-panel group-tab" id="panel-0-Q01ha2U=" name="Q01ha2U=" role="tabpanel" tabindex="0"><ul class="simple">
 <li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>CMakeLists.txt``文件，描述了如何构建软件包内的代码</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">include/&lt;package_name&gt;</span></code> directory containing the public headers for the package</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file containing meta information about the package</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> directory containing the source code for the package</p></li>
+<li><p>包含该包的公共头文件的 <code class="docutils literal notranslate"><span class="pre">include/&lt;package_name&gt;</span></code> 目录</p></li>
+<li><p>包含有关该包的元信息的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 文件</p></li>
+<li><p>包含该包源代码的 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录</p></li>
 </ul>
 </div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file containing meta information about the package</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">resource/&lt;package_name&gt;</span></code> marker file for the package</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> is required when a package has executables, so <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> can find them</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code> containing instructions for how to install the package</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;</span></code> - a directory with the same name as your package, used by ROS 2 tools to find your package, contains <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p></li>
+<li><p>包含有关该包的元信息的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 文件</p></li>
+<li><p>用于标记该包的 <code class="docutils literal notranslate"><span class="pre">resource/&lt;package_name&gt;</span></code> 文件</p></li>
+<li><p>当一个软件包包含可执行文件时，需要使用``setup.cfg``，以便``ros2 run``能够找到它们</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>setup.py``包含了安装该软件包的指令</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;</span></code> - 与软件包同名的目录，被ROS 2工具用于查找软件包，包含``__init__.py``</p></li>
 </ul>
 </div></div>
-<p>The simplest possible package may have a file structure that looks like:</p>
+<p>最简单的软件包的文件结构可能如下所示：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-Q01ha2U=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-Q01ha2U=" name="Q01ha2U=" role="tab" tabindex="0">CMake</button><button aria-controls="panel-1-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-Q01ha2U=" class="sphinx-tabs-panel group-tab" id="panel-1-Q01ha2U=" name="Q01ha2U=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">my_package/</span>
 <span class="go">     CMakeLists.txt</span>
