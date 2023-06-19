@@ -390,7 +390,7 @@
 <li><p><a class="reference internal" href="#clone-a-sample-repo" id="id6">3 克隆示例仓库</a></p></li>
 <li><p><a class="reference internal" href="#resolve-dependencies" id="id7">4 解决依赖关系</a></p></li>
 <li><p><a class="reference internal" href="#build-the-workspace-with-colcon" id="id8">5 使用colcon构建工作空间</a></p></li>
-<li><p><a class="reference internal" href="#source-the-overlay" id="id9">6 Source the overlay</a></p></li>
+<li><p><a class="reference internal" href="#source-the-overlay" id="id9">6 设置叠加层</a></p></li>
 <li><p><a class="reference internal" href="#modify-the-overlay" id="id10">7 Modify the overlay</a></p></li>
 </ul>
 </li>
@@ -511,24 +511,23 @@ rosdep install -i --from-path src --rosdistro humble -y
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Other useful arguments for <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>colcon build``的其他有用参数：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--packages-up-to</span></code> builds the package you want, plus all its dependencies, but not the whole workspace (saves time)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code> saves you from having to rebuild every time you tweak python scripts</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--event-handlers</span> <span class="pre">console_direct+</span></code> shows console output while building (can otherwise be found in the <code class="docutils literal notranslate"><span class="pre">log</span></code> directory)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--packages-up-to</span></code> 构建所需的包及其所有依赖项，而不是整个工作空间（节省时间）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code> 在您调整Python脚本时，无需每次重新构建</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--event-handlers</span> <span class="pre">console_direct+</span></code> 在构建时显示控制台输出（否则可在``log``目录中找到）</p></li>
 </ul>
 </div>
-<p>Once the build is finished, enter <code class="docutils literal notranslate"><span class="pre">ls</span></code> in the workspace root (<code class="docutils literal notranslate"><span class="pre">~/ros2_ws</span></code>) and you will see that colcon has created new directories:</p>
+<p>构建完成后，在工作空间根目录（~/ros2_ws）中输入``ls``命令，你会看到colcon已经创建了新的目录：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">build  install  log  src</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">install</span></code> directory is where your workspace's setup files are, which you can use to source your overlay.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>install``目录是你的工作空间的设置文件所在的位置，你可以使用它来设置你的叠加层。</p>
 </div>
 <div class="section" id="source-the-overlay">
-<h3><a class="toc-backref" href="#id9">6 Source the overlay</a><a class="headerlink" href="#source-the-overlay" title="永久链接至标题"></a></h3>
-<p>Before sourcing the overlay, it is very important that you open a new terminal, separate from the one where you built the workspace.
-Sourcing an overlay in the same terminal where you built, or likewise building where an overlay is sourced, may create complex issues.</p>
-<p>In the new terminal, source your main ROS 2 environment as the &quot;underlay&quot;, so you can build the overlay &quot;on top of&quot; it:</p>
+<h3><a class="toc-backref" href="#id9">6 设置叠加层</a><a class="headerlink" href="#source-the-overlay" title="永久链接至标题"></a></h3>
+<p>在设置叠加层之前，非常重要的一点是要打开一个新的终端，与构建工作空间的终端分开。在同一个终端中设置叠加层或在设置叠加层的终端中进行构建可能会导致复杂的问题。</p>
+<p>在新的终端中，将你的主要ROS 2环境作为“underlay”来源化，这样你就可以在其“之上”构建叠加层：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-4-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-4-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /opt/ros/humble/setup.bash</span>
 </pre></div>
@@ -536,12 +535,12 @@ Sourcing an overlay in the same terminal where you built, or likewise building w
 </div><div aria-labelledby="tab-4-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">. ~/ros2_install/ros2-osx/setup.bash</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-4-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>In this case you can use a normal command prompt, as we are not going to build any workspace in this terminal.</p>
+</div><div aria-labelledby="tab-4-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>在这种情况下，你可以使用普通的命令提示符，因为我们不会在这个终端中构建任何工作空间。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">call C:\dev\ros2\local_setup.bat</span>
 </pre></div>
 </div>
 </div></div>
-<p>Go into the root of your workspace:</p>
+<p>进入你的工作空间的根目录：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-5-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-5-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-5-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-5-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
 </pre></div>
@@ -553,7 +552,7 @@ Sourcing an overlay in the same terminal where you built, or likewise building w
 </pre></div>
 </div>
 </div></div>
-<p>In the root, source your overlay:</p>
+<p>在根目录中，将你的叠加层源化：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-6-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-6-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-6-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-6-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/local_setup.bash</span>
 </pre></div>
