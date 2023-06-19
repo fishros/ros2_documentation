@@ -499,8 +499,7 @@
 </div>
 <p>以下是该类构造函数的定义。<code class="docutils literal notranslate"><span class="pre">super().__init__``调用了``Node``类的构造函数，并向其传递了节点名称，本例中为``minimal_publisher</span></code>。</p>
 <p><a href="#id1"><span class="problematic" id="id2">``</span></a>create_publisher``声明该节点发布类型为``String``（从``std_msgs.msg``模块导入），在名为``topic``的主题上，且“队列大小”为10。队列大小是一个必需的QoS（服务质量）设置，它限制了如果订阅者接收消息的速度不够快时，排队消息的数量。</p>
-<p>Next, a timer is created with a callback to execute every 0.5 seconds.
-<code class="docutils literal notranslate"><span class="pre">self.i</span></code> is a counter used in the callback.</p>
+<p>首先，创建一个定时器，并设置每0.5秒执行一次回调函数。<a href="#id1"><span class="problematic" id="id2">``</span></a>self.i``是在回调函数中使用的计数器。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;minimal_publisher&#39;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;topic&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -509,7 +508,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> creates a message with the counter value appended, and publishes it to the console with <code class="docutils literal notranslate"><span class="pre">get_logger().info</span></code>.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>timer_callback``创建一个带有计数器值附加的消息，并使用``get_logger().info``将其发布到控制台。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">timer_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
     <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;Hello World: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span>
@@ -518,7 +517,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Lastly, the main function is defined.</p>
+<p>最后，定义主函数。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 
@@ -533,7 +532,7 @@
     <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>First the <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> library is initialized, then the node is created, and then it &quot;spins&quot; the node so its callbacks are called.</p>
+<p>首先初始化``rclpy``库，然后创建节点，最后&quot;旋转&quot;节点以调用其回调函数。</p>
 </div>
 <div class="section" id="add-dependencies">
 <h4>2.2 添加依赖项<a class="headerlink" href="#add-dependencies" title="永久链接至标题"></a></h4>
