@@ -8507,62 +8507,62 @@ msgstr "或者使用 Powershell："
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:375
 msgid "You should see the publisher relaying the msg you defined, including the values you set in ``publish_address_book.cpp``."
-msgstr "You should see the publisher relaying the msg you defined, including the values you set in ``publish_address_book.cpp``."
+msgstr "你应该看到发布者正在转发你定义的消息，包括你在 ``publish_address_book.cpp`` 中设置的值。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:377
 msgid "To confirm the message is being published on the ``address_book`` topic, open another terminal, source the workspace, and call ``topic echo``:"
-msgstr "To confirm the message is being published on the ``address_book`` topic, open another terminal, source the workspace, and call ``topic echo``:"
+msgstr "为了确认消息正在 ``address_book`` 主题上发布，打开另一个终端，加载工作空间，并调用 ``topic echo``："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:409
 msgid "We won't create a subscriber in this tutorial, but you can try to write one yourself for practice (use :doc:`./Writing-A-Simple-Cpp-Publisher-And-Subscriber` to help)."
-msgstr "We won't create a subscriber in this tutorial, but you can try to write one yourself for practice (use :doc:`./Writing-A-Simple-Cpp-Publisher-And-Subscriber` to help)."
+msgstr "在本教程中，我们不会创建一个订阅者，但你可以尝试自己编写一个进行练习（使用 :doc:`./Writing-A-Simple-Cpp-Publisher-And-Subscriber` 来帮助你）。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:412
 msgid "5 (Extra) Use an existing interface definition"
-msgstr "5 (Extra) Use an existing interface definition"
+msgstr "5（额外）使用现有接口定义"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:416
 msgid "You can use an existing interface definition in a new interface definition. For example, let's say there is a message named ``Contact.msg`` that belongs to an existing ROS 2 package named ``rosidl_tutorials_msgs``. Assume that its definition is identical to our custom-made ``AddressBook.msg`` interface from earlier."
-msgstr "You can use an existing interface definition in a new interface definition. For example, let's say there is a message named ``Contact.msg`` that belongs to an existing ROS 2 package named ``rosidl_tutorials_msgs``. Assume that its definition is identical to our custom-made ``AddressBook.msg`` interface from earlier."
+msgstr "您可以在新的接口定义中使用现有的接口定义。例如，假设有一个名为``Contact.msg``的消息，它属于一个名为``rosidl_tutorials_msgs``的现有ROS 2包。假设它的定义与我们之前自定义的``AddressBook.msg``接口相同。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:420
 msgid "In that case you could have defined ``AddressBook.msg`` (an interface in the package *with* your nodes) as type ``Contact`` (an interface in a *separate* package). You could even define ``AddressBook.msg`` as an *array* of type ``Contact``, like so:"
-msgstr "In that case you could have defined ``AddressBook.msg`` (an interface in the package *with* your nodes) as type ``Contact`` (an interface in a *separate* package). You could even define ``AddressBook.msg`` as an *array* of type ``Contact``, like so:"
+msgstr "在这种情况下，您可以将``AddressBook.msg``（与您的节点在同一包中的接口）定义为类型``Contact``（在一个*单独的*包中的接口）。您甚至可以将``AddressBook.msg``定义为类型``Contact``的*数组*，如下所示："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:427
 msgid "To generate this message you would need to declare a dependency on ``Contact.msg's`` package, ``rosidl_tutorials_msgs``, in ``package.xml``:"
-msgstr "To generate this message you would need to declare a dependency on ``Contact.msg's`` package, ``rosidl_tutorials_msgs``, in ``package.xml``:"
+msgstr "要生成此消息，您需要在``package.xml``中声明对``Contact.msg``所在的包``rosidl_tutorials_msgs``的依赖项："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:435
 msgid "And in ``CMakeLists.txt``:"
-msgstr "And in ``CMakeLists.txt``:"
+msgstr "还需要在``CMakeLists.txt``中进行如下设置："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:446
 msgid "You would also need to include the header of ``Contact.msg`` in you publisher node in order to be able to add ``contacts`` to your ``address_book``."
-msgstr "You would also need to include the header of ``Contact.msg`` in you publisher node in order to be able to add ``contacts`` to your ``address_book``."
+msgstr "你还需要在发布者节点中包含``Contact.msg``的头文件，以便能够将``contacts``添加到你的``address_book``。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:452
 msgid "You could change the callback to something like this:"
-msgstr "You could change the callback to something like this:"
+msgstr "你可以将回调函数改为以下内容："
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:484
 msgid "Building and running these changes would show the msg defined as expected, as well as the array of msgs defined above."
-msgstr "Building and running these changes would show the msg defined as expected, as well as the array of msgs defined above."
+msgstr "构建并运行这些更改会显示预期的消息定义，以及上面定义的消息数组。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:489
 msgid "In this tutorial, you tried out different field types for defining interfaces, then built an interface in the same package where it's being used."
-msgstr "In this tutorial, you tried out different field types for defining interfaces, then built an interface in the same package where it's being used."
+msgstr "在本教程中，你尝试了不同的字段类型来定义接口，然后在使用接口的同一软件包中构建了一个接口。"
 
 
 #: ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:491
