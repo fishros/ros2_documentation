@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Managed-Nodes.html">使用受控生命周期管理节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Intra-Process-Communication.html">设置高效的进程内通信</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Rosbag-with-ROS1-Bridge.html">Recording and playing back data with <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> using the ROS 1 bridge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">Understanding real-time programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">理解实时编程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">Experimenting with a dummy robot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Logging-and-logger-configuration.html">记录日志</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Content-Filtering-Subscription.html">创建内容过滤订阅</a></li>
@@ -478,23 +478,17 @@ net.inet.udp.maxdgram<span class="o">=</span><span class="m">65500</span>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>下一部分仅适用于Linux系统。</p>
-<p>However, for macOS and Windows you can achieve a similar effect with the utilities &quot;Network Link Conditioner&quot; (part of the xcode tool suite) and &quot;Clumsy&quot; (<a class="reference external" href="http://jagt.github.io/clumsy/index.html">http://jagt.github.io/clumsy/index.html</a>), respectively, but they will not be covered in this tutorial.</p>
+<p>然而，在macOS和Windows上，您可以使用工具“Network Link Conditioner”（xcode工具套件的一部分）和“Clumsy”（<a class="reference external" href="http://jagt.github.io/clumsy/index.html">http://jagt.github.io/clumsy/index.html</a>）来实现类似的效果，但它们不在本教程中介绍。</p>
 </div>
-<p>We are going to use the Linux network traffic control utility, <code class="docutils literal notranslate"><span class="pre">tc</span></code> (<a class="reference external" href="http://linux.die.net/man/8/tc">http://linux.die.net/man/8/tc</a>).</p>
+<p>我们将使用Linux的网络流量控制实用程序``tc``（<a class="reference external" href="http://linux.die.net/man/8/tc">http://linux.die.net/man/8/tc</a>）。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo tc qdisc add dev lo root netem loss <span class="m">5</span>%
 </pre></div>
 </div>
-<p>This magical incantation will simulate 5% packet loss over the local loopback device.
-If you use a higher resolution of the images (e.g. <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">-p</span> <span class="pre">width:=640</span> <span class="pre">-p</span> <span class="pre">height:=480</span></code>) you might want to try a lower packet loss rate (e.g. <code class="docutils literal notranslate"><span class="pre">1%</span></code>).</p>
-<p>Next we start the <code class="docutils literal notranslate"><span class="pre">cam2image</span></code> and <code class="docutils literal notranslate"><span class="pre">showimage</span></code>, and we'll soon notice that both programs seem to have slowed down the rate at which images are transmitted.
-This is caused by the behavior of the default QoS settings.
-Enforcing reliability on a lossy channel means that the publisher (in this case, <code class="docutils literal notranslate"><span class="pre">cam2image</span></code>) will resend the network packets until it receives acknowledgement from the consumer (i.e. <code class="docutils literal notranslate"><span class="pre">showimage</span></code>).</p>
-<p>Let's now try running both programs, but with more suitable settings.
-First of all, we'll use the <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">reliability:=best_effort</span></code> option to enable best effort communication.
-The publisher will now just attempt to deliver the network packets, and don't expect acknowledgement from the consumer.
-We see now that some of the frames on the <code class="docutils literal notranslate"><span class="pre">showimage</span></code> side were dropped, so the frame numbers in the shell running <code class="docutils literal notranslate"><span class="pre">showimage</span></code> won't be consecutive anymore:</p>
-<a class="reference external image-reference" href="https://raw.githubusercontent.com/ros2/demos/humble/image_tools/doc/qos-best-effort.png"><img alt="Best effort image transfer" src="https://raw.githubusercontent.com/ros2/demos/humble/image_tools/doc/qos-best-effort.png" /></a>
-<p>When you're done, remember to delete the queueing discipline:</p>
+<p>这个神奇的咒语将在本地环回设备上模拟5%的丢包。如果您使用更高分辨率的图像（例如``--ros-args -p width:=640 -p height:=480``），您可能希望尝试较低的丢包率（例如``1%``）。</p>
+<p>接下来，我们启动``cam2image``和``showimage``，很快我们会注意到两个程序似乎减慢了图像传输的速率。这是由于默认的QoS设置的行为引起的。在有丢包的通道上强制可靠性意味着发布者（在本例中为``cam2image``）将重发网络数据包，直到从消费者（即``showimage``）接收到确认。</p>
+<p>现在让我们尝试运行这两个程序，但使用更合适的设置。首先，我们将使用``-p reliability:=best_effort``选项来启用尽力而为的通信。现在，发布者将仅尝试传递网络数据包，并不期望来自消费者的确认。我们现在看到，<a href="#id1"><span class="problematic" id="id2">``</span></a>showimage``一侧的一些帧已经丢失，所以在运行``showimage``的shell中的帧编号将不再是连续的：</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/ros2/demos/humble/image_tools/doc/qos-best-effort.png"><img alt="尽力而为的图像传输" src="https://raw.githubusercontent.com/ros2/demos/humble/image_tools/doc/qos-best-effort.png" /></a>
+<p>完成后，请记得删除队列规则：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo tc qdisc delete dev lo root netem loss <span class="m">5</span>%
 </pre></div>
 </div>

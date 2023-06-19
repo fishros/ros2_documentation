@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Understanding real-time programming &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>理解实时编程 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -224,7 +224,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Managed-Nodes.html">使用受控生命周期管理节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Intra-Process-Communication.html">设置高效的进程内通信</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Rosbag-with-ROS1-Bridge.html">Recording and playing back data with <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> using the ROS 1 bridge</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Understanding real-time programming</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">理解实时编程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">Experimenting with a dummy robot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Logging-and-logger-configuration.html">记录日志</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Content-Filtering-Subscription.html">创建内容过滤订阅</a></li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../Demos.html">演示</a> &raquo;</li>
-      <li>Understanding real-time programming</li>
+      <li>理解实时编程</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Demos/Real-Time-Programming.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,14 +373,14 @@
 
 
   <div class="section" id="understanding-real-time-programming">
-<h1>Understanding real-time programming<a class="headerlink" href="#understanding-real-time-programming" title="永久链接至标题"></a></h1>
+<h1>理解实时编程<a class="headerlink" href="#understanding-real-time-programming" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
-<li><p><a class="reference internal" href="#install-and-run-the-demo" id="id2">Install and run the demo</a></p>
+<li><p><a class="reference internal" href="#install-and-run-the-demo" id="id2">安装并运行演示</a></p>
 <ul>
-<li><p><a class="reference internal" href="#run-the-tests" id="id3">Run the tests</a></p></li>
+<li><p><a class="reference internal" href="#run-the-tests" id="id3">运行测试</a></p></li>
 <li><p><a class="reference internal" href="#what-the-heck-just-happened" id="id4">What the heck just happened?</a></p></li>
 <li><p><a class="reference internal" href="#adjust-permissions-for-memory-locking" id="id5">Adjust permissions for memory locking</a></p></li>
 <li><p><a class="reference internal" href="#output-overview" id="id6">Output overview</a></p></li>
@@ -393,28 +393,21 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>Real-time computing is a key feature of many robotics systems, particularly safety- and mission-critical applications such as autonomous vehicles, spacecrafts, and industrial manufacturing.
-We are designing and prototyping ROS 2 with real-time performance constraints in mind, since this is a requirement that was not considered in the early stages of ROS 1 and it is now intractable to refactor ROS 1 to be real-time friendly.</p>
-<p><a class="reference external" href="https://design.ros2.org/articles/realtime_background.html">This document</a> outlines the requirements of real-time computing and best practices for software engineers.  In short:</p>
-<p>To make a real-time computer system, our real-time loop must update periodically to meet deadlines.
-We can only tolerate a small margin of error on these deadlines (our maximum allowable jitter).
-To do this, we must avoid nondeterministic operations in the execution path, things like: pagefault events, dynamic memory allocation/deallocation, and synchronization primitives that block indefinitely.</p>
-<p>A classic example of a controls problem commonly solved by real-time computing is balancing an <a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_pendulum">inverted pendulum</a>.
-If the controller blocked for an unexpectedly long amount of time, the pendulum would fall down or go unstable.
-But if the controller reliably updates at a rate faster than the motor controlling the pendulum can operate, the pendulum will successfully adapt react to sensor data to balance the pendulum.</p>
-<p>Now that you know everything about real-time computing, let's try a demo!</p>
+<p>实时计算是许多机器人系统的关键特性，特别是对于自动驾驶汽车、航天器和工业制造等安全和任务关键型应用。我们设计和原型化ROS 2时考虑了实时性能限制，因为在ROS 1的早期阶段并没有考虑这一要求，现在对ROS 1进行重构以实现实时友好性已经变得困难。</p>
+<p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">document</span> <span class="pre">&lt;https://design.ros2.org/articles/realtime_background.html&gt;</span></code> 详细介绍了实时计算的要求和软件工程师的最佳实践。简而言之：</p>
+<p>要创建一个实时计算机系统，我们的实时循环必须周期性地更新以满足截止时间。我们只能容忍这些截止时间上的小误差（最大允许的抖动）。为了做到这一点，我们必须避免执行路径中的非确定性操作，比如：页错误事件、动态内存分配/释放和无限期阻塞的同步原语。</p>
+<p>实时计算通常用于解决控制问题的经典示例是平衡一个``倒立摆 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Inverted_pendulum">https://en.wikipedia.org/wiki/Inverted_pendulum</a>&gt;``。如果控制器阻塞时间意外延长，摆杆将倒下或变得不稳定。但是，如果控制器可靠地以比控制摆杆的电机操作速度更快的频率更新，摆杆将能够成功地根据传感器数据调整自己来保持平衡。</p>
+<p>现在你已经了解了关于实时计算的一切，让我们尝试一下演示！</p>
 </div>
 <div class="section" id="install-and-run-the-demo">
-<h2><a class="toc-backref" href="#id2">Install and run the demo</a><a class="headerlink" href="#install-and-run-the-demo" title="永久链接至标题"></a></h2>
-<p>The real-time demo was written with Linux operating systems in mind, since many members of the ROS community doing real-time computing use Xenomai or RT_PREEMPT as their real-time solutions.
-Since many of the operations done in the demo to optimize performance are OS-specific, the demo only builds and runs on Linux systems.
-<strong>So, if you are an OSX or Windows user, don't try this part!</strong></p>
-<p>Also this must be built from source using a the static DDS API. <strong>Currently the only supported implementation is Connext</strong>.</p>
-<p>First, follow the instructions to build ROS 2 <a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html"><span class="doc">from source</span></a> using Connext DDS as the middleware.</p>
+<h2><a class="toc-backref" href="#id2">安装并运行演示</a><a class="headerlink" href="#install-and-run-the-demo" title="永久链接至标题"></a></h2>
+<p>这个实时演示是为Linux操作系统设计的，因为ROS社区的许多进行实时计算的成员使用Xenomai或RT_PREEMPT作为他们的实时解决方案。由于演示中进行的许多优化性能的操作是特定于操作系统的，所以演示只能在Linux系统上构建和运行。<strong>所以，如果你是OSX或Windows用户，请不要尝试这部分！</strong></p>
+<p>此外，必须使用静态DDS API从源代码构建。<strong>目前唯一支持的实现是Connext</strong>。</p>
+<p>首先，请按照说明使用Connext DDS作为中间件来构建ROS 2。请参考 <a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html"><span class="doc">从源码构建ROS 2</span></a>。</p>
 <div class="section" id="run-the-tests">
-<h3><a class="toc-backref" href="#id3">Run the tests</a><a class="headerlink" href="#run-the-tests" title="永久链接至标题"></a></h3>
-<p><strong>Before you run make sure you have at least 8Gb of RAM free. With the memory locking, swap will not work anymore.</strong></p>
-<p>Source your ROS 2 setup.bash.</p>
+<h3><a class="toc-backref" href="#id3">运行测试</a><a class="headerlink" href="#run-the-tests" title="永久链接至标题"></a></h3>
+<p><strong>在运行之前，请确保至少有8GB的可用内存。使用内存锁定后，交换空间将无法使用。</strong></p>
+<p>执行 <code class="xref any docutils literal notranslate"><span class="pre">source</span> <span class="pre">your</span> <span class="pre">ROS</span> <span class="pre">2</span> <span class="pre">setup.bash</span></code>。</p>
 <p>Run the demo binary, and redirect the output. You may want to use <code class="docutils literal notranslate"><span class="pre">sudo</span></code> in case you get permission error:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pendulum_demo &gt; output.txt
 </pre></div>
