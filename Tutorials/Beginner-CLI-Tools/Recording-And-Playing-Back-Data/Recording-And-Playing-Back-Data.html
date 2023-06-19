@@ -464,29 +464,26 @@
 </div>
 <div class="section" id="ros2-bag-record">
 <h3><a class="toc-backref" href="#id6">3 ros2 bag record</a><a class="headerlink" href="#ros2-bag-record" title="永久链接至标题"></a></h3>
-<p>To record the data published to a topic use the command syntax:</p>
+<p>要记录发布到一个话题上的数据，请使用以下命令语法：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag record &lt;topic_name&gt;</span>
 </pre></div>
 </div>
-<p>Before running this command on your chosen topic, open a new terminal and move into the <code class="docutils literal notranslate"><span class="pre">bag_files</span></code> directory you created earlier, because the rosbag file will save in the directory where you run it.</p>
-<p>Run the command:</p>
+<p>在对所选择的话题运行此命令之前，请打开一个新的终端并进入之前创建的``bag_files``目录，因为rosbag文件将保存在您运行命令的目录中。</p>
+<p>运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 bag record /turtle1/cmd_vel</span>
 </pre></div>
 </div>
-<p>You will see the following messages in the terminal (the date and time will be different):</p>
+<p>你将在终端中看到以下消息（日期和时间会有所不同）：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [rosbag2_storage]: Opened database &#39;rosbag2_2019_10_11-05_18_45&#39;.</span>
 <span class="go">[INFO] [rosbag2_transport]: Listening for topics...</span>
 <span class="go">[INFO] [rosbag2_transport]: Subscribed to topic &#39;/turtle1/cmd_vel&#39;</span>
 <span class="go">[INFO] [rosbag2_transport]: All requested topics are subscribed. Stopping discovery...</span>
 </pre></div>
 </div>
-<p>Now <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> is recording the data published on the <code class="docutils literal notranslate"><span class="pre">/turtle1/cmd_vel</span></code> topic.
-Return to the teleop terminal and move the turtle around again.
-The movements don't matter, but try to make a recognizable pattern to see when you replay the data later.</p>
+<p>现在``ros2 bag``正在记录发布在``/turtle1/cmd_vel``话题上的数据。返回到teleop终端并再次移动乌龟。移动的具体方式不重要，但尽量制造一个可识别的模式，以便在稍后回放数据时进行观察。</p>
 <img alt="../../../_images/record.png" src="../../../_images/record.png" />
-<p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> to stop recording.</p>
-<p>The data will be accumulated in a new bag directory with a name in the pattern of <code class="docutils literal notranslate"><span class="pre">rosbag2_year_month_day-hour_minute_second</span></code>.
-This directory will contain a <code class="docutils literal notranslate"><span class="pre">metadata.yaml</span></code> along with the bag file in the recorded format.</p>
+<p>按下``Ctrl+C``停止记录。</p>
+<p>数据将累积在一个新的袋子目录中，目录的命名方式为``rosbag2_year_month_day-hour_minute_second``。该目录将包含一个``metadata.yaml``文件和以记录格式保存的袋子文件。</p>
 <div class="section" id="record-multiple-topics">
 <h4>3.1 Record multiple topics<a class="headerlink" href="#record-multiple-topics" title="永久链接至标题"></a></h4>
 <p>You can also record multiple topics, as well as change the name of the file <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> saves to.</p>
