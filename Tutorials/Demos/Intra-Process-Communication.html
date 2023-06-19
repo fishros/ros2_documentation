@@ -653,27 +653,25 @@ $ sudo sysctl -w net.inet.udp.maxdgram<span class="o">=</span><span class="m">65
 </div>
 <div class="section" id="pipeline-with-two-image-viewers">
 <h4>带有两个图像查看器的流水线<a class="headerlink" href="#pipeline-with-two-image-viewers" title="永久链接至标题"></a></h4>
-<p>Now let's look at an example just like the one above, except it has two image view nodes.
-All the nodes are still in the same process, but now two image view windows should show up. (Note for macOS users: your image view windows might be on top of each other).
-Let's run it with the command:</p>
+<p>现在让我们看一个与上面相似的示例，只是这次有两个图像视图节点。所有节点仍然在同一个进程中，但现在应该会出现两个图像视图窗口。（注意 macOS 用户：你的图像视图窗口可能会重叠在一起）。让我们用以下命令运行它：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run intra_process_demo image_pipeline_with_two_image_view
 </pre></div>
 </div>
 <img alt="../../_images/intra-process-demo-pipeline-two-windows-copy.png" src="../../_images/intra-process-demo-pipeline-two-windows-copy.png" />
-<p>Just like the last example, you can pause the rendering with the spacebar and continue by pressing the spacebar a second time. You can stop the updating to inspect the pointers written to the screen.</p>
-<p>As you can see in the example image above, we have one image with all of the pointers the same and then another image with the same pointers as the first image for the first two entries, but the last pointer on the second image is different. To understand why this is happening consider the graph's topology:</p>
+<p>与上一个示例一样，你可以使用空格键暂停渲染，再次按下空格键继续。你可以停止更新以检查写入屏幕的指针。</p>
+<p>如上面的示例图所示，我们有一个图像，其中所有指针都相同，然后另一个图像的前两个条目与第一个图像的指针相同，但第二个图像的最后一个指针不同。要理解为什么会发生这种情况，请考虑图的拓扑结构：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>camera_node -&gt; watermark_node -&gt; image_view_node
                               -&gt; image_view_node2
 </pre></div>
 </div>
-<p>The link between the <code class="docutils literal notranslate"><span class="pre">camera_node</span></code> and the <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> can use the same pointer without copying because there is only one intra process subscription to which the message should be delivered. But for the link between the <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> and the two image view nodes the relationship is one to many, so if the image view nodes were using <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> callbacks then it would be impossible to deliver the ownership of the same pointer to both. It can be, however, delivered to one of them. Which one would get the original pointer is not defined, but instead is simply the last to be delivered.</p>
-<p>Note that the image view nodes are not subscribed with <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> callbacks. Instead they are subscribed with <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">shared_ptr</span></code>s. This means the system deliveres the same <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code> to both callbacks. When the first intraprocess subscription is handled, the internally stored <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> is promoted to a <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code>. Each of the callbacks will receive shared ownership of the same message.</p>
+<p><code class="docutils literal notranslate"><span class="pre">camera_node</span></code> 和 <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> 之间的链接可以使用相同的指针而不进行复制，因为只有一个进程内的订阅应将消息传递给该指针。但是，对于 <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> 和两个图像视图节点之间的链接，关系是一对多的，因此，如果图像视图节点使用 <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> 回调，那么将不可能将同一指针的所有权分别传递给它们。然而，它可以被传递给其中一个。哪个节点会获得原始指针并没有定义，而是简单地取决于最后被传递的节点。</p>
+<p>注意，图像视图节点没有使用``unique_ptr``回调函数进行订阅，而是使用``const shared_ptr``进行订阅。这意味着系统将向两个回调函数提供相同的``shared_ptr``。在处理第一个进程内订阅时，内部存储的``unique_ptr``将被提升为``shared_ptr``。每个回调函数将共享同一消息的所有权。</p>
 </div>
 <div class="section" id="pipeline-with-interprocess-viewer">
-<h4>Pipeline with interprocess viewer<a class="headerlink" href="#pipeline-with-interprocess-viewer" title="永久链接至标题"></a></h4>
-<p>One other important thing to get right is to avoid interruption of the intra process zero-copy behavior when interprocess subscriptions are made. To test this we can run the first image pipeline demo, <code class="docutils literal notranslate"><span class="pre">image_pipeline_all_in_one</span></code>, and then run an instance of the stand alone <code class="docutils literal notranslate"><span class="pre">image_view_node</span></code> (don't forget to prefix them with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">intra_process_demo</span></code> in the terminal). This will look something like this:</p>
+<h4>具有进程间查看器的流水线<a class="headerlink" href="#pipeline-with-interprocess-viewer" title="永久链接至标题"></a></h4>
+<p>还有一件重要的事情需要注意，即在进行进程间订阅时，避免中断进程内的零拷贝行为。为了测试这一点，我们可以运行第一个图像流水线演示程序``image_pipeline_all_in_one``，然后运行一个独立的``image_view_node``实例（不要忘记在终端中加上``ros2 run intra_process_demo``前缀）。大致如下所示：</p>
 <img alt="../../_images/intra-process-demo-pipeline-inter-process.png" src="../../_images/intra-process-demo-pipeline-inter-process.png" />
-<p>It's hard to pause both images at the same time so the images may not line up, but the important thing to notice is that the <code class="docutils literal notranslate"><span class="pre">image_pipeline_all_in_one</span></code> image view shows the same address for each step. This means that the intra process zero-copy is preserved even when an external view is subscribed as well. You can also see that the interprocess image view has different process IDs for the first two lines of text and the process ID of the standalone image viewer in the third line of text.</p>
+<p>很难同时暂停两个图像，因此图像可能不会对齐，但需要注意的重要事项是，<a href="#id1"><span class="problematic" id="id2">``</span></a>image_pipeline_all_in_one``图像视图显示了每个步骤的相同地址。这意味着即使订阅了外部视图，进程内的零拷贝仍然得到保留。您还可以看到进程间图像视图在文本的前两行具有不同的进程 ID，并且独立图像查看器的进程 ID 在第三行文本中。</p>
 </div>
 </div>
 </div>
