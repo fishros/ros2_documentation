@@ -221,8 +221,8 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Demos.html">演示</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Quality-of-Service.html">Using quality-of-service settings for lossy networks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Managed-Nodes.html">Managing nodes with managed lifecycles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Quality-of-Service.html">在不稳定网络中使用服务质量设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Managed-Nodes.html">使用受控生命周期管理节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Intra-Process-Communication.html">设置高效的进程内通信</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Rosbag-with-ROS1-Bridge.html">Recording and playing back data with <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> using the ROS 1 bridge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">Understanding real-time programming</a></li>
@@ -399,8 +399,8 @@
 <ul>
 <li><p><a class="reference internal" href="#console-output-formatting" id="id13">控制台输出格式化</a></p></li>
 <li><p><a class="reference internal" href="#console-output-colorizing" id="id14">控制台输出着色</a></p></li>
-<li><p><a class="reference internal" href="#default-stream-for-console-output" id="id15">Default stream for console output</a></p></li>
-<li><p><a class="reference internal" href="#line-buffered-console-output" id="id16">Line buffered console output</a></p></li>
+<li><p><a class="reference internal" href="#default-stream-for-console-output" id="id15">默认控制台输出流</a></p></li>
+<li><p><a class="reference internal" href="#line-buffered-console-output" id="id16">行缓冲的控制台输出</a></p></li>
 </ul>
 </li>
 </ul>
@@ -640,9 +640,8 @@ ros2 run logging_demo logging_demo_main
 </div>
 </div>
 <div class="section" id="default-stream-for-console-output">
-<h3><a class="toc-backref" href="#id15">Default stream for console output</a><a class="headerlink" href="#default-stream-for-console-output" title="永久链接至标题"></a></h3>
-<p>In Foxy and later, the output from all debug levels goes to stderr by default.  It is possible to force all output to go to stdout by setting the <code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_USE_STDOUT</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">1</span></code>.
-For example:</p>
+<h3><a class="toc-backref" href="#id15">默认控制台输出流</a><a class="headerlink" href="#default-stream-for-console-output" title="永久链接至标题"></a></h3>
+<p>从Foxy版本开始，默认情况下所有调试级别的输出都将发送到stderr。通过将``RCUTILS_LOGGING_USE_STDOUT``环境变量设置为``1``，可以强制所有输出发送到stdout。例如：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-10-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-10-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-10-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-10-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-10-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RCUTILS_LOGGING_USE_STDOUT</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
@@ -656,10 +655,8 @@ For example:</p>
 </div></div>
 </div>
 <div class="section" id="line-buffered-console-output">
-<h3><a class="toc-backref" href="#id16">Line buffered console output</a><a class="headerlink" href="#line-buffered-console-output" title="永久链接至标题"></a></h3>
-<p>By default, all logging output is unbuffered.
-You can force it to be buffered by setting the <code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_BUFFERED_STREAM</span></code> environment variable to 1.
-For example:</p>
+<h3><a class="toc-backref" href="#id16">行缓冲的控制台输出</a><a class="headerlink" href="#line-buffered-console-output" title="永久链接至标题"></a></h3>
+<p>默认情况下，所有日志输出是无缓冲的。通过将``RCUTILS_LOGGING_BUFFERED_STREAM``环境变量设置为1，可以强制将其缓冲。例如：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-11-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-11-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-11-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-11-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-11-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-11-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-11-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RCUTILS_LOGGING_BUFFERED_STREAM</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
@@ -671,7 +668,7 @@ For example:</p>
 </pre></div>
 </div>
 </div></div>
-<p>Then run:</p>
+<p>然后运行：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run logging_demo logging_demo_main
 </pre></div>
 </div>
