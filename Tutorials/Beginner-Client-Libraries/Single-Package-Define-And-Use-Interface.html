@@ -389,7 +389,7 @@
 <li><p><a class="reference internal" href="#create-a-msg-file" id="id5">2 创建一个消息文件</a></p></li>
 <li><p><a class="reference internal" href="#use-an-interface-from-the-same-package" id="id6">3 从同一软件包中使用接口</a></p></li>
 <li><p><a class="reference internal" href="#try-it-out" id="id7">4 尝试一下</a></p></li>
-<li><p><a class="reference internal" href="#extra-use-an-existing-interface-definition" id="id8">5 (Extra) Use an existing interface definition</a></p></li>
+<li><p><a class="reference internal" href="#extra-use-an-existing-interface-definition" id="id8">5（额外）使用现有接口定义</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id9">摘要</a></p></li>
@@ -668,8 +668,8 @@
 </pre></div>
 </div>
 </div></div>
-<p>You should see the publisher relaying the msg you defined, including the values you set in <code class="docutils literal notranslate"><span class="pre">publish_address_book.cpp</span></code>.</p>
-<p>To confirm the message is being published on the <code class="docutils literal notranslate"><span class="pre">address_book</span></code> topic, open another terminal, source the workspace, and call <code class="docutils literal notranslate"><span class="pre">topic</span> <span class="pre">echo</span></code>:</p>
+<p>你应该看到发布者正在转发你定义的消息，包括你在 <code class="docutils literal notranslate"><span class="pre">publish_address_book.cpp</span></code> 中设置的值。</p>
+<p>为了确认消息正在 <code class="docutils literal notranslate"><span class="pre">address_book</span></code> 主题上发布，打开另一个终端，加载工作空间，并调用 <code class="docutils literal notranslate"><span class="pre">topic</span> <span class="pre">echo</span></code>：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/setup.bash</span>
 <span class="go">ros2 topic echo /address_book</span>
@@ -689,27 +689,24 @@
 </pre></div>
 </div>
 </div></div>
-<p>We won't create a subscriber in this tutorial, but you can try to write one yourself for practice (use <a class="reference internal" href="Writing-A-Simple-Cpp-Publisher-And-Subscriber.html"><span class="doc">Writing a simple publisher and subscriber (C++)</span></a> to help).</p>
+<p>在本教程中，我们不会创建一个订阅者，但你可以尝试自己编写一个进行练习（使用 <a class="reference internal" href="Writing-A-Simple-Cpp-Publisher-And-Subscriber.html"><span class="doc">Writing a simple publisher and subscriber (C++)</span></a> 来帮助你）。</p>
 </div>
 <div class="section" id="extra-use-an-existing-interface-definition">
-<h3><a class="toc-backref" href="#id8">5 (Extra) Use an existing interface definition</a><a class="headerlink" href="#extra-use-an-existing-interface-definition" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id8">5（额外）使用现有接口定义</a><a class="headerlink" href="#extra-use-an-existing-interface-definition" title="永久链接至标题"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>You can use an existing interface definition in a new interface definition.
-For example, let's say there is a message named <code class="docutils literal notranslate"><span class="pre">Contact.msg</span></code> that belongs to an existing ROS 2 package named <code class="docutils literal notranslate"><span class="pre">rosidl_tutorials_msgs</span></code>.
-Assume that its definition is identical to our custom-made <code class="docutils literal notranslate"><span class="pre">AddressBook.msg</span></code> interface from earlier.</p>
-<p>In that case you could have defined <code class="docutils literal notranslate"><span class="pre">AddressBook.msg</span></code> (an interface in the package <em>with</em> your nodes) as type <code class="docutils literal notranslate"><span class="pre">Contact</span></code> (an interface in a <em>separate</em> package).
-You could even define <code class="docutils literal notranslate"><span class="pre">AddressBook.msg</span></code> as an <em>array</em> of type <code class="docutils literal notranslate"><span class="pre">Contact</span></code>, like so:</p>
+<p>您可以在新的接口定义中使用现有的接口定义。例如，假设有一个名为``Contact.msg``的消息，它属于一个名为``rosidl_tutorials_msgs``的现有ROS 2包。假设它的定义与我们之前自定义的``AddressBook.msg``接口相同。</p>
+<p>在这种情况下，您可以将``AddressBook.msg``（与您的节点在同一包中的接口）定义为类型``Contact``（在一个*单独的*包中的接口）。您甚至可以将``AddressBook.msg``定义为类型``Contact``的*数组*，如下所示：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rosidl_tutorials_msgs</span><span class="o">/</span><span class="n">Contact</span><span class="p">[]</span> <span class="n">address_book</span>
 </pre></div>
 </div>
-<p>To generate this message you would need to declare a dependency on <code class="docutils literal notranslate"><span class="pre">Contact.msg's</span></code> package, <code class="docutils literal notranslate"><span class="pre">rosidl_tutorials_msgs</span></code>, in <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>:</p>
+<p>要生成此消息，您需要在``package.xml``中声明对``Contact.msg``所在的包``rosidl_tutorials_msgs``的依赖项：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build_depend&gt;</span>rosidl_tutorials_msgs<span class="nt">&lt;/build_depend&gt;</span>
 
 <span class="nt">&lt;exec_depend&gt;</span>rosidl_tutorials_msgs<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>
 </div>
-<p>And in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<p>还需要在``CMakeLists.txt``中进行如下设置：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">rosidl_tutorials_msgs</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 
 <span class="nb">rosidl_generate_interfaces</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span>
@@ -718,11 +715,11 @@ You could even define <code class="docutils literal notranslate"><span class="pr
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>You would also need to include the header of <code class="docutils literal notranslate"><span class="pre">Contact.msg</span></code> in you publisher node in order to be able to add <code class="docutils literal notranslate"><span class="pre">contacts</span></code> to your <code class="docutils literal notranslate"><span class="pre">address_book</span></code>.</p>
+<p>你还需要在发布者节点中包含``Contact.msg``的头文件，以便能够将``contacts``添加到你的``address_book``。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rosidl_tutorials_msgs/msg/contact.hpp&quot;</span><span class="cp"></span>
 </pre></div>
 </div>
-<p>You could change the callback to something like this:</p>
+<p>你可以将回调函数改为以下内容：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">publish_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">more_interfaces</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">AddressBook</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
 <span class="w">   </span><span class="p">{</span><span class="w"></span>
@@ -752,13 +749,13 @@ You could even define <code class="docutils literal notranslate"><span class="pr
 <span class="w"> </span><span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Building and running these changes would show the msg defined as expected, as well as the array of msgs defined above.</p>
+<p>构建并运行这些更改会显示预期的消息定义，以及上面定义的消息数组。</p>
 </div>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id9">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you tried out different field types for defining interfaces, then built an interface in the same package where it's being used.</p>
+<p>在本教程中，你尝试了不同的字段类型来定义接口，然后在使用接口的同一软件包中构建了一个接口。</p>
 <p>You also learned how to use another interface as a field type, as well as the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>, <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">#include</span></code> statements necessary for utilizing that feature.</p>
 </div>
 <div class="section" id="next-steps">
