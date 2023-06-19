@@ -598,16 +598,15 @@
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;rclcpp&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;service not available, waiting again...&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>If the client is canceled (e.g. by you entering <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> into the terminal), it will return an error log message stating it was interrupted.</p>
+<p>如果客户端被取消（例如你在终端中输入``Ctrl+C``），它将返回一个错误日志消息，说明它被中断了。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;rclcpp&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Interrupted while waiting for the service. Exiting.&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then the client sends its request, and the node spins until it receives its response, or fails.</p>
+<p>然后客户端发送请求，节点会一直等待直到接收到响应或失败。</p>
 </div>
 <div class="section" id="id2">
-<h4>3.2 Add executable<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>Return to <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to add the executable and target for the new node.
-After removing some unnecessary boilerplate from the automatically generated file, your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> should look like this:</p>
+<h4>3.2 添加可执行文件<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
+<p>返回到``CMakeLists.txt``，为新节点添加可执行文件和目标。在自动生成的文件中删除一些不必要的样板代码后，你的``CMakeLists.txt``应该如下所示：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cmake_minimum_required(VERSION 3.5)</span>
 <span class="go">project(cpp_srvcli)</span>
 
@@ -665,20 +664,19 @@ After removing some unnecessary boilerplate from the automatically generated fil
 </pre></div>
 </div>
 </div></div>
-<p>Now run the service node:</p>
+<p>现在运行服务节点：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run cpp_srvcli server</span>
 </pre></div>
 </div>
-<p>The terminal should return the following message, and then wait:</p>
+<p>终端应该返回以下消息，然后等待：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [rclcpp]: Ready to add two ints.</span>
 </pre></div>
 </div>
-<p>Open another terminal, source the setup files from inside <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> again.
-Start the client node, followed by any two integers separated by a space:</p>
+<p>打开另一个终端，再次在``ros2_ws``目录内源化设置文件。启动客户端节点，然后输入两个整数，用空格分隔：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run cpp_srvcli client 2 3</span>
 </pre></div>
 </div>
-<p>If you chose <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">3</span></code>, for example, the client would receive a response like this:</p>
+<p>例如，如果你选择了``2``和``3``，客户端将会收到如下响应：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [rclcpp]: Sum: 5</span>
 </pre></div>
 </div>
