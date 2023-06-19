@@ -385,7 +385,7 @@
 <li><p><a class="reference internal" href="#tasks" id="id3">任务</a></p>
 <ul>
 <li><p><a class="reference internal" href="#setup" id="id4">1 设置</a></p></li>
-<li><p><a class="reference internal" href="#use-actions" id="id5">2 Use actions</a></p></li>
+<li><p><a class="reference internal" href="#use-actions" id="id5">2 使用动作</a></p></li>
 <li><p><a class="reference internal" href="#ros2-node-info" id="id6">3 ros2 node info</a></p></li>
 <li><p><a class="reference internal" href="#ros2-action-list" id="id7">4 ros2 action list</a></p></li>
 <li><p><a class="reference internal" href="#ros2-action-info" id="id8">5 ros2 action info</a></p></li>
@@ -426,17 +426,14 @@
 </div>
 </div>
 <div class="section" id="use-actions">
-<h3><a class="toc-backref" href="#id5">2 Use actions</a><a class="headerlink" href="#use-actions" title="永久链接至标题"></a></h3>
-<p>When you launch the <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> node, you will see the following message in your terminal:</p>
+<h3><a class="toc-backref" href="#id5">2 使用动作</a><a class="headerlink" href="#use-actions" title="永久链接至标题"></a></h3>
+<p>当你启动 <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code> 节点时，你将在终端中看到以下消息:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Use arrow keys to move the turtle.</span>
 <span class="go">Use G|B|V|C|D|E|R|T keys to rotate to absolute orientations. &#39;F&#39; to cancel a rotation.</span>
 </pre></div>
 </div>
-<p>Let's focus on the second line, which corresponds to an action.
-(The first instruction corresponds to the &quot;cmd_vel&quot; topic, discussed previously in the <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics tutorial</span></a>.)</p>
-<p>Notice that the letter keys <code class="docutils literal notranslate"><span class="pre">G|B|V|C|D|E|R|T</span></code> form a &quot;box&quot; around the <code class="docutils literal notranslate"><span class="pre">F</span></code> key on a US QWERTY keyboard (if you are not using a QWERTY keyboard, see <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/d/da/KB_United_States.svg">this link</a> to follow along).
-Each key's position around <code class="docutils literal notranslate"><span class="pre">F</span></code> corresponds to that orientation in turtlesim.
-For example, the <code class="docutils literal notranslate"><span class="pre">E</span></code> will rotate the turtle's orientation to the upper left corner.</p>
+<p>让我们关注第二行，它对应一个动作。（第一条指令对应之前在 <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics 教程</span></a> 中讨论的 &quot;cmd_vel&quot; 话题。）</p>
+<p>请注意，在美国的 QWERTY 键盘上，字母键 <code class="docutils literal notranslate"><span class="pre">G|B|V|C|D|E|R|T</span></code> 组成了围绕 <code class="docutils literal notranslate"><span class="pre">F</span></code> 键的“方框”（如果你没有使用 QWERTY 键盘，请查看 <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/d/da/KB_United_States.svg">此链接</a> 以便跟随）。每个键在 <code class="docutils literal notranslate"><span class="pre">F</span></code> 周围的位置对应 turtlesim 中的方向。例如，按下 <code class="docutils literal notranslate"><span class="pre">E</span></code> 将使乌龟的方向旋转到左上角。</p>
 <p>Pay attention to the terminal where the <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node is running.
 Each time you press one of these keys, you are sending a goal to an action server that is part of the <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node.
 The goal is to rotate the turtle to face a particular direction.
