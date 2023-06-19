@@ -423,7 +423,7 @@
 <div class="section" id="temperature-filtering-demo">
 <h2><a class="toc-backref" href="#id5">温度过滤演示</a><a class="headerlink" href="#temperature-filtering-demo" title="永久链接至标题"></a></h2>
 <p>该演示展示了如何使用内容过滤订阅仅接收超出可接受温度范围的温度值，以检测紧急情况。内容过滤订阅会过滤掉无趣的温度数据，以避免发出订阅回调。</p>
-<p>ContentFilteringPublisher:</p>
+<p>内容过滤发布者:</p>
 <p><a class="reference external" href="https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/topics/content_filtering_publisher.cpp">https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/topics/content_filtering_publisher.cpp</a></p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
@@ -490,9 +490,8 @@
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace demo_nodes_cpp</span>
 </pre></div>
 </div>
-<p>The content filter is defined in the subscription side, publishers don't need to be configured in any special way to allow content filtering.
-The <code class="docutils literal notranslate"><span class="pre">ContentFilteringPublisher</span></code> node publishes simulated temperature data starting from -100.0 and ending at 150.0 with a step size of 10.0 every second.</p>
-<p>We can run the demo by running the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">content_filtering_publisher</span></code> executable (don't forget to source the setup file first):</p>
+<p>内容过滤器在订阅端定义，发布者不需要以任何特殊方式进行配置以允许内容过滤。<code class="docutils literal notranslate"><span class="pre">ContentFilteringPublisher</span></code> 节点每秒发布模拟温度数据，从-100.0开始，以10.0的步长逐渐增加，直到达到150.0。</p>
+<p>我们可以通过运行``ros2 run demo_nodes_cpp content_filtering_publisher``可执行文件来运行演示（不要忘记首先源化设置文件）:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 run demo_nodes_cpp content_filtering_publisher
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1651094594</span>.822753479<span class="o">]</span> <span class="o">[</span>content_filtering_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;-100.000000&#39;</span>
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1651094595</span>.822723857<span class="o">]</span> <span class="o">[</span>content_filtering_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;-90.000000&#39;</span>
@@ -595,9 +594,8 @@ The <code class="docutils literal notranslate"><span class="pre">ContentFilterin
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace demo_nodes_cpp</span>
 </pre></div>
 </div>
-<p>To enable content filtering, applications can set the filtering expression and the expression parameters in <code class="docutils literal notranslate"><span class="pre">SubscriptionOptions</span></code>.
-The application can also check if content filtering is enabled on the subscription.</p>
-<p>In this demo, the <code class="docutils literal notranslate"><span class="pre">ContentFilteringSubscriber</span></code> node creates a content filtering subscription that receives a message only if the temperature value is less than -30.0 or greater than 100.0.</p>
+<p>为了启用内容过滤，应用程序可以在``SubscriptionOptions``中设置过滤表达式和表达式参数。应用程序还可以检查订阅中是否启用了内容过滤。</p>
+<p>在这个演示中，<a href="#id1"><span class="problematic" id="id2">``</span></a>ContentFilteringSubscriber``节点创建了一个内容过滤订阅，只有当温度值小于-30.0或大于100.0时才接收消息。</p>
 <p>As commented before, content filtering subscription support depends on the RMW implementation.
 Applications can use the <code class="docutils literal notranslate"><span class="pre">is_cft_enabled</span></code> method to check if content filtering is actually enabled on the subscription.</p>
 <p>To test content filtering subscription, let's run it:</p>
