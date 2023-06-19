@@ -387,7 +387,7 @@
 <ul>
 <li><p><a class="reference internal" href="#create-a-package" id="id4">1 创建一个包</a></p></li>
 <li><p><a class="reference internal" href="#create-a-msg-file" id="id5">2 创建一个消息文件</a></p></li>
-<li><p><a class="reference internal" href="#use-an-interface-from-the-same-package" id="id6">3 Use an interface from the same package</a></p></li>
+<li><p><a class="reference internal" href="#use-an-interface-from-the-same-package" id="id6">3 从同一软件包中使用接口</a></p></li>
 <li><p><a class="reference internal" href="#try-it-out" id="id7">4 Try it out</a></p></li>
 <li><p><a class="reference internal" href="#extra-use-an-existing-interface-definition" id="id8">5 (Extra) Use an existing interface definition</a></p></li>
 </ul>
@@ -464,25 +464,24 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>By adding the .msg files manually, we make sure that CMake knows when it has to reconfigure the project after you add other .msg files.</p>
-<p>Generate the messages:</p>
+<p>通过手动添加.msg文件，我们确保CMake知道在添加其他.msg文件后何时重新配置项目。</p>
+<p>生成消息：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">rosidl_generate_interfaces</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span>
 <span class="w">  </span><span class="o">${</span><span class="nv">msg_files</span><span class="o">}</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Also make sure you export the message runtime dependency:</p>
+<p>还要确保导出消息的运行时依赖项：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ament_export_dependencies</span><span class="p">(</span><span class="s">rosidl_default_runtime</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now you're ready to generate source files from your msg definition.
-We'll skip the compile step for now as we'll do it all together below in step 4.</p>
+<p>现在您已经准备好从msg定义生成源文件。我们将在步骤4中一起完成，暂时跳过编译步骤。</p>
 </div>
 <div class="section" id="extra-set-multiple-interfaces">
-<h4>2.2 (Extra) Set multiple interfaces<a class="headerlink" href="#extra-set-multiple-interfaces" title="永久链接至标题"></a></h4>
+<h4>2.2（额外）设置多个接口<a class="headerlink" href="#extra-set-multiple-interfaces" title="永久链接至标题"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">set</span></code> in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to neatly list all of your interfaces:</p>
+<p>您可以在``CMakeLists.txt``中使用``set``来整洁地列出所有接口：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">msg_files</span>
 <span class="w">  </span><span class="s2">&quot;msg/Message1.msg&quot;</span>
 <span class="w">  </span><span class="s2">&quot;msg/Message2.msg&quot;</span>
@@ -496,7 +495,7 @@ We'll skip the compile step for now as we'll do it all together below in step 4.
 <span class="w">  </span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And generate all lists at once like so:</p>
+<p>然后一次生成所有列表，如下所示：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">rosidl_generate_interfaces</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span>
 <span class="w">  </span><span class="o">${</span><span class="nv">msg_files</span><span class="o">}</span>
 <span class="w">  </span><span class="o">${</span><span class="nv">srv_files</span><span class="o">}</span>
@@ -507,9 +506,9 @@ We'll skip the compile step for now as we'll do it all together below in step 4.
 </div>
 </div>
 <div class="section" id="use-an-interface-from-the-same-package">
-<h3><a class="toc-backref" href="#id6">3 Use an interface from the same package</a><a class="headerlink" href="#use-an-interface-from-the-same-package" title="永久链接至标题"></a></h3>
-<p>Now we can start writing code that uses this message.</p>
-<p>In <code class="docutils literal notranslate"><span class="pre">more_interfaces/src</span></code> create a file called <code class="docutils literal notranslate"><span class="pre">publish_address_book.cpp</span></code> and paste the following code:</p>
+<h3><a class="toc-backref" href="#id6">3 从同一软件包中使用接口</a><a class="headerlink" href="#use-an-interface-from-the-same-package" title="永久链接至标题"></a></h3>
+<p>现在我们可以开始编写使用这个消息的代码。</p>
+<p>在``more_interfaces/src``目录下创建一个名为``publish_address_book.cpp``的文件，并粘贴以下代码：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 
@@ -560,8 +559,8 @@ We'll skip the compile step for now as we'll do it all together below in step 4.
 </pre></div>
 </div>
 <div class="section" id="the-code-explained">
-<h4>3.1 The code explained<a class="headerlink" href="#the-code-explained" title="永久链接至标题"></a></h4>
-<p>Include the header of our newly created <code class="docutils literal notranslate"><span class="pre">AddressBook.msg</span></code>.</p>
+<h4>3.1 代码解释<a class="headerlink" href="#the-code-explained" title="永久链接至标题"></a></h4>
+<p>包含我们新创建的``AddressBook.msg``的头文件。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;more_interfaces/msg/address_book.hpp&quot;</span><span class="cp"></span>
 </pre></div>
 </div>
