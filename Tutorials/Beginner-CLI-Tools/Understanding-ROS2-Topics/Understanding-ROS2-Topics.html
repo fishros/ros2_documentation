@@ -115,7 +115,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Using-Rqt-Console/Using-Rqt-Console.html">Using <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> to view logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据</a></li>
 </ul>
@@ -392,7 +392,7 @@
 <li><p><a class="reference internal" href="#ros2-interface-show" id="id9">6 ros2 interface show</a></p></li>
 <li><p><a class="reference internal" href="#ros2-topic-pub" id="id10">7 ros2 topic pub</a></p></li>
 <li><p><a class="reference internal" href="#ros2-topic-hz" id="id11">8 ros2 topic hz</a></p></li>
-<li><p><a class="reference internal" href="#clean-up" id="id12">9 Clean up</a></p></li>
+<li><p><a class="reference internal" href="#clean-up" id="id12">9 清理</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id13">摘要</a></p></li>
@@ -580,33 +580,29 @@
 </div>
 <div class="section" id="ros2-topic-hz">
 <h3><a class="toc-backref" href="#id11">8 ros2 topic hz</a><a class="headerlink" href="#ros2-topic-hz" title="永久链接至标题"></a></h3>
-<p>For one last introspection on this process, you can view the rate at which data is published using:</p>
+<p>作为对该过程的最后一次内省，您可以使用以下命令查看数据发布的速率：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic hz /turtle1/pose</span>
 </pre></div>
 </div>
-<p>It will return data on the rate at which the <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> node is publishing data to the <code class="docutils literal notranslate"><span class="pre">pose</span></code> topic.</p>
+<p>它将返回``/turtlesim``节点向``pose``主题发布数据的速率。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">average rate: 59.354</span>
 <span class="go">  min: 0.005s max: 0.027s std dev: 0.00284s window: 58</span>
 </pre></div>
 </div>
-<p>Recall that you set the rate of <code class="docutils literal notranslate"><span class="pre">turtle1/cmd_vel</span></code> to publish at a steady 1 Hz using <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span> <span class="pre">--rate</span> <span class="pre">1</span></code>.
-If you run the above command with <code class="docutils literal notranslate"><span class="pre">turtle1/cmd_vel</span></code> instead of <code class="docutils literal notranslate"><span class="pre">turtle1/pose</span></code>, you will see an average reflecting that rate.</p>
+<p>回想一下，您使用``ros2 topic pub --rate 1``将``turtle1/cmd_vel``的速率设置为稳定的1 Hz。如果您使用``turtle1/cmd_vel``而不是``turtle1/pose``运行上述命令，则会看到反映该速率的平均值。</p>
 </div>
 <div class="section" id="clean-up">
-<h3><a class="toc-backref" href="#id12">9 Clean up</a><a class="headerlink" href="#clean-up" title="永久链接至标题"></a></h3>
-<p>At this point you'll have a lot of nodes running.
-Don't forget to stop them by entering <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in each terminal.</p>
+<h3><a class="toc-backref" href="#id12">9 清理</a><a class="headerlink" href="#clean-up" title="永久链接至标题"></a></h3>
+<p>此时你会有很多正在运行的节点。不要忘记在每个终端中输入``Ctrl+C``来停止它们。</p>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id13">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>Nodes publish information over topics, which allows any number of other nodes to subscribe to and access that information.
-In this tutorial you examined the connections between several nodes over topics using rqt_graph and command line tools.
-You should now have a good idea of how data moves around a ROS 2 system.</p>
+<p>节点通过主题发布信息，允许任意数量的其他节点订阅和访问该信息。在本教程中，您使用rqt_graph和命令行工具检查了几个节点之间的连接。现在您应该对数据在ROS 2系统中如何传输有一个很好的了解。</p>
 </div>
 <div class="section" id="next-steps">
 <h2><a class="toc-backref" href="#id14">下一步</a><a class="headerlink" href="#next-steps" title="永久链接至标题"></a></h2>
-<p>Next you'll learn about another communication type in the ROS graph with the tutorial <a class="reference internal" href="../Understanding-ROS2-Services/Understanding-ROS2-Services.html"><span class="doc">了解服务</span></a>.</p>
+<p>接下来，您将在ROS图中学习另一种通信类型，可以参考教程：<a class="reference internal" href="../Understanding-ROS2-Services/Understanding-ROS2-Services.html"><span class="doc">了解服务</span></a>。</p>
 </div>
 </div>
 
