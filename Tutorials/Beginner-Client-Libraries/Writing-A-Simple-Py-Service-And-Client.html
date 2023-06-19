@@ -483,22 +483,20 @@
 </div>
 <div class="section" id="examine-the-code">
 <h4>2.1 检查代码<a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
-<p>The first <code class="docutils literal notranslate"><span class="pre">import</span></code> statement imports the <code class="docutils literal notranslate"><span class="pre">AddTwoInts</span></code> service type from the <code class="docutils literal notranslate"><span class="pre">example_interfaces</span></code> package.
-The following <code class="docutils literal notranslate"><span class="pre">import</span></code> statement imports the ROS 2 Python client library, and specifically the <code class="docutils literal notranslate"><span class="pre">Node</span></code> class.</p>
+<p>第一个 <code class="docutils literal notranslate"><span class="pre">import</span></code> 语句从 <code class="docutils literal notranslate"><span class="pre">example_interfaces</span></code> 包中导入了 <code class="docutils literal notranslate"><span class="pre">AddTwoInts</span></code> 服务类型。接下来的 <code class="docutils literal notranslate"><span class="pre">import</span></code> 语句导入了 ROS 2 Python 客户端库，具体导入了 <code class="docutils literal notranslate"><span class="pre">Node</span></code> 类。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">example_interfaces.srv</span> <span class="kn">import</span> <span class="n">AddTwoInts</span>
 
 <span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">MinimalService</span></code> class constructor initializes the node with the name <code class="docutils literal notranslate"><span class="pre">minimal_service</span></code>.
-Then, it creates a service and defines the type, name, and callback.</p>
+<p><code class="docutils literal notranslate"><span class="pre">MinimalService</span></code> 类的构造函数使用名称 <code class="docutils literal notranslate"><span class="pre">minimal_service</span></code> 初始化节点。然后，它创建一个服务并定义了类型、名称和回调函数。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;minimal_service&#39;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">srv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">&#39;add_two_ints&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_two_ints_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The definition of the service callback receives the request data, sums it, and returns the sum as a response.</p>
+<p>服务回调函数的定义接收请求数据，对其求和，并将求和结果作为响应返回。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_two_ints_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
     <span class="n">response</span><span class="o">.</span><span class="n">sum</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">request</span><span class="o">.</span><span class="n">b</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Incoming request</span><span class="se">\n</span><span class="s1">a: </span><span class="si">%d</span><span class="s1"> b: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">b</span><span class="p">))</span>
@@ -506,12 +504,12 @@ Then, it creates a service and defines the type, name, and callback.</p>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
-<p>Finally, the main class initializes the ROS 2 Python client library, instantiates the <code class="docutils literal notranslate"><span class="pre">MinimalService</span></code> class to create the service node and spins the node to handle callbacks.</p>
+<p>最后，主类初始化了 ROS 2 Python 客户端库，实例化 <code class="docutils literal notranslate"><span class="pre">MinimalService</span></code> 类以创建服务节点，并旋转节点以处理回调函数。</p>
 </div>
 <div class="section" id="add-an-entry-point">
 <h4>2.2 添加入口点<a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
-<p>To allow the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> command to run your node, you must add the entry point to <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> (located in the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/py_srvcli</span></code> directory).</p>
-<p>Add the following line between the <code class="docutils literal notranslate"><span class="pre">'console_scripts':</span></code> brackets:</p>
+<p>要允许``ros2 run``命令运行您的节点，您必须将入口点添加到``setup.py``（位于``ros2_ws/src/py_srvcli``目录中）。</p>
+<p>在``'console_scripts':<a href="#id1"><span class="problematic" id="id2">``</span></a>括号之间添加以下行：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;service = py_srvcli.service_member_function:main&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -519,7 +517,7 @@ Then, it creates a service and defines the type, name, and callback.</p>
 </div>
 <div class="section" id="write-the-client-node">
 <h3><a class="toc-backref" href="#id8">3.编写客户端节点</a><a class="headerlink" href="#write-the-client-node" title="永久链接至标题"></a></h3>
-<p>Inside the <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/py_srvcli/py_srvcli</span></code> directory, create a new file called <code class="docutils literal notranslate"><span class="pre">client_member_function.py</span></code> and paste the following code within:</p>
+<p>在``ros2_ws/src/py_srvcli/py_srvcli``目录中创建一个名为``client_member_function.py``的新文件，并将以下代码粘贴到其中：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">example_interfaces.srv</span> <span class="kn">import</span> <span class="n">AddTwoInts</span>
@@ -563,8 +561,7 @@ Then, it creates a service and defines the type, name, and callback.</p>
 </div>
 <div class="section" id="id1">
 <h4>3.1 检查代码<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
-<p>The only different <code class="docutils literal notranslate"><span class="pre">import</span></code> statement for the client is <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code>.
-The client node code uses <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.argv">sys.argv</a> to get access to command line input arguments for the request.</p>
+<p>客户端唯一不同的``import``语句是``import sys``。客户端节点代码使用`sys.argv &lt;<a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.argv">https://docs.python.org/3/library/sys.html#sys.argv</a>&gt;`__ 来获取请求的命令行输入参数访问权限。</p>
 <p>The constructor definition creates a client with the same type and name as the service node.
 The type and name must match for the client and service to be able to communicate.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop in the constructor checks if a service matching the type and name of the client is available once a second.</p>
