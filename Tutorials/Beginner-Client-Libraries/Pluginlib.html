@@ -390,10 +390,10 @@
 <ul>
 <li><p><a class="reference internal" href="#source-code-for-the-plugins" id="id6">2.1 插件的源代码</a></p></li>
 <li><p><a class="reference internal" href="#plugin-declaration-xml" id="id7">2.2 插件声明 XML</a></p></li>
-<li><p><a class="reference internal" href="#cmake-plugin-declaration" id="id8">2.3 CMake Plugin Declaration</a></p></li>
+<li><p><a class="reference internal" href="#cmake-plugin-declaration" id="id8">2.3 CMake插件声明</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#use-the-plugins" id="id9">3 Use the Plugins</a></p></li>
+<li><p><a class="reference internal" href="#use-the-plugins" id="id9">3 使用插件</a></p></li>
 <li><p><a class="reference internal" href="#build-and-run" id="id10">4 Build and run</a></p></li>
 </ul>
 </li>
@@ -548,30 +548,26 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: 插件的完全限定类型。对于我们来说，那是 <code class="docutils literal notranslate"><span class="pre">polygon_plugins::Square</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">base_class</span></code>: 插件的完全限定基类类型。对于我们来说，那是 <code class="docutils literal notranslate"><span class="pre">polygon_base::RegularPolygon</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: 插件的描述以及它的功能。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: There used to be a name attribute, but it is no longer required.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: 以前有一个名字属性，但现在不再需要。</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="cmake-plugin-declaration">
-<h4><a class="toc-backref" href="#id8">2.3 CMake Plugin Declaration</a><a class="headerlink" href="#cmake-plugin-declaration" title="永久链接至标题"></a></h4>
-<p>The last step is to export your plugins via <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.
-This is a change from ROS 1, where the exporting was done via <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>.
-Add the following line to your <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/polygon_plugins/CMakeLists.txt</span></code> after the line reading <code class="docutils literal notranslate"><span class="pre">find_package(pluginlib</span> <span class="pre">REQUIRED)</span></code>:</p>
+<h4><a class="toc-backref" href="#id8">2.3 CMake插件声明</a><a class="headerlink" href="#cmake-plugin-declaration" title="永久链接至标题"></a></h4>
+<p>最后一步是通过``CMakeLists.txt``导出你的插件。这是与ROS 1不同的地方，ROS 1是通过``package.xml``来导出插件的。在读取``find_package(pluginlib REQUIRED)``这一行后，在你的``ros2_ws/src/polygon_plugins/CMakeLists.txt``中添加以下代码行：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pluginlib_export_plugin_description_file</span><span class="p">(</span><span class="s">polygon_base</span><span class="w"> </span><span class="s">plugins.xml</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The arguments to the <code class="docutils literal notranslate"><span class="pre">pluginlib_export_plugin_description_file</span></code> command are:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>pluginlib_export_plugin_description_file``命令的参数为：</p>
 <ol class="arabic simple">
-<li><p>The package with the base class, i.e. <code class="docutils literal notranslate"><span class="pre">polygon_base</span></code>.</p></li>
-<li><p>The relative path to the Plugin Declaration xml, i.e. <code class="docutils literal notranslate"><span class="pre">plugins.xml</span></code>.</p></li>
+<li><p>基类的包，即``polygon_base``。</p></li>
+<li><p>插件声明 xml 的相对路径，即``plugins.xml``。</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="use-the-plugins">
-<h3><a class="toc-backref" href="#id9">3 Use the Plugins</a><a class="headerlink" href="#use-the-plugins" title="永久链接至标题"></a></h3>
-<p>Now it's time to use the plugins.
-This can be done in any package, but here we're going to do it in the base package.
-Edit <code class="docutils literal notranslate"><span class="pre">ros2_ws/src/polygon_base/src/area_node.cpp</span></code> to contain the following:</p>
+<h3><a class="toc-backref" href="#id9">3 使用插件</a><a class="headerlink" href="#use-the-plugins" title="永久链接至标题"></a></h3>
+<p>现在是时候使用插件了。可以在任何包中完成此操作，但是这里我们将在基础包中进行。编辑``ros2_ws/src/polygon_base/src/area_node.cpp``，使其包含以下内容：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pluginlib/class_loader.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;polygon_base/regular_polygon.hpp&gt;</span><span class="cp"></span>
 
