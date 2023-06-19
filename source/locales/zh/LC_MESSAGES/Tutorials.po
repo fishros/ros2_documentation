@@ -10567,61 +10567,61 @@ msgstr "下一部分仅适用于Linux系统。"
 
 #: ../../source/Tutorials/Demos/Quality-of-Service.rst:158
 msgid "However, for macOS and Windows you can achieve a similar effect with the utilities \"Network Link Conditioner\" (part of the xcode tool suite) and \"Clumsy\" (http://jagt.github.io/clumsy/index.html), respectively, but they will not be covered in this tutorial."
-msgstr "However, for macOS and Windows you can achieve a similar effect with the utilities \"Network Link Conditioner\" (part of the xcode tool suite) and \"Clumsy\" (http://jagt.github.io/clumsy/index.html), respectively, but they will not be covered in this tutorial."
+msgstr "然而，在macOS和Windows上，您可以使用工具“Network Link Conditioner”（xcode工具套件的一部分）和“Clumsy”（http://jagt.github.io/clumsy/index.html）来实现类似的效果，但它们不在本教程中介绍。"
 
 
 #: ../../source/Tutorials/Demos/Quality-of-Service.rst:160
 msgid "We are going to use the Linux network traffic control utility, ``tc`` (http://linux.die.net/man/8/tc)."
-msgstr "We are going to use the Linux network traffic control utility, ``tc`` (http://linux.die.net/man/8/tc)."
+msgstr "我们将使用Linux的网络流量控制实用程序``tc``（http://linux.die.net/man/8/tc）。"
 
 
 #: ../../source/Tutorials/Demos/Quality-of-Service.rst:166
 msgid "This magical incantation will simulate 5% packet loss over the local loopback device. If you use a higher resolution of the images (e.g. ``--ros-args -p width:=640 -p height:=480``) you might want to try a lower packet loss rate (e.g. ``1%``)."
-msgstr "This magical incantation will simulate 5% packet loss over the local loopback device. If you use a higher resolution of the images (e.g. ``--ros-args -p width:=640 -p height:=480``) you might want to try a lower packet loss rate (e.g. ``1%``)."
+msgstr "这个神奇的咒语将在本地环回设备上模拟5%的丢包。如果您使用更高分辨率的图像（例如``--ros-args -p width:=640 -p height:=480``），您可能希望尝试较低的丢包率（例如``1%``）。"
 
 
 #: ../../source/Tutorials/Demos/Quality-of-Service.rst:169
 msgid "Next we start the ``cam2image`` and ``showimage``, and we'll soon notice that both programs seem to have slowed down the rate at which images are transmitted. This is caused by the behavior of the default QoS settings. Enforcing reliability on a lossy channel means that the publisher (in this case, ``cam2image``) will resend the network packets until it receives acknowledgement from the consumer (i.e. ``showimage``)."
-msgstr "Next we start the ``cam2image`` and ``showimage``, and we'll soon notice that both programs seem to have slowed down the rate at which images are transmitted. This is caused by the behavior of the default QoS settings. Enforcing reliability on a lossy channel means that the publisher (in this case, ``cam2image``) will resend the network packets until it receives acknowledgement from the consumer (i.e. ``showimage``)."
+msgstr "接下来，我们启动``cam2image``和``showimage``，很快我们会注意到两个程序似乎减慢了图像传输的速率。这是由于默认的QoS设置的行为引起的。在有丢包的通道上强制可靠性意味着发布者（在本例中为``cam2image``）将重发网络数据包，直到从消费者（即``showimage``）接收到确认。"
 
 
 #: ../../source/Tutorials/Demos/Quality-of-Service.rst:173
 msgid "Let's now try running both programs, but with more suitable settings. First of all, we'll use the ``-p reliability:=best_effort`` option to enable best effort communication. The publisher will now just attempt to deliver the network packets, and don't expect acknowledgement from the consumer. We see now that some of the frames on the ``showimage`` side were dropped, so the frame numbers in the shell running ``showimage`` won't be consecutive anymore:"
-msgstr "Let's now try running both programs, but with more suitable settings. First of all, we'll use the ``-p reliability:=best_effort`` option to enable best effort communication. The publisher will now just attempt to deliver the network packets, and don't expect acknowledgement from the consumer. We see now that some of the frames on the ``showimage`` side were dropped, so the frame numbers in the shell running ``showimage`` won't be consecutive anymore:"
+msgstr "现在让我们尝试运行这两个程序，但使用更合适的设置。首先，我们将使用``-p reliability:=best_effort``选项来启用尽力而为的通信。现在，发布者将仅尝试传递网络数据包，并不期望来自消费者的确认。我们现在看到，``showimage``一侧的一些帧已经丢失，所以在运行``showimage``的shell中的帧编号将不再是连续的："
 
 
 msgid "Best effort image transfer"
-msgstr "Best effort image transfer"
+msgstr "尽力而为的图像传输"
 
 
 #: ../../source/Tutorials/Demos/Quality-of-Service.rst:184
 msgid "When you're done, remember to delete the queueing discipline:"
-msgstr "When you're done, remember to delete the queueing discipline:"
+msgstr "完成后，请记得删除队列规则："
 
 
 #: ../../source/Tutorials/Demos/Real-Time-Programming.rst:7
 msgid "Understanding real-time programming"
-msgstr "Understanding real-time programming"
+msgstr "理解实时编程"
 
 
 #: ../../source/Tutorials/Demos/Real-Time-Programming.rst:16
 msgid "Real-time computing is a key feature of many robotics systems, particularly safety- and mission-critical applications such as autonomous vehicles, spacecrafts, and industrial manufacturing. We are designing and prototyping ROS 2 with real-time performance constraints in mind, since this is a requirement that was not considered in the early stages of ROS 1 and it is now intractable to refactor ROS 1 to be real-time friendly."
-msgstr "Real-time computing is a key feature of many robotics systems, particularly safety- and mission-critical applications such as autonomous vehicles, spacecrafts, and industrial manufacturing. We are designing and prototyping ROS 2 with real-time performance constraints in mind, since this is a requirement that was not considered in the early stages of ROS 1 and it is now intractable to refactor ROS 1 to be real-time friendly."
+msgstr "实时计算是许多机器人系统的关键特性，特别是对于自动驾驶汽车、航天器和工业制造等安全和任务关键型应用。我们设计和原型化ROS 2时考虑了实时性能限制，因为在ROS 1的早期阶段并没有考虑这一要求，现在对ROS 1进行重构以实现实时友好性已经变得困难。"
 
 
 #: ../../source/Tutorials/Demos/Real-Time-Programming.rst:19
 msgid "`This document <https://design.ros2.org/articles/realtime_background.html>`__ outlines the requirements of real-time computing and best practices for software engineers.  In short:"
-msgstr "`This document <https://design.ros2.org/articles/realtime_background.html>`__ outlines the requirements of real-time computing and best practices for software engineers.  In short:"
+msgstr "``This document <https://design.ros2.org/articles/realtime_background.html>`` 详细介绍了实时计算的要求和软件工程师的最佳实践。简而言之："
 
 
 #: ../../source/Tutorials/Demos/Real-Time-Programming.rst:21
 msgid "To make a real-time computer system, our real-time loop must update periodically to meet deadlines. We can only tolerate a small margin of error on these deadlines (our maximum allowable jitter). To do this, we must avoid nondeterministic operations in the execution path, things like: pagefault events, dynamic memory allocation/deallocation, and synchronization primitives that block indefinitely."
-msgstr "To make a real-time computer system, our real-time loop must update periodically to meet deadlines. We can only tolerate a small margin of error on these deadlines (our maximum allowable jitter). To do this, we must avoid nondeterministic operations in the execution path, things like: pagefault events, dynamic memory allocation/deallocation, and synchronization primitives that block indefinitely."
+msgstr "要创建一个实时计算机系统，我们的实时循环必须周期性地更新以满足截止时间。我们只能容忍这些截止时间上的小误差（最大允许的抖动）。为了做到这一点，我们必须避免执行路径中的非确定性操作，比如：页错误事件、动态内存分配/释放和无限期阻塞的同步原语。"
 
 
 #: ../../source/Tutorials/Demos/Real-Time-Programming.rst:25
 msgid "A classic example of a controls problem commonly solved by real-time computing is balancing an `inverted pendulum <https://en.wikipedia.org/wiki/Inverted_pendulum>`__. If the controller blocked for an unexpectedly long amount of time, the pendulum would fall down or go unstable. But if the controller reliably updates at a rate faster than the motor controlling the pendulum can operate, the pendulum will successfully adapt react to sensor data to balance the pendulum."
-msgstr "A classic example of a controls problem commonly solved by real-time computing is balancing an `inverted pendulum <https://en.wikipedia.org/wiki/Inverted_pendulum>`__. If the controller blocked for an unexpectedly long amount of time, the pendulum would fall down or go unstable. But if the controller reliably updates at a rate faster than the motor controlling the pendulum can operate, the pendulum will successfully adapt react to sensor data to balance the pendulum."
+msgstr "实时计算通常用于解决控制问题的经典示例是平衡一个``倒立摆 <https://en.wikipedia.org/wiki/Inverted_pendulum>``。如果控制器阻塞时间意外延长，摆杆将倒下或变得不稳定。但是，如果控制器可靠地以比控制摆杆的电机操作速度更快的频率更新，摆杆将能够成功地根据传感器数据调整自己来保持平衡。"
 
 
 #: ../../source/Tutorials/Demos/Real-Time-Programming.rst:29
