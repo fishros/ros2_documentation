@@ -508,7 +508,7 @@ Here ROS 2 is initialized, an instance of the <code class="docutils literal notr
 </pre></div>
 </div>
 <div class="section" id="optional-add-parameterdescriptor">
-<h5>2.1.1 (Optional) Add ParameterDescriptor<a class="headerlink" href="#optional-add-parameterdescriptor" title="永久链接至标题"></a></h5>
+<h5>2.1.1（可选）添加 ParameterDescriptor。<a class="headerlink" href="#optional-add-parameterdescriptor" title="永久链接至标题"></a></h5>
 <p>Optionally, you can set a descriptor for the parameter.
 Descriptors allow you to specify a text description of the parameter and its constraints, like making it read-only, specifying a range, etc.
 For that to work, the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> code has to be changed to:</p>
@@ -526,8 +526,7 @@ For that to work, the <code class="docutils literal notranslate"><span class="pr
         <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The rest of the code remains the same.
-Once you run the node, you can then run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">describe</span> <span class="pre">/minimal_param_node</span> <span class="pre">my_parameter</span></code> to see the type and description.</p>
+<p>其余的代码保持不变。运行节点后，您可以运行``ros2 param describe /minimal_param_node my_parameter``来查看类型和描述。</p>
 </div>
 </div>
 <div class="section" id="add-an-entry-point">
@@ -553,7 +552,7 @@ Again, match the <code class="docutils literal notranslate"><span class="pre">ma
 </div>
 <div class="section" id="build-and-run">
 <h3><a class="toc-backref" href="#id6">3. 构建和运行</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
-<p>It's good practice to run <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> in the root of your workspace (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>) to check for missing dependencies before building:</p>
+<p>在构建之前，最好在工作空间的根目录（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>）中运行``rosdep``来检查是否缺少依赖项：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
 </pre></div>

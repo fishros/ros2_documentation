@@ -489,10 +489,7 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The first line of our <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> function gets the parameter <code class="docutils literal notranslate"><span class="pre">my_parameter</span></code> from the node, and stores it in <code class="docutils literal notranslate"><span class="pre">my_param</span></code>.
-Next the <code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> function ensures the event is logged.
-The <code class="docutils literal notranslate"><span class="pre">set_parameters</span></code> function then sets the parameter <code class="docutils literal notranslate"><span class="pre">my_parameter</span></code> back to the default string value <code class="docutils literal notranslate"><span class="pre">world</span></code>.
-In the case that the user changed the parameter externally, this ensures it is always reset back to the original.</p>
+<p>我们的 <code class="docutils literal notranslate"><span class="pre">timer_callback</span></code> 函数的第一行从节点中获取参数 <code class="docutils literal notranslate"><span class="pre">my_parameter</span></code>，并将其存储在 <code class="docutils literal notranslate"><span class="pre">my_param</span></code> 中。接下来，<code class="docutils literal notranslate"><span class="pre">RCLCPP_INFO</span></code> 函数确保事件被记录。然后，<code class="docutils literal notranslate"><span class="pre">set_parameters</span></code> 函数将参数 <code class="docutils literal notranslate"><span class="pre">my_parameter</span></code> 设置回默认的字符串值 <code class="docutils literal notranslate"><span class="pre">world</span></code>。在用户外部更改参数的情况下，这可以确保它始终被重置回原始值。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">timer_callback</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">my_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_parameter</span><span class="p">(</span><span class="s">&quot;my_parameter&quot;</span><span class="p">).</span><span class="n">as_string</span><span class="p">();</span><span class="w"></span>
@@ -504,13 +501,12 @@ In the case that the user changed the parameter externally, this ensures it is a
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Last is the declaration of <code class="docutils literal notranslate"><span class="pre">timer_</span></code>.</p>
+<p>最后是 <code class="docutils literal notranslate"><span class="pre">timer_</span></code> 的声明。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Following our <code class="docutils literal notranslate"><span class="pre">MinimalParam</span></code> is our <code class="docutils literal notranslate"><span class="pre">main</span></code>.
-Here ROS 2 is initialized, an instance of the <code class="docutils literal notranslate"><span class="pre">MinimalParam</span></code> class is constructed, and <code class="docutils literal notranslate"><span class="pre">rclcpp::spin</span></code> starts processing data from the node.</p>
+<p>在我们的 <code class="docutils literal notranslate"><span class="pre">MinimalParam</span></code> 后面是我们的 <code class="docutils literal notranslate"><span class="pre">main</span></code> 函数。在这里，ROS 2 被初始化，构造了一个 <code class="docutils literal notranslate"><span class="pre">MinimalParam</span></code> 类的实例，并且 <code class="docutils literal notranslate"><span class="pre">rclcpp::spin</span></code> 开始处理来自节点的数据。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
@@ -521,10 +517,8 @@ Here ROS 2 is initialized, an instance of the <code class="docutils literal notr
 </pre></div>
 </div>
 <div class="section" id="optional-add-parameterdescriptor">
-<h5>2.1.1 (Optional) Add ParameterDescriptor<a class="headerlink" href="#optional-add-parameterdescriptor" title="永久链接至标题"></a></h5>
-<p>Optionally, you can set a descriptor for the parameter.
-Descriptors allow you to specify a text description of the parameter and its constraints, like making it read-only, specifying a range, etc.
-For that to work, the code in the constructor has to be changed to:</p>
+<h5>2.1.1（可选）添加 ParameterDescriptor。<a class="headerlink" href="#optional-add-parameterdescriptor" title="永久链接至标题"></a></h5>
+<p>可选的，您可以为参数设置一个描述符。描述符允许您指定参数及其约束的文本描述，例如设置为只读、指定范围等。为了使其生效，构造函数中的代码必须进行更改：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// ...</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MinimalParam</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
@@ -543,13 +537,12 @@ For that to work, the code in the constructor has to be changed to:</p>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The rest of the code remains the same.
-Once you run the node, you can then run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">describe</span> <span class="pre">/minimal_param_node</span> <span class="pre">my_parameter</span></code> to see the type and description.</p>
+<p>其余的代码保持不变。运行节点后，您可以运行``ros2 param describe /minimal_param_node my_parameter``来查看类型和描述。</p>
 </div>
 </div>
 <div class="section" id="add-executable">
 <h4>2.2 添加可执行文件<a class="headerlink" href="#add-executable" title="永久链接至标题"></a></h4>
-<p>Now open the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file. Below the dependency <code class="docutils literal notranslate"><span class="pre">find_package(rclcpp</span> <span class="pre">REQUIRED)</span></code> add the following lines of code.</p>
+<p>现在打开``CMakeLists.txt``文件。在依赖项``find_package(rclcpp REQUIRED)``下方添加以下代码行。</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">minimal_param_node</span><span class="w"> </span><span class="s">src/cpp_parameters_node.cpp</span><span class="p">)</span>
 <span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">minimal_param_node</span><span class="w"> </span><span class="s">rclcpp</span><span class="p">)</span>
 
@@ -563,7 +556,7 @@ Once you run the node, you can then run <code class="docutils literal notranslat
 </div>
 <div class="section" id="build-and-run">
 <h3><a class="toc-backref" href="#id6">3. 构建和运行</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
-<p>It's good practice to run <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> in the root of your workspace (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>) to check for missing dependencies before building:</p>
+<p>在构建之前，最好在工作空间的根目录（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>）中运行``rosdep``来检查是否缺少依赖项：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
 </pre></div>
