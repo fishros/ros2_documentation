@@ -483,10 +483,9 @@
 </div>
 <p>通过查看 <code class="docutils literal notranslate"><span class="pre">main</span></code> 函数，您可以看到我们有一个生产者节点和一个消费者节点，我们将它们添加到一个单线程执行器中，然后调用 spin 函数。</p>
 <p>如果您查看 <code class="docutils literal notranslate"><span class="pre">Producer</span></code> 结构体中的“生产者”节点实现，您会发现我们创建了一个在“number”主题上发布消息的发布者和一个定时器，该定时器周期性地创建一个新的消息，打印出它在内存中的地址和其内容的值，然后将其发布出去。</p>
-<p>The &quot;consumer&quot; node is a bit simpler, you can see its implementation in the <code class="docutils literal notranslate"><span class="pre">Consumer</span></code> struct, as it only subscribes to the &quot;number&quot; topic and prints the address and value of the message it receives.</p>
-<p>The expectation is that the producer will print out an address and value and the consumer will print out a matching address and value.
-This demonstrates that intra process communication is indeed working and unnecessary copies are avoided, at least for simple graphs.</p>
-<p>Let's run the demo by executing <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">intra_process_demo</span> <span class="pre">two_node_pipeline</span></code> executable (don't forget to source the setup file first):</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>consumer``节点相对简单，可以在``Consumer``结构体中看到其实现，它只订阅&quot;number&quot;主题，并打印出接收到的消息的地址和值。</p>
+<p>预期结果是生产者将打印出地址和值，而消费者将打印出匹配的地址和值。这证明了进程内通信确实起作用，并且至少对于简单的图形，避免了不必要的复制。</p>
+<p>让我们通过执行``ros2 run intra_process_demo two_node_pipeline``可执行文件来运行演示（不要忘记先执行设置文件）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 run intra_process_demo two_node_pipeline
 Published message with value: <span class="m">0</span>, and address: 0x7fb02303faf0
 Published message with value: <span class="m">1</span>, and address: 0x7fb020cf0520
@@ -502,22 +501,13 @@ Published message with value: <span class="m">5</span>, and address: 0x7fb02303c
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
-<p>One thing you'll notice is that the messages tick along at about one per second.
-This is because we told the timer to fire at about once per second.</p>
-<p>Also you may have noticed that the first message (with value <code class="docutils literal notranslate"><span class="pre">0</span></code>) does not have a corresponding &quot;Received message ...&quot; line.
-This is because publish/subscribe is &quot;best effort&quot; and we do not have any &quot;latching&quot; like behavior enabled.
-This means that if the publisher publishes a message before the subscription has been established, the subscription will not receive that message.
-This race condition can result in the first few messages being lost.
-In this case, since they only come once per second, usually only the first message is lost.</p>
-<p>Finally, you can see that &quot;Published message...&quot; and &quot;Received message ...&quot; lines with the same value also have the same address.
-This shows that the address of the message being received is the same as the one that was published and that it is not a copy.
-This is because we're publishing and subscribing with <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code>s which allow ownership of a message to be moved around the system safely.
-You can also publish and subscribe with <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code>, but zero-copy will not occur in that case.</p>
+<p>你会注意到一件事，消息大约每秒钟传递一次。这是因为我们告诉定时器大约每秒触发一次。</p>
+<p>你可能已经注意到第一条消息（值为``0``）没有对应的&quot;Received message ...&quot;行。这是因为发布/订阅是&quot;尽力而为&quot;的，我们没有启用任何&quot;锁存&quot;行为。这意味着如果发布者在建立订阅之前发布一条消息，订阅将不会接收到该消息。这种竞争条件可能导致前几条消息丢失。在这种情况下，由于它们每秒只出现一次，通常只会丢失第一条消息。</p>
+<p>最后，你可以看到具有相同值的&quot;Published message...&quot;和&quot;Received message ...&quot;行也具有相同的地址。这表明接收到的消息的地址与发布的消息相同，并且它不是一个副本。这是因为我们使用``std::unique_ptr``进行发布和订阅，它允许消息的所有权在系统中安全地移动。你也可以使用``const &amp;``和``std::shared_ptr``进行发布和订阅，但在这种情况下不会进行零拷贝。</p>
 </div>
 <div class="section" id="the-cyclic-pipeline-demo">
-<h3>The cyclic pipeline demo<a class="headerlink" href="#the-cyclic-pipeline-demo" title="永久链接至标题"></a></h3>
-<p>This demo is similar to the previous one, but instead of the producer creating a new message for each iteration, this demo only ever uses one message instance.
-This is achieved by creating a cycle in the graph and &quot;kicking off&quot; communication by externally making one of the nodes publish before spinning the executor:</p>
+<h3>循环管道示例<a class="headerlink" href="#the-cyclic-pipeline-demo" title="永久链接至标题"></a></h3>
+<p>这个示例与之前的示例类似，但是不同的是，生产者在每次迭代中不会创建新的消息，而是始终使用同一个消息实例。通过在图中创建一个循环，并在旋转执行器之前通过外部方式使其中一个节点发布消息，可以实现这一点：</p>
 <p><a class="reference external" href="https://github.com/ros2/demos/blob/humble/intra_process_demo/src/cyclic_pipeline/cyclic_pipeline.cpp">https://github.com/ros2/demos/blob/humble/intra_process_demo/src/cyclic_pipeline/cyclic_pipeline.cpp</a></p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cinttypes&gt;</span><span class="cp"></span>
@@ -598,12 +588,10 @@ This is achieved by creating a cycle in the graph and &quot;kicking off&quot; co
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Unlike the previous demo, this demo uses only one Node, instantiated twice with different names and configurations.
-The graph ends up being <code class="docutils literal notranslate"><span class="pre">pipe1</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">pipe2</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">pipe1</span></code> ... in a loop.</p>
-<p>The line <code class="docutils literal notranslate"><span class="pre">pipe1-&gt;pub-&gt;publish(msg);</span></code> kicks the process off, but from then on the messages are passed back and forth between the nodes by each one calling publish within its own subscription callback.</p>
-<p>The expectation here is that the nodes pass the message back and forth, once a second, incrementing the value of the message each time.
-Because the message is being published and subscribed to as a <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> the same message created at the beginning is continuously used.</p>
-<p>To test those expectations, let's run it:</p>
+<p>与之前的演示不同，此演示只使用一个节点，使用不同的名称和配置实例化两次。图的结构为“pipe1” -&gt; “pipe2” -&gt; “pipe1”... 形成循环。</p>
+<p>代码行“pipe1-&gt;pub-&gt;publish(msg);”启动了该过程，但之后消息通过每个节点在自己的订阅回调中调用publish来来回传递。</p>
+<p>这里的期望是节点之间每秒传递消息一次，每次递增消息的值。由于消息作为“unique_ptr”发布和订阅，开始时创建的同一消息会不断使用。</p>
+<p>为了测试这些期望，让我们运行它：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 run intra_process_demo cyclic_pipeline
 Published first message with value:  <span class="m">42</span>, and address: 0x7fd2ce0a2bc0
 Received message with value:         <span class="m">42</span>, and address: 0x7fd2ce0a2bc0
@@ -631,11 +619,11 @@ Received message with value:         <span class="m">47</span>, and address: 0x7
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
-<p>You should see ever increasing numbers on each iteration, starting with 42... because 42, and the whole time it reuses the same message, as demonstrated by the pointer addresses which do not change, which avoids unnecessary copies.</p>
+<p>你应该在每次迭代中看到不断增加的数字，从42开始...因为42，而且整个时间它重复使用相同的消息，如指针地址所示，它们不会改变，这避免了不必要的拷贝。</p>
 </div>
 <div class="section" id="the-image-pipeline-demo">
-<h3>The image pipeline demo<a class="headerlink" href="#the-image-pipeline-demo" title="永久链接至标题"></a></h3>
-<p>In this demo we'll use OpenCV to capture, annotate, and then view images.</p>
+<h3>图像处理演示<a class="headerlink" href="#the-image-pipeline-demo" title="永久链接至标题"></a></h3>
+<p>在这个演示中，我们将使用OpenCV来捕获、注释和查看图像。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>If you are on macOS and these examples do not work or you receive an error like <code class="docutils literal notranslate"><span class="pre">ddsi_conn_write</span> <span class="pre">failed</span> <span class="pre">-1</span></code>, then you'll need to increase your system wide UDP packet size:</p>
