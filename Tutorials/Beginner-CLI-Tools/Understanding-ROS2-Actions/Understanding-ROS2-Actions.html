@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Understanding actions &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>理解行为 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -114,7 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">Understanding topics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Understanding-ROS2-Services/Understanding-ROS2-Services.html">Understanding services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">Understanding parameters</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Understanding actions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">理解行为</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Using-Rqt-Console/Using-Rqt-Console.html">Using <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> to view logs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据</a></li>
@@ -360,7 +360,7 @@
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Beginner-CLI-Tools.html">初学者：CLI 工具</a> &raquo;</li>
-      <li>Understanding actions</li>
+      <li>理解行为</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,8 +373,8 @@
 
 
   <div class="section" id="understanding-actions">
-<span id="ros2actions"></span><h1>Understanding actions<a class="headerlink" href="#understanding-actions" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Introspect actions in ROS 2.</p>
+<span id="ros2actions"></span><h1>理解行为<a class="headerlink" href="#understanding-actions" title="永久链接至标题"></a></h1>
+<p><strong>目标：</strong> 在ROS 2中审视行为。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="contents">
@@ -400,26 +400,22 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>Actions are one of the communication types in ROS 2 and are intended for long running tasks.
-They consist of three parts: a goal, feedback, and a result.</p>
-<p>Actions are built on topics and services.
-Their functionality is similar to services, except actions can be canceled.
-They also provide steady feedback, as opposed to services which return a single response.</p>
-<p>Actions use a client-server model, similar to the publisher-subscriber model (described in the <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics tutorial</span></a>).
-An &quot;action client&quot; node sends a goal to an &quot;action server&quot; node that acknowledges the goal and returns a stream of feedback and a result.</p>
+<p>行为是ROS 2中的一种通信类型，用于长时间运行的任务。它们由三个部分组成：目标（goal），反馈（feedback）和结果（result）。</p>
+<p>行为是建立在主题（topics）和服务（services）之上的。它们的功能类似于服务，但行为可以被取消。与只返回单个响应的服务不同，行为还提供稳定的反馈。</p>
+<p>动作使用客户端-服务器模型，类似于发布者-订阅者模型（在 <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics tutorial</span></a> 中有描述）。一个&quot;动作客户端&quot;节点向一个&quot;动作服务器&quot;节点发送一个目标，服务器节点确认目标并返回一系列反馈和结果流。</p>
 <img alt="../../../_images/Action-SingleActionClient.gif" src="../../../_images/Action-SingleActionClient.gif" />
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>This tutorial builds off concepts, like <a class="reference internal" href="../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">nodes</span></a> and <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">topics</span></a>, covered in previous tutorials.</p>
-<p>This tutorial uses the <a class="reference internal" href="../Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim package</span></a>.</p>
+<p>本教程在之前的教程中构建了一些概念，例如 <a class="reference internal" href="../Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html"><span class="doc">节点</span></a> 和 <a class="reference internal" href="../Understanding-ROS2-Topics/Understanding-ROS2-Topics.html"><span class="doc">主题</span></a>。</p>
+<p>本教程使用 <a class="reference internal" href="../Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim 包</span></a>。</p>
 <p>像往常一样，在:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>每个新开的终端中 &lt;../Configuring-ROS2-Environment&gt;`都不要忘记加载ROS 2。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="setup">
 <h3><a class="toc-backref" href="#id4">1 设置</a><a class="headerlink" href="#setup" title="永久链接至标题"></a></h3>
-<p>Start up the two turtlesim nodes, <code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> and <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code>.</p>
+<p>启动两个 turtlesim 节点，<code class="docutils literal notranslate"><span class="pre">/turtlesim</span></code> 和 <code class="docutils literal notranslate"><span class="pre">/teleop_turtle</span></code>。</p>
 <p>打开一个新的终端并运行：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtlesim_node</span>
 </pre></div>
