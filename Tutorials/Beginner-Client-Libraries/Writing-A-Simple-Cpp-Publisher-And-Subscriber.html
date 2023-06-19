@@ -546,19 +546,19 @@
 <h4>2.2 添加依赖项<a class="headerlink" href="#add-dependencies" title="永久链接至标题"></a></h4>
 <p>返回到``ros2_ws/src/cpp_pubsub``目录，这是``CMakeLists.txt``和``package.xml``文件所在的目录。这些文件已经为您创建好。</p>
 <p>用文本编辑器打开``package.xml``文件。</p>
-<p>As mentioned in the <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">previous tutorial</span></a>, make sure to fill in the <code class="docutils literal notranslate"><span class="pre">&lt;description&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;maintainer&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;license&gt;</span></code> tags:</p>
+<p>如在:doc:<code class="xref any docutils literal notranslate"><span class="pre">之前的教程</span> <span class="pre">&lt;./Creating-Your-First-ROS2-Package&gt;`中提到的，确保填写``&lt;description&gt;`</span></code>, <a href="#id1"><span class="problematic" id="id2">``</span></a>&lt;maintainer&gt;``和``&lt;license&gt;``标签:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Examples of minimal publisher/subscriber using rclcpp<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
 <span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
 </pre></div>
 </div>
-<p>Add a new line after the <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> buildtool dependency and paste the following dependencies corresponding to your node's include statements:</p>
+<p>在``ament_cmake``构建工具依赖项之后添加一个新行，并粘贴以下与节点的包含语句对应的依赖项:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>rclcpp<span class="nt">&lt;/depend&gt;</span>
 <span class="nt">&lt;depend&gt;</span>std_msgs<span class="nt">&lt;/depend&gt;</span>
 </pre></div>
 </div>
-<p>This declares the package needs <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> and <code class="docutils literal notranslate"><span class="pre">std_msgs</span></code> when its code is built and executed.</p>
-<p>Make sure to save the file.</p>
+<p>这将在构建和执行代码时声明该包需要``rclcpp``和``std_msgs``.</p>
+<p>确保保存文件.</p>
 </div>
 <div class="section" id="cmakelists-txt">
 <h4>2.3 CMakeLists.txt<a class="headerlink" href="#cmakelists-txt" title="永久链接至标题"></a></h4>
