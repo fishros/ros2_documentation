@@ -374,7 +374,7 @@
 
   <div class="section" id="using-ros2doctor-to-identify-issues">
 <span id="ros2doctor"></span><h1>使用``ros2doctor``来识别问题<a class="headerlink" href="#using-ros2doctor-to-identify-issues" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Identify issues in your ROS 2 setup using the <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> tool.</p>
+<p><strong>目标:</strong> 使用``ros2doctor``工具识别您的ROS 2设置中的问题。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><strong>时间:</strong> 10分钟</p>
 <div class="contents local topic" id="contents">
@@ -384,7 +384,7 @@
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id3">任务</a></p>
 <ul>
-<li><p><a class="reference internal" href="#check-your-setup" id="id4">1 Check your setup</a></p></li>
+<li><p><a class="reference internal" href="#check-your-setup" id="id4">1 检查你的设置</a></p></li>
 <li><p><a class="reference internal" href="#check-a-system" id="id5">2 Check a system</a></p></li>
 <li><p><a class="reference internal" href="#get-a-full-report" id="id6">3 Get a full report</a></p></li>
 </ul>
@@ -396,25 +396,23 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>When your ROS 2 setup is not running as expected, you can check its settings with the <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> tool.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> checks all aspects of ROS 2, including platform, version, network, environment, running systems and more, and warns you about possible errors and reasons for issues.</p>
+<p>当您的ROS 2设置未按预期运行时，您可以使用``ros2doctor``工具检查其设置。</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>ros2doctor``检查ROS 2的所有方面，包括平台、版本、网络、环境、运行系统等，并向您警告可能的错误和问题原因。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> is part of the <code class="docutils literal notranslate"><span class="pre">ros2cli</span></code> package.
-As long as you have <code class="docutils literal notranslate"><span class="pre">ros2cli</span></code> installed (which any normal install should have), you will be able to use <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code>.</p>
-<p>This tutorial uses <a class="reference internal" href="../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim</span></a> to illustrate some of the examples.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ros2doctor``是``ros2cli``包的一部分。只要您安装了``ros2cli``（任何正常安装都应该有），您就可以使用``ros2doctor</span></code>。</p>
+<p>本教程使用 <a class="reference internal" href="../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim</span></a> 来演示一些例子。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="check-your-setup">
-<h3><a class="toc-backref" href="#id4">1 Check your setup</a><a class="headerlink" href="#check-your-setup" title="永久链接至标题"></a></h3>
-<p>Let's examine your general ROS 2 setup as a whole with <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code>.
-First, source ROS 2 in a new terminal, then enter the command:</p>
+<h3><a class="toc-backref" href="#id4">1 检查你的设置</a><a class="headerlink" href="#check-your-setup" title="永久链接至标题"></a></h3>
+<p>让我们用 <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> 来检查你的整个ROS 2设置。首先，在新终端中source ROS 2，然后输入以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 doctor</span>
 </pre></div>
 </div>
-<p>This will conduct checks over all your setup modules and return warnings and errors.</p>
+<p>这将对你的所有设置模块进行检查，并返回警告和错误。</p>
 <p>If your ROS 2 setup is in perfect shape, you'll see a message similar to this:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">All &lt;n&gt; checks passed</span>
 </pre></div>
