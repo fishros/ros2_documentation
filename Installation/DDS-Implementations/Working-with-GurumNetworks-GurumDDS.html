@@ -406,8 +406,7 @@
 </div>
 <div class="section" id="install-packages">
 <h2>安装软件包<a class="headerlink" href="#install-packages" title="永久链接至标题"></a></h2>
-<p>The easiest way is to install from ROS 2 apt repository.
-When ros-humble-rmw-gurumdds-cpp is installed, gurumdds-2.8 is also installed.</p>
+<p>最简单的方法是从ROS 2的apt存储库安装。安装ros-humble-rmw-gurumdds-cpp时，也会安装gurumdds-2.8。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-humble-rmw-gurumdds-cpp
 </pre></div>
 </div>
@@ -415,12 +414,12 @@ When ros-humble-rmw-gurumdds-cpp is installed, gurumdds-2.8 is also installed.</
 <div class="section" id="build-from-source-code">
 <h2>从源代码构建<a class="headerlink" href="#build-from-source-code" title="永久链接至标题"></a></h2>
 <p>从源代码构建也是安装的另一种方式。</p>
-<p>First, clone rmw_gurumdds in the ROS 2 workspace source directory.</p>
+<p>首先，在ROS 2工作空间源目录中克隆rmw_gurumdds。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ros2_ws/src
 git clone https://github.com/ros2/rmw_gurumdds -b humble ros2/rmw_gurumdds
 </pre></div>
 </div>
-<p>Then, install necessary packages for GurumDDS.</p>
+<p>然后，安装GurumDDS所需的必要软件包。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..
 rosdep install --from src -i --rosdistro humble
 </pre></div>
@@ -431,8 +430,8 @@ rosdep install --from src -i --rosdistro humble
 </div>
 </div>
 <div class="section" id="switch-to-rmw-gurumdds">
-<h2>Switch to rmw_gurumdds<a class="headerlink" href="#switch-to-rmw-gurumdds" title="永久链接至标题"></a></h2>
-<p>Switch from other rmw to rmw_gurumdds by specifying the environment variable.</p>
+<h2>切换到rmw_gurumdds。<a class="headerlink" href="#switch-to-rmw-gurumdds" title="永久链接至标题"></a></h2>
+<p>通过指定环境变量，从其他rmw切换到rmw_gurumdds。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_gurumdds_cpp
 </pre></div>
 </div>
@@ -440,8 +439,7 @@ rosdep install --from src -i --rosdistro humble
 </div>
 <div class="section" id="run-the-talker-and-listener">
 <h2>运行发布者和订阅者<a class="headerlink" href="#run-the-talker-and-listener" title="永久链接至标题"></a></h2>
-<p>Now run <code class="docutils literal notranslate"><span class="pre">talker</span></code> and <code class="docutils literal notranslate"><span class="pre">listener</span></code> to test GurumDDS.
-Don't forget to set up environment by setup script.</p>
+<p>现在运行 <code class="docutils literal notranslate"><span class="pre">talker</span></code> 和 <code class="docutils literal notranslate"><span class="pre">listener</span></code> 来测试GurumDDS。不要忘记使用设置脚本来设置环境。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
