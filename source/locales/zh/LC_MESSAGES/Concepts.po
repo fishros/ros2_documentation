@@ -3170,62 +3170,62 @@ msgstr "ROS 中的参数与各个节点相关联。参数用于在启动时（�
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:20
 msgid "Parameters are addressed by node name, node namespace, parameter name, and parameter namespace. Providing a parameter namespace is optional."
-msgstr "Parameters are addressed by node name, node namespace, parameter name, and parameter namespace. Providing a parameter namespace is optional."
+msgstr "参数通过节点名称、节点命名空间、参数名称和参数命名空间来进行标识。提供参数命名空间是可选的。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:23
 msgid "Each parameter consists of a key, a value, and a descriptor. The key is a string and the value is one of the following types: bool, int64, float64, string, byte[], bool[], int64[], float64[] or string[]. By default all descriptors are empty, but can contain parameter descriptions, value ranges, type information, and additional constraints."
-msgstr "Each parameter consists of a key, a value, and a descriptor. The key is a string and the value is one of the following types: bool, int64, float64, string, byte[], bool[], int64[], float64[] or string[]. By default all descriptors are empty, but can contain parameter descriptions, value ranges, type information, and additional constraints."
+msgstr "每个参数由键、值和描述符组成。键是一个字符串，值可以是以下类型之一：bool、int64、float64、string、byte[]、bool[]、int64[]、float64[] 或 string[]。默认情况下，所有描述符都是空的，但可以包含参数描述、值范围、类型信息和其他约束条件。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:27
 msgid "For an hands-on tutorial with ROS parameters see :doc:`../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters`."
-msgstr "For an hands-on tutorial with ROS parameters see :doc:`../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters`."
+msgstr "有关使用ROS参数的实用教程，请参阅:doc:`../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters`。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:30
 msgid "Parameters background"
-msgstr "Parameters background"
+msgstr "参数背景"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:33
 msgid "Declaring parameters"
-msgstr "Declaring parameters"
+msgstr "声明参数"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:35
 msgid "By default, a node needs to *declare* all of the parameters that it will accept during its lifetime. This is so that the type and name of the parameters are well-defined at node startup time, which reduces the chances of misconfiguration later on. See :doc:`../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP` or :doc:`../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python` for tutorials on declaring and using parameters from a node."
-msgstr "By default, a node needs to *declare* all of the parameters that it will accept during its lifetime. This is so that the type and name of the parameters are well-defined at node startup time, which reduces the chances of misconfiguration later on. See :doc:`../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP` or :doc:`../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python` for tutorials on declaring and using parameters from a node."
+msgstr "默认情况下，节点需要在其生命周期内*声明*将要接受的所有参数。这样，参数的类型和名称在节点启动时就被明确定义，从而降低了后续配置错误的可能性。请参阅以下教程了解如何从节点中声明和使用参数：:doc:`../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP` 或 :doc:`../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python`。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:39
 msgid "For some types of nodes, not all of the parameters will be known ahead of time. In these cases, the node can be instantiated with ``allow_undeclared_parameters`` set to ``true``, which will allow parameters to be get and set on the node even if they haven't been declared."
-msgstr "For some types of nodes, not all of the parameters will be known ahead of time. In these cases, the node can be instantiated with ``allow_undeclared_parameters`` set to ``true``, which will allow parameters to be get and set on the node even if they haven't been declared."
+msgstr "对于某些类型的节点，不是所有参数都能提前知道。在这种情况下，可以使用``allow_undeclared_parameters``设置为``true``来实例化节点，即使参数没有被声明，也允许在节点上进行参数的获取和设置。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:43
 msgid "Parameter types"
-msgstr "Parameter types"
+msgstr "参数类型"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:45
 msgid "Each parameter on a ROS 2 node has one of the pre-defined parameter types as mentioned in the Overview. By default, attempts to change the type of a declared parameter at runtime will fail. This prevents common mistakes, such as putting a boolean value into an integer parameter."
-msgstr "Each parameter on a ROS 2 node has one of the pre-defined parameter types as mentioned in the Overview. By default, attempts to change the type of a declared parameter at runtime will fail. This prevents common mistakes, such as putting a boolean value into an integer parameter."
+msgstr "ROS 2节点上的每个参数都有预定义的参数类型，如概述中所述。默认情况下，尝试在运行时更改已声明参数的类型将失败。这可以防止常见的错误，例如将布尔值放入整数参数中。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:49
 msgid "If a parameter needs to be multiple different types, and the code using the parameter can handle it, this default behavior can be changed. When the parameter is declared, it should be declared using a ``ParameterDescriptor`` with the ``dynamic_typing`` member variable set to ``true``."
-msgstr "If a parameter needs to be multiple different types, and the code using the parameter can handle it, this default behavior can be changed. When the parameter is declared, it should be declared using a ``ParameterDescriptor`` with the ``dynamic_typing`` member variable set to ``true``."
+msgstr "如果一个参数需要具有多种不同的类型，并且使用该参数的代码可以处理它，可以更改此默认行为。在声明参数时，应使用具有``dynamic_typing``成员变量设置为``true``的``ParameterDescriptor``进行声明。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:53
 msgid "Parameter callbacks"
-msgstr "Parameter callbacks"
+msgstr "参数回调"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:55
 msgid "A ROS 2 node can register two different types of callbacks to be informed when changes are happening to parameters. The reason that there are two types of callbacks is to have a chance to intervene before the parameter change happens, and to have a chance to react after the parameter change happens. A node can register for both, either, or none of the callback types. Both types are described below."
-msgstr "A ROS 2 node can register two different types of callbacks to be informed when changes are happening to parameters. The reason that there are two types of callbacks is to have a chance to intervene before the parameter change happens, and to have a chance to react after the parameter change happens. A node can register for both, either, or none of the callback types. Both types are described below."
+msgstr "ROS 2节点可以注册两种不同类型的回调函数，以在参数发生更改时进行通知。之所以存在两种类型的回调函数，是为了在参数更改发生之前有机会介入，并在参数更改发生之后有机会做出反应。节点可以注册这两种回调类型中的任何一种、全部或者不注册。以下分别描述了这两种类型。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:60
