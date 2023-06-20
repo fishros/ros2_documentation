@@ -1966,62 +1966,62 @@ msgstr "ROS 2 中的日志记录子系统旨在将日志消息传递到各种目
 
 #: ../../source/Concepts/About-Logging.rst:18
 msgid "To the console (if one is attached)"
-msgstr "To the console (if one is attached)"
+msgstr "输出到控制台（如果有连接的话）"
 
 
 #: ../../source/Concepts/About-Logging.rst:19
 msgid "To log files on disk (if local storage is available)"
-msgstr "To log files on disk (if local storage is available)"
+msgstr "输出到磁盘上的日志文件（如果有本地存储可用）"
 
 
 #: ../../source/Concepts/About-Logging.rst:20
 msgid "To the ``/rosout`` topic on the ROS 2 network"
-msgstr "To the ``/rosout`` topic on the ROS 2 network"
+msgstr "输出到ROS 2网络上的``/rosout``主题"
 
 
 #: ../../source/Concepts/About-Logging.rst:22
 msgid "By default, log messages in ROS 2 nodes will go out to the console (on stderr), to log files on disk, and to the ``/rosout`` topic on the ROS 2 network. All of the targets can be individually enabled or disabled on a per-node basis."
-msgstr "By default, log messages in ROS 2 nodes will go out to the console (on stderr), to log files on disk, and to the ``/rosout`` topic on the ROS 2 network. All of the targets can be individually enabled or disabled on a per-node basis."
+msgstr "默认情况下，ROS 2节点中的日志消息将输出到控制台（stderr）、输出到磁盘上的日志文件以及输出到ROS 2网络上的``/rosout``主题。所有这些目标都可以在每个节点上独立启用或禁用。"
 
 
 #: ../../source/Concepts/About-Logging.rst:25
 msgid "The rest of this document will go over some of the ideas behind the logging subsystem."
-msgstr "The rest of this document will go over some of the ideas behind the logging subsystem."
+msgstr "本文档的其余部分将介绍日志子系统背后的一些概念。"
 
 
 #: ../../source/Concepts/About-Logging.rst:28
 msgid "Severity level"
-msgstr "Severity level"
+msgstr "严重程度级别"
 
 
 #: ../../source/Concepts/About-Logging.rst:30
 msgid "Log messages have a severity level associated with them: ``DEBUG``, ``INFO``, ``WARN``, ``ERROR`` or ``FATAL``, in ascending order."
-msgstr "Log messages have a severity level associated with them: ``DEBUG``, ``INFO``, ``WARN``, ``ERROR`` or ``FATAL``, in ascending order."
+msgstr "日志消息与严重级别关联：``DEBUG``（调试）、``INFO``（信息）、``WARN``（警告）、``ERROR``（错误）或 ``FATAL``（致命），按升序排列。"
 
 
 #: ../../source/Concepts/About-Logging.rst:32
 msgid "A logger will only process log messages with severity at or higher than a specified level chosen for the logger."
-msgstr "A logger will only process log messages with severity at or higher than a specified level chosen for the logger."
+msgstr "记录器仅处理具有不低于记录器指定级别的严重级别的日志消息。"
 
 
 #: ../../source/Concepts/About-Logging.rst:34
 msgid "Each node has a logger associated with it that automatically includes the node's name and namespace. If the node's name is externally remapped to something other than what is defined in the source code, it will be reflected in the logger name. Non-node loggers can also be created that use a specific name."
-msgstr "Each node has a logger associated with it that automatically includes the node's name and namespace. If the node's name is externally remapped to something other than what is defined in the source code, it will be reflected in the logger name. Non-node loggers can also be created that use a specific name."
+msgstr "每个节点都有一个与之关联的记录器，自动包含节点的名称和命名空间。如果节点的名称在外部重映射为源代码中定义的其他内容，则会反映在记录器名称中。还可以创建使用特定名称的非节点记录器。"
 
 
 #: ../../source/Concepts/About-Logging.rst:38
 msgid "Logger names represent a hierarchy. If the level of a logger named \"abc.def\" is unset, it will defer to the level of its parent named \"abc\", and if that level is also unset, the default logger level will be used. When the level of logger \"abc\" is changed, all of its descendants (e.g. \"abc.def\", \"abc.ghi.jkl\") will have their level impacted unless their level has been explicitly set."
-msgstr "Logger names represent a hierarchy. If the level of a logger named \"abc.def\" is unset, it will defer to the level of its parent named \"abc\", and if that level is also unset, the default logger level will be used. When the level of logger \"abc\" is changed, all of its descendants (e.g. \"abc.def\", \"abc.ghi.jkl\") will have their level impacted unless their level has been explicitly set."
+msgstr "记录器名称表示层次结构。如果名称为“abc.def”的记录器的级别未设置，它将推迟到其父级名称为“abc”的级别，如果该级别也未设置，则使用默认记录器级别。更改记录器“abc”的级别时，除非明确设置了它们的级别，否则会影响其所有后代（例如“abc.def”、“abc.ghi.jkl”）的级别。"
 
 
 #: ../../source/Concepts/About-Logging.rst:43
 msgid "APIs"
-msgstr "APIs"
+msgstr "API"
 
 
 #: ../../source/Concepts/About-Logging.rst:45
 msgid "These are the APIs that end users of the ROS 2 logging infrastructure should use, split up by client library."
-msgstr "These are the APIs that end users of the ROS 2 logging infrastructure should use, split up by client library."
+msgstr "这些是ROS 2日志记录基础设施的终端用户应使用的API，按客户端库进行划分。"
 
 
 #: ../../source/Concepts/About-Logging.rst:51
