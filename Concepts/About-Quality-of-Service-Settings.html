@@ -465,7 +465,7 @@
 <p>可以独立为发布者和订阅者配置 QoS 配置文件。仅当发布者和订阅者具有兼容的 QoS 配置文件时，才会建立发布者和订阅者之间的连接。</p>
 <p>QoS 配置文件的兼容性是基于“请求与提供”模型确定的。订阅者*请求*一个“最低质量”的 QoS 配置文件，表示它愿意接受的最低质量，而发布者*提供*一个“最高质量”的 QoS 配置文件，表示它能够提供的最高质量。只有当请求的 QoS 配置文件的每个策略都不比提供的 QoS 配置文件的策略更严格时，才会建立连接。即使请求的 QoS 配置文件不同，多个订阅者也可以同时连接到单个发布者。发布者和订阅者之间的兼容性不受其他发布者和订阅者的影响。</p>
 <p>以下表格显示了不同策略设置的兼容性及其结果：</p>
-<p><em>Compatibility of reliability QoS policies:</em></p>
+<p><em>可靠性QoS策略的兼容性:</em></p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -473,31 +473,31 @@
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Publisher</p></th>
-<th class="head"><p>Subscription</p></th>
-<th class="head"><p>Compatible</p></th>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Best effort</p></td>
-<td><p>Best effort</p></td>
-<td><p>Yes</p></td>
+<tr class="row-even"><td><p>尽力而为</p></td>
+<td><p>尽力而为</p></td>
+<td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Best effort</p></td>
-<td><p>Reliable</p></td>
-<td><p>No</p></td>
+<tr class="row-odd"><td><p>尽力而为</p></td>
+<td><p>可靠</p></td>
+<td><p>否</p></td>
 </tr>
-<tr class="row-even"><td><p>Reliable</p></td>
-<td><p>Best effort</p></td>
-<td><p>Yes</p></td>
+<tr class="row-even"><td><p>可靠</p></td>
+<td><p>尽力而为</p></td>
+<td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Reliable</p></td>
-<td><p>Reliable</p></td>
-<td><p>Yes</p></td>
+<tr class="row-odd"><td><p>可靠</p></td>
+<td><p>可靠</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
-<p><em>Compatibility of durability QoS policies:</em></p>
+<p><em>持久性 QoS 策略的兼容性：</em></p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -505,31 +505,31 @@
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Publisher</p></th>
-<th class="head"><p>Subscription</p></th>
-<th class="head"><p>Compatible</p></th>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Volatile</p></td>
-<td><p>Volatile</p></td>
-<td><p>Yes</p></td>
+<tr class="row-even"><td><p>易失性</p></td>
+<td><p>易失性</p></td>
+<td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Volatile</p></td>
-<td><p>Transient local</p></td>
-<td><p>No</p></td>
+<tr class="row-odd"><td><p>易失性</p></td>
+<td><p>瞬态本地</p></td>
+<td><p>否</p></td>
 </tr>
-<tr class="row-even"><td><p>Transient local</p></td>
-<td><p>Volatile</p></td>
-<td><p>Yes</p></td>
+<tr class="row-even"><td><p>瞬态本地</p></td>
+<td><p>易失性</p></td>
+<td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Transient local</p></td>
-<td><p>Transient local</p></td>
-<td><p>Yes</p></td>
+<tr class="row-odd"><td><p>瞬态本地</p></td>
+<td><p>瞬态本地</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
-<p><em>Compatibility of deadline QoS policies:</em></p>
+<p><em>截止期限 QoS 策略的兼容性：</em></p>
 <blockquote>
 <div><p>Assume <em>x</em> and <em>y</em> are arbitrary valid duration values.</p>
 </div></blockquote>
@@ -540,35 +540,35 @@
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Publisher</p></th>
-<th class="head"><p>Subscription</p></th>
-<th class="head"><p>Compatible</p></th>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Default</p></td>
 <td><p>Default</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p>Default</p></td>
 <td><p><em>x</em></p></td>
-<td><p>No</p></td>
+<td><p>否</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
 <td><p>Default</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
 <td><p><em>x</em></p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
 <td><p><em>y</em> (where <em>y</em> &gt; <em>x</em>)</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
 <td><p><em>y</em> (where <em>y</em> &lt; <em>x</em>)</p></td>
-<td><p>No</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
@@ -580,27 +580,27 @@
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Publisher</p></th>
-<th class="head"><p>Subscription</p></th>
-<th class="head"><p>Compatible</p></th>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Automatic</p></td>
 <td><p>Automatic</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p>Automatic</p></td>
 <td><p>Manual by topic</p></td>
-<td><p>No</p></td>
+<td><p>否</p></td>
 </tr>
 <tr class="row-even"><td><p>Manual by topic</p></td>
 <td><p>Automatic</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p>Manual by topic</p></td>
 <td><p>Manual by topic</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 </tbody>
 </table>
@@ -615,35 +615,35 @@
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Publisher</p></th>
-<th class="head"><p>Subscription</p></th>
-<th class="head"><p>Compatible</p></th>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Default</p></td>
 <td><p>Default</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p>Default</p></td>
 <td><p><em>x</em></p></td>
-<td><p>No</p></td>
+<td><p>否</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
 <td><p>Default</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
 <td><p><em>x</em></p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
 <td><p><em>y</em> (where <em>y</em> &gt; <em>x</em>)</p></td>
-<td><p>Yes</p></td>
+<td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
 <td><p><em>y</em> (where <em>y</em> &lt; <em>x</em>)</p></td>
-<td><p>No</p></td>
+<td><p>否</p></td>
 </tr>
 </tbody>
 </table>
