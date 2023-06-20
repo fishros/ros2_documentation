@@ -24,7 +24,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Writing Basic Tests with Python" href="Python.html" />
+    <link rel="next" title="使用Python编写基本测试" href="Python.html" />
     <link rel="prev" title="从命令行中运行 ROS 2 中的测试" href="CLI.html" /> 
 </head>
 
@@ -173,7 +173,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="Testing-Main.html">测试</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="CLI.html">从命令行中运行 ROS 2 中的测试</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">使用 GTest 编写基本的 C++ 测试</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Python.html">Writing Basic Tests with Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Python.html">使用Python编写基本测试</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../URDF/URDF-Main.html">URDF</a><ul>
@@ -376,12 +376,12 @@
   <div class="section" id="writing-basic-tests-with-c-with-gtest">
 <h1>使用 GTest 编写基本的 C++ 测试<a class="headerlink" href="#writing-basic-tests-with-c-with-gtest" title="永久链接至标题"></a></h1>
 <p>起点：我们假设您已经设置了一个 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#createpkg"><span class="std std-ref">基本的 ament_cmake 包</span></a>，并且您想在其中添加一些测试。</p>
-<p>In this tutorial, we'll be using <a class="reference external" href="https://google.github.io/googletest/primer.html">gtest</a>.</p>
+<p>在本教程中，我们将使用 <a class="reference external" href="https://google.github.io/googletest/primer.html">gtest</a>。</p>
 <div class="section" id="package-setup">
-<h2>Package Setup<a class="headerlink" href="#package-setup" title="永久链接至标题"></a></h2>
+<h2>软件包设置<a class="headerlink" href="#package-setup" title="永久链接至标题"></a></h2>
 <div class="section" id="source-code">
-<h3>Source Code<a class="headerlink" href="#source-code" title="永久链接至标题"></a></h3>
-<p>We'll start off with our code in a file called <code class="docutils literal notranslate"><span class="pre">test/tutorial_test.cpp</span></code></p>
+<h3>源代码<a class="headerlink" href="#source-code" title="永久链接至标题"></a></h3>
+<p>我们将从名为 <code class="docutils literal notranslate"><span class="pre">test/tutorial_test.cpp</span></code> 的文件中开始编写代码。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span><span class="cp"></span>
 
 <span class="n">TEST</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span><span class="w"> </span><span class="n">a_first_test</span><span class="p">)</span><span class="w"></span>
@@ -399,7 +399,7 @@
 </div>
 <div class="section" id="package-xml">
 <h3>package.xml<a class="headerlink" href="#package-xml" title="永久链接至标题"></a></h3>
-<p>Add the following line to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code></p>
+<p>将以下行添加到 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">test_depend</span><span class="o">&gt;</span><span class="n">ament_cmake_gtest</span><span class="o">&lt;/</span><span class="n">test_depend</span><span class="o">&gt;</span><span class="w"></span>
 </pre></div>
 </div>
@@ -420,12 +420,12 @@
 <span class="nb">endif</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The testing code is wrapped in the <code class="docutils literal notranslate"><span class="pre">if/endif</span></code> block to avoid building tests where possible. <code class="docutils literal notranslate"><span class="pre">ament_add_gtest</span></code> functions much like <code class="docutils literal notranslate"><span class="pre">add_executable</span></code> so you'll need to call <code class="docutils literal notranslate"><span class="pre">target_include_directories</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code> and <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code> as you normally would.</p>
+<p>测试代码被包含在 <code class="docutils literal notranslate"><span class="pre">if/endif</span></code> 块中，以避免在可能的情况下构建测试。<code class="docutils literal notranslate"><span class="pre">ament_add_gtest</span></code> 的功能与 <code class="docutils literal notranslate"><span class="pre">add_executable</span></code> 类似，因此您需要像平常一样调用 <code class="docutils literal notranslate"><span class="pre">target_include_directories</span></code>、<code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code> 和 <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code>。</p>
 </div>
 </div>
 <div class="section" id="running-tests">
-<h2>Running Tests<a class="headerlink" href="#running-tests" title="永久链接至标题"></a></h2>
-<p>See the <a class="reference internal" href="CLI.html"><span class="doc">tutorial on how to run tests from the command line</span></a> for more information on running the tests and inspecting the test results.</p>
+<h2>运行测试<a class="headerlink" href="#running-tests" title="永久链接至标题"></a></h2>
+<p>有关如何从命令行运行测试和检查测试结果的详细信息，请参阅 <a class="reference internal" href="CLI.html"><span class="doc">教程</span></a>。</p>
 </div>
 </div>
 
@@ -435,7 +435,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="CLI.html" class="btn btn-neutral float-left" title="从命令行中运行 ROS 2 中的测试" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Python.html" class="btn btn-neutral float-right" title="Writing Basic Tests with Python" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Python.html" class="btn btn-neutral float-right" title="使用Python编写基本测试" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
