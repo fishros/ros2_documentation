@@ -386,14 +386,14 @@
 <li><p><a class="reference internal" href="#run-time-composition-using-ros-services-with-a-server-and-client" id="id5">使用ROS服务进行运行时组合，包括服务器和客户端</a></p></li>
 <li><p><a class="reference internal" href="#compile-time-composition-using-ros-services" id="id6">使用ROS服务进行编译时组合</a></p></li>
 <li><p><a class="reference internal" href="#run-time-composition-using-dlopen" id="id7">使用dlopen进行运行时组合</a></p></li>
-<li><p><a class="reference internal" href="#composition-using-launch-actions" id="id8">Composition using launch actions</a></p></li>
+<li><p><a class="reference internal" href="#composition-using-launch-actions" id="id8">使用启动动作进行组合</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#advanced-topics" id="id9">Advanced Topics</a></p>
+<li><p><a class="reference internal" href="#advanced-topics" id="id9">高级主题</a></p>
 <ul>
-<li><p><a class="reference internal" href="#unloading-components" id="id10">Unloading components</a></p></li>
-<li><p><a class="reference internal" href="#remapping-container-name-and-namespace" id="id11">Remapping container name and namespace</a></p></li>
-<li><p><a class="reference internal" href="#remap-component-names-and-namespaces" id="id12">Remap component names and namespaces</a></p></li>
+<li><p><a class="reference internal" href="#unloading-components" id="id10">卸载组件</a></p></li>
+<li><p><a class="reference internal" href="#remapping-container-name-and-namespace" id="id11">重新映射容器名称和命名空间</a></p></li>
+<li><p><a class="reference internal" href="#remap-component-names-and-namespaces" id="id12">重新映射组件名称和命名空间</a></p></li>
 <li><p><a class="reference internal" href="#passing-parameter-values-into-components" id="id13">Passing parameter values into components</a></p></li>
 <li><p><a class="reference internal" href="#passing-additional-arguments-into-components" id="id14">Passing additional arguments into components</a></p></li>
 </ul>
@@ -518,31 +518,30 @@ ros2 component load /ComponentManager composition composition::Client
 </pre></div>
 </div>
 </div></div>
-<p>Now the shell should show repeated output for each sent and received message.</p>
+<p>现在，shell应该显示每个发送和接收消息的重复输出。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>dlopen-composed components will not be reflected in the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">component</span> <span class="pre">list</span></code> command line tool output.</p>
+<p>不会在``ros2 component list``命令行工具输出中反映dlopen组合的组件。</p>
 </div>
 </div>
 <div class="section" id="composition-using-launch-actions">
-<h3><a class="toc-backref" href="#id8">Composition using launch actions</a><a class="headerlink" href="#composition-using-launch-actions" title="永久链接至标题"></a></h3>
-<p>While the command line tools are useful for debugging and diagnosing component configurations, it is frequently more convenient to start a set of components at the same time.
-To automate this action, we can use a <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/launch/composition_demo_launch.py">launch file</a>:</p>
+<h3><a class="toc-backref" href="#id8">使用启动动作进行组合</a><a class="headerlink" href="#composition-using-launch-actions" title="永久链接至标题"></a></h3>
+<p>尽管命令行工具对于调试和诊断组件配置很有用，但同时启动一组组件通常更加方便。为了自动化这个动作，我们可以使用一个`启动文件 &lt;<a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/launch/composition_demo_launch.py">https://github.com/ros2/demos/blob/humble/composition/launch/composition_demo_launch.py</a>&gt;`__：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch composition composition_demo.launch.py
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="advanced-topics">
-<h2><a class="toc-backref" href="#id9">Advanced Topics</a><a class="headerlink" href="#advanced-topics" title="永久链接至标题"></a></h2>
-<p>Now that we have seen the basic operation of components, we can discuss a few more advanced topics.</p>
+<h2><a class="toc-backref" href="#id9">高级主题</a><a class="headerlink" href="#advanced-topics" title="永久链接至标题"></a></h2>
+<p>既然我们已经看到了组件的基本操作，我们可以讨论一些更高级的主题。</p>
 <div class="section" id="unloading-components">
-<h3><a class="toc-backref" href="#id10">Unloading components</a><a class="headerlink" href="#unloading-components" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id10">卸载组件</a><a class="headerlink" href="#unloading-components" title="永久链接至标题"></a></h3>
 <p>在第一个 shell 中，启动组件容器：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container
 </pre></div>
 </div>
-<p>Verify that the container is running via <code class="docutils literal notranslate"><span class="pre">ros2</span></code> command line tools:</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令行工具验证容器是否正在运行：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component list
 </pre></div>
 </div>
@@ -550,40 +549,40 @@ To automate this action, we can use a <a class="reference external" href="https:
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/ComponentManager
 </pre></div>
 </div>
-<p>In the second shell load both the talker and listener as we have before:</p>
+<p>在第二个终端中加载之前的 talker 和 listener：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager composition composition::Talker
 ros2 component load /ComponentManager composition composition::Listener
 </pre></div>
 </div>
-<p>Use the unique ID to unload the node from the component container.</p>
+<p>使用唯一标识符从组件容器卸载节点。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component unload /ComponentManager <span class="m">1</span> <span class="m">2</span>
 </pre></div>
 </div>
-<p>The terminal should return:</p>
+<p>终端应该返回：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Unloaded component <span class="m">1</span> from <span class="s1">&#39;/ComponentManager&#39;</span> container
 Unloaded component <span class="m">2</span> from <span class="s1">&#39;/ComponentManager&#39;</span> container
 </pre></div>
 </div>
-<p>In the first shell, verify that the repeated messages from talker and listener have stopped.</p>
+<p>在第一个终端中，验证来自 talker 和 listener 的重复消息是否已停止。</p>
 </div>
 <div class="section" id="remapping-container-name-and-namespace">
-<h3><a class="toc-backref" href="#id11">Remapping container name and namespace</a><a class="headerlink" href="#remapping-container-name-and-namespace" title="永久链接至标题"></a></h3>
-<p>The component manager name and namespace can be remapped via standard command line arguments:</p>
+<h3><a class="toc-backref" href="#id11">重新映射容器名称和命名空间</a><a class="headerlink" href="#remapping-container-name-and-namespace" title="永久链接至标题"></a></h3>
+<p>组件管理器的名称和命名空间可以通过标准命令行参数进行重新映射：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container --ros-args -r __node:<span class="o">=</span>MyContainer -r __ns:<span class="o">=</span>/ns
 </pre></div>
 </div>
-<p>In a second shell, components can be loaded by using the updated container name:</p>
+<p>在第二个 shell 中，可以通过更新后的容器名称来加载组件：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ns/MyContainer composition composition::Listener
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Namespace remappings of the container do not affect loaded components.</p>
+<p>容器的命名空间重新映射不会影响已加载的组件。</p>
 </div>
 </div>
 <div class="section" id="remap-component-names-and-namespaces">
-<h3><a class="toc-backref" href="#id12">Remap component names and namespaces</a><a class="headerlink" href="#remap-component-names-and-namespaces" title="永久链接至标题"></a></h3>
-<p>Component names and namespaces may be adjusted via arguments to the load command.</p>
+<h3><a class="toc-backref" href="#id12">重新映射组件名称和命名空间</a><a class="headerlink" href="#remap-component-names-and-namespaces" title="永久链接至标题"></a></h3>
+<p>可以通过加载命令的参数来调整组件的名称和命名空间。</p>
 <p>在第一个 shell 中，启动组件容器：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container
 </pre></div>
@@ -614,7 +613,7 @@ Unloaded component <span class="m">2</span> from <span class="s1">&#39;/Componen
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Namespace remappings of the container do not affect loaded components.</p>
+<p>容器的命名空间重新映射不会影响已加载的组件。</p>
 </div>
 </div>
 <div class="section" id="passing-parameter-values-into-components">
