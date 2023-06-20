@@ -1102,52 +1102,52 @@ msgstr "如果您使用的是旧版本，请参考 :doc:`交叉编译指南 <../
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:6
 msgid "About different ROS 2 DDS/RTPS vendors"
-msgstr "About different ROS 2 DDS/RTPS vendors"
+msgstr "关于不同的ROS 2 DDS/RTPS供应商"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:8
 msgid "ROS 2 is built on top of DDS/RTPS as its middleware, which provides discovery, serialization and transportation. `This article <https://design.ros2.org/articles/ros_on_dds.html>`__ explains the motivation behind using DDS implementations, and/or the RTPS wire protocol of DDS, in detail. In summary, DDS is an end-to-end middleware that provides features which are relevant to ROS systems, such as distributed discovery (not centralized like in ROS 1) and control over different \"Quality of Service\" options for the transportation."
-msgstr "ROS 2 is built on top of DDS/RTPS as its middleware, which provides discovery, serialization and transportation. `This article <https://design.ros2.org/articles/ros_on_dds.html>`__ explains the motivation behind using DDS implementations, and/or the RTPS wire protocol of DDS, in detail. In summary, DDS is an end-to-end middleware that provides features which are relevant to ROS systems, such as distributed discovery (not centralized like in ROS 1) and control over different \"Quality of Service\" options for the transportation."
+msgstr "ROS 2构建在DDS/RTPS之上作为其中间件，它提供了发现、序列化和传输功能。`本文 <https://design.ros2.org/articles/ros_on_dds.html>`__详细解释了使用DDS实现或DDS的RTPS传输协议的动机。简而言之，DDS是一种端到端中间件，提供了与ROS系统相关的功能，例如分布式发现（不像ROS 1那样集中化）以及对传输的不同“服务质量”选项的控制。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:12
 msgid "`DDS <https://www.omg.org/omg-dds-portal>`__ is an industry standard which is implemented by a range of vendors, such as RTI's `Connext DDS <https://www.rti.com/products/>`__, eProsima's `Fast DDS <https://fast-dds.docs.eprosima.com/>`__, Eclipse's `Cyclone DDS <https://projects.eclipse.org/projects/iot.cyclonedds>`__, or GurumNetworks's `GurumDDS <https://gurum.cc/index_eng>`__. RTPS (a.k.a. `DDSI-RTPS <https://www.omg.org/spec/DDSI-RTPS/About-DDSI-RTPS/>`__\\ ) is the wire protocol used by DDS to communicate over the network."
-msgstr "`DDS <https://www.omg.org/omg-dds-portal>`__ is an industry standard which is implemented by a range of vendors, such as RTI's `Connext DDS <https://www.rti.com/products/>`__, eProsima's `Fast DDS <https://fast-dds.docs.eprosima.com/>`__, Eclipse's `Cyclone DDS <https://projects.eclipse.org/projects/iot.cyclonedds>`__, or GurumNetworks's `GurumDDS <https://gurum.cc/index_eng>`__. RTPS (a.k.a. `DDSI-RTPS <https://www.omg.org/spec/DDSI-RTPS/About-DDSI-RTPS/>`__\\ ) is the wire protocol used by DDS to communicate over the network."
+msgstr "`DDS <https://www.omg.org/omg-dds-portal>`__是一个行业标准，由许多供应商实现，例如RTI的`Connext DDS <https://www.rti.com/products/>`__，eProsima的`Fast DDS <https://fast-dds.docs.eprosima.com/>`__，Eclipse的`Cyclone DDS <https://projects.eclipse.org/projects/iot.cyclonedds>`__或GurumNetworks的`GurumDDS <https://gurum.cc/index_eng>`__。RTPS（也称为`DDSI-RTPS <https://www.omg.org/spec/DDSI-RTPS/About-DDSI-RTPS/>`__\\ ）是DDS在网络上通信的传输协议。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:15
 msgid "ROS 2 supports multiple DDS/RTPS implementations because it is not necessarily \"one size fits all\" when it comes to choosing a vendor/implementation. There are many factors you might consider while choosing a middleware implementation: logistical considerations like the license, or technical considerations like platform availability, or computation footprint. Vendors may provide more than one DDS or RTPS implementation targeted at meeting different needs. For example, RTI has a few variations of their Connext implementation that vary in purpose, like one that specifically targets microcontrollers and another which targets applications requiring special safety certifications (we only support their standard desktop version at this time)."
-msgstr "ROS 2 supports multiple DDS/RTPS implementations because it is not necessarily \"one size fits all\" when it comes to choosing a vendor/implementation. There are many factors you might consider while choosing a middleware implementation: logistical considerations like the license, or technical considerations like platform availability, or computation footprint. Vendors may provide more than one DDS or RTPS implementation targeted at meeting different needs. For example, RTI has a few variations of their Connext implementation that vary in purpose, like one that specifically targets microcontrollers and another which targets applications requiring special safety certifications (we only support their standard desktop version at this time)."
+msgstr "ROS 2支持多个DDS/RTPS实现，因为在选择供应商/实现时，并不一定是“一刀切”。在选择中间件实现时，可能会考虑多个因素：例如许可证等物流考虑因素，平台可用性或计算资源占用等技术考虑因素。供应商可能会提供多个针对满足不同需求的DDS或RTPS实现。例如，RTI有几个Connext实现的变体，用途不同，比如专门针对微控制器的一种，以及针对需要特殊安全认证的应用程序的另一种（目前我们仅支持其标准桌面版本）。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:20
 msgid "In order to use a DDS/RTPS implementation with ROS 2, a \"\\ **R**\\ OS **M**\\ iddle\\ **w**\\ are interface\" (a.k.a. ``rmw`` interface or just ``rmw``\\ ) package needs to be created that implements the abstract ROS middleware interface using the DDS or RTPS implementation's API and tools. It's a lot of work to implement and maintain RMW packages for supporting DDS implementations, but supporting at least a few implementations is important for ensuring that the ROS 2 codebase is not tied to any one particular implementation, as users may wish to switch out implementations depending on their project's needs."
-msgstr "In order to use a DDS/RTPS implementation with ROS 2, a \"\\ **R**\\ OS **M**\\ iddle\\ **w**\\ are interface\" (a.k.a. ``rmw`` interface or just ``rmw``\\ ) package needs to be created that implements the abstract ROS middleware interface using the DDS or RTPS implementation's API and tools. It's a lot of work to implement and maintain RMW packages for supporting DDS implementations, but supporting at least a few implementations is important for ensuring that the ROS 2 codebase is not tied to any one particular implementation, as users may wish to switch out implementations depending on their project's needs."
+msgstr "为了在ROS 2中使用DDS/RTPS实现，需要创建一个“ROS中间件接口”（也称为``rmw``接口或仅称为``rmw``）包，该包使用DDS或RTPS实现的API和工具来实现抽象的ROS中间件接口。为了支持DDS实现而实现和维护RMW包是一项繁重的工作，但至少支持几个实现对于确保ROS 2代码库不与任何特定实现绑定是重要的，因为用户可能希望根据项目需求切换实现。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:24
 msgid "Supported RMW implementations"
-msgstr "Supported RMW implementations"
+msgstr "支持的RMW实现"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:29
 msgid "Product name"
-msgstr "Product name"
+msgstr "产品名称"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:30
 msgid "License"
-msgstr "License"
+msgstr "许可证"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:31
 msgid "RMW implementation"
-msgstr "RMW implementation"
+msgstr "RMW实现"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:32
 msgid "Status"
-msgstr "Status"
+msgstr "状态"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:33
