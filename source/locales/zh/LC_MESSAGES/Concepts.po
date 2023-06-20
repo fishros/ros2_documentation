@@ -2685,12 +2685,12 @@ msgstr "与发布者和订阅者类似，服务也具有可靠性。对于服务
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:101
 msgid "Sensor data"
-msgstr "Sensor data"
+msgstr "传感器数据"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:103
 msgid "For sensor data, in most cases it’s more important to receive readings in a timely fashion, rather than ensuring that all of them arrive. That is, developers want the latest samples as soon as they are captured, at the expense of maybe losing some. For that reason the sensor data profile uses best effort reliability and a smaller queue size."
-msgstr "For sensor data, in most cases it’s more important to receive readings in a timely fashion, rather than ensuring that all of them arrive. That is, developers want the latest samples as soon as they are captured, at the expense of maybe losing some. For that reason the sensor data profile uses best effort reliability and a smaller queue size."
+msgstr "对于传感器数据来说，大多数情况下，及时接收读数比确保所有数据到达更为重要。也就是说，开发者希望尽快获取最新的采样数据，即使可能会丢失一些数据。因此，传感器数据配置文件使用尽力而为的可靠性和较小的队列大小。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:107 ../../source/Concepts/About-ROS-2-Client-Libraries.rst:31
@@ -2700,47 +2700,47 @@ msgstr "参数"
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:109
 msgid "Parameters in ROS 2 are based on services, and as such have a similar profile. The difference is that parameters use a much larger queue depth so that requests do not get lost when, for example, the parameter client is unable to reach the parameter service server."
-msgstr "Parameters in ROS 2 are based on services, and as such have a similar profile. The difference is that parameters use a much larger queue depth so that requests do not get lost when, for example, the parameter client is unable to reach the parameter service server."
+msgstr "ROS 2 中的参数基于服务，因此具有类似的配置文件。不同之处在于参数使用更大的队列深度，这样当参数客户端无法连接参数服务服务器时，请求不会丢失。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:112
 msgid "System default"
-msgstr "System default"
+msgstr "系统默认值"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:114
 msgid "This uses the RMW implementation’s default values for all of the policies. Different RMW implementations may have different defaults."
-msgstr "This uses the RMW implementation’s default values for all of the policies. Different RMW implementations may have different defaults."
+msgstr "这使用RMW实现的默认值来设置所有策略。不同的RMW实现可能具有不同的默认值。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:117
 msgid "`Click here <https://github.com/ros2/rmw/blob/humble/rmw/include/rmw/qos_profiles.h>`__ for the specific policies in use for the above profiles. The settings in these profiles are subject to further tweaks, based on the feedback from the community."
-msgstr "`Click here <https://github.com/ros2/rmw/blob/humble/rmw/include/rmw/qos_profiles.h>`__ for the specific policies in use for the above profiles. The settings in these profiles are subject to further tweaks, based on the feedback from the community."
+msgstr "`点击此处 <https://github.com/ros2/rmw/blob/humble/rmw/include/rmw/qos_profiles.h>`__ 获取上述配置中使用的具体策略。这些配置文件中的设置可能会根据社区的反馈进行进一步调整。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:122
 msgid "QoS compatibilities"
-msgstr "QoS compatibilities"
+msgstr "QoS 兼容性"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:124
 msgid "**Note:** This section refers to publishers and subscriptions but the content applies to service servers and clients in the same manner."
-msgstr "**Note:** This section refers to publishers and subscriptions but the content applies to service servers and clients in the same manner."
+msgstr "**注意：**本部分内容适用于发布者和订阅者，同样适用于服务端和客户端。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:126
 msgid "QoS profiles may be configured for publishers and subscriptions independently. A connection between a publisher and a subscription is only made if the pair has compatible QoS profiles."
-msgstr "QoS profiles may be configured for publishers and subscriptions independently. A connection between a publisher and a subscription is only made if the pair has compatible QoS profiles."
+msgstr "可以独立为发布者和订阅者配置 QoS 配置文件。仅当发布者和订阅者具有兼容的 QoS 配置文件时，才会建立发布者和订阅者之间的连接。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:129
 msgid "QoS profile compatibility is determined based on a “Request vs Offered” model. Subscriptions *request* a QoS profile that is the “minimum quality” that it is willing to accept, and publishers *offer* a QoS profile that is the “maximum quality” that it is able to provide. Connections are only made if every policy of the requested QoS profile is not more stringent than that of the offered QoS profile. Multiple subscriptions can be connected to a single publisher simultaneously even if their requested QoS profiles are different. The compatibility between a publisher and a subscription is unaffected by the presence of other publishers and subscriptions."
-msgstr "QoS profile compatibility is determined based on a “Request vs Offered” model. Subscriptions *request* a QoS profile that is the “minimum quality” that it is willing to accept, and publishers *offer* a QoS profile that is the “maximum quality” that it is able to provide. Connections are only made if every policy of the requested QoS profile is not more stringent than that of the offered QoS profile. Multiple subscriptions can be connected to a single publisher simultaneously even if their requested QoS profiles are different. The compatibility between a publisher and a subscription is unaffected by the presence of other publishers and subscriptions."
+msgstr "QoS 配置文件的兼容性是基于“请求与提供”模型确定的。订阅者*请求*一个“最低质量”的 QoS 配置文件，表示它愿意接受的最低质量，而发布者*提供*一个“最高质量”的 QoS 配置文件，表示它能够提供的最高质量。只有当请求的 QoS 配置文件的每个策略都不比提供的 QoS 配置文件的策略更严格时，才会建立连接。即使请求的 QoS 配置文件不同，多个订阅者也可以同时连接到单个发布者。发布者和订阅者之间的兼容性不受其他发布者和订阅者的影响。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:135
 msgid "The following tables show the compatibility of the different policy settings and the result:"
-msgstr "The following tables show the compatibility of the different policy settings and the result:"
+msgstr "以下表格显示了不同策略设置的兼容性及其结果："
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:137
