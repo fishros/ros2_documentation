@@ -231,7 +231,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Miscellaneous.html">杂项</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Deploying-ROS-2-on-IBM-Cloud.html">Deploying on IBM Cloud Kubernetes [community-contributed]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Eclipse-Oxygen-with-ROS-2-and-rviz2.html">Using Eclipse Oxygen with <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> [community-contributed]</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">构建实时Linux内核[社区贡献]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包</a></li>
@@ -427,7 +427,7 @@ sudo apt-get install libncurses-dev flex bison openssl libssl-dev dkms libelf-de
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make menuconfig
 </pre></div>
 </div>
-<p>and set the following</p>
+<p>设置以下内容</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable CONFIG_PREEMPT_RT</span>
  -&gt; General Setup
   -&gt; Preemption Model <span class="o">(</span>Fully Preemptible Kernel <span class="o">(</span>Real-Time<span class="o">))</span>
@@ -457,21 +457,21 @@ sudo apt-get install libncurses-dev flex bison openssl libssl-dev dkms libelf-de
      <span class="o">(</span>X<span class="o">)</span> performance
 </pre></div>
 </div>
-<p>Save and exit menuconfig. Now we're going to build the kernel which will take quite some time. (10-30min on a modern cpu)</p>
+<p>保存并退出 menuconfig。现在我们要构建内核，这将需要相当长的时间。（在现代CPU上大约需要10-30分钟）</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make -j <span class="sb">`</span>nproc<span class="sb">`</span> deb-pkg
 </pre></div>
 </div>
-<p>After the build is finished check the debian packages</p>
+<p>构建完成后，检查 Debian 软件包</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls ../*deb
 ../linux-headers-5.4.78-rt41_5.4.78-rt44-1_amd64.deb  ../linux-image-5.4.78-rt44-dbg_5.4.78-rt44-1_amd64.deb
 ../linux-image-5.4.78-rt41_5.4.78-rt44-1_amd64.deb    ../linux-libc-dev_5.4.78-rt44-1_amd64.deb
 </pre></div>
 </div>
-<p>Then we install all kernel debian packages</p>
+<p>然后安装所有内核 Debian 软件包</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo dpkg -i ../*.deb
 </pre></div>
 </div>
-<p>Now the real time kernel should be installed. Reboot the system and check the new kernel version</p>
+<p>现在应该已经安装了实时内核。重新启动系统并检查新的内核版本</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo reboot
 uname -a
 Linux ros2host <span class="m">5</span>.4.78-rt44 <span class="c1">#1 SMP PREEMPT_RT Fri Nov 6 10:37:59 CET 2020 x86_64 xx</span>
