@@ -1547,62 +1547,62 @@ msgstr "Python"
 
 #: ../../source/Concepts/About-Executors.rst:131
 msgid "All subscriptions, timers, etc. that are created without the indication of a callback group are assigned to the *default callback group*. The default callback group can be queried via ``NodeBaseInterface::get_default_callback_group()`` in rclcpp and by ``Node.default_callback_group`` in rclpy."
-msgstr "All subscriptions, timers, etc. that are created without the indication of a callback group are assigned to the *default callback group*. The default callback group can be queried via ``NodeBaseInterface::get_default_callback_group()`` in rclcpp and by ``Node.default_callback_group`` in rclpy."
+msgstr "所有没有指定回调组的订阅、定时器等都被分配到*默认回调组*。可以通过``NodeBaseInterface::get_default_callback_group()``（在rclcpp中）和``Node.default_callback_group``（在rclpy中）查询默认回调组。"
 
 
 #: ../../source/Concepts/About-Executors.rst:135
 msgid "There are two types of callback groups, where the type has to be specified at instantiation time:"
-msgstr "There are two types of callback groups, where the type has to be specified at instantiation time:"
+msgstr "有两种类型的回调组，类型必须在实例化时指定："
 
 
 #: ../../source/Concepts/About-Executors.rst:137
 msgid "*Mutually exclusive:* Callbacks of this group must not be executed in parallel."
-msgstr "*Mutually exclusive:* Callbacks of this group must not be executed in parallel."
+msgstr "*互斥（Mutually exclusive）：*该组的回调不能并行执行。"
 
 
 #: ../../source/Concepts/About-Executors.rst:138
 msgid "*Reentrant:* Callbacks of this group may be executed in parallel."
-msgstr "*Reentrant:* Callbacks of this group may be executed in parallel."
+msgstr "*可重入（Reentrant）：*该组的回调可以并行执行。"
 
 
 #: ../../source/Concepts/About-Executors.rst:140
 msgid "Callbacks of different callback groups may always be executed in parallel. The Multi-Threaded Executor uses its threads as a pool to process as many callbacks as possible in parallel according to these conditions. For tips on how to use callback groups efficiently, see :doc:`Using Callback Groups <../How-To-Guides/Using-callback-groups>`."
-msgstr "Callbacks of different callback groups may always be executed in parallel. The Multi-Threaded Executor uses its threads as a pool to process as many callbacks as possible in parallel according to these conditions. For tips on how to use callback groups efficiently, see :doc:`Using Callback Groups <../How-To-Guides/Using-callback-groups>`."
+msgstr "不同回调组的回调可以并行执行。多线程执行器（Multi-Threaded Executor）使用线程池根据这些条件并行处理尽可能多的回调。有关如何高效使用回调组的提示，请参阅:doc:`使用回调组 <../How-To-Guides/Using-callback-groups>`。"
 
 
 #: ../../source/Concepts/About-Executors.rst:144
 msgid "The Executor base class in rclcpp also has the function ``add_callback_group(..)``, which allows distributing callback groups to different Executors. By configuring the underlying threads using the operating system scheduler, specific callbacks can be prioritized over other callbacks. For example, the subscriptions and timers of a control loop can be prioritized over all other subscriptions and standard services of a node. The `examples_rclcpp_cbg_executor package <https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor>`_ provides a demo of this mechanism."
-msgstr "The Executor base class in rclcpp also has the function ``add_callback_group(..)``, which allows distributing callback groups to different Executors. By configuring the underlying threads using the operating system scheduler, specific callbacks can be prioritized over other callbacks. For example, the subscriptions and timers of a control loop can be prioritized over all other subscriptions and standard services of a node. The `examples_rclcpp_cbg_executor package <https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor>`_ provides a demo of this mechanism."
+msgstr "在rclcpp中，Executor基类还具有函数``add_callback_group(..)``，可以将回调组分配给不同的执行器。通过使用操作系统调度器配置底层线程，可以使特定的回调优先于其他回调。例如，可以将控制循环的订阅和定时器优先于节点的所有其他订阅和标准服务。`examples_rclcpp_cbg_executor package <https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor>`_ 提供了该机制的演示。"
 
 
 #: ../../source/Concepts/About-Executors.rst:150
 msgid "Scheduling semantics"
-msgstr "Scheduling semantics"
+msgstr "调度语义"
 
 
 #: ../../source/Concepts/About-Executors.rst:152
 msgid "If the processing time of the callbacks is shorter than the period with which messages and events occur, the Executor basically processes them in FIFO order. However, if the processing time of some callbacks is longer, messages and events will be queued on the lower layers of the stack. The wait set mechanism reports only very little information about these queues to the Executor. In detail, it only reports whether there are any messages for a certain topic or not. The Executor uses this information to process the messages (including services and actions) in a round-robin fashion - but not in FIFO order. The following flow diagram visualizes this scheduling semantics."
-msgstr "If the processing time of the callbacks is shorter than the period with which messages and events occur, the Executor basically processes them in FIFO order. However, if the processing time of some callbacks is longer, messages and events will be queued on the lower layers of the stack. The wait set mechanism reports only very little information about these queues to the Executor. In detail, it only reports whether there are any messages for a certain topic or not. The Executor uses this information to process the messages (including services and actions) in a round-robin fashion - but not in FIFO order. The following flow diagram visualizes this scheduling semantics."
+msgstr "如果回调函数的处理时间短于消息和事件发生的周期，执行器基本上按照先进先出（FIFO）的顺序处理它们。然而，如果某些回调函数的处理时间较长，消息和事件将在堆栈的较低层次上排队。等待集机制对这些队列向执行器仅报告了非常少的信息。具体而言，它只报告某个主题是否有任何消息。执行器使用这些信息以循环轮询的方式处理消息（包括服务和动作），而不是按照先进先出的顺序。下面的流程图可视化了这种调度语义。"
 
 
 #: ../../source/Concepts/About-Executors.rst:161
 msgid "This semantics was first described in a `paper by Casini et al. at ECRTS 2019 <https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf>`_. (Note: The paper also explains that timer events are prioritized over all other messages. `This prioritization was removed in Eloquent. <https://github.com/ros2/rclcpp/pull/841>`_)"
-msgstr "This semantics was first described in a `paper by Casini et al. at ECRTS 2019 <https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf>`_. (Note: The paper also explains that timer events are prioritized over all other messages. `This prioritization was removed in Eloquent. <https://github.com/ros2/rclcpp/pull/841>`_)"
+msgstr "这种语义首次在2019年的ECRTS会议上由Casini等人在一篇论文中描述。[链接](https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf)（注意：该论文还解释了计时器事件优先于所有其他消息的优先级，这个优先级在Eloquent中被移除了。[链接](https://github.com/ros2/rclcpp/pull/841)）"
 
 
 #: ../../source/Concepts/About-Executors.rst:166
 msgid "Outlook"
-msgstr "Outlook"
+msgstr "展望"
 
 
 #: ../../source/Concepts/About-Executors.rst:168
 msgid "While the three Executors of rclcpp work well for most applications, there are some issues that make them not suitable for real-time applications, which require well-defined execution times, determinism, and custom control over the execution order. Here is a summary of some of these issues:"
-msgstr "While the three Executors of rclcpp work well for most applications, there are some issues that make them not suitable for real-time applications, which require well-defined execution times, determinism, and custom control over the execution order. Here is a summary of some of these issues:"
+msgstr "虽然rclcpp的三个执行器在大多数应用中运行良好，但存在一些问题，使它们不适用于实时应用程序，实时应用程序需要定义明确的执行时间、确定性和对执行顺序的自定义控制。以下是其中一些问题的摘要："
 
 
 #: ../../source/Concepts/About-Executors.rst:171
 msgid "Complex and mixed scheduling semantics. Ideally you want well defined scheduling semantics to perform a formal timing analysis."
-msgstr "Complex and mixed scheduling semantics. Ideally you want well defined scheduling semantics to perform a formal timing analysis."
+msgstr "复杂和混合的调度语义。理想情况下，您希望有明确定义的调度语义以进行形式化的定时分析。"
 
 
 #: ../../source/Concepts/About-Executors.rst:173
