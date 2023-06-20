@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Cross-compilation &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于交叉编译 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -297,7 +297,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-RQt.html">Overview and usage of RQt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">About Cross-compilation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于交叉编译</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Security.html">About ROS 2 Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>About Cross-compilation</li>
+      <li>关于交叉编译</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Cross-Compilation.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,20 +372,20 @@
 
 
   <div class="section" id="about-cross-compilation">
-<h1>About Cross-compilation<a class="headerlink" href="#about-cross-compilation" title="永久链接至标题"></a></h1>
+<h1>关于交叉编译<a class="headerlink" href="#about-cross-compilation" title="永久链接至标题"></a></h1>
 <div class="section" id="overview">
 <h2>概述<a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
 <dl class="simple">
-<dt>Open Robotics provides pre-built ROS 2 packages for multiple platforms, but a number of developers still rely on <a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">cross-compilation</a> for different reasons such as:</dt><dd><ul class="simple">
-<li><p>The development machine does not match the target system.</p></li>
-<li><p>Tuning the build for specific core architecture (e.g. setting -mcpu=cortex-a53 -mfpu=neon-fp-armv8 when building for Raspberry Pi3).</p></li>
-<li><p>Targeting a file system other than the ones supported by the pre-built images released by Open Robotics.</p></li>
+<dt>Open Robotics为多个平台提供预构建的ROS 2软件包，但一些开发者仍然出于不同的原因依赖于`交叉编译 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">https://en.wikipedia.org/wiki/Cross_compiler</a>&gt;`__，例如：</dt><dd><ul class="simple">
+<li><p>开发机器与目标系统不匹配。</p></li>
+<li><p>调整构建以适应特定的核心架构（例如，在为树莓派3构建时设置 -mcpu=cortex-a53 -mfpu=neon-fp-armv8）。</p></li>
+<li><p>针对Open Robotics发布的预构建映像不支持的文件系统进行定制。</p></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="how-does-it-work">
-<h2>How does it work ?<a class="headerlink" href="#how-does-it-work" title="永久链接至标题"></a></h2>
+<h2>它是如何工作的？<a class="headerlink" href="#how-does-it-work" title="永久链接至标题"></a></h2>
 <p>Cross-compiling simple software (e.g. no dependencies on external libraries) is relatively simple and only requiring a cross-compiler toolchain to be used instead of the native toolchain.</p>
 <dl class="simple">
 <dt>There are a number of factors which make this process more complex:</dt><dd><ul class="simple">
