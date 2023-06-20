@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Running Tests in ROS 2 from the Command Line &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>从命令行中运行 ROS 2 中的测试 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Writing Basic Tests with C++ with GTest" href="Cpp.html" />
+    <link rel="next" title="使用 GTest 编写基本的 C++ 测试" href="Cpp.html" />
     <link rel="prev" title="测试" href="Testing-Main.html" /> 
 </head>
 
@@ -171,8 +171,8 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="Testing-Main.html">测试</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Running Tests in ROS 2 from the Command Line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Cpp.html">Writing Basic Tests with C++ with GTest</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">从命令行中运行 ROS 2 中的测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Cpp.html">使用 GTest 编写基本的 C++ 测试</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Python.html">Writing Basic Tests with Python</a></li>
 </ul>
 </li>
@@ -361,7 +361,7 @@
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Intermediate.html">中级</a> &raquo;</li>
           <li><a href="Testing-Main.html">测试</a> &raquo;</li>
-      <li>Running Tests in ROS 2 from the Command Line</li>
+      <li>从命令行中运行 ROS 2 中的测试</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Testing/CLI.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,24 +374,23 @@
 
 
   <div class="section" id="running-tests-in-ros-2-from-the-command-line">
-<h1>Running Tests in ROS 2 from the Command Line<a class="headerlink" href="#running-tests-in-ros-2-from-the-command-line" title="永久链接至标题"></a></h1>
+<h1>从命令行中运行 ROS 2 中的测试<a class="headerlink" href="#running-tests-in-ros-2-from-the-command-line" title="永久链接至标题"></a></h1>
 <div class="section" id="build-and-run-your-tests">
-<h2>Build and run your tests<a class="headerlink" href="#build-and-run-your-tests" title="永久链接至标题"></a></h2>
-<p>To compile and run the tests, simply run the <a class="reference external" href="https://colcon.readthedocs.io/en/released/reference/verb/test.html">test</a> verb from <code class="docutils literal notranslate"><span class="pre">colcon</span></code>.</p>
+<h2>构建并运行你的测试<a class="headerlink" href="#build-and-run-your-tests" title="永久链接至标题"></a></h2>
+<p>要编译并运行测试，只需从 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 中运行 <a class="reference external" href="https://colcon.readthedocs.io/en/released/reference/verb/test.html">test</a> 命令。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test --ctest-args tests [package_selection_args]</span>
 </pre></div>
 </div>
-<p>(where <code class="docutils literal notranslate"><span class="pre">package_selection_args</span></code> are optional package selection arguments for <code class="docutils literal notranslate"><span class="pre">colcon</span></code> to limit which packages are built and run)</p>
-<p><a class="reference internal" href="../../Beginner-Client-Libraries/Colcon-Tutorial.html#colcon-tutorial-source-the-environment"><span class="std std-ref">Sourcing the workspace</span></a> before testing should not be necessary.
-<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">test</span></code> makes sure that the tests run with the right environment, have access to their dependencies, etc.</p>
+<p>（其中 <code class="docutils literal notranslate"><span class="pre">package_selection_args</span></code> 是可选的用于 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 的包选择参数，用于限制构建和运行哪些包）</p>
+<p><a class="reference internal" href="../../Beginner-Client-Libraries/Colcon-Tutorial.html#colcon-tutorial-source-the-environment"><span class="std std-ref">在测试之前引用工作空间</span></a> 应该是不必要的。 <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">test</span></code> 会确保测试在正确的环境中运行，并且可以访问它们的依赖项等。</p>
 </div>
 <div class="section" id="examine-test-results">
-<h2>Examine Test Results<a class="headerlink" href="#examine-test-results" title="永久链接至标题"></a></h2>
-<p>To see the results, simply run the <a class="reference external" href="https://colcon.readthedocs.io/en/released/reference/verb/test-result.html">test-result</a> verb from <code class="docutils literal notranslate"><span class="pre">colcon</span></code>.</p>
+<h2>检查测试结果<a class="headerlink" href="#examine-test-results" title="永久链接至标题"></a></h2>
+<p>要查看结果，只需从 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 运行 <a class="reference external" href="https://colcon.readthedocs.io/en/released/reference/verb/test-result.html">test-result</a> 命令。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test-result --all</span>
 </pre></div>
 </div>
-<p>To see the exact test cases which fail, use the <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> flag:</p>
+<p>要查看确切失败的测试用例，使用 <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> 标志：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test-result --all --verbose</span>
 </pre></div>
 </div>
@@ -404,7 +403,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Testing-Main.html" class="btn btn-neutral float-left" title="测试" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Cpp.html" class="btn btn-neutral float-right" title="Writing Basic Tests with C++ with GTest" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Cpp.html" class="btn btn-neutral float-right" title="使用 GTest 编写基本的 C++ 测试" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

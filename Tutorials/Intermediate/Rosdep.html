@@ -171,8 +171,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Testing/Testing-Main.html">测试</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Testing/CLI.html">Running Tests in ROS 2 from the Command Line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Testing/Cpp.html">Writing Basic Tests with C++ with GTest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Testing/CLI.html">从命令行中运行 ROS 2 中的测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Testing/Python.html">Writing Basic Tests with Python</a></li>
 </ul>
 </li>
@@ -452,22 +452,18 @@
 rosdep update
 </pre></div>
 </div>
-<p>This will initialize rosdep and <code class="docutils literal notranslate"><span class="pre">update</span></code> will update the locally cached rosdistro index.
-It is a good idea to <code class="docutils literal notranslate"><span class="pre">update</span></code> rosdep on occasion to get the latest index.</p>
-<p>Finally, we can run <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">install</span></code> to install dependencies.
-Typically, this is run over a workspace with many packages in a single call to install all dependencies.
-A call for that would appear as the following, if in the root of the workspace with directory <code class="docutils literal notranslate"><span class="pre">src</span></code> containing source code.</p>
+<p>这将初始化``rosdep``，<a href="#id1"><span class="problematic" id="id2">``</span></a>update``将更新本地缓存的``rosdistro``索引。定期执行``update``命令以获取最新的索引是一个好主意。</p>
+<p>最后，我们可以运行``rosdep install``来安装依赖项。通常，我们会在一个工作空间上运行此命令，通过单个调用安装所有依赖项。如果在包含源代码的``src``目录下的工作空间根目录运行该命令，命令如下所示：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep install --from-paths src -y --ignore-src
 </pre></div>
 </div>
-<p>Breaking that down:</p>
+<p>对此进行解释：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--from-paths</span> <span class="pre">src</span></code> specifies the path to check for <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files to resolve keys for</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-y</span></code> means to default yes to all prompts from the package manager to install without prompts</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--ignore-src</span></code> means to ignore installing dependencies, even if a rosdep key exists, if the package itself is also in the workspace.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>--from-paths src``指定要检查以解析键的``package.xml``文件的路径</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>-y``表示在包管理器的提示中默认全部回答为“是”，无需提示即可安装</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ignore-src</span></code> 表示忽略安装依赖项，即使存在 rosdep 键，也会忽略，如果包本身也在工作空间中。</p></li>
 </ul>
-<p>There are additional arguments and options available.
-Use <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">-h</span></code> to see them.</p>
+<p>还有其他可用的参数和选项。使用 <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">-h</span></code> 查看它们。</p>
 </div>
 </div>
 
