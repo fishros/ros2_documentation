@@ -3770,62 +3770,62 @@ msgstr "2.2 常量"
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:212
 msgid "Each constant definition is like a field description with a default value, except that this value can never be changed programatically. This value assignment is indicated by use of an equal '=' sign, e.g."
-msgstr "Each constant definition is like a field description with a default value, except that this value can never be changed programatically. This value assignment is indicated by use of an equal '=' sign, e.g."
+msgstr "每个常量定义都类似于具有默认值的字段描述，但是这个值在程序中不能被改变。这个值的赋值通过等号 '=' 来表示，例如。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:229
 msgid "Constants names have to be UPPERCASE"
-msgstr "Constants names have to be UPPERCASE"
+msgstr "常量名称必须是大写字母。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:232
 msgid "3. Service description specification"
-msgstr "3. Service description specification"
+msgstr "3. 服务描述规范"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:234
 msgid "Services are described and defined in ``.srv`` files in the ``srv/`` directory of a ROS package."
-msgstr "Services are described and defined in ``.srv`` files in the ``srv/`` directory of a ROS package."
+msgstr "服务在 ROS 包的 'srv/' 目录下的 '.srv' 文件中进行描述和定义。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:236
 msgid "A service description file consists of a request and a response msg type, separated by ``---``. Any two ``.msg`` files concatenated with a ``---`` are a legal service description."
-msgstr "A service description file consists of a request and a response msg type, separated by ``---``. Any two ``.msg`` files concatenated with a ``---`` are a legal service description."
+msgstr "一个服务描述文件由请求和响应的消息类型组成，用 '---' 分隔。任何两个 '.msg' 文件通过 '---' 连接在一起都构成一个合法的服务描述。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:239
 msgid "Here is a very simple example of a service that takes in a string and returns a string:"
-msgstr "Here is a very simple example of a service that takes in a string and returns a string:"
+msgstr "以下是一个非常简单的服务示例，它接收一个字符串并返回一个字符串："
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:247
 msgid "We can of course get much more complicated (if you want to refer to a message from the same package you must not mention the package name):"
-msgstr "We can of course get much more complicated (if you want to refer to a message from the same package you must not mention the package name):"
+msgstr "当然，我们可以变得更加复杂（如果你想引用同一包中的消息，不需要提及包名）："
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:265
 msgid "You cannot embed another service inside of a service."
-msgstr "You cannot embed another service inside of a service."
+msgstr "你不能在一个服务中嵌入另一个服务。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:268
 msgid "4. New features in ROS 2 interfaces"
-msgstr "4. New features in ROS 2 interfaces"
+msgstr "4. ROS 2接口中的新功能"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:270
 msgid "The ROS 2 IDL is closely related to the `ROS 1 IDL <https://wiki.ros.org/msg>`__. Most existing ROS 1 ``.msg`` and ``.srv`` files should be usable as-is with ROS 2. Atop ROS 1's existing feature set, the ROS 2 IDL introduces some new features, namely:"
-msgstr "The ROS 2 IDL is closely related to the `ROS 1 IDL <https://wiki.ros.org/msg>`__. Most existing ROS 1 ``.msg`` and ``.srv`` files should be usable as-is with ROS 2. Atop ROS 1's existing feature set, the ROS 2 IDL introduces some new features, namely:"
+msgstr "ROS 2 IDL与 `ROS 1 IDL <https://wiki.ros.org/msg>`__ 密切相关。大多数现有的 ROS 1 ``.msg`` 和 ``.srv`` 文件应该可以直接在 ROS 2 中使用。在 ROS 1 的现有功能集的基础上，ROS 2 IDL 还引入了一些新功能，包括："
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:275
 msgid "**bounded arrays**: Whereas the ROS 1 IDL allows unbounded arrays (e.g., ``int32[] foo``) and fixed-size arrays (e.g., ``int32[5] bar``), the ROS 2 IDL further allows bounded arrays (e.g., ``int32[<=5] bat``). There are use cases in which it's important to be able to place an upper bound on the size of an array without committing to always using that much space (e.g., in a real-time system in which you need to preallocate all memory that will be used during execution)."
-msgstr "**bounded arrays**: Whereas the ROS 1 IDL allows unbounded arrays (e.g., ``int32[] foo``) and fixed-size arrays (e.g., ``int32[5] bar``), the ROS 2 IDL further allows bounded arrays (e.g., ``int32[<=5] bat``). There are use cases in which it's important to be able to place an upper bound on the size of an array without committing to always using that much space (e.g., in a real-time system in which you need to preallocate all memory that will be used during execution)."
+msgstr "**有界数组**：与 ROS 1 IDL 允许无界数组（例如，``int32[] foo``）和固定大小数组（例如，``int32[5] bar``）不同，ROS 2 IDL 进一步允许有界数组（例如，``int32[<=5] bat``）。在某些情况下，能够对数组的大小设定上限是很重要的，而不必始终使用那么多的空间（例如，在需要预分配执行期间将使用的所有内存的实时系统中）。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:277
 msgid "**bounded strings**: Whereas the ROS 1 IDL allows unbounded strings (e.g., ``string foo``), the ROS 2 IDL further allows bounded strings (e.g., ``string<=5 bar``)."
-msgstr "**bounded strings**: Whereas the ROS 1 IDL allows unbounded strings (e.g., ``string foo``), the ROS 2 IDL further allows bounded strings (e.g., ``string<=5 bar``)."
+msgstr "**有界字符串**：与 ROS 1 IDL 允许无界字符串（例如，``string foo``）不同，ROS 2 IDL 进一步允许有界字符串（例如，``string<=5 bar``）。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:278
