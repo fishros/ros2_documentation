@@ -392,27 +392,23 @@
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>默认情况下，Linux内核使用32768-60999的端口作为临时端口。这意味着域ID为0-101和215-232的端口可以安全使用，不会与临时端口冲突。在Linux中，可以通过在``/proc/sys/net/ipv4/ip_local_port_range``中设置自定义值来配置临时端口范围。如果使用自定义临时端口范围，则可能需要相应地调整上述数字。</p>
 </div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>默认情况下，macOS的临时端口范围是49152-65535。这意味着域ID为0-166的端口可以安全使用，不会与临时端口冲突。在macOS中，可以通过设置``net.inet.ip.portrange.first``和``net.inet.ip.portrange.last``的自定义sysctl值来配置临时端口范围。如果使用自定义临时端口范围，则可能需要相应地调整上述数字。</p>
-</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>By default, the ephemeral port range on Windows is 49152-65535.
-This means that domain IDs 0-166 can be safely used without colliding with ephemeral ports.
-The ephemeral port range is configurable in Windows by <a class="reference external" href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang">using netsh</a>.
-If a custom ephemeral port range is used, the above numbers may have to be adjusted accordingly.</p>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>默认情况下，Windows 上的临时端口范围是49152-65535。这意味着可以安全地使用域ID 0-166，而不会与临时端口冲突。在 Windows 中，可以通过`使用 netsh &lt;<a class="reference external" href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang">https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang</a>&gt;`__ 来配置临时端口范围。如果使用了自定义的临时端口范围，上述数字可能需要相应地进行调整。</p>
 </div></div>
 </div>
 <div class="section" id="participant-constraints">
-<h3>Participant constraints<a class="headerlink" href="#participant-constraints" title="永久链接至标题"></a></h3>
-<p>For each ROS 2 process running on a computer, one DDS &quot;participant&quot; is created.
-Since each DDS participant takes up two ports on the computer, running more than 120 ROS 2 processes on one computer may spill over into other domain IDs or the ephemeral ports.</p>
-<p>To see why, consider the domain IDs 1 and 2.</p>
+<h3>参与者限制<a class="headerlink" href="#participant-constraints" title="永久链接至标题"></a></h3>
+<p>在计算机上运行的每个 ROS 2 进程都会创建一个 DDS“参与者”。由于每个 DDS 参与者占用计算机上的两个端口，如果在一台计算机上运行超过120个 ROS 2 进程，则可能会溢出到其他域ID或临时端口。</p>
+<p>为了理解原因，请考虑域ID 1和2。</p>
 <ul class="simple">
-<li><p>Domain ID 1 uses port 7650 and 7651 for multicast.</p></li>
-<li><p>Domain ID 2 uses port 7900 and 7901 for multicast.</p></li>
-<li><p>When creating the 1st process (zeroth participant) in domain ID 1, the ports 7660 and 7661 are used for unicast.</p></li>
-<li><p>When creating the 120th process (119th participant) in domain ID 1, the ports 7898 and 7899 are used for unicast.</p></li>
-<li><p>When creating the 121st process (120th participant) in domain ID 1, the ports 7900 and 7901 are used for unicast and overlap with domain ID 2.</p></li>
+<li><p>域ID 1使用端口7650和7651进行组播。</p></li>
+<li><p>域ID 2使用端口7900和7901进行组播。</p></li>
+<li><p>在创建域ID为1的第一个进程（第零个参与者）时，使用端口7660和7661进行单播。</p></li>
+<li><p>在创建域ID为1的第120个进程（第119个参与者）时，使用端口7898和7899进行单播。</p></li>
+<li><p>在创建域ID为1的第121个进程（第120个参与者）时，使用端口7900和7901进行单播，并与域ID为2重叠。</p></li>
 </ul>
-<p>If it is known that the computer will only ever be on a single domain ID at a time, and the domain ID is low enough, it is safe to create more ROS 2 processes than this.</p>
-<p>When choosing a domain ID that is near the top of the range of platform-specific domain IDs, one additional constraint should be considered.</p>
-<p>For instance, assume a Linux computer with a domain ID of 101:</p>
+<p>如果已知计算机一次只会处于一个域ID上，并且域ID足够低，则可以安全地创建超过此数量的ROS 2进程。</p>
+<p>当选择接近平台特定域ID范围顶部的域ID时，应考虑一个额外的约束条件。</p>
+<p>例如，假设具有域ID为101的Linux计算机：</p>
 <ul class="simple">
 <li><p>The zero'th ROS 2 process on the computer will connect to ports 32650, 32651, 32660, and 32661.</p></li>
 <li><p>The first ROS 2 process on the computer will connect to ports 32650, 32651, 32662, and 32663.</p></li>
