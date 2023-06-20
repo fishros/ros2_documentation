@@ -294,7 +294,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">Overview and usage of RQt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译</a></li>
@@ -650,9 +650,7 @@ uint32 an_integer
 <ul class="simple">
 <li><p><strong>有界数组</strong>：与 ROS 1 IDL 允许无界数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[]</span> <span class="pre">foo</span></code>）和固定大小数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[5]</span> <span class="pre">bar</span></code>）不同，ROS 2 IDL 进一步允许有界数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[&lt;=5]</span> <span class="pre">bat</span></code>）。在某些情况下，能够对数组的大小设定上限是很重要的，而不必始终使用那么多的空间（例如，在需要预分配执行期间将使用的所有内存的实时系统中）。</p></li>
 <li><p><strong>有界字符串</strong>：与 ROS 1 IDL 允许无界字符串（例如，<code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">foo</span></code>）不同，ROS 2 IDL 进一步允许有界字符串（例如，<code class="docutils literal notranslate"><span class="pre">string&lt;=5</span> <span class="pre">bar</span></code>）。</p></li>
-<li><p><strong>default values</strong>: Whereas the ROS 1 IDL allows constant fields (e.g., <code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X=123</span></code>), the ROS 2 IDL further allows default values to be specified (e.g., <code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X</span> <span class="pre">123</span></code>).
-The default value is used when constructing a message/service object and can be subsequently overridden by assigning to the field.
-You can also specify default values for action parts.</p></li>
+<li><p><strong>默认值</strong>: ROS 1 IDL 允许使用常量字段（例如，<code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X=123</span></code>），而 ROS 2 IDL 进一步允许指定默认值（例如，<code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X</span> <span class="pre">123</span></code>）。默认值在构造消息/服务对象时使用，并且可以通过对字段进行赋值来覆盖。您还可以为动作部分指定默认值。</p></li>
 </ul>
 </div>
 </div>
