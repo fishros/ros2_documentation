@@ -379,9 +379,9 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
 <li><p><a class="reference internal" href="#postulates" id="id2">假设</a></p></li>
-<li><p><a class="reference internal" href="#use-cases-with-experimental-implementations" id="id3">Use cases, with experimental implementations</a></p>
+<li><p><a class="reference internal" href="#use-cases-with-experimental-implementations" id="id3">使用案例和实验性实现</a></p>
 <ul>
-<li><p><a class="reference internal" href="#adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build" id="id4">Adding ROS packages to a ROS 2 workspace and building with <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code></a></p></li>
+<li><p><a class="reference internal" href="#adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build" id="id4">将ROS包添加到ROS 2工作空间并使用``ament build``进行构建</a></p></li>
 <li><p><a class="reference internal" href="#building-ros-2-packages-with-catkin-make-isolated" id="id5">Building ROS 2 packages with <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code></a></p></li>
 <li><p><a class="reference internal" href="#combining-all-of-ros-and-ros-2-in-one-workspace-and-building-it-todo" id="id6">Combining all of ROS and ROS 2 in one workspace and building it (TODO)</a></p></li>
 <li><p><a class="reference internal" href="#using-bloom-to-release-ament-packages-todo" id="id7">Using <code class="docutils literal notranslate"><span class="pre">bloom</span></code> to release <code class="docutils literal notranslate"><span class="pre">ament</span></code> packages (TODO)</a></p></li>
@@ -430,32 +430,24 @@ There are usually hooks to allow injection of extra APIs by packages outside of 
 </ol>
 </div>
 <div class="section" id="use-cases-with-experimental-implementations">
-<h2><a class="toc-backref" href="#id3">Use cases, with experimental implementations</a><a class="headerlink" href="#use-cases-with-experimental-implementations" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id3">使用案例和实验性实现</a><a class="headerlink" href="#use-cases-with-experimental-implementations" title="永久链接至标题"></a></h2>
 <div class="section" id="adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build">
-<h3><a class="toc-backref" href="#id4">Adding ROS packages to a ROS 2 workspace and building with <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code></a><a class="headerlink" href="#adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build" title="永久链接至标题"></a></h3>
-<p>Let's say that you want to add some existing ROS packages to your ROS 2 workspace and don't want to migrate the ROS packages from <code class="docutils literal notranslate"><span class="pre">catkin</span></code> to <code class="docutils literal notranslate"><span class="pre">ament</span></code> (or vice versa). Here are two patches that let you do that:</p>
+<h3><a class="toc-backref" href="#id4">将ROS包添加到ROS 2工作空间并使用``ament build``进行构建</a><a class="headerlink" href="#adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build" title="永久链接至标题"></a></h3>
+<p>假设您想将一些现有的ROS包添加到您的ROS 2工作空间，并且不想将ROS包从``catkin``迁移到``ament``（或反之亦然）。以下是两个补丁，可以实现此功能：</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ament/ament_package/compare/catkin?expand=1">ament_package</a>:
-Adds support for format 1 package manifests, instead of requiring format 2.
-This change isn't strictly related to <code class="docutils literal notranslate"><span class="pre">catkin</span></code> vs. <code class="docutils literal notranslate"><span class="pre">ament</span></code>, because format 2 has been around for a while and <code class="docutils literal notranslate"><span class="pre">catkin</span></code> supports it, so developers could already update their manifests to format 2.
-But there's a ton of ROS code out there that uses format 1, so we should support it.
-This implementation could be improved, e.g. by reasoning over the various flavors of depend tags and how they differ between formats 1 and 2.</p></li>
-<li><p><a class="reference external" href="https://github.com/ament/ament_tools/compare/catkin?expand=1">ament_tools</a>:
-Adds a new <code class="docutils literal notranslate"><span class="pre">catkin</span></code> build type to <code class="docutils literal notranslate"><span class="pre">ament</span></code>.
-This implementation just treats <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages the same as plain <code class="docutils literal notranslate"><span class="pre">cmake</span></code> packages, which seems to work fine.
-It could be made more sophisticated.</p></li>
+<li><p><a class="reference external" href="https://github.com/ament/ament_package/compare/catkin?expand=1">ament_package</a>：添加对格式1包清单的支持，而不是要求格式2。此更改与``catkin``与``ament``的关系并不严格相关，因为格式2已经存在一段时间了，并且``catkin``也支持它，所以开发者已经可以将其清单更新为格式2。但是，有很多使用格式1的ROS代码存在，因此我们应该支持它。这个实现可以改进，例如通过推理各种依赖标签的不同之处，以及格式1和2之间的差异。</p></li>
+<li><p><a class="reference external" href="https://github.com/ament/ament_tools/compare/catkin?expand=1">ament_tools</a>：向``ament``添加了一个新的``catkin``构建类型。该实现将``catkin``包与普通``cmake``包视为相同，似乎工作正常。可以使其更加复杂。</p></li>
 </ul>
-<p>Example usage:</p>
+<p>示例用法：</p>
 <ol class="arabic simple">
-<li><p>Get the ROS 2 code as usual, using the branches mentioned above.</p></li>
-<li><p>Add to your workspace some <code class="docutils literal notranslate"><span class="pre">catkin</span></code> ROS packages, ensuring that all of their dependencies are satisfied (either present in the workspace or installed elsewhere with appropriate setup shell files sourced).</p></li>
-<li><p>Build as usual (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>).</p></li>
+<li><p>按照通常的方式获取ROS 2代码，使用上述提到的分支。</p></li>
+<li><p>向您的工作空间中添加一些``catkin`` ROS软件包，确保它们的所有依赖项都得到满足（要么在工作空间中存在，要么通过适当的设置shell文件在其他位置安装）。</p></li>
+<li><p>像往常一样构建（例如``colcon build``）。</p></li>
 </ol>
-<p>Voila: your existing code isn't suddenly broken just because there's a new build tool in use.</p>
+<p>完成了：由于使用了新的构建工具，您现有的代码不会突然中断。</p>
 <div class="section" id="variation-building-ros-packages-with-ament-build">
-<h4>Variation: Building ROS packages with <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code><a class="headerlink" href="#variation-building-ros-packages-with-ament-build" title="永久链接至标题"></a></h4>
-<p>Let's say that you love the new <code class="docutils literal notranslate"><span class="pre">ament</span></code> tool and want to use it to build your existing ROS packages that use <code class="docutils literal notranslate"><span class="pre">catkin</span></code> internally.
-Here's an example of how to do that, by doing a minimal installation of <code class="docutils literal notranslate"><span class="pre">ament</span></code> and then using it to build a workspace full of ROS <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages:</p>
+<h4>变种：使用``ament build``构建ROS软件包<a class="headerlink" href="#variation-building-ros-packages-with-ament-build" title="永久链接至标题"></a></h4>
+<p>假设您喜欢新的``ament``工具，并希望使用它来构建使用``catkin``的现有ROS软件包。以下是一个示例，演示如何通过最小安装``ament``并使用它构建一个由ROS``catkin``软件包填充的工作空间：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/ament_ws/src
 <span class="nb">cd</span> ~/ament_ws/src
 git clone https://github.com/osrf/osrf_pycommon.git
