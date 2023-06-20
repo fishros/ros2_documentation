@@ -641,8 +641,8 @@
 </div>
 <p>该方法等待动作服务器可用，然后向服务器发送一个目标。它返回一个未来对象，我们可以稍后等待该对象。</p>
 <p>在类定义之后，我们定义了一个函数``main()``，它初始化ROS 2并创建``FibonacciActionClient``节点的一个实例。然后它发送一个目标并等待该目标完成。</p>
-<p>Finally, we call <code class="docutils literal notranslate"><span class="pre">main()</span></code> in the entry point of our Python program.</p>
-<p>Let's test our action client by first running the action server built earlier:</p>
+<p>最后，在我们的Python程序入口点调用``main()``。</p>
+<p>让我们通过首先运行之前构建的动作服务器来测试我们的动作客户端：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_server.py
 </pre></div>
@@ -654,7 +654,7 @@
 </pre></div>
 </div>
 </div></div>
-<p>In another terminal, run the action client:</p>
+<p>在另一个终端中运行动作客户端：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_client.py
 </pre></div>
@@ -666,7 +666,7 @@
 </pre></div>
 </div>
 </div></div>
-<p>You should see messages printed by the action server as it successfully executes the goal:</p>
+<p>当动作服务器成功执行目标时，您应该会看到由其打印的消息：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>fibonacci_action_server<span class="o">]</span>: Executing goal...
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>fibonacci_action_server<span class="o">]</span>: Feedback: array<span class="o">(</span><span class="s1">&#39;i&#39;</span>, <span class="o">[</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">1</span><span class="o">])</span>
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>fibonacci_action_server<span class="o">]</span>: Feedback: array<span class="o">(</span><span class="s1">&#39;i&#39;</span>, <span class="o">[</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">1</span>, <span class="m">2</span><span class="o">])</span>
@@ -675,15 +675,11 @@
 <span class="c1"># etc.</span>
 </pre></div>
 </div>
-<p>The action client should start up, and then quickly finish.
-At this point, we have a functioning action client, but we don't see any results or get any feedback.</p>
+<p>动作客户端应该启动，并快速完成。此时，我们拥有一个功能齐全的动作客户端，但我们看不到任何结果或获得任何反馈。</p>
 <div class="section" id="getting-a-result">
-<h4>2.1 Getting a result<a class="headerlink" href="#getting-a-result" title="永久链接至标题"></a></h4>
-<p>So we can send a goal, but how do we know when it is completed?
-We can get the result information with a couple steps.
-First, we need to get a goal handle for the goal we sent.
-Then, we can use the goal handle to request the result.</p>
-<p>Here's the complete code for this example:</p>
+<h4>2.1 获取结果<a class="headerlink" href="#getting-a-result" title="永久链接至标题"></a></h4>
+<p>那么我们可以发送一个目标，但我们如何知道何时完成呢？我们可以通过以下几个步骤获取结果信息。首先，我们需要为发送的目标获取一个目标句柄。然后，我们可以使用目标句柄来请求结果。</p>
+<p>以下是这个示例的完整代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -738,14 +734,11 @@ Then, we can use the goal handle to request the result.</p>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ActionClient.send_goal_async">ActionClient.send_goal_async()</a> method returns a future to a goal handle.
-First we register a callback for when the future is complete:</p>
+<p><a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ActionClient.send_goal_async">ActionClient.send_goal_async()</a> 方法返回一个对目标句柄的 future。首先，我们为 future 完成时注册一个回调函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_send_goal_future</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">goal_response_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the future is completed when an action server accepts or rejects the goal request.
-Let's look at the <code class="docutils literal notranslate"><span class="pre">goal_response_callback</span></code> in more detail.
-We can check to see if the goal was rejected and return early since we know there will be no result:</p>
+<p>请注意，当一个动作服务器接受或拒绝目标请求时，future 将会完成。让我们更详细地查看 <code class="docutils literal notranslate"><span class="pre">goal_response_callback</span></code>。我们可以检查目标是否被拒绝，并在此处提前返回，因为我们知道将不会有结果：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">goal_response_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">):</span>
         <span class="n">goal_handle</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">goal_handle</span><span class="o">.</span><span class="n">accepted</span><span class="p">:</span>
@@ -755,14 +748,12 @@ We can check to see if the goal was rejected and return early since we know ther
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Goal accepted :)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now that we've got a goal handle, we can use it to request the result with the method <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ClientGoalHandle.get_result_async">get_result_async()</a>.
-Similar to sending the goal, we will get a future that will complete when the result is ready.
-Let's register a callback just like we did for the goal response:</p>
+<p>现在我们已经获得了一个目标句柄，我们可以使用它来使用 <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.client.ClientGoalHandle.get_result_async">get_result_async()</a> 方法请求结果。与发送目标类似，我们将得到一个 future，该 future 将在结果准备好时完成。让我们注册一个与目标响应时类似的回调函数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_get_result_future</span> <span class="o">=</span> <span class="n">goal_handle</span><span class="o">.</span><span class="n">get_result_async</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_get_result_future</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_result_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In the callback, we log the result sequence and shutdown ROS 2 for a clean exit:</p>
+<p>在回调函数中，我们记录结果序列并优雅地关闭 ROS 2 以完成退出：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">get_result_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">result</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Result: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">sequence</span><span class="p">))</span>
@@ -788,7 +779,7 @@ Let's register a callback just like we did for the goal response:</p>
 <p>Our action client can send goals.
 Nice!
 But it would be great if we could get some feedback about the goals we send from the action server.</p>
-<p>Here's the complete code for this example:</p>
+<p>以下是这个示例的完整代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
