@@ -4165,90 +4165,90 @@ msgstr "关于主题统计"
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:16
 msgid "ROS 2 provides integrated measurement of statistics for messages received by any subscription. Allowing a user to collect subscription statistics enables them to characterize the performance of their system or aid in diagnosis of any present issues."
-msgstr "ROS 2 provides integrated measurement of statistics for messages received by any subscription. Allowing a user to collect subscription statistics enables them to characterize the performance of their system or aid in diagnosis of any present issues."
+msgstr "ROS 2 提供了对任何订阅接收的消息进行统计的集成测量。允许用户收集订阅统计数据，以便他们能够评估系统的性能或帮助诊断任何现有问题。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:21
 msgid "The measurements provided are the received message age and received message period. For each measurement the statistics provided are the average, maximum, minimum, standard deviation, and sample count. These statistics are calculated in a moving window."
-msgstr "The measurements provided are the received message age and received message period. For each measurement the statistics provided are the average, maximum, minimum, standard deviation, and sample count. These statistics are calculated in a moving window."
+msgstr "提供的测量数据是接收到的消息的年龄和周期。对于每个测量值，提供的统计数据包括平均值、最大值、最小值、标准差和样本数量。这些统计数据是在一个滑动窗口中计算的。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:26
 msgid "How statistics are calculated"
-msgstr "How statistics are calculated"
+msgstr "统计数据的计算方式"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:28
 msgid "Each statistic set is calculated in constant time and constant memory by using the utilities implemented in the `libstatistics_collector <https://github.com/ros-tooling/libstatistics_collector>`__ package. When a new message is received by a subscription, this is a new sample for calculation in the current measurement window. The average calculated is simply a `moving average <https://en.wikipedia.org/wiki/Moving_average>`__. The maximum, minimum, and sample count are updated upon receipt of each new sample, whereas the standard deviation is calculated using `Welford's online algorithm <https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm>`__."
-msgstr "Each statistic set is calculated in constant time and constant memory by using the utilities implemented in the `libstatistics_collector <https://github.com/ros-tooling/libstatistics_collector>`__ package. When a new message is received by a subscription, this is a new sample for calculation in the current measurement window. The average calculated is simply a `moving average <https://en.wikipedia.org/wiki/Moving_average>`__. The maximum, minimum, and sample count are updated upon receipt of each new sample, whereas the standard deviation is calculated using `Welford's online algorithm <https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm>`__."
+msgstr "每个统计数据集都是通过使用`libstatistics_collector <https://github.com/ros-tooling/libstatistics_collector>`__包中实现的工具在固定的时间和固定的内存中计算得出的。当订阅接收到新消息时，这是当前测量窗口中的一个新样本，所以所得到的平均值只是一个`移动平均值 <https://en.wikipedia.org/wiki/Moving_average>`__。最大值、最小值和样本数量会在接收到每个新样本时进行更新，而标准差则是使用`Welford的在线算法 <https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm>`__计算得出的。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:41
 msgid "Types of statistics calculated"
-msgstr "Types of statistics calculated"
+msgstr "计算的统计数据类型"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:43
 msgid "Received message period"
-msgstr "Received message period"
+msgstr "接收消息周期"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:45 ../../source/Concepts/About-Topic-Statistics.rst:50
 msgid "Units: milliseconds"
-msgstr "Units: milliseconds"
+msgstr "单位: 毫秒"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:46
 msgid "Uses the system clock to measure the period between received messages"
-msgstr "Uses the system clock to measure the period between received messages"
+msgstr "使用系统时钟来测量接收到的消息之间的时间间隔"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:48
 msgid "Received message age"
-msgstr "Received message age"
+msgstr "接收消息的年龄"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:51
 msgid "Requires a message to have a timestamp populated in the header field in order to calculate the age of the message as sent from a publisher"
-msgstr "Requires a message to have a timestamp populated in the header field in order to calculate the age of the message as sent from a publisher"
+msgstr "要计算消息从发布者发送时的年龄，需要在消息头字段中填充时间戳"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:54
 msgid "Behavior"
-msgstr "Behavior"
+msgstr "行为"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:56
 msgid "By default, Topic Statistics measurements are not enabled. After enabling this feature for a specific node via the subscription configuration options, both received message age and received message period measurements are enabled for that specific subscription."
-msgstr "By default, Topic Statistics measurements are not enabled. After enabling this feature for a specific node via the subscription configuration options, both received message age and received message period measurements are enabled for that specific subscription."
+msgstr "默认情况下，主题统计测量是未启用的。通过订阅配置选项为特定节点启用此功能后，对于该特定订阅，将同时启用接收消息的年龄和时间间隔测量。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:60
 msgid "The data is published as a `statistics_msg/msg/MetricsMessage <https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg>`__ at a configurable period (default 1 second) to a configurable topic (default ``/statistics``). Note that the publishing period also serves as the sample collection window period."
-msgstr "The data is published as a `statistics_msg/msg/MetricsMessage <https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg>`__ at a configurable period (default 1 second) to a configurable topic (default ``/statistics``). Note that the publishing period also serves as the sample collection window period."
+msgstr "数据以可配置周期（默认为1秒）发布为`statistics_msg/msg/MetricsMessage <https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg>`__到可配置主题（默认为``/statistics``）。请注意，发布周期也作为样本收集窗口期。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:65
 msgid "Since received message period requires a message timestamp in a header field, empty data is published. That is, all statistics values are NaN if no timestamp is found. Publishing NaN values instead of not publishing at all avoids the absence of a signal problem and is meant to explicitly show that a measurement could not be made."
-msgstr "Since received message period requires a message timestamp in a header field, empty data is published. That is, all statistics values are NaN if no timestamp is found. Publishing NaN values instead of not publishing at all avoids the absence of a signal problem and is meant to explicitly show that a measurement could not be made."
+msgstr "由于接收到的消息周期需要在头部字段中包含消息时间戳，因此会发布空数据。也就是说，如果没有找到时间戳，所有统计值都为NaN。不发布任何值而是发布NaN值，避免了信号缺失的问题，并明确表示无法进行测量。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:70
 msgid "The first sample of each window for the received message period statistic does not yield a measurement. This is because calculating this statistic requires knowing the time the previous message arrived, so subsequent samples in the window yield measurements."
-msgstr "The first sample of each window for the received message period statistic does not yield a measurement. This is because calculating this statistic requires knowing the time the previous message arrived, so subsequent samples in the window yield measurements."
+msgstr "接收消息周期统计的每个窗口的第一个样本不会产生测量。这是因为计算此统计值需要知道前一条消息到达的时间，因此窗口中的后续样本会产生测量结果。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:77
 msgid "Similar to ROS 1 `Topic Statistics <https://wiki.ros.org/Topics#Topic_statistics>`__, both message age and message period are calculated, albeit from the subscription side. Other ROS 1 metrics, e.g., the number of dropped messages or traffic volume, are currently not provided."
-msgstr "Similar to ROS 1 `Topic Statistics <https://wiki.ros.org/Topics#Topic_statistics>`__, both message age and message period are calculated, albeit from the subscription side. Other ROS 1 metrics, e.g., the number of dropped messages or traffic volume, are currently not provided."
+msgstr "与ROS 1的`Topic Statistics <https://wiki.ros.org/Topics#Topic_statistics>`__类似，消息的年龄和周期也会被计算，尽管是从订阅端计算的。其他ROS 1的指标，如丢失的消息数量或流量大小，目前尚未提供。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:82
 msgid "Support"
-msgstr "Support"
+msgstr "支持"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:84
 msgid "This feature is currently supported in ROS 2 Foxy for C++ only (rclcpp). Future work and improvements, such as Python support, can be found `here <https://github.com/ros2/ros2/issues/917>`__."
-msgstr "This feature is currently supported in ROS 2 Foxy for C++ only (rclcpp). Future work and improvements, such as Python support, can be found `here <https://github.com/ros2/ros2/issues/917>`__."
+msgstr "当前仅支持ROS 2 Foxy的C++（rclcpp）。未来的工作和改进，例如Python支持，可以在`这里 <https://github.com/ros2/ros2/issues/917>`__找到。"
 
