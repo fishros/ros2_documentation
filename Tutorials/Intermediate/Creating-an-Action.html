@@ -385,7 +385,7 @@
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id3">任务</a></p>
 <ul>
-<li><p><a class="reference internal" href="#defining-an-action" id="id4">1 Defining an action</a></p></li>
+<li><p><a class="reference internal" href="#defining-an-action" id="id4">1 定义一个动作</a></p></li>
 <li><p><a class="reference internal" href="#building-an-action" id="id5">2 Building an action</a></p></li>
 </ul>
 </li>
@@ -396,17 +396,13 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>You learned about actions previously in the <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html"><span class="doc">理解行为</span></a> tutorial.
-Like the other communication types and their respective interfaces (topics/msg and services/srv),
-you can also custom-define actions in your packages.
-This tutorial shows you how to define and build an action that you can use
-with the action server and action client you will write in the next tutorial.</p>
+<p>在之前的 <a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html"><span class="doc">理解行为</span></a> 教程中，你学习了关于动作的内容。和其他通信类型及其相应的接口（topics/msg 和 services/srv）一样，你也可以在你的包中自定义定义动作。本教程将向你展示如何定义和构建一个动作，你可以在下一个教程中使用该动作服务器和动作客户端进行编写。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>You should have <a class="reference internal" href="../../Installation.html"><span class="doc">ROS 2</span></a> and <a class="reference external" href="https://colcon.readthedocs.org">colcon</a> installed.</p>
-<p>Set up a <a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">workspace</span></a> and create a package named <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code>:</p>
-<p>(Remember to <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source your ROS 2 installation</span></a> first.)</p>
+<p>你应该已经安装了 <a class="reference internal" href="../../Installation.html"><span class="doc">ROS 2</span></a> 和 <a class="reference external" href="https://colcon.readthedocs.org">colcon</a>。</p>
+<p>设置一个 <a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">workspace</span></a> 并创建一个名为 <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code> 的包：</p>
+<p>（记得首先 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source your ROS 2 installation</span></a>。）</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ros2_ws/src <span class="c1">#you can reuse existing workspace with this naming convention</span>
 <span class="nb">cd</span> ros2_ws/src
@@ -428,8 +424,8 @@ ros2 pkg create action_tutorials_interfaces
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="defining-an-action">
-<h3><a class="toc-backref" href="#id4">1 Defining an action</a><a class="headerlink" href="#defining-an-action" title="永久链接至标题"></a></h3>
-<p>Actions are defined in <code class="docutils literal notranslate"><span class="pre">.action</span></code> files of the form:</p>
+<h3><a class="toc-backref" href="#id4">1 定义一个动作</a><a class="headerlink" href="#defining-an-action" title="永久链接至标题"></a></h3>
+<p>动作在 <code class="docutils literal notranslate"><span class="pre">.action</span></code> 文件中定义，格式如下：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Request</span>
 ---
 <span class="c1"># Result</span>
@@ -437,14 +433,14 @@ ros2 pkg create action_tutorials_interfaces
 <span class="c1"># Feedback</span>
 </pre></div>
 </div>
-<p>An action definition is made up of three message definitions separated by <code class="docutils literal notranslate"><span class="pre">---</span></code>.</p>
+<p>一个动作定义由三个消息定义组成，用 <code class="docutils literal notranslate"><span class="pre">---</span></code> 分隔。</p>
 <ul class="simple">
-<li><p>A <em>request</em> message is sent from an action client to an action server initiating a new goal.</p></li>
-<li><p>A <em>result</em> message is sent from an action server to an action client when a goal is done.</p></li>
+<li><p>一个 <em>请求</em> 消息是从动作客户端发送到动作服务器，用于启动一个新的目标。</p></li>
+<li><p>一个 <em>结果</em> 消息是从动作服务器发送到动作客户端，表示一个目标已完成。</p></li>
 <li><p><em>Feedback</em> messages are periodically sent from an action server to an action client with updates about a goal.</p></li>
 </ul>
-<p>An instance of an action is typically referred to as a <em>goal</em>.</p>
-<p>Say we want to define a new action &quot;Fibonacci&quot; for computing the <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci sequence</a>.</p>
+<p>一个动作的实例通常被称为一个 <em>目标</em>。</p>
+<p>假设我们想要定义一个用于计算 <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">斐波那契数列</a> 的新动作 &quot;Fibonacci&quot;。</p>
 <p>Create an <code class="docutils literal notranslate"><span class="pre">action</span></code> directory in our ROS 2 package <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code>:</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> action_tutorials_interfaces
