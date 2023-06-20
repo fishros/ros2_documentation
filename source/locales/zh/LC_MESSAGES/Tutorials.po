@@ -11941,92 +11941,92 @@ msgstr "在 :doc:`上一个教程 <Creating-Launch-Files>` 中，我们学习了
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:39
 msgid "Create a workspace for the package to live in:"
-msgstr "Create a workspace for the package to live in:"
+msgstr "为包创建一个工作空间："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:66 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:86 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:203
 msgid "Python package"
-msgstr "Python package"
+msgstr "Python 包"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:72 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:123 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:225
 msgid "C++ package"
-msgstr "C++ package"
+msgstr "C++ 包"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:79
 msgid "2 Creating the structure to hold launch files"
-msgstr "2 Creating the structure to hold launch files"
+msgstr "2 创建用于存放启动文件的结构"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:81
 msgid "By convention, all launch files for a package are stored in the ``launch`` directory inside of the package. Make sure to create a ``launch`` directory at the top-level of the package you created above."
-msgstr "By convention, all launch files for a package are stored in the ``launch`` directory inside of the package. Make sure to create a ``launch`` directory at the top-level of the package you created above."
+msgstr "按照惯例，包中的所有启动文件都存储在包内的“launch”目录中。请确保在上面创建的包的顶级目录下创建一个“launch”目录。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:88
 msgid "For Python packages, the directory containing your package should look like this:"
-msgstr "For Python packages, the directory containing your package should look like this:"
+msgstr "对于 Python 包，包含包的目录应该像这样："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:102
 msgid "In order for colcon to find the launch files, we need to inform Python's setup tools of our launch files using the ``data_files`` parameter of ``setup``."
-msgstr "In order for colcon to find the launch files, we need to inform Python's setup tools of our launch files using the ``data_files`` parameter of ``setup``."
+msgstr "为了让colcon能够找到启动文件，我们需要使用``setup``的``data_files``参数，向Python的设置工具提供我们的启动文件信息。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:104
 msgid "Inside our ``setup.py`` file:"
-msgstr "Inside our ``setup.py`` file:"
+msgstr "在我们的``setup.py``文件中："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:125
 msgid "For C++ packages, we will only be adjusting the ``CMakeLists.txt`` file by adding:"
-msgstr "For C++ packages, we will only be adjusting the ``CMakeLists.txt`` file by adding:"
+msgstr "对于C++包，我们只需要在``CMakeLists.txt``文件末尾（但在``ament_package()``之前）添加："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:135
 msgid "to the end of the file (but before ``ament_package()``)."
-msgstr "to the end of the file (but before ``ament_package()``)."
+msgstr "。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:139
 msgid "3 Writing the launch file"
-msgstr "3 Writing the launch file"
+msgstr "3 编写启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:143 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:207 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:229
 msgid "Python launch file"
-msgstr "Python launch file"
+msgstr "Python启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:145
 msgid "Inside your ``launch`` directory, create a new launch file called ``my_script_launch.py``. ``_launch.py`` is recommended, but not required, as the file suffix for Python launch files. However, the launch file name needs to end with ``launch.py`` to be recognized and autocompleted by ``ros2 launch``."
-msgstr "Inside your ``launch`` directory, create a new launch file called ``my_script_launch.py``. ``_launch.py`` is recommended, but not required, as the file suffix for Python launch files. However, the launch file name needs to end with ``launch.py`` to be recognized and autocompleted by ``ros2 launch``."
+msgstr "在你的``launch``目录中，创建一个名为``my_script_launch.py``的新启动文件。推荐使用``_launch.py``作为Python启动文件的文件后缀，但不是必需的。但是，启动文件的名称必须以``launch.py``结尾，以便被``ros2 launch``识别并自动完成。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:149
 msgid "Your launch file should define the ``generate_launch_description()`` function which returns a ``launch.LaunchDescription()`` to be used by the ``ros2 launch`` verb."
-msgstr "Your launch file should define the ``generate_launch_description()`` function which returns a ``launch.LaunchDescription()`` to be used by the ``ros2 launch`` verb."
+msgstr "你的启动文件应该定义``generate_launch_description()``函数，该函数返回一个``launch.LaunchDescription()``对象，供``ros2 launch``命令使用。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:164 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:213 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:235
 msgid "XML launch file"
-msgstr "XML launch file"
+msgstr "XML启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:166
 msgid "Inside your ``launch`` directory, create a new launch file called ``my_script_launch.xml``. ``_launch.xml`` is recommended, but not required, as the file suffix for XML launch files."
-msgstr "Inside your ``launch`` directory, create a new launch file called ``my_script_launch.xml``. ``_launch.xml`` is recommended, but not required, as the file suffix for XML launch files."
+msgstr "在你的``launch``目录中，创建一个名为``my_script_launch.xml``的新启动文件。推荐使用``_launch.xml``作为XML启动文件的文件后缀，但不是必需的。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:175 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:219 ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:241
 msgid "YAML launch file"
-msgstr "YAML launch file"
+msgstr "YAML启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:177
 msgid "Inside your ``launch`` directory, create a new launch file called ``my_script_launch.yaml``. ``_launch.yaml`` is recommended, but not required, as the file suffix for YAML launch files."
-msgstr "Inside your ``launch`` directory, create a new launch file called ``my_script_launch.yaml``. ``_launch.yaml`` is recommended, but not required, as the file suffix for YAML launch files."
+msgstr "在你的``launch``目录中，创建一个名为``my_script_launch.yaml``的新启动文件。推荐使用``_launch.yaml``作为YAML启动文件的文件后缀，但不是必需的。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Launch-system.rst:191
