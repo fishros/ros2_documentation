@@ -464,20 +464,20 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">ROS_LOG_DIR</span></code> - 控制用于将日志消息写入磁盘的日志目录（如果启用）。如果非空，则使用此变量中指定的确切目录。如果为空，则使用``ROS_HOME``环境变量的内容构建路径，形式为``$ROS_HOME/.log``。在所有情况下，<a href="#id1"><span class="problematic" id="id2">``</span></a>~``字符会扩展为用户的主目录。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ROS_HOME</span></code> - 控制用于各种ROS文件（包括日志和配置文件）的主目录。在日志记录的上下文中，此变量用于构建用于日志文件的目录路径。如果非空，则使用此变量的内容作为ROS_HOME路径。在所有情况下，<a href="#id1"><span class="problematic" id="id2">``</span></a>~``字符会扩展为用户的主目录。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_USE_STDOUT</span></code> - 控制输出消息流的目标。如果未设置或为0，则使用stderr。如果为1，则使用stdout。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_BUFFERED_STREAM</span></code> - Control whether the logging stream (as configured in <code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_USE_STDOUT</span></code>) should be line buffered or unbuffered.  If this is unset, use the default of the stream (generally line buffered for stdout, and unbuffered for stderr).  If this is 0, force the stream to be unbuffered.  If this is 1, force the stream to be line buffered.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_COLORIZED_OUTPUT</span></code> - Control whether colors are used when outputting messages.  If unset, automatically determine based on the platform and whether the console is a TTY.  If 0, force disable using colors for output.  If 1, force enable using colors for output.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_CONSOLE_OUTPUT_FORMAT</span></code> - Control the fields that are output for each log message.  The available fields are:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_BUFFERED_STREAM</span></code> - 控制日志流（如在 <code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_USE_STDOUT</span></code> 中配置）是否应该是行缓冲或无缓冲的。如果未设置此项，则使用流的默认设置（通常为标准输出的行缓冲，标准错误输出的无缓冲）。如果设置为 0，则强制将流设置为无缓冲。如果设置为 1，则强制将流设置为行缓冲。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_COLORIZED_OUTPUT</span></code> - 控制是否在输出消息时使用颜色。如果未设置此项，则根据平台和控制台是否为 TTY 自动确定。如果设置为 0，则强制禁用输出时使用颜色。如果设置为 1，则强制启用输出时使用颜色。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_CONSOLE_OUTPUT_FORMAT</span></code> - 控制每条日志消息输出的字段。可用字段有：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{severity}</span></code> - The severity level.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{name}</span></code> - The name of the logger (may be empty).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{message}</span></code> - The log message (may be empty).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{function_name}</span></code> - The function name this was called from (may be empty).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{file_name}</span></code> - The file name this was called from (may be empty).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{time}</span></code> - The time in seconds since the epoch.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{time_as_nanoseconds}</span></code> - The time in nanoseconds since the epoch.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{line_number}</span></code> - The line number this was called from (may be empty).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{severity}</span></code> - 严重级别。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{name}</span></code> - 日志记录器的名称（可能为空）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{message}</span></code> - 日志消息（可能为空）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{function_name}</span></code> - 调用此函数的函数名称（可能为空）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{file_name}</span></code> - 调用此函数的文件名（可能为空）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{time}</span></code> - 自纪元以来的秒数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{time_as_nanoseconds}</span></code> - 自纪元以来的纳秒数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{line_number}</span></code> - 调用此函数的行号（可能为空）。</p></li>
 </ul>
-<p>If no format is given, a default of <code class="docutils literal notranslate"><span class="pre">[{severity}]</span> <span class="pre">[{time}]</span> <span class="pre">[{name}]:</span> <span class="pre">{message}</span></code> is used.</p>
+<p>如果未提供格式，则使用默认格式 <code class="docutils literal notranslate"><span class="pre">[{severity}]</span> <span class="pre">[{time}]</span> <span class="pre">[{name}]:</span> <span class="pre">{message}</span></code>。</p>
 </li>
 </ul>
 </div>
