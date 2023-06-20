@@ -922,62 +922,62 @@ msgstr "关于组合"
 
 #: ../../source/Concepts/About-Composition.rst:9
 msgid "ROS 1 - Nodes vs. Nodelets"
-msgstr "ROS 1 - Nodes vs. Nodelets"
+msgstr "ROS 1 - 节点 vs. Nodelets"
 
 
 #: ../../source/Concepts/About-Composition.rst:11
 msgid "In ROS 1 you can write your code either as a `ROS node <https://wiki.ros.org/Nodes>`__ or as a `ROS nodelet <https://wiki.ros.org/nodelet>`__. ROS 1 nodes are compiled into executables. ROS 1 nodelets on the other hand are compiled into a shared library which is then loaded at runtime by a container process."
-msgstr "In ROS 1 you can write your code either as a `ROS node <https://wiki.ros.org/Nodes>`__ or as a `ROS nodelet <https://wiki.ros.org/nodelet>`__. ROS 1 nodes are compiled into executables. ROS 1 nodelets on the other hand are compiled into a shared library which is then loaded at runtime by a container process."
+msgstr "在ROS 1中，您可以将代码编写为 `ROS节点 <https://wiki.ros.org/Nodes>`__ 或 `ROS nodelet <https://wiki.ros.org/nodelet>`__。ROS 1节点被编译为可执行文件。另一方面，ROS 1 nodelet被编译为共享库，然后由容器进程在运行时加载。"
 
 
 #: ../../source/Concepts/About-Composition.rst:16
 msgid "ROS 2 - Unified API"
-msgstr "ROS 2 - Unified API"
+msgstr "ROS 2 - 统一API"
 
 
 #: ../../source/Concepts/About-Composition.rst:18
 msgid "In ROS 2 the recommended way of writing your code is similar to a nodelet - we call it a ``Component``. This makes it easy to add common concepts to existing code, like a `life cycle <https://design.ros2.org/articles/node_lifecycle.html>`__. Having different APIs, which was the biggest drawback in ROS 1, is avoided in ROS 2 since both approaches use the same API."
-msgstr "In ROS 2 the recommended way of writing your code is similar to a nodelet - we call it a ``Component``. This makes it easy to add common concepts to existing code, like a `life cycle <https://design.ros2.org/articles/node_lifecycle.html>`__. Having different APIs, which was the biggest drawback in ROS 1, is avoided in ROS 2 since both approaches use the same API."
+msgstr "在ROS 2中，编写代码的推荐方式类似于nodelet - 我们称之为 ``Component``。这使得向现有代码添加常见概念变得容易，例如 `生命周期 <https://design.ros2.org/articles/node_lifecycle.html>`__。ROS 1中的最大缺点是具有不同的API，而在ROS 2中通过使用相同的API来避免了这个问题。"
 
 
 #: ../../source/Concepts/About-Composition.rst:24
 msgid "It is still possible to use the node-like style of \"writing your own main\" but for the common case it is not recommended."
-msgstr "It is still possible to use the node-like style of \"writing your own main\" but for the common case it is not recommended."
+msgstr "仍然可以使用类似节点的\"编写自己的main\"的方式，但对于常见情况，不建议这样做。"
 
 
 #: ../../source/Concepts/About-Composition.rst:27
 msgid "By making the process layout a deploy-time decision the user can choose between:"
-msgstr "By making the process layout a deploy-time decision the user can choose between:"
+msgstr "通过使进程布局成为部署时的决策，用户可以在以下选项之间进行选择："
 
 
 #: ../../source/Concepts/About-Composition.rst:30
 msgid "running multiple nodes in separate processes with the benefits of process/fault isolation as well as easier debugging of individual nodes and"
-msgstr "running multiple nodes in separate processes with the benefits of process/fault isolation as well as easier debugging of individual nodes and"
+msgstr "以独立进程运行多个节点，具有进程/故障隔离的优点，以及更容易调试单个节点。"
 
 
 #: ../../source/Concepts/About-Composition.rst:31
 msgid "running multiple nodes in a single process with the lower overhead and optionally more efficient communication (see :doc:`Intra Process Communication <../Tutorials/Demos/Intra-Process-Communication>`)."
-msgstr "running multiple nodes in a single process with the lower overhead and optionally more efficient communication (see :doc:`Intra Process Communication <../Tutorials/Demos/Intra-Process-Communication>`)."
+msgstr "在单个进程中运行多个节点，降低开销，并可选择更高效的通信方式（参见 :doc:`Intra Process Communication <../Tutorials/Demos/Intra-Process-Communication>`）。"
 
 
 #: ../../source/Concepts/About-Composition.rst:33
 msgid "Additionally ``ros2 launch`` can be used to automate these actions through specialized launch actions."
-msgstr "Additionally ``ros2 launch`` can be used to automate these actions through specialized launch actions."
+msgstr "此外，``ros2 launch`` 可以通过专门的启动操作来自动化这些操作。"
 
 
 #: ../../source/Concepts/About-Composition.rst:37
 msgid "Writing a Component"
-msgstr "Writing a Component"
+msgstr "编写组件"
 
 
 #: ../../source/Concepts/About-Composition.rst:39
 msgid "Since a component is only built into a shared library, it doesn't have a ``main`` function (see `Talker source code <https://github.com/ros2/demos/blob/humble/composition/src/talker_component.cpp>`__). A component is commonly a subclass of ``rclcpp::Node``. Since it is not in control of the thread, it shouldn't perform any long running or blocking tasks in its constructor. Instead, it can use timers to get periodic notifications. Additionally, it can create publishers, subscriptions, servers, and clients."
-msgstr "Since a component is only built into a shared library, it doesn't have a ``main`` function (see `Talker source code <https://github.com/ros2/demos/blob/humble/composition/src/talker_component.cpp>`__). A component is commonly a subclass of ``rclcpp::Node``. Since it is not in control of the thread, it shouldn't perform any long running or blocking tasks in its constructor. Instead, it can use timers to get periodic notifications. Additionally, it can create publishers, subscriptions, servers, and clients."
+msgstr "由于组件仅构建为共享库，因此它没有``main``函数（请参见 `Talker源代码 <https://github.com/ros2/demos/blob/humble/composition/src/talker_component.cpp>`__）。组件通常是 ``rclcpp::Node`` 的子类。由于它无法控制线程，因此不应在构造函数中执行任何长时间运行或阻塞的任务。相反，它可以使用计时器来获取周期性通知。此外，它还可以创建发布器、订阅器、服务器和客户端。"
 
 
 #: ../../source/Concepts/About-Composition.rst:45
 msgid "An important aspect of making such a class a component is that the class registers itself using macros from the package ``rclcpp_components`` (see the last line in the source code). This makes the component discoverable when its library is being loaded into a running process - it acts as kind of an entry point."
-msgstr "An important aspect of making such a class a component is that the class registers itself using macros from the package ``rclcpp_components`` (see the last line in the source code). This makes the component discoverable when its library is being loaded into a running process - it acts as kind of an entry point."
+msgstr "使此类成为组件的一个重要方面是，该类使用来自 ``rclcpp_components`` 包的宏进行注册（请参见源代码的最后一行）。这使得在将其库加载到正在运行的进程中时，组件可以被发现-它充当了一种入口点。"
 
 
 #: ../../source/Concepts/About-Composition.rst:48
