@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Quality of Service settings &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于服务质量设置 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -287,7 +287,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Logging.html">关于日志记录和日志记录器配置</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">About Quality of Service settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于服务质量设置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>About Quality of Service settings</li>
+      <li>关于服务质量设置</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Quality-of-Service-Settings.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,25 +372,20 @@
 
 
   <div class="section" id="about-quality-of-service-settings">
-<h1>About Quality of Service settings<a class="headerlink" href="#about-quality-of-service-settings" title="永久链接至标题"></a></h1>
+<h1>关于服务质量设置<a class="headerlink" href="#about-quality-of-service-settings" title="永久链接至标题"></a></h1>
 <div class="section" id="overview">
 <h2>概述<a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>ROS 2 offers a rich variety of Quality of Service (QoS) policies that allow you to tune communication between nodes.
-With the right set of Quality of Service policies, ROS 2 can be as reliable as TCP or as best-effort as UDP, with many, many possible states in between.
-Unlike ROS 1, which primarily only supported TCP, ROS 2 benefits from the flexibility of the underlying DDS transport in environments with lossy wireless networks where a “best effort” policy would be more suitable, or in real-time computing systems where the right Quality of Service profile is needed to meet deadlines.</p>
-<p>A set of QoS “policies” combine to form a QoS “profile”.
-Given the complexity of choosing the correct QoS policies for a given scenario, ROS 2 provides a set of predefined QoS profiles for common use cases (e.g. sensor data).
-At the same time, developers are given the flexibility to control specific policies of the QoS profiles.</p>
-<p>QoS profiles can be specified for publishers, subscriptions, service servers and clients.
-A QoS profile can be applied independently to each instance of the aforementioned entities, but if different profiles are used, it is possible that they will be incompatible, preventing the delivery of messages.</p>
+<p>ROS 2 提供了丰富多样的服务质量 (Quality of Service，QoS) 策略，使您能够调整节点之间的通信。通过适当的服务质量策略集合，ROS 2 可以像 TCP 一样可靠，也可以像 UDP 一样尽力而为，在中间还有许多可能的状态。与主要仅支持 TCP 的 ROS 1 不同，ROS 2 在具有有损无线网络的环境中从底层 DDS 传输的灵活性中受益，那里“尽力而为”策略更为合适，或者在实时计算系统中需要正确的服务质量配置文件以满足截止日期。</p>
+<p>一组QoS“策略”组合形成一个QoS“配置文件”。考虑到为特定场景选择正确的QoS策略的复杂性，ROS 2为常见用例（例如传感器数据）提供了一组预定义的QoS配置文件。与此同时，开发人员可以灵活控制QoS配置文件的特定策略。</p>
+<p>可以为发布者、订阅者、服务服务器和客户端指定QoS配置文件。一个QoS配置文件可以独立应用于上述实体的每个实例，但如果使用不同的配置文件，可能会导致不兼容，从而阻止消息的传递。</p>
 </div>
 <div class="section" id="qos-policies">
-<h2>QoS policies<a class="headerlink" href="#qos-policies" title="永久链接至标题"></a></h2>
-<p>The base QoS profile currently includes settings for the following policies:</p>
+<h2>QoS策略<a class="headerlink" href="#qos-policies" title="永久链接至标题"></a></h2>
+<p>基本QoS配置文件当前包括以下策略的设置：</p>
 <ul class="simple">
-<li><p>History</p>
+<li><p>历史记录</p>
 <ul>
-<li><p><em>Keep last</em>: only store up to N samples, configurable via the queue depth option.</p></li>
+<li><p>保留最近：仅存储最多N个样本，可通过队列深度选项进行配置。</p></li>
 <li><p><em>Keep all</em>: store all samples, subject to the configured resource limits of the underlying middleware.</p></li>
 </ul>
 </li>
