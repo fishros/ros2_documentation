@@ -292,7 +292,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-RQt.html">Overview and usage of RQt</a></li>
@@ -410,18 +410,16 @@
 <p>当选择接近平台特定域ID范围顶部的域ID时，应考虑一个额外的约束条件。</p>
 <p>例如，假设具有域ID为101的Linux计算机：</p>
 <ul class="simple">
-<li><p>The zero'th ROS 2 process on the computer will connect to ports 32650, 32651, 32660, and 32661.</p></li>
-<li><p>The first ROS 2 process on the computer will connect to ports 32650, 32651, 32662, and 32663.</p></li>
-<li><p>The 53rd ROS 2 process on the computer will connect to ports 32650, 32651, 32766, and 32767.</p></li>
-<li><p>The 54th ROS 2 process on the computer will connect to ports 32650, 32651, 32768, and 32769, running into the ephemeral port range.</p></li>
+<li><p>计算机上的第零个ROS 2进程将连接到端口32650、32651、32660和32661。</p></li>
+<li><p>计算机上的第一个ROS 2进程将连接到端口32650、32651、32662和32663。</p></li>
+<li><p>计算机上的第53个ROS 2进程将连接到端口32650、32651、32766和32767。</p></li>
+<li><p>计算机上的第54个ROS 2进程将连接到端口32650、32651、32768和32769，并进入临时端口范围。</p></li>
 </ul>
-<p>Thus the maximum number of processes that should be created when using domain ID 101 on Linux is 54.
-Similarly, the maximum number of processes that should be created when using domain ID 232 on Linux is 63, as the maximum port number is 65535.</p>
-<p>The situation is similar on macOS and Windows, though the numbers are different.
-On macOS and Windows, when choosing a domain ID of 166 (the top of the range), the maximum number of ROS 2 processes that can be created on a computer before running into the ephemeral port range is 120.</p>
+<p>因此，在Linux上使用域ID 101时，应创建的最大进程数为54。同样，在Linux上使用域ID 232时，应创建的最大进程数为63，因为最大端口号为65535。</p>
+<p>在macOS和Windows上的情况类似，但数字不同。在macOS和Windows上，选择域ID为166（范围顶部）时，计算机上在进入临时端口范围之前可以创建的最大ROS 2进程数为120。</p>
 </div>
 <div class="section" id="domain-id-to-udp-port-calculator">
-<h3>Domain ID to UDP Port Calculator<a class="headerlink" href="#domain-id-to-udp-port-calculator" title="永久链接至标题"></a></h3>
+<h3>域 ID 到 UDP 端口计算器<a class="headerlink" href="#domain-id-to-udp-port-calculator" title="永久链接至标题"></a></h3>
 <table>
   <tr>
     <td style="text-align: right; vertical-align: middle;"><label>Domain ID:</label></td>

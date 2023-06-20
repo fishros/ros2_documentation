@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Executors &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>执行器 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -292,7 +292,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Executors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">执行器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-RQt.html">Overview and usage of RQt</a></li>
@@ -360,7 +360,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>Executors</li>
+      <li>执行器</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Executors.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,12 +373,12 @@
 
 
   <div class="section" id="executors">
-<span id="id1"></span><h1>Executors<a class="headerlink" href="#executors" title="永久链接至标题"></a></h1>
+<span id="id1"></span><h1>执行器<a class="headerlink" href="#executors" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id2">概述</a></p></li>
-<li><p><a class="reference internal" href="#basic-use" id="id3">Basic use</a></p></li>
+<li><p><a class="reference internal" href="#basic-use" id="id3">基本用法</a></p></li>
 <li><p><a class="reference internal" href="#types-of-executors" id="id4">Types of Executors</a></p></li>
 <li><p><a class="reference internal" href="#callback-groups" id="id5">Callback groups</a></p></li>
 <li><p><a class="reference internal" href="#scheduling-semantics" id="id6">Scheduling semantics</a></p></li>
@@ -388,14 +388,12 @@
 </div>
 <div class="section" id="overview">
 <h2><a class="toc-backref" href="#id2">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>Execution management in ROS 2 is explicated by the concept of Executors.
-An Executor uses one or more threads of the underlying operating system to invoke the callbacks of subscriptions, timers, service servers, action servers, etc. on incoming messages and events.
-The explicit Executor class (in <a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/executor.hpp">executor.hpp</a> in rclcpp, in <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/rclpy/executors.py">executors.py</a> in rclpy, or in <a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">executor.h</a> in rclc) provides more control over execution management than the spin mechanism in ROS 1, although the basic API is very similar.</p>
-<p>In the following, we focus on the C++ Client Library <em>rclcpp</em>.</p>
+<p>ROS 2 中的执行管理是通过执行器（Executors）的概念来解释的。执行器使用底层操作系统的一个或多个线程来调用订阅、定时器、服务服务器、动作服务器等的回调函数，以处理传入的消息和事件。显式的执行器类（在 rclcpp 的 <a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/executor.hpp">executor.hpp</a>，在 rclpy 的 <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/rclpy/executors.py">executors.py</a>，或者在 rclc 的 <a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">executor.h</a> 中）比 ROS 1 中的 spin 机制提供了更多的执行管理控制，尽管基本的 API 非常相似。</p>
+<p>接下来，我们将重点介绍 C++ 客户端库 <em>rclcpp</em>。</p>
 </div>
 <div class="section" id="basic-use">
-<h2><a class="toc-backref" href="#id3">Basic use</a><a class="headerlink" href="#basic-use" title="永久链接至标题"></a></h2>
-<p>In the simplest case, the main thread is used for processing the incoming messages and events of a Node by calling <code class="docutils literal notranslate"><span class="pre">rclcpp::spin(..)</span></code> as follows:</p>
+<h2><a class="toc-backref" href="#id3">基本用法</a><a class="headerlink" href="#basic-use" title="永久链接至标题"></a></h2>
+<p>在最简单的情况下，可以通过调用 <code class="docutils literal notranslate"><span class="pre">rclcpp::spin(..)</span></code> 来使用主线程处理节点的传入消息和事件，示例如下：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="c1">// Some initialization.</span>
