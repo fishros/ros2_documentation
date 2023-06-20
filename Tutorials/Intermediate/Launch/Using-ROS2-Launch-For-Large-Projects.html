@@ -146,7 +146,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="Launch-Main.html">启动</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Creating-Launch-Files.html">创建一个启动文件</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Launch-system.html">将启动文件集成到ROS 2包中</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Using-Substitutions.html">Using substitutions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Using-Substitutions.html">使用替代项</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-Event-Handlers.html">使用事件处理程序</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">管理大型项目</a></li>
 </ul>
@@ -398,13 +398,13 @@
 <li><p><a class="reference internal" href="#reusing-nodes" id="id11">4 重复使用节点</a></p></li>
 <li><p><a class="reference internal" href="#parameter-overrides" id="id12">5 参数覆盖</a></p></li>
 <li><p><a class="reference internal" href="#remapping" id="id13">6 重映射</a></p></li>
-<li><p><a class="reference internal" href="#config-files" id="id14">7 Config files</a></p></li>
-<li><p><a class="reference internal" href="#environment-variables" id="id15">8 Environment Variables</a></p></li>
+<li><p><a class="reference internal" href="#config-files" id="id14">7 配置文件</a></p></li>
+<li><p><a class="reference internal" href="#environment-variables" id="id15">8 环境变量</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#running-launch-files" id="id16">Running launch files</a></p>
+<li><p><a class="reference internal" href="#running-launch-files" id="id16">运行启动文件</a></p>
 <ul>
-<li><p><a class="reference internal" href="#update-setup-py" id="id17">1 Update setup.py</a></p></li>
+<li><p><a class="reference internal" href="#update-setup-py" id="id17">1 更新 setup.py</a></p></li>
 <li><p><a class="reference internal" href="#build-and-run" id="id18">2 构建和运行</a></p></li>
 </ul>
 </li>
@@ -697,7 +697,7 @@
 </div>
 <div class="section" id="remapping">
 <h3><a class="toc-backref" href="#id13">6 重映射</a><a class="headerlink" href="#remapping" title="永久链接至标题"></a></h3>
-<p>Now create a <code class="docutils literal notranslate"><span class="pre">mimic.launch.py</span></code> file.</p>
+<p>现在创建一个 <code class="docutils literal notranslate"><span class="pre">mimic.launch.py</span></code> 文件。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
 
@@ -716,15 +716,11 @@
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>This launch file will start the <code class="docutils literal notranslate"><span class="pre">mimic</span></code> node, which will give commands to one turtlesim to follow the other.
-The node is designed to receive the target pose on the topic <code class="docutils literal notranslate"><span class="pre">/input/pose</span></code>.
-In our case, we want to remap the target pose from <code class="docutils literal notranslate"><span class="pre">/turtle2/pose</span></code> topic.
-Finally, we remap the <code class="docutils literal notranslate"><span class="pre">/output/cmd_vel</span></code> topic to <code class="docutils literal notranslate"><span class="pre">/turtlesim2/turtle1/cmd_vel</span></code>.
-This way <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> in our <code class="docutils literal notranslate"><span class="pre">turtlesim2</span></code> simulation world will follow <code class="docutils literal notranslate"><span class="pre">turtle2</span></code> in our initial turtlesim world.</p>
+<p>这个启动文件将启动 <code class="docutils literal notranslate"><span class="pre">mimic</span></code> 节点，该节点将向一个 turtlesim 发送指令，让它跟随另一个 turtlesim。该节点设计用于在主题 <code class="docutils literal notranslate"><span class="pre">/input/pose</span></code> 上接收目标姿态。在我们的情况下，我们希望将目标姿态重映射到 <code class="docutils literal notranslate"><span class="pre">/turtle2/pose</span></code> 主题上。最后，我们将 <code class="docutils literal notranslate"><span class="pre">/output/cmd_vel</span></code> 主题重映射到 <code class="docutils literal notranslate"><span class="pre">/turtlesim2/turtle1/cmd_vel</span></code>。这样，在我们的 <code class="docutils literal notranslate"><span class="pre">turtlesim2</span></code> 模拟世界中的 <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> 将跟随我们初始 turtlesim 世界中的 <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>。</p>
 </div>
 <div class="section" id="config-files">
-<h3><a class="toc-backref" href="#id14">7 Config files</a><a class="headerlink" href="#config-files" title="永久链接至标题"></a></h3>
-<p>Let's now create a file called <code class="docutils literal notranslate"><span class="pre">turtlesim_rviz.launch.py</span></code>.</p>
+<h3><a class="toc-backref" href="#id14">7 配置文件</a><a class="headerlink" href="#config-files" title="永久链接至标题"></a></h3>
+<p>现在让我们创建一个名为 <code class="docutils literal notranslate"><span class="pre">turtlesim_rviz.launch.py</span></code> 的文件。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -750,12 +746,11 @@ This way <code class="docutils literal notranslate"><span class="pre">turtle1</s
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>This launch file will start the RViz with the configuration file defined in the <code class="docutils literal notranslate"><span class="pre">turtle_tf2_py</span></code> package.
-This RViz configuration will set the world frame, enable TF visualization, and start RViz with a top-down view.</p>
+<p>这个启动文件将使用 <code class="docutils literal notranslate"><span class="pre">turtle_tf2_py</span></code> 包中定义的配置文件启动 RViz。这个 RViz 配置将设置世界坐标系，启用 TF 可视化，并以俯视图启动 RViz。</p>
 </div>
 <div class="section" id="environment-variables">
-<h3><a class="toc-backref" href="#id15">8 Environment Variables</a><a class="headerlink" href="#environment-variables" title="永久链接至标题"></a></h3>
-<p>Let's now create the last launch file called <code class="docutils literal notranslate"><span class="pre">fixed_broadcaster.launch.py</span></code> in our package.</p>
+<h3><a class="toc-backref" href="#id15">8 环境变量</a><a class="headerlink" href="#environment-variables" title="永久链接至标题"></a></h3>
+<p>现在我们来创建最后一个启动文件，名为``fixed_broadcaster.launch.py``，放在我们的包中。</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
 <span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">EnvironmentVariable</span><span class="p">,</span> <span class="n">LaunchConfiguration</span>
@@ -777,16 +772,14 @@ This RViz configuration will set the world frame, enable TF visualization, and s
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>This launch file shows the way environment variables can be called inside the launch files.
-Environment variables can be used to define or push namespaces for distinguishing nodes on different computers or robots.</p>
+<p>该启动文件展示了在启动文件中如何调用环境变量。环境变量可用于定义或推送命名空间，以区分不同计算机或机器人上的节点。</p>
 </div>
 </div>
 <div class="section" id="running-launch-files">
-<h2><a class="toc-backref" href="#id16">Running launch files</a><a class="headerlink" href="#running-launch-files" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id16">运行启动文件</a><a class="headerlink" href="#running-launch-files" title="永久链接至标题"></a></h2>
 <div class="section" id="update-setup-py">
-<h3><a class="toc-backref" href="#id17">1 Update setup.py</a><a class="headerlink" href="#update-setup-py" title="永久链接至标题"></a></h3>
-<p>Open <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and add the following lines so that the launch files from the <code class="docutils literal notranslate"><span class="pre">launch/</span></code> folder and configuration file from the <code class="docutils literal notranslate"><span class="pre">config/</span></code> would be installed.
-The <code class="docutils literal notranslate"><span class="pre">data_files</span></code> field should now look like this:</p>
+<h3><a class="toc-backref" href="#id17">1 更新 setup.py</a><a class="headerlink" href="#update-setup-py" title="永久链接至标题"></a></h3>
+<p>打开``setup.py``并添加以下行，以便安装``launch/<a href="#id1"><span class="problematic" id="id2">``</span></a>文件夹中的启动文件和``config/<a href="#id3"><span class="problematic" id="id4">``</span></a>中的配置文件。<a href="#id5"><span class="problematic" id="id6">``</span></a>data_files``字段现在应该如下所示：</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span><span class="o">=</span><span class="p">[</span>
       <span class="o">...</span>
       <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;launch&#39;</span><span class="p">),</span>
@@ -799,29 +792,25 @@ The <code class="docutils literal notranslate"><span class="pre">data_files</spa
 </div>
 <div class="section" id="build-and-run">
 <h3><a class="toc-backref" href="#id18">2 构建和运行</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
-<p>To finally see the result of our code, build the package and launch the top-level launch file using the following command:</p>
+<p>为了最终看到我们代码的结果，请使用以下命令构建包并启动顶层启动文件：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch launch_tutorial launch_turtlesim.launch.py</span>
 </pre></div>
 </div>
-<p>You will now see the two turtlesim simulations started.
-There are two turtles in the first one and one in the second one.
-In the first simulation, <code class="docutils literal notranslate"><span class="pre">turtle2</span></code> is spawned in the bottom-left part of the world.
-Its aim is to reach the <code class="docutils literal notranslate"><span class="pre">carrot1</span></code> frame which is five meters away on the x-axis relative to the <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> frame.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">turtlesim2/turtle1</span></code> in the second is designed to mimic the behavior of the <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>.</p>
-<p>If you want to control the <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>, run the teleop node.</p>
+<p>现在您将看到两个turtlesim模拟开始运行。第一个模拟中有两只乌龟，第二个模拟中只有一只乌龟。在第一个模拟中，“turtle2”被生成在世界的左下角。它的目标是相对于“turtle1”框架在x轴上距离为五米的“carrot1”框架。</p>
+<p>第二个模拟中的“turtlesim2/turtle1”被设计成模仿“turtle2”的行为。</p>
+<p>如果您想控制“turtle1”，请运行teleop节点。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
 </pre></div>
 </div>
-<p>As a result, you will see a similar picture:</p>
+<p>结果，您将看到类似的画面：</p>
 <img alt="../../../_images/turtlesim_worlds.png" src="../../../_images/turtlesim_worlds.png" />
-<p>In addition to that, the RViz should have started.
-It will show all turtle frames relative to the <code class="docutils literal notranslate"><span class="pre">world</span></code> frame, whose origin is at the bottom-left corner.</p>
+<p>除此之外，RViz应该已经启动。它将显示所有相对于“world”框架的乌龟框架，其原点位于左下角。</p>
 <img alt="../../../_images/turtlesim_rviz.png" src="../../../_images/turtlesim_rviz.png" />
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id19">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you learned about various tips and practices of managing large projects using ROS 2 launch files.</p>
+<p>在本教程中，您学习了使用ROS 2 launch文件管理大型项目的各种提示和实践。</p>
 </div>
 </div>
 
