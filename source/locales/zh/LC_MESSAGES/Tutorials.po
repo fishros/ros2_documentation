@@ -14076,62 +14076,62 @@ msgstr "现在你应该注意到 ``lookup_transform()`` 执行失败。它告诉
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:80
 msgid "The ``lookup_transform`` can take four arguments, where the last one is an optional timeout. It will block for up to that duration waiting for it to timeout."
-msgstr "The ``lookup_transform`` can take four arguments, where the last one is an optional timeout. It will block for up to that duration waiting for it to timeout."
+msgstr "``lookup_transform`` 可以接受四个参数，其中最后一个是可选的超时时间。它将阻塞等待，最多等待指定的时长后超时。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:85
 msgid "Once this change is made, remove the ``raise`` line from the ``except()`` block that we added above or the code will continue to fail."
-msgstr "Once this change is made, remove the ``raise`` line from the ``except()`` block that we added above or the code will continue to fail."
+msgstr "在进行这个更改后，从上面添加的 ``except()`` 块中移除 ``raise`` 行，否则代码将继续失败。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:93
 msgid "You should notice that ``lookup_transform()`` will actually block until the transform between the two turtles becomes available (this will usually take a few milli-seconds). Once the timeout has been reached (one second in this case), an exception will be raised only if the transform is still not available."
-msgstr "You should notice that ``lookup_transform()`` will actually block until the transform between the two turtles becomes available (this will usually take a few milli-seconds). Once the timeout has been reached (one second in this case), an exception will be raised only if the transform is still not available."
+msgstr "你应该注意到，``lookup_transform()`` 实际上会阻塞，直到两个 turtle 之间的变换可用（通常需要几毫秒）。一旦达到超时时间（在本例中为一秒），只有当变换仍然不可用时才会引发异常。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:99
 msgid "In this tutorial you learned more about the ``lookup_transform`` function and its timeout features. You also learned how to catch and handle additional exceptions that can be thrown by tf2."
-msgstr "In this tutorial you learned more about the ``lookup_transform`` function and its timeout features. You also learned how to catch and handle additional exceptions that can be thrown by tf2."
+msgstr "在本教程中，你学习了关于 ``lookup_transform`` 函数及其超时特性的更多内容。你还学会了如何捕获和处理 tf2 可能抛出的其他异常。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:8
 msgid "Quaternion fundamentals"
-msgstr "Quaternion fundamentals"
+msgstr "四元数基础知识"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:10
 msgid "**Goal:** Learn the basics of quaternion usage in ROS 2."
-msgstr "**Goal:** Learn the basics of quaternion usage in ROS 2."
+msgstr "**目标：**学习 ROS 2 中四元数的基本用法。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:23
 msgid "A quaternion is a 4-tuple representation of orientation, which is more concise than a rotation matrix. Quaternions are very efficient for analyzing situations where rotations in three dimensions are involved. Quaternions are used widely in robotics, quantum mechanics, computer vision, and 3D animation."
-msgstr "A quaternion is a 4-tuple representation of orientation, which is more concise than a rotation matrix. Quaternions are very efficient for analyzing situations where rotations in three dimensions are involved. Quaternions are used widely in robotics, quantum mechanics, computer vision, and 3D animation."
+msgstr "四元数是表示方向的四元组表示法，比旋转矩阵更简洁。四元数在涉及三维旋转的情况下非常高效。四元数广泛应用于机器人技术、量子力学、计算机视觉和3D动画。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:27
 msgid "You can learn more about the underlying mathematical concept on `Wikipedia <https://en.wikipedia.org/wiki/Quaternion>`_. You can also take a look at an explorable video series `Visualizing quaternions <https://eater.net/quaternions>`_ made by `3blue1brown <https://www.youtube.com/3blue1brown>`_."
-msgstr "You can learn more about the underlying mathematical concept on `Wikipedia <https://en.wikipedia.org/wiki/Quaternion>`_. You can also take a look at an explorable video series `Visualizing quaternions <https://eater.net/quaternions>`_ made by `3blue1brown <https://www.youtube.com/3blue1brown>`_."
+msgstr "您可以在 `维基百科 <https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%85%83%E6%95%B0>`_ 上了解更多有关底层数学概念的内容。您还可以观看 `3blue1brown <https://www.youtube.com/3blue1brown>`_ 制作的可视化四元数视频系列 `Visualizing quaternions <https://eater.net/quaternions>`_。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:30
 msgid "In this tutorial, you will learn how quaternions and conversion methods work in ROS 2."
-msgstr "In this tutorial, you will learn how quaternions and conversion methods work in ROS 2."
+msgstr "在本教程中，您将学习ROS 2中四元数和转换方法的工作原理。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:35
 msgid "However, this is not a hard requirement and you can stick to any other geometric transfromation library that suit you best. You can take a look at libraries like `transforms3d <https://github.com/matthew-brett/transforms3d>`_, `scipy.spatial.transform <https://github.com/scipy/scipy/tree/master/scipy/spatial/transform>`_, `pytransform3d <https://github.com/rock-learning/pytransform3d>`_, `numpy-quaternion <https://github.com/moble/quaternion>`_ or `blender.mathutils <https://docs.blender.org/api/master/mathutils.html>`_."
-msgstr "However, this is not a hard requirement and you can stick to any other geometric transfromation library that suit you best. You can take a look at libraries like `transforms3d <https://github.com/matthew-brett/transforms3d>`_, `scipy.spatial.transform <https://github.com/scipy/scipy/tree/master/scipy/spatial/transform>`_, `pytransform3d <https://github.com/rock-learning/pytransform3d>`_, `numpy-quaternion <https://github.com/moble/quaternion>`_ or `blender.mathutils <https://docs.blender.org/api/master/mathutils.html>`_."
+msgstr "然而，这不是硬性要求，您可以选择最适合您的任何其他几何变换库。您可以查看像 `transforms3d <https://github.com/matthew-brett/transforms3d>`_、`scipy.spatial.transform <https://github.com/scipy/scipy/tree/master/scipy/spatial/transform>`_、`pytransform3d <https://github.com/rock-learning/pytransform3d>`_、`numpy-quaternion <https://github.com/moble/quaternion>`_ 或 `blender.mathutils <https://docs.blender.org/api/master/mathutils.html>`_ 这样的库。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:39
 msgid "Components of a quaternion"
-msgstr "Components of a quaternion"
+msgstr "四元数的组成部分"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:41
 msgid "ROS 2 uses quaternions to track and apply rotations. A quaternion has 4 components ``(x, y, z, w)``. In ROS 2, ``w`` is last, but in some libraries like Eigen, ``w`` can be placed at the first position. The commonly-used unit quaternion that yields no rotation about the x/y/z axes is ``(0, 0, 0, 1)``, and can be created in a following way:"
-msgstr "ROS 2 uses quaternions to track and apply rotations. A quaternion has 4 components ``(x, y, z, w)``. In ROS 2, ``w`` is last, but in some libraries like Eigen, ``w`` can be placed at the first position. The commonly-used unit quaternion that yields no rotation about the x/y/z axes is ``(0, 0, 0, 1)``, and can be created in a following way:"
+msgstr "ROS 2使用四元数来跟踪和应用旋转。一个四元数有四个分量 ``(x, y, z, w)``。在ROS 2中，``w`` 在最后一位，但在一些库中如Eigen中，``w`` 可以放在第一位。常用的单位四元数在x/y/z轴上不产生旋转，表示为 ``(0, 0, 0, 1)``，可以用以下方式创建："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:58
