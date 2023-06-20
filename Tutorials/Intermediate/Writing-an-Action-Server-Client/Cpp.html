@@ -25,7 +25,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Writing an action server and client (Python)" href="Py.html" />
+    <link rel="next" title="编写一个动作服务器和客户端（Python）" href="Py.html" />
     <link rel="prev" title="创建一个动作" href="../Creating-an-Action.html" /> 
 </head>
 
@@ -141,7 +141,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Rosdep.html">使用rosdep管理依赖关系</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">创建一个动作</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">编写一个动作服务器和客户端（C++）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Py.html">Writing an action server and client (Python)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Py.html">编写一个动作服务器和客户端（Python）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Composition.html">在单个进程中组合多个节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Launch/Launch-Main.html">启动</a><ul>
@@ -960,14 +960,12 @@ ros2 pkg create --dependencies action_tutorials_interfaces rclcpp rclcpp_action 
 <span class="p">};</span><span class="w">  </span><span class="c1">// class FibonacciActionClient</span>
 </pre></div>
 </div>
-<p>We now have a fully functioning action client.  Let's get it built and running.</p>
+<p>我们现在拥有一个完全运行的动作客户端。让我们来构建和运行它吧。</p>
 </div>
 <div class="section" id="compiling-the-action-client">
-<h4>3.2 Compiling the action client<a class="headerlink" href="#compiling-the-action-client" title="永久链接至标题"></a></h4>
-<p>In the previous section we put the action client code into place.
-To get it to compile and run, we need to do a couple of additional things.</p>
-<p>First we need to setup the CMakeLists.txt so that the action client is compiled.
-Open up <code class="docutils literal notranslate"><span class="pre">action_tutorials_cpp/CMakeLists.txt</span></code>, and add the following right after the <code class="docutils literal notranslate"><span class="pre">find_package</span></code> calls:</p>
+<h4>3.2 编译动作客户端<a class="headerlink" href="#compiling-the-action-client" title="永久链接至标题"></a></h4>
+<p>在前一节中，我们已经放置了动作客户端的代码。为了使其编译和运行，我们需要进行一些额外的操作。</p>
+<p>首先，我们需要设置 CMakeLists.txt，以便编译动作客户端。打开 <code class="docutils literal notranslate"><span class="pre">action_tutorials_cpp/CMakeLists.txt</span></code>，在 <code class="docutils literal notranslate"><span class="pre">find_package</span></code> 调用之后添加以下内容：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_library</span><span class="p">(</span><span class="s">action_client</span><span class="w"> </span><span class="s">SHARED</span>
 <span class="w">  </span><span class="s">src/fibonacci_action_client.cpp</span><span class="p">)</span>
 <span class="nb">target_include_directories</span><span class="p">(</span><span class="s">action_client</span><span class="w"> </span><span class="s">PRIVATE</span>
@@ -992,28 +990,26 @@ Open up <code class="docutils literal notranslate"><span class="pre">action_tuto
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build
 </pre></div>
 </div>
-<p>This should compile the entire workspace, including the <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client</span></code> in the <code class="docutils literal notranslate"><span class="pre">action_tutorials_cpp</span></code> package.</p>
+<p>这将编译整个工作空间，包括 <code class="docutils literal notranslate"><span class="pre">action_tutorials_cpp</span></code> 包中的 <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client</span></code>。</p>
 </div>
 <div class="section" id="running-the-action-client">
-<h4>3.3 Running the action client<a class="headerlink" href="#running-the-action-client" title="永久链接至标题"></a></h4>
-<p>Now that we have the action client built, we can run it.
-First make sure that an action server is running in a separate terminal.
-Now source the workspace we just built (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>), and try to run the action client:</p>
+<h4>3.3 运行动作客户端<a class="headerlink" href="#running-the-action-client" title="永久链接至标题"></a></h4>
+<p>现在我们已经构建了动作客户端，可以运行它了。首先确保在单独的终端中运行了一个动作服务器。现在，源代码工作空间我们刚刚构建的（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>），然后尝试运行动作客户端：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run action_tutorials_cpp fibonacci_action_client
 </pre></div>
 </div>
-<p>You should see logged messages for the goal being accepted, feedback being printed, and the final result.</p>
+<p>您应该看到有关目标被接受、反馈被打印和最终结果的日志消息。</p>
 </div>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id8">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you put together a C++ action server and action client line by line, and configured them to exchange goals, feedback, and results.</p>
+<p>在本教程中，您逐行组合了一个C++动作服务器和动作客户端，并配置它们交换目标、反馈和结果。</p>
 </div>
 <div class="section" id="related-content">
 <h2><a class="toc-backref" href="#id9">相关内容</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>There are several ways you could write an action server and client in C++; check out the <code class="docutils literal notranslate"><span class="pre">minimal_action_server</span></code> and <code class="docutils literal notranslate"><span class="pre">minimal_action_client</span></code> packages in the <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp">ros2/examples</a> repo.</p></li>
+<li><p>您可以使用几种方法在C++中编写动作服务器和客户端；请查看`ros2/examples &lt;<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp">https://github.com/ros2/examples/tree/humble/rclcpp</a>&gt;`_ repo中的``minimal_action_server``和``minimal_action_client``包。</p></li>
 <li><p>有关ROS动作的更详细信息，请参阅 <a class="reference external" href="http://design.ros2.org/articles/actions.html">设计文章</a>。</p></li>
 </ul>
 </div>
@@ -1025,7 +1021,7 @@ Now source the workspace we just built (<code class="docutils literal notranslat
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../Creating-an-Action.html" class="btn btn-neutral float-left" title="创建一个动作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Py.html" class="btn btn-neutral float-right" title="Writing an action server and client (Python)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Py.html" class="btn btn-neutral float-right" title="编写一个动作服务器和客户端（Python）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
