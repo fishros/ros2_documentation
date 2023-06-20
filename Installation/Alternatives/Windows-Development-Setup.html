@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows (source) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>Windows（源代码） &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -52,7 +52,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../Alternatives.html">替代方案</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Ubuntu-Development-Setup.html">Ubuntu（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Ubuntu-Install-Binary.html">Ubuntu（二进制）</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows (source)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Windows（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Development-Setup.html">RHEL（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Install-Binary.html">RHEL（二进制）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macOS-Development-Setup.html">macOS (source)</a></li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Installation.html">安装</a> &raquo;</li>
           <li><a href="../Alternatives.html">替代方案</a> &raquo;</li>
-      <li>Windows (source)</li>
+      <li>Windows（源代码）</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Installation/Alternatives/Windows-Development-Setup.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,19 +373,19 @@
 
 
   <div class="section" id="windows-source">
-<span id="windows-latest"></span><h1>Windows (source)<a class="headerlink" href="#windows-source" title="永久链接至标题"></a></h1>
+<span id="windows-latest"></span><h1>Windows（源代码）<a class="headerlink" href="#windows-source" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#system-requirements" id="id2">系统要求</a></p>
 <ul>
-<li><p><a class="reference internal" href="#language-support" id="id3">Language support</a></p></li>
+<li><p><a class="reference internal" href="#language-support" id="id3">语言支持</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#installing-prerequisites" id="id4">安装先决条件</a></p>
 <ul>
-<li><p><a class="reference internal" href="#install-chocolatey" id="id5">Install Chocolatey</a></p></li>
-<li><p><a class="reference internal" href="#install-python" id="id6">Install Python</a></p></li>
+<li><p><a class="reference internal" href="#install-chocolatey" id="id5">安装 Chocolatey</a></p></li>
+<li><p><a class="reference internal" href="#install-python" id="id6">安装 Python</a></p></li>
 <li><p><a class="reference internal" href="#install-visual-c-redistributables" id="id7">Install Visual C++ Redistributables</a></p></li>
 <li><p><a class="reference internal" href="#install-openssl" id="id8">Install OpenSSL</a></p></li>
 <li><p><a class="reference internal" href="#install-visual-studio" id="id9">Install Visual Studio</a></p></li>
@@ -419,27 +419,26 @@
 <li><p><a class="reference internal" href="#uninstall" id="id29">卸载</a></p></li>
 </ul>
 </div>
-<p>This guide is about how to setup a development environment for ROS 2 on Windows.</p>
+<p>本指南介绍了如何在Windows上设置ROS 2的开发环境。</p>
 <div class="section" id="system-requirements">
 <h2><a class="toc-backref" href="#id2">系统要求</a><a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
-<p>Only Windows 10 is supported.</p>
+<p>仅支持Windows 10。</p>
 <div class="section" id="language-support">
-<h3><a class="toc-backref" href="#id3">Language support</a><a class="headerlink" href="#language-support" title="永久链接至标题"></a></h3>
-<p>Make sure you have a locale which supports <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code>.
-For example, for a Chinese-language Windows 10 installation, you may need to install an <a class="reference external" href="https://support.microsoft.com/en-us/windows/language-packs-for-windows-a5094319-a92d-18de-5b53-1cfc697cfca8">English language pack</a>.</p>
+<h3><a class="toc-backref" href="#id3">语言支持</a><a class="headerlink" href="#language-support" title="永久链接至标题"></a></h3>
+<p>请确保您有一个支持``UTF-8``的语言环境。例如，对于中文语言的Windows 10安装，您可能需要安装一个`英语语言包&lt;<a class="reference external" href="https://support.microsoft.com/en-us/windows/language-packs-for-windows-a5094319-a92d-18de-5b53-1cfc697cfca8">https://support.microsoft.com/en-us/windows/language-packs-for-windows-a5094319-a92d-18de-5b53-1cfc697cfca8</a>&gt;`_。</p>
 </div>
 </div>
 <div class="section" id="installing-prerequisites">
 <h2><a class="toc-backref" href="#id4">安装先决条件</a><a class="headerlink" href="#installing-prerequisites" title="永久链接至标题"></a></h2>
 <div class="section" id="install-chocolatey">
-<h3><a class="toc-backref" href="#id5">Install Chocolatey</a><a class="headerlink" href="#install-chocolatey" title="永久链接至标题"></a></h3>
-<p>Chocolatey is a package manager for Windows, install it by following their installation instructions:</p>
+<h3><a class="toc-backref" href="#id5">安装 Chocolatey</a><a class="headerlink" href="#install-chocolatey" title="永久链接至标题"></a></h3>
+<p>Chocolatey 是 Windows 的软件包管理器，请按照他们的安装说明进行安装:</p>
 <p><a class="reference external" href="https://chocolatey.org/install">https://chocolatey.org/install</a></p>
-<p>You'll use Chocolatey to install some other developer tools.</p>
+<p>您将使用 Chocolatey 安装其他一些开发工具。</p>
 </div>
 <div class="section" id="install-python">
-<h3><a class="toc-backref" href="#id6">Install Python</a><a class="headerlink" href="#install-python" title="永久链接至标题"></a></h3>
-<p>Open a Command Prompt and type the following to install Python via Chocolatey:</p>
+<h3><a class="toc-backref" href="#id6">安装 Python</a><a class="headerlink" href="#install-python" title="永久链接至标题"></a></h3>
+<p>打开命令提示符并输入以下命令通过 Chocolatey 安装 Python：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y python --version <span class="m">3</span>.8.3
 </pre></div>
 </div>
