@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="About logging and logger configuration" href="About-Logging.html" />
-    <link rel="prev" title="The ROS_DOMAIN_ID" href="About-Domain-ID.html" /> 
+    <link rel="prev" title="ROS_DOMAIN_ID" href="About-Domain-ID.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -284,7 +284,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">The ROS_DOMAIN_ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">关于不同的ROS 2 DDS/RTPS供应商</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Logging.html">About logging and logger configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">About Quality of Service settings</a></li>
@@ -421,23 +421,20 @@
 <div class="section" id="multiple-rmw-implementations">
 <h2>多个RMW实现<a class="headerlink" href="#multiple-rmw-implementations" title="永久链接至标题"></a></h2>
 <p>当前活跃的ROS 2二进制发布版本已经内置了对多个RMW实现的支持（Fast DDS、RTI Connext Pro、Eclipse Cyclone DDS、GurumNetworks GurumDDS）。默认使用的是Fast DDS，因为我们将其与二进制包一起分发，所以无需进行任何额外的安装步骤。</p>
-<p>Other RMWs like Cyclone DDS, Connext or GurumDDS can be enabled by <a class="reference internal" href="../Installation/DDS-Implementations.html"><span class="doc">installing additional packages</span></a>, but without having to rebuild anything or replace any existing packages.</p>
-<p>A ROS 2 workspace that has been built from source may build and install multiple RMW implementations simultaneously.
-While the core ROS 2 code is being compiled, any RMW implementation that is found will be built if the relevant DDS/RTPS implementation has been installed properly and the relevant environment variables have been configured.
-For example, if the code for the <a class="reference external" href="https://github.com/ros2/rmw_connextdds">RMW package for RTI Connext DDS</a> is in the workspace, it will be built if an installation of RTI's Connext Pro can also be found.</p>
-<p>For many cases you will find that nodes using different RMW implementations are able to communicate, however this is not true under all circumstances.
-Here is a list of inter-vendor communication configurations that are not supported:</p>
+<p>其他像Cyclone DDS、Connext或GurumDDS这样的RMW可以通过:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>安装附加包 &lt;../Installation/DDS-Implementations&gt;`进行启用，但无需重新构建任何内容或替换任何现有包。</p>
+<p>从源代码构建的ROS 2工作空间可以同时构建和安装多个RMW实现。在编译核心ROS 2代码时，如果发现了任何RMW实现，并且相关的DDS/RTPS实现已经正确安装并配置了相关的环境变量，那么这些RMW实现将会被构建。例如，如果工作空间中存在`RMW package for RTI Connext DDS &lt;<a class="reference external" href="https://github.com/ros2/rmw_connextdds">https://github.com/ros2/rmw_connextdds</a>&gt;`__的代码，那么如果还可以找到RTI的Connext Pro的安装，它也将被构建。</p>
+<p>在许多情况下，使用不同RMW实现的节点可以进行通信，但并非在所有情况下都成立。以下是不支持的跨厂商通信配置列表：</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>Fast DDS &lt;-&gt; Connext</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">WString</span></code> published by Fast DDS can't be received correctly by Connext on macOS</p></li>
+<li><p>在macOS上，Fast DDS发布的``WString``无法被Connext正确接收</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>Connext &lt;-&gt; Cyclone DDS</dt><dd><ul>
-<li><p>does not support pub/sub communication for <code class="docutils literal notranslate"><span class="pre">WString</span></code></p></li>
+<li><p>不支持 <code class="docutils literal notranslate"><span class="pre">WString</span></code> 类型的发布/订阅通信</p></li>
 </ul>
 </dd>
 </dl>
@@ -445,13 +442,9 @@ Here is a list of inter-vendor communication configurations that are not support
 </ul>
 </div>
 <div class="section" id="default-rmw-implementation">
-<h2>Default RMW implementation<a class="headerlink" href="#default-rmw-implementation" title="永久链接至标题"></a></h2>
-<p>If a ROS 2 workspace has multiple RMW implementations, Fast DDS is selected as the default RMW implementation if it is available.
-If the Fast DDS RMW implementation is not installed, the RMW implementation with the first RMW implementation identifier in alphabetical order will be used.
-The implementation identifier is the name of the ROS package that provides the RMW implementation, e.g. <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code>.
-For example, if both <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> ROS packages are installed, <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> would be the default.
-If <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code> is ever installed, it would be the default.</p>
-<p>See the <a class="reference internal" href="../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">guide</span></a> for how to specify which RMW implementation is to be used when running the ROS 2 examples.</p>
+<h2>默认的RMW实现<a class="headerlink" href="#default-rmw-implementation" title="永久链接至标题"></a></h2>
+<p>如果一个ROS 2工作空间有多个RMW实现，如果可用的话会选择Fast DDS作为默认的RMW实现。如果未安装Fast DDS的RMW实现，将使用按字母顺序排列的第一个RMW实现标识符的RMW实现。实现标识符是提供RMW实现的ROS软件包的名称，例如 <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code>。例如，如果安装了 <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 两个ROS软件包，<code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 将成为默认的。如果以后安装了 <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code>，它将成为默认的。</p>
+<p>请参考 <a class="reference internal" href="../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">指南</span></a>，了解如何在运行ROS 2示例时指定要使用的RMW实现。</p>
 </div>
 </div>
 
@@ -460,7 +453,7 @@ If <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="About-Domain-ID.html" class="btn btn-neutral float-left" title="The ROS_DOMAIN_ID" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="About-Domain-ID.html" class="btn btn-neutral float-left" title="ROS_DOMAIN_ID" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="About-Logging.html" class="btn btn-neutral float-right" title="About logging and logger configuration" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
