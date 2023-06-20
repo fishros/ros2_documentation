@@ -390,9 +390,9 @@
 <ul>
 <li><p><a class="reference internal" href="#examine-the-code" id="id10">1.1 检查代码</a></p></li>
 <li><p><a class="reference internal" href="#cmakelists-txt" id="id11">1.2 CMakeLists.txt</a></p></li>
-<li><p><a class="reference internal" href="#write-the-launch-file" id="id12">1.3 Write the launch file</a></p></li>
-<li><p><a class="reference internal" href="#build" id="id13">1.4 Build</a></p></li>
-<li><p><a class="reference internal" href="#run" id="id14">1.5 Run</a></p></li>
+<li><p><a class="reference internal" href="#write-the-launch-file" id="id12">1.3 编写启动文件</a></p></li>
+<li><p><a class="reference internal" href="#build" id="id13">1.4 构建</a></p></li>
+<li><p><a class="reference internal" href="#run" id="id14">1.5 运行</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#write-the-dynamic-frame-broadcaster" id="id15">2 Write the dynamic frame broadcaster</a></p>
@@ -423,10 +423,8 @@
 <h2><a class="toc-backref" href="#id8">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-fixed-frame-broadcaster">
 <h3><a class="toc-backref" href="#id9">1. 编写固定帧广播器</a><a class="headerlink" href="#write-the-fixed-frame-broadcaster" title="永久链接至标题"></a></h3>
-<p>In our turtle example, we'll add a new frame <code class="docutils literal notranslate"><span class="pre">carrot1</span></code>, which will be the child of the <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>.
-This frame will serve as the goal for the second turtle.</p>
-<p>Let's first create the source files. Go to the <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> package we created in the previous tutorials.
-Download the fixed frame broadcaster code by entering the following command:</p>
+<p>在我们的乌龟示例中，我们将添加一个名为“carrot1”的新框架，它将是“turtle1”的子框架。这个框架将作为第二只乌龟的目标。</p>
+<p>首先创建源文件。转到我们在之前教程中创建的“learning_tf2_cpp”包。通过输入以下命令下载固定框架广播代码：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_cpp/src/fixed_frame_tf2_broadcaster.cpp</span>
 </pre></div>
@@ -443,7 +441,7 @@ Download the fixed frame broadcaster code by entering the following command:</p>
 </pre></div>
 </div>
 </div></div>
-<p>Now open the file called <code class="docutils literal notranslate"><span class="pre">fixed_frame_tf2_broadcaster.cpp</span></code>.</p>
+<p>现在打开名为“fixed_frame_tf2_broadcaster.cpp”的文件。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
@@ -497,12 +495,10 @@ Download the fixed frame broadcaster code by entering the following command:</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The code is very similar to the tf2 broadcaster tutorial example and the only difference is that the transform here does not change over time.</p>
+<p>这段代码与tf2广播器教程示例非常相似，唯一的区别是这里的变换不随时间改变。</p>
 <div class="section" id="examine-the-code">
 <h4><a class="toc-backref" href="#id10">1.1 检查代码</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
-<p>Let's take a look at the key lines in this piece of code.
-Here we create a new transform, from the parent <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> to the new child <code class="docutils literal notranslate"><span class="pre">carrot1</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">carrot1</span></code> frame is 2 meters offset in y axis in terms of the <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> frame.</p>
+<p>让我们看一下这段代码中的关键部分。在这里，我们创建了一个新的变换，从父框架“turtle1”到新的子框架“carrot1”。相对于“turtle1”框架，框架“carrot1”在y轴上偏移了2米。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">TransformStamped</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
 
 <span class="n">t</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">stamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
@@ -516,8 +512,8 @@ The <code class="docutils literal notranslate"><span class="pre">carrot1</span><
 </div>
 <div class="section" id="cmakelists-txt">
 <h4><a class="toc-backref" href="#id11">1.2 CMakeLists.txt</a><a class="headerlink" href="#cmakelists-txt" title="永久链接至标题"></a></h4>
-<p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files are located.</p>
-<p>Now open the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> add the executable and name it <code class="docutils literal notranslate"><span class="pre">fixed_frame_tf2_broadcaster</span></code>.</p>
+<p>导航到“learning_tf2_cpp”目录的上一级，其中包含“CMakeLists.txt”和“package.xml”文件。</p>
+<p>现在打开``CMakeLists.txt``文件，添加可执行文件，并将其命名为``fixed_frame_tf2_broadcaster``。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">add_executable(fixed_frame_tf2_broadcaster src/fixed_frame_tf2_broadcaster.cpp)</span>
 <span class="go">ament_target_dependencies(</span>
 <span class="go">    fixed_frame_tf2_broadcaster</span>
@@ -535,9 +531,8 @@ The <code class="docutils literal notranslate"><span class="pre">carrot1</span><
 </div>
 </div>
 <div class="section" id="write-the-launch-file">
-<h4><a class="toc-backref" href="#id12">1.3 Write the launch file</a><a class="headerlink" href="#write-the-launch-file" title="永久链接至标题"></a></h4>
-<p>Now let's create a launch file for this example.
-With your text editor, create a new file called <code class="docutils literal notranslate"><span class="pre">turtle_tf2_fixed_frame_demo.launch.py</span></code>, and add the following lines:</p>
+<h4><a class="toc-backref" href="#id12">1.3 编写启动文件</a><a class="headerlink" href="#write-the-launch-file" title="永久链接至标题"></a></h4>
+<p>现在我们为这个示例创建一个启动文件。使用文本编辑器创建一个名为``turtle_tf2_fixed_frame_demo.launch.py``的新文件，并添加以下行：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -566,8 +561,8 @@ With your text editor, create a new file called <code class="docutils literal no
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>This launch file imports the required packages and then creates a <code class="docutils literal notranslate"><span class="pre">demo_nodes</span></code> variable that will store nodes that we created in the previous tutorial's launch file.</p>
-<p>The last part of the code will add our fixed <code class="docutils literal notranslate"><span class="pre">carrot1</span></code> frame to the turtlesim world using our <code class="docutils literal notranslate"><span class="pre">fixed_frame_tf2_broadcaster</span></code> node.</p>
+<p>该启动文件导入所需的包，然后创建一个``demo_nodes``变量，用于存储我们在上一教程的启动文件中创建的节点。</p>
+<p>代码的最后一部分将使用我们的``fixed_frame_tf2_broadcaster``节点将固定的``carrot1``帧添加到turtlesim世界中。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="p">(</span>
     <span class="n">package</span><span class="o">=</span><span class="s1">&#39;learning_tf2_cpp&#39;</span><span class="p">,</span>
     <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;fixed_frame_tf2_broadcaster&#39;</span><span class="p">,</span>
@@ -577,16 +572,16 @@ With your text editor, create a new file called <code class="docutils literal no
 </div>
 </div>
 <div class="section" id="build">
-<h4><a class="toc-backref" href="#id13">1.4 Build</a><a class="headerlink" href="#build" title="永久链接至标题"></a></h4>
-<p>Run <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> in the root of your workspace to check for missing dependencies.</p>
+<h4><a class="toc-backref" href="#id13">1.4 构建</a><a class="headerlink" href="#build" title="永久链接至标题"></a></h4>
+<p>在你的工作空间的根目录中运行 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>，以检查缺少的依赖项。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you will need to install <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> and <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> dependencies yourself</p>
-</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you will need to install <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> and <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> dependencies yourself</p>
+</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div></div>
-<p>From the root of your workspace, build your updated package:</p>
+<p>从你的工作空间的根目录中构建更新的软件包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_cpp</span>
 </pre></div>
@@ -598,7 +593,7 @@ With your text editor, create a new file called <code class="docutils literal no
 </pre></div>
 </div>
 </div></div>
-<p>Open a new terminal, navigate to the root of your workspace, and source the setup files:</p>
+<p>打开一个新终端，进入你的工作空间的根目录，并源化设置文件：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">. install/setup.bash</span>
 </pre></div>
@@ -616,8 +611,8 @@ With your text editor, create a new file called <code class="docutils literal no
 </div></div>
 </div>
 <div class="section" id="run">
-<h4><a class="toc-backref" href="#id14">1.5 Run</a><a class="headerlink" href="#run" title="永久链接至标题"></a></h4>
-<p>Now you can start the turtle broadcaster demo:</p>
+<h4><a class="toc-backref" href="#id14">1.5 运行</a><a class="headerlink" href="#run" title="永久链接至标题"></a></h4>
+<p>现在你可以开始运行海龟广播器演示：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_cpp turtle_tf2_fixed_frame_demo.launch.py</span>
 </pre></div>
 </div>
@@ -736,7 +731,7 @@ Now download the dynamic frame broadcaster code by entering the following comman
 </div>
 <div class="section" id="id2">
 <h4><a class="toc-backref" href="#id17">2.2 CMakeLists.txt</a><a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files are located.</p>
+<p>导航到“learning_tf2_cpp”目录的上一级，其中包含“CMakeLists.txt”和“package.xml”文件。</p>
 <p>Now open the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> add the executable and name it <code class="docutils literal notranslate"><span class="pre">dynamic_frame_tf2_broadcaster</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">add_executable(dynamic_frame_tf2_broadcaster src/dynamic_frame_tf2_broadcaster.cpp)</span>
 <span class="go">ament_target_dependencies(</span>
@@ -789,15 +784,15 @@ Now download the dynamic frame broadcaster code by entering the following comman
 </div>
 <div class="section" id="id4">
 <h4><a class="toc-backref" href="#id19">2.4 Build</a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
-<p>Run <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> in the root of your workspace to check for missing dependencies.</p>
+<p>在你的工作空间的根目录中运行 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>，以检查缺少的依赖项。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-5-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-5-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-5-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-5-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-5-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you will need to install <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> and <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> dependencies yourself</p>
-</div><div aria-labelledby="tab-5-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>rosdep only runs on Linux, so you will need to install <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> and <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> dependencies yourself</p>
+</div><div aria-labelledby="tab-5-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
+</div><div aria-labelledby="tab-5-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div></div>
-<p>From the root of your workspace, build your updated package:</p>
+<p>从你的工作空间的根目录中构建更新的软件包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-6-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-6-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-6-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-6-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_cpp</span>
 </pre></div>
@@ -809,7 +804,7 @@ Now download the dynamic frame broadcaster code by entering the following comman
 </pre></div>
 </div>
 </div></div>
-<p>Open a new terminal, navigate to the root of your workspace, and source the setup files:</p>
+<p>打开一个新终端，进入你的工作空间的根目录，并源化设置文件：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-7-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-7-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-7-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-7-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-7-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">. install/setup.bash</span>
 </pre></div>
