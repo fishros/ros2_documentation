@@ -622,62 +622,62 @@ msgstr "假设您喜欢新的``ament``工具，并希望使用它来构建使用
 
 #: ../../source/Concepts/About-Catment.rst:126
 msgid "Now build the ROS packages:"
-msgstr "Now build the ROS packages:"
+msgstr "现在构建ROS软件包："
 
 
 #: ../../source/Concepts/About-Catment.rst:134
 msgid "Voila: you used the ``ament`` build tool to build your ``catkin`` packages, without having to migrate them."
-msgstr "Voila: you used the ``ament`` build tool to build your ``catkin`` packages, without having to migrate them."
+msgstr "看哪：你使用了``ament``构建工具来构建你的``catkin``软件包，而无需迁移它们。"
 
 
 #: ../../source/Concepts/About-Catment.rst:137
 msgid "Variation: Using the ``catkin`` API in a ROS 2 package"
-msgstr "Variation: Using the ``catkin`` API in a ROS 2 package"
+msgstr "变化：在ROS 2软件包中使用``catkin`` API"
 
 
 #: ../../source/Concepts/About-Catment.rst:139
 msgid "Let's say that you're building on top of ROS 2, which internally uses the ``ament`` API, and you want to add a new package using the ``catkin`` API."
-msgstr "Let's say that you're building on top of ROS 2, which internally uses the ``ament`` API, and you want to add a new package using the ``catkin`` API."
+msgstr "假设你正在构建基于ROS 2的软件包，它在内部使用``ament`` API，并且你想要添加一个使用``catkin`` API的新软件包。"
 
 
 #: ../../source/Concepts/About-Catment.rst:141
 msgid "To make this work, you need a Python3 installation of ``catkin`` (the binary debians use Python2.7). Here's an example of doing that, installing to ``$HOME/catkin``:"
-msgstr "To make this work, you need a Python3 installation of ``catkin`` (the binary debians use Python2.7). Here's an example of doing that, installing to ``$HOME/catkin``:"
+msgstr "为了使其工作，你需要一个Python 3安装的``catkin``（二进制Debian包使用Python 2.7）。这里是一个安装到``$HOME/catkin``的示例："
 
 
 #: ../../source/Concepts/About-Catment.rst:160
 msgid "To use that version of catkin, you just need to source the ``$HOME/catkin/setup.bash`` file."
-msgstr "To use that version of catkin, you just need to source the ``$HOME/catkin/setup.bash`` file."
+msgstr "要使用那个版本的catkin，你只需要source ``$HOME/catkin/setup.bash``文件。"
 
 
 #: ../../source/Concepts/About-Catment.rst:162
 msgid "Let's assume that you have the usual ROS 2 workspace in ``~/ros2_ws``, and that you're on the ``catkin`` branches in ``ament_package`` and ``ament_tools``. Add to that workspace the ``image_tools_catkin`` package from https://github.com/gerkey/catment. It's a simple port of the ROS 2 ``image_tools`` package, taking it from the ``ament`` API to the ``catkin`` API. To build it:"
-msgstr "Let's assume that you have the usual ROS 2 workspace in ``~/ros2_ws``, and that you're on the ``catkin`` branches in ``ament_package`` and ``ament_tools``. Add to that workspace the ``image_tools_catkin`` package from https://github.com/gerkey/catment. It's a simple port of the ROS 2 ``image_tools`` package, taking it from the ``ament`` API to the ``catkin`` API. To build it:"
+msgstr "假设您在``~/ros2_ws``中有一个常规的ROS 2工作空间，并且您在``ament_package``和``ament_tools``的``catkin``分支上。在该工作空间中添加来自https://github.com/gerkey/catment的``image_tools_catkin``包。它是ROS 2 ``image_tools``包的一个简单移植，将其从``ament`` API转换为``catkin`` API。要构建它："
 
 
 #: ../../source/Concepts/About-Catment.rst:173
 msgid "Voila: when adding new packages atop ROS 2, you're free to choose which CMake API you prefer inside your package."
-msgstr "Voila: when adding new packages atop ROS 2, you're free to choose which CMake API you prefer inside your package."
+msgstr "大功告成：在构建ROS 2上的新包时，您可以自由选择首选的CMake API来编写您的包。"
 
 
 #: ../../source/Concepts/About-Catment.rst:176
 msgid "**Caveat**: Requires commenting out the use of ``CATKIN_DEPENDS`` inside ``catkin_package()``, because somewhere somebody was getting upset that things like ``rclcpp`` aren't ``catkin`` packages. That constraint needs to be relaxed somehow."
-msgstr "**Caveat**: Requires commenting out the use of ``CATKIN_DEPENDS`` inside ``catkin_package()``, because somewhere somebody was getting upset that things like ``rclcpp`` aren't ``catkin`` packages. That constraint needs to be relaxed somehow."
+msgstr "**注意**：需要在``catkin_package()``中注释掉对``CATKIN_DEPENDS``的使用，因为某个地方有人因为像``rclcpp``之类的不是``catkin``包而感到不满。需要以某种方式放宽这个约束。"
 
 
 #: ../../source/Concepts/About-Catment.rst:178
 msgid "**TODO**: The same demo but with an ``ament`` package that depends on a ``catkin`` package (this is easy)."
-msgstr "**TODO**: The same demo but with an ``ament`` package that depends on a ``catkin`` package (this is easy)."
+msgstr "**TODO**：使用依赖于``catkin``包的``ament``包进行相同的演示（这很容易）。"
 
 
 #: ../../source/Concepts/About-Catment.rst:179
 msgid "**TODO**: The same demo but with a package that has a vanilla ``CMakeLists.txt`` that uses neither ``ament`` nor ``catkin``, and provides a manually generated ``fooConfig.cmake`` file that exports the right stuff to make it look the same to outsiders."
-msgstr "**TODO**: The same demo but with a package that has a vanilla ``CMakeLists.txt`` that uses neither ``ament`` nor ``catkin``, and provides a manually generated ``fooConfig.cmake`` file that exports the right stuff to make it look the same to outsiders."
+msgstr "**TODO**：使用既不使用``ament``也不使用``catkin``的普通``CMakeLists.txt``的包进行相同的演示，并提供一个手动生成的``fooConfig.cmake``文件，向外部提供正确的内容以使其看起来与外部包相同。"
 
 
 #: ../../source/Concepts/About-Catment.rst:182
 msgid "Building ROS 2 packages with ``catkin_make_isolated``"
-msgstr "Building ROS 2 packages with ``catkin_make_isolated``"
+msgstr "使用``catkin_make_isolated``构建ROS 2包"
 
 
 #: ../../source/Concepts/About-Catment.rst:184
