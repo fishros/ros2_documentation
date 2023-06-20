@@ -12571,62 +12571,62 @@ msgstr "1 创建并设置包"
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:43
 msgid "Create a new package of build_type ``ament_python`` called ``launch_tutorial``:"
-msgstr "Create a new package of build_type ``ament_python`` called ``launch_tutorial``:"
+msgstr "创建一个名为``launch_tutorial``的新构建类型为``ament_python``的软件包："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:49
 msgid "Inside of that package, create a directory called ``launch``:"
-msgstr "Inside of that package, create a directory called ``launch``:"
+msgstr "在该软件包中创建一个名为``launch``的目录："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:71
 msgid "Finally, make sure to add in changes to the ``setup.py`` of the package so that the launch files will be installed:"
-msgstr "Finally, make sure to add in changes to the ``setup.py`` of the package so that the launch files will be installed:"
+msgstr "最后，确保在软件包的``setup.py``中添加更改，以便安装启动文件："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:92
 msgid "2 Parent launch file"
-msgstr "2 Parent launch file"
+msgstr "2. 父级启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:94
 msgid "Let's create a launch file that will call and pass arguments to another launch file. To do this, create an ``example_main.launch.py`` file in the ``launch`` folder of the ``launch_tutorial`` package."
-msgstr "Let's create a launch file that will call and pass arguments to another launch file. To do this, create an ``example_main.launch.py`` file in the ``launch`` folder of the ``launch_tutorial`` package."
+msgstr "让我们创建一个启动文件，调用并传递参数给另一个启动文件。为此，在``launch_tutorial``软件包的``launch``文件夹中创建一个名为``example_main.launch.py``的文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:130
 msgid "In the ``example_main.launch.py`` file, the ``FindPackageShare`` substitution is used to find the path to the ``launch_tutorial`` package. The ``PathJoinSubstitution`` substitution is then used to join the path to that package path with the ``example_substitutions.launch.py`` file name."
-msgstr "In the ``example_main.launch.py`` file, the ``FindPackageShare`` substitution is used to find the path to the ``launch_tutorial`` package. The ``PathJoinSubstitution`` substitution is then used to join the path to that package path with the ``example_substitutions.launch.py`` file name."
+msgstr "在``example_main.launch.py``文件中，使用``FindPackageShare``替代找到``launch_tutorial``软件包的路径。然后，使用``PathJoinSubstitution``替代将该软件包路径与``example_substitutions.launch.py``文件名连接起来。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:141
 msgid "The ``launch_arguments`` dictionary with ``turtlesim_ns`` and ``use_provided_red`` arguments is passed to the ``IncludeLaunchDescription`` action. The ``TextSubstitution`` substitution is used to define the ``new_background_r`` argument with the value of the ``background_r`` key in the ``colors`` dictionary."
-msgstr "The ``launch_arguments`` dictionary with ``turtlesim_ns`` and ``use_provided_red`` arguments is passed to the ``IncludeLaunchDescription`` action. The ``TextSubstitution`` substitution is used to define the ``new_background_r`` argument with the value of the ``background_r`` key in the ``colors`` dictionary."
+msgstr "将具有 ``turtlesim_ns`` 和 ``use_provided_red`` 参数的 ``launch_arguments`` 字典传递给 ``IncludeLaunchDescription`` 动作。使用 ``TextSubstitution`` 替代方式来定义具有 ``colors`` 字典中 ``background_r`` 键的值的 ``new_background_r`` 参数。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:153
 msgid "3 Substitutions example launch file"
-msgstr "3 Substitutions example launch file"
+msgstr "3个替代方式示例的启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:155
 msgid "Now create an ``example_substitutions.launch.py`` file in the same folder."
-msgstr "Now create an ``example_substitutions.launch.py`` file in the same folder."
+msgstr "现在在相同文件夹中创建一个名为 ``example_substitutions.launch.py`` 的文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:241
 msgid "In the ``example_substitutions.launch.py`` file, ``turtlesim_ns``, ``use_provided_red``, and ``new_background_r`` launch configurations are defined. They are used to store values of launch arguments in the above variables and to pass them to required actions. These ``LaunchConfiguration`` substitutions allow us to acquire the value of the launch argument in any part of the launch description."
-msgstr "In the ``example_substitutions.launch.py`` file, ``turtlesim_ns``, ``use_provided_red``, and ``new_background_r`` launch configurations are defined. They are used to store values of launch arguments in the above variables and to pass them to required actions. These ``LaunchConfiguration`` substitutions allow us to acquire the value of the launch argument in any part of the launch description."
+msgstr "在 ``example_substitutions.launch.py`` 文件中，定义了 ``turtlesim_ns``、``use_provided_red`` 和 ``new_background_r`` 的启动配置。它们用于在上述变量中存储启动参数的值，并将其传递给所需的动作。这些 ``LaunchConfiguration`` 替代方式允许我们在启动描述的任何部分中获取启动参数的值。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:245
 msgid "``DeclareLaunchArgument`` is used to define the launch argument that can be passed from the above launch file or from the console."
-msgstr "``DeclareLaunchArgument`` is used to define the launch argument that can be passed from the above launch file or from the console."
+msgstr "使用 ``DeclareLaunchArgument`` 定义可以从上述启动文件或控制台传递的启动参数。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:266
 msgid "The ``turtlesim_node`` node with the ``namespace`` set to ``turtlesim_ns`` ``LaunchConfiguration`` substitution is defined."
-msgstr "The ``turtlesim_node`` node with the ``namespace`` set to ``turtlesim_ns`` ``LaunchConfiguration`` substitution is defined."
+msgstr "定义了具有 ``namespace`` 设置为 ``turtlesim_ns`` 的 ``turtlesim_node`` 节点，并使用 ``LaunchConfiguration`` 替代方式。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:277
