@@ -397,31 +397,30 @@
 <tr class="row-even"><td><p>eProsima <em>Fast DDS</em></p></td>
 <td><p>Apache 2</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code></p></td>
-<td><p>Full support. Default RMW. Packaged with binary releases.</p></td>
+<td><p>完全支持。默认RMW。与二进制发行版一起打包。</p></td>
 </tr>
 <tr class="row-odd"><td><p>Eclipse <em>Cyclone DDS</em></p></td>
-<td><p>Eclipse Public License v2.0</p></td>
+<td><p>Eclipse公共许可证v2.0</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code></p></td>
-<td><p>Full support. Packaged with binary releases.</p></td>
+<td><p>完全支持。与二进制发行版一起打包。</p></td>
 </tr>
-<tr class="row-even"><td><p>RTI <em>Connext DDS</em></p></td>
-<td><p>commercial, research</p></td>
+<tr class="row-even"><td><p>RTI <a href="#id1"><span class="problematic" id="id2">*</span></a>Connext DDS*（商业、研究）</p></td>
+<td><p>commercial（商业）、research（研究）</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code></p></td>
-<td><p>Full support. Support included in binaries, but Connext installed separately.</p></td>
+<td><p>完全支持。支持已包含在二进制文件中，但Connext需单独安装。</p></td>
 </tr>
-<tr class="row-odd"><td><p>GurumNetworks <em>GurumDDS</em></p></td>
-<td><p>commercial</p></td>
+<tr class="row-odd"><td><p>GurumNetworks <a href="#id1"><span class="problematic" id="id2">*</span></a>GurumDDS*（商业）</p></td>
+<td><p>商业</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">rmw_gurumdds_cpp</span></code></p></td>
-<td><p>Community support. Support included in binaries, but GurumDDS installed separately.</p></td>
+<td><p>社区支持。支持包含在二进制文件中，但GurumDDS需要单独安装。</p></td>
 </tr>
 </tbody>
 </table>
-<p>For practical information on working with multiple RMW implementations, see the <a class="reference internal" href="../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">&quot;Working with multiple RMW implementations&quot;</span></a> tutorial.</p>
+<p>有关使用多个RMW实现的实用信息，请参阅 <a class="reference internal" href="../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">&quot;使用多个RMW实现&quot;</span></a> 教程。</p>
 </div>
 <div class="section" id="multiple-rmw-implementations">
-<h2>Multiple RMW implementations<a class="headerlink" href="#multiple-rmw-implementations" title="永久链接至标题"></a></h2>
-<p>The ROS 2 binary releases for currently active distros have built-in support for several RMW implementations out of the box (Fast DDS, RTI Connext Pro, Eclipse Cyclone DDS, GurumNetworks GurumDDS).
-The default is Fast DDS, which works without any additional installation steps because we distribute it with our binary packages.</p>
+<h2>多个RMW实现<a class="headerlink" href="#multiple-rmw-implementations" title="永久链接至标题"></a></h2>
+<p>当前活跃的ROS 2二进制发布版本已经内置了对多个RMW实现的支持（Fast DDS、RTI Connext Pro、Eclipse Cyclone DDS、GurumNetworks GurumDDS）。默认使用的是Fast DDS，因为我们将其与二进制包一起分发，所以无需进行任何额外的安装步骤。</p>
 <p>Other RMWs like Cyclone DDS, Connext or GurumDDS can be enabled by <a class="reference internal" href="../Installation/DDS-Implementations.html"><span class="doc">installing additional packages</span></a>, but without having to rebuild anything or replace any existing packages.</p>
 <p>A ROS 2 workspace that has been built from source may build and install multiple RMW implementations simultaneously.
 While the core ROS 2 code is being compiled, any RMW implementation that is found will be built if the relevant DDS/RTPS implementation has been installed properly and the relevant environment variables have been configured.
