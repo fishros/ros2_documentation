@@ -377,15 +377,15 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id1">概述</a></p></li>
-<li><p><a class="reference internal" href="#the-security-enclave" id="id2">The Security Enclave</a></p></li>
-<li><p><a class="reference internal" href="#security-files" id="id3">Security Files</a></p>
+<li><p><a class="reference internal" href="#the-security-enclave" id="id2">安全隔离区</a></p></li>
+<li><p><a class="reference internal" href="#security-files" id="id3">安全文件</a></p>
 <ul>
-<li><p><a class="reference internal" href="#enclave-identity" id="id4">Enclave Identity</a></p></li>
-<li><p><a class="reference internal" href="#enclave-permissions" id="id5">Enclave Permissions</a></p></li>
-<li><p><a class="reference internal" href="#private-keys" id="id6">Private Keys</a></p></li>
+<li><p><a class="reference internal" href="#enclave-identity" id="id4">隔离区标识</a></p></li>
+<li><p><a class="reference internal" href="#enclave-permissions" id="id5">安全区域权限</a></p></li>
+<li><p><a class="reference internal" href="#private-keys" id="id6">私钥</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#security-environment-variables" id="id7">Security Environment Variables</a></p></li>
+<li><p><a class="reference internal" href="#security-environment-variables" id="id7">安全环境变量</a></p></li>
 <li><p><a class="reference internal" href="#learn-more" id="id8">Learn More</a></p></li>
 </ul>
 </div>
@@ -395,43 +395,28 @@
 <p>ROS 2安全服务由底层的`数据分发服务 (DDS) &lt;<a class="reference external" href="https://www.omg.org/spec/DDS/">https://www.omg.org/spec/DDS/</a>&gt;`_ 提供，该服务用于节点之间的通信。DDS供应商提供与ROS配合使用的开源和商业DDS实现。然而，为了创建符合规范的DDS实现，所有供应商都必须包括在`DDS安全规范 &lt;<a class="reference external" href="https://www.omg.org/spec/DDS-SECURITY/About-DDS-SECURITY/">https://www.omg.org/spec/DDS-SECURITY/About-DDS-SECURITY/</a>&gt;`_ 中概述的安全插件。ROS安全功能利用这些DDS安全插件提供基于策略的加密、身份验证和访问控制。DDS和ROS安全通过预定义的配置文件和环境变量进行启用。</p>
 </div>
 <div class="section" id="the-security-enclave">
-<h2><a class="toc-backref" href="#id2">The Security Enclave</a><a class="headerlink" href="#the-security-enclave" title="永久链接至标题"></a></h2>
-<p>A security enclave encapsulates a single policy for protecting ROS communications.
-The enclave may set policy for multiple nodes, for an entire ROS graph, or any combination of protected ROS processes and devices.
-Security enclaves can be flexibly mapped to processes, users, or devices at deployment.
-Adjusting this default behavior becomes important for optimizing communications and for complex systems.
-See the ROS 2 Security Enclaves <a class="reference external" href="https://design.ros2.org/articles/ros2_security_enclaves.html">design document</a> for additional details.</p>
+<h2><a class="toc-backref" href="#id2">安全隔离区</a><a class="headerlink" href="#the-security-enclave" title="永久链接至标题"></a></h2>
+<p>安全隔离区封装了一项用于保护ROS通信的策略。该隔离区可以为多个节点、整个ROS图或任意受保护的ROS进程和设备设置策略。安全隔离区可以灵活地映射到部署的进程、用户或设备。调整此默认行为对于优化通信和处理复杂系统至关重要。有关详细信息，请参阅ROS 2安全隔离区的设计文档：&lt;<a class="reference external" href="https://design.ros2.org/articles/ros2_security_enclaves.html">https://design.ros2.org/articles/ros2_security_enclaves.html</a>&gt;。</p>
 </div>
 <div class="section" id="security-files">
-<h2><a class="toc-backref" href="#id3">Security Files</a><a class="headerlink" href="#security-files" title="永久链接至标题"></a></h2>
-<p>A <a class="reference external" href="https://design.ros2.org/articles/ros2_security_enclaves.html">ROS 2 security enclave</a> is established with six files as outlined by the DDS specification.
-Three of these files define an enclave's identity, while three other files define the permissions to be granted to the enclave.
-All six files reside in a single directory, and nodes launched without a qualified enclave path use files in the default root level enclave.</p>
+<h2><a class="toc-backref" href="#id3">安全文件</a><a class="headerlink" href="#security-files" title="永久链接至标题"></a></h2>
+<p>通过DDS规范，建立了一个包含六个文件的ROS 2安全隔离区。其中三个文件定义了隔离区的标识，另外三个文件定义了授予隔离区的权限。这六个文件都存放在一个目录中，如果在启动节点时没有指定合格的隔离区路径，将使用默认根级隔离区中的文件。</p>
 <div class="section" id="enclave-identity">
-<h3><a class="toc-backref" href="#id4">Enclave Identity</a><a class="headerlink" href="#enclave-identity" title="永久链接至标题"></a></h3>
-<p>The Identity Certificate Authority file <code class="docutils literal notranslate"><span class="pre">identity_ca.cert.pem</span></code> acts as the trust anchor used to identify participants.
-Each enclave also holds its unique identifying certificate in the file <code class="docutils literal notranslate"><span class="pre">cert.pem</span></code>, and the associated private key in the file <code class="docutils literal notranslate"><span class="pre">key.pem</span></code>.
-Because the <code class="docutils literal notranslate"><span class="pre">cert.pem</span></code> certificate has been signed by identity certificate, when a participant presents this certificate to other domain members, they are able to validate the participant's identity using their own copy of the identity certificate.
-This valid certificate exchange allows the enclave to securely establish trusted communications with other participants.
-The enclave does not not share the <code class="docutils literal notranslate"><span class="pre">key.pem</span></code> private key, but only uses it for decryption and message signing.</p>
+<h3><a class="toc-backref" href="#id4">隔离区标识</a><a class="headerlink" href="#enclave-identity" title="永久链接至标题"></a></h3>
+<p>身份证书机构文件``identity_ca.cert.pem``作为用于识别参与者的信任锚点。每个隔离区还在文件``cert.pem``中保存其唯一标识证书，并在文件``key.pem``中保存关联的私钥。由于``cert.pem``证书已经由身份证书签名，当参与者向其他域成员呈现此证书时，它们可以使用自己拥有的身份证书副本验证参与者的身份。此有效的证书交换使得隔离区能够与其他参与者安全地建立可信任的通信。隔离区不共享``key.pem``私钥，而仅将其用于解密和消息签名。</p>
 </div>
 <div class="section" id="enclave-permissions">
-<h3><a class="toc-backref" href="#id5">Enclave Permissions</a><a class="headerlink" href="#enclave-permissions" title="永久链接至标题"></a></h3>
-<p>The Permissions Certificate Authority file <code class="docutils literal notranslate"><span class="pre">permissions_ca.cert.pem</span></code> serves as the trust anchor to grant permissions to security enclaves.
-This certificate is used to create the signed file <code class="docutils literal notranslate"><span class="pre">governance.p7s</span></code>, an XML document which defines domain-wide protection policies.
-Similarly the XML file <code class="docutils literal notranslate"><span class="pre">permissions.p7s</span></code> outlines permissions of this particular enclave and has been signed by the Permissions CA.
-Domain members use a copy of the permissions CA to validate these signed files and grant the requested access.</p>
-<p>Although these two certificate authorities enable separate workflows for identity and permissions, often the same certificate serves as both the identity and the permissions authority.</p>
+<h3><a class="toc-backref" href="#id5">安全区域权限</a><a class="headerlink" href="#enclave-permissions" title="永久链接至标题"></a></h3>
+<p>权限证书机构文件 <code class="docutils literal notranslate"><span class="pre">permissions_ca.cert.pem</span></code> 用作授予权限给安全区域的可信锚点。该证书用于创建签名文件 <code class="docutils literal notranslate"><span class="pre">governance.p7s</span></code>，它是一个定义了整个域的保护策略的 XML 文档。类似地，XML 文件 <code class="docutils literal notranslate"><span class="pre">permissions.p7s</span></code> 概述了该特定安全区域的权限，并由权限证书机构签名。域成员使用权限证书机构的副本来验证这些签名文件并授予所请求的访问权限。</p>
+<p>尽管这两个证书机构为身份和权限提供了单独的工作流程，但通常同一证书既用作身份验证机构，也用作权限机构。</p>
 </div>
 <div class="section" id="private-keys">
-<h3><a class="toc-backref" href="#id6">Private Keys</a><a class="headerlink" href="#private-keys" title="永久链接至标题"></a></h3>
-<p>The identity and permissions certificates also have associated private key files.
-Add new enclaves to the domain by signing their Certificate Signing Request (CSR) with the identity certificate's private key.
-Similarly, grant permissions for a new enclave by signing a permissions XML document with the permission certificate's private key.</p>
+<h3><a class="toc-backref" href="#id6">私钥</a><a class="headerlink" href="#private-keys" title="永久链接至标题"></a></h3>
+<p>身份和权限证书还附带有关联的私钥文件。通过使用身份证书的私钥签署其证书签名请求（CSR），将新的安全区域添加到域中。同样地，通过使用权限证书的私钥签署权限的 XML 文档来授予新安全区域的权限。</p>
 </div>
 </div>
 <div class="section" id="security-environment-variables">
-<h2><a class="toc-backref" href="#id7">Security Environment Variables</a><a class="headerlink" href="#security-environment-variables" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id7">安全环境变量</a><a class="headerlink" href="#security-environment-variables" title="永久链接至标题"></a></h2>
 <p>The environment variable <code class="docutils literal notranslate"><span class="pre">ROS_SECURITY_ENABLE</span></code> acts as the enclave's master &quot;on/off&quot; switch for ROS 2 security features.
 Security has been turned off by default, so security features will not be enabled even when the proper security files are present.
 In order to enable ROS 2 security, set this environment variable to <code class="docutils literal notranslate"><span class="pre">true</span></code> (case sensitive).</p>
