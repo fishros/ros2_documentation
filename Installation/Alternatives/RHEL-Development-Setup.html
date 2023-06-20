@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RHEL (source) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>RHEL（源代码） &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -53,7 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Ubuntu-Development-Setup.html">Ubuntu (source)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Ubuntu-Install-Binary.html">Ubuntu (binary)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Windows-Development-Setup.html">Windows (source)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">RHEL (source)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RHEL（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Install-Binary.html">RHEL (binary)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macOS-Development-Setup.html">macOS (source)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fedora-Development-Setup.html">Fedora（源代码）</a></li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Installation.html">安装</a> &raquo;</li>
           <li><a href="../Alternatives.html">替代方案</a> &raquo;</li>
-      <li>RHEL (source)</li>
+      <li>RHEL（源代码）</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Installation/Alternatives/RHEL-Development-Setup.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,15 +373,15 @@
 
 
   <div class="section" id="rhel-source">
-<span id="rhel-latest"></span><h1>RHEL (source)<a class="headerlink" href="#rhel-source" title="永久链接至标题"></a></h1>
+<span id="rhel-latest"></span><h1>RHEL（源代码）<a class="headerlink" href="#rhel-source" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#system-requirements" id="id1">System requirements</a></p></li>
+<li><p><a class="reference internal" href="#system-requirements" id="id1">系统要求</a></p></li>
 <li><p><a class="reference internal" href="#system-setup" id="id2">系统设置</a></p>
 <ul>
-<li><p><a class="reference internal" href="#set-locale" id="id3">Set locale</a></p></li>
-<li><p><a class="reference internal" href="#enable-required-repositories" id="id4">Enable required repositories</a></p></li>
+<li><p><a class="reference internal" href="#set-locale" id="id3">设置区域设置</a></p></li>
+<li><p><a class="reference internal" href="#enable-required-repositories" id="id4">启用所需的软件仓库</a></p></li>
 <li><p><a class="reference internal" href="#install-development-tools-and-ros-tools" id="id5">安装开发工具和ROS工具</a></p></li>
 </ul>
 </li>
@@ -408,20 +408,18 @@
 </ul>
 </div>
 <div class="section" id="system-requirements">
-<h2><a class="toc-backref" href="#id1">System requirements</a><a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
-<p>The current target Red Hat platforms for Humble Hawksbill are:</p>
+<h2><a class="toc-backref" href="#id1">系统要求</a><a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
+<p>Humble Hawksbill 的当前目标 Red Hat 平台为：</p>
 <ul class="simple">
-<li><p>Tier 2: RHEL 8 64-bit</p></li>
+<li><p>第二级：RHEL 8 64 位</p></li>
 </ul>
-<p>As defined in <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">REP 2000</a></p>
+<p>如 <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">REP 2000</a> 中所定义</p>
 </div>
 <div class="section" id="system-setup">
 <h2><a class="toc-backref" href="#id2">系统设置</a><a class="headerlink" href="#system-setup" title="永久链接至标题"></a></h2>
 <div class="section" id="set-locale">
-<h3><a class="toc-backref" href="#id3">Set locale</a><a class="headerlink" href="#set-locale" title="永久链接至标题"></a></h3>
-<p>Make sure you have a locale which supports <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code>.
-If you are in a minimal environment (such as a docker container), the locale may be something minimal like <code class="docutils literal notranslate"><span class="pre">C</span></code>.
-We test with the following settings. However, it should be fine if you're using a different UTF-8 supported locale.</p>
+<h3><a class="toc-backref" href="#id3">设置区域设置</a><a class="headerlink" href="#set-locale" title="永久链接至标题"></a></h3>
+<p>确保您拥有支持 <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code> 的区域设置。如果您使用的是最小环境（如 Docker 容器），区域设置可能是一些最小化的设置，例如 <code class="docutils literal notranslate"><span class="pre">C</span></code>。我们使用以下设置进行测试。然而，如果您使用的是不同的 UTF-8 支持的区域设置，也应该没问题。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>locale  <span class="c1"># check for UTF-8</span>
 
 sudo dnf install langpacks-en glibc-langpack-en
@@ -432,9 +430,8 @@ locale  <span class="c1"># verify settings</span>
 </div>
 </div>
 <div class="section" id="enable-required-repositories">
-<h3><a class="toc-backref" href="#id4">Enable required repositories</a><a class="headerlink" href="#enable-required-repositories" title="永久链接至标题"></a></h3>
-<p>The rosdep database contains packages from the EPEL and PowerTools repositories, which are not enabled by default.
-They can be enabled by running:</p>
+<h3><a class="toc-backref" href="#id4">启用所需的软件仓库</a><a class="headerlink" href="#enable-required-repositories" title="永久链接至标题"></a></h3>
+<p>rosdep 数据库包含来自 EPEL 和 PowerTools 软件仓库的软件包，默认情况下这些仓库是禁用的。可以通过运行以下命令来启用它们：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo dnf install <span class="s1">&#39;dnf-command(config-manager)&#39;</span> epel-release -y
 sudo dnf config-manager --set-enabled powertools
 </pre></div>
