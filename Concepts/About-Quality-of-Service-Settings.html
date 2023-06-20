@@ -386,45 +386,45 @@
 <li><p>历史记录</p>
 <ul>
 <li><p>保留最近：仅存储最多N个样本，可通过队列深度选项进行配置。</p></li>
-<li><p><em>Keep all</em>: store all samples, subject to the configured resource limits of the underlying middleware.</p></li>
+<li><p><em>全部保留</em>: 将所有样本存储，受基础中间件配置的资源限制约束。</p></li>
 </ul>
 </li>
-<li><p>Depth</p>
+<li><p>深度</p>
 <ul>
-<li><p><em>Queue size</em>: only honored if the “history” policy was set to “keep last”.</p></li>
+<li><p><em>队列大小</em>: 仅在“历史”策略设置为“保留最新”时受到尊重。</p></li>
 </ul>
 </li>
-<li><p>Reliability</p>
+<li><p>可靠性</p>
 <ul>
-<li><p><em>Best effort</em>: attempt to deliver samples, but may lose them if the network is not robust.</p></li>
-<li><p><em>Reliable</em>: guarantee that samples are delivered, may retry multiple times.</p></li>
+<li><p><em>尽力而为</em>: 尝试传递样本，但如果网络不稳定，可能会丢失它们。</p></li>
+<li><p><em>可靠传递</em>: 保证样本被传递，可能会进行多次重试。</p></li>
 </ul>
 </li>
-<li><p>Durability</p>
+<li><p>耐久性</p>
 <ul>
-<li><p><em>Transient local</em>: the publisher becomes responsible for persisting samples for “late-joining” subscriptions.</p></li>
-<li><p><em>Volatile</em>: no attempt is made to persist samples.</p></li>
+<li><p><em>瞬态本地</em>：发布者负责为“后加入”的订阅持久化样本。</p></li>
+<li><p><em>易失性</em>：不尝试持久化样本。</p></li>
 </ul>
 </li>
-<li><p>Deadline</p>
+<li><p>截止日期</p>
 <ul>
-<li><p><em>Duration</em>: the expected maximum amount of time between subsequent messages being published to a topic</p></li>
+<li><p><em>持续时间</em>：期望的发布到主题的连续消息之间的最大时间间隔。</p></li>
 </ul>
 </li>
-<li><p>Lifespan</p>
+<li><p>寿命</p>
 <ul>
-<li><p><em>Duration</em>: the maximum amount of time between the publishing and the reception of a message without the message being considered stale or expired (expired messages are silently dropped and are effectively never received).</p></li>
+<li><p><em>持续时间</em>：在发布消息和接收消息之间的最大时间间隔，超过此时间则将认为消息已过期或失效（已过期的消息将被静默丢弃，实际上永远不会被接收）。</p></li>
 </ul>
 </li>
-<li><p>Liveliness</p>
+<li><p>活跃性</p>
 <ul>
-<li><p><em>Automatic</em>: the system will consider all of the node’s publishers to be alive for another “lease duration” when any one of its publishers has published a message.</p></li>
-<li><p><em>Manual by topic</em>: the system will consider the publisher to be alive for another “lease duration” if it manually asserts that it is still alive (via a call to the publisher API).</p></li>
+<li><p><em>自动</em>：当任何一个发布者发布消息时，系统将认为该节点的所有发布者都仍然存活，持续时间为“租约期”。</p></li>
+<li><p><em>按主题手动</em>：如果发布者通过调用发布者API手动断言自己仍然存活，则系统将认为该发布者在“租约期”内仍然存活。</p></li>
 </ul>
 </li>
-<li><p>Lease Duration</p>
+<li><p>租约期</p>
 <ul>
-<li><p><em>Duration</em>: the maximum period of time a publisher has to indicate that it is alive before the system considers it to have lost liveliness (losing liveliness could be an indication of a failure).</p></li>
+<li><p><em>持续时间</em>：在系统认为发布者失去活跃性之前，发布者有的最长时间来表明自己仍然存活（失去活跃性可能表明出现故障）。</p></li>
 </ul>
 </li>
 </ul>
