@@ -546,9 +546,9 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 <ol class="arabic simple">
 <li><p>We need to give the transform being published a timestamp, and we'll just stamp it with the current time by calling <code class="docutils literal notranslate"><span class="pre">self.get_clock().now()</span></code>. This will return the current time used by the <code class="docutils literal notranslate"><span class="pre">Node</span></code>.</p></li>
 <li><p>然后，我们需要设置正在创建的链接的父帧的名称，本例中为 <code class="docutils literal notranslate"><span class="pre">world</span></code>。</p></li>
-<li><p>Finally, we need to set the name of the child node of the link we're creating, in this case this is the name of the turtle itself.</p></li>
+<li><p>最后，我们需要设置链接创建的子节点的名称，这里的子节点名称就是乌龟自身的名称。</p></li>
 </ol>
-<p>The handler function for the turtle pose message broadcasts this turtle's translation and rotation, and publishes it as a transform from frame <code class="docutils literal notranslate"><span class="pre">world</span></code> to frame <code class="docutils literal notranslate"><span class="pre">turtleX</span></code>.</p>
+<p>处理乌龟姿态消息的处理函数会广播该乌龟的平移和旋转，并将其发布为从帧``world``到帧``turtleX``的变换。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
 
 <span class="c1"># Read message content and assign it to</span>
@@ -558,7 +558,7 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 <span class="n">t</span><span class="o">.</span><span class="n">child_frame_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">turtlename</span>
 </pre></div>
 </div>
-<p>Here we copy the information from the 3D turtle pose into the 3D transform.</p>
+<p>在这里，我们将3D乌龟姿态的信息复制到3D变换中。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turtle only exists in 2D, thus we get x and y translation</span>
 <span class="c1"># coordinates from the message and set the z coordinate to 0</span>
 <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">x</span>
@@ -575,7 +575,7 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Finally we take the transform that we constructed and pass it to the <code class="docutils literal notranslate"><span class="pre">sendTransform</span></code> method of the <code class="docutils literal notranslate"><span class="pre">TransformBroadcaster</span></code> that will take care of broadcasting.</p>
+<p>最后，我们将构建的变换传递给``TransformBroadcaster``的``sendTransform``方法，它会负责广播。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Send the transformation</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">tf_broadcaster</span><span class="o">.</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </pre></div>
@@ -598,8 +598,7 @@ For more details see <a class="reference internal" href="Writing-A-Tf2-Static-Br
 </div>
 <div class="section" id="write-the-launch-file">
 <h3><a class="toc-backref" href="#id6">2 编写启动文件</a><a class="headerlink" href="#write-the-launch-file" title="永久链接至标题"></a></h3>
-<p>Now create a launch file for this demo.
-With your text editor, create a new file called <code class="docutils literal notranslate"><span class="pre">turtle_tf2_demo.launch.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> folder, and add the following lines:</p>
+<p>现在为此演示创建一个启动文件。使用文本编辑器，在``launch``文件夹中创建一个名为``turtle_tf2_demo.launch.py``的新文件，并添加以下内容：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
 
@@ -624,13 +623,12 @@ With your text editor, create a new file called <code class="docutils literal no
 </div>
 <div class="section" id="id1">
 <h4>2.1 检查代码<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
-<p>First we import required modules from the <code class="docutils literal notranslate"><span class="pre">launch</span></code> and <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> packages.
-It should be noted that <code class="docutils literal notranslate"><span class="pre">launch</span></code> is a generic launching framework (not ROS 2 specific) and <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> has ROS 2 specific things, like nodes that we import here.</p>
+<p>首先我们从 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 和 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> 包中导入所需的模块。需要注意的是，<code class="docutils literal notranslate"><span class="pre">launch</span></code> 是一个通用的启动框架（不特定于ROS 2），而 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> 则有ROS 2特定的功能，例如在这里我们导入的节点。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
 </pre></div>
 </div>
-<p>Now we run our nodes that start the turtlesim simulation and broadcast <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> state to the tf2 using our <code class="docutils literal notranslate"><span class="pre">turtle_tf2_broadcaster</span></code> node.</p>
+<p>现在我们运行节点，启动turtlesim仿真，并使用我们的 <code class="docutils literal notranslate"><span class="pre">turtle_tf2_broadcaster</span></code> 节点将 <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> 状态广播到tf2。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Node</span><span class="p">(</span>
     <span class="n">package</span><span class="o">=</span><span class="s1">&#39;turtlesim&#39;</span><span class="p">,</span>
     <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;turtlesim_node&#39;</span><span class="p">,</span>
@@ -650,13 +648,12 @@ It should be noted that <code class="docutils literal notranslate"><span class="
 <div class="section" id="add-dependencies">
 <h4>2.2 添加依赖项<a class="headerlink" href="#add-dependencies" title="永久链接至标题"></a></h4>
 <p>Navigate one level back to the <code class="docutils literal notranslate"><span class="pre">src/learning_tf2_py</span></code> directory, where the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, and <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files are located.</p>
-<p>Open <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> with your text editor.
-Add the following dependencies corresponding to your launch file's import statements:</p>
+<p>使用文本编辑器打开 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>。根据你的启动文件的导入语句，添加以下依赖项：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>launch<span class="nt">&lt;/exec_depend&gt;</span>
 <span class="nt">&lt;exec_depend&gt;</span>launch_ros<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>
 </div>
-<p>This declares the additional required <code class="docutils literal notranslate"><span class="pre">launch</span></code> and <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> dependencies when its code is executed.</p>
+<p>当执行其代码时，这将声明额外所需的 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 和 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> 依赖项。</p>
 <p>确保保存文件.</p>
 </div>
 <div class="section" id="update-setup-py">
@@ -674,7 +671,7 @@ The <code class="docutils literal notranslate"><span class="pre">data_files</spa
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 </pre></div>
 </div>
-<p>You can learn more about creating launch files in <a class="reference internal" href="../Launch/Creating-Launch-Files.html"><span class="doc">this tutorial</span></a>.</p>
+<p>你可以在 <a class="reference internal" href="../Launch/Creating-Launch-Files.html"><span class="doc">这个教程</span></a> 中了解更多关于创建启动文件的信息。</p>
 </div>
 </div>
 <div class="section" id="build">
