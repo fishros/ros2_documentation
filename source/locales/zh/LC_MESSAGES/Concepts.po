@@ -1607,62 +1607,62 @@ msgstr "复杂和混合的调度语义。理想情况下，您希望有明确定
 
 #: ../../source/Concepts/About-Executors.rst:173
 msgid "Callbacks may suffer from priority inversion. Higher priority callbacks may be blocked by lower priority callbacks."
-msgstr "Callbacks may suffer from priority inversion. Higher priority callbacks may be blocked by lower priority callbacks."
+msgstr "回调函数可能会受到优先级反转的影响。较高优先级的回调函数可能会被较低优先级的回调函数阻塞。"
 
 
 #: ../../source/Concepts/About-Executors.rst:175
 msgid "No explicit control over the callbacks execution order."
-msgstr "No explicit control over the callbacks execution order."
+msgstr "无法明确控制回调函数的执行顺序。"
 
 
 #: ../../source/Concepts/About-Executors.rst:176
 msgid "No built-in control over triggering for specific topics."
-msgstr "No built-in control over triggering for specific topics."
+msgstr "没有内置的机制来触发特定主题的回调函数。"
 
 
 #: ../../source/Concepts/About-Executors.rst:178
 msgid "Additionally, the executor overhead in terms of CPU and memory usage is considerable. The Static Single-Threaded Executor reduces this overhead greatly but it might not be enough for some applications."
-msgstr "Additionally, the executor overhead in terms of CPU and memory usage is considerable. The Static Single-Threaded Executor reduces this overhead greatly but it might not be enough for some applications."
+msgstr "此外，执行器在CPU和内存使用方面的开销相当大。静态单线程执行器大大减少了这种开销，但对于某些应用程序可能还不够。"
 
 
 #: ../../source/Concepts/About-Executors.rst:181
 msgid "These issues have been partially addressed by the following developments:"
-msgstr "These issues have been partially addressed by the following developments:"
+msgstr "这些问题已经部分得到以下改进的解决："
 
 
 #: ../../source/Concepts/About-Executors.rst:183
 msgid "`rclcpp WaitSet <https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp>`_: The ``WaitSet`` class of rclcpp allows waiting directly on subscriptions, timers, service servers, action servers, etc. instead of using an Executor. It can be used to implement deterministic, user-defined processing sequences, possibly processing multiple messages from different subscriptions together. The `examples_rclcpp_wait_set package <https://github.com/ros2/examples/tree/humble/rclcpp/wait_set>`_ provides several examples for the use of this user-level wait set mechanism."
-msgstr "`rclcpp WaitSet <https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp>`_: The ``WaitSet`` class of rclcpp allows waiting directly on subscriptions, timers, service servers, action servers, etc. instead of using an Executor. It can be used to implement deterministic, user-defined processing sequences, possibly processing multiple messages from different subscriptions together. The `examples_rclcpp_wait_set package <https://github.com/ros2/examples/tree/humble/rclcpp/wait_set>`_ provides several examples for the use of this user-level wait set mechanism."
+msgstr "`rclcpp WaitSet <https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp>`_：rclcpp的``WaitSet``类允许直接等待订阅、定时器、服务服务器、动作服务器等，而无需使用执行器。它可以用于实现确定性的、用户定义的处理序列，可能同时处理来自不同订阅的多个消息。`examples_rclcpp_wait_set package <https://github.com/ros2/examples/tree/humble/rclcpp/wait_set>`_ 提供了使用此用户级等待集机制的多个示例。"
 
 
 #: ../../source/Concepts/About-Executors.rst:186
 msgid "`rclc Executor <https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h>`_: This Executor from the C Client Library *rclc*, developed for micro-ROS, gives the user fine-grained control over the execution order of callbacks and allows for custom trigger conditions to activate callbacks. Furthermore, it implements ideas of the Logical Execution Time (LET) semantics."
-msgstr "`rclc Executor <https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h>`_: This Executor from the C Client Library *rclc*, developed for micro-ROS, gives the user fine-grained control over the execution order of callbacks and allows for custom trigger conditions to activate callbacks. Furthermore, it implements ideas of the Logical Execution Time (LET) semantics."
+msgstr "`rclc Executor <https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h>`_：这个来自C客户端库*rclc*的Executor是为micro-ROS开发的，它可以让用户对回调的执行顺序进行细粒度控制，并允许自定义触发条件来激活回调。此外，它实现了逻辑执行时间（LET）语义的概念。""
 
 
 #: ../../source/Concepts/About-Executors.rst:190
 msgid "Further information"
-msgstr "Further information"
+msgstr "更多信息""
 
 
 #: ../../source/Concepts/About-Executors.rst:192
 msgid "Michael Pöhnl et al.: `\"ROS 2 Executor: How to make it efficient, real-time and deterministic?\" <https://www.apex.ai/roscon-21>`_. Workshop at ROS World 2021. Virtual event. 19 October 2021."
-msgstr "Michael Pöhnl et al.: `\"ROS 2 Executor: How to make it efficient, real-time and deterministic?\" <https://www.apex.ai/roscon-21>`_. Workshop at ROS World 2021. Virtual event. 19 October 2021."
+msgstr "Michael Pöhnl等人：`\"ROS 2 Executor: How to make it efficient, real-time and deterministic?\" <https://www.apex.ai/roscon-21>`_. ROS World 2021的研讨会。虚拟活动。2021年10月19日。""
 
 
 #: ../../source/Concepts/About-Executors.rst:193
 msgid "Ralph Lange: `\"Advanced Execution Management with ROS 2\" <https://www.youtube.com/watch?v=Sz-nllmtcc8&t=109s>`_. ROS Industrial Conference. Virtual event. 16 December 2020."
-msgstr "Ralph Lange: `\"Advanced Execution Management with ROS 2\" <https://www.youtube.com/watch?v=Sz-nllmtcc8&t=109s>`_. ROS Industrial Conference. Virtual event. 16 December 2020."
+msgstr "Ralph Lange：`\"Advanced Execution Management with ROS 2\" <https://www.youtube.com/watch?v=Sz-nllmtcc8&t=109s>`_. ROS Industrial Conference。虚拟活动。2020年12月16日。""
 
 
 #: ../../source/Concepts/About-Executors.rst:194
 msgid "Daniel Casini, Tobias Blass, Ingo Lütkebohle, and Björn Brandenburg: `“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling” <https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf>`_, Proc. of 31st ECRTS 2019, Stuttgart, Germany, July 2019."
-msgstr "Daniel Casini, Tobias Blass, Ingo Lütkebohle, and Björn Brandenburg: `“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling” <https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf>`_, Proc. of 31st ECRTS 2019, Stuttgart, Germany, July 2019."
+msgstr "Daniel Casini，Tobias Blass，Ingo Lütkebohle和Björn Brandenburg：`“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling” <https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf>`_，第31届ECRTS 2019会议论文集，德国斯图加特，2019年7月。""
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:2
 msgid "About internal ROS 2 interfaces"
-msgstr "About internal ROS 2 interfaces"
+msgstr "关于内部ROS 2接口""
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:6
