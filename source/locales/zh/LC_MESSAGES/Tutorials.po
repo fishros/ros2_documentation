@@ -16026,17 +16026,17 @@ msgstr "**目标：** 学习使用 Xacro 减少 URDF 文件中的代码量的一
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:20
 msgid "By now, if you’re following all these steps at home with your own robot design, you might be sick of doing all sorts of math to get very simple robot descriptions to parse correctly. Fortunately, you can use the `xacro <https://index.ros.org/p/xacro>`_ package to make your life simpler. It does three things that are very helpful."
-msgstr "By now, if you’re following all these steps at home with your own robot design, you might be sick of doing all sorts of math to get very simple robot descriptions to parse correctly. Fortunately, you can use the `xacro <https://index.ros.org/p/xacro>`_ package to make your life simpler. It does three things that are very helpful."
+msgstr "到目前为止，如果你在家里跟着这些步骤自己设计机器人，你可能已经对进行各种数学计算来正确解析非常简单的机器人描述感到厌烦了。幸运的是，你可以使用 `xacro <https://index.ros.org/p/xacro>`_ 包来简化你的生活。它有三个非常有帮助的功能。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:24 ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:66
 msgid "Constants"
-msgstr "Constants"
+msgstr "常量"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:25
 msgid "Simple Math"
-msgstr "Simple Math"
+msgstr "简单数学"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:26 ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:145
@@ -16046,42 +16046,42 @@ msgstr "宏"
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:28
 msgid "In this tutorial, we take a look at all these shortcuts to help reduce the overall size of the URDF file and make it easier to read and maintain."
-msgstr "In this tutorial, we take a look at all these shortcuts to help reduce the overall size of the URDF file and make it easier to read and maintain."
+msgstr "在本教程中，我们将介绍所有这些快捷方式，以帮助减少URDF文件的整体大小，并使其更易于阅读和维护。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:31
 msgid "Using Xacro"
-msgstr "Using Xacro"
+msgstr "使用Xacro"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:32
 msgid "As its name implies, `xacro <https://index.ros.org/p/xacro>`_ is a macro language for XML. The xacro program runs all of the macros and outputs the result. Typical usage looks something like this:"
-msgstr "As its name implies, `xacro <https://index.ros.org/p/xacro>`_ is a macro language for XML. The xacro program runs all of the macros and outputs the result. Typical usage looks something like this:"
+msgstr "正如其名称所示，`xacro <https://index.ros.org/p/xacro>`_ 是一种用于 XML 的宏语言。xacro 程序运行所有的宏并输出结果。典型的用法如下所示："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:40
 msgid "You can also automatically generate the urdf in a launch file. This is convenient because it stays up to date and doesn’t use up hard drive space. However, it does take time to generate, so be aware that your launch file might take longer to start up."
-msgstr "You can also automatically generate the urdf in a launch file. This is convenient because it stays up to date and doesn’t use up hard drive space. However, it does take time to generate, so be aware that your launch file might take longer to start up."
+msgstr "您还可以在启动文件中自动生成 URDF。这很方便，因为它会保持最新状态并且不占用硬盘空间。然而，生成过程需要时间，所以请注意您的启动文件可能需要更长的启动时间。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:57
 msgid "At the top of the URDF file, you must specify a namespace in order for the file to parse properly. For example, these are the first two lines of a valid xacro file:"
-msgstr "At the top of the URDF file, you must specify a namespace in order for the file to parse properly. For example, these are the first two lines of a valid xacro file:"
+msgstr "在 URDF 文件的顶部，您必须指定一个命名空间，以便文件能够正确解析。例如，下面是有效 xacro 文件的前两行："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:67
 msgid "Let’s take a quick look at our base_link in R2D2."
-msgstr "Let’s take a quick look at our base_link in R2D2."
+msgstr "让我们快速查看一下 R2D2 中的 base_link。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:85
 msgid "The information here is a little redundant. We specify the length and radius of the cylinder twice. Worse, if we want to change that, we need to do so in two different places."
-msgstr "The information here is a little redundant. We specify the length and radius of the cylinder twice. Worse, if we want to change that, we need to do so in two different places."
+msgstr "这里的信息有些冗余。我们重复指定了圆柱体的长度和半径。更糟糕的是，如果我们想要更改它，我们需要在两个不同的位置进行修改。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:89
 msgid "Fortunately, xacro allows you to specify properties which act as constants. Instead, of the above code, we can write this."
-msgstr "Fortunately, xacro allows you to specify properties which act as constants. Instead, of the above code, we can write this."
+msgstr "幸运的是，xacro 允许您指定属性作为常量。因此，我们可以将上述代码改写为以下形式。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.rst:110
