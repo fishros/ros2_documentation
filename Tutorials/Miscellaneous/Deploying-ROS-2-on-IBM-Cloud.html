@@ -386,7 +386,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#step-2-running-the-image-on-ibm-cloud" id="id6">步骤2：在 IBM Cloud 上运行图像</a></p></li>
-<li><p><a class="reference internal" href="#step-3-using-custom-ros2-packages" id="id7">Step 3: Using Custom ROS2 Packages</a></p>
+<li><p><a class="reference internal" href="#step-3-using-custom-ros2-packages" id="id7">步骤3：使用自定义的ROS2软件包</a></p>
 <ul>
 <li><p><a class="reference internal" href="#extra-deleting-docker-images" id="id8">Extra: Deleting Docker Images</a></p></li>
 </ul>
@@ -515,33 +515,23 @@ Successfully built 0dc6ce7cb487
 <div class="section" id="step-2-running-the-image-on-ibm-cloud">
 <h2><a class="toc-backref" href="#id6">步骤2：在 IBM Cloud 上运行图像</a><a class="headerlink" href="#step-2-running-the-image-on-ibm-cloud" title="永久链接至标题"></a></h2>
 <p>以下步骤假设您拥有 IBM Cloud 帐户并已安装 ibmcloud CLI。如果没有，请首先查看此 <a href="#id1"><span class="problematic" id="id2">`</span></a>链接 &lt;<a class="reference external" href="https://cloud.ib">https://cloud.ib</a></p>
-<p>We also need to make sure that the CLI plug-in for the IBM Cloud
-Container Registry is installed by running the command</p>
+<p>我们还需要确保通过运行以下命令安装了 IBM Cloud Container Registry 的 CLI 插件</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud plugin install container-registry
 </pre></div>
 </div>
-<p>Afterwards, login to your ibmcloud account through the terminal:</p>
+<p>随后，通过终端登录到您的 ibmcloud 帐户:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud login --sso
 </pre></div>
 </div>
-<p>From here, let's create a container registry name-space. Make sure you
-use a unique name that is also descriptive as to what it is. Here, I
-used <em>ros2nasr</em>.</p>
+<p>从这里开始，让我们创建一个容器注册表命名空间。确保使用一个既独特又能描述其用途的名称。在这里，我使用了 <em>ros2nasr</em>。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr namespace-add ros2nasr
 </pre></div>
 </div>
-<p>IBM cloud has a lot of shortcuts that would help us get our container
-onto the cloud right away. The command below builds the container and
-tags it with the name <strong>ros2foxy</strong> and the version of <strong>1</strong>. Make sure
-you use the correct registry name you created and you are free to change
-the container name as you wish. The <strong>.</strong> at the end indicates that the
-<em>Dockerfile</em> is in the current directory (and it is important), if not,
-change it to point to the directory containing the Dockerfile.</p>
+<p>IBM Cloud 提供了许多快捷方式，可以帮助我们立即将容器部署到云端。下面的命令会构建容器，并将其标记为名称为 <strong>ros2foxy</strong>、版本为 <strong>1</strong>。确保使用您创建的正确注册表名称，并且可以根据需要自由更改容器名称。末尾的 <strong>.</strong> 表示 <em>Dockerfile</em> 在当前目录中（这一点很重要），如果不是，请将其更改为指向包含 Dockerfile 的目录。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr build --tag registry.bluemix.net/ros2nasr/ros2foxy:1 .
 </pre></div>
 </div>
-<p>You can now make sure that the container has been pushed to the registry
-you created by running the following command</p>
+<p>您现在可以通过运行以下命令确保容器已推送到您创建的注册表中</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr image-list
 Listing images...
 
@@ -551,10 +541,7 @@ us.icr.io/ros2nasr/ros2foxy   <span class="m">1</span>     031be29301e6   ros2na
 OK
 </pre></div>
 </div>
-<p>Next, it is important to log-in to your registry to run the docker
-image. Again, if you face a <em>permission denied</em> error, perform the
-command with sudo privileges. Afterwards, run your docker file as shown
-below.</p>
+<p>接下来，重要的是登录到您的注册表以运行 Docker 镜像。同样，如果遇到 <em>permission denied</em> 错误，请使用 sudo 权限执行该命令。然后按照下面的示例运行您的 Dockerfile。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr login
 Logging <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
 Logged <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
@@ -566,22 +553,13 @@ OK
 $ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:1
 </pre></div>
 </div>
-<p>Where <em>ros2nasr</em> is the name of the registry you created and
-<em>ros2foxy:1</em> is the tag of the docker container and the version as
-explained previously.</p>
-<p>You should now see your docker file running and providing similar output
-to that you saw when you ran it locally on your machine.</p>
+<p>其中*ros2nasr*是您创建的注册表的名称，而*ros2foxy:1*是Docker容器的标签和版本，如之前所述。</p>
+<p>现在，您应该看到Docker文件正在运行，并提供与在本地计算机上运行时所看到的类似的输出。</p>
 </div>
 <div class="section" id="step-3-using-custom-ros2-packages">
-<h2><a class="toc-backref" href="#id7">Step 3: Using Custom ROS2 Packages</a><a class="headerlink" href="#step-3-using-custom-ros2-packages" title="永久链接至标题"></a></h2>
-<p>So now we have the full pipeline working, from creating the Dockerfile,
-all the way to deploying it and seeing it work on IBM Cloud. But, what
-if we want to use a custom set of packages we (or someone else) created?</p>
-<p>Well that all has to do with how you set-up your Dockerfile. Lets use
-the example provided by ROS2 <a class="reference external" href="https://hub.docker.com/_/ros/">here</a>.
-Create a new directory with a new Dockerfile (or overwrite the existing
-one) and add the following in it (or download the file
-<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile">here</a>)</p>
+<h2><a class="toc-backref" href="#id7">步骤3：使用自定义的ROS2软件包</a><a class="headerlink" href="#step-3-using-custom-ros2-packages" title="永久链接至标题"></a></h2>
+<p>所以现在我们已经有了完整的流程，从创建Dockerfile，一直到部署它并在IBM Cloud上运行。但是，如果我们想要使用我们自己（或其他人）创建的自定义软件包，怎么办呢？</p>
+<p>那么这完全取决于您如何设置Dockerfile。让我们使用ROS2 <a class="reference external" href="https://hub.docker.com/_/ros/">这里提供的示例</a>。创建一个新目录，其中包含一个新的Dockerfile（或覆盖现有的Dockerfile），然后在其中添加以下内容（或从`这里下载文件 &lt;<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile">https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile</a>&gt;`__）</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG <span class="nv">FROM_IMAGE</span><span class="o">=</span>ros:foxy
 ARG <span class="nv">OVERLAY_WS</span><span class="o">=</span>/opt/ros/overlay_ws
 
@@ -643,8 +621,7 @@ RUN sed --in-place --expression <span class="se">\</span>
 CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
 </pre></div>
 </div>
-<p>Going through the lines shown, we can see how we can add custom packages
-from github in 4 steps:</p>
+<p>通过查看所示的行，我们可以了解到如何通过4个步骤从GitHub添加自定义软件包：</p>
 <ol class="arabic simple">
 <li><p>Create an overlay with custom packages cloned from Github:</p></li>
 </ol>
