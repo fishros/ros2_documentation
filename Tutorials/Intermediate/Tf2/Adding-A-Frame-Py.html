@@ -503,15 +503,14 @@
 <div class="section" id="add-an-entry-point">
 <h4><a class="toc-backref" href="#id11">1.2 添加入口点</a><a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
 <p>为了让 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 命令能够运行你的节点，你必须在 <code class="docutils literal notranslate"><span class="pre">setup.py``（位于</span> <span class="pre">``src/learning_tf2_py</span></code> 目录中）中添加入口点。</p>
-<p>Finally, add the following line between the <code class="docutils literal notranslate"><span class="pre">'console_scripts':</span></code> brackets:</p>
+<p>最后，在``'console_scripts':<a href="#id1"><span class="problematic" id="id2">``</span></a>括号之间添加以下行：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;fixed_frame_tf2_broadcaster = learning_tf2_py.fixed_frame_tf2_broadcaster:main&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="write-the-launch-file">
 <h4><a class="toc-backref" href="#id12">1.3 编写启动文件</a><a class="headerlink" href="#write-the-launch-file" title="永久链接至标题"></a></h4>
-<p>Now let's create a launch file for this example.
-With your text editor, create a new file called <code class="docutils literal notranslate"><span class="pre">launch/turtle_tf2_fixed_frame_demo.launch.py</span></code>, and add the following lines:</p>
+<p>现在让我们为这个示例创建一个启动文件。使用文本编辑器创建一个名为``launch/turtle_tf2_fixed_frame_demo.launch.py``的新文件，并添加以下行：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -560,7 +559,7 @@ With your text editor, create a new file called <code class="docutils literal no
 </div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div></div>
-<p>Still in the root of your workspace, build your package:</p>
+<p>仍然在工作空间的根目录中，构建您的软件包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_py</span>
 </pre></div>
@@ -591,7 +590,7 @@ With your text editor, create a new file called <code class="docutils literal no
 </div>
 <div class="section" id="run">
 <h4><a class="toc-backref" href="#id14">1.5 运行</a><a class="headerlink" href="#run" title="永久链接至标题"></a></h4>
-<p>Now you are ready to run the launch file:</p>
+<p>现在您已经准备好运行启动文件：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_py turtle_tf2_fixed_frame_demo.launch.py</span>
 </pre></div>
 </div>
@@ -610,7 +609,7 @@ With your text editor, create a new file called <code class="docutils literal no
         <span class="p">)</span>
 </pre></div>
 </div>
-<p>Now just rebuild the package, restart the <code class="docutils literal notranslate"><span class="pre">turtle_tf2_fixed_frame_demo.launch.py</span></code>, and you'll see the second turtle following the carrot instead of the first turtle!</p>
+<p>现在只需重新构建软件包，重新启动``turtle_tf2_fixed_frame_demo.launch.py``，您将看到第二只乌龟跟随胡萝卜而不是第一只乌龟！</p>
 <img alt="../../../_images/carrot_static.png" src="../../../_images/carrot_static.png" />
 </div>
 </div>
@@ -633,7 +632,7 @@ With your text editor, create a new file called <code class="docutils literal no
 </pre></div>
 </div>
 </div></div>
-<p>Now open the file called <code class="docutils literal notranslate"><span class="pre">dynamic_frame_tf2_broadcaster.py</span></code>:</p>
+<p>现在打开名为``dynamic_frame_tf2_broadcaster.py``的文件：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
@@ -695,7 +694,7 @@ With your text editor, create a new file called <code class="docutils literal no
 <div class="section" id="id2">
 <h4><a class="toc-backref" href="#id17">2.2 添加入口点</a><a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
 <p>为了让 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 命令能够运行你的节点，你必须在 <code class="docutils literal notranslate"><span class="pre">setup.py``（位于</span> <span class="pre">``src/learning_tf2_py</span></code> 目录中）中添加入口点。</p>
-<p>Finally, add the following line between the <code class="docutils literal notranslate"><span class="pre">'console_scripts':</span></code> brackets:</p>
+<p>最后，在``'console_scripts':<a href="#id1"><span class="problematic" id="id2">``</span></a>括号之间添加以下行：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dynamic_frame_tf2_broadcaster = learning_tf2_py.dynamic_frame_tf2_broadcaster:main&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -743,7 +742,7 @@ With your text editor, create a new file called <code class="docutils literal no
 </div><div aria-labelledby="tab-5-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div><div aria-labelledby="tab-5-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div></div>
-<p>Still in the root of your workspace, build your package:</p>
+<p>仍然在工作空间的根目录中，构建您的软件包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-6-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-6-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-6-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-6-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_py</span>
 </pre></div>
@@ -774,7 +773,7 @@ With your text editor, create a new file called <code class="docutils literal no
 </div>
 <div class="section" id="id5">
 <h4><a class="toc-backref" href="#id20">1.5 运行</a><a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
-<p>Now you are ready to run the launch file:</p>
+<p>现在您已经准备好运行启动文件：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_py turtle_tf2_dynamic_frame_demo.launch.py</span>
 </pre></div>
 </div>

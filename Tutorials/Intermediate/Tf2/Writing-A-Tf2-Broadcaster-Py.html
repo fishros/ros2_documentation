@@ -592,7 +592,7 @@ For more details see <a class="reference internal" href="Writing-A-Tf2-Static-Br
 <div class="section" id="add-an-entry-point">
 <h4>1.2 添加入口点<a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
 <p>为了让 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 命令能够运行你的节点，你必须在 <code class="docutils literal notranslate"><span class="pre">setup.py``（位于</span> <span class="pre">``src/learning_tf2_py</span></code> 目录中）中添加入口点。</p>
-<p>Finally, add the following line between the <code class="docutils literal notranslate"><span class="pre">'console_scripts':</span></code> brackets:</p>
+<p>最后，在``'console_scripts':<a href="#id1"><span class="problematic" id="id2">``</span></a>括号之间添加以下行：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;turtle_tf2_broadcaster = learning_tf2_py.turtle_tf2_broadcaster:main&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -689,7 +689,7 @@ The <code class="docutils literal notranslate"><span class="pre">data_files</spa
 </div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。</p>
 </div></div>
-<p>Still in the root of your workspace, build your package:</p>
+<p>仍然在工作空间的根目录中，构建您的软件包：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_py</span>
 </pre></div>
