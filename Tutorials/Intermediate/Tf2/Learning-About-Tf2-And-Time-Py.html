@@ -166,7 +166,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Py.html">Traveling in time (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Cpp.html">Traveling in time (C++)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Debugging-Tf2-Problems.html">调试</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Quaternion-Fundamentals.html">Quaternion fundamentals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Quaternion-Fundamentals.html">四元数基础知识</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code></a></li>
 </ul>
 </li>
@@ -432,24 +432,21 @@
    <span class="n">timeout</span><span class="o">=</span><span class="n">rclpy</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">lookup_transform</span></code> can take four arguments, where the last one is an optional timeout.
-It will block for up to that duration waiting for it to timeout.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lookup_transform</span></code> 可以接受四个参数，其中最后一个是可选的超时时间。它将阻塞等待，最多等待指定的时长后超时。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Once this change is made, remove the <code class="docutils literal notranslate"><span class="pre">raise</span></code> line from the <code class="docutils literal notranslate"><span class="pre">except()</span></code> block that we added above or the code will continue to fail.</p>
+<p>在进行这个更改后，从上面添加的 <code class="docutils literal notranslate"><span class="pre">except()</span></code> 块中移除 <code class="docutils literal notranslate"><span class="pre">raise</span></code> 行，否则代码将继续失败。</p>
 </div>
 <p>现在您可以运行启动文件。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_py turtle_tf2_demo.launch.py</span>
 </pre></div>
 </div>
-<p>You should notice that <code class="docutils literal notranslate"><span class="pre">lookup_transform()</span></code> will actually block until the transform between the two turtles becomes available (this will usually take a few milli-seconds).
-Once the timeout has been reached (one second in this case), an exception will be raised only if the transform is still not available.</p>
+<p>你应该注意到，<code class="docutils literal notranslate"><span class="pre">lookup_transform()</span></code> 实际上会阻塞，直到两个 turtle 之间的变换可用（通常需要几毫秒）。一旦达到超时时间（在本例中为一秒），只有当变换仍然不可用时才会引发异常。</p>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id5">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial you learned more about the <code class="docutils literal notranslate"><span class="pre">lookup_transform</span></code> function and its timeout features.
-You also learned how to catch and handle additional exceptions that can be thrown by tf2.</p>
+<p>在本教程中，你学习了关于 <code class="docutils literal notranslate"><span class="pre">lookup_transform</span></code> 函数及其超时特性的更多内容。你还学会了如何捕获和处理 tf2 可能抛出的其他异常。</p>
 </div>
 </div>
 
