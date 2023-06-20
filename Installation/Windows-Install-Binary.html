@@ -398,7 +398,7 @@
 <li><p><a class="reference internal" href="#additional-rmw-implementations-optional" id="id19">其他RMW实现（可选）</a></p></li>
 <li><p><a class="reference internal" href="#troubleshooting" id="id20">故障排除</a></p></li>
 <li><p><a class="reference internal" href="#uninstall" id="id21">卸载</a></p></li>
-<li><p><a class="reference internal" href="#extra-stuff-for-debug" id="id22">Extra Stuff for Debug</a></p></li>
+<li><p><a class="reference internal" href="#extra-stuff-for-debug" id="id22">调试用的额外内容</a></p></li>
 <li><p><a class="reference internal" href="#alternative-ros-2-build-installation-from-aka-ms-ros" id="id23">(Alternative) ROS 2 Build Installation from aka.ms/ros</a></p>
 <ul>
 <li><p><a class="reference internal" href="#install-ros-2-builds" id="id24">Install ROS 2 builds</a></p></li>
@@ -532,19 +532,18 @@ setx /m QT_QPA_PLATFORM_PLUGIN_PATH C:<span class="se">\Q</span>t<span class="se
 <h2><a class="toc-backref" href="#id15">正在下载 ROS 2</a><a class="headerlink" href="#downloading-ros-2" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>前往发布页面: <a class="reference external" href="https://github.com/ros2/ros2/releases">https://github.com/ros2/ros2/releases</a></p></li>
-<li><p>Download the latest package for Windows, e.g., <code class="docutils literal notranslate"><span class="pre">ros2-humble-*-windows-release-amd64.zip</span></code>.</p></li>
+<li><p>下载最新的Windows软件包，例如``ros2-humble-<a href="#id1"><span class="problematic" id="id2">*</span></a>-windows-release-amd64.zip``。</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>There may be more than one binary download option which might cause the file name to differ.</p>
+<p>可能会有多个二进制下载选项，这可能导致文件名不同。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>To install debug libraries for ROS 2, see <a class="reference internal" href="#extra-stuff-for-debug">Extra Stuff for Debug</a>.
-Then continue on with downloading <code class="docutils literal notranslate"><span class="pre">ros2-package-windows-debug-AMD64.zip</span></code>.</p>
+<p>要安装ROS 2的调试库，请参阅 <a class="reference internal" href="#extra-stuff-for-debug">Extra Stuff for Debug</a>。然后继续下载``ros2-package-windows-debug-AMD64.zip``。</p>
 </div>
 <ul class="simple">
-<li><p>Unpack the zip file somewhere (we'll assume <code class="docutils literal notranslate"><span class="pre">C:\dev\ros2_humble</span></code>).</p></li>
+<li><p>在某个位置解压缩zip文件（假设为``C:devros2_humble``）。</p></li>
 </ul>
 </div>
 <div class="section" id="environment-setup">
@@ -557,11 +556,11 @@ Then continue on with downloading <code class="docutils literal notranslate"><sp
 </div>
 <div class="section" id="try-some-examples">
 <h2><a class="toc-backref" href="#id17">尝试一些示例</a><a class="headerlink" href="#try-some-examples" title="永久链接至标题"></a></h2>
-<p>In a command shell, set up the ROS 2 environment as described above and then run a C++ <code class="docutils literal notranslate"><span class="pre">talker</span></code>:</p>
+<p>在命令行窗口中，按照上述说明设置ROS 2环境，然后运行C++的``talker``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
-<p>Start another command shell and run a Python <code class="docutils literal notranslate"><span class="pre">listener</span></code>:</p>
+<p>打开另一个命令行窗口，运行Python的``listener``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_py listener
 </pre></div>
 </div>
@@ -591,14 +590,13 @@ Then continue on with downloading <code class="docutils literal notranslate"><sp
 </ol>
 </div>
 <div class="section" id="extra-stuff-for-debug">
-<h2><a class="toc-backref" href="#id22">Extra Stuff for Debug</a><a class="headerlink" href="#extra-stuff-for-debug" title="永久链接至标题"></a></h2>
-<p>To download the ROS 2 debug libraries you'll need to download <code class="docutils literal notranslate"><span class="pre">ros2-humble-*-windows-debug-AMD64.zip</span></code>.
-Please note that debug libraries require some more additional configuration/setup to work as given below.</p>
-<p>Python installation may require modification to enable debugging symbols and debug binaries:</p>
+<h2><a class="toc-backref" href="#id22">调试用的额外内容</a><a class="headerlink" href="#extra-stuff-for-debug" title="永久链接至标题"></a></h2>
+<p>要下载ROS 2调试库，您需要下载``ros2-humble-<a href="#id1"><span class="problematic" id="id2">*</span></a>-windows-debug-AMD64.zip``。请注意，调试库需要一些额外的配置/设置才能正常工作，如下所示。</p>
+<p>Python安装可能需要修改以启用调试符号和调试二进制文件：</p>
 <ul>
-<li><p>Search in windows <strong>Search Bar</strong> and open <strong>Apps and Features</strong>.</p></li>
-<li><p>Search for the installed Python version.</p></li>
-<li><p>Click Modify.</p>
+<li><p>在Windows的**搜索栏**中搜索并打开**应用程序和功能**。</p></li>
+<li><p>搜索安装的Python版本。</p></li>
+<li><p>点击修改。</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../_images/python_installation_modify.png"><img alt="../_images/python_installation_modify.png" src="../_images/python_installation_modify.png" style="width: 500px;" /></a>
 </div></blockquote>
