@@ -148,7 +148,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Creating-Launch-Files.html">创建一个启动文件</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">将启动文件集成到ROS 2包中</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-Substitutions.html">Using substitutions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Using-Event-Handlers.html">Using event handlers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Using-Event-Handlers.html">使用事件处理程序</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-ROS2-Launch-For-Large-Projects.html">Managing large projects</a></li>
 </ul>
 </li>
@@ -389,7 +389,7 @@
 <li><p><a class="reference internal" href="#create-a-package" id="id4">1 创建一个包</a></p></li>
 <li><p><a class="reference internal" href="#creating-the-structure-to-hold-launch-files" id="id5">2 创建用于存放启动文件的结构</a></p></li>
 <li><p><a class="reference internal" href="#writing-the-launch-file" id="id6">3 编写启动文件</a></p></li>
-<li><p><a class="reference internal" href="#building-and-running-the-launch-file" id="id7">4 Building and running the launch file</a></p></li>
+<li><p><a class="reference internal" href="#building-and-running-the-launch-file" id="id7">4 构建和运行启动文件</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#documentation" id="id8">文档</a></p></li>
@@ -512,12 +512,12 @@
 </div></div>
 </div>
 <div class="section" id="building-and-running-the-launch-file">
-<h3><a class="toc-backref" href="#id7">4 Building and running the launch file</a><a class="headerlink" href="#building-and-running-the-launch-file" title="永久链接至标题"></a></h3>
-<p>Go to the top-level of the workspace, and build it:</p>
+<h3><a class="toc-backref" href="#id7">4 构建和运行启动文件</a><a class="headerlink" href="#building-and-running-the-launch-file" title="永久链接至标题"></a></h3>
+<p>进入工作空间的顶层，并进行构建：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build</span>
 </pre></div>
 </div>
-<p>After the <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> has been successful and you've sourced the workspace, you should be able to run the launch file as follows:</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> 成功并且你已经载入了工作空间之后，你应该能够按照以下方式运行启动文件：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-UHl0aG9uIHBhY2thZ2U=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-UHl0aG9uIHBhY2thZ2U=" name="UHl0aG9uIHBhY2thZ2U=" role="tab" tabindex="0">Python package</button><button aria-controls="panel-4-QysrIHBhY2thZ2U=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-QysrIHBhY2thZ2U=" name="QysrIHBhY2thZ2U=" role="tab" tabindex="-1">C++ package</button></div><div aria-labelledby="tab-4-UHl0aG9uIHBhY2thZ2U=" class="sphinx-tabs-panel group-tab" id="panel-4-UHl0aG9uIHBhY2thZ2U=" name="UHl0aG9uIHBhY2thZ2U=" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-UHl0aG9uIGxhdW5jaCBmaWxl" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-UHl0aG9uIGxhdW5jaCBmaWxl" name="UHl0aG9uIGxhdW5jaCBmaWxl" role="tab" tabindex="0">Python launch file</button><button aria-controls="panel-5-WE1MIGxhdW5jaCBmaWxl" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-WE1MIGxhdW5jaCBmaWxl" name="WE1MIGxhdW5jaCBmaWxl" role="tab" tabindex="-1">XML launch file</button><button aria-controls="panel-5-WUFNTCBsYXVuY2ggZmlsZQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-WUFNTCBsYXVuY2ggZmlsZQ==" name="WUFNTCBsYXVuY2ggZmlsZQ==" role="tab" tabindex="-1">YAML launch file</button></div><div aria-labelledby="tab-5-UHl0aG9uIGxhdW5jaCBmaWxl" class="sphinx-tabs-panel group-tab" id="panel-5-UHl0aG9uIGxhdW5jaCBmaWxl" name="UHl0aG9uIGxhdW5jaCBmaWxl" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch py_launch_example my_script_launch.py</span>
@@ -546,9 +546,8 @@
 </div>
 <div class="section" id="documentation">
 <h2><a class="toc-backref" href="#id8">文档</a><a class="headerlink" href="#documentation" title="永久链接至标题"></a></h2>
-<p><a class="reference external" href="https://github.com/ros2/launch/blob/humble/launch/doc/source/architecture.rst">The launch documentation</a> provides more details on concepts that are also used in <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code>.</p>
-<p>Additional documentation/examples of launch capabilities are forthcoming.
-See the source code (<a class="reference external" href="https://github.com/ros2/launch">https://github.com/ros2/launch</a> and <a class="reference external" href="https://github.com/ros2/launch_ros">https://github.com/ros2/launch_ros</a>) in the meantime.</p>
+<p><a class="reference external" href="https://github.com/ros2/launch/blob/humble/launch/doc/source/architecture.rst">启动文档</a> 提供了关于 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> 中也使用的概念的更多细节。</p>
+<p>其他启动功能的文档/示例即将推出。在此期间，请参考源代码 (<a class="reference external" href="https://github.com/ros2/launch">https://github.com/ros2/launch</a> 和 <a class="reference external" href="https://github.com/ros2/launch_ros">https://github.com/ros2/launch_ros</a>)。</p>
 </div>
 </div>
 

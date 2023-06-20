@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using event handlers &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>使用事件处理程序 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -147,7 +147,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Creating-Launch-Files.html">创建一个启动文件</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Launch-system.html">将启动文件集成到ROS 2包中</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-Substitutions.html">Using substitutions</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Using event handlers</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">使用事件处理程序</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-ROS2-Launch-For-Large-Projects.html">Managing large projects</a></li>
 </ul>
 </li>
@@ -361,7 +361,7 @@
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Intermediate.html">中级</a> &raquo;</li>
           <li><a href="Launch-Main.html">启动</a> &raquo;</li>
-      <li>Using event handlers</li>
+      <li>使用事件处理程序</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Launch/Using-Event-Handlers.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,8 +374,8 @@
 
 
   <div class="section" id="using-event-handlers">
-<h1>Using event handlers<a class="headerlink" href="#using-event-handlers" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn about event handlers in ROS 2 launch files</p>
+<h1>使用事件处理程序<a class="headerlink" href="#using-event-handlers" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>了解ROS 2启动文件中的事件处理程序</p>
 <p><strong>教程级别：</strong> 中级</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="table-of-contents">
@@ -383,7 +383,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id2">背景</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id3">先决条件</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id4">Using event handlers</a></p>
+<li><p><a class="reference internal" href="#id1" id="id4">使用事件处理程序</a></p>
 <ul>
 <li><p><a class="reference internal" href="#event-handlers-example-launch-file" id="id5">1 Event handlers example launch file</a></p></li>
 </ul>
@@ -396,21 +396,16 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id2">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>Launch in ROS 2 is a system that executes and manages user-defined processes.
-It is responsible for monitoring the state of processes it launched, as well as reporting and reacting to changes in the state of those processes.
-These changes are called events and can be handled by registering an event handler with the launch system.
-Event handlers can be registered for specific events and can be useful for monitoring the state of processes.
-Additionally, they can be used to define a complex set of rules which can be used to dynamically modify the launch file.</p>
-<p>This tutorial shows usage examples of event handlers in ROS 2 launch files.</p>
+<p>在ROS 2中，启动是执行和管理用户定义的进程的系统。它负责监视其启动的进程的状态，以及报告和响应这些进程状态的变化。这些变化称为事件，并可以通过向启动系统注册事件处理程序来处理。事件处理程序可以注册为特定事件，并且对于监视进程的状态非常有用。此外，它们可以用于定义一组复杂的规则，用于动态修改启动文件。</p>
+<p>本教程展示了ROS 2启动文件中事件处理程序的使用示例。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id3">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>This tutorial uses the <a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim</span></a> package.
-This tutorial also assumes you have <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">created a new package</span></a> of build type <code class="docutils literal notranslate"><span class="pre">ament_python</span></code> called <code class="docutils literal notranslate"><span class="pre">launch_tutorial</span></code>.</p>
-<p>This tutorial extends the code shown in the <a class="reference internal" href="Using-Substitutions.html"><span class="doc">Using substitutions in launch files</span></a> tutorial.</p>
+<p>本教程使用 <a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim</span></a> 包。本教程还假设您已经 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建了一个名为“launch_tutorial”的新包</span></a>，其构建类型为``ament_python``。</p>
+<p>本教程扩展了 <a class="reference internal" href="Using-Substitutions.html"><span class="doc">在启动文件中使用替换</span></a> 教程中展示的代码。</p>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id4">Using event handlers</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id4">使用事件处理程序</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h2>
 <div class="section" id="event-handlers-example-launch-file">
 <h3><a class="toc-backref" href="#id5">1 Event handlers example launch file</a><a class="headerlink" href="#event-handlers-example-launch-file" title="永久链接至标题"></a></h3>
 <p>Create a new file called <code class="docutils literal notranslate"><span class="pre">example_event_handlers.launch.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> folder of the <code class="docutils literal notranslate"><span class="pre">launch_tutorial</span></code> package.</p>
