@@ -11586,92 +11586,92 @@ msgstr "假设我们想要定义一个用于计算 `斐波那契数列 <https://
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:90
 msgid "Create an ``action`` directory in our ROS 2 package ``action_tutorials_interfaces``:"
-msgstr "Create an ``action`` directory in our ROS 2 package ``action_tutorials_interfaces``:"
+msgstr "在我们的ROS 2包`action_tutorials_interfaces`中创建一个名为`action`的目录："
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:115
 msgid "Within the ``action`` directory, create a file called ``Fibonacci.action`` with the following contents:"
-msgstr "Within the ``action`` directory, create a file called ``Fibonacci.action`` with the following contents:"
+msgstr "在`action`目录中创建一个名为`Fibonacci.action`的文件，并包含以下内容："
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:125
 msgid "The goal request is the ``order`` of the Fibonacci sequence we want to compute, the result is the final ``sequence``, and the feedback is the ``partial_sequence`` computed so far."
-msgstr "The goal request is the ``order`` of the Fibonacci sequence we want to compute, the result is the final ``sequence``, and the feedback is the ``partial_sequence`` computed so far."
+msgstr "目标请求是我们想要计算的斐波那契序列的`order`，结果是最终的`sequence`，反馈是到目前为止计算出的`partial_sequence`。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:128
 msgid "2 Building an action"
-msgstr "2 Building an action"
+msgstr "2 构建一个action"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:130
 msgid "Before we can use the new Fibonacci action type in our code, we must pass the definition to the rosidl code generation pipeline."
-msgstr "Before we can use the new Fibonacci action type in our code, we must pass the definition to the rosidl code generation pipeline."
+msgstr "在我们的代码中使用新的Fibonacci action类型之前，我们必须将定义传递给rosidl代码生成流程。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:132
 msgid "This is accomplished by adding the following lines to our ``CMakeLists.txt`` before the ``ament_package()`` line, in the ``action_tutorials_interfaces``:"
-msgstr "This is accomplished by adding the following lines to our ``CMakeLists.txt`` before the ``ament_package()`` line, in the ``action_tutorials_interfaces``:"
+msgstr "这可以通过在`action_tutorials_interfaces`的`CMakeLists.txt`文件中在`ament_package()`之前添加以下行来实现："
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:142
 msgid "We should also add the required dependencies to our ``package.xml``:"
-msgstr "We should also add the required dependencies to our ``package.xml``:"
+msgstr "我们还需要将所需的依赖项添加到我们的 ``package.xml`` 文件中："
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:152
 msgid "Note, we need to depend on ``action_msgs`` since action definitions include additional metadata (e.g. goal IDs)."
-msgstr "Note, we need to depend on ``action_msgs`` since action definitions include additional metadata (e.g. goal IDs)."
+msgstr "注意，我们需要依赖于 ``action_msgs``，因为动作定义包括附加元数据（例如目标 ID）。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:154
 msgid "We should now be able to build the package containing the ``Fibonacci`` action definition:"
-msgstr "We should now be able to build the package containing the ``Fibonacci`` action definition:"
+msgstr "现在，我们应该能够构建包含 ``Fibonacci`` 动作定义的软件包："
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:163
 msgid "We're done!"
-msgstr "We're done!"
+msgstr "我们完成了！"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:165
 msgid "By convention, action types will be prefixed by their package name and the word ``action``. So when we want to refer to our new action, it will have the full name ``action_tutorials_interfaces/action/Fibonacci``."
-msgstr "By convention, action types will be prefixed by their package name and the word ``action``. So when we want to refer to our new action, it will have the full name ``action_tutorials_interfaces/action/Fibonacci``."
+msgstr "按照惯例，动作类型将以其包名称和单词 ``action`` 作为前缀。因此，当我们想引用我们的新动作时，它将具有完整的名称 ``action_tutorials_interfaces/action/Fibonacci``。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:168
 msgid "We can check that our action built successfully with the command line tool:"
-msgstr "We can check that our action built successfully with the command line tool:"
+msgstr "我们可以使用命令行工具检查我们的动作是否成功构建："
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:180
 msgid "You should see the Fibonacci action definition printed to the screen."
-msgstr "You should see the Fibonacci action definition printed to the screen."
+msgstr "你应该在屏幕上看到打印出的斐波那契动作定义。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:185
 msgid "In this tutorial, you learned the structure of an action definition. You also learned how to correctly build a new action interface using ``CMakeLists.txt`` and ``package.xml``, and how to verify a successful build."
-msgstr "In this tutorial, you learned the structure of an action definition. You also learned how to correctly build a new action interface using ``CMakeLists.txt`` and ``package.xml``, and how to verify a successful build."
+msgstr "在本教程中，你学会了动作定义的结构。你还学会了如何正确构建一个新的动作接口，使用 ``CMakeLists.txt`` 和 ``package.xml``，以及如何验证构建的成功。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:192
 msgid "Next, let's utilize your newly defined action interface by creating an action service and client (in :doc:`Python <Writing-an-Action-Server-Client/Py>` or :doc:`C++ <Writing-an-Action-Server-Client/Cpp>`)."
-msgstr "Next, let's utilize your newly defined action interface by creating an action service and client (in :doc:`Python <Writing-an-Action-Server-Client/Py>` or :doc:`C++ <Writing-an-Action-Server-Client/Cpp>`)."
+msgstr "接下来，让我们利用你新定义的动作接口来创建一个动作服务和客户端（在 :doc:`Python <Writing-an-Action-Server-Client/Py>` 或 :doc:`C++ <Writing-an-Action-Server-Client/Cpp>` 中）。"
 
 
 #: ../../source/Tutorials/Intermediate/Creating-an-Action.rst:197 ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:394 ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:361
 msgid "For more detailed information about ROS actions, please refer to the `design article <http://design.ros2.org/articles/actions.html>`__."
-msgstr "For more detailed information about ROS actions, please refer to the `design article <http://design.ros2.org/articles/actions.html>`__."
+msgstr "有关ROS动作的更详细信息，请参阅 `设计文章 <http://design.ros2.org/articles/actions.html>`__。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:7
 msgid "Creating a launch file"
-msgstr "Creating a launch file"
+msgstr "创建一个启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:9
 msgid "**Goal:** Create a launch file to run a complex ROS 2 system."
-msgstr "**Goal:** Create a launch file to run a complex ROS 2 system."
+msgstr "**目标：** 创建一个用于运行复杂ROS 2系统的启动文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:22
