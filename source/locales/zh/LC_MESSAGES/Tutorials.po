@@ -14706,62 +14706,62 @@ msgstr "如果运行正确，你应该会看到像下面这样的流式数据：
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:741
 msgid "In this tutorial you learned how to use sensor data/messages in tf2. Specifically speaking, you learned how to publish ``PointStamped`` messages on a topic, and how to listen to the topic and transform the frame of ``PointStamped`` messages with ``tf2_ros::MessageFilter``."
-msgstr "In this tutorial you learned how to use sensor data/messages in tf2. Specifically speaking, you learned how to publish ``PointStamped`` messages on a topic, and how to listen to the topic and transform the frame of ``PointStamped`` messages with ``tf2_ros::MessageFilter``."
+msgstr "在本教程中，您学习了如何在tf2中使用传感器数据/消息。具体来说，您学习了如何在一个话题上发布“PointStamped”消息，以及如何监听该话题并使用“tf2_ros::MessageFilter”转换“PointStamped”消息的帧。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:8
 msgid "Writing a broadcaster (C++)"
-msgstr "Writing a broadcaster (C++)"
+msgstr "编写广播器（C++）"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:10 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:10
 msgid "**Goal:** Learn how to broadcast the state of a robot to tf2."
-msgstr "**Goal:** Learn how to broadcast the state of a robot to tf2."
+msgstr "**目标：**学习如何将机器人的状态广播到tf2。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:23 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:23
 msgid "In the next two tutorials we will write the code to reproduce the demo from the :doc:`Introduction to tf2 <./Introduction-To-Tf2>` tutorial. After that, following tutorials focus on extending the demo with more advanced tf2 features, including the usage of timeouts in transformation lookups and time travel."
-msgstr "In the next two tutorials we will write the code to reproduce the demo from the :doc:`Introduction to tf2 <./Introduction-To-Tf2>` tutorial. After that, following tutorials focus on extending the demo with more advanced tf2 features, including the usage of timeouts in transformation lookups and time travel."
+msgstr "在接下来的两个教程中，我们将编写代码来重现 :doc:`Introduction to tf2 <./Introduction-To-Tf2>` 教程中的演示。之后，后续教程将重点介绍如何使用更高级的tf2功能扩展演示，包括在转换查找中使用超时和时间旅行。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:29
 msgid "This tutorial assumes you have a working knowledge of ROS 2 and you have completed the :doc:`Introduction to tf2 tutorial <./Introduction-To-Tf2>` and :doc:`tf2 static broadcaster tutorial (C++) <./Writing-A-Tf2-Static-Broadcaster-Cpp>`. In previous tutorials, you learned how to :doc:`create a workspace <../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace>` and :doc:`create a package <../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package>`. You also have created the ``learning_tf2_cpp`` :doc:`package <./Writing-A-Tf2-Static-Broadcaster-Cpp>`, which is where we will continue working from."
-msgstr "This tutorial assumes you have a working knowledge of ROS 2 and you have completed the :doc:`Introduction to tf2 tutorial <./Introduction-To-Tf2>` and :doc:`tf2 static broadcaster tutorial (C++) <./Writing-A-Tf2-Static-Broadcaster-Cpp>`. In previous tutorials, you learned how to :doc:`create a workspace <../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace>` and :doc:`create a package <../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package>`. You also have created the ``learning_tf2_cpp`` :doc:`package <./Writing-A-Tf2-Static-Broadcaster-Cpp>`, which is where we will continue working from."
+msgstr "本教程假设您已经具备ROS 2的工作知识，并且已经完成了 :doc:`Introduction to tf2 教程 <./Introduction-To-Tf2>` 和 :doc:`tf2静态广播器教程 (C++) <./Writing-A-Tf2-Static-Broadcaster-Cpp>`。在之前的教程中，您学习了如何 :doc:`创建工作空间 <../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace>` 和 :doc:`创建软件包 <../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package>`。您还创建了“learning_tf2_cpp” :doc:`软件包 <./Writing-A-Tf2-Static-Broadcaster-Cpp>`，我们将从这里继续工作。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:37 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:37
 msgid "1 Write the broadcaster node"
-msgstr "1 Write the broadcaster node"
+msgstr "1. 编写广播器节点"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:39
 msgid "Let's first create the source files. Go to the ``learning_tf2_cpp`` package we created in the previous tutorial. Inside the ``src`` directory download the example broadcaster code by entering the following command:"
-msgstr "Let's first create the source files. Go to the ``learning_tf2_cpp`` package we created in the previous tutorial. Inside the ``src`` directory download the example broadcaster code by entering the following command:"
+msgstr "首先我们要创建源文件。进入我们在上一个教程中创建的 ``learning_tf2_cpp`` 包。在 ``src`` 目录中下载示例广播器的代码，输入以下命令："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:157 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:175
 msgid "Now, let's take a look at the code that is relevant to publishing the turtle pose to tf2. Firstly, we define and acquire a single parameter ``turtlename``, which specifies a turtle name, e.g. ``turtle1`` or ``turtle2``."
-msgstr "Now, let's take a look at the code that is relevant to publishing the turtle pose to tf2. Firstly, we define and acquire a single parameter ``turtlename``, which specifies a turtle name, e.g. ``turtle1`` or ``turtle2``."
+msgstr "现在，让我们来看一下与将海龟位姿发布到 tf2 相关的代码。首先，我们定义并获取一个参数 ``turtlename``，它指定了一个海龟的名称，例如 ``turtle1`` 或者 ``turtle2``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:164 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:183
 msgid "Afterward, the node subscribes to topic ``turtleX/pose`` and runs function ``handle_turtle_pose`` on every incoming message."
-msgstr "Afterward, the node subscribes to topic ``turtleX/pose`` and runs function ``handle_turtle_pose`` on every incoming message."
+msgstr "接下来，节点订阅了 ``turtleX/pose`` 主题，并在每个传入的消息上运行函数 ``handle_turtle_pose``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:172 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:193
 msgid "Now, we create a ``TransformStamped`` object and give it the appropriate metadata."
-msgstr "Now, we create a ``TransformStamped`` object and give it the appropriate metadata."
+msgstr "现在，我们创建一个 ``TransformStamped`` 对象，并为其添加适当的元数据。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:174
 msgid "We need to give the transform being published a timestamp, and we'll just stamp it with the current time by calling ``this->get_clock()->now()``. This will return the current time used by the ``Node``."
-msgstr "We need to give the transform being published a timestamp, and we'll just stamp it with the current time by calling ``this->get_clock()->now()``. This will return the current time used by the ``Node``."
+msgstr "我们需要为发布的变换设置一个时间戳，通过调用 ``this->get_clock()->now()`` 将其标记为当前时间。这将返回 ``Node`` 使用的当前时间。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:176 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:197
 msgid "Then we need to set the name of the parent frame of the link we're creating, in this case ``world``."
-msgstr "Then we need to set the name of the parent frame of the link we're creating, in this case ``world``."
+msgstr "然后，我们需要设置正在创建的链接的父帧的名称，本例中为 ``world``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:178 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:199
