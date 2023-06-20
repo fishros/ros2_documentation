@@ -384,8 +384,8 @@
 <li><p><a class="reference internal" href="#discover-available-components" id="id3">发现可用组件</a></p></li>
 <li><p><a class="reference internal" href="#run-time-composition-using-ros-services-with-a-publisher-and-subscriber" id="id4">使用带有发布者和订阅者的ROS服务进行运行时组合</a></p></li>
 <li><p><a class="reference internal" href="#run-time-composition-using-ros-services-with-a-server-and-client" id="id5">使用ROS服务进行运行时组合，包括服务器和客户端</a></p></li>
-<li><p><a class="reference internal" href="#compile-time-composition-using-ros-services" id="id6">Compile-time composition using ROS services</a></p></li>
-<li><p><a class="reference internal" href="#run-time-composition-using-dlopen" id="id7">Run-time composition using dlopen</a></p></li>
+<li><p><a class="reference internal" href="#compile-time-composition-using-ros-services" id="id6">使用ROS服务进行编译时组合</a></p></li>
+<li><p><a class="reference internal" href="#run-time-composition-using-dlopen" id="id7">使用dlopen进行运行时组合</a></p></li>
 <li><p><a class="reference internal" href="#composition-using-launch-actions" id="id8">Composition using launch actions</a></p></li>
 </ul>
 </li>
@@ -475,36 +475,34 @@ composition
 </div>
 <div class="section" id="run-time-composition-using-ros-services-with-a-server-and-client">
 <h3><a class="toc-backref" href="#id5">使用ROS服务进行运行时组合，包括服务器和客户端</a><a class="headerlink" href="#run-time-composition-using-ros-services-with-a-server-and-client" title="永久链接至标题"></a></h3>
-<p>The example with a server and a client is very similar.</p>
-<p>In the first shell:</p>
+<p>带有服务器和客户端的示例非常相似。</p>
+<p>在第一个shell中：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container
 </pre></div>
 </div>
-<p>In the second shell (see <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/server_component.cpp">server</a> and <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/client_component.cpp">client</a> source code):</p>
+<p>在第二个shell中（参见 <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/server_component.cpp">server</a> 和 <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/client_component.cpp">client</a> 的源代码）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager composition composition::Server
 ros2 component load /ComponentManager composition composition::Client
 </pre></div>
 </div>
-<p>In this case the client sends a request to the server, the server processes the request and replies with a response, and the client prints the received response.</p>
+<p>在这种情况下，客户端向服务器发送请求，服务器处理请求并回复响应，客户端打印接收到的响应。</p>
 </div>
 <div class="section" id="compile-time-composition-using-ros-services">
-<h3><a class="toc-backref" href="#id6">Compile-time composition using ROS services</a><a class="headerlink" href="#compile-time-composition-using-ros-services" title="永久链接至标题"></a></h3>
-<p>This demos shows that the same shared libraries can be reused to compile a single executable running multiple components.
-The executable contains all four components from above: talker and listener as well as server and client.</p>
-<p>In the shell call (see <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/manual_composition.cpp">source code</a>):</p>
+<h3><a class="toc-backref" href="#id6">使用ROS服务进行编译时组合</a><a class="headerlink" href="#compile-time-composition-using-ros-services" title="永久链接至标题"></a></h3>
+<p>该演示表明相同的共享库可以被重复使用以编译一个包含多个组件的单个可执行文件。该可执行文件包含上述的所有四个组件：talker和listener以及server和client。</p>
+<p>在shell调用中（参见 <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/manual_composition.cpp">源代码</a>）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run composition manual_composition
 </pre></div>
 </div>
-<p>This should show repeated messages from both pairs, the talker and the listener as well as the server and the client.</p>
+<p>这应该显示来自两个对的重复消息，talker和listener以及server和client。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Manually-composed components will not be reflected in the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">component</span> <span class="pre">list</span></code> command line tool output.</p>
+<p>手动组合的组件不会在``ros2 component list``命令行工具的输出中反映出来。</p>
 </div>
 </div>
 <div class="section" id="run-time-composition-using-dlopen">
-<h3><a class="toc-backref" href="#id7">Run-time composition using dlopen</a><a class="headerlink" href="#run-time-composition-using-dlopen" title="永久链接至标题"></a></h3>
-<p>This demo presents an alternative to run-time composition by creating a generic container process and explicitly passing the libraries to load without using ROS interfaces.
-The process will open each library and create one instance of each &quot;rclcpp::Node&quot; class in the library <a class="reference external" href="https://github.com/ros2/demos/blob/humble/composition/src/dlopen_composition.cpp">source code</a>).</p>
+<h3><a class="toc-backref" href="#id7">使用dlopen进行运行时组合</a><a class="headerlink" href="#run-time-composition-using-dlopen" title="永久链接至标题"></a></h3>
+<p>此演示通过创建一个通用容器进程并显式传递要加载的库来呈现一种运行时组合的替代方法，而不使用ROS接口。该进程将打开每个库并在库中创建每个&quot;rclcpp::Node&quot;类的一个实例（源代码 &lt;https://github.com/ros2/demos/blob/humble/composition/src/dlopen_composition.cpp&gt;`__)。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run composition dlopen_composition <span class="sb">`</span>ros2 pkg prefix composition<span class="sb">`</span>/lib/libtalker_component.so <span class="sb">`</span>ros2 pkg prefix composition<span class="sb">`</span>/lib/liblistener_component.so
 </pre></div>
@@ -515,7 +513,7 @@ The process will open each library and create one instance of each &quot;rclcpp:
 </div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ros2 pkg prefix composition
 </pre></div>
 </div>
-<p>to get the path to where composition is installed. Then call</p>
+<p>来获取组合安装的路径。然后调用</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ros2 run composition dlopen_composition &lt;path_to_composition_install&gt;<span class="se">\b</span>in<span class="se">\t</span>alker_component.dll &lt;path_to_composition_install&gt;<span class="se">\b</span>in<span class="se">\l</span>istener_component.dll
 </pre></div>
 </div>
