@@ -16626,62 +16626,62 @@ msgstr "**目标：** 在Python中实现一个动作服务器和客户端。"
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:23
 msgid "Actions are a form of asynchronous communication in ROS 2. *Action clients* send goal requests to *action servers*. *Action servers* send goal feedback and results to *action clients*."
-msgstr "Actions are a form of asynchronous communication in ROS 2. *Action clients* send goal requests to *action servers*. *Action servers* send goal feedback and results to *action clients*."
+msgstr "在ROS 2中，动作是一种异步通信形式。*动作客户端*向*动作服务器*发送目标请求。*动作服务器*向*动作客户端*发送目标反馈和结果。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:37
 msgid "1 Writing an action server"
-msgstr "1 Writing an action server"
+msgstr "1 编写动作服务器"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:42
 msgid "Until now, you've created packages and used ``ros2 run`` to run your nodes. To keep things simple in this tutorial, however, we’ll scope the action server to a single file. If you'd like to see what a complete package for the actions tutorials looks like, check out `action_tutorials <https://github.com/ros2/demos/tree/humble/action_tutorials>`__."
-msgstr "Until now, you've created packages and used ``ros2 run`` to run your nodes. To keep things simple in this tutorial, however, we’ll scope the action server to a single file. If you'd like to see what a complete package for the actions tutorials looks like, check out `action_tutorials <https://github.com/ros2/demos/tree/humble/action_tutorials>`__."
+msgstr "到目前为止，您已经创建了包并使用``ros2 run``运行节点。但是，在本教程中，为了保持简单，我们将将动作服务器限定在一个单独的文件中。如果您想查看动作教程的完整包是什么样子，请查看`action_tutorials <https://github.com/ros2/demos/tree/humble/action_tutorials>`__。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:47
 msgid "Open a new file in your home directory, let's call it ``fibonacci_action_server.py``, and add the following code:"
-msgstr "Open a new file in your home directory, let's call it ``fibonacci_action_server.py``, and add the following code:"
+msgstr "在您的主目录中打开一个新文件，我们将其命名为``fibonacci_action_server.py``，然后添加以下代码："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:53
 msgid "Line 8 defines a class ``FibonacciActionServer`` that is a subclass of ``Node``. The class is initialized by calling the ``Node`` constructor, naming our node ``fibonacci_action_server``:"
-msgstr "Line 8 defines a class ``FibonacciActionServer`` that is a subclass of ``Node``. The class is initialized by calling the ``Node`` constructor, naming our node ``fibonacci_action_server``:"
+msgstr "第8行定义了一个名为``FibonacciActionServer``的类，它是``Node``的子类。通过调用``Node``构造函数来初始化该类，并将节点命名为``fibonacci_action_server``："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:60
 msgid "In the constructor we also instantiate a new action server:"
-msgstr "In the constructor we also instantiate a new action server:"
+msgstr "在构造函数中，我们还实例化了一个新的动作服务器："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:66
 msgid "An action server requires four arguments:"
-msgstr "An action server requires four arguments:"
+msgstr "一个操作服务器需要四个参数："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:68
 msgid "A ROS 2 node to add the action client to: ``self``."
-msgstr "A ROS 2 node to add the action client to: ``self``."
+msgstr "要添加操作客户端的ROS 2节点：``self``。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:69
 msgid "The type of the action: ``Fibonacci`` (imported in line 5)."
-msgstr "The type of the action: ``Fibonacci`` (imported in line 5)."
+msgstr "操作的类型：``Fibonacci``（在第5行导入）。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:71
 msgid "A callback function for executing accepted goals: ``self.execute_callback``. This callback **must** return a result message for the action type."
-msgstr "A callback function for executing accepted goals: ``self.execute_callback``. This callback **must** return a result message for the action type."
+msgstr "用于执行已接受的目标的回调函数：``self.execute_callback``。该回调函数**必须**返回该操作类型的结果消息。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:74
 msgid "We also define an ``execute_callback`` method in our class:"
-msgstr "We also define an ``execute_callback`` method in our class:"
+msgstr "我们还在类中定义了一个``execute_callback``方法："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:80
 msgid "This is the method that will be called to execute a goal once it is accepted."
-msgstr "This is the method that will be called to execute a goal once it is accepted."
+msgstr "这是一旦接受目标就会被调用来执行目标的方法。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:82
