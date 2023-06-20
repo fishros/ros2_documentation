@@ -438,7 +438,7 @@
 <li><p><a class="reference internal" href="#client-libraries" id="id3">客户端库</a></p></li>
 <li><p><a class="reference internal" href="#discovery" id="id4">发现</a></p></li>
 <li><p><a class="reference internal" href="#security" id="id5">安全性</a></p></li>
-<li><p><a class="reference internal" href="#related-content" id="id6">Related Content</a></p></li>
+<li><p><a class="reference internal" href="#related-content" id="id6">相关内容</a></p></li>
 </ul>
 </div>
 <p>ROS 2是基于匿名发布/订阅机制的中间件，允许在不同的ROS进程之间传递消息。</p>
@@ -471,29 +471,23 @@
 <p>节点的发现通过 ROS 2 的底层中间件自动进行。其过程可以总结如下：</p>
 <ol class="arabic simple">
 <li><p>当启动一个节点时，它会向在同一 ROS 域（使用 ROS_DOMAIN_ID 环境变量设置）上的其他节点广告自己的存在。节点会对此广告进行响应，并提供有关自身的信息，以便建立适当的连接并进行通信。</p></li>
-<li><p>Nodes periodically advertise their presence so that connections can be made with new-found entities, even after the initial discovery period.</p></li>
-<li><p>Nodes advertise to other nodes when they go offline.</p></li>
+<li><p>节点定期广播其存在，以便在初始发现期之后能够与新发现的实体建立连接。</p></li>
+<li><p>节点在离线时向其他节点进行广播。</p></li>
 </ol>
-<p>Nodes will only establish connections with other nodes if they have compatible <a class="reference internal" href="Tutorials/Demos/Quality-of-Service.html"><span class="doc">Quality of Service</span></a> settings.</p>
-<p>Take the <a class="reference internal" href="Installation/Alternatives/Ubuntu-Development-Setup.html#talker-listener"><span class="std std-ref">talker-listener demo</span></a> for example.
-Running the C++ talker node in one terminal will publish messages on a topic,
-and the Python listener node running in another terminal  will subscribe to messages on the same topic.</p>
-<p>You should see that these nodes discover each other automatically, and begin to exchange messages.</p>
+<p>节点仅在具有兼容的 <a class="reference internal" href="Tutorials/Demos/Quality-of-Service.html"><span class="doc">服务质量</span></a> 设置的情况下与其他节点建立连接。</p>
+<p>以 <a class="reference internal" href="Installation/Alternatives/Ubuntu-Development-Setup.html#talker-listener"><span class="std std-ref">talker-listener demo</span></a> 为例。在一个终端中运行 C++ talker 节点会发布消息到一个主题上，而在另一个终端中运行的 Python listener 节点会订阅相同主题上的消息。</p>
+<p>你应该看到这些节点会自动发现彼此，并开始交换消息。</p>
 </div>
 <div class="section" id="security">
 <h3><a class="toc-backref" href="#id5">安全性</a><a class="headerlink" href="#security" title="永久链接至标题"></a></h3>
-<p>ROS 2 includes the ability to secure communications among nodes within the ROS 2 computational graph.
-Similar to discovery, security happens through the underlying ROS 2 middleware (provided it has support for the corresponding security plugins).
-No additional software installation is needed to enable security; however, the middleware requires configuration files for each ROS graph participant.
-These files enable encryption and authentication, and define policies both for individual nodes and for the overall ROS graph.
-ROS 2 also adds a master &quot;on/off&quot; switch to control security behavior.</p>
-<p>ROS utilities can create the authoritative <a class="reference external" href="https://en.wikipedia.org/wiki/Trust_anchor">trust anchor</a> for a ROS application, or an external certificate authority can be used.</p>
-<p>See the <a class="reference internal" href="Concepts/About-Security.html"><span class="doc">ROS 2 Security</span></a> article for additional details or ROS security features.</p>
+<p>ROS 2 包含在 ROS 2 计算图中的节点之间进行通信安全的能力。与发现类似，安全性是通过底层的 ROS 2 中间件实现的（前提是中间件支持相应的安全插件）。启用安全性不需要额外的软件安装，但中间件需要为每个 ROS 图参与者配置文件。这些文件用于启用加密和身份验证，并为各个节点和整个 ROS 图定义策略。ROS 2 还添加了一个主要的“开/关”开关来控制安全行为。</p>
+<p>ROS 实用工具可以为 ROS 应用程序创建权威的 <a class="reference external" href="https://en.wikipedia.org/wiki/Trust_anchor">信任锚点</a>，或者可以使用外部证书机构。</p>
+<p>有关详细信息或 ROS 安全功能，请参阅 <a class="reference internal" href="Concepts/About-Security.html"><span class="doc">ROS 2 安全</span></a> 文章。</p>
 </div>
 <div class="section" id="related-content">
-<h3><a class="toc-backref" href="#id6">Related Content</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h3>
-<p><a class="reference internal" href="Citations.html"><span class="doc">See the ROS 2 citations</span></a> for more explanation of concepts and citable resources.</p>
-<p>For a brief video introduction to ROS 2, see this community contributed content:</p>
+<h3><a class="toc-backref" href="#id6">相关内容</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h3>
+<p>有关概念和可引用资源的更多解释，请参阅 <a class="reference internal" href="Citations.html"><span class="doc">ROS 2 引用</span></a>。</p>
+<p>要了解 ROS 2 的简介视频，请参阅社区贡献的内容：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/46TPAKXBOF8">Getting started with ROS Part 1: Nodes, Parameters and Topics</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/keZAJ83eEoM">Getting started with ROS Part 2: Services and Actions</a></p></li>
