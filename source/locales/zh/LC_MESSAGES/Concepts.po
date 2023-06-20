@@ -562,62 +562,62 @@ msgstr "推论：**工作空间不需要是同构的。**只要正在使用的�
 
 #: ../../source/Concepts/About-Catment.rst:78
 msgid "Use cases, with experimental implementations"
-msgstr "Use cases, with experimental implementations"
+msgstr "使用案例和实验性实现"
 
 
 #: ../../source/Concepts/About-Catment.rst:81
 msgid "Adding ROS packages to a ROS 2 workspace and building with ``ament build``"
-msgstr "Adding ROS packages to a ROS 2 workspace and building with ``ament build``"
+msgstr "将ROS包添加到ROS 2工作空间并使用``ament build``进行构建"
 
 
 #: ../../source/Concepts/About-Catment.rst:83
 msgid "Let's say that you want to add some existing ROS packages to your ROS 2 workspace and don't want to migrate the ROS packages from ``catkin`` to ``ament`` (or vice versa). Here are two patches that let you do that:"
-msgstr "Let's say that you want to add some existing ROS packages to your ROS 2 workspace and don't want to migrate the ROS packages from ``catkin`` to ``ament`` (or vice versa). Here are two patches that let you do that:"
+msgstr "假设您想将一些现有的ROS包添加到您的ROS 2工作空间，并且不想将ROS包从``catkin``迁移到``ament``（或反之亦然）。以下是两个补丁，可以实现此功能："
 
 
 #: ../../source/Concepts/About-Catment.rst:86
 msgid "`ament_package <https://github.com/ament/ament_package/compare/catkin?expand=1>`__: Adds support for format 1 package manifests, instead of requiring format 2. This change isn't strictly related to ``catkin`` vs. ``ament``, because format 2 has been around for a while and ``catkin`` supports it, so developers could already update their manifests to format 2. But there's a ton of ROS code out there that uses format 1, so we should support it. This implementation could be improved, e.g. by reasoning over the various flavors of depend tags and how they differ between formats 1 and 2."
-msgstr "`ament_package <https://github.com/ament/ament_package/compare/catkin?expand=1>`__: Adds support for format 1 package manifests, instead of requiring format 2. This change isn't strictly related to ``catkin`` vs. ``ament``, because format 2 has been around for a while and ``catkin`` supports it, so developers could already update their manifests to format 2. But there's a ton of ROS code out there that uses format 1, so we should support it. This implementation could be improved, e.g. by reasoning over the various flavors of depend tags and how they differ between formats 1 and 2."
+msgstr "`ament_package <https://github.com/ament/ament_package/compare/catkin?expand=1>`__：添加对格式1包清单的支持，而不是要求格式2。此更改与``catkin``与``ament``的关系并不严格相关，因为格式2已经存在一段时间了，并且``catkin``也支持它，所以开发者已经可以将其清单更新为格式2。但是，有很多使用格式1的ROS代码存在，因此我们应该支持它。这个实现可以改进，例如通过推理各种依赖标签的不同之处，以及格式1和2之间的差异。"
 
 
 #: ../../source/Concepts/About-Catment.rst:91
 msgid "`ament_tools <https://github.com/ament/ament_tools/compare/catkin?expand=1>`__: Adds a new ``catkin`` build type to ``ament``. This implementation just treats ``catkin`` packages the same as plain ``cmake`` packages, which seems to work fine. It could be made more sophisticated."
-msgstr "`ament_tools <https://github.com/ament/ament_tools/compare/catkin?expand=1>`__: Adds a new ``catkin`` build type to ``ament``. This implementation just treats ``catkin`` packages the same as plain ``cmake`` packages, which seems to work fine. It could be made more sophisticated."
+msgstr "`ament_tools <https://github.com/ament/ament_tools/compare/catkin?expand=1>`__：向``ament``添加了一个新的``catkin``构建类型。该实现将``catkin``包与普通``cmake``包视为相同，似乎工作正常。可以使其更加复杂。"
 
 
 #: ../../source/Concepts/About-Catment.rst:96
 msgid "Example usage:"
-msgstr "Example usage:"
+msgstr "示例用法："
 
 
 #: ../../source/Concepts/About-Catment.rst:99
 msgid "Get the ROS 2 code as usual, using the branches mentioned above."
-msgstr "Get the ROS 2 code as usual, using the branches mentioned above."
+msgstr "按照通常的方式获取ROS 2代码，使用上述提到的分支。"
 
 
 #: ../../source/Concepts/About-Catment.rst:100
 msgid "Add to your workspace some ``catkin`` ROS packages, ensuring that all of their dependencies are satisfied (either present in the workspace or installed elsewhere with appropriate setup shell files sourced)."
-msgstr "Add to your workspace some ``catkin`` ROS packages, ensuring that all of their dependencies are satisfied (either present in the workspace or installed elsewhere with appropriate setup shell files sourced)."
+msgstr "向您的工作空间中添加一些``catkin`` ROS软件包，确保它们的所有依赖项都得到满足（要么在工作空间中存在，要么通过适当的设置shell文件在其他位置安装）。"
 
 
 #: ../../source/Concepts/About-Catment.rst:101
 msgid "Build as usual (e.g. ``colcon build``)."
-msgstr "Build as usual (e.g. ``colcon build``)."
+msgstr "像往常一样构建（例如``colcon build``）。"
 
 
 #: ../../source/Concepts/About-Catment.rst:103
 msgid "Voila: your existing code isn't suddenly broken just because there's a new build tool in use."
-msgstr "Voila: your existing code isn't suddenly broken just because there's a new build tool in use."
+msgstr "完成了：由于使用了新的构建工具，您现有的代码不会突然中断。"
 
 
 #: ../../source/Concepts/About-Catment.rst:106
 msgid "Variation: Building ROS packages with ``ament build``"
-msgstr "Variation: Building ROS packages with ``ament build``"
+msgstr "变种：使用``ament build``构建ROS软件包"
 
 
 #: ../../source/Concepts/About-Catment.rst:108
 msgid "Let's say that you love the new ``ament`` tool and want to use it to build your existing ROS packages that use ``catkin`` internally. Here's an example of how to do that, by doing a minimal installation of ``ament`` and then using it to build a workspace full of ROS ``catkin`` packages:"
-msgstr "Let's say that you love the new ``ament`` tool and want to use it to build your existing ROS packages that use ``catkin`` internally. Here's an example of how to do that, by doing a minimal installation of ``ament`` and then using it to build a workspace full of ROS ``catkin`` packages:"
+msgstr "假设您喜欢新的``ament``工具，并希望使用它来构建使用``catkin``的现有ROS软件包。以下是一个示例，演示如何通过最小安装``ament``并使用它构建一个由ROS``catkin``软件包填充的工作空间："
 
 
 #: ../../source/Concepts/About-Catment.rst:126
