@@ -388,27 +388,27 @@ deb http://packages.ros.org/ros2-testing/ubuntu jammy main
 </pre></div>
 </div>
 </li>
-<li><p>Update the <code class="docutils literal notranslate"><span class="pre">apt</span></code> index:</p>
+<li><p>更新 <code class="docutils literal notranslate"><span class="pre">apt</span></code> 索引:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt update
 </pre></div>
 </div>
 </li>
-<li><p>You can now install individual packages from the testing repository, for example:</p>
+<li><p>您现在可以从测试仓库安装单个软件包，例如:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-humble-my-just-released-package
 </pre></div>
 </div>
 </li>
-<li><p>Alternatively, you can move your entire ROS 2 installation to the testing repository:</p>
+<li><p>另外，您可以将整个ROS 2安装迁移到测试仓库:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt dist-upgrade
 </pre></div>
 </div>
 </li>
-<li><p>Once you are finished testing, you can switch back to the normal repository by changing back the contents of <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ros2.list</span></code>:</p>
+<li><p>完成测试后，可以通过将 <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ros2.list</span></code> 的内容改回来切换回常规仓库:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>deb http://packages.ros.org/ros2/ubuntu jammy main
 <span class="c1"># deb http://packages.ros.org/ros2-testing/ubuntu jammy main</span>
 </pre></div>
 </div>
-<p>and doing an update and upgrade:</p>
+<p>然后执行更新和升级操作:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt update
 sudo apt dist-upgrade
 </pre></div>
@@ -417,15 +417,14 @@ sudo apt dist-upgrade
 </ol>
 </div>
 <div class="section" id="fat-binaries">
-<span id="prerelease-binaries"></span><h2>Fat binaries<a class="headerlink" href="#fat-binaries" title="永久链接至标题"></a></h2>
-<p>For core packages, we run nightly packaging jobs for Ubuntu Linux, RHEL, and Windows.
-These packaging jobs produce archives with pre-built binaries that can be downloaded and extracted to your filesystem.</p>
+<span id="prerelease-binaries"></span><h2>Fat二进制文件<a class="headerlink" href="#fat-binaries" title="永久链接至标题"></a></h2>
+<p>对于核心软件包，我们每晚运行针对Ubuntu Linux、RHEL和Windows的打包作业。这些打包作业生成包含预构建二进制文件的存档，可下载并提取到您的文件系统中。</p>
 <ol class="arabic">
-<li><p>Make sure you have all dependencies installed according to the <a class="reference internal" href="Alternatives/Latest-Development-Setup.html"><span class="doc">latest development setup</span></a> for your platform.</p></li>
-<li><p>Go to <a class="reference external" href="https://ci.ros2.org/view/packaging/">https://ci.ros2.org/view/packaging/</a> and select a packaging job from the list corresponding to your platform.</p></li>
-<li><p>Under the heading &quot;Last Successful Artifacts&quot; you should see a download link (e.g. for Windows, <code class="docutils literal notranslate"><span class="pre">ros2-package-windows-AMD64.zip</span></code>).</p></li>
-<li><p>Download and extract the archive to your file system.</p></li>
-<li><p>To use the fat binary installation, source the <code class="docutils literal notranslate"><span class="pre">setup.*</span></code> file that can be found in the root of the archive.</p>
+<li><p>确保根据您的平台按照 <a class="reference internal" href="Alternatives/Latest-Development-Setup.html"><span class="doc">最新的开发设置</span></a> 安装了所有依赖项。</p></li>
+<li><p>访问 <a class="reference external" href="https://ci.ros2.org/view/packaging/">https://ci.ros2.org/view/packaging/</a> 并从列表中选择与您的平台对应的打包作业。</p></li>
+<li><p>在“最后成功的存档”部分，您应该看到一个下载链接（例如，对于Windows，<code class="docutils literal notranslate"><span class="pre">ros2-package-windows-AMD64.zip</span></code>）。</p></li>
+<li><p>下载并将存档提取到您的文件系统中。</p></li>
+<li><p>要使用全二进制安装，请运行存档根目录中可以找到的``setup.*``文件。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" name="VWJ1bnR1IExpbnV4IGFuZCBSSEVM" role="tab" tabindex="0">Ubuntu Linux and RHEL</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" class="sphinx-tabs-panel group-tab" id="panel-0-VWJ1bnR1IExpbnV4IGFuZCBSSEVM" name="VWJ1bnR1IExpbnV4IGFuZCBSSEVM" role="tabpanel" tabindex="0"><div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> path/to/extracted/archive/setup.bash
 </pre></div>
