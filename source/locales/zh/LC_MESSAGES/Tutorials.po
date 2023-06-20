@@ -13356,92 +13356,92 @@ msgstr "1. 编写固定帧广播器"
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:49 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:49
 msgid "In our turtle example, we'll add a new frame ``carrot1``, which will be the child of the ``turtle1``. This frame will serve as the goal for the second turtle."
-msgstr "In our turtle example, we'll add a new frame ``carrot1``, which will be the child of the ``turtle1``. This frame will serve as the goal for the second turtle."
+msgstr "在我们的乌龟示例中，我们将添加一个名为“carrot1”的新框架，它将是“turtle1”的子框架。这个框架将作为第二只乌龟的目标。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:52
 msgid "Let's first create the source files. Go to the ``learning_tf2_cpp`` package we created in the previous tutorials. Download the fixed frame broadcaster code by entering the following command:"
-msgstr "Let's first create the source files. Go to the ``learning_tf2_cpp`` package we created in the previous tutorials. Download the fixed frame broadcaster code by entering the following command:"
+msgstr "首先创建源文件。转到我们在之前教程中创建的“learning_tf2_cpp”包。通过输入以下命令下载固定框架广播代码："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:83
 msgid "Now open the file called ``fixed_frame_tf2_broadcaster.cpp``."
-msgstr "Now open the file called ``fixed_frame_tf2_broadcaster.cpp``."
+msgstr "现在打开名为“fixed_frame_tf2_broadcaster.cpp”的文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:139 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:129
 msgid "The code is very similar to the tf2 broadcaster tutorial example and the only difference is that the transform here does not change over time."
-msgstr "The code is very similar to the tf2 broadcaster tutorial example and the only difference is that the transform here does not change over time."
+msgstr "这段代码与tf2广播器教程示例非常相似，唯一的区别是这里的变换不随时间改变。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:144 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:134
 msgid "Let's take a look at the key lines in this piece of code. Here we create a new transform, from the parent ``turtle1`` to the new child ``carrot1``. The ``carrot1`` frame is 2 meters offset in y axis in terms of the ``turtle1`` frame."
-msgstr "Let's take a look at the key lines in this piece of code. Here we create a new transform, from the parent ``turtle1`` to the new child ``carrot1``. The ``carrot1`` frame is 2 meters offset in y axis in terms of the ``turtle1`` frame."
+msgstr "让我们看一下这段代码中的关键部分。在这里，我们创建了一个新的变换，从父框架“turtle1”到新的子框架“carrot1”。相对于“turtle1”框架，框架“carrot1”在y轴上偏移了2米。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:162 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:451 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:222 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:307 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:249
 msgid "Navigate one level back to the ``learning_tf2_cpp`` directory, where the ``CMakeLists.txt`` and ``package.xml`` files are located."
-msgstr "Navigate one level back to the ``learning_tf2_cpp`` directory, where the ``CMakeLists.txt`` and ``package.xml`` files are located."
+msgstr "导航到“learning_tf2_cpp”目录的上一级，其中包含“CMakeLists.txt”和“package.xml”文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:164
 msgid "Now open the ``CMakeLists.txt`` add the executable and name it ``fixed_frame_tf2_broadcaster``."
-msgstr "Now open the ``CMakeLists.txt`` add the executable and name it ``fixed_frame_tf2_broadcaster``."
+msgstr "现在打开``CMakeLists.txt``文件，添加可执行文件，并将其命名为``fixed_frame_tf2_broadcaster``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:185 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:162
 msgid "1.3 Write the launch file"
-msgstr "1.3 Write the launch file"
+msgstr "1.3 编写启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:187
 msgid "Now let's create a launch file for this example. With your text editor, create a new file called ``turtle_tf2_fixed_frame_demo.launch.py``, and add the following lines:"
-msgstr "Now let's create a launch file for this example. With your text editor, create a new file called ``turtle_tf2_fixed_frame_demo.launch.py``, and add the following lines:"
+msgstr "现在我们为这个示例创建一个启动文件。使用文本编辑器创建一个名为``turtle_tf2_fixed_frame_demo.launch.py``的新文件，并添加以下行："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:220 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:197
 msgid "This launch file imports the required packages and then creates a ``demo_nodes`` variable that will store nodes that we created in the previous tutorial's launch file."
-msgstr "This launch file imports the required packages and then creates a ``demo_nodes`` variable that will store nodes that we created in the previous tutorial's launch file."
+msgstr "该启动文件导入所需的包，然后创建一个``demo_nodes``变量，用于存储我们在上一教程的启动文件中创建的节点。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:222 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:199
 msgid "The last part of the code will add our fixed ``carrot1`` frame to the turtlesim world using our ``fixed_frame_tf2_broadcaster`` node."
-msgstr "The last part of the code will add our fixed ``carrot1`` frame to the turtlesim world using our ``fixed_frame_tf2_broadcaster`` node."
+msgstr "代码的最后一部分将使用我们的``fixed_frame_tf2_broadcaster``节点将固定的``carrot1``帧添加到turtlesim世界中。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:233 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:211 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:272
 msgid "1.4 Build"
-msgstr "1.4 Build"
+msgstr "1.4 构建"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:235 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:511 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:213 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:467 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:274 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:594 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:336 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:357 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:330 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:283
 msgid "Run ``rosdep`` in the root of your workspace to check for missing dependencies."
-msgstr "Run ``rosdep`` in the root of your workspace to check for missing dependencies."
+msgstr "在你的工作空间的根目录中运行 ``rosdep``，以检查缺少的依赖项。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:247 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:251 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:523 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:527 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:225 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:229 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:479 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:483 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:286 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:290 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:606 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:610 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:348 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:352 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:369 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:373 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:342 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:346 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:295 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:299 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:299 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:303 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:318 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:322
 msgid "rosdep only runs on Linux, so you will need to install ``geometry_msgs`` and ``turtlesim`` dependencies yourself"
-msgstr "rosdep only runs on Linux, so you will need to install ``geometry_msgs`` and ``turtlesim`` dependencies yourself"
+msgstr "``rosdep`` 只能在 Linux 上运行，所以你需要自己安装 ``geometry_msgs`` 和 ``turtlesim`` 依赖项。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:253 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:529 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:354 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:348
 msgid "From the root of your workspace, build your updated package:"
-msgstr "From the root of your workspace, build your updated package:"
+msgstr "从你的工作空间的根目录中构建更新的软件包："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:275 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:551 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:253 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:507 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:634 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:376 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:397 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:370 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:323 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:327 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:346
 msgid "Open a new terminal, navigate to the root of your workspace, and source the setup files:"
-msgstr "Open a new terminal, navigate to the root of your workspace, and source the setup files:"
+msgstr "打开一个新终端，进入你的工作空间的根目录，并源化设置文件："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:302 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:280 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:534
 msgid "1.5 Run"
-msgstr "1.5 Run"
+msgstr "1.5 运行"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:304
 msgid "Now you can start the turtle broadcaster demo:"
-msgstr "Now you can start the turtle broadcaster demo:"
+msgstr "现在你可以开始运行海龟广播器演示："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:310 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:288
