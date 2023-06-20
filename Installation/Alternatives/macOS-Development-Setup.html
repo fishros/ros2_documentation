@@ -379,9 +379,9 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#system-requirements" id="id1">系统要求</a></p></li>
 <li><p><a class="reference internal" href="#install-prerequisites" id="id2">安装先决条件</a></p></li>
-<li><p><a class="reference internal" href="#disable-system-integrity-protection-sip" id="id3">Disable System Integrity Protection (SIP)</a></p></li>
+<li><p><a class="reference internal" href="#disable-system-integrity-protection-sip" id="id3">禁用系统完整性保护 (SIP)</a></p></li>
 <li><p><a class="reference internal" href="#get-the-ros-2-code" id="id4">获取ROS 2代码</a></p></li>
-<li><p><a class="reference internal" href="#install-additional-dds-vendors-optional" id="id5">Install additional DDS vendors (optional)</a></p></li>
+<li><p><a class="reference internal" href="#install-additional-dds-vendors-optional" id="id5">安装额外的DDS供应商（可选）</a></p></li>
 <li><p><a class="reference internal" href="#build-the-ros-2-code" id="id6">构建ROS 2代码。</a></p></li>
 <li><p><a class="reference internal" href="#environment-setup" id="id7">环境设置</a></p></li>
 <li><p><a class="reference internal" href="#try-some-examples" id="id8">尝试一些示例</a></p></li>
@@ -403,9 +403,9 @@
 <ol class="arabic">
 <li><p><strong>Xcode</strong></p>
 <ul>
-<li><p>If you don't already have it installed, install Xcode.</p></li>
-<li><p>Note: Versions of Xcode later than 11.3.1 can no longer be installed on macOS Mojave, so you will need to install an older version manually, see: <a class="reference external" href="https://stackoverflow.com/a/61046761">https://stackoverflow.com/a/61046761</a></p></li>
-<li><p>Also, if you don't already have it installed, install the Command Line Tools:</p>
+<li><p>如果您尚未安装Xcode，请安装它。</p></li>
+<li><p>注意：Xcode 11.3.1 之后的版本无法在 macOS Mojave 上安装，因此您需要手动安装旧版本，参见：<a class="reference external" href="https://stackoverflow.com/a/61046761">https://stackoverflow.com/a/61046761</a></p></li>
+<li><p>此外，如果您尚未安装命令行工具，请安装：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xcode-select --install
 <span class="c1"># This command will not succeed if you have not installed Xcode.app</span>
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
@@ -417,25 +417,25 @@ sudo xcodebuild -license
 </li>
 </ul>
 </li>
-<li><p><strong>brew</strong> <em>(needed to install more stuff; you probably already have this)</em>:</p>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>brew**（需要安装其他工具；您可能已经安装了此工具）：</p>
 <ul>
-<li><p>Follow installation instructions at <a class="reference external" href="http://brew.sh/">http://brew.sh/</a></p></li>
-<li><p><em>Optional</em>: Check that <code class="docutils literal notranslate"><span class="pre">brew</span></code> is happy with your system configuration by running:</p>
+<li><p>按照 <a class="reference external" href="http://brew.sh/">http://brew.sh/</a> 上的安装说明进行安装。</p></li>
+<li><p><em>可选</em>: 运行以下命令检查 <code class="docutils literal notranslate"><span class="pre">brew</span></code> 是否满意您的系统配置:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew doctor
 </pre></div>
 </div>
-<p>Fix any problems that it identifies.</p>
+<p>解决任何它识别出的问题。</p>
 </li>
 </ul>
 </li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">brew</span></code> to install more stuff:</p>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">brew</span></code> 安装更多内容:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install asio assimp bison bullet cmake console_bridge cppcheck <span class="se">\</span>
   cunit eigen freetype graphviz opencv openssl orocos-kdl pcre poco <span class="se">\</span>
   pyqt5 python qt@5 sip spdlog tinyxml tinyxml2
 </pre></div>
 </div>
 </li>
-<li><p>Setup some environment variables:</p>
+<li><p>设置一些环境变量:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add the openssl dir for DDS-Security</span>
 <span class="c1"># if you are using ZSH, then replace &#39;.bashrc&#39; with &#39;.zshrc&#39;</span>
 <span class="nb">echo</span> <span class="s2">&quot;export OPENSSL_ROOT_DIR=</span><span class="k">$(</span>brew --prefix openssl<span class="k">)</span><span class="s2">&quot;</span> &gt;&gt; ~/.bashrc
@@ -446,7 +446,7 @@ sudo xcodebuild -license
 </pre></div>
 </div>
 </li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span></code> (just <code class="docutils literal notranslate"><span class="pre">pip</span></code> may install Python3 or Python2) to install more stuff:</p>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip``（只安装</span> <span class="pre">``pip</span></code> 可能会安装Python3或Python2）安装更多内容:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m pip install -U <span class="se">\</span>
  argcomplete catkin_pkg colcon-common-extensions coverage <span class="se">\</span>
  cryptography empy flake8 flake8-blind-except<span class="o">==</span><span class="m">0</span>.1.1 flake8-builtins <span class="se">\</span>
@@ -457,26 +457,25 @@ sudo xcodebuild -license
  pytest-mock rosdep rosdistro <span class="nv">setuptools</span><span class="o">==</span><span class="m">59</span>.6.0 vcstool
 </pre></div>
 </div>
-<p>Please ensure that the <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> environment variable contains the install location of the binaries (default: <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Python/&lt;version&gt;/bin</span></code>)</p>
+<p>请确保 <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> 环境变量中包含二进制文件的安装位置（默认为 <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Python/&lt;version&gt;/bin</span></code>）</p>
 </li>
-<li><p><em>Optional</em>: if you want to build the ROS 1&lt;-&gt;2 bridge, then you must also install ROS 1:</p>
+<li><p><em>可选</em>: 如果您想构建ROS 1&lt;-&gt;2桥接器，那么您还必须安装ROS 1:</p>
 <ul>
-<li><p>Start with the normal install instructions: <a class="reference external" href="http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source">http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source</a></p></li>
-<li><p>When you get to the step where you call <code class="docutils literal notranslate"><span class="pre">rosinstall_generator</span></code> to get the source code, here's an alternate invocation that brings in just the minimum required to produce a useful bridge:</p>
+<li><p>按照正常的安装说明开始: <a class="reference external" href="http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source">http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source</a></p></li>
+<li><p>当您到达调用``rosinstall_generator``以获取源代码的步骤时，下面是一个替代的调用方式，只引入生成有用桥接器所需的最小代码:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosinstall_generator catkin common_msgs roscpp rosmsg --rosdistro kinetic --deps --wet-only --tar &gt; kinetic-ros2-bridge-deps.rosinstall
 wstool init -j8 src kinetic-ros2-bridge-deps.rosinstall
 </pre></div>
 </div>
-<p>Otherwise, just follow the normal instructions, then source the resulting <code class="docutils literal notranslate"><span class="pre">install_isolated/setup.bash</span></code> before proceeding here to build ROS 2.</p>
+<p>否则，请按照正常的说明进行，然后在此处构建ROS 2之前，使用生成的``install_isolated/setup.bash``进行源码配置。</p>
 </li>
 </ul>
 </li>
 </ol>
 </div>
 <div class="section" id="disable-system-integrity-protection-sip">
-<h2><a class="toc-backref" href="#id3">Disable System Integrity Protection (SIP)</a><a class="headerlink" href="#disable-system-integrity-protection-sip" title="永久链接至标题"></a></h2>
-<p>macOS/OS X versions &gt;=10.11 have System Integrity Protection enabled by default.
-So that SIP doesn't prevent processes from inheriting dynamic linker environment variables, such as <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code>, you'll need to disable it <a class="reference external" href="https://developer.apple.com/library/content/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html">following these instructions</a>.</p>
+<h2><a class="toc-backref" href="#id3">禁用系统完整性保护 (SIP)</a><a class="headerlink" href="#disable-system-integrity-protection-sip" title="永久链接至标题"></a></h2>
+<p>macOS/OS X版本&gt;=10.11默认启用系统完整性保护 (SIP)。为了防止SIP阻止进程继承动态链接器环境变量，如``DYLD_LIBRARY_PATH``，您需要按照`此处的说明 &lt;<a class="reference external" href="https://developer.apple.com/library/content/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html">https://developer.apple.com/library/content/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html</a>&gt;`__来禁用它。</p>
 </div>
 <div class="section" id="get-the-ros-2-code">
 <h2><a class="toc-backref" href="#id4">获取ROS 2代码</a><a class="headerlink" href="#get-the-ros-2-code" title="永久链接至标题"></a></h2>
@@ -488,22 +487,21 @@ vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
 </div>
 </div>
 <div class="section" id="install-additional-dds-vendors-optional">
-<h2><a class="toc-backref" href="#id5">Install additional DDS vendors (optional)</a><a class="headerlink" href="#install-additional-dds-vendors-optional" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id5">安装额外的DDS供应商（可选）</a><a class="headerlink" href="#install-additional-dds-vendors-optional" title="永久链接至标题"></a></h2>
 <p>如果您想使用默认之外的其他DDS或RTPS供应商，您可以在这里找到说明：<a class="reference internal" href="../DDS-Implementations.html"><span class="doc">这里</span></a>。</p>
 </div>
 <div class="section" id="build-the-ros-2-code">
 <h2><a class="toc-backref" href="#id6">构建ROS 2代码。</a><a class="headerlink" href="#build-the-ros-2-code" title="永久链接至标题"></a></h2>
-<p>Run the <code class="docutils literal notranslate"><span class="pre">colcon</span></code> tool to build everything (more on using <code class="docutils literal notranslate"><span class="pre">colcon</span></code> in <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"><span class="doc">this tutorial</span></a>):</p>
+<p>使用``colcon``工具构建所有内容（有关使用``colcon``的更多信息，请参阅：<a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"><span class="doc">此教程</span></a>）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_humble/
 colcon build --symlink-install --packages-skip-by-dep python_qt_binding
 </pre></div>
 </div>
-<p>Note: due to an unresolved issue with SIP, Qt&#64;5, and PyQt5, we need to disable <code class="docutils literal notranslate"><span class="pre">python_qt_binding</span></code> to have the build succeed.
-This will be removed when the issue is resolved, see: <a class="reference external" href="https://github.com/ros-visualization/python_qt_binding/issues/103">https://github.com/ros-visualization/python_qt_binding/issues/103</a></p>
+<p>注意：由于SIP、Qt&#64;5和PyQt5存在未解决的问题，我们需要禁用``python_qt_binding``才能成功构建。此问题解决后将会移除，详情请参阅：<a class="reference external" href="https://github.com/ros-visualization/python_qt_binding/issues/103">https://github.com/ros-visualization/python_qt_binding/issues/103</a></p>
 </div>
 <div class="section" id="environment-setup">
 <h2><a class="toc-backref" href="#id7">环境设置</a><a class="headerlink" href="#environment-setup" title="永久链接至标题"></a></h2>
-<p>Source the ROS 2 setup file:</p>
+<p>将ROS 2的设置文件设置为源文件：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. ~/ros2_humble/install/setup.bash
 </pre></div>
 </div>
@@ -511,7 +509,7 @@ This will be removed when the issue is resolved, see: <a class="reference extern
 </div>
 <div class="section" id="try-some-examples">
 <h2><a class="toc-backref" href="#id8">尝试一些示例</a><a class="headerlink" href="#try-some-examples" title="永久链接至标题"></a></h2>
-<p>In one terminal, set up the ROS 2 environment as described above and then run a C++ <code class="docutils literal notranslate"><span class="pre">talker</span></code>:</p>
+<p>在一个终端中，按照上述说明设置ROS 2环境，然后运行一个C++``talker``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
@@ -523,7 +521,7 @@ This will be removed when the issue is resolved, see: <a class="reference extern
 </div>
 <div class="section" id="next-steps-after-installing">
 <h2><a class="toc-backref" href="#id9">安装后的下一步</a><a class="headerlink" href="#next-steps-after-installing" title="永久链接至标题"></a></h2>
-<p>Continue with the <a class="reference internal" href="../../Tutorials.html"><span class="doc">tutorials and demos</span></a> to configure your environment, create your own workspace and packages, and learn ROS 2 core concepts.</p>
+<p>继续进行`教程和演示 &lt;../../Tutorials&gt;`，以配置您的环境、创建自己的工作空间和软件包，并学习ROS 2核心概念。</p>
 </div>
 <div class="section" id="using-the-ros-1-bridge">
 <h2><a class="toc-backref" href="#id10">使用 ROS 1 桥接器</a><a class="headerlink" href="#using-the-ros-1-bridge" title="永久链接至标题"></a></h2>
