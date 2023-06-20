@@ -475,7 +475,7 @@ The logic is as follows:</p>
 </ul>
 <p>Thus the default value stays the same: <code class="docutils literal notranslate"><span class="pre">~/.ros/log</span></code>.</p>
 <p>Related PRs: <a class="reference external" href="https://github.com/ros2/rcl_logging/pull/53">ros2/rcl_logging#53</a> and <a class="reference external" href="https://github.com/ros2/launch/pull/460">ros2/launch#460</a>.</p>
-<p>For example:</p>
+<p>例如：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ROS_LOG_DIR</span><span class="o">=</span>/tmp/foo ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
@@ -878,7 +878,7 @@ Any existing Python code that depends on tf2_ros will continue to work, but the 
 <p>The Python <code class="docutils literal notranslate"><span class="pre">TransformListener</span></code> now subscribes to <code class="docutils literal notranslate"><span class="pre">/tf</span></code> and <code class="docutils literal notranslate"><span class="pre">/tf_static</span></code> in the global namespace.
 Previously, it was susbcribing in the node's namespace.
 This means that the node's namespace will no longer have an effect on the <code class="docutils literal notranslate"><span class="pre">/tf</span></code> and <code class="docutils literal notranslate"><span class="pre">/tf_static</span></code> subscriptions.</p>
-<p>For example:</p>
+<p>例如：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run tf2_ros tf2_echo --ros-args -r __ns:<span class="o">=</span>/test -- odom base_link
 </pre></div>
 </div>
