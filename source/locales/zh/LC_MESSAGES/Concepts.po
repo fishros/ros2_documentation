@@ -4105,7 +4105,7 @@ msgstr "地图坐标系中基准坐标系的当前姿态是什么？"
 
 #: ../../source/Concepts/About-Tf2.rst:28
 msgid "tf2 can operate in a distributed system. This means all the information about the coordinate frames of a robot is available to all ROS 2 components on any computer in the system. tf2 can have every component in your distributed system build its own transform information database or have a central node that gathers and stores all transform information."
-msgstr "tf2 can operate in a distributed system. This means all the information about the coordinate frames of a robot is available to all ROS 2 components on any computer in the system. tf2 can have every component in your distributed system build its own transform information database or have a central node that gathers and stores all transform information."
+msgstr "tf2 可以在分布式系统中运行。这意味着机器人的所有坐标框架信息都可以在系统中的任何计算机上的所有 ROS 2 组件中获得。tf2 可以使您分布式系统中的每个组件构建自己的变换信息数据库，也可以有一个中央节点来收集和存储所有的变换信息。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:33
@@ -4115,52 +4115,52 @@ msgstr "教程"
 
 #: ../../source/Concepts/About-Tf2.rst:35
 msgid "We created a set of :doc:`tutorials <../Tutorials/Intermediate/Tf2/Tf2-Main>` that walks you through using tf2, step by step. You can get started on the :doc:`introduction to tf2 <../Tutorials/Intermediate/Tf2/Introduction-To-Tf2>` tutorial. For a complete list of all tf2 and tf2-related tutorials check out the :doc:`tutorials <../Tutorials/Intermediate/Tf2/Tf2-Main>` page."
-msgstr "We created a set of :doc:`tutorials <../Tutorials/Intermediate/Tf2/Tf2-Main>` that walks you through using tf2, step by step. You can get started on the :doc:`introduction to tf2 <../Tutorials/Intermediate/Tf2/Introduction-To-Tf2>` tutorial. For a complete list of all tf2 and tf2-related tutorials check out the :doc:`tutorials <../Tutorials/Intermediate/Tf2/Tf2-Main>` page."
+msgstr "我们创建了一系列 :doc:`教程 <../Tutorials/Intermediate/Tf2/Tf2-Main>`，逐步介绍如何使用 tf2。您可以从 :doc:`tf2 简介 <../Tutorials/Intermediate/Tf2/Introduction-To-Tf2>` 教程开始入门。要查看所有 tf2 和与 tf2 相关的教程的完整列表，请访问 :doc:`教程 <../Tutorials/Intermediate/Tf2/Tf2-Main>` 页面。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:39
 msgid "There are essentially two main tasks that any user would use tf2 for, listening for transforms and broadcasting transforms."
-msgstr "There are essentially two main tasks that any user would use tf2 for, listening for transforms and broadcasting transforms."
+msgstr "使用 tf2，基本上有两个主要任务，一个是监听变换，一个是广播变换。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:41
 msgid "If you want to use tf2 to transform between coordinate frames, your nodes will need to listen for transforms. What you will do is receive and buffer all coordinate frames that are broadcasted in the system, and query for specific transforms between frames. Check out the \"Writing a listener\" tutorial :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp>` to learn more."
-msgstr "If you want to use tf2 to transform between coordinate frames, your nodes will need to listen for transforms. What you will do is receive and buffer all coordinate frames that are broadcasted in the system, and query for specific transforms between frames. Check out the \"Writing a listener\" tutorial :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp>` to learn more."
+msgstr "如果您想要使用 tf2 在坐标框架之间进行变换，您的节点将需要监听变换。您将接收和缓存系统中广播的所有坐标框架，并查询特定框架之间的变换。查看\"编写监听器\"教程 :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp>` 了解更多信息。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:45
 msgid "To extend the capabilities of a robot, you will need to start broadcasting transforms. Broadcasting transforms means to send out the relative pose of coordinate frames to the rest of the system. A system can have many broadcasters that each provide information about a different part of the robot. Check out the \"Writing a broadcaster\" tutorial :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp>` to learn more."
-msgstr "To extend the capabilities of a robot, you will need to start broadcasting transforms. Broadcasting transforms means to send out the relative pose of coordinate frames to the rest of the system. A system can have many broadcasters that each provide information about a different part of the robot. Check out the \"Writing a broadcaster\" tutorial :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp>` to learn more."
+msgstr "要扩展机器人的功能，您需要开始广播变换。广播变换意味着向系统的其他部分发送坐标框架的相对姿态。一个系统可以有多个广播器，每个广播器提供关于机器人不同部分的信息。查看\"编写广播器\"教程 :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp>` 了解更多信息。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:50
 msgid "In addition to that, tf2 can broadcast static transforms that do not change over time. This mainly saves storage and lookup time, but also reduces the publishing overhead. You should note that static transforms are published once and assumed to not change, so no history is stored. If you want to define static transforms in your tf2 tree, take a look at the \"Writing a static broadcaster\" :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp>` tutorial."
-msgstr "In addition to that, tf2 can broadcast static transforms that do not change over time. This mainly saves storage and lookup time, but also reduces the publishing overhead. You should note that static transforms are published once and assumed to not change, so no history is stored. If you want to define static transforms in your tf2 tree, take a look at the \"Writing a static broadcaster\" :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp>` tutorial."
+msgstr "此外，tf2还可以广播不随时间变化的静态变换。这主要节省了存储和查找时间，并减少了发布的开销。需要注意的是，静态变换只发布一次，并假定不会发生变化，因此不会保存历史记录。如果您想在tf2树中定义静态变换，请参阅“编写静态广播器” :doc:`(Python) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp>` 教程。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:55
 msgid "You can also learn how to add fixed and dynamic frames to your tf2 tree in the \"Adding a frame\" :doc:`(Python) <../Tutorials/Intermediate/Tf2/Adding-A-Frame-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp>` tutorial."
-msgstr "You can also learn how to add fixed and dynamic frames to your tf2 tree in the \"Adding a frame\" :doc:`(Python) <../Tutorials/Intermediate/Tf2/Adding-A-Frame-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp>` tutorial."
+msgstr "您还可以学习如何在tf2树中添加固定和动态框架的方法，请参阅“添加框架” :doc:`(Python) <../Tutorials/Intermediate/Tf2/Adding-A-Frame-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp>` 教程。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:57
 msgid "Once you are finished with the basic tutorials, you can move on to learn about tf2 and time. The tf2 and time tutorial :doc:`(Python) <../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp>` teaches the basic principles of tf2 and time. The advanced tutorial about tf2 and time :doc:`(Python) <../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp>` teaches the principles of time traveling with tf2."
-msgstr "Once you are finished with the basic tutorials, you can move on to learn about tf2 and time. The tf2 and time tutorial :doc:`(Python) <../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp>` teaches the basic principles of tf2 and time. The advanced tutorial about tf2 and time :doc:`(Python) <../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp>` teaches the principles of time traveling with tf2."
+msgstr "完成基础教程后，您可以进一步了解tf2和时间。有关tf2和时间的教程 :doc:`(Python) <../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp>` 将教授tf2和时间的基本原理。有关tf2和时间旅行的高级教程 :doc:`(Python) <../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py>` :doc:`(C++) <../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp>` 将教授使用tf2进行时间旅行的原理。"
 
 
 #: ../../source/Concepts/About-Tf2.rst:62
 msgid "Paper"
-msgstr "Paper"
+msgstr "论文"
 
 
 #: ../../source/Concepts/About-Tf2.rst:64
 msgid "There is a paper on tf2 presented at TePRA 2013: `tf: The transform library <https://ieeexplore.ieee.org/abstract/document/6556373>`_."
-msgstr "There is a paper on tf2 presented at TePRA 2013: `tf: The transform library <https://ieeexplore.ieee.org/abstract/document/6556373>`_."
+msgstr "在2013年的TePRA会议上有一篇关于tf2的论文：`tf：变换库 <https://ieeexplore.ieee.org/abstract/document/6556373>`_。"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:8
 msgid "About topic statistics"
-msgstr "About topic statistics"
+msgstr "关于主题统计"
 
 
 #: ../../source/Concepts/About-Topic-Statistics.rst:16
