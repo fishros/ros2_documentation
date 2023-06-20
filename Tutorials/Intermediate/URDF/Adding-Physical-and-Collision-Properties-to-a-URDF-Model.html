@@ -381,10 +381,10 @@
 <div class="contents local topic" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#collision" id="id1">Collision</a></p></li>
-<li><p><a class="reference internal" href="#physical-properties" id="id2">Physical Properties</a></p>
+<li><p><a class="reference internal" href="#collision" id="id1">碰撞</a></p></li>
+<li><p><a class="reference internal" href="#physical-properties" id="id2">物理属性</a></p>
 <ul>
-<li><p><a class="reference internal" href="#inertia" id="id3">Inertia</a></p></li>
+<li><p><a class="reference internal" href="#inertia" id="id3">惯性</a></p></li>
 <li><p><a class="reference internal" href="#contact-coefficients" id="id4">Contact Coefficients</a></p></li>
 <li><p><a class="reference internal" href="#joint-dynamics" id="id5">Joint Dynamics</a></p></li>
 </ul>
@@ -395,11 +395,9 @@
 </div>
 <p>在本教程中，我们将介绍如何为URDF模型添加一些基本的物理属性，并指定其碰撞属性。</p>
 <div class="section" id="collision">
-<h2><a class="toc-backref" href="#id1">Collision</a><a class="headerlink" href="#collision" title="永久链接至标题"></a></h2>
-<p>So far, we’ve only specified our links with a single sub-element, <code class="docutils literal notranslate"><span class="pre">visual</span></code>, which defines (not surprisingly) what the robot looks like.
-However, in order to get collision detection to work or to simulate the robot, we need to define a <code class="docutils literal notranslate"><span class="pre">collision</span></code> element as well.
-<a class="reference external" href="https://raw.githubusercontent.com/ros/urdf_tutorial/master/urdf/07-physics.urdf">Here is the new urdf</a> with collision and physical properties.</p>
-<p>Here is the code for our new base link.</p>
+<h2><a class="toc-backref" href="#id1">碰撞</a><a class="headerlink" href="#collision" title="永久链接至标题"></a></h2>
+<p>到目前为止，我们只为链接指定了一个子元素“visual”，它定义了机器人的外观。然而，为了使碰撞检测工作或者模拟机器人，我们还需要定义一个“collision”元素。<a class="reference external" href="https://raw.githubusercontent.com/ros/urdf_tutorial/master/urdf/07-physics.urdf">这是带有碰撞和物理属性的新URDF文件</a>。</p>
+<p>这是我们新基本链接的代码。</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;visual&gt;</span>
       <span class="nt">&lt;geometry&gt;</span>
@@ -418,28 +416,23 @@ However, in order to get collision detection to work or to simulate the robot, w
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The collision element is a direct subelement of the link object, at the same level as the visual tag.</p></li>
-<li><p>The collision element defines its shape the same way the visual element does, with a geometry tag.
-The format for the geometry tag is exactly the same here as with the visual.</p></li>
-<li><p>You can also specify an origin in the same way as a subelement of the collision tag (as with the visual).</p></li>
+<li><p>碰撞元素是链接对象的直接子元素，与视觉标签处于同一级别。</p></li>
+<li><p>碰撞元素的形状定义方式与视觉元素相同，都是使用geometry标签。在这里，geometry标签的格式与视觉元素完全相同。</p></li>
+<li><p>您还可以像在视觉元素中一样，在碰撞标签的子元素中指定一个起点。</p></li>
 </ul>
-<p>In many cases, you’ll want the collision geometry and origin to be exactly the same as the visual geometry and origin.
-However, there are two main cases where you wouldn’t:</p>
+<p>在许多情况下，您希望碰撞几何体和原点与视觉几何体和原点完全相同。然而，有两种情况下您不会这样做：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Quicker Processing</strong>. Doing collision detection for two meshes is a lot more computational complex than for two simple geometries.
-Hence, you may want to replace the meshes with simpler geometries in the collision element.</p></li>
-<li><p><strong>Safe Zones</strong>. You may want to restrict movement close to sensitive equipment.
-For instance, if we didn’t want anything to collide with R2D2’s head, we might define the collision geometry to be a cylinder encasing his head to prevent anything from getting too close to his head.</p></li>
+<li><p><strong>更快的处理速度</strong>。检测两个网格的碰撞要比检测两个简单几何体复杂得多。因此，您可能希望将网格替换为碰撞元素中的简单几何体。</p></li>
+<li><p><strong>安全区域</strong>。您可能希望限制靠近敏感设备的移动。例如，如果我们不希望任何物体与R2D2的头碰撞，我们可以将碰撞几何体定义为一个包围他头部的圆柱体，以防止任何物体靠近他的头部。</p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="physical-properties">
-<h2><a class="toc-backref" href="#id2">Physical Properties</a><a class="headerlink" href="#physical-properties" title="永久链接至标题"></a></h2>
-<p>In order to get your model to simulate properly, you need to define several physical properties of your robot, i.e.
-the properties that a physics engine like Gazebo would need.</p>
+<h2><a class="toc-backref" href="#id2">物理属性</a><a class="headerlink" href="#physical-properties" title="永久链接至标题"></a></h2>
+<p>为了使您的模型能够正确模拟，您需要定义机器人的几个物理属性，即像Gazebo这样的物理引擎需要的属性。</p>
 <div class="section" id="inertia">
-<h3><a class="toc-backref" href="#id3">Inertia</a><a class="headerlink" href="#inertia" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id3">惯性</a><a class="headerlink" href="#inertia" title="永久链接至标题"></a></h3>
 <p>Every link element being simulated needs an inertial tag.
 Here is a simple one.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">&quot;base_link&quot;</span><span class="nt">&gt;</span>
