@@ -60,7 +60,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Alternatives/Latest-Development-Setup.html">最新的开发版本（源码）</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Maintaining-a-Source-Checkout.html">Maintain source checkout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Maintaining-a-Source-Checkout.html">维护源代码检出。</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Testing.html">Testing with pre-release binaries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../DDS-Implementations.html">DDS 实现</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Install-Connext-Security-Plugins.html">Connext安全插件</a></li>
@@ -389,13 +389,13 @@
 <div class="section" id="build-from-source-code">
 <h2>从源代码构建<a class="headerlink" href="#build-from-source-code" title="永久链接至标题"></a></h2>
 <p>从源代码构建也是安装的另一种方式。</p>
-<p>First, clone Fast DDS and rmw_fastrtps in the ROS 2 workspace source directory.</p>
+<p>首先，在ROS 2工作空间源目录中克隆Fast DDS和rmw_fastrtps。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ros2_ws/src
 git clone https://github.com/ros2/rmw_fastrtps ros2/rmw_fastrtps -b humble
 git clone https://github.com/eProsima/Fast-DDS eProsima/fastrtps
 </pre></div>
 </div>
-<p>Then, install necessary packages for Fast DDS.</p>
+<p>然后，安装Fast DDS所需的必要软件包。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..
 rosdep install --from src -i
 </pre></div>
@@ -406,8 +406,8 @@ rosdep install --from src -i
 </div>
 </div>
 <div class="section" id="switch-to-rmw-fastrtps">
-<h2>Switch to rmw_fastrtps<a class="headerlink" href="#switch-to-rmw-fastrtps" title="永久链接至标题"></a></h2>
-<p>The eProsima Fast DDS RMW can be selected by specifying the environment variable:</p>
+<h2>切换到rmw_fastrtps。<a class="headerlink" href="#switch-to-rmw-fastrtps" title="永久链接至标题"></a></h2>
+<p>可以通过指定环境变量来选择eProsima Fast DDS RMW：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_fastrtps_cpp
 </pre></div>
 </div>
@@ -415,7 +415,7 @@ rosdep install --from src -i
 </div>
 <div class="section" id="run-the-talker-and-listener">
 <h2>运行发布者和订阅者<a class="headerlink" href="#run-the-talker-and-listener" title="永久链接至标题"></a></h2>
-<p>Now run <code class="docutils literal notranslate"><span class="pre">talker</span></code> and <code class="docutils literal notranslate"><span class="pre">listener</span></code> to test Fast DDS.</p>
+<p>现在运行``talker``和``listener``以测试Fast DDS。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
