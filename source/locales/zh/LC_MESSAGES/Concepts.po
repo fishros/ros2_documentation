@@ -1786,62 +1786,62 @@ msgstr "ros2 idl动态类型支持栈"
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:91
 msgid "Figure: flow chart of \"dynamic\" type support generation, from ``rosidl`` files to user facing code."
-msgstr "Figure: flow chart of \"dynamic\" type support generation, from ``rosidl`` files to user facing code."
+msgstr "图：\"动态\"类型支持生成的流程图，从``rosidl``文件到用户界面代码。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:93
 msgid "The above diagram shows the flow from user defined ``rosidl`` files to generated user facing code. It is very similar to the diagram for static type support, and differs only in how the type support is generated which is represented by the left hand side of the diagram. In dynamic type support the ``.msg`` files are converted directly into user facing code."
-msgstr "The above diagram shows the flow from user defined ``rosidl`` files to generated user facing code. It is very similar to the diagram for static type support, and differs only in how the type support is generated which is represented by the left hand side of the diagram. In dynamic type support the ``.msg`` files are converted directly into user facing code."
+msgstr "上图显示了从用户定义的``rosidl``文件到生成的用户界面代码的流程。它与静态类型支持的流程图非常相似，只在类型支持生成的方式上有所不同，这在图的左侧表示。在动态类型支持中，``.msg``文件直接转换为用户界面代码。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:97
 msgid "This code is also middleware agnostic, because it only contains meta information about the messages. The function to actually do the work, e.g. publishing to a topic, is generic to the message type and will make any necessary calls to the middleware specific |APIs|. Note that rather than dds vendor specific packages providing the type support code, which is the case in static type support, this method has middleware agnostic package for each language, e.g. ``rosidl_typesupport_introspection_c`` and ``rosidl_typesupport_introspection_cpp``. The ``introspection`` part of the package name refers to the ability to introspect any message instance with the generated meta data for the message type. This is the fundamental capability that allows for generic implementations of functions like \"publish to a topic\"."
-msgstr "This code is also middleware agnostic, because it only contains meta information about the messages. The function to actually do the work, e.g. publishing to a topic, is generic to the message type and will make any necessary calls to the middleware specific |APIs|. Note that rather than dds vendor specific packages providing the type support code, which is the case in static type support, this method has middleware agnostic package for each language, e.g. ``rosidl_typesupport_introspection_c`` and ``rosidl_typesupport_introspection_cpp``. The ``introspection`` part of the package name refers to the ability to introspect any message instance with the generated meta data for the message type. This is the fundamental capability that allows for generic implementations of functions like \"publish to a topic\"."
+msgstr "这段代码也是中间件无关的，因为它只包含有关消息的元信息。实际执行工作的函数（例如发布到话题）对消息类型是通用的，并将根据需要调用特定中间件的API。请注意，与静态类型支持不同，不是由DDS供应商特定的软件包提供类型支持代码，而是每种语言都有一个中间件无关的软件包，例如``rosidl_typesupport_introspection_c``和``rosidl_typesupport_introspection_cpp``。软件包名称中的``introspection``部分指的是使用生成的元数据对任何消息实例进行内省的能力。这是允许实现诸如“发布到话题”等通用函数的基本能力。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:103
 msgid "This approach has the advantage that all generated code is middleware agnostic, which means it can be reused for different middleware implementations, so long as they allow for dynamic type support. It also results in less generated code, which reduces compile time and code size."
-msgstr "This approach has the advantage that all generated code is middleware agnostic, which means it can be reused for different middleware implementations, so long as they allow for dynamic type support. It also results in less generated code, which reduces compile time and code size."
+msgstr "这种方法的优点是所有生成的代码都是中间件无关的，这意味着可以在不同的中间件实现中重用它们，只要它们支持动态类型支持。它还会生成较少的代码，从而减少编译时间和代码大小。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:106
 msgid "However, dynamic type support requires that the underlying middleware support a similar form of dynamic type support. In the case of DDS the DDS-XTypes standard allows for publishing of messages using meta information rather than generated code. DDS-XTypes, or something like it, is required in the underlying middleware in order to support dynamic type support. Also, this approach to type support is normally slower than the static type support alternative. The type specific generated code in static type support can be written to be more efficient as it does not need to iterate over the message type's meta data to perform things like serialization."
-msgstr "However, dynamic type support requires that the underlying middleware support a similar form of dynamic type support. In the case of DDS the DDS-XTypes standard allows for publishing of messages using meta information rather than generated code. DDS-XTypes, or something like it, is required in the underlying middleware in order to support dynamic type support. Also, this approach to type support is normally slower than the static type support alternative. The type specific generated code in static type support can be written to be more efficient as it does not need to iterate over the message type's meta data to perform things like serialization."
+msgstr "然而，动态类型支持要求底层中间件支持类似的动态类型支持形式。对于DDS，DDS-XTypes标准允许使用元信息而不是生成的代码发布消息。在底层中间件中需要DDS-XTypes或类似的东西来支持动态类型支持。此外，与静态类型支持相比，这种类型支持方法通常较慢。静态类型支持中的类型特定生成代码可以编写得更高效，因为它不需要迭代消息类型的元数据来执行诸如序列化之类的操作。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:113
 msgid "The ``rcl`` Repository"
-msgstr "The ``rcl`` Repository"
+msgstr "``rcl``代码库"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:115
 msgid "The ROS Client Library interface (``rcl`` |API|) can be used by |client libraries| (e.g. ``rclc``, ``rclcpp``, ``rclpy``, etc.) in order to avoid duplicating logic and features. By reusing the ``rcl`` |API|, client libraries can be smaller and more consistent with each other. Some parts of the client library are intentionally left out of the ``rcl`` |API| because the language idiomatic method should be used to implement those parts of the system. A good example of this is the execution model, which ``rcl`` does not address at all. Instead the client library should provide a language idiomatic solution like ``pthreads`` in C, ``std::thread`` in C++11, and ``threading.Thread`` in Python. Generally the ``rcl`` interface provides functions that are not specific to a language pattern and are not specific to a particular message type."
-msgstr "The ROS Client Library interface (``rcl`` |API|) can be used by |client libraries| (e.g. ``rclc``, ``rclcpp``, ``rclpy``, etc.) in order to avoid duplicating logic and features. By reusing the ``rcl`` |API|, client libraries can be smaller and more consistent with each other. Some parts of the client library are intentionally left out of the ``rcl`` |API| because the language idiomatic method should be used to implement those parts of the system. A good example of this is the execution model, which ``rcl`` does not address at all. Instead the client library should provide a language idiomatic solution like ``pthreads`` in C, ``std::thread`` in C++11, and ``threading.Thread`` in Python. Generally the ``rcl`` interface provides functions that are not specific to a language pattern and are not specific to a particular message type."
+msgstr "ROS客户端库接口（``rcl`` |API|）可被|客户端库|（例如``rclc``、``rclcpp``、``rclpy``等）使用，以避免重复逻辑和功能。通过重用``rcl`` |API|，客户端库可以更小且更一致。客户端库的某些部分故意未包含在``rcl`` |API|中，因为应使用语言惯用方法来实现系统的这些部分。一个很好的例子是执行模型，``rcl``根本不涉及。相反，客户端库应该提供一种语言惯用的解决方案，比如C中的``pthreads``，C++11中的``std::thread``和Python中的``threading.Thread``。一般来说，``rcl``接口提供的函数不特定于语言模式，也不特定于特定的消息类型。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:122
 msgid "The ``rcl`` |API| is located in the `ros2/rcl <https://github.com/ros2/rcl>`_ repository on |GitHub|_ and contains the interface as C headers. The ``rcl`` C implementation is provided by the ``rcl`` |package| in the same repository. This implementation avoids direct contact with the middleware by instead using the ``rmw`` and ``rosidl`` |APIs|."
-msgstr "The ``rcl`` |API| is located in the `ros2/rcl <https://github.com/ros2/rcl>`_ repository on |GitHub|_ and contains the interface as C headers. The ``rcl`` C implementation is provided by the ``rcl`` |package| in the same repository. This implementation avoids direct contact with the middleware by instead using the ``rmw`` and ``rosidl`` |APIs|."
+msgstr "``rcl`` |API|位于|GitHub|_上的`ros2/rcl <https://github.com/ros2/rcl>`_仓库中，包含C头文件作为接口。``rcl`` C实现由同一仓库中的``rcl`` |package|提供。该实现通过使用``rmw``和``rosidl`` |APIs|来避免与中间件的直接接触。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:126
 msgid "For a complete definition of the ``rcl`` |API|, see `the rcl docs <http://docs.ros.org/en/humble/p/rcl/>`_."
-msgstr "For a complete definition of the ``rcl`` |API|, see `the rcl docs <http://docs.ros.org/en/humble/p/rcl/>`_."
+msgstr "有关完整的``rcl`` |API|定义，请参阅`rcl文档 <http://docs.ros.org/en/humble/p/rcl/>`_。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:129
 msgid "The ``rmw`` Repository"
-msgstr "The ``rmw`` Repository"
+msgstr "``rmw``仓库"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:131
 msgid "The ROS middleware interface (``rmw`` |API|) is the minimal set of primitive middleware capabilities needed to build ROS on top. Providers of different middleware implementations must implement this interface in order to support the entire ROS stack on top. Currently all of the middleware implementations are for different DDS vendors."
-msgstr "The ROS middleware interface (``rmw`` |API|) is the minimal set of primitive middleware capabilities needed to build ROS on top. Providers of different middleware implementations must implement this interface in order to support the entire ROS stack on top. Currently all of the middleware implementations are for different DDS vendors."
+msgstr "ROS中间件接口（``rmw`` |API|）是构建ROS所需的最小原始中间件功能集。不同中间件实现的提供者必须实现此接口，以支持整个ROS堆栈。目前，所有中间件实现均为不同的DDS供应商提供。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:135
 msgid "The ``rmw`` |API| is located in the `ros2/rmw <https://github.com/ros2/rmw>`_ repository. The ``rmw`` |package| contains the C headers which define the interface, the implementation of which is provided by the various |packages| of rmw implementations for different DDS vendors."
-msgstr "The ``rmw`` |API| is located in the `ros2/rmw <https://github.com/ros2/rmw>`_ repository. The ``rmw`` |package| contains the C headers which define the interface, the implementation of which is provided by the various |packages| of rmw implementations for different DDS vendors."
+msgstr "``rmw`` |API|位于|GitHub|_上的`ros2/rmw <https://github.com/ros2/rmw>`_仓库中。``rmw`` |package|包含定义接口的C头文件，其实现由不同DDS供应商的rmw实现的各个|packages|提供。"
 
 
 #: ../../source/Concepts/About-Internal-Interfaces.rst:138
