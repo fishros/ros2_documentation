@@ -15640,62 +15640,62 @@ msgstr "从头开始构建一个可视化的机器人模型"
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:10
 msgid "**Goal:** Learn how to build a visual model of a robot that you can view in Rviz"
-msgstr "**Goal:** Learn how to build a visual model of a robot that you can view in Rviz"
+msgstr "**目标:** 学习如何构建一个机器人的可视化模型，可以在 Rviz 中查看"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:20
 msgid "This tutorial assumes you know how to write well-formatted XML code"
-msgstr "This tutorial assumes you know how to write well-formatted XML code"
+msgstr "本教程假设您已经知道如何编写格式良好的 XML 代码"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:22
 msgid "In this tutorial, we’re going to build a visual model of a robot that vaguely looks like R2D2. In later tutorials, you’ll learn how to :doc:`articulate the model <./Building-a-Movable-Robot-Model-with-URDF>`, :doc:`add in some physical properties <./Adding-Physical-and-Collision-Properties-to-a-URDF-Model>`, and :doc:`generate neater code with xacro <./Using-Xacro-to-Clean-Up-a-URDF-File>`, but for now, we’re going to focus on getting the visual geometry correct."
-msgstr "In this tutorial, we’re going to build a visual model of a robot that vaguely looks like R2D2. In later tutorials, you’ll learn how to :doc:`articulate the model <./Building-a-Movable-Robot-Model-with-URDF>`, :doc:`add in some physical properties <./Adding-Physical-and-Collision-Properties-to-a-URDF-Model>`, and :doc:`generate neater code with xacro <./Using-Xacro-to-Clean-Up-a-URDF-File>`, but for now, we’re going to focus on getting the visual geometry correct."
+msgstr "在本教程中，我们将构建一个类似 R2D2 的机器人的可视化模型。在后续的教程中，您将学习如何：:doc:`描述模型 <./Building-a-Movable-Robot-Model-with-URDF>`，:doc:`添加一些物理属性 <./Adding-Physical-and-Collision-Properties-to-a-URDF-Model>`，和 :doc:`使用 xacro 生成更整洁的代码 <./Using-Xacro-to-Clean-Up-a-URDF-File>`，但现在，我们将专注于确保视觉几何正确。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:25
 msgid "Before continuing, make sure you have the `joint_state_publisher <https://index.ros.org/p/joint_state_publisher>`_ package installed. If you installed `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ binaries, this should already be the case. If not, please update your installation to include that package (use ``rosdep`` to check)."
-msgstr "Before continuing, make sure you have the `joint_state_publisher <https://index.ros.org/p/joint_state_publisher>`_ package installed. If you installed `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ binaries, this should already be the case. If not, please update your installation to include that package (use ``rosdep`` to check)."
+msgstr "在继续之前，请确保您已安装了 `joint_state_publisher <https://index.ros.org/p/joint_state_publisher>`_ 包。如果您安装了 `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ 的二进制文件，这应该已经是满足条件的。如果没有，请更新您的安装以包含该包（使用 ``rosdep`` 进行检查）。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:29
 msgid "All of the robot models mentioned in this tutorial (and the source files) can be found in the `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ package."
-msgstr "All of the robot models mentioned in this tutorial (and the source files) can be found in the `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ package."
+msgstr "本教程中提到的所有机器人模型（以及源文件）都可以在 `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ 包中找到。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:32
 msgid "One Shape"
-msgstr "One Shape"
+msgstr "一个形状"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:34
 msgid "First, we’re just going to explore one simple shape. Here’s about as simple as a urdf as you can make. `[Source: 01-myfirst.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/01-myfirst.urdf>`_"
-msgstr "First, we’re just going to explore one simple shape. Here’s about as simple as a urdf as you can make. `[Source: 01-myfirst.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/01-myfirst.urdf>`_"
+msgstr "首先，我们将只探索一个简单的形状。以下是一个最简单的 URDF 示例。`[来源：01-myfirst.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/01-myfirst.urdf>`_"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:51
 msgid "To translate the XML into English, this is a robot with the name ``myfirst``, that contains only one link (a.k.a. part), whose visual component is just a cylinder 0.6 meters long with a 0.2 meter radius. This may seem like a lot of enclosing tags for a simple “hello world” type example, but it will get more complicated, trust me."
-msgstr "To translate the XML into English, this is a robot with the name ``myfirst``, that contains only one link (a.k.a. part), whose visual component is just a cylinder 0.6 meters long with a 0.2 meter radius. This may seem like a lot of enclosing tags for a simple “hello world” type example, but it will get more complicated, trust me."
+msgstr "要将 XML 翻译成英文，这是一个名为``myfirst``的机器人，它只包含一个链接（即部件），其可视组件只是一个长为 0.6 米、半径为 0.2 米的圆柱体。对于一个简单的“hello world”类型的示例来说，这可能看起来有很多封闭标签，但信任我，它会变得更加复杂。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:54
 msgid "To examine the model, launch the ``display.launch.py`` file:"
-msgstr "To examine the model, launch the ``display.launch.py`` file:"
+msgstr "要查看模型，请启动``display.launch.py``文件："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:60
 msgid "This does three things:"
-msgstr "This does three things:"
+msgstr "这做了三件事："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:62
 msgid "Loads the specified model and saves it as a parameter"
-msgstr "Loads the specified model and saves it as a parameter"
+msgstr "加载指定的模型并将其保存为参数"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:63
 msgid "Runs nodes to publish `sensor_msgs/msg/JointState <https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg>`_ and transforms (more on these later)"
-msgstr "Runs nodes to publish `sensor_msgs/msg/JointState <https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg>`_ and transforms (more on these later)"
+msgstr "运行节点以发布`sensor_msgs/msg/JointState <https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg>`_和变换（稍后会介绍更多相关内容）"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:64
