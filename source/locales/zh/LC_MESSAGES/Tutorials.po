@@ -15096,62 +15096,62 @@ msgstr "终端将返回一条消息，确认已成功创建包 ``learning_tf2_cp
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:58 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:58
 msgid "2 Write the static broadcaster node"
-msgstr "2 Write the static broadcaster node"
+msgstr "2 编写静态广播节点"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:60
 msgid "Let's first create the source files. Inside the ``src/learning_tf2_cpp/src`` directory download the example static broadcaster code by entering the following command:"
-msgstr "Let's first create the source files. Inside the ``src/learning_tf2_cpp/src`` directory download the example static broadcaster code by entering the following command:"
+msgstr "首先创建源文件。在``src/learning_tf2_cpp/src``目录下，通过输入以下命令下载示例静态广播代码："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:172
 msgid "Now let's look at the code that is relevant to publishing the static turtle pose to tf2. The first lines include the required header files. First we include ``geometry_msgs/msg/transform_stamped.hpp`` to access the ``TransformStamped`` message type, which we will publish to the transformation tree."
-msgstr "Now let's look at the code that is relevant to publishing the static turtle pose to tf2. The first lines include the required header files. First we include ``geometry_msgs/msg/transform_stamped.hpp`` to access the ``TransformStamped`` message type, which we will publish to the transformation tree."
+msgstr "现在我们来看一下与发布静态海龟姿态到tf2有关的代码。首先包含所需的头文件。首先我们包含``geometry_msgs/msg/transform_stamped.hpp``以访问``TransformStamped``消息类型，我们将把它发布到变换树中。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:180
 msgid "Afterward, ``rclcpp`` is included so its ``rclcpp::Node`` class can be used."
-msgstr "Afterward, ``rclcpp`` is included so its ``rclcpp::Node`` class can be used."
+msgstr "随后，包含``rclcpp``，以便可以使用其``rclcpp::Node``类。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:186
 msgid "``tf2::Quaternion`` is a class for a quaternion that provides convenient functions for converting Euler angles to quaternions and vice versa. We also include ``tf2_ros/static_transform_broadcaster.h`` to use the ``StaticTransformBroadcaster`` to make the publishing of static transforms easy."
-msgstr "``tf2::Quaternion`` is a class for a quaternion that provides convenient functions for converting Euler angles to quaternions and vice versa. We also include ``tf2_ros/static_transform_broadcaster.h`` to use the ``StaticTransformBroadcaster`` to make the publishing of static transforms easy."
+msgstr "``tf2::Quaternion``是一个用于四元数的类，提供了方便的函数来将欧拉角转换为四元数和反之。我们还包含``tf2_ros/static_transform_broadcaster.h``以使用``StaticTransformBroadcaster``来简化发布静态变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:194 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:218
 msgid "The ``StaticFramePublisher`` class constructor initializes the node with the name ``static_turtle_tf2_broadcaster``. Then, ``StaticTransformBroadcaster`` is created, which will send one static transformation upon the startup."
-msgstr "The ``StaticFramePublisher`` class constructor initializes the node with the name ``static_turtle_tf2_broadcaster``. Then, ``StaticTransformBroadcaster`` is created, which will send one static transformation upon the startup."
+msgstr "``StaticFramePublisher``类的构造函数使用名称``static_turtle_tf2_broadcaster``初始化节点。然后创建``StaticTransformBroadcaster``，它将在启动时发送一个静态变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:203 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:226
 msgid "Here we create a ``TransformStamped`` object, which will be the message we will send over once populated. Before passing the actual transform values we need to give it the appropriate metadata."
-msgstr "Here we create a ``TransformStamped`` object, which will be the message we will send over once populated. Before passing the actual transform values we need to give it the appropriate metadata."
+msgstr "在这里，我们创建了一个``TransformStamped``对象，这将是我们在填充后发送的消息。在传递实际的变换值之前，我们需要为其提供适当的元数据。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:206
 msgid "We need to give the transform being published a timestamp and we'll just stamp it with the current time, ``this->get_clock()->now()``"
-msgstr "We need to give the transform being published a timestamp and we'll just stamp it with the current time, ``this->get_clock()->now()``"
+msgstr "我们需要为发布的变换设置时间戳，并且我们将使用当前时间戳进行标记，``this->get_clock()->now()``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:208 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:231
 msgid "Then we need to set the name of the parent frame of the link we're creating, in this case ``world``"
-msgstr "Then we need to set the name of the parent frame of the link we're creating, in this case ``world``"
+msgstr "然后，我们需要设置链接的父框架的名称，这里是``world``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:210 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:233
 msgid "Finally, we need to set the name of the child frame of the link we're creating"
-msgstr "Finally, we need to set the name of the child frame of the link we're creating"
+msgstr "最后，我们需要设置链接的子框架的名称。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:220 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:243
 msgid "Here we populate the 6D pose (translation and rotation) of the turtle."
-msgstr "Here we populate the 6D pose (translation and rotation) of the turtle."
+msgstr "在这里，我们填充了海龟的6D姿态（平移和旋转）。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:237 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:257
 msgid "Finally, we broadcast static transform using the ``sendTransform()`` function."
-msgstr "Finally, we broadcast static transform using the ``sendTransform()`` function."
+msgstr "最后，我们使用``sendTransform()``函数广播静态变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:246
