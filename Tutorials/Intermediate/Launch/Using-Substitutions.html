@@ -143,7 +143,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Writing-an-Action-Server-Client/Cpp.html">Writing an action server and client (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Writing-an-Action-Server-Client/Py.html">Writing an action server and client (Python)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Composition.html">在单个进程中组合多个节点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">Monitoring for parameter changes (C++)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++）</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="Launch-Main.html">启动</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Creating-Launch-Files.html">创建一个启动文件</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Launch-system.html">将启动文件集成到ROS 2包中</a></li>
@@ -389,11 +389,11 @@
 <li><p><a class="reference internal" href="#create-and-setup-the-package" id="id5">1 创建并设置包</a></p></li>
 <li><p><a class="reference internal" href="#parent-launch-file" id="id6">2. 父级启动文件</a></p></li>
 <li><p><a class="reference internal" href="#substitutions-example-launch-file" id="id7">3个替代方式示例的启动文件</a></p></li>
-<li><p><a class="reference internal" href="#build-the-package" id="id8">4 Build the package</a></p></li>
+<li><p><a class="reference internal" href="#build-the-package" id="id8">4 构建软件包</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#launching-example" id="id9">启动示例</a></p></li>
-<li><p><a class="reference internal" href="#modifying-launch-arguments" id="id10">Modifying launch arguments</a></p></li>
+<li><p><a class="reference internal" href="#modifying-launch-arguments" id="id10">修改启动参数</a></p></li>
 <li><p><a class="reference internal" href="#documentation" id="id11">文档</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id12">摘要</a></p></li>
 </ul>
@@ -612,9 +612,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Afterwards, the <code class="docutils literal notranslate"><span class="pre">ExecuteProcess</span></code> action called <code class="docutils literal notranslate"><span class="pre">spawn_turtle</span></code> is defined with the corresponding <code class="docutils literal notranslate"><span class="pre">cmd</span></code> argument.
-This command makes a call to the spawn service of the turtlesim node.</p>
-<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">LaunchConfiguration</span></code> substitution is used to get the value of the <code class="docutils literal notranslate"><span class="pre">turtlesim_ns</span></code> launch argument to construct a command string.</p>
+<p>之后，定义了``ExecuteProcess``动作``spawn_turtle``，并提供相应的``cmd``参数。此命令调用了turtlesim节点的spawn服务。</p>
+<p>此外，使用``LaunchConfiguration``替代方式获取``turtlesim_ns``启动参数的值，以构建命令字符串。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spawn_turtle</span> <span class="o">=</span> <span class="n">ExecuteProcess</span><span class="p">(</span>
     <span class="n">cmd</span><span class="o">=</span><span class="p">[[</span>
         <span class="s1">&#39;ros2 service call &#39;</span><span class="p">,</span>
@@ -627,9 +626,7 @@ This command makes a call to the spawn service of the turtlesim node.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>The same approach is used for the <code class="docutils literal notranslate"><span class="pre">change_background_r</span></code> and <code class="docutils literal notranslate"><span class="pre">change_background_r_conditioned</span></code> actions that change the turtlesim background's red color parameter.
-The difference is that the <code class="docutils literal notranslate"><span class="pre">change_background_r_conditioned</span></code> action is only executed if the provided <code class="docutils literal notranslate"><span class="pre">new_background_r</span></code> argument equals <code class="docutils literal notranslate"><span class="pre">200</span></code> and the <code class="docutils literal notranslate"><span class="pre">use_provided_red</span></code> launch argument is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.
-The evaluation inside the <code class="docutils literal notranslate"><span class="pre">IfCondition</span></code> is done using the <code class="docutils literal notranslate"><span class="pre">PythonExpression</span></code> substitution.</p>
+<p>同样的方法被用于更改turtlesim背景红色参数的``change_background_r``和``change_background_r_conditioned``动作。区别在于，只有当提供的``new_background_r``参数等于``200``并且``use_provided_red``启动参数设置为``True``时，才会执行``change_background_r_conditioned``动作。在``IfCondition``内部的评估使用``PythonExpression``替代方式完成。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">change_background_r</span> <span class="o">=</span> <span class="n">ExecuteProcess</span><span class="p">(</span>
     <span class="n">cmd</span><span class="o">=</span><span class="p">[[</span>
         <span class="s1">&#39;ros2 param set &#39;</span><span class="p">,</span>
@@ -660,7 +657,7 @@ The evaluation inside the <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <div class="section" id="build-the-package">
-<h3><a class="toc-backref" href="#id8">4 Build the package</a><a class="headerlink" href="#build-the-package" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id8">4 构建软件包</a><a class="headerlink" href="#build-the-package" title="永久链接至标题"></a></h3>
 <p>转到工作空间的根目录，并构建软件包：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build</span>
 </pre></div>
@@ -670,7 +667,7 @@ The evaluation inside the <code class="docutils literal notranslate"><span class
 </div>
 <div class="section" id="launching-example">
 <h2><a class="toc-backref" href="#id9">启动示例</a><a class="headerlink" href="#launching-example" title="永久链接至标题"></a></h2>
-<p>Now you can launch the <code class="docutils literal notranslate"><span class="pre">example_main.launch.py</span></code> file using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span></code> command.</p>
+<p>现在可以使用``ros2 launch``命令启动``example_main.launch.py``文件。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch launch_tutorial example_main.launch.py</span>
 </pre></div>
 </div>
@@ -683,13 +680,12 @@ The evaluation inside the <code class="docutils literal notranslate"><span class
 </ol>
 </div>
 <div class="section" id="modifying-launch-arguments">
-<h2><a class="toc-backref" href="#id10">Modifying launch arguments</a><a class="headerlink" href="#modifying-launch-arguments" title="永久链接至标题"></a></h2>
-<p>If you want to change the provided launch arguments, you can either update them in <code class="docutils literal notranslate"><span class="pre">launch_arguments</span></code> dictionary in the <code class="docutils literal notranslate"><span class="pre">example_main.launch.py</span></code> or launch the <code class="docutils literal notranslate"><span class="pre">example_substitutions.launch.py</span></code> with preferred arguments.
-To see arguments that may be given to the launch file, run the following command:</p>
+<h2><a class="toc-backref" href="#id10">修改启动参数</a><a class="headerlink" href="#modifying-launch-arguments" title="永久链接至标题"></a></h2>
+<p>如果您想要更改提供的启动参数，您可以在``example_main.launch.py``中的``launch_arguments``字典中更新它们，或者使用首选参数启动``example_substitutions.launch.py``。要查看可能提供给启动文件的参数，请运行以下命令：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch launch_tutorial example_substitutions.launch.py --show-args</span>
 </pre></div>
 </div>
-<p>This will show the arguments that may be given to the launch file and their default values.</p>
+<p>这将显示可能提供给启动文件的参数及其默认值。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Arguments (pass arguments as &#39;&lt;name&gt;:=&lt;value&gt;&#39;):</span>
 
 <span class="go">    &#39;turtlesim_ns&#39;:</span>
@@ -705,20 +701,19 @@ To see arguments that may be given to the launch file, run the following command
 <span class="go">        (default: &#39;200&#39;)</span>
 </pre></div>
 </div>
-<p>Now you can pass the desired arguments to the launch file as follows:</p>
+<p>现在，您可以按以下方式传递所需的参数给启动文件：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch launch_tutorial example_substitutions.launch.py turtlesim_ns:=&#39;turtlesim3&#39; use_provided_red:=&#39;True&#39; new_background_r:=200</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="documentation">
 <h2><a class="toc-backref" href="#id11">文档</a><a class="headerlink" href="#documentation" title="永久链接至标题"></a></h2>
-<p><a class="reference external" href="https://github.com/ros2/launch/blob/humble/launch/doc/source/architecture.rst">The launch documentation</a> provides detailed information about available substitutions.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>The launch documentation &lt;<a class="reference external" href="https://github.com/ros2/launch/blob/humble/launch/doc/source/architecture.rst">https://github.com/ros2/launch/blob/humble/launch/doc/source/architecture.rst</a>&gt;`_ 提供了有关可用替换的详细信息。</p>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id12">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you learned about using substitutions in launch files.
-You learned about their possibilities and capabilities to create reusable launch files.</p>
-<p>You can now learn more about <a class="reference internal" href="Using-Event-Handlers.html"><span class="doc">using event handlers in launch files</span></a> which are used to define a complex set of rules which can be used to dynamically modify the launch file.</p>
+<p>在本教程中，您了解了如何在启动文件中使用替换。您了解了它们的可能性和能力，以创建可重用的启动文件。</p>
+<p>您现在可以了解更多关于 <a class="reference internal" href="Using-Event-Handlers.html"><span class="doc">在启动文件中使用事件处理程序</span></a> 的信息，它们用于定义一组复杂的规则，可用于动态修改启动文件。</p>
 </div>
 </div>
 
