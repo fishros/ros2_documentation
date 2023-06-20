@@ -192,47 +192,47 @@ msgstr "要了解 ROS 2 的简介视频，请参阅社区贡献的内容："
 
 #: ../../source/Concepts.rst:127
 msgid "`Getting started with ROS Part 1: Nodes, Parameters and Topics <https://youtu.be/46TPAKXBOF8>`_"
-msgstr "`Getting started with ROS Part 1: Nodes, Parameters and Topics <https://youtu.be/46TPAKXBOF8>`_"
+msgstr "`ROS入门第一部分：节点、参数和话题 <https://youtu.be/46TPAKXBOF8>`_"
 
 
 #: ../../source/Concepts.rst:128
 msgid "`Getting started with ROS Part 2: Services and Actions <https://youtu.be/keZAJ83eEoM>`_"
-msgstr "`Getting started with ROS Part 2: Services and Actions <https://youtu.be/keZAJ83eEoM>`_"
+msgstr "`ROS入门第二部分：服务和动作 <https://youtu.be/keZAJ83eEoM>`_"
 
 
 #: ../../source/Concepts/About-Build-System.rst:2
 msgid "About the build system"
-msgstr "About the build system"
+msgstr "关于构建系统"
 
 
 #: ../../source/Concepts/About-Build-System.rst:6
 msgid "Under everything is the build system. Iterating on ``catkin`` from ROS 1, we have created a set of |packages| under the moniker ``ament``. Some of the reasons for changing the name to ``ament`` are that we wanted it to not collide with ``catkin`` (in case we want to mix them at some point) and to prevent confusion with existing ``catkin`` documentation. ``ament``'s primary responsibility is to make it easier to develop and maintain ROS 2 core |packages|. However, this responsibility extends to any user who is willing to make use of our build system conventions and tools. Additionally it should make |packages| conventional, such that developers should be able to pick up any ``ament`` based |package| and make some assumptions about how it works, how to introspect it, and how to build or use it."
-msgstr "Under everything is the build system. Iterating on ``catkin`` from ROS 1, we have created a set of |packages| under the moniker ``ament``. Some of the reasons for changing the name to ``ament`` are that we wanted it to not collide with ``catkin`` (in case we want to mix them at some point) and to prevent confusion with existing ``catkin`` documentation. ``ament``'s primary responsibility is to make it easier to develop and maintain ROS 2 core |packages|. However, this responsibility extends to any user who is willing to make use of our build system conventions and tools. Additionally it should make |packages| conventional, such that developers should be able to pick up any ``ament`` based |package| and make some assumptions about how it works, how to introspect it, and how to build or use it."
+msgstr "在所有东西的底层是构建系统。我们在ROS 1的基础上迭代了``catkin``，创建了一组以``ament``为名称的|packages|。改名为``ament``的一些原因是我们希望它不会与``catkin``冲突（以防将来需要混合使用）并且防止与现有的``catkin``文档混淆。``ament``的主要责任是使开发和维护ROS 2核心|packages|更加容易。然而，这个责任也延伸到任何愿意使用我们的构建系统约定和工具的用户。此外，它还应该使|packages|具有常规性，使开发人员能够了解任何基于``ament``的|package|的工作原理、内省方式以及如何构建或使用它。"
 
 
 #: ../../source/Concepts/About-Build-System.rst:13
 msgid "``ament`` consists of a few important repositories which are all in the ``ament`` `GitHub organization <https://github.com/ament>`_:"
-msgstr "``ament`` consists of a few important repositories which are all in the ``ament`` `GitHub organization <https://github.com/ament>`_:"
+msgstr "``ament``由一些重要的存储库组成，它们都位于``ament``的 `GitHub组织 <https://github.com/ament>`_ 中："
 
 
 #: ../../source/Concepts/About-Build-System.rst:20
 msgid "The ``ament_package`` Package"
-msgstr "The ``ament_package`` Package"
+msgstr "``ament_package``包"
 
 
 #: ../../source/Concepts/About-Build-System.rst:22
 msgid "Located on |GitHub|_ at `ament/ament_package <https://github.com/ament/ament_package>`_, this repository contains a single :term:`ament Python package` that provides various utilities for |ament packages|, e.g. templates for environment hooks."
-msgstr "Located on |GitHub|_ at `ament/ament_package <https://github.com/ament/ament_package>`_, this repository contains a single :term:`ament Python package` that provides various utilities for |ament packages|, e.g. templates for environment hooks."
+msgstr "该仓库位于 |GitHub|_ 的 `ament/ament_package <https://github.com/ament/ament_package>`_，其中包含一个单独的 :term:`ament Python package`，为 |ament packages| 提供各种实用工具，例如环境钩子的模板。"
 
 
 #: ../../source/Concepts/About-Build-System.rst:24
 msgid "All |ament packages| must contain a single :term:`package.xml` file at the root of the package regardless of their underlying build system. The :term:`package.xml` \"manifest\" file contains information that is required in order to process and operate on a |package|. This |package| information includes things like the |package|'s name, which is globally unique, and the package's dependencies. The :term:`package.xml` file also serves as the marker file which indicates the location of the |package| on the file system."
-msgstr "All |ament packages| must contain a single :term:`package.xml` file at the root of the package regardless of their underlying build system. The :term:`package.xml` \"manifest\" file contains information that is required in order to process and operate on a |package|. This |package| information includes things like the |package|'s name, which is globally unique, and the package's dependencies. The :term:`package.xml` file also serves as the marker file which indicates the location of the |package| on the file system."
+msgstr "所有的 |ament packages| 都必须在包的根目录下包含一个名为 :term:`package.xml` 的文件，而与其底层构建系统无关。:term:`package.xml` \"清单\"文件包含了处理和操作 |package| 所需的信息。该 |package| 信息包括全局唯一的 |package| 名称和包的依赖项。:term:`package.xml` 文件还充当标记文件，指示 |package| 在文件系统中的位置。"
 
 
 #: ../../source/Concepts/About-Build-System.rst:29
 msgid "Parsing of the :term:`package.xml` files is provided by ``catkin_pkg`` (as in ROS 1), while functionality to locate |packages| by searching the file system for these :term:`package.xml` files is provided by build tools such as ``colcon``."
-msgstr "Parsing of the :term:`package.xml` files is provided by ``catkin_pkg`` (as in ROS 1), while functionality to locate |packages| by searching the file system for these :term:`package.xml` files is provided by build tools such as ``colcon``."
+msgstr "解析 :term:`package.xml` 文件的功能由 ``catkin_pkg`` 提供（与 ROS 1 中的情况相同），而通过搜索文件系统中的这些 :term:`package.xml` 文件来定位 |packages| 的功能则由构建工具（如 ``colcon``）提供。"
 
 
 #: ../../source/Concepts/About-Build-System.rst:32
@@ -242,12 +242,12 @@ msgstr "package.xml"
 
 #: ../../source/Concepts/About-Build-System.rst:34
 msgid "Package manifest file which marks the root of a :term:`package` and contains meta information about the :term:`package` including its name, version, description, maintainer, license, dependencies, and more. The contents of the manifest are in machine readable XML format and the contents are described in the |REPs| `127 <http://www.ros.org/reps/rep-0127.html>`_ and `140 <http://www.ros.org/reps/rep-0140.html>`_, with the possibility of further modifications in future |REPs|."
-msgstr "Package manifest file which marks the root of a :term:`package` and contains meta information about the :term:`package` including its name, version, description, maintainer, license, dependencies, and more. The contents of the manifest are in machine readable XML format and the contents are described in the |REPs| `127 <http://www.ros.org/reps/rep-0127.html>`_ and `140 <http://www.ros.org/reps/rep-0140.html>`_, with the possibility of further modifications in future |REPs|."
+msgstr "包清单文件，标记了 :term:`package` 的根目录，并包含有关 :term:`package` 的元信息，包括名称、版本、描述、维护者、许可证、依赖关系等。清单的内容以机器可读的 XML 格式呈现，内容在 |REPs| `127 <http://www.ros.org/reps/rep-0127.html>`_ 和 `140 <http://www.ros.org/reps/rep-0140.html>`_ 中进行了描述，并有可能在未来的 |REPs| 中进行进一步的修改。"
 
 
 #: ../../source/Concepts/About-Build-System.rst:37
 msgid "So anytime some |package| is referred to as an :term:`ament package`, it means that it is a single unit of software (source code, build files, tests, documentation, and other resources) which is described using a :term:`package.xml` manifest file."
-msgstr "So anytime some |package| is referred to as an :term:`ament package`, it means that it is a single unit of software (source code, build files, tests, documentation, and other resources) which is described using a :term:`package.xml` manifest file."
+msgstr "因此，每当某个 |package| 被称为 :term:`ament package` 时，这意味着它是一个单一的软件单元（源代码、构建文件、测试、文档和其他资源），使用 :term:`package.xml` 清单文件进行描述。"
 
 
 #: ../../source/Concepts/About-Build-System.rst:40
