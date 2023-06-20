@@ -604,18 +604,17 @@ ros2 pkg create --dependencies action_tutorials_interfaces rclcpp rclcpp_action 
 <span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">FibonacciActionServer</span><span class="o">::</span><span class="n">handle_accepted</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
-<p>An action server requires 6 things:</p>
+<p>一个动作服务器需要6个要素：</p>
 <ol class="arabic simple">
-<li><p>The templated action type name: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code>.</p></li>
-<li><p>A ROS 2 node to add the action to: <code class="docutils literal notranslate"><span class="pre">this</span></code>.</p></li>
-<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code>.</p></li>
-<li><p>A callback function for handling goals: <code class="docutils literal notranslate"><span class="pre">handle_goal</span></code></p></li>
-<li><p>A callback function for handling cancellation: <code class="docutils literal notranslate"><span class="pre">handle_cancel</span></code>.</p></li>
-<li><p>A callback function for handling goal accept: <code class="docutils literal notranslate"><span class="pre">handle_accept</span></code>.</p></li>
+<li><p>模板化的动作类型名称：<code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code>。</p></li>
+<li><p>要添加动作的ROS 2节点：<code class="docutils literal notranslate"><span class="pre">this</span></code>。</p></li>
+<li><p>动作名称：<code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code>。</p></li>
+<li><p>处理目标的回调函数：<code class="docutils literal notranslate"><span class="pre">handle_goal</span></code>。</p></li>
+<li><p>处理取消的回调函数：<code class="docutils literal notranslate"><span class="pre">handle_cancel</span></code>。</p></li>
+<li><p>处理目标接受的回调函数：<code class="docutils literal notranslate"><span class="pre">handle_accept</span></code>。</p></li>
 </ol>
-<p>The implementation of the various callbacks is next in the file.
-Note that all of the callbacks need to return quickly, otherwise we risk starving the executor.</p>
-<p>We start with the callback for handling new goals:</p>
+<p>接下来是对各种回调函数的实现。请注意，所有回调函数都需要快速返回，否则我们可能会导致执行程序饥饿。</p>
+<p>我们首先处理处理新目标的回调函数：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">rclcpp_action</span><span class="o">::</span><span class="n">GoalResponse</span><span class="w"> </span><span class="nf">handle_goal</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_action</span><span class="o">::</span><span class="n">GoalUUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">Fibonacci</span><span class="o">::</span><span class="n">Goal</span><span class="o">&gt;</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span><span class="w"></span>
@@ -626,8 +625,8 @@ Note that all of the callbacks need to return quickly, otherwise we risk starvin
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This implementation just accepts all goals.</p>
-<p>Next up is the callback for dealing with cancellation:</p>
+<p>这个实现只是接受所有目标。</p>
+<p>接下来是处理取消的回调函数：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">rclcpp_action</span><span class="o">::</span><span class="n">CancelResponse</span><span class="w"> </span><span class="nf">handle_cancel</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GoalHandleFibonacci</span><span class="o">&gt;</span><span class="w"> </span><span class="n">goal_handle</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
@@ -637,7 +636,7 @@ Note that all of the callbacks need to return quickly, otherwise we risk starvin
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This implementation just tells the client that it accepted the cancellation.</p>
+<p>这个实现只是告诉客户端它接受了取消请求。</p>
 <p>The last of the callbacks accepts a new goal and starts processing it:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">handle_accepted</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GoalHandleFibonacci</span><span class="o">&gt;</span><span class="w"> </span><span class="n">goal_handle</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
@@ -867,9 +866,9 @@ Source the workspace we just built (<code class="docutils literal notranslate"><
 </div>
 <p>An action client requires 3 things:</p>
 <ol class="arabic simple">
-<li><p>The templated action type name: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code>.</p></li>
+<li><p>模板化的动作类型名称：<code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code>。</p></li>
 <li><p>A ROS 2 node to add the action client to: <code class="docutils literal notranslate"><span class="pre">this</span></code>.</p></li>
-<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code>.</p></li>
+<li><p>动作名称：<code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code>。</p></li>
 </ol>
 <p>We also instantiate a ROS timer that will kick off the one and only call to <code class="docutils literal notranslate"><span class="pre">send_goal</span></code>:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
