@@ -14526,62 +14526,62 @@ msgstr "本教程解释了如何在tf2中使用传感器数据。一些传感器
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:26
 msgid "cameras, both mono and stereo"
-msgstr "cameras, both mono and stereo"
+msgstr "摄像头，包括单目和双目"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:28
 msgid "laser scans"
-msgstr "laser scans"
+msgstr "激光扫描"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:30
 msgid "Suppose that a new turtle named ``turtle3`` is created and it doesn't have good odometry, but there is an overhead camera tracking its position and publishing it as a ``PointStamped`` message in relation to the ``world`` frame."
-msgstr "Suppose that a new turtle named ``turtle3`` is created and it doesn't have good odometry, but there is an overhead camera tracking its position and publishing it as a ``PointStamped`` message in relation to the ``world`` frame."
+msgstr "假设创建了一个名为“turtle3”的新海龟，它没有良好的里程计，但有一台高空摄像头跟踪它的位置，并将其作为与“world”坐标系相关的“PointStamped”消息发布。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:32
 msgid "``turtle1`` wants to know where ``turtle3`` is compared to itself."
-msgstr "``turtle1`` wants to know where ``turtle3`` is compared to itself."
+msgstr "“turtle1”想知道相对于自己，"turtle3"在哪里。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:34
 msgid "To do this ``turtle1`` must listen to the topic where ``turtle3``'s pose is being published, wait until transforms into the desired frame are ready, and then do its operations. To make this easier the ``tf2_ros::MessageFilter`` is very useful. The ``tf2_ros::MessageFilter`` will take a subscription to any ROS 2 message with a header and cache it until it is possible to transform it into the target frame."
-msgstr "To do this ``turtle1`` must listen to the topic where ``turtle3``'s pose is being published, wait until transforms into the desired frame are ready, and then do its operations. To make this easier the ``tf2_ros::MessageFilter`` is very useful. The ``tf2_ros::MessageFilter`` will take a subscription to any ROS 2 message with a header and cache it until it is possible to transform it into the target frame."
+msgstr "为了实现这一点，“turtle1”必须订阅发布“turtle3”姿态的主题，等待直到可以将其转换为所需坐标系，然后执行相应操作。为了简化此过程，“tf2_ros::MessageFilter”非常有用。“tf2_ros::MessageFilter”将订阅具有头信息的任何ROS 2消息，并将其缓存，直到可以将其转换为目标坐标系。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:42
 msgid "1 Write the broadcaster node of PointStamped messages"
-msgstr "1 Write the broadcaster node of PointStamped messages"
+msgstr "1、编写发布PointStamped消息的广播节点"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:44
 msgid "For this tutorial we will set up a demo application which has a node (in Python) to broadcast the ``PointStamped`` position messages of ``turtle3``."
-msgstr "For this tutorial we will set up a demo application which has a node (in Python) to broadcast the ``PointStamped`` position messages of ``turtle3``."
+msgstr "在本教程中，我们将设置一个演示应用程序，其中包含一个用Python编写的节点，用于广播“turtle3”的“PointStamped”位置消息。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:46
 msgid "First, let's create the source file."
-msgstr "First, let's create the source file."
+msgstr "首先，让我们创建源文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:48
 msgid "Go to the ``learning_tf2_py`` :doc:`package <./Writing-A-Tf2-Static-Broadcaster-Py>` we created in the previous tutorial. Inside the ``src/learning_tf2_py/learning_tf2_py`` directory download the example sensor message broadcaster code by entering the following command:"
-msgstr "Go to the ``learning_tf2_py`` :doc:`package <./Writing-A-Tf2-Static-Broadcaster-Py>` we created in the previous tutorial. Inside the ``src/learning_tf2_py/learning_tf2_py`` directory download the example sensor message broadcaster code by entering the following command:"
+msgstr "进入我们在之前教程中创建的“learning_tf2_py”包的“src/learning_tf2_py/learning_tf2_py”目录，并通过输入以下命令下载示例传感器消息广播器代码："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:171
 msgid "Now let's take a look at the code. First, in the ``on_timer`` callback function, we spawn the ``turtle3`` by asynchronously calling the ``Spawn`` service of ``turtlesim``, and initialize its position at (4, 2, 0), when the turtle spawning service is ready."
-msgstr "Now let's take a look at the code. First, in the ``on_timer`` callback function, we spawn the ``turtle3`` by asynchronously calling the ``Spawn`` service of ``turtlesim``, and initialize its position at (4, 2, 0), when the turtle spawning service is ready."
+msgstr "现在让我们来看一下代码。首先，在“on_timer”回调函数中，我们通过异步调用“turtlesim”的“Spawn”服务来生成“turtle3”，并在准备好龟生成服务时将其位置初始化为（4，2，0）。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:186
 msgid "Afterward, the node publishes the topic ``turtle3/cmd_vel``, topic ``turtle3/turtle_point_stamped``, and subscribes to topic ``turtle3/pose`` and runs callback function ``handle_turtle_pose`` on every incoming message."
-msgstr "Afterward, the node publishes the topic ``turtle3/cmd_vel``, topic ``turtle3/turtle_point_stamped``, and subscribes to topic ``turtle3/pose`` and runs callback function ``handle_turtle_pose`` on every incoming message."
+msgstr "之后，该节点发布“turtle3/cmd_vel”主题、“turtle3/turtle_point_stamped”主题，并订阅“turtle3/pose”主题，并在每次接收到消息时运行回调函数“handle_turtle_pose”。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:194
 msgid "Finally, in the callback function ``handle_turtle_pose``, we initialize the ``Twist`` messages of ``turtle3`` and publish them, which will make the ``turtle3`` move along a circle. Then we fill up the ``PointStamped`` messages of ``turtle3`` with incoming ``Pose`` messages and publish them."
-msgstr "Finally, in the callback function ``handle_turtle_pose``, we initialize the ``Twist`` messages of ``turtle3`` and publish them, which will make the ``turtle3`` move along a circle. Then we fill up the ``PointStamped`` messages of ``turtle3`` with incoming ``Pose`` messages and publish them."
+msgstr "最后，在回调函数“handle_turtle_pose”中，我们初始化“turtle3”的“Twist”消息并发布它们，这将使“turtle3”沿着一个圆形运动。然后，我们使用传入的“Pose”消息填充“turtle3”的“PointStamped”消息并发布它们。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:213
