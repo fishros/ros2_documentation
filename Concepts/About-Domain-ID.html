@@ -379,32 +379,19 @@
 <p>如其他地方所解释的，ROS 2用于通信的默认中间件是DDS。在DDS中，不同逻辑网络共享物理网络的主要机制被称为Domain ID。同一域中的ROS 2节点可以自由地发现和相互发送消息，而不同域中的ROS 2节点则不能。所有ROS 2节点默认使用域ID 0。为了避免在同一网络上运行ROS 2的不同计算机组之间的干扰，应为每个组设置不同的域ID。</p>
 </div>
 <div class="section" id="choosing-a-domain-id-short-version">
-<h2>Choosing a domain ID (short version)<a class="headerlink" href="#choosing-a-domain-id-short-version" title="永久链接至标题"></a></h2>
-<p>The text below explains the derivation of the range of domain IDs that should be used in ROS 2.
-To skip that background and just choose a safe number, simply choose a domain ID between 0 and 101, inclusive.</p>
+<h2>选择域ID（简短版本）<a class="headerlink" href="#choosing-a-domain-id-short-version" title="永久链接至标题"></a></h2>
+<p>下面的文本解释了应在ROS 2中使用的域ID范围的推导过程。如果想跳过这些背景知识，只需选择一个安全的数字，简单地选择一个介于0和101之间（包括0和101）的域ID即可。</p>
 </div>
 <div class="section" id="choosing-a-domain-id-long-version">
-<h2>Choosing a domain ID (long version)<a class="headerlink" href="#choosing-a-domain-id-long-version" title="永久链接至标题"></a></h2>
-<p>The domain ID is used by DDS to compute the UDP ports that will be used for discovery and communication.
-See <a class="reference external" href="https://community.rti.com/content/forum-topic/statically-configure-firewall-let-omg-dds-traffic-through">this article</a> for details on how the ports are computed.
-Remembering our basic networking, the UDP port is an <a class="reference external" href="https://en.wikipedia.org/wiki/User_Datagram_Protocol#Ports">unsigned 16-bit integer</a>.
-Thus, the highest port number that can be allocated is 65535.
-Doing some math with the formula in the article above, this means that the highest domain ID that can possibly be assigned is 232, while the lowest that can be assigned is 0.</p>
+<h2>选择域ID（详细版本）<a class="headerlink" href="#choosing-a-domain-id-long-version" title="永久链接至标题"></a></h2>
+<p>域ID由DDS用于计算用于发现和通信的UDP端口。有关端口计算的详细信息，请参阅`此文章 &lt;<a class="reference external" href="https://community.rti.com/content/forum-topic/statically-configure-firewall-let-omg-dds-traffic-through">https://community.rti.com/content/forum-topic/statically-configure-firewall-let-omg-dds-traffic-through</a>&gt;`__。根据我们的基本网络知识，UDP端口是一个`无符号16位整数 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/User_Datagram_Protocol#Ports">https://en.wikipedia.org/wiki/User_Datagram_Protocol#Ports</a>&gt;`__。因此，最高可以分配的端口号是65535。通过使用上述文章中的公式进行一些计算，可以得知可能分配的最高域ID是232，而最低域ID是0。</p>
 <div class="section" id="platform-specific-constraints">
-<h3>Platform-specific constraints<a class="headerlink" href="#platform-specific-constraints" title="永久链接至标题"></a></h3>
-<p>For maximum compatibility, some additional platform-specific constraints should be followed when choosing a domain ID.
-In particular, it is best to avoid allocating domain IDs in the operating system's <a class="reference external" href="https://en.wikipedia.org/wiki/Ephemeral_port">ephemeral port range</a>.
-This avoids possible conflicts between the ports used by the ROS 2 nodes and other networking services on the computers.</p>
-<p>Here are some platform-specific notes about ephemeral ports.</p>
+<h3>平台特定约束<a class="headerlink" href="#platform-specific-constraints" title="永久链接至标题"></a></h3>
+<p>为了最大兼容性，在选择域ID时应遵循一些额外的平台特定约束。特别是，在操作系统的`临时端口范围 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Ephemeral_port">https://en.wikipedia.org/wiki/Ephemeral_port</a>&gt;`__中最好避免分配域ID。这样可以避免ROS 2节点和计算机上其他网络服务之间可能的端口冲突。</p>
+<p>以下是有关临时端口的特定平台注意事项。</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>By default, the Linux kernel uses ports 32768-60999 for ephemeral ports.
-This means that domain IDs 0-101 and 215-232 can be safely used without colliding with ephemeral ports.
-The ephemeral port range is configurable in Linux by setting custom values in <code class="docutils literal notranslate"><span class="pre">/proc/sys/net/ipv4/ip_local_port_range</span></code>.
-If a custom ephemeral port range is used, the above numbers may have to be adjusted accordingly.</p>
-</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>By default, the ephemeral port range on macOS is 49152-65535.
-This means that domain IDs 0-166 can be safely used without colliding with ephemeral ports.
-The ephemeral port range is configurable in macOS by setting custom sysctl values for <code class="docutils literal notranslate"><span class="pre">net.inet.ip.portrange.first</span></code> and <code class="docutils literal notranslate"><span class="pre">net.inet.ip.portrange.last</span></code>.
-If a custom ephemeral port range is used, the above numbers may have to be adjusted accordingly.</p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>默认情况下，Linux内核使用32768-60999的端口作为临时端口。这意味着域ID为0-101和215-232的端口可以安全使用，不会与临时端口冲突。在Linux中，可以通过在``/proc/sys/net/ipv4/ip_local_port_range``中设置自定义值来配置临时端口范围。如果使用自定义临时端口范围，则可能需要相应地调整上述数字。</p>
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>默认情况下，macOS的临时端口范围是49152-65535。这意味着域ID为0-166的端口可以安全使用，不会与临时端口冲突。在macOS中，可以通过设置``net.inet.ip.portrange.first``和``net.inet.ip.portrange.last``的自定义sysctl值来配置临时端口范围。如果使用自定义临时端口范围，则可能需要相应地调整上述数字。</p>
 </div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>By default, the ephemeral port range on Windows is 49152-65535.
 This means that domain IDs 0-166 can be safely used without colliding with ephemeral ports.
 The ephemeral port range is configurable in Windows by <a class="reference external" href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang">using netsh</a>.
