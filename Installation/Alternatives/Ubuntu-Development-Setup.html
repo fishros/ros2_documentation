@@ -382,7 +382,7 @@
 <li><p><a class="reference internal" href="#system-setup" id="id2">系统设置</a></p>
 <ul>
 <li><p><a class="reference internal" href="#set-locale" id="id3">设置区域设置</a></p></li>
-<li><p><a class="reference internal" href="#add-the-ros-2-apt-repository" id="id4">Add the ROS 2 apt repository</a></p></li>
+<li><p><a class="reference internal" href="#add-the-ros-2-apt-repository" id="id4">添加 ROS 2 apt 仓库</a></p></li>
 <li><p><a class="reference internal" href="#install-development-tools-and-ros-tools" id="id5">安装开发工具和ROS工具</a></p></li>
 </ul>
 </li>
@@ -411,27 +411,25 @@
 </div>
 <div class="section" id="system-requirements">
 <h2><a class="toc-backref" href="#id1">系统要求</a><a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
-<p>The current Debian-based target platforms for Humble Hawksbill are:</p>
+<p>Humble Hawksbill的当前基于Debian的目标平台为:</p>
 <ul class="simple">
-<li><p>Tier 1: Ubuntu Linux - Jammy (22.04) 64-bit</p></li>
-<li><p>Tier 3: Ubuntu Linux - Focal (20.04) 64-bit</p></li>
-<li><p>Tier 3: Debian Linux - Bullseye (11) 64-bit</p></li>
+<li><p>Tier 1: Ubuntu Linux - Jammy (22.04) 64位</p></li>
+<li><p>Tier 3: Ubuntu Linux - Focal (20.04) 64位</p></li>
+<li><p>Tier 3: Debian Linux - Bullseye (11) 64位</p></li>
 </ul>
-<p>Other Linux platforms with varying support levels include:</p>
+<p>其他具有不同支持级别的Linux平台包括:</p>
 <ul class="simple">
-<li><p>Arch Linux, see <a class="reference external" href="https://wiki.archlinux.org/index.php/ROS#ROS_2">alternate instructions</a></p></li>
-<li><p>Fedora Linux, see <a class="reference internal" href="Fedora-Development-Setup.html"><span class="doc">alternate instructions</span></a></p></li>
-<li><p>OpenEmbedded / webOS OSE, see <a class="reference external" href="https://github.com/ros/meta-ros/wiki/OpenEmbedded-Build-Instructions">alternate instructions</a></p></li>
+<li><p>Arch Linux，请参阅`其他说明 &lt;<a class="reference external" href="https://wiki.archlinux.org/index.php/ROS#ROS_2">https://wiki.archlinux.org/index.php/ROS#ROS_2</a>&gt;`__</p></li>
+<li><p>Fedora Linux，请参阅 <a class="reference internal" href="Fedora-Development-Setup.html"><span class="doc">替代说明</span></a></p></li>
+<li><p>OpenEmbedded / webOS OSE，请参阅 <a class="reference external" href="https://github.com/ros/meta-ros/wiki/OpenEmbedded-Build-Instructions">替代说明</a></p></li>
 </ul>
-<p>As defined in <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">REP 2000</a>.</p>
+<p>如 <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">REP 2000</a> 中所定义。</p>
 </div>
 <div class="section" id="system-setup">
 <h2><a class="toc-backref" href="#id2">系统设置</a><a class="headerlink" href="#system-setup" title="永久链接至标题"></a></h2>
 <div class="section" id="set-locale">
 <h3><a class="toc-backref" href="#id3">设置区域设置</a><a class="headerlink" href="#set-locale" title="永久链接至标题"></a></h3>
-<p>Make sure you have a locale which supports <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code>.
-If you are in a minimal environment (such as a docker container), the locale may be something minimal like <code class="docutils literal notranslate"><span class="pre">POSIX</span></code>.
-We test with the following settings. However, it should be fine if you're using a different UTF-8 supported locale.</p>
+<p>确保您的系统支持 <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code> 语言环境。如果您处于最小化环境（例如 Docker 容器），语言环境可能是最小化的，如 <code class="docutils literal notranslate"><span class="pre">POSIX</span></code>。我们使用以下设置进行测试。不过，如果您使用其他支持 UTF-8 的语言环境，应该也没问题。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>locale  <span class="c1"># check for UTF-8</span>
 
 sudo apt update <span class="o">&amp;&amp;</span> sudo apt install locales
@@ -444,26 +442,26 @@ locale  <span class="c1"># verify settings</span>
 </div>
 </div>
 <div class="section" id="add-the-ros-2-apt-repository">
-<h3><a class="toc-backref" href="#id4">Add the ROS 2 apt repository</a><a class="headerlink" href="#add-the-ros-2-apt-repository" title="永久链接至标题"></a></h3>
-<p>You will need to add the ROS 2 apt repository to your system.</p>
-<p>First ensure that the <a class="reference external" href="https://help.ubuntu.com/community/Repositories/Ubuntu">Ubuntu Universe repository</a> is enabled.</p>
+<h3><a class="toc-backref" href="#id4">添加 ROS 2 apt 仓库</a><a class="headerlink" href="#add-the-ros-2-apt-repository" title="永久链接至标题"></a></h3>
+<p>您需要将 ROS 2 apt 仓库添加到您的系统中。</p>
+<p>首先确保已启用 <a class="reference external" href="https://help.ubuntu.com/community/Repositories/Ubuntu">Ubuntu Universe 软件源</a>。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install software-properties-common
 sudo add-apt-repository universe
 </pre></div>
 </div>
-<p>Now add the ROS 2 GPG key with apt.</p>
+<p>然后使用 apt 添加 ROS 2 GPG 密钥。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install curl -y
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 </pre></div>
 </div>
-<p>Then add the repository to your sources list.</p>
+<p>接下来将软件源添加到您的源列表中。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span>. /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-development-tools-and-ros-tools">
 <h3><a class="toc-backref" href="#id5">安装开发工具和ROS工具</a><a class="headerlink" href="#install-development-tools-and-ros-tools" title="永久链接至标题"></a></h3>
-<p>Install common packages.</p>
+<p>安装常用软件包。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install -y <span class="se">\</span>
   python3-flake8-docstrings <span class="se">\</span>
   python3-pip <span class="se">\</span>
@@ -471,7 +469,7 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
   ros-dev-tools
 </pre></div>
 </div>
-<p>Install packages according to your Ubuntu version.</p>
+<p>根据您的 Ubuntu 版本安装软件包。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-VWJ1bnR1IDIyLjA0IExUUyBhbmQgbGF0ZXI=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-VWJ1bnR1IDIyLjA0IExUUyBhbmQgbGF0ZXI=" name="VWJ1bnR1IDIyLjA0IExUUyBhbmQgbGF0ZXI=" role="tab" tabindex="0">Ubuntu 22.04 LTS and later</button><button aria-controls="panel-0-VWJ1bnR1IDIwLjA0IExUUw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-VWJ1bnR1IDIwLjA0IExUUw==" name="VWJ1bnR1IDIwLjA0IExUUw==" role="tab" tabindex="-1">Ubuntu 20.04 LTS</button></div><div aria-labelledby="tab-0-VWJ1bnR1IDIyLjA0IExUUyBhbmQgbGF0ZXI=" class="sphinx-tabs-panel group-tab" id="panel-0-VWJ1bnR1IDIyLjA0IExUUyBhbmQgbGF0ZXI=" name="VWJ1bnR1IDIyLjA0IExUUyBhbmQgbGF0ZXI=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
 <span class="go">   python3-flake8-blind-except \</span>
