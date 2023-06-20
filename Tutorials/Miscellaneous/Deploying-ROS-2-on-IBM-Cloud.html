@@ -379,9 +379,9 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#about" id="id1">关于</a></p></li>
 <li><p><a class="reference internal" href="#ros2-on-ibm-cloud" id="id2">在IBM Cloud上运行ROS2</a></p></li>
-<li><p><a class="reference internal" href="#step-1-setting-up-your-system" id="id3">Step 1: Setting up your system</a></p>
+<li><p><a class="reference internal" href="#step-1-setting-up-your-system" id="id3">步骤1：设置您的系统</a></p>
 <ul>
-<li><p><a class="reference internal" href="#a-docker-files" id="id4">a) Docker files?</a></p></li>
+<li><p><a class="reference internal" href="#a-docker-files" id="id4">a) Docker文件？</a></p></li>
 <li><p><a class="reference internal" href="#b-ros2-image" id="id5">b) ROS2 Image</a></p></li>
 </ul>
 </li>
@@ -412,31 +412,16 @@
 <p>以下说明假定您使用的是Linux系统，并已经在Ubuntu 18.04（Bionic Beaver）上进行了测试。</p>
 </div>
 <div class="section" id="step-1-setting-up-your-system">
-<h2><a class="toc-backref" href="#id3">Step 1: Setting up your system</a><a class="headerlink" href="#step-1-setting-up-your-system" title="永久链接至标题"></a></h2>
-<p>Before we go into how the exact process works, lets first make sure all
-the required software is properly installed. We'll point you towards the
-appropriate sources to set up your system and only highlight the details
-that pertain to our use-case.</p>
+<h2><a class="toc-backref" href="#id3">步骤1：设置您的系统</a><a class="headerlink" href="#step-1-setting-up-your-system" title="永久链接至标题"></a></h2>
+<p>在我们详细介绍具体过程之前，让我们先确保所有所需软件已正确安装。我们将指引您到适当的来源以设置您的系统，并仅强调与我们使用场景相关的细节。</p>
 <div class="section" id="a-docker-files">
-<h3><a class="toc-backref" href="#id4">a) Docker files?</a><a class="headerlink" href="#a-docker-files" title="永久链接至标题"></a></h3>
-<p>Docker files are a form of containers that can run separate from your
-system, this way, you can set-up potentially hundreds of different
-projects without affecting one another. You can even set-up different
-versions of Linux on one machine, without the need for virtual machine.
-Docker files have an advantage of saving space and only utilizing your
-system resources when running. In addition, dockers are versatile and
-transferable. They contain all the required pre-requisites to run
-separately, meaning that you can easily use a docker file for a specific
-system or service without any cubersome steps!</p>
-<p>Excited yet? Let's start off by installing docker to your system by
-following the following <a class="reference external" href="https://docs.docker.com/get-docker/">link</a>.
-From the tutorial, you should have done some sanity checks to make sure
-docker is properly set-up. Just in case, however, let's run the
-following command once again that uses the hello-world docker image:</p>
+<h3><a class="toc-backref" href="#id4">a) Docker文件？</a><a class="headerlink" href="#a-docker-files" title="永久链接至标题"></a></h3>
+<p>Docker文件是一种容器形式，可以独立于您的系统运行。这样，您可以设置可能有数百个不同项目而彼此不受影响。您甚至可以在一台机器上设置不同版本的Linux，而无需使用虚拟机。Docker文件具有节省空间和仅在运行时利用您的系统资源的优势。此外，Docker具有灵活和可转移的特性。它们包含所有运行所需的预设条件，这意味着您可以轻松地为特定的系统或服务使用Docker文件，而无需进行任何复杂的步骤！</p>
+<p>感到兴奋了吗？让我们从按照以下 <a class="reference external" href="https://docs.docker.com/get-docker/">链接</a> 安装docker到您的系统开始吧。根据教程，您应该进行一些健全性检查以确保docker已正确设置。然而，为了保险起见，让我们再次运行以下命令，使用hello-world docker映像：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker run hello-world
 </pre></div>
 </div>
-<p>You should obtain the following output:</p>
+<p>您应该得到以下输出：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Hello from Docker!
 This message shows that your installation appears to be working correctly.
 
@@ -462,18 +447,8 @@ For more examples and ideas, visit:
 </div>
 <div class="section" id="b-ros2-image">
 <h3><a class="toc-backref" href="#id5">b) ROS2 Image</a><a class="headerlink" href="#b-ros2-image" title="永久链接至标题"></a></h3>
-<p>ROS
-<a class="reference external" href="https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2">announced</a>
-image containers for several ROS distributions in January 2019. More
-detailed instructions on the use of ROS2 docker images can be found
-<a class="reference external" href="https://hub.docker.com/_/ros/">here</a>.</p>
-<p>Let's skip through that and get to real-deal right away; creating a
-local ROS2 docker. We'll create our own Dockerfile (instead of using a
-ready Image) since we'll need this method for deployment on IBM Cloud.
-First, we create a new directory which will hold our Dockerfile and any
-other files we need later on and navigate to it. Using your favorite
-$EDITOR of choice, open a new file named <em>Dockerfile</em> (make sure the
-file naming is correct):</p>
+<p>ROS <a class="reference external" href="https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2">宣布</a> 2019年1月发布了几个ROS发行版的官方Docker镜像容器。有关使用ROS2 Docker镜像的详细说明，请参阅 <a class="reference external" href="https://hub.docker.com/_/ros/">此处</a>。</p>
+<p>让我们直接跳过这些，立即开始创建本地ROS2 Docker。由于我们需要将其部署到IBM Cloud上，我们将创建自己的Dockerfile（而不是使用现成的镜像）。首先，创建一个新目录，用于保存我们的Dockerfile和稍后需要的任何其他文件，并进入该目录。使用您喜欢的$EDITOR，打开一个名为*Dockerfile*的新文件（确保文件名正确）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/ros2_docker
 
 $ <span class="nb">cd</span> ~/ros2_docker
@@ -481,8 +456,7 @@ $ <span class="nb">cd</span> ~/ros2_docker
 $ <span class="nv">$EDITOR</span> Dockerfile
 </pre></div>
 </div>
-<p>Insert the following in the <em>Dockerfile</em>, and save it (also found
-<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile">here</a>):</p>
+<p>将以下内容插入*Dockerfile*中，并保存它（也可以在 <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile">此处</a> 找到）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FROM ros:foxy
 
 <span class="c1"># install ros package</span>
@@ -498,9 +472,8 @@ CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span clas
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>FROM</strong>: creates a layer from the ros:foxy Docker image</p></li>
-<li><p><strong>RUN</strong>: builds your container by installing vim into it and creating
-a directory called /ros2_home</p></li>
+<li><p><strong>FROM</strong>：使用ros:foxy Docker镜像创建一个层</p></li>
+<li><p><strong>RUN</strong>：通过将vim安装到容器中并创建一个名为/ros2_home的目录来构建您的容器</p></li>
 <li><p><strong>WORKDIR</strong>: informs the container where the working directory should
 be for it</p></li>
 </ul>
