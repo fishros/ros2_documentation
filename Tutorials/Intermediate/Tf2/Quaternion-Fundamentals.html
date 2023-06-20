@@ -504,12 +504,11 @@
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">q_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q_r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q_1</span><span class="w"></span>
 </pre></div>
 </div>
-<p>You can solve for <code class="docutils literal notranslate"><span class="pre">q_r</span></code> similarly to solving a matrix equation.
-Invert <code class="docutils literal notranslate"><span class="pre">q_1</span></code> and right-multiply both sides. Again, the order of multiplication is important:</p>
+<p>你可以类似于解矩阵方程来解``q_r``。求``q_1``的逆矩阵，并将两边右乘。再次强调，乘法的顺序很重要：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">q_r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q_2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q_1_inverse</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Here's an example to get the relative rotation from the previous robot pose to the current robot pose in python:</p>
+<p>下面是一个示例，用Python计算从之前的机器人姿态到当前机器人姿态的相对旋转：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quaternion_multiply</span><span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Multiplies two quaternions.</span>
@@ -563,8 +562,7 @@ Invert <code class="docutils literal notranslate"><span class="pre">q_1</span></
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id10">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you learned about the fundamental concepts of a quaternion and its related mathematical operations, like inversion and rotation.
-You also learned about its usage examples in ROS 2 and conversion methods between two separate Quaternion classes.</p>
+<p>在本教程中，你学习了四元数的基本概念及其相关的数学运算，如求逆和旋转。你还学习了ROS 2中的使用示例以及两个独立四元数类之间的转换方法。</p>
 </div>
 </div>
 
