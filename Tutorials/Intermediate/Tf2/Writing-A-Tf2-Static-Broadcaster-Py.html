@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writing a static broadcaster (Python) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>编写静态广播器（Python） &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -154,7 +154,7 @@
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Introduction-To-Tf2.html">介绍``tf2``</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Writing a static broadcaster (Python)</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">编写静态广播器（Python）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++）</a></li>
@@ -362,7 +362,7 @@
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Intermediate.html">中级</a> &raquo;</li>
           <li><a href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a> &raquo;</li>
-      <li>Writing a static broadcaster (Python)</li>
+      <li>编写静态广播器（Python）</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -375,7 +375,7 @@
 
 
   <div class="section" id="writing-a-static-broadcaster-python">
-<span id="writingatf2staticbroadcasterpy"></span><h1>Writing a static broadcaster (Python)<a class="headerlink" href="#writing-a-static-broadcaster-python" title="永久链接至标题"></a></h1>
+<span id="writingatf2staticbroadcasterpy"></span><h1>编写静态广播器（Python）<a class="headerlink" href="#writing-a-static-broadcaster-python" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何向 tf2 广播静态坐标框架。</p>
 <p><strong>教程级别：</strong> 中级</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
@@ -410,19 +410,16 @@
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="create-a-package">
 <h3><a class="toc-backref" href="#id4">1 创建一个包</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
-<p>First we will create a package that will be used for this tutorial and the following ones.
-The package called <code class="docutils literal notranslate"><span class="pre">learning_tf2_py</span></code> will depend on <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code>, <code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>, <code class="docutils literal notranslate"><span class="pre">tf2_ros_py</span></code>, and <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>.
-Code for this tutorial is stored <a class="reference external" href="https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py">here</a>.</p>
+<p>首先，我们将创建一个用于本教程和接下来的教程的软件包。该软件包名为 <code class="docutils literal notranslate"><span class="pre">learning_tf2_py</span></code>，它将依赖于 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code>、<code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code>、<code class="docutils literal notranslate"><span class="pre">rclpy</span></code>、<code class="docutils literal notranslate"><span class="pre">tf2_ros_py</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>。本教程的代码存储在 <a class="reference external" href="https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py">这里</a>。</p>
 <p>打开一个新的终端，并 <a class="reference internal" href="../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source ROS 2 安装目录</span></a>，以使 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令可用。导航到工作空间的 <code class="docutils literal notranslate"><span class="pre">src</span></code> 文件夹并创建一个新的包：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_python learning_tf2_py</span>
 </pre></div>
 </div>
-<p>Your terminal will return a message verifying the creation of your package <code class="docutils literal notranslate"><span class="pre">learning_tf2_py</span></code> and all its necessary files and folders.</p>
+<p>您的终端将返回一条消息，验证您的软件包``learning_tf2_py``及其所有必要的文件和文件夹的创建。</p>
 </div>
 <div class="section" id="write-the-static-broadcaster-node">
 <h3><a class="toc-backref" href="#id5">2 编写静态广播节点</a><a class="headerlink" href="#write-the-static-broadcaster-node" title="永久链接至标题"></a></h3>
-<p>Let's first create the source files.
-Inside the <code class="docutils literal notranslate"><span class="pre">src/learning_tf2_py/learning_tf2_py</span></code> directory download the example static broadcaster code by entering the following command:</p>
+<p>首先让我们创建源文件。在``src/learning_tf2_py/learning_tf2_py``目录中，通过输入以下命令下载示例静态广播器代码：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py</span>
 </pre></div>
@@ -541,19 +538,16 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src/lear
 </div>
 <div class="section" id="examine-the-code">
 <h4>2.1 检查代码<a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
-<p>Now let's look at the code that is relevant to publishing the static turtle pose to tf2.
-The first lines import required packages.
-First we import the <code class="docutils literal notranslate"><span class="pre">TransformStamped</span></code> from the <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code>, which provides us a template for the message that we will publish to the transformation tree.</p>
+<p>现在让我们来看一下与将静态海龟姿势发布到tf2有关的代码。首先导入所需的软件包。首先从``geometry_msgs``中导入``TransformStamped``，它为我们提供了一个要发布到变换树的消息模板。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
 </pre></div>
 </div>
-<p>Afterward, <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> is imported so its <code class="docutils literal notranslate"><span class="pre">Node</span></code> class can be used.</p>
+<p>然后导入``rclpy``，以便可以使用其``Node``类。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> package provides a <code class="docutils literal notranslate"><span class="pre">StaticTransformBroadcaster</span></code> to make the publishing of static transforms easy.
-To use the <code class="docutils literal notranslate"><span class="pre">StaticTransformBroadcaster</span></code>, we need to import it from the <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> module.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tf2_ros``软件包提供了一个``StaticTransformBroadcaster</span></code>，用于简化发布静态变换。要使用``StaticTransformBroadcaster``，我们需要从``tf2_ros``模块中导入它。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf2_ros.static_transform_broadcaster</span> <span class="kn">import</span> <span class="n">StaticTransformBroadcaster</span>
 </pre></div>
 </div>
@@ -564,7 +558,7 @@ To use the <code class="docutils literal notranslate"><span class="pre">StaticTr
 </div>
 <p>在这里，我们创建了一个``TransformStamped``对象，这将是我们在填充后发送的消息。在传递实际的变换值之前，我们需要为其提供适当的元数据。</p>
 <ol class="arabic simple">
-<li><p>We need to give the transform being published a timestamp and we'll just stamp it with the current time, <code class="docutils literal notranslate"><span class="pre">self.get_clock().now()</span></code></p></li>
+<li><p>我们需要给正在发布的变换添加一个时间戳，我们将使用当前时间进行标记，<code class="docutils literal notranslate"><span class="pre">self.get_clock().now()</span></code>。</p></li>
 <li><p>然后，我们需要设置链接的父框架的名称，这里是``world``。</p></li>
 <li><p>最后，我们需要设置链接的子框架的名称。</p></li>
 </ol>
@@ -701,11 +695,11 @@ To use the <code class="docutils literal notranslate"><span class="pre">StaticTr
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run tf2_ros static_transform_publisher --x x --y y --z z --yaw yaw --pitch pitch --roll roll --frame-id frame_id --child-frame-id child_frame_id</span>
 </pre></div>
 </div>
-<p>Publish a static coordinate transform to tf2 using an x/y/z offset in meters and quaternion.</p>
+<p>使用米为单位的 x/y/z 偏移量和四元数在 tf2 中发布一个静态坐标变换。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run tf2_ros static_transform_publisher --x x --y y --z z --qx qx --qy qy --qz qz --qw qw --frame-id frame_id --child-frame-id child_frame_id</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> is designed both as a command-line tool for manual use, as well as for use within <code class="docutils literal notranslate"><span class="pre">launch</span></code> files for setting static transforms. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 既可以作为命令行工具进行手动使用，也可以在 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 文件中用于设置静态变换。例如：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">from launch import LaunchDescription</span>
 <span class="go">from launch_ros.actions import Node</span>
 
@@ -719,13 +713,11 @@ To use the <code class="docutils literal notranslate"><span class="pre">StaticTr
 <span class="go">    ])</span>
 </pre></div>
 </div>
-<p>Note that all arguments except for <code class="docutils literal notranslate"><span class="pre">--frame-id</span></code> and <code class="docutils literal notranslate"><span class="pre">--child-frame-id</span></code> are optional; if a particular option isn't specified, then the identity will be assumed.</p>
+<p>请注意，除了 <code class="docutils literal notranslate"><span class="pre">--frame-id</span></code> 和 <code class="docutils literal notranslate"><span class="pre">--child-frame-id</span></code> 之外的所有参数都是可选的；如果没有指定特定的选项，将假设为恒等变换。</p>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id9">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial you learned how static transforms are useful to define static relationships between frames, like <code class="docutils literal notranslate"><span class="pre">mystaticturtle</span></code> in relation to the <code class="docutils literal notranslate"><span class="pre">world</span></code> frame.
-In addition, you learned how static transforms can be useful for understanding sensor data, such as from laser scanners, by relating the data to a common coordinate frame.
-Finally, you wrote your own node to publish static transforms to tf2 and learned how to publish required static transformations using <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> executable and launch files.</p>
+<p>在本教程中，您学习了静态变换如何有助于定义帧之间的静态关系，例如相对于 <code class="docutils literal notranslate"><span class="pre">world</span></code> 帧的 <code class="docutils literal notranslate"><span class="pre">mystaticturtle</span></code>。此外，您还学习了静态变换如何有助于理解传感器数据，例如激光扫描仪的数据，通过将数据与公共坐标帧关联起来。最后，您编写了自己的节点以将静态变换发布到 tf2，并学习了如何使用 <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 可执行文件和 launch 文件来发布所需的静态变换。</p>
 </div>
 </div>
 
