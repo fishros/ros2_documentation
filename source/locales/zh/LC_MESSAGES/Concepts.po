@@ -2625,52 +2625,52 @@ msgstr "*持续时间*：在系统认为发布者失去活跃性之前，发布�
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:65
 msgid "For each of the policies that is not a duration, there is also the option of “system default”, which uses the default of the underlying middleware. For each of the policies that is a duration, there also exists a “default” option that means the duration is unspecified, which the underlying middleware will usually interpret as an infinitely long duration."
-msgstr "For each of the policies that is not a duration, there is also the option of “system default”, which uses the default of the underlying middleware. For each of the policies that is a duration, there also exists a “default” option that means the duration is unspecified, which the underlying middleware will usually interpret as an infinitely long duration."
+msgstr "对于不是时间间隔的每个策略，还可以选择“系统默认”选项，该选项使用底层中间件的默认值。对于每个时间间隔的策略，也存在一个“默认”选项，表示未指定持续时间，底层中间件通常将其解释为无限长的持续时间。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:69 ../../source/Concepts/About-Quality-of-Service-Settings.rst:265 ../../source/Concepts/About-ROS-2-Client-Libraries.rst:119 ../../source/Concepts/About-Topic-Statistics.rst:75
 msgid "Comparison to ROS 1"
-msgstr "Comparison to ROS 1"
+msgstr "与ROS 1的比较"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:71
 msgid "The “history” and “depth” policies in ROS 2 combine to provide functionality akin to the queue size in ROS 1."
-msgstr "The “history” and “depth” policies in ROS 2 combine to provide functionality akin to the queue size in ROS 1."
+msgstr "ROS 2中的“history”和“depth”策略结合在一起，提供了类似于ROS 1中队列大小的功能。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:73
 msgid "The “reliability” policy in ROS 2 is akin to the use of either UDPROS (only in ``roscpp``) for “best effort”, or TCPROS (ROS 1 default) for “reliable”. Note however that even the reliable policy in ROS 2 is implemented using UDP, which allows for multicasting if appropriate."
-msgstr "The “reliability” policy in ROS 2 is akin to the use of either UDPROS (only in ``roscpp``) for “best effort”, or TCPROS (ROS 1 default) for “reliable”. Note however that even the reliable policy in ROS 2 is implemented using UDP, which allows for multicasting if appropriate."
+msgstr "ROS 2中的“reliability”策略类似于仅在``roscpp``中使用的UDPROS（用于“尽力而为”），或者类似于ROS 1中默认使用的TCPROS（“可靠”）。但是请注意，即使在ROS 2中，可靠性策略也是使用UDP实现的，如果适用，可以进行组播。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:76
 msgid "The “durability” policy “transient local”, combined with any depth, provides functionality similar to that of “latching” publishers. The remaining policies in ROS 2 are not akin to anything that is available in ROS 1, meaning that ROS 2 is more featureful than ROS 1 in this respect. It is possible that in the future, even more QoS policies will be available in ROS 2."
-msgstr "The “durability” policy “transient local”, combined with any depth, provides functionality similar to that of “latching” publishers. The remaining policies in ROS 2 are not akin to anything that is available in ROS 1, meaning that ROS 2 is more featureful than ROS 1 in this respect. It is possible that in the future, even more QoS policies will be available in ROS 2."
+msgstr "“durability”策略中的“瞬态本地”结合任意深度，提供了类似于“latching”发布者的功能。ROS 2中的其余策略与ROS 1中的任何可用内容都不相似，这意味着在这方面，ROS 2比ROS 1更具特色。未来可能会在ROS 2中提供更多的QoS策略。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:82
 msgid "QoS profiles"
-msgstr "QoS profiles"
+msgstr "QoS配置文件"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:84
 msgid "Profiles allow developers to focus on their applications without worrying about every QoS setting possible. A QoS profile defines a set of policies that are expected to go well together for a particular use case."
-msgstr "Profiles allow developers to focus on their applications without worrying about every QoS setting possible. A QoS profile defines a set of policies that are expected to go well together for a particular use case."
+msgstr "配置文件允许开发人员专注于应用程序，而不必担心可能的每个QoS设置。QoS配置文件定义了一组预期在特定用例中很好配合的策略。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:87
 msgid "The currently defined QoS profiles are:"
-msgstr "The currently defined QoS profiles are:"
+msgstr "当前定义的QoS配置文件如下："
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:89
 msgid "Default QoS settings for publishers and subscriptions"
-msgstr "Default QoS settings for publishers and subscriptions"
+msgstr "发布者和订阅者的默认QoS设置"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:91
 msgid "In order to make the transition from ROS 1 to ROS 2 easier, exercising a similar network behavior is desirable. By default, publishers and subscriptions in ROS 2 have “keep last” for history with a queue size of 10, “reliable” for reliability, “volatile” for durability, and “system default” for liveliness. Deadline, lifespan, and lease durations are also all set to “default”."
-msgstr "In order to make the transition from ROS 1 to ROS 2 easier, exercising a similar network behavior is desirable. By default, publishers and subscriptions in ROS 2 have “keep last” for history with a queue size of 10, “reliable” for reliability, “volatile” for durability, and “system default” for liveliness. Deadline, lifespan, and lease durations are also all set to “default”."
+msgstr "为了使从ROS 1过渡到ROS 2更加容易，希望实现类似的网络行为。在ROS 2中，默认情况下，发布者和订阅者的历史记录使用“keep last”方式，队列大小为10，“reliable”可靠性，"volatile"持久性和“system default”活跃性。截止日期、生命周期和租约持续时间也都设置为“默认值”。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:95
@@ -2680,7 +2680,7 @@ msgstr "服务"
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:97
 msgid "In the same vein as publishers and subscriptions, services are reliable. It is especially important for services to use volatile durability, as otherwise service servers that re-start may receive outdated requests. While the client is protected from receiving multiple responses, the server is not protected from side-effects of receiving the outdated requests."
-msgstr "In the same vein as publishers and subscriptions, services are reliable. It is especially important for services to use volatile durability, as otherwise service servers that re-start may receive outdated requests. While the client is protected from receiving multiple responses, the server is not protected from side-effects of receiving the outdated requests."
+msgstr "与发布者和订阅者类似，服务也具有可靠性。对于服务来说，使用“volatile”持久性尤为重要，否则重新启动的服务服务器可能会收到过时的请求。虽然客户端受到多个响应的保护，但服务器却没有受到接收过时请求的副作用的保护。"
 
 
 #: ../../source/Concepts/About-Quality-of-Service-Settings.rst:101
