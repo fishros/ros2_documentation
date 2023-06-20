@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Intra-Process-Communication.html">设置高效的进程内通信</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">使用ROS 1桥接在`rosbag`中记录和回放数据</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">理解实时编程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">Experimenting with a dummy robot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">尝试使用虚拟机器人进行实验</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Logging-and-logger-configuration.html">记录日志</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Content-Filtering-Subscription.html">创建内容过滤订阅</a></li>
 </ul>
@@ -478,25 +478,24 @@ rostopic list
 <span class="o">/</span><span class="n">rosout_agg</span>
 </pre></div>
 </div>
-<p>We can now record this data with <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">record</span></code> in the same shell:</p>
+<p>我们现在可以在同一个终端中使用``rosbag record``记录这些数据：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell E:</span>
 rosbag record /image /imu_data /odom
 </pre></div>
 </div>
-<p>After a few seconds you can <code class="docutils literal notranslate"><span class="pre">Ctrl-c</span></code> the <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> command and do an <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lh</span></code> to see how big the file is, you might see something like this:</p>
+<p>几秒钟后，您可以使用``Ctrl-c``停止``rosbag``命令，并使用``ls -lh``查看文件的大小，您可能会看到类似以下内容：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>% ls -lh
 total <span class="m">0</span>
 -rw-rw-r-- <span class="m">1</span> william william  12M Feb <span class="m">23</span> <span class="m">16</span>:59 <span class="m">2017</span>-02-23-16-59-47.bag
 </pre></div>
 </div>
-<p>Though the file name will be different for your bag (since it is derived from the date and time).</p>
+<p>尽管您的包文件名将不同（因为它是从日期和时间派生的）。</p>
 </div>
 <div class="section" id="playing-back-topic-data-with-rosbag-and-ros-1-bridge">
-<h2>Playing back topic data with rosbag and ROS 1 Bridge<a class="headerlink" href="#playing-back-topic-data-with-rosbag-and-ros-1-bridge" title="永久链接至标题"></a></h2>
-<p>Now that we have a bag file you can use any of the ROS 1 tools to introspect the bag file, like <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">info</span> <span class="pre">&lt;bag</span> <span class="pre">file&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">rostopic</span> <span class="pre">list</span> <span class="pre">-b</span> <span class="pre">&lt;bag</span> <span class="pre">file&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">rqt_bag</span> <span class="pre">&lt;bag</span> <span class="pre">file&gt;</span></code>.
-However, we can also playback bag data into ROS 2 using <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">play</span></code> and the ROS 1 &lt;=&gt; ROS 2 <code class="docutils literal notranslate"><span class="pre">dynamic_bridge</span></code>.</p>
-<p>First close out all the shells you opened for the previous tutorial, stopping any running programs.</p>
-<p>Then in a new shell start the <code class="docutils literal notranslate"><span class="pre">roscore</span></code>:</p>
+<h2>使用rosbag和ROS 1 Bridge播放主题数据<a class="headerlink" href="#playing-back-topic-data-with-rosbag-and-ros-1-bridge" title="永久链接至标题"></a></h2>
+<p>现在，我们有了一个包文件，您可以使用任何ROS 1工具来检查包文件，例如``rosbag info &lt;包文件&gt;``, <code class="docutils literal notranslate"><span class="pre">rostopic</span> <span class="pre">list</span> <span class="pre">-b</span> <span class="pre">&lt;包文件&gt;</span></code>, 或``rqt_bag &lt;包文件&gt;``。然而，我们也可以使用``rosbag play``和ROS 1 &lt;=&gt; ROS 2 <a href="#id1"><span class="problematic" id="id2">``</span></a>dynamic_bridge``将包数据回放到ROS 2中。</p>
+<p>首先关闭您为上一个教程打开的所有终端，并停止任何正在运行的程序。</p>
+<p>然后在新的终端中启动 <code class="docutils literal notranslate"><span class="pre">roscore</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell P:</span>
 . /opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
@@ -504,7 +503,7 @@ However, we can also playback bag data into ROS 2 using <code class="docutils li
 roscore
 </pre></div>
 </div>
-<p>Then run the <code class="docutils literal notranslate"><span class="pre">dynamic_bridge</span></code> in another shell:</p>
+<p>然后在另一个终端中运行 <code class="docutils literal notranslate"><span class="pre">dynamic_bridge</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell Q:</span>
 . /opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
@@ -516,7 +515,7 @@ roscore
 ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 </pre></div>
 </div>
-<p>Then play the bag data back with <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">play</span></code> in another new shell, using the <code class="docutils literal notranslate"><span class="pre">--loop</span></code> option so that we don't have to keep restarting it for short bags:</p>
+<p>然后在另一个新的终端中使用 <code class="docutils literal notranslate"><span class="pre">rosbag</span> <span class="pre">play</span></code> 播放包数据，使用 <code class="docutils literal notranslate"><span class="pre">--loop</span></code> 选项，这样我们就不必为短包文件不断重新启动它:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell R:</span>
 . /opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
@@ -524,9 +523,9 @@ ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 rosbag play --loop path/to/bag_file
 </pre></div>
 </div>
-<p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">path/to/bag_file</span></code> with the path to the bag file you want to playback.</p>
+<p>请确保将 <code class="docutils literal notranslate"><span class="pre">path/to/bag_file</span></code> 替换为您要播放的包文件的路径。</p>
 <hr class="docutils" />
-<p>Now that the data is being played back and the bridge is running we can see the data coming across in ROS 2.</p>
+<p>现在数据正在回放，桥接程序正在运行，我们可以在ROS 2中看到数据传输过来。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell S:</span>
 . /opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
@@ -535,7 +534,7 @@ ros2 topic list
 ros2 topic <span class="nb">echo</span> /odom
 </pre></div>
 </div>
-<p>You should see something like:</p>
+<p>您应该会看到类似以下的内容:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">ros2</span> <span class="n">topic</span> <span class="nb">list</span>
 <span class="o">/</span><span class="n">clock</span>
 <span class="o">/</span><span class="n">image</span>
@@ -544,7 +543,7 @@ ros2 topic <span class="nb">echo</span> /odom
 <span class="o">/</span><span class="n">parameter_events</span>
 </pre></div>
 </div>
-<p>You can also see the image being played from the bag by using the <code class="docutils literal notranslate"><span class="pre">showimage</span></code> tool:</p>
+<p>您还可以使用``showimage``工具查看从包中播放的图像：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools showimage
 </pre></div>
 </div>
