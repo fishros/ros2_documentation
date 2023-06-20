@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Debugging &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>调试 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -165,7 +165,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Cpp.html">Using time (C++)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Py.html">Traveling in time (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Cpp.html">Traveling in time (C++)</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Debugging</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">调试</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Quaternion-Fundamentals.html">Quaternion fundamentals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code></a></li>
 </ul>
@@ -361,7 +361,7 @@
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Intermediate.html">中级</a> &raquo;</li>
           <li><a href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a> &raquo;</li>
-      <li>Debugging</li>
+      <li>调试</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,19 +374,19 @@
 
 
   <div class="section" id="debugging">
-<span id="debuggingtf2problems"></span><h1>Debugging<a class="headerlink" href="#debugging" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn how to use a systematic approach for debugging tf2 related problems.</p>
+<span id="debuggingtf2problems"></span><h1>调试<a class="headerlink" href="#debugging" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何使用系统化方法来调试与tf2相关的问题。</p>
 <p><strong>教程级别：</strong> 中级</p>
 <p><strong>时间:</strong> 10分钟</p>
 <div class="contents local topic" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
-<li><p><a class="reference internal" href="#debugging-example" id="id2">Debugging example</a></p>
+<li><p><a class="reference internal" href="#debugging-example" id="id2">调试示例</a></p>
 <ul>
-<li><p><a class="reference internal" href="#setting-and-starting-the-example" id="id3">1 Setting and starting the example</a></p></li>
-<li><p><a class="reference internal" href="#finding-the-tf2-request" id="id4">2 Finding the tf2 request</a></p></li>
-<li><p><a class="reference internal" href="#checking-the-frames" id="id5">3 Checking the frames</a></p></li>
+<li><p><a class="reference internal" href="#setting-and-starting-the-example" id="id3">1 设置并启动示例</a></p></li>
+<li><p><a class="reference internal" href="#finding-the-tf2-request" id="id4">2 寻找tf2请求</a></p></li>
+<li><p><a class="reference internal" href="#checking-the-frames" id="id5">3 检查坐标系</a></p></li>
 <li><p><a class="reference internal" href="#checking-the-timestamp" id="id6">4 Checking the timestamp</a></p></li>
 </ul>
 </li>
@@ -395,28 +395,23 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>This tutorial walks you through the steps to debug a typical tf2 problem.
-It will also use many of the tf2 debugging tools, such as <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code>, <code class="docutils literal notranslate"><span class="pre">tf2_monitor</span></code>, and <code class="docutils literal notranslate"><span class="pre">view_frames</span></code>.
-This tutorial assumes you have completed the <a class="reference internal" href="Tf2-Main.html"><span class="doc">learning tf2</span></a> tutorials.</p>
+<p>本教程将引导您逐步调试一个典型的tf2问题。它还将使用许多tf2调试工具，如 <code class="xref any docutils literal notranslate"><span class="pre">tf2_echo</span></code>、<code class="xref any docutils literal notranslate"><span class="pre">tf2_monitor</span></code> 和 <code class="xref any docutils literal notranslate"><span class="pre">view_frames</span></code>。本教程假设您已经完成了 <a class="reference internal" href="Tf2-Main.html"><span class="doc">学习tf2</span></a> 教程。</p>
 </div>
 <div class="section" id="debugging-example">
-<h2><a class="toc-backref" href="#id2">Debugging example</a><a class="headerlink" href="#debugging-example" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">调试示例</a><a class="headerlink" href="#debugging-example" title="永久链接至标题"></a></h2>
 <div class="section" id="setting-and-starting-the-example">
-<h3><a class="toc-backref" href="#id3">1 Setting and starting the example</a><a class="headerlink" href="#setting-and-starting-the-example" title="永久链接至标题"></a></h3>
-<p>For this tutorial we will set up a demo application that has a number of problems.
-The goal of this tutorial is to apply a systematic approach to find and tackle these problems.
-First, let's create the source file.</p>
-<p>Go to the <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> package we created in <a class="reference internal" href="Tf2-Main.html"><span class="doc">tf2 tutorials</span></a>.
-Inside the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory make a copy of the source file <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener.cpp</span></code> and rename it to <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener_debug.cpp</span></code>.</p>
-<p>Open the file using your preferred text editor, and change line 67 from</p>
+<h3><a class="toc-backref" href="#id3">1 设置并启动示例</a><a class="headerlink" href="#setting-and-starting-the-example" title="永久链接至标题"></a></h3>
+<p>在本教程中，我们将设置一个演示应用程序，该应用程序存在一些问题。本教程的目标是应用系统化的方法来发现和解决这些问题。首先，让我们创建源文件。</p>
+<p>进入我们在 <a class="reference internal" href="Tf2-Main.html"><span class="doc">tf2 tutorials</span></a> 中创建的 <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> 包。在 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录中复制源文件 <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener.cpp</span></code>，并将其重命名为 <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener_debug.cpp</span></code>。</p>
+<p>使用您首选的文本编辑器打开该文件，并将第67行更改为</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">toFrameRel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle2&quot;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>to</p>
+<p>更改为</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">toFrameRel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle3&quot;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>and change <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> call in lines 75-79 from</p>
+<p>并将第75-79行中的 <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> 调用更改为</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
 <span class="w">     </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
@@ -425,7 +420,7 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src</spa
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">tf2</span><span class="o">::</span><span class="n">TransformException</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </pre></div>
 </div>
-<p>to</p>
+<p>更改为</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
 <span class="w">     </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
@@ -434,8 +429,7 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src</spa
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">tf2</span><span class="o">::</span><span class="n">TransformException</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </pre></div>
 </div>
-<p>And save changes to the file.
-In order to run this demo, we need to create a launch file <code class="docutils literal notranslate"><span class="pre">start_tf2_debug_demo.launch.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> subdirectory of package <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code>:</p>
+<p>并保存文件更改。为了运行这个演示，我们需要在 <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> 包的 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 子目录中创建一个名为 <code class="docutils literal notranslate"><span class="pre">start_tf2_debug_demo.launch.py</span></code> 的启动文件：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
 <span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span>
@@ -481,20 +475,16 @@ In order to run this demo, we need to create a launch file <code class="docutils
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>Don't forget to add the <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener_debug</span></code> executable to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and build the package.</p>
-<p>Now let's run it to see what happens:</p>
+<p>不要忘记将``turtle_tf2_listener_debug``可执行文件添加到``CMakeLists.txt``中并构建软件包。</p>
+<p>现在让我们运行它看看会发生什么：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_cpp start_tf2_debug_demo.launch.py</span>
 </pre></div>
 </div>
-<p>You will now see that the turtlesim came up.
-At the same time, if you run the <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> in another terminal window, you can use the arrow keys to drive the <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> around.</p>
+<p>现在你会看到turtlesim启动了。同时，如果你在另一个终端窗口中运行``turtle_teleop_key``，你可以使用箭头键来控制``turtle1``移动。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
 </pre></div>
 </div>
-<p>You will also notice that there is a second turtle in the lower, left corner.
-If the demo would be working correctly, this second turtle should be following the turtle you can command with the arrow keys.
-However, it is not the case because we have to solve some problems first.
-You should notice the following message:</p>
+<p>你还会注意到在左下角有一只第二只海龟。如果演示工作正常，这只第二只海龟应该会跟随你用箭头键控制的海龟移动。然而，事实并非如此，因为我们首先需要解决一些问题。你应该注意到以下消息：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[turtle_tf2_listener_debug-4] [INFO] [1630223454.942322623] [listener_debug]: Could not</span>
 <span class="go">transform turtle3 to turtle1: &quot;turtle3&quot; passed to lookupTransform argument target_frame</span>
 <span class="go">does not exist</span>
@@ -502,14 +492,12 @@ You should notice the following message:</p>
 </div>
 </div>
 <div class="section" id="finding-the-tf2-request">
-<h3><a class="toc-backref" href="#id4">2 Finding the tf2 request</a><a class="headerlink" href="#finding-the-tf2-request" title="永久链接至标题"></a></h3>
-<p>Firstly, we need to find out what exactly we are asking tf2 to do.
-Therefore, we go into the part of the code that is using tf2.
-Open the <code class="docutils literal notranslate"><span class="pre">src/turtle_tf2_listener_debug.cpp</span></code> file, and take a look at line 67:</p>
+<h3><a class="toc-backref" href="#id4">2 寻找tf2请求</a><a class="headerlink" href="#finding-the-tf2-request" title="永久链接至标题"></a></h3>
+<p>首先，我们需要弄清楚我们具体要求tf2做什么。因此，我们进入正在使用tf2的代码部分。打开``src/turtle_tf2_listener_debug.cpp``文件，并查看第67行：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">to_frame_rel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;turtle3&quot;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>and lines 75-79:</p>
+<p>并且在第75至79行中：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
 <span class="w">     </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
@@ -518,17 +506,16 @@ Open the <code class="docutils literal notranslate"><span class="pre">src/turtle
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">tf2</span><span class="o">::</span><span class="n">TransformException</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Here we do the actual request to tf2.
-The three arguments tell us directly what we are asking tf2: transform from frame <code class="docutils literal notranslate"><span class="pre">turtle3</span></code> to frame <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> at time <code class="docutils literal notranslate"><span class="pre">now</span></code>.</p>
-<p>Now, let's take a look at why this request to tf2 is failing.</p>
+<p>在这里，我们实际向tf2发出请求。这三个参数直接告诉我们向tf2询问的内容：在时间``now``下从坐标系``turtle3``到坐标系``turtle1``的变换。</p>
+<p>现在，让我们看看为什么这个向tf2的请求失败了。</p>
 </div>
 <div class="section" id="checking-the-frames">
-<h3><a class="toc-backref" href="#id5">3 Checking the frames</a><a class="headerlink" href="#checking-the-frames" title="永久链接至标题"></a></h3>
-<p>Firstly, to find out if tf2 knows about our transform between <code class="docutils literal notranslate"><span class="pre">turtle3</span></code> and <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>, we will use <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code> tool.</p>
+<h3><a class="toc-backref" href="#id5">3 检查坐标系</a><a class="headerlink" href="#checking-the-frames" title="永久链接至标题"></a></h3>
+<p>首先，为了确定tf2是否知道我们在``turtle3``和``turtle1``之间的变换，我们将使用``tf2_echo``工具。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run tf2_ros tf2_echo turtle3 turtle1</span>
 </pre></div>
 </div>
-<p>The output tells us that frame <code class="docutils literal notranslate"><span class="pre">turtle3</span></code> does not exist:</p>
+<p>输出告诉我们``turtle3``坐标系不存在：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1630223557.477636052] [tf2_echo]: Waiting for transform turtle3 -&gt;  turtle1:</span>
 <span class="go">Invalid frame ID &quot;turtle3&quot; passed to canTransform argument target_frame - frame does</span>
 <span class="go">not exist</span>
