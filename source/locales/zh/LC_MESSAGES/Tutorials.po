@@ -11741,52 +11741,52 @@ msgstr "YAML"
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:112
 msgid "Copy and paste the complete code into the ``launch/turtlesim_mimic_launch.yaml`` file:"
-msgstr "Copy and paste the complete code into the ``launch/turtlesim_mimic_launch.yaml`` file:"
+msgstr "将完整代码复制粘贴到``launch/turtlesim_mimic_launch.yaml``文件中："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:144
 msgid "2.1 Examine the launch file"
-msgstr "2.1 Examine the launch file"
+msgstr "2.1 检查启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:146
 msgid "All of the launch files above are launching a system of three nodes, all from the ``turtlesim`` package. The goal of the system is to launch two turtlesim windows, and have one turtle mimic the movements of the other."
-msgstr "All of the launch files above are launching a system of three nodes, all from the ``turtlesim`` package. The goal of the system is to launch two turtlesim windows, and have one turtle mimic the movements of the other."
+msgstr "上述所有启动文件都是从``turtlesim``软件包中启动的三个节点系统。该系统的目标是启动两个turtlesim窗口，并使一个turtle模仿另一个turtle的移动。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:149
 msgid "When launching the two turtlesim nodes, the only difference between them is their namespace values. Unique namespaces allow the system to start two nodes without node name or topic name conflicts. Both turtles in this system receive commands over the same topic and publish their pose over the same topic. With unique namespaces, messages meant for different turtles can be distinguished."
-msgstr "When launching the two turtlesim nodes, the only difference between them is their namespace values. Unique namespaces allow the system to start two nodes without node name or topic name conflicts. Both turtles in this system receive commands over the same topic and publish their pose over the same topic. With unique namespaces, messages meant for different turtles can be distinguished."
+msgstr "在启动这两个turtlesim节点时，它们之间唯一的区别是它们的命名空间值。唯一的命名空间允许系统在没有节点名称或主题名称冲突的情况下启动两个节点。该系统中的两个turtle都通过相同的主题接收命令并发布它们的位姿。通过唯一的命名空间，可以区分发送给不同turtle的消息。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:154
 msgid "The final node is also from the ``turtlesim`` package, but a different executable: ``mimic``. This node has added configuration details in the form of remappings. ``mimic``'s ``/input/pose`` topic is remapped to ``/turtlesim1/turtle1/pose`` and it's ``/output/cmd_vel`` topic to ``/turtlesim2/turtle1/cmd_vel``. This means ``mimic`` will subscribe to ``/turtlesim1/sim``'s pose topic and republish it for ``/turtlesim2/sim``'s velocity command topic to subscribe to. In other words, ``turtlesim2`` will mimic ``turtlesim1``'s movements."
-msgstr "The final node is also from the ``turtlesim`` package, but a different executable: ``mimic``. This node has added configuration details in the form of remappings. ``mimic``'s ``/input/pose`` topic is remapped to ``/turtlesim1/turtle1/pose`` and it's ``/output/cmd_vel`` topic to ``/turtlesim2/turtle1/cmd_vel``. This means ``mimic`` will subscribe to ``/turtlesim1/sim``'s pose topic and republish it for ``/turtlesim2/sim``'s velocity command topic to subscribe to. In other words, ``turtlesim2`` will mimic ``turtlesim1``'s movements."
+msgstr "最后一个节点也来自于“turtlesim”软件包，但是是另一个可执行文件：“mimic”。该节点通过重新映射添加了配置详细信息。``mimic``的``/input/pose``话题被重新映射到``/turtlesim1/turtle1/pose``，``/output/cmd_vel``话题被重新映射到``/turtlesim2/turtle1/cmd_vel``。这意味着``mimic``将订阅``/turtlesim1/sim``的姿态话题，并将其重新发布到``/turtlesim2/sim``的速度命令话题中进行订阅。换句话说，``turtlesim2``将模仿``turtlesim1``的运动。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:164
 msgid "These import statements pull in some Python ``launch`` modules."
-msgstr "These import statements pull in some Python ``launch`` modules."
+msgstr "这些导入语句引入了一些Python ``launch``模块。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:171
 msgid "Next, the launch description itself begins:"
-msgstr "Next, the launch description itself begins:"
+msgstr "接下来，启动描述本身开始："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:180
 msgid "The first two actions in the launch description launch the two turtlesim windows:"
-msgstr "The first two actions in the launch description launch the two turtlesim windows:"
+msgstr "启动描述中的前两个操作启动了两个turtlesim窗口："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:197 ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:220 ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:248
 msgid "The final action launches the mimic node with the remaps:"
-msgstr "The final action launches the mimic node with the remaps:"
+msgstr "最后一个操作使用了重新映射来启动mimic节点："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:213 ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:231
 msgid "The first two actions launch the two turtlesim windows:"
-msgstr "The first two actions launch the two turtlesim windows:"
+msgstr "启动描述中的前两个操作启动了两个turtlesim窗口："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:266
@@ -11796,27 +11796,27 @@ msgstr "3 ros2 launch"
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:268
 msgid "To run the launch file created above, enter into the directory you created earlier and run the following command:"
-msgstr "To run the launch file created above, enter into the directory you created earlier and run the following command:"
+msgstr "要运行上面创建的启动文件，请进入您之前创建的目录并运行以下命令："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:295
 msgid "It is possible to launch a launch file directly (as we do above), or provided by a package. When it is provided by a package, the syntax is:"
-msgstr "It is possible to launch a launch file directly (as we do above), or provided by a package. When it is provided by a package, the syntax is:"
+msgstr "可以直接启动一个启动文件（如上所示），也可以由软件包提供。当由软件包提供时，语法如下："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:302
 msgid "You learned about creating packages in :doc:`../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package`."
-msgstr "You learned about creating packages in :doc:`../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package`."
+msgstr "您已经学习了如何在 :doc:`../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package` 中创建软件包。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:306
 msgid "For packages with launch files, it is a good idea to add an ``exec_depend`` dependency on the ``ros2launch`` package in your package's ``package.xml``:"
-msgstr "For packages with launch files, it is a good idea to add an ``exec_depend`` dependency on the ``ros2launch`` package in your package's ``package.xml``:"
+msgstr "对于具有启动文件的软件包，最好在您的软件包的 ``package.xml`` 中添加一个 ``exec_depend`` 依赖项，依赖于 ``ros2launch`` 软件包："
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:312
 msgid "This helps make sure that the ``ros2 launch`` command is available after building your package. It also ensures that all :doc:`launch file formats <../../../How-To-Guides/Launch-file-different-formats>` are recognized."
-msgstr "This helps make sure that the ``ros2 launch`` command is available after building your package. It also ensures that all :doc:`launch file formats <../../../How-To-Guides/Launch-file-different-formats>` are recognized."
+msgstr "这有助于确保在构建软件包后可以使用 ``ros2 launch`` 命令。它还确保所有 :doc:`启动文件格式 <../../../How-To-Guides/Launch-file-different-formats>` 能被识别。"
 
 
 #: ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:315
