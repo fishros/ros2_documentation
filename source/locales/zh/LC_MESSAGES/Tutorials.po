@@ -10926,62 +10926,62 @@ msgstr "本教程是“在ROS 1和ROS 2之间进行桥接通信”的后续教�
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:11
 msgid "The ros1_bridge can be built from :doc:`source <../../How-To-Guides/Using-ros1_bridge-Jammy-upstream>` for these examples."
-msgstr "The ros1_bridge can be built from :doc:`source <../../How-To-Guides/Using-ros1_bridge-Jammy-upstream>` for these examples."
+msgstr "对于这些示例，可以从 :doc:`源代码 <../../How-To-Guides/Using-ros1_bridge-Jammy-upstream>` 构建ros1_bridge。"
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:13
 msgid "What follows is a series of additional examples, like that ones that come at the end of the aforementioned *Bridge communication between ROS 1 and ROS 2* demo."
-msgstr "What follows is a series of additional examples, like that ones that come at the end of the aforementioned *Bridge communication between ROS 1 and ROS 2* demo."
+msgstr "接下来是一系列额外的示例，类似于上述 *ROS 1和ROS 2之间的桥接通信* 演示中的示例。"
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:16
 msgid "Recording topic data with rosbag and ROS 1 Bridge"
-msgstr "Recording topic data with rosbag and ROS 1 Bridge"
+msgstr "使用rosbag和ROS 1 Bridge记录主题数据"
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:18
 msgid "In this example, we'll be using the ``cam2image`` demo program that comes with ROS 2 and a Python script to emulate a simple turtlebot-like robot's sensor data so that we can bridge it to ROS 1 and use rosbag to record it."
-msgstr "In this example, we'll be using the ``cam2image`` demo program that comes with ROS 2 and a Python script to emulate a simple turtlebot-like robot's sensor data so that we can bridge it to ROS 1 and use rosbag to record it."
+msgstr "在这个示例中，我们将使用ROS 2附带的``cam2image``演示程序和一个Python脚本来模拟一个简单的类似于turtlebot的机器人的传感器数据，以便我们可以将其桥接到ROS 1并使用rosbag进行记录。"
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:20
 msgid "First we'll run a ROS 1 ``roscore`` in a new shell:"
-msgstr "First we'll run a ROS 1 ``roscore`` in a new shell:"
+msgstr "首先，在新的终端窗口中运行ROS 1的``roscore``："
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:30
 msgid "Then we'll run the ROS 1 <=> ROS 2 ``dynamic_bridge`` with the ``--bridge-all-topics`` option (so we can do ``rostopic list`` and see them) in another shell:"
-msgstr "Then we'll run the ROS 1 <=> ROS 2 ``dynamic_bridge`` with the ``--bridge-all-topics`` option (so we can do ``rostopic list`` and see them) in another shell:"
+msgstr "然后，在另一个终端窗口中运行ROS 1 <=> ROS 2的``dynamic_bridge``，使用``--bridge-all-topics``选项（这样我们可以执行``rostopic list``并查看它们）："
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:44
 msgid "Remember to replace ``<workspace-with-bridge>`` with the path to where you either extracted the ROS 2 binary or where you built ROS 2 from source."
-msgstr "Remember to replace ``<workspace-with-bridge>`` with the path to where you either extracted the ROS 2 binary or where you built ROS 2 from source."
+msgstr "请记得将``<workspace-with-bridge>``替换为你提取ROS 2二进制文件的路径或者构建ROS 2源码的路径。"
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:48
 msgid "Now we can start up the ROS 2 programs that will emulate our turtlebot-like robot. First we'll run the ``cam2image`` program with the ``-b`` option so it doesn't require a camera to work:"
-msgstr "Now we can start up the ROS 2 programs that will emulate our turtlebot-like robot. First we'll run the ``cam2image`` program with the ``-b`` option so it doesn't require a camera to work:"
+msgstr "现在我们可以启动模拟海龟机器人的ROS 2程序。首先，我们将使用``-b``选项运行``cam2image``程序，这样它就不需要相机就能工作："
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:59
 msgid "TODO: use namespaced topic names"
-msgstr "TODO: use namespaced topic names"
+msgstr "TODO: 使用命名空间的主题名"
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:61
 msgid "Then we'll run a simple Python script to emulate the ``odom`` and ``imu_data`` topics from a Kobuki base. I would use the more accurate ``~sensors/imu_data`` topic name for the imu data, but we don't have namespace support just yet in ROS 2 (it's coming!). Place this script in a file called ``emulate_kobuki_node.py``:"
-msgstr "Then we'll run a simple Python script to emulate the ``odom`` and ``imu_data`` topics from a Kobuki base. I would use the more accurate ``~sensors/imu_data`` topic name for the imu data, but we don't have namespace support just yet in ROS 2 (it's coming!). Place this script in a file called ``emulate_kobuki_node.py``:"
+msgstr "然后，我们将运行一个简单的Python脚本来模拟Kobuki基座的``odom``和``imu_data``主题。我会使用更准确的``~sensors/imu_data``主题名来表示IMU数据，但是在ROS 2中还没有命名空间支持（即将推出！）。将这个脚本保存到一个名为``emulate_kobuki_node.py``的文件中："
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:106
 msgid "You can run this python script in a new ROS 2 shell:"
-msgstr "You can run this python script in a new ROS 2 shell:"
+msgstr "你可以在一个新的ROS 2终端中运行这个Python脚本："
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:118
 msgid "Now that all the data sources and the dynamic bridge are running, we can look at the available topics in a new ROS 1 shell:"
-msgstr "Now that all the data sources and the dynamic bridge are running, we can look at the available topics in a new ROS 1 shell:"
+msgstr "现在，所有的数据源和动态桥接都在运行，我们可以在一个新的ROS 1终端中查看可用的主题："
 
 
 #: ../../source/Tutorials/Demos/Rosbag-with-ROS1-Bridge.rst:139
