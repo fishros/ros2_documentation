@@ -384,17 +384,17 @@
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#introduction" id="id3">介绍</a></p></li>
-<li><p><a class="reference internal" href="#writing-launch-files" id="id4">编写启动文件</a></p>
+<li><p><a class="reference internal" href="#writing-launch-files" id="id4">Writing launch files</a></p>
 <ul>
-<li><p><a class="reference internal" href="#top-level-organization" id="id5">1 顶层组织</a></p></li>
-<li><p><a class="reference internal" href="#parameters" id="id6">2 参数</a></p>
+<li><p><a class="reference internal" href="#top-level-organization" id="id5">1 Top-level organization</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id6">2 Parameters</a></p>
 <ul>
-<li><p><a class="reference internal" href="#setting-parameters-in-the-launch-file" id="id7">2.1 在启动文件中设置参数</a></p></li>
-<li><p><a class="reference internal" href="#loading-parameters-from-yaml-file" id="id8">2.2 从YAML文件中加载参数</a></p></li>
-<li><p><a class="reference internal" href="#using-wildcards-in-yaml-files" id="id9">2.3 在YAML文件中使用通配符</a></p></li>
+<li><p><a class="reference internal" href="#setting-parameters-in-the-launch-file" id="id7">2.1 Setting parameters in the launch file</a></p></li>
+<li><p><a class="reference internal" href="#loading-parameters-from-yaml-file" id="id8">2.2 Loading parameters from YAML file</a></p></li>
+<li><p><a class="reference internal" href="#using-wildcards-in-yaml-files" id="id9">2.3 Using wildcards in YAML files</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#namespaces" id="id10">3 个命名空间</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id10">3 Namespaces</a></p></li>
 <li><p><a class="reference internal" href="#reusing-nodes" id="id11">4 Reusing nodes</a></p></li>
 <li><p><a class="reference internal" href="#parameter-overrides" id="id12">5 Parameter overrides</a></p></li>
 <li><p><a class="reference internal" href="#remapping" id="id13">6 重映射</a></p></li>
@@ -421,14 +421,27 @@
 </div>
 <div class="section" id="introduction">
 <h2><a class="toc-backref" href="#id3">介绍</a><a class="headerlink" href="#introduction" title="永久链接至标题"></a></h2>
-<p>机器人上的大型应用程序通常涉及多个相互连接的节点，每个节点可以有很多参数。多个海龟在海龟模拟器中的仿真可以作为一个很好的例子。海龟仿真由多个海龟节点、世界配置以及TF广播器和监听器节点组成。在所有节点之间，有很多ROS参数会影响这些节点的行为和外观。ROS 2启动文件允许我们在一个地方启动所有节点并设置相应的参数。在教程的最后，您将在``launch_tutorial``包中构建``launch_turtlesim.launch.py``启动文件。该启动文件将启动负责模拟两个turtlesim仿真的不同节点，启动TF广播器和监听器，加载参数，并启动RViz配置。在本教程中，我们将介绍该启动文件及其所有相关功能。</p>
+<p>Large applications on a robot typically involve several interconnected nodes, each of which can have many parameters.
+Simulation of multiple turtles in the turtle simulator can serve as a good example.
+The turtle simulation consists of multiple turtle nodes, the world configuration, and the TF broadcaster and listener nodes.
+Between all of the nodes, there are a large number of ROS parameters that affect the behavior and appearance of these nodes.
+ROS 2 launch files allow us to start all nodes and set corresponding parameters in one place.
+By the end of a tutorial, you will build the <code class="docutils literal notranslate"><span class="pre">launch_turtlesim.launch.py</span></code> launch file in the <code class="docutils literal notranslate"><span class="pre">launch_tutorial</span></code> package.
+This launch file will bring up different nodes responsible for the simulation of two turtlesim simulations, starting TF broadcasters and listener, loading parameters, and launching an RViz configuration.
+In this tutorial, we'll go over this launch file and all related features used.</p>
 </div>
 <div class="section" id="writing-launch-files">
-<h2><a class="toc-backref" href="#id4">编写启动文件</a><a class="headerlink" href="#writing-launch-files" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id4">Writing launch files</a><a class="headerlink" href="#writing-launch-files" title="永久链接至标题"></a></h2>
 <div class="section" id="top-level-organization">
-<h3><a class="toc-backref" href="#id5">1 顶层组织</a><a class="headerlink" href="#top-level-organization" title="永久链接至标题"></a></h3>
-<p>在编写启动文件的过程中，一个目标应该是尽可能使它们可重用。这可以通过将相关的节点和配置聚集到单独的启动文件中来实现。然后，可以编写一个专门用于特定配置的顶层启动文件。这样，即使在完全不更改启动文件的情况下，也可以在相同的机器人之间进行切换。甚至只需进行少量更改，例如从真实机器人切换到模拟机器人。</p>
-<p>现在我们将介绍使此功能成为可能的顶层启动文件结构。首先，我们将创建一个调用其他启动文件的启动文件。为此，请在“launch_tutorial”软件包的“/launch”文件夹中创建一个名为“launch_turtlesim.launch.py”的文件。</p>
+<h3><a class="toc-backref" href="#id5">1 Top-level organization</a><a class="headerlink" href="#top-level-organization" title="永久链接至标题"></a></h3>
+<p>One of the aims in the process of writing launch files should be making them as reusable as possible.
+This could be done by clustering related nodes and configurations into separate launch files.
+Afterwards, a top-level launch file dedicated to a specific configuration could be written.
+This would allow moving between identical robots to be done without changing the launch files at all.
+Even a change such as moving from a real robot to a simulated one can be done with only a few changes.</p>
+<p>We will now go over the top-level launch file structure that makes this possible.
+Firstly, we will create a launch file that will call separate launch files.
+To do this, let's create a <code class="docutils literal notranslate"><span class="pre">launch_turtlesim.launch.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">/launch</span></code> folder of our <code class="docutils literal notranslate"><span class="pre">launch_tutorial</span></code> package.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -481,22 +494,26 @@
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>该启动文件包括一组其他启动文件。这些被包含的启动文件中每一个都包含了与系统的一个部分相关的节点、参数，以及可能的嵌套包含项。确切地说，我们启动了两个turtlesim仿真世界、TF广播器、TF监听器、模仿器、固定帧广播器和RViz节点。</p>
+<p>This launch file includes a set of other launch files.
+Each of these included launch files contains nodes, parameters, and possibly, nested includes, which pertain to one part of the system.
+To be exact, we launch two turtlesim simulation worlds, TF broadcaster, TF listener, mimic, fixed frame broadcaster, and RViz nodes.</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>设计提示：顶层启动文件应该简短，由包含到应用程序的子组件对应文件的包含项组成，并包含常常更改的参数。</p>
+<p>Design Tip: Top-level launch files should be short, consist of includes to other files corresponding to subcomponents of the application, and commonly changed parameters.</p>
 </div>
-<p>按照以下方式编写启动文件可以轻松地替换系统的某个部分，我们稍后将会看到。然而，出于性能和使用原因，有时需要单独启动某些节点或启动文件。</p>
+<p>Writing launch files in the following manner makes it easy to swap out one piece of the system, as we'll see later.
+However, there are cases when some nodes or launch files have to be launched separately due to performance and usage reasons.</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>设计提示：在决定应用程序需要多少个顶层启动文件时，请注意权衡。</p>
+<p>Design tip: Be aware of the tradeoffs when deciding how many top-level launch files your application requires.</p>
 </div>
 </div>
 <div class="section" id="parameters">
-<h3><a class="toc-backref" href="#id6">2 参数</a><a class="headerlink" href="#parameters" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id6">2 Parameters</a><a class="headerlink" href="#parameters" title="永久链接至标题"></a></h3>
 <div class="section" id="setting-parameters-in-the-launch-file">
-<h4><a class="toc-backref" href="#id7">2.1 在启动文件中设置参数</a><a class="headerlink" href="#setting-parameters-in-the-launch-file" title="永久链接至标题"></a></h4>
-<p>我们将首先编写一个启动文件，用于启动我们的第一个turtlesim仿真。首先，创建一个名为``turtlesim_world_1.launch.py``的新文件。</p>
+<h4><a class="toc-backref" href="#id7">2.1 Setting parameters in the launch file</a><a class="headerlink" href="#setting-parameters-in-the-launch-file" title="永久链接至标题"></a></h4>
+<p>We will begin by writing a launch file that will start our first turtlesim simulation.
+First, create a new file called <code class="docutils literal notranslate"><span class="pre">turtlesim_world_1.launch.py</span></code>.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
 <span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span><span class="p">,</span> <span class="n">TextSubstitution</span>
@@ -532,11 +549,12 @@
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>该启动文件启动``turtlesim_node``节点，该节点启动turtlesim仿真，并将定义和传递给节点的仿真配置参数。</p>
+<p>This launch file starts the <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> node, which starts the turtlesim simulation, with simulation configuration parameters that are defined and passed to the nodes.</p>
 </div>
 <div class="section" id="loading-parameters-from-yaml-file">
-<h4><a class="toc-backref" href="#id8">2.2 从YAML文件中加载参数</a><a class="headerlink" href="#loading-parameters-from-yaml-file" title="永久链接至标题"></a></h4>
-<p>在第二个启动文件中，我们将使用不同的配置启动第二个turtlesim仿真。现在创建一个``turtlesim_world_2.launch.py``文件。</p>
+<h4><a class="toc-backref" href="#id8">2.2 Loading parameters from YAML file</a><a class="headerlink" href="#loading-parameters-from-yaml-file" title="永久链接至标题"></a></h4>
+<p>In the second launch, we will start a second turtlesim simulation with a different configuration.
+Now create a <code class="docutils literal notranslate"><span class="pre">turtlesim_world_2.launch.py</span></code> file.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -563,8 +581,11 @@
    <span class="p">])</span>
 </pre></div>
 </div>
-<p>这个启动文件将使用直接从YAML配置文件中加载的参数值来启动相同的``turtlesim_node``。在YAML文件中定义参数和变量可以方便地存储和加载大量的变量。此外，YAML文件可以轻松地从当前的``ros2 param``列表导出。要了解如何做到这一点，请参考 <a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">了解参数</span></a> 教程。</p>
-<p>现在让我们在包的``/config``文件夹中创建一个名为``turtlesim.yaml``的配置文件，这个文件将被我们的启动文件加载。</p>
+<p>This launch file will launch the same <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> with parameter values that are loaded directly from the YAML configuration file.
+Defining arguments and parameters in YAML files make it easy to store and load a large number of variables.
+In addition, YAML files can be easily exported from the current <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> list.
+To learn how to do that, refer to the <a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">Understand parameters</span></a> tutorial.</p>
+<p>Let's now create a configuration file, <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code>, in the <code class="docutils literal notranslate"><span class="pre">/config</span></code> folder of our package, which will be loaded by our launch file.</p>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/turtlesim2/sim</span><span class="p">:</span><span class="w"></span>
 <span class="w">   </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span><span class="w"></span>
@@ -572,13 +593,16 @@
 <span class="w">      </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span><span class="w"></span>
 </pre></div>
 </div>
-<p>如果我们现在启动``turtlesim_world_2.launch.py``启动文件，我们将启动带有预配置背景颜色的``turtlesim_node``。</p>
-<p>要了解更多关于使用参数和使用YAML文件的信息，请查看 <a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">了解参数</span></a> 教程。</p>
+<p>If we now start the <code class="docutils literal notranslate"><span class="pre">turtlesim_world_2.launch.py</span></code> launch file, we will start the <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> with preconfigured background colors.</p>
+<p>To learn more about using parameters and using YAML files, take a look at the <a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">Understand parameters</span></a> tutorial.</p>
 </div>
 <div class="section" id="using-wildcards-in-yaml-files">
-<h4><a class="toc-backref" href="#id9">2.3 在YAML文件中使用通配符</a><a class="headerlink" href="#using-wildcards-in-yaml-files" title="永久链接至标题"></a></h4>
-<p>有些情况下，我们希望在多个节点中设置相同的参数。这些节点可能有不同的命名空间或名称，但仍具有相同的参数。定义单独的YAML文件来显式定义命名空间和节点名称是不高效的。解决方案是使用通配符字符，它们作为未知字符的替代，将参数应用于多个不同的节点。</p>
-<p>现在让我们创建一个新的 <code class="docutils literal notranslate"><span class="pre">turtlesim_world_3.launch.py</span></code> 文件，与 <code class="docutils literal notranslate"><span class="pre">turtlesim_world_2.launch.py</span></code> 类似，添加一个额外的 <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> 节点。</p>
+<h4><a class="toc-backref" href="#id9">2.3 Using wildcards in YAML files</a><a class="headerlink" href="#using-wildcards-in-yaml-files" title="永久链接至标题"></a></h4>
+<p>There are cases when we want to set the same parameters in more than one node.
+These nodes could have different namespaces or names but still have the same parameters.
+Defining separate YAML files that explicitly define namespaces and node names is not efficient.
+A solution is to use wildcard characters, which act as substitutions for unknown characters in a text value, to apply parameters to several different nodes.</p>
+<p>Now let's create a new <code class="docutils literal notranslate"><span class="pre">turtlesim_world_3.launch.py</span></code> file similar to <code class="docutils literal notranslate"><span class="pre">turtlesim_world_2.launch.py</span></code> to include one more <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> node.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">Node</span><span class="p">(</span>
    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;turtlesim&#39;</span><span class="p">,</span>
@@ -589,15 +613,17 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>然而，加载相同的 YAML 文件不会影响第三个 turtlesim 世界的外观。原因是它的参数存储在另一个命名空间下，如下所示：</p>
+<p>Loading the same YAML file, however, will not affect the appearance of the third turtlesim world.
+The reason is that its parameters are stored under another namespace as shown below:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/turtlesim3/sim:</span>
 <span class="go">   background_b</span>
 <span class="go">   background_g</span>
 <span class="go">   background_r</span>
 </pre></div>
 </div>
-<p>因此，我们可以使用通配符语法，而不是为使用相同参数的同一节点创建新的配置。<code class="docutils literal notranslate"><span class="pre">/**</span></code> 将为每个节点分配所有参数，尽管节点名称和命名空间存在差异。</p>
-<p>现在我们将按照以下方式更新 <code class="docutils literal notranslate"><span class="pre">/config</span></code> 文件夹中的 <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code>：</p>
+<p>Therefore, instead of creating a new configuration for the same node that use the same parameters, we can use wildcards syntax.
+<code class="docutils literal notranslate"><span class="pre">/**</span></code> will assign all the parameters in every node, despite differences in node names and namespaces.</p>
+<p>We will now update the <code class="docutils literal notranslate"><span class="pre">turtlesim.yaml</span></code>, in the <code class="docutils literal notranslate"><span class="pre">/config</span></code> folder in the following manner:</p>
 <div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="nt">/**</span><span class="p">:</span><span class="w"></span>
 <span class="w">   </span><span class="nt">ros__parameters</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">background_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255</span><span class="w"></span>
@@ -605,11 +631,12 @@
 <span class="w">      </span><span class="nt">background_r</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span><span class="w"></span>
 </pre></div>
 </div>
-<p>现在在我们的主要启动文件中包含 <code class="docutils literal notranslate"><span class="pre">turtlesim_world_3.launch.py</span></code> 启动描述。在我们的启动描述中使用该配置文件将为 <code class="docutils literal notranslate"><span class="pre">turtlesim3/sim</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim2/sim</span></code> 节点分配 <code class="docutils literal notranslate"><span class="pre">background_b</span></code>、<code class="docutils literal notranslate"><span class="pre">background_g</span></code> 和 <code class="docutils literal notranslate"><span class="pre">background_r</span></code> 参数指定的值。</p>
+<p>Now include the <code class="docutils literal notranslate"><span class="pre">turtlesim_world_3.launch.py</span></code> launch description in our main launch file.
+Using that configuration file in our launch descriptions will assign <code class="docutils literal notranslate"><span class="pre">background_b</span></code>, <code class="docutils literal notranslate"><span class="pre">background_g</span></code>, and <code class="docutils literal notranslate"><span class="pre">background_r</span></code> parameters to specified values in <code class="docutils literal notranslate"><span class="pre">turtlesim3/sim</span></code> and <code class="docutils literal notranslate"><span class="pre">turtlesim2/sim</span></code> nodes.</p>
 </div>
 </div>
 <div class="section" id="namespaces">
-<h3><a class="toc-backref" href="#id10">3 个命名空间</a><a class="headerlink" href="#namespaces" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id10">3 Namespaces</a><a class="headerlink" href="#namespaces" title="永久链接至标题"></a></h3>
 <p>As you may have noticed, we have defined the namespace for the turlesim world in the <code class="docutils literal notranslate"><span class="pre">turtlesim_world_2.launch.py</span></code> file.
 Unique namespaces allow the system to start two similar nodes without node name or topic name conflicts.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">namespace</span><span class="o">=</span><span class="s1">&#39;turtlesim2&#39;</span><span class="p">,</span>
