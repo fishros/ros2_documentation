@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Composing multiple nodes in a single process &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>在单个进程中组合多个节点 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -137,12 +137,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++）</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">Intermediate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">中级</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Rosdep.html">Managing Dependencies with rosdep</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Creating-an-Action.html">Creating an action</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-an-Action-Server-Client/Cpp.html">Writing an action server and client (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-an-Action-Server-Client/Py.html">Writing an action server and client (Python)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Composing multiple nodes in a single process</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">在单个进程中组合多个节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Monitoring-For-Parameter-Changes-CPP.html">Monitoring for parameter changes (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Launch/Launch-Main.html">启动</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Launch/Creating-Launch-Files.html">Creating a launch file</a></li>
@@ -360,8 +360,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
-          <li><a href="../Intermediate.html">Intermediate</a> &raquo;</li>
-      <li>Composing multiple nodes in a single process</li>
+          <li><a href="../Intermediate.html">中级</a> &raquo;</li>
+      <li>在单个进程中组合多个节点</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Composition.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,15 +374,15 @@
 
 
   <div class="section" id="composing-multiple-nodes-in-a-single-process">
-<h1>Composing multiple nodes in a single process<a class="headerlink" href="#composing-multiple-nodes-in-a-single-process" title="永久链接至标题"></a></h1>
+<h1>在单个进程中组合多个节点<a class="headerlink" href="#composing-multiple-nodes-in-a-single-process" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
-<li><p><a class="reference internal" href="#run-the-demos" id="id2">Run the demos</a></p>
+<li><p><a class="reference internal" href="#run-the-demos" id="id2">运行演示</a></p>
 <ul>
-<li><p><a class="reference internal" href="#discover-available-components" id="id3">Discover available components</a></p></li>
-<li><p><a class="reference internal" href="#run-time-composition-using-ros-services-with-a-publisher-and-subscriber" id="id4">Run-time composition using ROS services with a publisher and subscriber</a></p></li>
+<li><p><a class="reference internal" href="#discover-available-components" id="id3">发现可用组件</a></p></li>
+<li><p><a class="reference internal" href="#run-time-composition-using-ros-services-with-a-publisher-and-subscriber" id="id4">使用带有发布者和订阅者的ROS服务进行运行时组合</a></p></li>
 <li><p><a class="reference internal" href="#run-time-composition-using-ros-services-with-a-server-and-client" id="id5">Run-time composition using ROS services with a server and client</a></p></li>
 <li><p><a class="reference internal" href="#compile-time-composition-using-ros-services" id="id6">Compile-time composition using ROS services</a></p></li>
 <li><p><a class="reference internal" href="#run-time-composition-using-dlopen" id="id7">Run-time composition using dlopen</a></p></li>
@@ -402,23 +402,23 @@
 <li><p><a class="reference internal" href="#composing-non-node-derived-components" id="id16">Composing Non-Node Derived Components</a></p></li>
 </ul>
 </div>
-<p><strong>Goal:</strong> Compose multiple nodes into a single process.</p>
-<p><strong>Tutorial level:</strong> Intermediate</p>
+<p><strong>目标：</strong> 将多个节点组合成单个进程。</p>
+<p><strong>教程级别：</strong> 中级</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟</p>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>See the <a class="reference internal" href="../../Concepts/About-Composition.html"><span class="doc">conceptual article</span></a>.</p>
+<p>请参阅：<a class="reference internal" href="../../Concepts/About-Composition.html"><span class="doc">概念文章</span></a>。</p>
 </div>
 <div class="section" id="run-the-demos">
-<h2><a class="toc-backref" href="#id2">Run the demos</a><a class="headerlink" href="#run-the-demos" title="永久链接至标题"></a></h2>
-<p>The demos use executables from <a class="reference external" href="https://github.com/ros2/rclcpp/tree/humble/rclcpp_components">rclcpp_components</a>, <a class="reference external" href="https://github.com/ros2/ros2cli/tree/humble/ros2component">ros2component</a>, and  <a class="reference external" href="https://github.com/ros2/demos/tree/humble/composition">composition</a> packages, and can be run with the following commands.</p>
+<h2><a class="toc-backref" href="#id2">运行演示</a><a class="headerlink" href="#run-the-demos" title="永久链接至标题"></a></h2>
+<p>演示使用`rclcpp_components &lt;<a class="reference external" href="https://github.com/ros2/rclcpp/tree/humble/rclcpp_components">https://github.com/ros2/rclcpp/tree/humble/rclcpp_components</a>&gt;`__、<a href="#id1"><span class="problematic" id="id2">`</span></a>ros2component &lt;<a class="reference external" href="https://github.com/ros2/ros2cli/tree/humble/ros2component">https://github.com/ros2/ros2cli/tree/humble/ros2component</a>&gt;`__和`composition &lt;<a class="reference external" href="https://github.com/ros2/demos/tree/humble/composition">https://github.com/ros2/demos/tree/humble/composition</a>&gt;`__包中的可执行文件，并可以使用以下命令运行。</p>
 <div class="section" id="discover-available-components">
-<h3><a class="toc-backref" href="#id3">Discover available components</a><a class="headerlink" href="#discover-available-components" title="永久链接至标题"></a></h3>
-<p>To see what components are registered and available in the workspace, execute the following in a shell:</p>
+<h3><a class="toc-backref" href="#id3">发现可用组件</a><a class="headerlink" href="#discover-available-components" title="永久链接至标题"></a></h3>
+<p>要查看在工作空间中注册和可用的组件，执行以下命令行命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component types
 </pre></div>
 </div>
-<p>The terminal will return the list of all available components:</p>
+<p>终端将返回所有可用组件的列表：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>... components of other packages here<span class="o">)</span>
 composition
   composition::Talker
@@ -431,7 +431,7 @@ composition
 </div>
 </div>
 <div class="section" id="run-time-composition-using-ros-services-with-a-publisher-and-subscriber">
-<h3><a class="toc-backref" href="#id4">Run-time composition using ROS services with a publisher and subscriber</a><a class="headerlink" href="#run-time-composition-using-ros-services-with-a-publisher-and-subscriber" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id4">使用带有发布者和订阅者的ROS服务进行运行时组合</a><a class="headerlink" href="#run-time-composition-using-ros-services-with-a-publisher-and-subscriber" title="永久链接至标题"></a></h3>
 <p>In the first shell, start the component container:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container
 </pre></div>
