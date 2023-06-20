@@ -15431,87 +15431,87 @@ msgstr "**izz**"
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:107
 msgid "This information can be provided to you by modeling programs such as MeshLab. The inertia of geometric primitives (cylinder, box, sphere) can be computed using Wikipedia's `list of moment of inertia tensors <https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors>`_ (and is used in the above example)."
-msgstr "This information can be provided to you by modeling programs such as MeshLab. The inertia of geometric primitives (cylinder, box, sphere) can be computed using Wikipedia's `list of moment of inertia tensors <https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors>`_ (and is used in the above example)."
+msgstr "这些信息可以由诸如MeshLab之类的建模程序提供。可以使用维基百科的`惯性矩张量列表<https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors>`_来计算几何原始体（圆柱体、长方体、球体）的惯性（在上面的示例中使用）。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:109
 msgid "The inertia tensor depends on both the mass and the distribution of mass of the object. A good first approximation is to assume equal distribution of mass in the volume of the object and compute the inertia tensor based on the object's shape, as outlined above."
-msgstr "The inertia tensor depends on both the mass and the distribution of mass of the object. A good first approximation is to assume equal distribution of mass in the volume of the object and compute the inertia tensor based on the object's shape, as outlined above."
+msgstr "惯性张量取决于物体的质量和质量分布。一个很好的第一近似是假设物体的质量在体积上均匀分布，并基于物体的形状计算惯性张量，如上所述。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:111
 msgid "If unsure what to put, a matrix with ixx/iyy/izz=1e-3 or smaller is often a reasonable default for a mid-sized link (it corresponds to a box of 0.1 m side length with a mass of 0.6 kg). The identity matrix is a particularly bad choice, since it is often much too high (it corresponds to a box of 0.1 m side length with a mass of 600 kg!)."
-msgstr "If unsure what to put, a matrix with ixx/iyy/izz=1e-3 or smaller is often a reasonable default for a mid-sized link (it corresponds to a box of 0.1 m side length with a mass of 0.6 kg). The identity matrix is a particularly bad choice, since it is often much too high (it corresponds to a box of 0.1 m side length with a mass of 600 kg!)."
+msgstr "如果不确定应该填写什么，一个常见的中等大小连接的合理默认值是ixx/iyy/izz=1e-3或更小（它对应于一边长为0.1米、质量为0.6千克的长方体）。恒等矩阵是一个特别糟糕的选择，因为它通常太大（它对应于一边长为0.1米、质量为600千克的长方体）。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:113
 msgid "You can also specify an origin tag to specify the center of gravity and the inertial reference frame (relative to the link's reference frame)."
-msgstr "You can also specify an origin tag to specify the center of gravity and the inertial reference frame (relative to the link's reference frame)."
+msgstr "您还可以指定一个原点标签，以指定重心和惯性参考系（相对于链接的参考系）。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:114
 msgid "When using realtime controllers, inertia elements of zero (or almost zero) can cause the robot model to collapse without warning, and all links will appear with their origins coinciding with the world origin."
-msgstr "When using realtime controllers, inertia elements of zero (or almost zero) can cause the robot model to collapse without warning, and all links will appear with their origins coinciding with the world origin."
+msgstr "在使用实时控制器时，惯性元素为零（或几乎为零）可能导致机器人模型突然崩溃，并且所有链接将与世界原点重合。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:117
 msgid "Contact Coefficients"
-msgstr "Contact Coefficients"
+msgstr "接触系数"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:118
 msgid "You can also define how the links behave when they are in contact with one another. This is done with a subelement of the collision tag called contact_coefficients. There are three attributes to specify:"
-msgstr "You can also define how the links behave when they are in contact with one another. This is done with a subelement of the collision tag called contact_coefficients. There are three attributes to specify:"
+msgstr "您还可以定义链接在彼此接触时的行为。这可以通过碰撞标签的子元素contact_coefficients来实现。有三个属性需要指定："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:122
 msgid "mu - `Friction coefficient <https://simple.wikipedia.org/wiki/Coefficient_of_friction>`_"
-msgstr "mu - `Friction coefficient <https://simple.wikipedia.org/wiki/Coefficient_of_friction>`_"
+msgstr "mu - `摩擦系数 <https://simple.wikipedia.org/wiki/Coefficient_of_friction>`_"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:123
 msgid "kp - `Stiffness coefficient <https://en.wikipedia.org/wiki/Stiffness>`_"
-msgstr "kp - `Stiffness coefficient <https://en.wikipedia.org/wiki/Stiffness>`_"
+msgstr "kp - `刚度系数 <https://en.wikipedia.org/wiki/Stiffness>`_"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:124
 msgid "kd - `Dampening coefficient <https://en.wikipedia.org/wiki/Damping_ratio#Damping_ratio_definition>`_"
-msgstr "kd - `Dampening coefficient <https://en.wikipedia.org/wiki/Damping_ratio#Damping_ratio_definition>`_"
+msgstr "kd - `阻尼系数 <https://en.wikipedia.org/wiki/Damping_ratio#Damping_ratio_definition>`_"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:127
 msgid "Joint Dynamics"
-msgstr "Joint Dynamics"
+msgstr "关节动力学"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:128
 msgid "How the joint moves is defined by the dynamics tag for the joint. There are two attributes here:"
-msgstr "How the joint moves is defined by the dynamics tag for the joint. There are two attributes here:"
+msgstr "关节的运动由关节的动力学标签定义。这里有两个属性："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:131
 msgid "``friction`` - The physical static friction. For prismatic joints, the units are Newtons. For revolving joints, the units are Newton meters."
-msgstr "``friction`` - The physical static friction. For prismatic joints, the units are Newtons. For revolving joints, the units are Newton meters."
+msgstr "``摩擦`` - 物理静摩擦力。对于平移关节，单位为牛顿；对于旋转关节，单位为牛顿·米。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:134
 msgid "``damping`` - The physical damping value. For prismatic joints, the units are Newton seconds per meter. For revolving joints, Newton meter seconds per radian."
-msgstr "``damping`` - The physical damping value. For prismatic joints, the units are Newton seconds per meter. For revolving joints, Newton meter seconds per radian."
+msgstr "``阻尼`` - 物理阻尼值。对于平移关节，单位为牛顿秒/米；对于旋转关节，单位为牛顿·米秒/弧度。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:138
 msgid "If not specified, these coefficients default to zero."
-msgstr "If not specified, these coefficients default to zero."
+msgstr "如果未指定，则这些系数默认为零。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:141
 msgid "Other Tags"
-msgstr "Other Tags"
+msgstr "其他标签"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:142
 msgid "In the realm of pure URDF (i.e. excluding Gazebo-specific tags), there are two remaining tags to help define the joints: calibration and safety controller. Check out the `spec <https://wiki.ros.org/urdf/XML/joint>`_, as they are not included in this tutorial."
-msgstr "In the realm of pure URDF (i.e. excluding Gazebo-specific tags), there are two remaining tags to help define the joints: calibration and safety controller. Check out the `spec <https://wiki.ros.org/urdf/XML/joint>`_, as they are not included in this tutorial."
+msgstr "在纯URDF领域（即不包括Gazebo特定标签的情况下），还有两个剩余的标签可用于定义关节：校准和安全控制器。请查看`规范 <https://wiki.ros.org/urdf/XML/joint>`_，因为它们在本教程中没有包含。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:146
