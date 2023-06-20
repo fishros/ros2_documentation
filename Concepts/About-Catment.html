@@ -378,7 +378,7 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
-<li><p><a class="reference internal" href="#postulates" id="id2">Postulates</a></p></li>
+<li><p><a class="reference internal" href="#postulates" id="id2">假设</a></p></li>
 <li><p><a class="reference internal" href="#use-cases-with-experimental-implementations" id="id3">Use cases, with experimental implementations</a></p>
 <ul>
 <li><p><a class="reference internal" href="#adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build" id="id4">Adding ROS packages to a ROS 2 workspace and building with <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code></a></p></li>
@@ -400,45 +400,31 @@ There are usually hooks to allow injection of extra APIs by packages outside of 
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rosbuild</span></code>：<code class="docutils literal notranslate"><span class="pre">mk/cmake.mk</span></code>、<code class="docutils literal notranslate"><span class="pre">rosbuild_init()</span></code>、<code class="docutils literal notranslate"><span class="pre">rosbuild_add_executable()</span></code> 等。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">catkin</span></code>：<code class="docutils literal notranslate"><span class="pre">catkin_package()</span></code>、<code class="docutils literal notranslate"><span class="pre">catkin_install_python()</span></code> 等。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ament</span></code>: <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies()</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_export_dependencies()</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code>, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ament</span></code>: <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies()</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_export_dependencies()</span></code>, <code class="docutils literal notranslate"><span class="pre">ament_package()</span></code>, 等等。</p></li>
 </ul>
 </li>
-<li><p>Provides a tool that can be used to iterate in dependency order over a workspace full of packages, building and perhaps installing each one.</p>
+<li><p>提供了一个工具，可以按照依赖顺序遍历一个包含多个软件包的工作空间，构建并可能安装每个软件包。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rosbuild</span></code>: <code class="docutils literal notranslate"><span class="pre">rosmake</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">catkin</span></code>: <code class="docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code>, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catkin</span></code>: <code class="docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code>，等等。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ament</span></code>: <code class="docutils literal notranslate"><span class="pre">ament</span> <span class="pre">build</span></code></p></li>
 </ul>
 </li>
 </ol>
-<p>The common thread that ties all of these systems together is the division of the code into <strong>packages</strong>, with each package containing a manifest file (<code class="docutils literal notranslate"><span class="pre">manifest.xml</span></code> or <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>).
-This manifest is required (with some exceptions) for both parts of the meta-build system (API and build tool) to function.</p>
+<p>将所有这些系统联系在一起的共同线索是将代码划分为**包**，每个包包含一个清单文件（<code class="docutils literal notranslate"><span class="pre">manifest.xml</span></code> 或 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>）。这个清单文件对于元构建系统的两个部分（API 和构建工具）都是必需的（有一些例外），以便其正常运行。</p>
 </div>
 <div class="section" id="postulates">
-<h2><a class="toc-backref" href="#id2">Postulates</a><a class="headerlink" href="#postulates" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">假设</a><a class="headerlink" href="#postulates" title="永久链接至标题"></a></h2>
 <ol class="arabic simple">
-<li><p><strong>While we usually consider the two aspects of a meta-build system to be coupled, they needn't be.</strong>
-The API used inside a package and the tool that iterates over the packages can be considered largely independent, with the package manifest forming the interface between them.
-There's no reason in principle why, for example, <code class="docutils literal notranslate"><span class="pre">rosmake</span></code> couldn't be modified to iterate over a workspace filled with <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages, stepping into them in dependency order and doing the usual <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">build;</span> <span class="pre">cd</span> <span class="pre">build;</span> <span class="pre">cmake</span> <span class="pre">..;</span> <span class="pre">make</span> <span class="pre">install</span></code> routine for each one (with appropriate flags passed to <code class="docutils literal notranslate"><span class="pre">cmake</span></code> and <code class="docutils literal notranslate"><span class="pre">make</span></code>).</p></li>
-<li><p><strong>The effort required to migrate from one meta-build system to another should be minimized.</strong>
-The mass migration from <code class="docutils literal notranslate"><span class="pre">rosbuild</span></code> to <code class="docutils literal notranslate"><span class="pre">catkin</span></code> was difficult and remains a sore point for many in the community.
-While it's reasonable to ask developers to make changes in exchange for getting access to new functionality, the changes that are required should be as small as possible without sacrificing the effectiveness of the new system.
-This is especially true when the old system is in widespread use.</p>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>尽管我们通常认为元构建系统的两个方面是耦合在一起的，但它们并不一定是。<a href="#id3"><span class="problematic" id="id4">**</span></a>包内部使用的API和迭代包的工具可以被认为是相互独立的，而包清单则形成了它们之间的接口。原则上没有理由不这样做，例如，“rosmake”可以被修改为在一个充满“catkin”包的工作空间中进行迭代，按照依赖顺序进入每个包，并对每个包执行通常的“mkdir build; cd build; cmake ..; make install”例程（同时向“cmake”和“make”传递适当的标志）</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>将从一个元构建系统迁移到另一个的工作量应该最小化。<a href="#id3"><span class="problematic" id="id4">**</span></a>从“rosbuild”迁移到“catkin”的大规模迁移对社区的许多人来说都是困难的，仍然是一个痛点。虽然要求开发者做出改变以获得新功能是合理的，但所需的改变应该尽可能小，而不会牺牲新系统的有效性。当旧系统被广泛使用时，这一点尤为重要</p>
 <ol class="arabic simple">
-<li><p>Corollary: <strong>Migration to a new meta-build system should not be required without a very good reason.</strong>
-If a developer doesn't want the functionality offered by the new system, then they shouldn't be coerced into migrating from the old system unless there's something irrevocably broken about the old system (e.g. <code class="docutils literal notranslate"><span class="pre">rosbuild</span></code>'s in-source build pattern and lack of an &quot;install&quot; step).</p></li>
+<li><p>推论：<a href="#id1"><span class="problematic" id="id2">**</span></a>除非有非常充分的理由，否则不应要求迁移到新的元构建系统。<a href="#id3"><span class="problematic" id="id4">**</span></a>如果开发者不需要新系统提供的功能，那么除非旧系统出现了不可挽回的问题（例如，“rosbuild”的源代码构建模式和缺乏“install”步骤），否则不应强制他们从旧系统迁移</p></li>
 </ol>
 </li>
-<li><p><strong>Interoperability is a good thing.</strong>
-Whenever possible (not all combinations will be practical), developers should be able to mix and match meta-build systems, including mixing their different aspects (i.e., use the building tool from one system and the API from another).
-Such mixing and matching is especially important when developers want to combine a large existing codebase using one meta-build system (e.g. ROS with <code class="docutils literal notranslate"><span class="pre">catkin</span></code>) with new libraries and tools offered by a codebase using another meta-build system (e.g. ROS 2 with <code class="docutils literal notranslate"><span class="pre">ament</span></code>).
-Ideally, that kind of combination can be done without requiring changes to the API used by either codebase and without telling the developer which builder tool to use.</p>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>互操作性是一件好事。<a href="#id3"><span class="problematic" id="id4">**</span></a>只要可能（并非所有组合都是实际可行的），开发者应该能够混合和匹配元构建系统，包括混合使用它们的不同方面（即，使用一个系统的构建工具和另一个系统的API）。当开发者想要将使用一个元构建系统（如ROS与“catkin”）的大型现有代码库与使用另一个元构建系统（如ROS 2与“ament”）的代码库提供的新库和工具结合起来时，这种混合和匹配尤其重要。理想情况下，这种组合可以在不要求任何代码库使用的API进行更改的情况下完成，也不会告诉开发者使用哪个构建工具</p>
 <ol class="arabic simple">
-<li><p>Corollary: <strong>Workspaces needn't be homogeneous.</strong>
-There's no reason that we shouldn't be able to freely mix, say, <code class="docutils literal notranslate"><span class="pre">catkin</span></code> and <code class="docutils literal notranslate"><span class="pre">ament</span></code> packages in one workspace, with dependencies going in both directions, so long as the builder tool in use knows how to build them both.
-The primary interface between packages (at least, CMake-controlled packages) is their CMake configuration file.
-So long as that configuration file follows the standard protocol (setting <code class="docutils literal notranslate"><span class="pre">foo_LIBRARIES</span></code>, etc.), then it shouldn't matter who wrote the file.
-It could be auto-generated by <code class="docutils literal notranslate"><span class="pre">catkin</span></code> or <code class="docutils literal notranslate"><span class="pre">ament</span></code>, or even manually crafted by a developer who wants to use plain CMake in their package, but still have that package depended-upon by <code class="docutils literal notranslate"><span class="pre">catkin</span></code> or <code class="docutils literal notranslate"><span class="pre">ament</span></code> packages.</p></li>
+<li><p>推论：<a href="#id1"><span class="problematic" id="id2">**</span></a>工作空间不需要是同构的。<a href="#id3"><span class="problematic" id="id4">**</span></a>只要正在使用的构建工具知道如何构建它们，我们就没有理由不允许在一个工作空间中自由混合使用“catkin”和“amen</p></li>
 </ol>
 </li>
 </ol>
