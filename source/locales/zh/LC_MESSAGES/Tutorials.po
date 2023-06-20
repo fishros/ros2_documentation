@@ -15216,62 +15216,62 @@ msgstr "使用以米为单位的x/y/z偏移量和以弧度为单位的roll/pitch
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:406 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:425
 msgid "Publish a static coordinate transform to tf2 using an x/y/z offset in meters and quaternion."
-msgstr "Publish a static coordinate transform to tf2 using an x/y/z offset in meters and quaternion."
+msgstr "使用米为单位的 x/y/z 偏移量和四元数在 tf2 中发布一个静态坐标变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:412 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:431
 msgid "``static_transform_publisher`` is designed both as a command-line tool for manual use, as well as for use within ``launch`` files for setting static transforms. For example:"
-msgstr "``static_transform_publisher`` is designed both as a command-line tool for manual use, as well as for use within ``launch`` files for setting static transforms. For example:"
+msgstr "``static_transform_publisher`` 既可以作为命令行工具进行手动使用，也可以在 ``launch`` 文件中用于设置静态变换。例如："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:428 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:447
 msgid "Note that all arguments except for ``--frame-id`` and ``--child-frame-id`` are optional; if a particular option isn't specified, then the identity will be assumed."
-msgstr "Note that all arguments except for ``--frame-id`` and ``--child-frame-id`` are optional; if a particular option isn't specified, then the identity will be assumed."
+msgstr "请注意，除了 ``--frame-id`` 和 ``--child-frame-id`` 之外的所有参数都是可选的；如果没有指定特定的选项，将假设为恒等变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:433 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:452
 msgid "In this tutorial you learned how static transforms are useful to define static relationships between frames, like ``mystaticturtle`` in relation to the ``world`` frame. In addition, you learned how static transforms can be useful for understanding sensor data, such as from laser scanners, by relating the data to a common coordinate frame. Finally, you wrote your own node to publish static transforms to tf2 and learned how to publish required static transformations using ``static_transform_publisher`` executable and launch files."
-msgstr "In this tutorial you learned how static transforms are useful to define static relationships between frames, like ``mystaticturtle`` in relation to the ``world`` frame. In addition, you learned how static transforms can be useful for understanding sensor data, such as from laser scanners, by relating the data to a common coordinate frame. Finally, you wrote your own node to publish static transforms to tf2 and learned how to publish required static transformations using ``static_transform_publisher`` executable and launch files."
+msgstr "在本教程中，您学习了静态变换如何有助于定义帧之间的静态关系，例如相对于 ``world`` 帧的 ``mystaticturtle``。此外，您还学习了静态变换如何有助于理解传感器数据，例如激光扫描仪的数据，通过将数据与公共坐标帧关联起来。最后，您编写了自己的节点以将静态变换发布到 tf2，并学习了如何使用 ``static_transform_publisher`` 可执行文件和 launch 文件来发布所需的静态变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:8
 msgid "Writing a static broadcaster (Python)"
-msgstr "Writing a static broadcaster (Python)"
+msgstr "编写静态广播器（Python）"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:44
 msgid "First we will create a package that will be used for this tutorial and the following ones. The package called ``learning_tf2_py`` will depend on ``geometry_msgs``, ``python3-numpy``, ``rclpy``, ``tf2_ros_py``, and ``turtlesim``. Code for this tutorial is stored `here <https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py>`_."
-msgstr "First we will create a package that will be used for this tutorial and the following ones. The package called ``learning_tf2_py`` will depend on ``geometry_msgs``, ``python3-numpy``, ``rclpy``, ``tf2_ros_py``, and ``turtlesim``. Code for this tutorial is stored `here <https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py>`_."
+msgstr "首先，我们将创建一个用于本教程和接下来的教程的软件包。该软件包名为 ``learning_tf2_py``，它将依赖于 ``geometry_msgs``、``python3-numpy``、``rclpy``、``tf2_ros_py`` 和 ``turtlesim``。本教程的代码存储在 `这里 <https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py>`_。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:55
 msgid "Your terminal will return a message verifying the creation of your package ``learning_tf2_py`` and all its necessary files and folders."
-msgstr "Your terminal will return a message verifying the creation of your package ``learning_tf2_py`` and all its necessary files and folders."
+msgstr "您的终端将返回一条消息，验证您的软件包``learning_tf2_py``及其所有必要的文件和文件夹的创建。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:60
 msgid "Let's first create the source files. Inside the ``src/learning_tf2_py/learning_tf2_py`` directory download the example static broadcaster code by entering the following command:"
-msgstr "Let's first create the source files. Inside the ``src/learning_tf2_py/learning_tf2_py`` directory download the example static broadcaster code by entering the following command:"
+msgstr "首先让我们创建源文件。在``src/learning_tf2_py/learning_tf2_py``目录中，通过输入以下命令下载示例静态广播器代码："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:196
 msgid "Now let's look at the code that is relevant to publishing the static turtle pose to tf2. The first lines import required packages. First we import the ``TransformStamped`` from the ``geometry_msgs``, which provides us a template for the message that we will publish to the transformation tree."
-msgstr "Now let's look at the code that is relevant to publishing the static turtle pose to tf2. The first lines import required packages. First we import the ``TransformStamped`` from the ``geometry_msgs``, which provides us a template for the message that we will publish to the transformation tree."
+msgstr "现在让我们来看一下与将静态海龟姿势发布到tf2有关的代码。首先导入所需的软件包。首先从``geometry_msgs``中导入``TransformStamped``，它为我们提供了一个要发布到变换树的消息模板。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:204
 msgid "Afterward, ``rclpy`` is imported so its ``Node`` class can be used."
-msgstr "Afterward, ``rclpy`` is imported so its ``Node`` class can be used."
+msgstr "然后导入``rclpy``，以便可以使用其``Node``类。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:211
 msgid "The ``tf2_ros`` package provides a ``StaticTransformBroadcaster`` to make the publishing of static transforms easy. To use the ``StaticTransformBroadcaster``, we need to import it from the ``tf2_ros`` module."
-msgstr "The ``tf2_ros`` package provides a ``StaticTransformBroadcaster`` to make the publishing of static transforms easy. To use the ``StaticTransformBroadcaster``, we need to import it from the ``tf2_ros`` module."
+msgstr "``tf2_ros``软件包提供了一个``StaticTransformBroadcaster``，用于简化发布静态变换。要使用``StaticTransformBroadcaster``，我们需要从``tf2_ros``模块中导入它。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:229
 msgid "We need to give the transform being published a timestamp and we'll just stamp it with the current time, ``self.get_clock().now()``"
-msgstr "We need to give the transform being published a timestamp and we'll just stamp it with the current time, ``self.get_clock().now()``"
+msgstr "我们需要给正在发布的变换添加一个时间戳，我们将使用当前时间进行标记，``self.get_clock().now()``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:266
