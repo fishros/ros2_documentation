@@ -15759,32 +15759,32 @@ msgstr "请注意我们如何定义一个0.6米 x 0.1米 x 0.2米的盒子"
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:127
 msgid "The joint is defined in terms of a parent and a child. URDF is ultimately a tree structure with one root link. This means that the leg’s position is dependent on the base_link’s position."
-msgstr "The joint is defined in terms of a parent and a child. URDF is ultimately a tree structure with one root link. This means that the leg’s position is dependent on the base_link’s position."
+msgstr "关节是由父节点和子节点定义的。URDF最终是一棵树状结构，只有一个根链接。这意味着腿的位置取决于base_link的位置。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:139
 msgid "Both of the shapes overlap with each other, because they share the same origin. If we want them not to overlap we must define more origins."
-msgstr "Both of the shapes overlap with each other, because they share the same origin. If we want them not to overlap we must define more origins."
+msgstr "两个形状彼此重叠，因为它们共享相同的起点。如果我们不想让它们重叠，我们必须定义更多的起点。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:143
 msgid "Origins"
-msgstr "Origins"
+msgstr "起点"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:145
 msgid "R2D2’s leg attaches to the top half of his torso, on the side. So that’s where we specify the origin of the JOINT to be. Also, it doesn’t attach to the middle of the leg, it attaches to the upper part, so we must offset the origin for the leg as well. We also rotate the leg so it is upright. `[Source: 03-origins.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/03-origins.urdf>`_"
-msgstr "R2D2’s leg attaches to the top half of his torso, on the side. So that’s where we specify the origin of the JOINT to be. Also, it doesn’t attach to the middle of the leg, it attaches to the upper part, so we must offset the origin for the leg as well. We also rotate the leg so it is upright. `[Source: 03-origins.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/03-origins.urdf>`_"
+msgstr "R2D2的腿连接到他的上半身的侧面。所以我们要指定关节的起点。另外，它不是连接到腿的中间部分，而是连接到上部分，所以我们必须为腿的起点偏移。我们还将腿旋转，使其直立。[来源：03-origins.urdf](https://github.com/ros/urdf_tutorial/blob/ros2/urdf/03-origins.urdf)"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:180
 msgid "Let’s start by examining the joint’s origin. It is defined in terms of the parent’s reference frame. So we are -0.22 meters in the y direction (to our left, but to the right relative to the axes) and 0.25 meters in the z direction (up). This means that the origin for the child link will be up and to the right, regardless of the child link’s visual origin tag. Since we didn’t specify a rpy (roll pitch yaw) attribute, the child frame will be default have the same orientation as the parent frame."
-msgstr "Let’s start by examining the joint’s origin. It is defined in terms of the parent’s reference frame. So we are -0.22 meters in the y direction (to our left, but to the right relative to the axes) and 0.25 meters in the z direction (up). This means that the origin for the child link will be up and to the right, regardless of the child link’s visual origin tag. Since we didn’t specify a rpy (roll pitch yaw) attribute, the child frame will be default have the same orientation as the parent frame."
+msgstr "让我们从关节的起点开始分析。它是以父节点的参考坐标系为基准来定义的。所以我们在y方向向左偏移0.22米（相对于坐标轴向右），在z方向向上偏移0.25米。这意味着无论子链接的可视起点标签如何，子链接的起点都将位于右上方。由于我们没有指定rpy（滚转俯仰）属性，子坐标系的方向将默认与父坐标系相同。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:185
 msgid "Now, looking at the leg’s visual origin, it has both a xyz and rpy offset. This defines where the center of the visual element should be, relative to its origin. Since we want the leg to attach at the top, we offset the origin down by setting the z offset to be -0.3 meters. And since we want the long part of the leg to be parallel to the z axis, we rotate the visual part PI/2 around the Y axis."
-msgstr "Now, looking at the leg’s visual origin, it has both a xyz and rpy offset. This defines where the center of the visual element should be, relative to its origin. Since we want the leg to attach at the top, we offset the origin down by setting the z offset to be -0.3 meters. And since we want the long part of the leg to be parallel to the z axis, we rotate the visual part PI/2 around the Y axis."
+msgstr "现在，看一下腿的可视起点，它具有xyz和rpy偏移量。这定义了可视元素的中心相对于其起点的位置。由于我们希望腿连接在顶部，我们通过将z偏移设置为-0.3米来偏移起点向下。由于我们希望腿的长部分与z轴平行，我们将可视部分绕Y轴旋转PI/2。"
 
 
 msgid "Origins Screenshot"
@@ -15793,12 +15793,12 @@ msgstr "Origins Screenshot"
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:198
 msgid "The launch file runs packages that will create TF frames for each link in your model based on your URDF. Rviz uses this information to figure out where to display each shape."
-msgstr "The launch file runs packages that will create TF frames for each link in your model based on your URDF. Rviz uses this information to figure out where to display each shape."
+msgstr "启动文件会运行一些包，这些包将根据URDF为模型的每个链接创建TF帧。Rviz使用这些信息来确定每个形状的显示位置。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:200
 msgid "If a TF frame does not exist for a given URDF link, then it will be placed at the origin in white (ref. `related question <http://answers.ros.org/question/207947/how-do-you-use-externally-defined-materials-in-a-urdfxacro-file/>`_)."
-msgstr "If a TF frame does not exist for a given URDF link, then it will be placed at the origin in white (ref. `related question <http://answers.ros.org/question/207947/how-do-you-use-externally-defined-materials-in-a-urdfxacro-file/>`_)."
+msgstr "如果给定的URDF链接没有TF帧，则会将其放置在白色的原点位置上（参考`相关问题<http://answers.ros.org/question/207947/how-do-you-use-externally-defined-materials-in-a-urdfxacro-file/>`_）。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:203
@@ -15808,12 +15808,12 @@ msgstr "Material Girl"
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:205
 msgid "“Alright,” I hear you say. “That’s very cute, but not everyone owns a B21. My robot and R2D2 are not red!” That’s a good point. Let’s take a look at the material tag. `[Source: 04-materials.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/04-materials.urdf>`_"
-msgstr "“Alright,” I hear you say. “That’s very cute, but not everyone owns a B21. My robot and R2D2 are not red!” That’s a good point. Let’s take a look at the material tag. `[Source: 04-materials.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/04-materials.urdf>`_"
+msgstr "“好吧，”你们会说，“这很可爱，但并不是每个人都拥有一台B21。我的机器人和R2D2不是红色的！” 这是个好观点。让我们看一下材质标签。`[来源：04-materials.urdf] <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/04-materials.urdf>`_"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:268
 msgid "The body is now blue. We’ve defined a new material called “blue”, with the red, green, blue and alpha channels defined as 0,0,0.8 and 1 respectively. All of the values can be in the range [0,1]. This material is then referenced by the base_link's visual element. The white material is defined similarly."
-msgstr "The body is now blue. We’ve defined a new material called “blue”, with the red, green, blue and alpha channels defined as 0,0,0.8 and 1 respectively. All of the values can be in the range [0,1]. This material is then referenced by the base_link's visual element. The white material is defined similarly."
+msgstr "主体现在是蓝色的。我们定义了一个名为“蓝色”的新材质，红色、绿色、蓝色和透明度通道分别定义为0、0、0.8和1。所有的值都可以在范围[0,1]内。然后，这个材质被base_link的可视元素引用。白色的材质定义方式类似。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:273
