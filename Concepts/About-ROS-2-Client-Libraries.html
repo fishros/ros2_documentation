@@ -290,7 +290,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">关于服务质量设置</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">关于ROS 2客户端库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">关于 ROS 2 中的参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
@@ -385,10 +385,10 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#common-functionality-the-rcl" id="id6">常用功能：RCL</a></p></li>
-<li><p><a class="reference internal" href="#language-specific-functionality" id="id7">Language-specific functionality</a></p></li>
-<li><p><a class="reference internal" href="#demo" id="id8">Demo</a></p></li>
+<li><p><a class="reference internal" href="#language-specific-functionality" id="id7">特定于语言的功能</a></p></li>
+<li><p><a class="reference internal" href="#demo" id="id8">演示</a></p></li>
 <li><p><a class="reference internal" href="#comparison-to-ros-1" id="id9">与ROS 1的比较</a></p></li>
-<li><p><a class="reference internal" href="#summary" id="id10">摘要</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id10">总结</a></p></li>
 </ul>
 </div>
 <div class="section" id="overview">
@@ -442,35 +442,25 @@
 </div>
 <div class="section" id="common-functionality-the-rcl">
 <h2><a class="toc-backref" href="#id6">常用功能：RCL</a><a class="headerlink" href="#common-functionality-the-rcl" title="永久链接至标题"></a></h2>
-<p>Most of the functionality found in a client library is not specific to the programming language of the client library.
-For example, the behavior of parameters and the logic of namespaces should ideally be the same across all programming languages.
-Because of this, rather than implementing the common functionality from scratch, client libraries make use of a common core ROS Client Library (RCL) interface that implements logic and behavior of ROS concepts that is not language-specific.
-As a result, client libraries only need to wrap the common functionality in the RCL with foreign function interfaces.
-This keeps client libraries thinner and easier to develop.
-For this reason the common RCL functionality is exposed with C interfaces as the C language is typically the easiest language for client libraries to wrap.</p>
-<p>In addition to making the client libraries light-weight, an advantage of having the common core is that the behavior between languages is more consistent.
-If any changes are made to the logic/behavior of the functionality in the core RCL -- namespaces, for example -- all client libraries that use the RCL will have these changes reflected.
-Furthermore, having the common core means that maintaining multiple client libraries becomes less work when it comes to bug fixes.</p>
-<p><a class="reference external" href="https://docs.ros2.org/latest/api/rcl/">The API documentation for the RCL can be found here.</a></p>
+<p>客户端库中的大部分功能与客户端库的编程语言无关。例如，参数的行为和命名空间的逻辑在所有编程语言中应该是相同的。因此，客户端库不需要从头开始实现通用功能，而是利用一个通用的ROS客户端库（RCL）接口，该接口实现了与ROS概念无关的逻辑和行为。因此，客户端库只需要使用外部函数接口将通用功能封装在RCL中。这使得客户端库更加轻巧且易于开发。因此，通用的RCL功能通过C接口公开，因为C语言通常是客户端库最容易封装的语言。</p>
+<p>除了使客户端库变得轻量级之外，拥有通用核心的优势是不同语言之间的行为更加一致。如果对核心RCL中的逻辑/行为进行任何更改，例如命名空间，使用RCL的所有客户端库都将反映这些更改。此外，拥有通用核心意味着在修复错误时维护多个客户端库的工作量减少。</p>
+<p>RCL的API文档可以在此处找到：&lt;<a class="reference external" href="https://docs.ros2.org/latest/api/rcl/">https://docs.ros2.org/latest/api/rcl/</a>&gt;</p>
 </div>
 <div class="section" id="language-specific-functionality">
-<h2><a class="toc-backref" href="#id7">Language-specific functionality</a><a class="headerlink" href="#language-specific-functionality" title="永久链接至标题"></a></h2>
-<p>Client library concepts that require language-specific features/properties are not implemented in the RCL but instead are implemented in each client library.
-For example, threading models used by “spin” functions will have implementations that are specific to the language of the client library.</p>
+<h2><a class="toc-backref" href="#id7">特定于语言的功能</a><a class="headerlink" href="#language-specific-functionality" title="永久链接至标题"></a></h2>
+<p>需要语言特定功能/属性的客户端库概念不在RCL中实现，而是在每个客户端库中实现。例如，“spin”函数使用的线程模型将具有特定于客户端库语言的实现。</p>
 </div>
 <div class="section" id="demo">
-<h2><a class="toc-backref" href="#id8">Demo</a><a class="headerlink" href="#demo" title="永久链接至标题"></a></h2>
-<p>For a walkthrough of the message exchange between a publisher using <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> and a subscription using <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>, we encourage you to watch <a class="reference external" href="https://vimeo.com/187696091">this ROSCon talk</a> starting at 17:25 (<a class="reference external" href="https://roscon.ros.org/2016/presentations/ROSCon%202016%20-%20ROS%202%20Update.pdf">see the slides here</a>).</p>
+<h2><a class="toc-backref" href="#id8">演示</a><a class="headerlink" href="#demo" title="永久链接至标题"></a></h2>
+<p>如果你想了解使用 <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> 发布者和使用 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> 订阅者之间的消息交换过程，我们建议你观看这个 ROSCon 演讲（&lt;<a class="reference external" href="https://vimeo.com/187696091">https://vimeo.com/187696091</a>&gt;`__），从 17:25 开始（<a class="reference external" href="https://roscon.ros.org/2016/presentations/ROSCon%202016%20-%20ROS%202%20Update.pdf">在这里查看幻灯片</a>）。</p>
 </div>
 <div class="section" id="comparison-to-ros-1">
 <h2><a class="toc-backref" href="#id9">与ROS 1的比较</a><a class="headerlink" href="#comparison-to-ros-1" title="永久链接至标题"></a></h2>
-<p>In ROS 1, all client libraries are developed &quot;from the ground up&quot;.
-This allows for the ROS 1 Python client library to be implemented purely in Python, for example, which brings benefits of such as not needing to compile code.
-However, naming conventions and behaviors are not always consistent between client libraries, bug fixes have to be done in multiple places, and there is a lot of functionality that has only ever been implemented in one client library (e.g. UDPROS).</p>
+<p>在 ROS 1 中，所有客户端库都是从头开始开发的。这使得 ROS 1 Python 客户端库可以完全用 Python 实现，例如，这带来了无需编译代码的好处。然而，命名约定和行为在客户端库之间并不总是一致的，bug 修复必须在多个位置进行，而且有许多功能只在一个客户端库中实现（例如，UDPROS）。</p>
 </div>
 <div class="section" id="summary">
-<h2><a class="toc-backref" href="#id10">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>By utilizing the common core ROS client library, client libraries written in a variety of programming languages are easier to write and have more consistent behavior.</p>
+<h2><a class="toc-backref" href="#id10">总结</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<p>通过使用通用的核心 ROS 客户端库，以多种编程语言编写的客户端库更容易编写，并且具有更一致的行为。</p>
 </div>
 </div>
 
