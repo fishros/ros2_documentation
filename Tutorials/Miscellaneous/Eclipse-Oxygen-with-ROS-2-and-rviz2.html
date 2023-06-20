@@ -341,7 +341,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Glossary.html">术语表</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">引用</a></li>
 </ul>
 
         </div>
@@ -379,7 +379,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#setup" id="id1">设置</a></p></li>
 <li><p><a class="reference internal" href="#eclipse-indexer" id="id2">Eclipse索引器</a></p></li>
-<li><p><a class="reference internal" href="#debugging-with-eclipse" id="id3">Debugging with eclipse</a></p></li>
+<li><p><a class="reference internal" href="#debugging-with-eclipse" id="id3">使用eclipse进行调试</a></p></li>
 </ul>
 </div>
 <div class="section" id="setup">
@@ -443,34 +443,30 @@
 <h2><a class="toc-backref" href="#id2">Eclipse索引器</a><a class="headerlink" href="#eclipse-indexer" title="永久链接至标题"></a></h2>
 <p>打开rviz2的main.cpp可能会显示很多&quot;unresolved inclusion&quot;警告。要解决此问题，请转到项目-&gt;属性-&gt;C++常规-&gt;路径和符号。点击&quot;引用&quot;选项卡，然后选择&quot;ros2_ws&quot;。</p>
 <img alt="../../_images/eclipse-oxygen-27.png" src="../../_images/eclipse-oxygen-27.png" />
-<p>Go to C/C++-General-&gt;Path-and-Symbols, click on the &quot;Source locations&quot; tab and click on &quot;Link folder&quot;.
-Choose the location of qt5 includes.</p>
+<p>转到C/C++-General-&gt;路径和符号，点击&quot;源位置&quot;选项卡，然后点击&quot;链接文件夹&quot;。选择qt5包含文件的位置。</p>
 <img alt="../../_images/eclipse-oxygen-28.png" src="../../_images/eclipse-oxygen-28.png" />
-<p>The next image should be shown.
-It is a good idea to add excludes to the source locations, so that some directories (like &quot;Build&quot; and &quot;Install&quot;) don't get indexed.</p>
+<p>下一张图片应该会显示。最好在源位置中添加排除项，以便某些目录（如&quot;Build&quot;和&quot;Install&quot;）不会被索引。</p>
 <img alt="../../_images/eclipse-oxygen-29.png" src="../../_images/eclipse-oxygen-29.png" />
-<p>Go to C++General-&gt;Preprocessor includes, select &quot;CDT GCC Built in compiler settings [Shared]&quot; and enter in the &quot;command to get compiler specs&quot; text box the following:</p>
+<p>转到C++General-&gt;预处理器包含项，选择&quot;CDT GCC内置编译器设置[Shared]&quot;，并在&quot;获取编译器规范的命令&quot;文本框中输入以下内容：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-std<span class="o">=</span>c++14
 </pre></div>
 </div>
 <img alt="../../_images/eclipse-oxygen-30.png" src="../../_images/eclipse-oxygen-30.png" />
-<p>Go to &quot;C/C++-General-&gt;Indexer&quot; and select the following in the image.
-E.g &quot;index unused headers as c files&quot; to resolve e.g. QApplication, because the QApplication headers content is only &quot;#include &quot;qapplication.h&quot;.</p>
+<p>转到&quot;C/C++-General-&gt;索引器&quot;，在图像中选择以下选项。例如，选择&quot;将未使用的头文件索引为C文件&quot;，以解决QApplication的问题，因为QApplication头文件的内容只有&quot;#include &quot;qapplication.h&quot;&quot;。</p>
 <img alt="../../_images/eclipse-oxygen-31.png" src="../../_images/eclipse-oxygen-31.png" />
-<p>After running the indexer (which happens later, so you will see this also later), you can see what it added</p>
+<p>运行索引器之后（稍后会发生，所以你稍后也会看到这一步），你可以看到它添加了什么。</p>
 <img alt="../../_images/eclipse-oxygen-32.png" src="../../_images/eclipse-oxygen-32.png" />
-<p>After that right-click on the rviz2 project and select &quot;Indexer-&gt;Rebuild&quot;, which will start rebuilding the index (there is an icon in the lower right showing progress).
-Once the index is finished rebuilding, it should be able to resolve all includes.</p>
+<p>然后，在rviz2项目上右键单击，选择&quot;索引器-&gt;重建&quot;，这将开始重建索引（右下角会显示进度图标）。索引重建完成后，应该能够解决所有的包含文件。</p>
 <img alt="../../_images/eclipse-oxygen-33.png" src="../../_images/eclipse-oxygen-33.png" />
 </div>
 <div class="section" id="debugging-with-eclipse">
-<h2><a class="toc-backref" href="#id3">Debugging with eclipse</a><a class="headerlink" href="#debugging-with-eclipse" title="永久链接至标题"></a></h2>
-<p>Go to &quot;C/C++-Build&quot; and add to the build command:</p>
+<h2><a class="toc-backref" href="#id3">使用eclipse进行调试</a><a class="headerlink" href="#debugging-with-eclipse" title="永久链接至标题"></a></h2>
+<p>进入&quot;C/C++-Build&quot;并添加以下构建命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
 </pre></div>
 </div>
 <img alt="../../_images/eclipse-oxygen-34.png" src="../../_images/eclipse-oxygen-34.png" />
-<p>Then in eclipse go to &quot;Run-&gt;Debug Configurations&quot; and add the following and click on &quot;Debug&quot;.</p>
+<p>然后在eclipse中进入&quot;Run-&gt;Debug Configurations&quot;并添加以下内容，然后点击&quot;Debug&quot;。</p>
 <img alt="../../_images/eclipse-oxygen-35.png" src="../../_images/eclipse-oxygen-35.png" />
 </div>
 </div>
