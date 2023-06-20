@@ -502,38 +502,28 @@
 <div class="section" id="rcutils">
 <h3><a class="toc-backref" href="#id8">rcutils</a><a class="headerlink" href="#rcutils" title="永久链接至标题"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">rcutils``具有一个日志实现，可以根据特定格式（参见上面的``配置</span></code>）格式化日志消息，并将这些日志消息输出到控制台。<a href="#id1"><span class="problematic" id="id2">``</span></a>rcutils``实现了一个完整的日志解决方案，但允许较高级别的组件以依赖注入模型插入到日志基础设施中。当我们谈到下面的``rcl``层时，这将变得更加明显。</p>
-<p>Note that this is a <em>per-process</em> logging implementation, so anything that is configured at this level will affect the entire process, not just individual nodes.</p>
+<p>请注意，这是一种*每个进程*的日志记录实现，因此在此级别配置的任何内容都将影响整个进程，而不仅仅是单个节点。</p>
 </div>
 <div class="section" id="rcl-logging-spdlog">
 <h3><a class="toc-backref" href="#id9">rcl_logging_spdlog</a><a class="headerlink" href="#rcl-logging-spdlog" title="永久链接至标题"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> implements the <code class="docutils literal notranslate"><span class="pre">rcl_logging_interface</span></code> API, and thus provides external logging services to the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> layer.
-In particular, the <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> implementation takes formatted log messages and writes them out to log files on disk using the <code class="docutils literal notranslate"><span class="pre">spdlog</span></code> library, typically within <code class="docutils literal notranslate"><span class="pre">~/.ros/log</span></code> (though this is configurable; see <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> above).</p>
+<p><code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> 实现了 <code class="docutils literal notranslate"><span class="pre">rcl_logging_interface</span></code> API，因此为 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> 层提供外部日志记录服务。特别是，<code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> 实现接受格式化的日志消息，并使用 <code class="docutils literal notranslate"><span class="pre">spdlog</span></code> 库将它们写入磁盘上的日志文件，通常位于 <code class="docutils literal notranslate"><span class="pre">~/.ros/log``（尽管此处可配置；请参阅上述</span> <span class="pre">``Configuration</span></code>）。</p>
 </div>
 <div class="section" id="rcl">
 <h3><a class="toc-backref" href="#id10">rcl</a><a class="headerlink" href="#rcl" title="永久链接至标题"></a></h3>
-<p>The logging subsystem in <code class="docutils literal notranslate"><span class="pre">rcl</span></code> uses <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> and <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> to provide the bulk of the ROS 2 logging services.
-When log messages come in, <code class="docutils literal notranslate"><span class="pre">rcl</span></code> decides where to send them.
-There are 3 main places that logging messages can be delivered; an individual node may have any combination of them enabled:</p>
+<p><code class="docutils literal notranslate"><span class="pre">rcl</span></code> 中的日志记录子系统使用 <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> 来提供大部分 ROS 2 日志记录服务。当日志消息到达时，<code class="docutils literal notranslate"><span class="pre">rcl</span></code> 决定将其发送到何处。有三个主要位置可以传送日志消息；单个节点可以启用其中任意组合：</p>
 <ul class="simple">
-<li><p>To the console via the <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> layer</p></li>
-<li><p>To disk via the <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> layer</p></li>
-<li><p>To the <code class="docutils literal notranslate"><span class="pre">/rosout</span></code> topic on the ROS 2 network via the RMW layer</p></li>
+<li><p>通过 <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> 层发送到控制台</p></li>
+<li><p>通过``rcl_logging_spdlog``层将日志写入磁盘</p></li>
+<li><p>通过RMW层将日志发送到ROS 2网络上的``/rosout``主题</p></li>
 </ul>
 </div>
 <div class="section" id="rclcpp">
 <h3><a class="toc-backref" href="#id11">rclcpp</a><a class="headerlink" href="#rclcpp" title="永久链接至标题"></a></h3>
-<p>This is the main ROS 2 C++ API which sits atop the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> API.
-In the context of logging, <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> provides the <code class="docutils literal notranslate"><span class="pre">RCLCPP_</span></code> logging macros; see <code class="docutils literal notranslate"><span class="pre">APIs</span></code> above for a complete list.
-When one of the <code class="docutils literal notranslate"><span class="pre">RCLCPP_</span></code> macros runs, it checks the current severity level of the node against the severity level of the macro.
-If the severity level of the macro is greater than or equal to the node severity level, the message will be formatted and output to all of the places that are currently configured.
-Note that <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> uses a global mutex for log calls, so all logging calls within the same process end up being single-threaded.</p>
+<p>这是主要的ROS 2 C++ API，位于``rcl`` API之上。在日志记录的上下文中，<a href="#id1"><span class="problematic" id="id2">``</span></a>rclcpp``提供了``RCLCPP_``日志宏；请参阅上面的``APIs``获取完整列表。当运行其中一个``RCLCPP_``宏时，它会将节点的当前严重级别与宏的严重级别进行比较。如果宏的严重级别大于或等于节点的严重级别，则会对消息进行格式化，并输出到当前配置的所有位置。请注意，<a href="#id3"><span class="problematic" id="id4">``</span></a>rclcpp``在日志调用中使用全局互斥锁，因此同一进程内的所有日志调用最终都是单线程的。</p>
 </div>
 <div class="section" id="rclpy">
 <h3><a class="toc-backref" href="#id12">rclpy</a><a class="headerlink" href="#rclpy" title="永久链接至标题"></a></h3>
-<p>This is the main ROS 2 Python API which sits atop the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> API.
-In the context of logging, <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> provides the <code class="docutils literal notranslate"><span class="pre">logger.debug</span></code>-style functions; see <code class="docutils literal notranslate"><span class="pre">APIs</span></code> above for a complete list.
-When one of the <code class="docutils literal notranslate"><span class="pre">logger.debug</span></code> functions runs, it checks the current severity level of the node against the severity level of the macro.
-If the severity level of the macro is greater than or equal to the node severity level, the message will be formatted and output to all of the places that are currently configured.</p>
+<p>这是主要的ROS 2 Python API，位于``rcl`` API之上。在日志记录的上下文中，<a href="#id1"><span class="problematic" id="id2">``</span></a>rclpy``提供了``logger.debug``风格的函数；请参阅上面的``APIs``获取完整列表。当运行其中一个``logger.debug``函数时，它会将节点的当前严重级别与宏的严重级别进行比较。如果宏的严重级别大于或等于节点的严重级别，则会对消息进行格式化，并输出到当前配置的所有位置。</p>
 </div>
 </div>
 <div class="section" id="logging-usage">
