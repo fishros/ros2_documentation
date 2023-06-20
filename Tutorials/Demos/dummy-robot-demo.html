@@ -383,7 +383,7 @@
 ros2 launch dummy_robot_bringup dummy_robot_bringup.launch.py
 </pre></div>
 </div>
-<p>You should see some prints inside your terminal along the lines of the following:</p>
+<p>你应该在终端中看到一些打印输出，类似以下内容:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: process<span class="o">[</span>dummy_map_server-1<span class="o">]</span>: started with pid <span class="o">[</span><span class="m">25812</span><span class="o">]</span>
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: process<span class="o">[</span>robot_state_publisher-2<span class="o">]</span>: started with pid <span class="o">[</span><span class="m">25813</span><span class="o">]</span>
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: process<span class="o">[</span>dummy_joint_states-3<span class="o">]</span>: started with pid <span class="o">[</span><span class="m">25814</span><span class="o">]</span>
@@ -411,25 +411,25 @@ Adding fixed segment from single_rrbot_link3 to single_rrbot_camera_link
 Adding fixed segment from single_rrbot_link3 to single_rrbot_hokuyo_link
 </pre></div>
 </div>
-<p>If you now open in a next terminal your RViz, you'll see your robot. 🎉</p>
+<p>如果你现在在另一个终端中打开RViz，你会看到你的机器人。🎉</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> &lt;ROS2_INSTALL_FOLDER&gt;/setup.bash
 $ rviz2
 </pre></div>
 </div>
-<p>This opens RViz2. Assuming you have your dummy_robot_bringup still launched, you can now add the TF display plugin and configure your global frame to <code class="docutils literal notranslate"><span class="pre">world</span></code>. Once you did that, you should see a similar picture:</p>
+<p>这将打开RViz2。假设你已经启动了dummy_robot_bringup，现在你可以添加TF显示插件并将全局坐标系配置为``world``。完成后，你应该看到类似的画面:</p>
 <img alt="../../_images/rviz-dummy-robot.png" src="../../_images/rviz-dummy-robot.png" />
 <div class="section" id="what-s-happening">
-<h3>What's happening?<a class="headerlink" href="#what-s-happening" title="永久链接至标题"></a></h3>
-<p>If you have a closer look at the launch file, we start a couple of nodes at the same time.</p>
+<h3>发生了什么事？<a class="headerlink" href="#what-s-happening" title="永久链接至标题"></a></h3>
+<p>如果你仔细查看启动文件，你会发现我们同时启动了一些节点。</p>
 <ul class="simple">
 <li><p>dummy_map_server</p></li>
-<li><p>dummy_laser</p></li>
-<li><p>dummy_joint_states</p></li>
-<li><p>robot_state_publisher</p></li>
+<li><p>dummy_laser（虚拟激光）</p></li>
+<li><p>dummy_joint_states（虚拟关节状态）</p></li>
+<li><p>robot_state_publisher（机器人状态发布器）</p></li>
 </ul>
-<p>The first two packages are relatively simple. The <code class="docutils literal notranslate"><span class="pre">dummy_map_server</span></code> constantly publishes an empty map with a periodic update. The <code class="docutils literal notranslate"><span class="pre">dummy_laser</span></code> does basically the same; publishing dummy fake laser scans.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">dummy_joint_states</span></code> node is publishing fake joint state data. As we are publishing a simple RRbot with only two joints, this node publishes joint states values for these two joints.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code> is doing the actual interesting work. It parses the given URDF file, extracts the robot model and listens to the incoming joint states. With this information, it publishes TF values for our robot which we visualize in RViz.</p>
+<p>前两个软件包比较简单。<a href="#id1"><span class="problematic" id="id2">``</span></a>dummy_map_server``（虚拟地图服务器）会定期发布一个空地图。<a href="#id3"><span class="problematic" id="id4">``</span></a>dummy_laser``（虚拟激光）基本上也是一样的，会发布虚拟的激光扫描数据。</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>dummy_joint_states``（虚拟关节状态）节点会发布虚拟的关节状态数据。由于我们只有一个简单的RRbot机器人，这个节点会发布这两个关节的关节状态值。</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>robot_state_publisher``（机器人状态发布器）才是真正有趣的部分。它会解析给定的URDF文件，提取机器人模型并监听传入的关节状态。根据这些信息，它会发布我们机器人的TF（变换）值，我们可以在RViz中进行可视化。</p>
 <p>Hooray!</p>
 </div>
 </div>
