@@ -13656,62 +13656,62 @@ msgstr "并保存文件更改。为了运行这个演示，我们需要在 ``lea
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:123
 msgid "Don't forget to add the ``turtle_tf2_listener_debug`` executable to the ``CMakeLists.txt`` and build the package."
-msgstr "Don't forget to add the ``turtle_tf2_listener_debug`` executable to the ``CMakeLists.txt`` and build the package."
+msgstr "不要忘记将``turtle_tf2_listener_debug``可执行文件添加到``CMakeLists.txt``中并构建软件包。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:125
 msgid "Now let's run it to see what happens:"
-msgstr "Now let's run it to see what happens:"
+msgstr "现在让我们运行它看看会发生什么："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:131
 msgid "You will now see that the turtlesim came up. At the same time, if you run the ``turtle_teleop_key`` in another terminal window, you can use the arrow keys to drive the ``turtle1`` around."
-msgstr "You will now see that the turtlesim came up. At the same time, if you run the ``turtle_teleop_key`` in another terminal window, you can use the arrow keys to drive the ``turtle1`` around."
+msgstr "现在你会看到turtlesim启动了。同时，如果你在另一个终端窗口中运行``turtle_teleop_key``，你可以使用箭头键来控制``turtle1``移动。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:138
 msgid "You will also notice that there is a second turtle in the lower, left corner. If the demo would be working correctly, this second turtle should be following the turtle you can command with the arrow keys. However, it is not the case because we have to solve some problems first. You should notice the following message:"
-msgstr "You will also notice that there is a second turtle in the lower, left corner. If the demo would be working correctly, this second turtle should be following the turtle you can command with the arrow keys. However, it is not the case because we have to solve some problems first. You should notice the following message:"
+msgstr "你还会注意到在左下角有一只第二只海龟。如果演示工作正常，这只第二只海龟应该会跟随你用箭头键控制的海龟移动。然而，事实并非如此，因为我们首先需要解决一些问题。你应该注意到以下消息："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:150
 msgid "2 Finding the tf2 request"
-msgstr "2 Finding the tf2 request"
+msgstr "2 寻找tf2请求"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:152
 msgid "Firstly, we need to find out what exactly we are asking tf2 to do. Therefore, we go into the part of the code that is using tf2. Open the ``src/turtle_tf2_listener_debug.cpp`` file, and take a look at line 67:"
-msgstr "Firstly, we need to find out what exactly we are asking tf2 to do. Therefore, we go into the part of the code that is using tf2. Open the ``src/turtle_tf2_listener_debug.cpp`` file, and take a look at line 67:"
+msgstr "首先，我们需要弄清楚我们具体要求tf2做什么。因此，我们进入正在使用tf2的代码部分。打开``src/turtle_tf2_listener_debug.cpp``文件，并查看第67行："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:160
 msgid "and lines 75-79:"
-msgstr "and lines 75-79:"
+msgstr "并且在第75至79行中："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:171
 msgid "Here we do the actual request to tf2. The three arguments tell us directly what we are asking tf2: transform from frame ``turtle3`` to frame ``turtle1`` at time ``now``."
-msgstr "Here we do the actual request to tf2. The three arguments tell us directly what we are asking tf2: transform from frame ``turtle3`` to frame ``turtle1`` at time ``now``."
+msgstr "在这里，我们实际向tf2发出请求。这三个参数直接告诉我们向tf2询问的内容：在时间``now``下从坐标系``turtle3``到坐标系``turtle1``的变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:174
 msgid "Now, let's take a look at why this request to tf2 is failing."
-msgstr "Now, let's take a look at why this request to tf2 is failing."
+msgstr "现在，让我们看看为什么这个向tf2的请求失败了。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:177
 msgid "3 Checking the frames"
-msgstr "3 Checking the frames"
+msgstr "3 检查坐标系"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:179
 msgid "Firstly, to find out if tf2 knows about our transform between ``turtle3`` and ``turtle1``, we will use ``tf2_echo`` tool."
-msgstr "Firstly, to find out if tf2 knows about our transform between ``turtle3`` and ``turtle1``, we will use ``tf2_echo`` tool."
+msgstr "首先，为了确定tf2是否知道我们在``turtle3``和``turtle1``之间的变换，我们将使用``tf2_echo``工具。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:185
 msgid "The output tells us that frame ``turtle3`` does not exist:"
-msgstr "The output tells us that frame ``turtle3`` does not exist:"
+msgstr "输出告诉我们``turtle3``坐标系不存在："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:193
