@@ -2295,7 +2295,7 @@ msgstr "``rcutils``具有一个日志实现，可以根据特定格式（参见�
 
 #: ../../source/Concepts/About-Logging.rst:142
 msgid "Note that this is a *per-process* logging implementation, so anything that is configured at this level will affect the entire process, not just individual nodes."
-msgstr "Note that this is a *per-process* logging implementation, so anything that is configured at this level will affect the entire process, not just individual nodes."
+msgstr "请注意，这是一种*每个进程*的日志记录实现，因此在此级别配置的任何内容都将影响整个进程，而不仅仅是单个节点。"
 
 
 #: ../../source/Concepts/About-Logging.rst:145
@@ -2305,7 +2305,7 @@ msgstr "rcl_logging_spdlog"
 
 #: ../../source/Concepts/About-Logging.rst:147
 msgid "``rcl_logging_spdlog`` implements the ``rcl_logging_interface`` API, and thus provides external logging services to the ``rcl`` layer. In particular, the ``rcl_logging_spdlog`` implementation takes formatted log messages and writes them out to log files on disk using the ``spdlog`` library, typically within ``~/.ros/log`` (though this is configurable; see ``Configuration`` above)."
-msgstr "``rcl_logging_spdlog`` implements the ``rcl_logging_interface`` API, and thus provides external logging services to the ``rcl`` layer. In particular, the ``rcl_logging_spdlog`` implementation takes formatted log messages and writes them out to log files on disk using the ``spdlog`` library, typically within ``~/.ros/log`` (though this is configurable; see ``Configuration`` above)."
+msgstr "``rcl_logging_spdlog`` 实现了 ``rcl_logging_interface`` API，因此为 ``rcl`` 层提供外部日志记录服务。特别是，``rcl_logging_spdlog`` 实现接受格式化的日志消息，并使用 ``spdlog`` 库将它们写入磁盘上的日志文件，通常位于 ``~/.ros/log``（尽管此处可配置；请参阅上述 ``Configuration``）。"
 
 
 #: ../../source/Concepts/About-Logging.rst:151
@@ -2315,22 +2315,22 @@ msgstr "rcl"
 
 #: ../../source/Concepts/About-Logging.rst:153
 msgid "The logging subsystem in ``rcl`` uses ``rcutils`` and ``rcl_logging_spdlog`` to provide the bulk of the ROS 2 logging services. When log messages come in, ``rcl`` decides where to send them. There are 3 main places that logging messages can be delivered; an individual node may have any combination of them enabled:"
-msgstr "The logging subsystem in ``rcl`` uses ``rcutils`` and ``rcl_logging_spdlog`` to provide the bulk of the ROS 2 logging services. When log messages come in, ``rcl`` decides where to send them. There are 3 main places that logging messages can be delivered; an individual node may have any combination of them enabled:"
+msgstr "``rcl`` 中的日志记录子系统使用 ``rcutils`` 和 ``rcl_logging_spdlog`` 来提供大部分 ROS 2 日志记录服务。当日志消息到达时，``rcl`` 决定将其发送到何处。有三个主要位置可以传送日志消息；单个节点可以启用其中任意组合："
 
 
 #: ../../source/Concepts/About-Logging.rst:157
 msgid "To the console via the ``rcutils`` layer"
-msgstr "To the console via the ``rcutils`` layer"
+msgstr "通过 ``rcutils`` 层发送到控制台"
 
 
 #: ../../source/Concepts/About-Logging.rst:158
 msgid "To disk via the ``rcl_logging_spdlog`` layer"
-msgstr "To disk via the ``rcl_logging_spdlog`` layer"
+msgstr "通过``rcl_logging_spdlog``层将日志写入磁盘"
 
 
 #: ../../source/Concepts/About-Logging.rst:159
 msgid "To the ``/rosout`` topic on the ROS 2 network via the RMW layer"
-msgstr "To the ``/rosout`` topic on the ROS 2 network via the RMW layer"
+msgstr "通过RMW层将日志发送到ROS 2网络上的``/rosout``主题"
 
 
 #: ../../source/Concepts/About-Logging.rst:162
@@ -2340,7 +2340,7 @@ msgstr "rclcpp"
 
 #: ../../source/Concepts/About-Logging.rst:164
 msgid "This is the main ROS 2 C++ API which sits atop the ``rcl`` API. In the context of logging, ``rclcpp`` provides the ``RCLCPP_`` logging macros; see ``APIs`` above for a complete list. When one of the ``RCLCPP_`` macros runs, it checks the current severity level of the node against the severity level of the macro. If the severity level of the macro is greater than or equal to the node severity level, the message will be formatted and output to all of the places that are currently configured. Note that ``rclcpp`` uses a global mutex for log calls, so all logging calls within the same process end up being single-threaded."
-msgstr "This is the main ROS 2 C++ API which sits atop the ``rcl`` API. In the context of logging, ``rclcpp`` provides the ``RCLCPP_`` logging macros; see ``APIs`` above for a complete list. When one of the ``RCLCPP_`` macros runs, it checks the current severity level of the node against the severity level of the macro. If the severity level of the macro is greater than or equal to the node severity level, the message will be formatted and output to all of the places that are currently configured. Note that ``rclcpp`` uses a global mutex for log calls, so all logging calls within the same process end up being single-threaded."
+msgstr "这是主要的ROS 2 C++ API，位于``rcl`` API之上。在日志记录的上下文中，``rclcpp``提供了``RCLCPP_``日志宏；请参阅上面的``APIs``获取完整列表。当运行其中一个``RCLCPP_``宏时，它会将节点的当前严重级别与宏的严重级别进行比较。如果宏的严重级别大于或等于节点的严重级别，则会对消息进行格式化，并输出到当前配置的所有位置。请注意，``rclcpp``在日志调用中使用全局互斥锁，因此同一进程内的所有日志调用最终都是单线程的。"
 
 
 #: ../../source/Concepts/About-Logging.rst:172
@@ -2350,7 +2350,7 @@ msgstr "rclpy"
 
 #: ../../source/Concepts/About-Logging.rst:174
 msgid "This is the main ROS 2 Python API which sits atop the ``rcl`` API. In the context of logging, ``rclpy`` provides the ``logger.debug``-style functions; see ``APIs`` above for a complete list. When one of the ``logger.debug`` functions runs, it checks the current severity level of the node against the severity level of the macro. If the severity level of the macro is greater than or equal to the node severity level, the message will be formatted and output to all of the places that are currently configured."
-msgstr "This is the main ROS 2 Python API which sits atop the ``rcl`` API. In the context of logging, ``rclpy`` provides the ``logger.debug``-style functions; see ``APIs`` above for a complete list. When one of the ``logger.debug`` functions runs, it checks the current severity level of the node against the severity level of the macro. If the severity level of the macro is greater than or equal to the node severity level, the message will be formatted and output to all of the places that are currently configured."
+msgstr "这是主要的ROS 2 Python API，位于``rcl`` API之上。在日志记录的上下文中，``rclpy``提供了``logger.debug``风格的函数；请参阅上面的``APIs``获取完整列表。当运行其中一个``logger.debug``函数时，它会将节点的当前严重级别与宏的严重级别进行比较。如果宏的严重级别大于或等于节点的严重级别，则会对消息进行格式化，并输出到当前配置的所有位置。"
 
 
 #: ../../source/Concepts/About-Logging.rst:181
