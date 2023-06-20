@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writing a broadcaster (C++) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>编写广播器（C++） &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -157,7 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Py.html">Writing a static broadcaster (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html">Writing a static broadcaster (C++)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html">Writing a broadcaster (Python)</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Writing a broadcaster (C++)</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">编写广播器（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Py.html">Writing a listener (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Py.html">添加一个帧（Python）</a></li>
@@ -362,7 +362,7 @@
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Intermediate.html">中级</a> &raquo;</li>
           <li><a href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a> &raquo;</li>
-      <li>Writing a broadcaster (C++)</li>
+      <li>编写广播器（C++）</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -375,8 +375,8 @@
 
 
   <div class="section" id="writing-a-broadcaster-c">
-<span id="writingatf2broadcastercpp"></span><h1>Writing a broadcaster (C++)<a class="headerlink" href="#writing-a-broadcaster-c" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn how to broadcast the state of a robot to tf2.</p>
+<span id="writingatf2broadcastercpp"></span><h1>编写广播器（C++）<a class="headerlink" href="#writing-a-broadcaster-c" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何将机器人的状态广播到tf2。</p>
 <p><strong>教程级别：</strong> 中级</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="contents">
@@ -386,7 +386,7 @@
 <li><p><a class="reference internal" href="#prerequisites" id="id4">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id5">任务</a></p>
 <ul>
-<li><p><a class="reference internal" href="#write-the-broadcaster-node" id="id6">1 Write the broadcaster node</a></p></li>
+<li><p><a class="reference internal" href="#write-the-broadcaster-node" id="id6">1. 编写广播器节点</a></p></li>
 <li><p><a class="reference internal" href="#write-the-launch-file" id="id7">2 编写启动文件</a></p></li>
 <li><p><a class="reference internal" href="#build" id="id8">3 Build</a></p></li>
 <li><p><a class="reference internal" href="#run" id="id9">4 Run</a></p></li>
@@ -397,22 +397,17 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id3">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>In the next two tutorials we will write the code to reproduce the demo from the <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2</span></a> tutorial.
-After that, following tutorials focus on extending the demo with more advanced tf2 features, including the usage of timeouts in transformation lookups and time travel.</p>
+<p>在接下来的两个教程中，我们将编写代码来重现 <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2</span></a> 教程中的演示。之后，后续教程将重点介绍如何使用更高级的tf2功能扩展演示，包括在转换查找中使用超时和时间旅行。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id4">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>This tutorial assumes you have a working knowledge of ROS 2 and you have completed the <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2 tutorial</span></a> and <a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html"><span class="doc">tf2 static broadcaster tutorial (C++)</span></a>.
-In previous tutorials, you learned how to <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">create a workspace</span></a> and <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">create a package</span></a>.
-You also have created the <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> <a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html"><span class="doc">package</span></a>, which is where we will continue working from.</p>
+<p>本教程假设您已经具备ROS 2的工作知识，并且已经完成了 <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2 教程</span></a> 和 <a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html"><span class="doc">tf2静态广播器教程 (C++)</span></a>。在之前的教程中，您学习了如何 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">创建工作空间</span></a> 和 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建软件包</span></a>。您还创建了“learning_tf2_cpp” <a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html"><span class="doc">软件包</span></a>，我们将从这里继续工作。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id5">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-broadcaster-node">
-<h3><a class="toc-backref" href="#id6">1 Write the broadcaster node</a><a class="headerlink" href="#write-the-broadcaster-node" title="永久链接至标题"></a></h3>
-<p>Let's first create the source files.
-Go to the <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> package we created in the previous tutorial.
-Inside the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory download the example broadcaster code by entering the following command:</p>
+<h3><a class="toc-backref" href="#id6">1. 编写广播器节点</a><a class="headerlink" href="#write-the-broadcaster-node" title="永久链接至标题"></a></h3>
+<p>首先我们要创建源文件。进入我们在上一个教程中创建的 <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> 包。在 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录中下载示例广播器的代码，输入以下命令：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_cpp/src/turtle_tf2_broadcaster.cpp</span>
 </pre></div>
@@ -512,21 +507,20 @@ Inside the <code class="docutils literal notranslate"><span class="pre">src</spa
 </div>
 <div class="section" id="examine-the-code">
 <h4>1.1 检查代码<a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
-<p>Now, let's take a look at the code that is relevant to publishing the turtle pose to tf2.
-Firstly, we define and acquire a single parameter <code class="docutils literal notranslate"><span class="pre">turtlename</span></code>, which specifies a turtle name, e.g. <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> or <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>.</p>
+<p>现在，让我们来看一下与将海龟位姿发布到 tf2 相关的代码。首先，我们定义并获取一个参数 <code class="docutils literal notranslate"><span class="pre">turtlename</span></code>，它指定了一个海龟的名称，例如 <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">turtlename_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">declare_parameter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;turtlename&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;turtle&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Afterward, the node subscribes to topic <code class="docutils literal notranslate"><span class="pre">turtleX/pose</span></code> and runs function <code class="docutils literal notranslate"><span class="pre">handle_turtle_pose</span></code> on every incoming message.</p>
+<p>接下来，节点订阅了 <code class="docutils literal notranslate"><span class="pre">turtleX/pose</span></code> 主题，并在每个传入的消息上运行函数 <code class="docutils literal notranslate"><span class="pre">handle_turtle_pose</span></code>。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">topic_name</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">FramePublisher</span><span class="o">::</span><span class="n">handle_turtle_pose</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Now, we create a <code class="docutils literal notranslate"><span class="pre">TransformStamped</span></code> object and give it the appropriate metadata.</p>
+<p>现在，我们创建一个 <code class="docutils literal notranslate"><span class="pre">TransformStamped</span></code> 对象，并为其添加适当的元数据。</p>
 <ol class="arabic simple">
-<li><p>We need to give the transform being published a timestamp, and we'll just stamp it with the current time by calling <code class="docutils literal notranslate"><span class="pre">this-&gt;get_clock()-&gt;now()</span></code>. This will return the current time used by the <code class="docutils literal notranslate"><span class="pre">Node</span></code>.</p></li>
-<li><p>Then we need to set the name of the parent frame of the link we're creating, in this case <code class="docutils literal notranslate"><span class="pre">world</span></code>.</p></li>
+<li><p>我们需要为发布的变换设置一个时间戳，通过调用 <code class="docutils literal notranslate"><span class="pre">this-&gt;get_clock()-&gt;now()</span></code> 将其标记为当前时间。这将返回 <code class="docutils literal notranslate"><span class="pre">Node</span></code> 使用的当前时间。</p></li>
+<li><p>然后，我们需要设置正在创建的链接的父帧的名称，本例中为 <code class="docutils literal notranslate"><span class="pre">world</span></code>。</p></li>
 <li><p>Finally, we need to set the name of the child node of the link we're creating, in this case this is the name of the turtle itself.</p></li>
 </ol>
 <p>The handler function for the turtle pose message broadcasts this turtle's translation and rotation, and publishes it as a transform from frame <code class="docutils literal notranslate"><span class="pre">world</span></code> to frame <code class="docutils literal notranslate"><span class="pre">turtleX</span></code>.</p>
