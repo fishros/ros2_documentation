@@ -389,8 +389,8 @@
 <li><p><a class="reference internal" href="#constants" id="id7">2.2 常量</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#service-description-specification" id="id8">3. Service description specification</a></p></li>
-<li><p><a class="reference internal" href="#new-features-in-ros-2-interfaces" id="id9">4. New features in ROS 2 interfaces</a></p></li>
+<li><p><a class="reference internal" href="#service-description-specification" id="id8">3. 服务描述规范</a></p></li>
+<li><p><a class="reference internal" href="#new-features-in-ros-2-interfaces" id="id9">4. ROS 2接口中的新功能</a></p></li>
 </ul>
 </div>
 <div class="section" id="background">
@@ -599,7 +599,7 @@ int32<span class="o">[]</span> samples <span class="o">[</span>-200, -100, <span
 </div>
 <div class="section" id="constants">
 <h3><a class="toc-backref" href="#id7">2.2 常量</a><a class="headerlink" href="#constants" title="永久链接至标题"></a></h3>
-<p>Each constant definition is like a field description with a default value, except that this value can never be changed programatically. This value assignment is indicated by use of an equal '=' sign, e.g.</p>
+<p>每个常量定义都类似于具有默认值的字段描述，但是这个值在程序中不能被改变。这个值的赋值通过等号 '=' 来表示，例如。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>constanttype <span class="nv">CONSTANTNAME</span><span class="o">=</span>constantvalue
 </pre></div>
 </div>
@@ -612,22 +612,21 @@ string <span class="nv">EXAMPLE</span><span class="o">=</span><span class="s1">&
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Constants names have to be UPPERCASE</p>
+<p>常量名称必须是大写字母。</p>
 </div>
 </div>
 </div>
 <div class="section" id="service-description-specification">
-<h2><a class="toc-backref" href="#id8">3. Service description specification</a><a class="headerlink" href="#service-description-specification" title="永久链接至标题"></a></h2>
-<p>Services are described and defined in <code class="docutils literal notranslate"><span class="pre">.srv</span></code> files in the <code class="docutils literal notranslate"><span class="pre">srv/</span></code> directory of a ROS package.</p>
-<p>A service description file consists of a request and a response msg type, separated by <code class="docutils literal notranslate"><span class="pre">---</span></code>.
-Any two <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files concatenated with a <code class="docutils literal notranslate"><span class="pre">---</span></code> are a legal service description.</p>
-<p>Here is a very simple example of a service that takes in a string and returns a string:</p>
+<h2><a class="toc-backref" href="#id8">3. 服务描述规范</a><a class="headerlink" href="#service-description-specification" title="永久链接至标题"></a></h2>
+<p>服务在 ROS 包的 'srv/' 目录下的 '.srv' 文件中进行描述和定义。</p>
+<p>一个服务描述文件由请求和响应的消息类型组成，用 '---' 分隔。任何两个 '.msg' 文件通过 '---' 连接在一起都构成一个合法的服务描述。</p>
+<p>以下是一个非常简单的服务示例，它接收一个字符串并返回一个字符串：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>string str
 ---
 string str
 </pre></div>
 </div>
-<p>We can of course get much more complicated (if you want to refer to a message from the same package you must not mention the package name):</p>
+<p>当然，我们可以变得更加复杂（如果你想引用同一包中的消息，不需要提及包名）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#request constants</span>
 int8 <span class="nv">FOO</span><span class="o">=</span><span class="m">1</span>
 int8 <span class="nv">BAR</span><span class="o">=</span><span class="m">2</span>
@@ -643,17 +642,14 @@ CustomMessageDefinedInThisPackage value
 uint32 an_integer
 </pre></div>
 </div>
-<p>You cannot embed another service inside of a service.</p>
+<p>你不能在一个服务中嵌入另一个服务。</p>
 </div>
 <div class="section" id="new-features-in-ros-2-interfaces">
-<h2><a class="toc-backref" href="#id9">4. New features in ROS 2 interfaces</a><a class="headerlink" href="#new-features-in-ros-2-interfaces" title="永久链接至标题"></a></h2>
-<p>The ROS 2 IDL is closely related to the <a class="reference external" href="https://wiki.ros.org/msg">ROS 1 IDL</a>.
-Most existing ROS 1 <code class="docutils literal notranslate"><span class="pre">.msg</span></code> and <code class="docutils literal notranslate"><span class="pre">.srv</span></code> files should be usable as-is with ROS 2.
-Atop ROS 1's existing feature set, the ROS 2 IDL introduces some new features, namely:</p>
+<h2><a class="toc-backref" href="#id9">4. ROS 2接口中的新功能</a><a class="headerlink" href="#new-features-in-ros-2-interfaces" title="永久链接至标题"></a></h2>
+<p>ROS 2 IDL与 <a class="reference external" href="https://wiki.ros.org/msg">ROS 1 IDL</a> 密切相关。大多数现有的 ROS 1 <code class="docutils literal notranslate"><span class="pre">.msg</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.srv</span></code> 文件应该可以直接在 ROS 2 中使用。在 ROS 1 的现有功能集的基础上，ROS 2 IDL 还引入了一些新功能，包括：</p>
 <ul class="simple">
-<li><p><strong>bounded arrays</strong>: Whereas the ROS 1 IDL allows unbounded arrays (e.g., <code class="docutils literal notranslate"><span class="pre">int32[]</span> <span class="pre">foo</span></code>) and fixed-size arrays (e.g., <code class="docutils literal notranslate"><span class="pre">int32[5]</span> <span class="pre">bar</span></code>), the ROS 2 IDL further allows bounded arrays (e.g., <code class="docutils literal notranslate"><span class="pre">int32[&lt;=5]</span> <span class="pre">bat</span></code>).
-There are use cases in which it's important to be able to place an upper bound on the size of an array without committing to always using that much space (e.g., in a real-time system in which you need to preallocate all memory that will be used during execution).</p></li>
-<li><p><strong>bounded strings</strong>: Whereas the ROS 1 IDL allows unbounded strings (e.g., <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">foo</span></code>), the ROS 2 IDL further allows bounded strings (e.g., <code class="docutils literal notranslate"><span class="pre">string&lt;=5</span> <span class="pre">bar</span></code>).</p></li>
+<li><p><strong>有界数组</strong>：与 ROS 1 IDL 允许无界数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[]</span> <span class="pre">foo</span></code>）和固定大小数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[5]</span> <span class="pre">bar</span></code>）不同，ROS 2 IDL 进一步允许有界数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[&lt;=5]</span> <span class="pre">bat</span></code>）。在某些情况下，能够对数组的大小设定上限是很重要的，而不必始终使用那么多的空间（例如，在需要预分配执行期间将使用的所有内存的实时系统中）。</p></li>
+<li><p><strong>有界字符串</strong>：与 ROS 1 IDL 允许无界字符串（例如，<code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">foo</span></code>）不同，ROS 2 IDL 进一步允许有界字符串（例如，<code class="docutils literal notranslate"><span class="pre">string&lt;=5</span> <span class="pre">bar</span></code>）。</p></li>
 <li><p><strong>default values</strong>: Whereas the ROS 1 IDL allows constant fields (e.g., <code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X=123</span></code>), the ROS 2 IDL further allows default values to be specified (e.g., <code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X</span> <span class="pre">123</span></code>).
 The default value is used when constructing a message/service object and can be subsequently overridden by assigning to the field.
 You can also specify default values for action parts.</p></li>
