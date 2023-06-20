@@ -55,7 +55,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Windows（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Development-Setup.html">RHEL（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Install-Binary.html">RHEL（二进制）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="macOS-Development-Setup.html">macOS (source)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macOS-Development-Setup.html">macOS（源码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fedora-Development-Setup.html">Fedora（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Latest-Development-Setup.html">最新的开发版本（源码）</a></li>
 </ul>
@@ -661,20 +661,20 @@ ros2 run demo_nodes_py listener
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>You'll also need SVN, since some of the Python source-build dependencies are checked out via SVN:</p></li>
+<li><p>你还需要SVN，因为一些Python源码构建的依赖项是通过SVN检出的：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y svn hg
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>You'll need to quit and restart the command prompt after installing the above.</p></li>
-<li><p>Get and extract the Python 3.8.3 source from the <code class="docutils literal notranslate"><span class="pre">tgz</span></code>:</p>
+<li><p>安装以上内容后，您需要退出并重新启动命令提示符。</p></li>
+<li><p>从``tgz``中获取并提取Python 3.8.3的源代码：</p>
 <ul>
 <li><p><a class="reference external" href="https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz">https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz</a></p></li>
-<li><p>To keep these instructions concise, please extract it to <code class="docutils literal notranslate"><span class="pre">C:\dev\Python-3.8.3</span></code></p></li>
+<li><p>为了使这些说明简洁，请将其提取到``C:devPython-3.8.3``</p></li>
 </ul>
 </li>
-<li><p>Now, build the Python source in debug mode from a Visual Studio command prompt:</p></li>
+<li><p>现在，在Visual Studio命令提示符中以调试模式构建Python源代码：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> C:<span class="se">\d</span>ev<span class="se">\P</span>ython-3.8.3<span class="se">\P</span>Cbuild
 get_externals.bat
@@ -682,7 +682,7 @@ build.bat -p x64 -d
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Finally, copy the build products into the Python38 installation directories, next to the Release-mode Python executable and DLL's:</p></li>
+<li><p>最后，将构建产品复制到Python38安装目录中，放在Release模式的Python可执行文件和DLL文件旁边：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> C:<span class="se">\d</span>ev<span class="se">\P</span>ython-3.8.3<span class="se">\P</span>Cbuild<span class="se">\a</span>md64
 copy python_d.exe C:<span class="se">\P</span>ython38 /Y
@@ -695,39 +695,39 @@ copy sqlite3_d.dll C:<span class="se">\P</span>ython38<span class="se">\D</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Now, from a fresh command prompt, make sure that <code class="docutils literal notranslate"><span class="pre">python_d</span></code> works:</p></li>
+<li><p>现在，在一个全新的命令提示符下，确保``python_d``可以工作：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python_d -c <span class="s2">&quot;import _ctypes ; import coverage&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Once you have verified the operation of <code class="docutils literal notranslate"><span class="pre">python_d</span></code>, it is necessary to reinstall a few dependencies with the debug-enabled libraries:</p></li>
+<li><p>一旦验证了``python_d``的操作，就需要重新安装一些带有启用调试库的依赖项：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python_d -m pip install --force-reinstall https://github.com/ros2/ros2/releases/download/numpy-archives/numpy-1.18.4-cp38-cp38d-win_amd64.whl
 python_d -m pip install --force-reinstall https://github.com/ros2/ros2/releases/download/lxml-archives/lxml-4.5.1-cp38-cp38d-win_amd64.whl
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>To verify the installation of these dependencies:</p></li>
+<li><p>要验证这些依赖项的安装情况：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python_d -c <span class="s2">&quot;from lxml import etree ; import numpy&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>When you wish to return to building release binaries, it is necessary to uninstall the debug variants and use the release variants:</p></li>
+<li><p>当您希望返回构建发布二进制文件时，需要卸载调试版本并使用发布版本：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pip uninstall numpy lxml
 python -m pip install numpy lxml
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>To create executables python scripts(.exe), python_d should be used to invoke colcon</p></li>
+<li><p>要创建可执行的Python脚本（.exe），应使用python_d来调用colcon</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python_d path<span class="se">\t</span>o<span class="se">\c</span>olcon_executable build
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Hooray, you're done!</p></li>
+<li><p>太好了，你完成了！</p></li>
 </ul>
 </div>
 <div class="section" id="stay-up-to-date">
@@ -736,7 +736,7 @@ python -m pip install numpy lxml
 </div>
 <div class="section" id="troubleshooting">
 <h2><a class="toc-backref" href="#id28">故障排除</a><a class="headerlink" href="#troubleshooting" title="永久链接至标题"></a></h2>
-<p>Troubleshooting techniques can be found <a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html#windows-troubleshooting"><span class="std std-ref">here</span></a>.</p>
+<p>故障排除技巧可以在此处找到：<a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html#windows-troubleshooting"><span class="std std-ref">这里</span></a>。</p>
 </div>
 <div class="section" id="uninstall">
 <h2><a class="toc-backref" href="#id29">卸载</a><a class="headerlink" href="#uninstall" title="永久链接至标题"></a></h2>
