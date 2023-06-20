@@ -17285,62 +17285,62 @@ msgstr "以下步骤假设您拥有 IBM Cloud 帐户并已安装 ibmcloud CLI。
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:206
 msgid "We also need to make sure that the CLI plug-in for the IBM Cloud Container Registry is installed by running the command"
-msgstr "We also need to make sure that the CLI plug-in for the IBM Cloud Container Registry is installed by running the command"
+msgstr "我们还需要确保通过运行以下命令安装了 IBM Cloud Container Registry 的 CLI 插件"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:213
 msgid "Afterwards, login to your ibmcloud account through the terminal:"
-msgstr "Afterwards, login to your ibmcloud account through the terminal:"
+msgstr "随后，通过终端登录到您的 ibmcloud 帐户:"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:219
 msgid "From here, let's create a container registry name-space. Make sure you use a unique name that is also descriptive as to what it is. Here, I used *ros2nasr*."
-msgstr "From here, let's create a container registry name-space. Make sure you use a unique name that is also descriptive as to what it is. Here, I used *ros2nasr*."
+msgstr "从这里开始，让我们创建一个容器注册表命名空间。确保使用一个既独特又能描述其用途的名称。在这里，我使用了 *ros2nasr*。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:227
 msgid "IBM cloud has a lot of shortcuts that would help us get our container onto the cloud right away. The command below builds the container and tags it with the name **ros2foxy** and the version of **1**. Make sure you use the correct registry name you created and you are free to change the container name as you wish. The **.** at the end indicates that the *Dockerfile* is in the current directory (and it is important), if not, change it to point to the directory containing the Dockerfile."
-msgstr "IBM cloud has a lot of shortcuts that would help us get our container onto the cloud right away. The command below builds the container and tags it with the name **ros2foxy** and the version of **1**. Make sure you use the correct registry name you created and you are free to change the container name as you wish. The **.** at the end indicates that the *Dockerfile* is in the current directory (and it is important), if not, change it to point to the directory containing the Dockerfile."
+msgstr "IBM Cloud 提供了许多快捷方式，可以帮助我们立即将容器部署到云端。下面的命令会构建容器，并将其标记为名称为 **ros2foxy**、版本为 **1**。确保使用您创建的正确注册表名称，并且可以根据需要自由更改容器名称。末尾的 **.** 表示 *Dockerfile* 在当前目录中（这一点很重要），如果不是，请将其更改为指向包含 Dockerfile 的目录。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:239
 msgid "You can now make sure that the container has been pushed to the registry you created by running the following command"
-msgstr "You can now make sure that the container has been pushed to the registry you created by running the following command"
+msgstr "您现在可以通过运行以下命令确保容器已推送到您创建的注册表中"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:252
 msgid "Next, it is important to log-in to your registry to run the docker image. Again, if you face a *permission denied* error, perform the command with sudo privileges. Afterwards, run your docker file as shown below."
-msgstr "Next, it is important to log-in to your registry to run the docker image. Again, if you face a *permission denied* error, perform the command with sudo privileges. Afterwards, run your docker file as shown below."
+msgstr "接下来，重要的是登录到您的注册表以运行 Docker 镜像。同样，如果遇到 *permission denied* 错误，请使用 sudo 权限执行该命令。然后按照下面的示例运行您的 Dockerfile。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:269
 msgid "Where *ros2nasr* is the name of the registry you created and *ros2foxy:1* is the tag of the docker container and the version as explained previously."
-msgstr "Where *ros2nasr* is the name of the registry you created and *ros2foxy:1* is the tag of the docker container and the version as explained previously."
+msgstr "其中*ros2nasr*是您创建的注册表的名称，而*ros2foxy:1*是Docker容器的标签和版本，如之前所述。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:273
 msgid "You should now see your docker file running and providing similar output to that you saw when you ran it locally on your machine."
-msgstr "You should now see your docker file running and providing similar output to that you saw when you ran it locally on your machine."
+msgstr "现在，您应该看到Docker文件正在运行，并提供与在本地计算机上运行时所看到的类似的输出。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:277
 msgid "Step 3: Using Custom ROS2 Packages"
-msgstr "Step 3: Using Custom ROS2 Packages"
+msgstr "步骤3：使用自定义的ROS2软件包"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:279
 msgid "So now we have the full pipeline working, from creating the Dockerfile, all the way to deploying it and seeing it work on IBM Cloud. But, what if we want to use a custom set of packages we (or someone else) created?"
-msgstr "So now we have the full pipeline working, from creating the Dockerfile, all the way to deploying it and seeing it work on IBM Cloud. But, what if we want to use a custom set of packages we (or someone else) created?"
+msgstr "所以现在我们已经有了完整的流程，从创建Dockerfile，一直到部署它并在IBM Cloud上运行。但是，如果我们想要使用我们自己（或其他人）创建的自定义软件包，怎么办呢？"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:283
 msgid "Well that all has to do with how you set-up your Dockerfile. Lets use the example provided by ROS2 `here <https://hub.docker.com/_/ros/>`__. Create a new directory with a new Dockerfile (or overwrite the existing one) and add the following in it (or download the file `here <https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile>`__)"
-msgstr "Well that all has to do with how you set-up your Dockerfile. Lets use the example provided by ROS2 `here <https://hub.docker.com/_/ros/>`__. Create a new directory with a new Dockerfile (or overwrite the existing one) and add the following in it (or download the file `here <https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile>`__)"
+msgstr "那么这完全取决于您如何设置Dockerfile。让我们使用ROS2 `这里提供的示例 <https://hub.docker.com/_/ros/>`__。创建一个新目录，其中包含一个新的Dockerfile（或覆盖现有的Dockerfile），然后在其中添加以下内容（或从`这里下载文件 <https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile>`__）"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:351
 msgid "Going through the lines shown, we can see how we can add custom packages from github in 4 steps:"
-msgstr "Going through the lines shown, we can see how we can add custom packages from github in 4 steps:"
+msgstr "通过查看所示的行，我们可以了解到如何通过4个步骤从GitHub添加自定义软件包："
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:354
