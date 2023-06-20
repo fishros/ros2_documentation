@@ -3985,62 +3985,62 @@ msgstr "ROS 2安全服务由底层的`数据分发服务 (DDS) <https://www.omg.
 
 #: ../../source/Concepts/About-Security.rst:24
 msgid "The Security Enclave"
-msgstr "The Security Enclave"
+msgstr "安全隔离区"
 
 
 #: ../../source/Concepts/About-Security.rst:26
 msgid "A security enclave encapsulates a single policy for protecting ROS communications. The enclave may set policy for multiple nodes, for an entire ROS graph, or any combination of protected ROS processes and devices. Security enclaves can be flexibly mapped to processes, users, or devices at deployment. Adjusting this default behavior becomes important for optimizing communications and for complex systems. See the ROS 2 Security Enclaves `design document <https://design.ros2.org/articles/ros2_security_enclaves.html>`_ for additional details."
-msgstr "A security enclave encapsulates a single policy for protecting ROS communications. The enclave may set policy for multiple nodes, for an entire ROS graph, or any combination of protected ROS processes and devices. Security enclaves can be flexibly mapped to processes, users, or devices at deployment. Adjusting this default behavior becomes important for optimizing communications and for complex systems. See the ROS 2 Security Enclaves `design document <https://design.ros2.org/articles/ros2_security_enclaves.html>`_ for additional details."
+msgstr "安全隔离区封装了一项用于保护ROS通信的策略。该隔离区可以为多个节点、整个ROS图或任意受保护的ROS进程和设备设置策略。安全隔离区可以灵活地映射到部署的进程、用户或设备。调整此默认行为对于优化通信和处理复杂系统至关重要。有关详细信息，请参阅ROS 2安全隔离区的设计文档：<https://design.ros2.org/articles/ros2_security_enclaves.html>。"
 
 
 #: ../../source/Concepts/About-Security.rst:34
 msgid "Security Files"
-msgstr "Security Files"
+msgstr "安全文件"
 
 
 #: ../../source/Concepts/About-Security.rst:36
 msgid "A `ROS 2 security enclave <https://design.ros2.org/articles/ros2_security_enclaves.html>`_ is established with six files as outlined by the DDS specification. Three of these files define an enclave's identity, while three other files define the permissions to be granted to the enclave. All six files reside in a single directory, and nodes launched without a qualified enclave path use files in the default root level enclave."
-msgstr "A `ROS 2 security enclave <https://design.ros2.org/articles/ros2_security_enclaves.html>`_ is established with six files as outlined by the DDS specification. Three of these files define an enclave's identity, while three other files define the permissions to be granted to the enclave. All six files reside in a single directory, and nodes launched without a qualified enclave path use files in the default root level enclave."
+msgstr "通过DDS规范，建立了一个包含六个文件的ROS 2安全隔离区。其中三个文件定义了隔离区的标识，另外三个文件定义了授予隔离区的权限。这六个文件都存放在一个目录中，如果在启动节点时没有指定合格的隔离区路径，将使用默认根级隔离区中的文件。"
 
 
 #: ../../source/Concepts/About-Security.rst:41
 msgid "Enclave Identity"
-msgstr "Enclave Identity"
+msgstr "隔离区标识"
 
 
 #: ../../source/Concepts/About-Security.rst:43
 msgid "The Identity Certificate Authority file ``identity_ca.cert.pem`` acts as the trust anchor used to identify participants. Each enclave also holds its unique identifying certificate in the file ``cert.pem``, and the associated private key in the file ``key.pem``. Because the ``cert.pem`` certificate has been signed by identity certificate, when a participant presents this certificate to other domain members, they are able to validate the participant's identity using their own copy of the identity certificate. This valid certificate exchange allows the enclave to securely establish trusted communications with other participants. The enclave does not not share the ``key.pem`` private key, but only uses it for decryption and message signing."
-msgstr "The Identity Certificate Authority file ``identity_ca.cert.pem`` acts as the trust anchor used to identify participants. Each enclave also holds its unique identifying certificate in the file ``cert.pem``, and the associated private key in the file ``key.pem``. Because the ``cert.pem`` certificate has been signed by identity certificate, when a participant presents this certificate to other domain members, they are able to validate the participant's identity using their own copy of the identity certificate. This valid certificate exchange allows the enclave to securely establish trusted communications with other participants. The enclave does not not share the ``key.pem`` private key, but only uses it for decryption and message signing."
+msgstr "身份证书机构文件``identity_ca.cert.pem``作为用于识别参与者的信任锚点。每个隔离区还在文件``cert.pem``中保存其唯一标识证书，并在文件``key.pem``中保存关联的私钥。由于``cert.pem``证书已经由身份证书签名，当参与者向其他域成员呈现此证书时，它们可以使用自己拥有的身份证书副本验证参与者的身份。此有效的证书交换使得隔离区能够与其他参与者安全地建立可信任的通信。隔离区不共享``key.pem``私钥，而仅将其用于解密和消息签名。"
 
 
 #: ../../source/Concepts/About-Security.rst:50
 msgid "Enclave Permissions"
-msgstr "Enclave Permissions"
+msgstr "安全区域权限"
 
 
 #: ../../source/Concepts/About-Security.rst:52
 msgid "The Permissions Certificate Authority file ``permissions_ca.cert.pem`` serves as the trust anchor to grant permissions to security enclaves. This certificate is used to create the signed file ``governance.p7s``, an XML document which defines domain-wide protection policies. Similarly the XML file ``permissions.p7s`` outlines permissions of this particular enclave and has been signed by the Permissions CA. Domain members use a copy of the permissions CA to validate these signed files and grant the requested access."
-msgstr "The Permissions Certificate Authority file ``permissions_ca.cert.pem`` serves as the trust anchor to grant permissions to security enclaves. This certificate is used to create the signed file ``governance.p7s``, an XML document which defines domain-wide protection policies. Similarly the XML file ``permissions.p7s`` outlines permissions of this particular enclave and has been signed by the Permissions CA. Domain members use a copy of the permissions CA to validate these signed files and grant the requested access."
+msgstr "权限证书机构文件 ``permissions_ca.cert.pem`` 用作授予权限给安全区域的可信锚点。该证书用于创建签名文件 ``governance.p7s``，它是一个定义了整个域的保护策略的 XML 文档。类似地，XML 文件 ``permissions.p7s`` 概述了该特定安全区域的权限，并由权限证书机构签名。域成员使用权限证书机构的副本来验证这些签名文件并授予所请求的访问权限。"
 
 
 #: ../../source/Concepts/About-Security.rst:57
 msgid "Although these two certificate authorities enable separate workflows for identity and permissions, often the same certificate serves as both the identity and the permissions authority."
-msgstr "Although these two certificate authorities enable separate workflows for identity and permissions, often the same certificate serves as both the identity and the permissions authority."
+msgstr "尽管这两个证书机构为身份和权限提供了单独的工作流程，但通常同一证书既用作身份验证机构，也用作权限机构。"
 
 
 #: ../../source/Concepts/About-Security.rst:60
 msgid "Private Keys"
-msgstr "Private Keys"
+msgstr "私钥"
 
 
 #: ../../source/Concepts/About-Security.rst:62
 msgid "The identity and permissions certificates also have associated private key files. Add new enclaves to the domain by signing their Certificate Signing Request (CSR) with the identity certificate's private key. Similarly, grant permissions for a new enclave by signing a permissions XML document with the permission certificate's private key."
-msgstr "The identity and permissions certificates also have associated private key files. Add new enclaves to the domain by signing their Certificate Signing Request (CSR) with the identity certificate's private key. Similarly, grant permissions for a new enclave by signing a permissions XML document with the permission certificate's private key."
+msgstr "身份和权限证书还附带有关联的私钥文件。通过使用身份证书的私钥签署其证书签名请求（CSR），将新的安全区域添加到域中。同样地，通过使用权限证书的私钥签署权限的 XML 文档来授予新安全区域的权限。"
 
 
 #: ../../source/Concepts/About-Security.rst:68
 msgid "Security Environment Variables"
-msgstr "Security Environment Variables"
+msgstr "安全环境变量"
 
 
 #: ../../source/Concepts/About-Security.rst:70
