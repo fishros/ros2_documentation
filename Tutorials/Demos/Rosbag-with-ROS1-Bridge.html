@@ -375,12 +375,12 @@
   <div class="section" id="recording-and-playing-back-data-with-rosbag-using-the-ros-1-bridge">
 <h1>使用ROS 1桥接在`rosbag`中记录和回放数据<a class="headerlink" href="#recording-and-playing-back-data-with-rosbag-using-the-ros-1-bridge" title="永久链接至标题"></a></h1>
 <p>本教程是“在ROS 1和ROS 2之间进行桥接通信”的后续教程，可以在此处找到：<a href="#id1"><span class="problematic" id="id2">`https://github.com/ros2/ros1_bridge/blob/master/README.md`__</span></a>，在下文中假设您已经完成了该教程。</p>
-<p>The ros1_bridge can be built from <a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html"><span class="doc">source</span></a> for these examples.</p>
-<p>What follows is a series of additional examples, like that ones that come at the end of the aforementioned <em>Bridge communication between ROS 1 and ROS 2</em> demo.</p>
+<p>对于这些示例，可以从 <a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html"><span class="doc">源代码</span></a> 构建ros1_bridge。</p>
+<p>接下来是一系列额外的示例，类似于上述 <em>ROS 1和ROS 2之间的桥接通信</em> 演示中的示例。</p>
 <div class="section" id="recording-topic-data-with-rosbag-and-ros-1-bridge">
-<h2>Recording topic data with rosbag and ROS 1 Bridge<a class="headerlink" href="#recording-topic-data-with-rosbag-and-ros-1-bridge" title="永久链接至标题"></a></h2>
-<p>In this example, we'll be using the <code class="docutils literal notranslate"><span class="pre">cam2image</span></code> demo program that comes with ROS 2 and a Python script to emulate a simple turtlebot-like robot's sensor data so that we can bridge it to ROS 1 and use rosbag to record it.</p>
-<p>First we'll run a ROS 1 <code class="docutils literal notranslate"><span class="pre">roscore</span></code> in a new shell:</p>
+<h2>使用rosbag和ROS 1 Bridge记录主题数据<a class="headerlink" href="#recording-topic-data-with-rosbag-and-ros-1-bridge" title="永久链接至标题"></a></h2>
+<p>在这个示例中，我们将使用ROS 2附带的``cam2image``演示程序和一个Python脚本来模拟一个简单的类似于turtlebot的机器人的传感器数据，以便我们可以将其桥接到ROS 1并使用rosbag进行记录。</p>
+<p>首先，在新的终端窗口中运行ROS 1的``roscore``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell A:</span>
 . /opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
@@ -388,7 +388,7 @@
 roscore
 </pre></div>
 </div>
-<p>Then we'll run the ROS 1 &lt;=&gt; ROS 2 <code class="docutils literal notranslate"><span class="pre">dynamic_bridge</span></code> with the <code class="docutils literal notranslate"><span class="pre">--bridge-all-topics</span></code> option (so we can do <code class="docutils literal notranslate"><span class="pre">rostopic</span> <span class="pre">list</span></code> and see them) in another shell:</p>
+<p>然后，在另一个终端窗口中运行ROS 1 &lt;=&gt; ROS 2的``dynamic_bridge``，使用``--bridge-all-topics``选项（这样我们可以执行``rostopic list``并查看它们）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell B:</span>
 . /opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
@@ -400,10 +400,9 @@ roscore
 ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
 </pre></div>
 </div>
-<p>Remember to replace <code class="docutils literal notranslate"><span class="pre">&lt;workspace-with-bridge&gt;</span></code> with the path to where you either extracted the ROS 2 binary or where you built ROS 2 from source.</p>
+<p>请记得将``&lt;workspace-with-bridge&gt;``替换为你提取ROS 2二进制文件的路径或者构建ROS 2源码的路径。</p>
 <hr class="docutils" />
-<p>Now we can start up the ROS 2 programs that will emulate our turtlebot-like robot.
-First we'll run the <code class="docutils literal notranslate"><span class="pre">cam2image</span></code> program with the <code class="docutils literal notranslate"><span class="pre">-b</span></code> option so it doesn't require a camera to work:</p>
+<p>现在我们可以启动模拟海龟机器人的ROS 2程序。首先，我们将使用``-b``选项运行``cam2image``程序，这样它就不需要相机就能工作：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell C:</span>
 . /opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
@@ -411,10 +410,8 @@ First we'll run the <code class="docutils literal notranslate"><span class="pre"
 ros2 run image_tools cam2image -- -b
 </pre></div>
 </div>
-<p>TODO: use namespaced topic names</p>
-<p>Then we'll run a simple Python script to emulate the <code class="docutils literal notranslate"><span class="pre">odom</span></code> and <code class="docutils literal notranslate"><span class="pre">imu_data</span></code> topics from a Kobuki base.
-I would use the more accurate <code class="docutils literal notranslate"><span class="pre">~sensors/imu_data</span></code> topic name for the imu data, but we don't have namespace support just yet in ROS 2 (it's coming!).
-Place this script in a file called <code class="docutils literal notranslate"><span class="pre">emulate_kobuki_node.py</span></code>:</p>
+<p>TODO: 使用命名空间的主题名</p>
+<p>然后，我们将运行一个简单的Python脚本来模拟Kobuki基座的``odom``和``imu_data``主题。我会使用更准确的``~sensors/imu_data``主题名来表示IMU数据，但是在ROS 2中还没有命名空间支持（即将推出！）。将这个脚本保存到一个名为``emulate_kobuki_node.py``的文件中：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -455,7 +452,7 @@ Place this script in a file called <code class="docutils literal notranslate"><s
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>You can run this python script in a new ROS 2 shell:</p>
+<p>你可以在一个新的ROS 2终端中运行这个Python脚本：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell D:</span>
 . /opt/ros/ardent/setup.bash
 <span class="c1"># Or, if building ROS 2 from source:</span>
@@ -464,7 +461,7 @@ python3 emulate_kobuki_node.py
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>Now that all the data sources and the dynamic bridge are running, we can look at the available topics in a new ROS 1 shell:</p>
+<p>现在，所有的数据源和动态桥接都在运行，我们可以在一个新的ROS 1终端中查看可用的主题：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shell E:</span>
 . /opt/ros/kinetic/setup.bash
 <span class="c1"># Or, on OSX, something like:</span>
