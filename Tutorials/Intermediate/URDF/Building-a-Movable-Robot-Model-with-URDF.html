@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="添加物理和碰撞属性" href="Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html" />
-    <link rel="prev" title="Building a visual robot model from scratch" href="Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html" /> 
+    <link rel="prev" title="从头开始构建一个可视化的机器人模型" href="Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -177,7 +177,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="URDF-Main.html">URDF</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">Building a visual robot model from scratch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">构建一个可移动的机器人模型。</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Using-Xacro-to-Clean-Up-a-URDF-File.html">Using Xacro to clean up your code</a></li>
@@ -382,10 +382,10 @@
 <p class="topic-title">内容</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-head" id="id1">头部</a></p></li>
-<li><p><a class="reference internal" href="#the-gripper" id="id2">The Gripper</a></p></li>
-<li><p><a class="reference internal" href="#the-gripper-arm" id="id3">The Gripper Arm</a></p></li>
-<li><p><a class="reference internal" href="#other-types-of-joints" id="id4">Other Types of Joints</a></p></li>
-<li><p><a class="reference internal" href="#specifying-the-pose" id="id5">Specifying the Pose</a></p></li>
+<li><p><a class="reference internal" href="#the-gripper" id="id2">夹爪</a></p></li>
+<li><p><a class="reference internal" href="#the-gripper-arm" id="id3">夹爪臂</a></p></li>
+<li><p><a class="reference internal" href="#other-types-of-joints" id="id4">其他类型的关节</a></p></li>
+<li><p><a class="reference internal" href="#specifying-the-pose" id="id5">指定姿态</a></p></li>
 <li><p><a class="reference internal" href="#next-steps" id="id6">下一步</a></p></li>
 </ul>
 </div>
@@ -410,11 +410,10 @@
 </pre></div>
 </div>
 <p>身体和头部之间的连接是一个连续关节，意味着它可以取负无穷到正无穷的任意角度。车轮也是这样建模的，因此它们可以永远向两个方向滚动。</p>
-<p>The only additional information we have to add is the axis of rotation, here specified by an xyz triplet, which specifies a vector around which the head will rotate.
-Since we want it to go around the z axis, we specify the vector &quot;0 0 1&quot;.</p>
+<p>我们要补充的唯一附加信息是旋转轴，这里用一个xyz三元组来指定，它指定了头部将绕其旋转的矢量。由于我们希望它绕z轴旋转，我们指定矢量&quot;0 0 1&quot;。</p>
 </div>
 <div class="section" id="the-gripper">
-<h2><a class="toc-backref" href="#id2">The Gripper</a><a class="headerlink" href="#the-gripper" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">夹爪</a><a class="headerlink" href="#the-gripper" title="永久链接至标题"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;left_gripper_joint&quot;</span> <span class="na">type=</span><span class="s">&quot;revolute&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;axis</span> <span class="na">xyz=</span><span class="s">&quot;0 0 1&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;limit</span> <span class="na">effort=</span><span class="s">&quot;1000.0&quot;</span> <span class="na">lower=</span><span class="s">&quot;0.0&quot;</span> <span class="na">upper=</span><span class="s">&quot;0.548&quot;</span> <span class="na">velocity=</span><span class="s">&quot;0.5&quot;</span><span class="nt">/&gt;</span>
@@ -424,13 +423,10 @@ Since we want it to go around the z axis, we specify the vector &quot;0 0 1&quot
 <span class="nt">&lt;/joint&gt;</span>
 </pre></div>
 </div>
-<p>Both the right and the left gripper joints are modeled as revolute joints.
-This means that they rotate in the same way that the continuous joints do, but they have strict limits.
-Hence, we must include the limit tag specifying the upper and lower limits of the joint (in radians).
-We also must specify a maximum velocity and effort for this joint but the actual values don't matter for our purposes here.</p>
+<p>右夹爪和左夹爪关节都被建模为旋转关节。这意味着它们以与连续关节相同的方式旋转，但它们有严格的限制。因此，我们必须包含限制标签，指定关节的上限和下限（以弧度为单位）。我们还必须为该关节指定最大速度和力量，但实际值对我们这里的目的不重要。</p>
 </div>
 <div class="section" id="the-gripper-arm">
-<h2><a class="toc-backref" href="#id3">The Gripper Arm</a><a class="headerlink" href="#the-gripper-arm" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id3">夹爪臂</a><a class="headerlink" href="#the-gripper-arm" title="永久链接至标题"></a></h2>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">&quot;gripper_extension&quot;</span> <span class="na">type=</span><span class="s">&quot;prismatic&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;parent</span> <span class="na">link=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;child</span> <span class="na">link=</span><span class="s">&quot;gripper_pole&quot;</span><span class="nt">/&gt;</span>
@@ -439,29 +435,20 @@ We also must specify a maximum velocity and effort for this joint but the actual
 <span class="nt">&lt;/joint&gt;</span>
 </pre></div>
 </div>
-<p>The gripper arm is a different kind of joint, namely a prismatic joint.
-This means that it moves along an axis, not around it.
-This translational movement is what allows our robot model to extend and retract its gripper arm.</p>
-<p>The limits of the prismatic arm are specified in the same way as a revolute joint, except that the units are meters, not radians.</p>
+<p>夹爪臂是一种不同类型的关节，即移动关节。这意味着它沿一个轴线移动，而不是围绕轴旋转。这种平移运动使我们的机器人模型能够伸展和收缩夹爪臂。</p>
+<p>与旋转关节相同，平移臂的限制也是以相同的方式指定，只是单位是米，而不是弧度。</p>
 </div>
 <div class="section" id="other-types-of-joints">
-<h2><a class="toc-backref" href="#id4">Other Types of Joints</a><a class="headerlink" href="#other-types-of-joints" title="永久链接至标题"></a></h2>
-<p>There are two other kinds of joints that move around in space.
-Whereas the prismatic joint can only move along one dimension, a planar joint can move around in a plane, or two dimensions.
-Furthermore, a floating joint is unconstrained, and can move around in any of the three dimensions.
-These joints cannot be specified by just one number, and therefore aren’t included in this tutorial.</p>
+<h2><a class="toc-backref" href="#id4">其他类型的关节</a><a class="headerlink" href="#other-types-of-joints" title="永久链接至标题"></a></h2>
+<p>还有另外两种可以在空间中移动的关节。与棱柱关节只能沿一个维度移动不同，平面关节可以在平面内或两个维度上移动。此外，浮动关节没有限制，可以在三个维度中移动。这些关节不能仅通过一个数值来指定，因此在本教程中不包括它们。</p>
 </div>
 <div class="section" id="specifying-the-pose">
-<h2><a class="toc-backref" href="#id5">Specifying the Pose</a><a class="headerlink" href="#specifying-the-pose" title="永久链接至标题"></a></h2>
-<p>As you move the sliders around in the GUI, the model moves in Rviz.
-How is this done? First the <a class="reference external" href="https://index.ros.org/p/joint_state_publisher_gui">GUI</a> parses the URDF and finds all the non-fixed joints and their limits.
-Then, it uses the values of the sliders to publish <a class="reference external" href="https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg">sensor_msgs/msg/JointState</a> messages.
-Those are then used by <a class="reference external" href="https://index.ros.org/p/robot_state_publisher">robot_state_publisher</a> to calculate all of transforms between the different parts.
-The resulting transform tree is then used to display all of the shapes in Rviz.</p>
+<h2><a class="toc-backref" href="#id5">指定姿态</a><a class="headerlink" href="#specifying-the-pose" title="永久链接至标题"></a></h2>
+<p>当您在GUI中移动滑块时，模型会在Rviz中移动。这是如何实现的？首先，<a href="#id1"><span class="problematic" id="id2">`</span></a>GUI &lt;<a class="reference external" href="https://index.ros.org/p/joint_state_publisher_gui">https://index.ros.org/p/joint_state_publisher_gui</a>&gt;`_解析URDF并找到所有非固定关节及其限制。然后，它使用滑块的值发布`sensor_msgs/msg/JointState &lt;<a class="reference external" href="https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg">https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg</a>&gt;`_消息。然后，<a href="#id3"><span class="problematic" id="id4">`</span></a>robot_state_publisher &lt;<a class="reference external" href="https://index.ros.org/p/robot_state_publisher">https://index.ros.org/p/robot_state_publisher</a>&gt;`_使用这些消息计算不同部分之间的所有变换。生成的变换树然后用于在Rviz中显示所有形状。</p>
 </div>
 <div class="section" id="next-steps">
 <h2><a class="toc-backref" href="#id6">下一步</a><a class="headerlink" href="#next-steps" title="永久链接至标题"></a></h2>
-<p>Now that you have a visibly functional model, you can <a class="reference internal" href="Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html"><span class="doc">add in some physical properties</span></a>, or <a class="reference internal" href="Using-Xacro-to-Clean-Up-a-URDF-File.html"><span class="doc">start using xacro to simplify your code</span></a>.</p>
+<p>现在您已经拥有一个可见的功能模型，您可以:doc:<a class="reference internal" href="Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html"><span class="doc">添加一些物理属性</span></a>，或者:doc:<a class="reference internal" href="Using-Xacro-to-Clean-Up-a-URDF-File.html"><span class="doc">开始使用xacro来简化您的代码</span></a>。</p>
 </div>
 </div>
 
@@ -470,7 +457,7 @@ The resulting transform tree is then used to display all of the shapes in Rviz.<
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html" class="btn btn-neutral float-left" title="Building a visual robot model from scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html" class="btn btn-neutral float-left" title="从头开始构建一个可视化的机器人模型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html" class="btn btn-neutral float-right" title="添加物理和碰撞属性" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
