@@ -410,10 +410,10 @@
 </li>
 <li><p><a class="reference internal" href="#build-the-ros-2-code" id="id21">构建ROS 2代码。</a></p></li>
 <li><p><a class="reference internal" href="#environment-setup" id="id22">环境设置</a></p></li>
-<li><p><a class="reference internal" href="#test-and-run" id="id23">Test and run</a></p></li>
+<li><p><a class="reference internal" href="#test-and-run" id="id23">测试和运行</a></p></li>
 <li><p><a class="reference internal" href="#next-steps-after-installing" id="id24">安装后的下一步</a></p></li>
 <li><p><a class="reference internal" href="#additional-rmw-implementations-optional" id="id25">其他RMW实现（可选）</a></p></li>
-<li><p><a class="reference internal" href="#extra-stuff-for-debug-mode" id="id26">Extra stuff for Debug mode</a></p></li>
+<li><p><a class="reference internal" href="#extra-stuff-for-debug-mode" id="id26">调试模式的额外内容</a></p></li>
 <li><p><a class="reference internal" href="#stay-up-to-date" id="id27">保持更新</a></p></li>
 <li><p><a class="reference internal" href="#troubleshooting" id="id28">故障排除</a></p></li>
 <li><p><a class="reference internal" href="#uninstall" id="id29">卸载</a></p></li>
@@ -610,30 +610,29 @@ setx /m QT_QPA_PLATFORM_PLUGIN_PATH C:<span class="se">\Q</span>t<span class="se
 </pre></div>
 </div>
 <p>这将自动为支持构建的任何DDS供应商设置环境。</p>
-<p>It is normal that the previous command, if nothing else went wrong, outputs &quot;The system cannot find the path specified.&quot; exactly once.</p>
+<p>如果没有其他问题，之前的命令输出&quot;系统找不到指定的路径.&quot;，这是正常的，只会出现一次。</p>
 </div>
 <div class="section" id="test-and-run">
-<h2><a class="toc-backref" href="#id23">Test and run</a><a class="headerlink" href="#test-and-run" title="永久链接至标题"></a></h2>
-<p>Note that the first time you run any executable you will have to allow access to the network through a Windows Firewall popup.</p>
-<p>You can run the tests using this command:</p>
+<h2><a class="toc-backref" href="#id23">测试和运行</a><a class="headerlink" href="#test-and-run" title="永久链接至标题"></a></h2>
+<p>请注意，第一次运行任何可执行文件时，您需要允许通过Windows防火墙弹出窗口访问网络。</p>
+<p>您可以使用以下命令运行测试：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon <span class="nb">test</span> --merge-install
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p><code class="docutils literal notranslate"><span class="pre">--merge-install</span></code> should only be used if it was also used in the build step.</p>
+<p>仅当在构建步骤中也使用了``--merge-install``时才应使用该选项。</p>
 </div>
-<p>Afterwards you can get a summary of the tests using this command:</p>
+<p>之后，您可以使用以下命令获取测试的摘要：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon test-result
 </pre></div>
 </div>
-<p>To run the examples, first open a clean new <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> and set up the workspace by sourcing the <code class="docutils literal notranslate"><span class="pre">local_setup.bat</span></code> file.
-Then, run a C++ <code class="docutils literal notranslate"><span class="pre">talker</span></code>:</p>
+<p>要运行示例，请首先打开一个干净的新``cmd.exe``并通过源文件``local_setup.bat``设置工作区。然后，运行一个C++``talker``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call install<span class="se">\l</span>ocal_setup.bat
 ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
-<p>In a separate shell you can do the same, but instead run a Python <code class="docutils literal notranslate"><span class="pre">listener</span></code>:</p>
+<p>在另一个窗口中，您可以执行相同的操作，但是运行一个Python``listener``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>call install<span class="se">\l</span>ocal_setup.bat
 ros2 run demo_nodes_py listener
 </pre></div>
@@ -641,7 +640,7 @@ ros2 run demo_nodes_py listener
 <p>你应该看到“talker”说它正在“发布”消息，而“listener”说“我听到了”这些消息。这验证了C++和Python API都正常工作。太棒了！</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>It is not recommended to build in the same cmd prompt that you've sourced the <code class="docutils literal notranslate"><span class="pre">local_setup.bat</span></code>.</p>
+<p>不建议在与已经加载``local_setup.bat``的cmd提示符中构建。</p>
 </div>
 </div>
 <div class="section" id="next-steps-after-installing">
@@ -653,10 +652,10 @@ ros2 run demo_nodes_py listener
 <p>ROS 2使用的默认中间件是“Fast DDS”，但是中间件（RMW）可以在运行时替换。请参阅:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>指南 &lt;../../How-To-Guides/Working-with-multiple-RMW-implementations&gt;`以了解如何使用多个RMW。</p>
 </div>
 <div class="section" id="extra-stuff-for-debug-mode">
-<h2><a class="toc-backref" href="#id26">Extra stuff for Debug mode</a><a class="headerlink" href="#extra-stuff-for-debug-mode" title="永久链接至标题"></a></h2>
-<p>If you want to be able to run all the tests in Debug mode, you'll need to install a few more things:</p>
+<h2><a class="toc-backref" href="#id26">调试模式的额外内容</a><a class="headerlink" href="#extra-stuff-for-debug-mode" title="永久链接至标题"></a></h2>
+<p>如果您想要能够在调试模式下运行所有测试，您需要安装一些其他内容：</p>
 <ul class="simple">
-<li><p>To be able to extract the Python source tarball, you can use PeaZip:</p></li>
+<li><p>要能够提取Python源代码压缩包，您可以使用PeaZip：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>choco install -y peazip
 </pre></div>
