@@ -384,13 +384,13 @@
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#components-of-a-quaternion" id="id3">四元数的组成部分</a></p></li>
-<li><p><a class="reference internal" href="#quaternion-types-in-ros-2" id="id4">Quaternion types in ROS 2</a></p></li>
-<li><p><a class="reference internal" href="#quaternion-operations" id="id5">Quaternion operations</a></p>
+<li><p><a class="reference internal" href="#quaternion-types-in-ros-2" id="id4">ROS 2中的四元数类型</a></p></li>
+<li><p><a class="reference internal" href="#quaternion-operations" id="id5">四元数操作</a></p>
 <ul>
-<li><p><a class="reference internal" href="#think-in-rpy-then-convert-to-quaternion" id="id6">1 Think in RPY then convert to quaternion</a></p></li>
-<li><p><a class="reference internal" href="#applying-a-quaternion-rotation" id="id7">2 Applying a quaternion rotation</a></p></li>
-<li><p><a class="reference internal" href="#inverting-a-quaternion" id="id8">3 Inverting a quaternion</a></p></li>
-<li><p><a class="reference internal" href="#relative-rotations" id="id9">4 Relative rotations</a></p></li>
+<li><p><a class="reference internal" href="#think-in-rpy-then-convert-to-quaternion" id="id6">1. 首先按照RPY（滚转、俯仰、偏航）的思维进行计算，然后再转换为四元数。</a></p></li>
+<li><p><a class="reference internal" href="#applying-a-quaternion-rotation" id="id7">2 应用四元数旋转</a></p></li>
+<li><p><a class="reference internal" href="#inverting-a-quaternion" id="id8">3 反转一个四元数</a></p></li>
+<li><p><a class="reference internal" href="#relative-rotations" id="id9">4 相对旋转</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id10">摘要</a></p></li>
@@ -420,17 +420,14 @@
 <span class="w">            </span><span class="n">q</span><span class="p">.</span><span class="n">x</span><span class="p">(),</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">y</span><span class="p">(),</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">z</span><span class="p">(),</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">w</span><span class="p">());</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The magnitude of a quaternion should always be one.
-If numerical errors cause a quaternion magnitude other than one, ROS 2 will print warnings.
-To avoid these warnings, normalize the quaternion:</p>
+<p>四元数的模应该始终为1。如果数值误差导致四元数模不为1，ROS 2将打印警告。为避免这些警告，请对四元数进行归一化：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">.</span><span class="n">normalize</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="quaternion-types-in-ros-2">
-<h2><a class="toc-backref" href="#id4">Quaternion types in ROS 2</a><a class="headerlink" href="#quaternion-types-in-ros-2" title="永久链接至标题"></a></h2>
-<p>ROS 2 uses two quaternion datatypes: <code class="docutils literal notranslate"><span class="pre">tf2::Quaternion</span></code> and its equivalent <code class="docutils literal notranslate"><span class="pre">geometry_msgs::msg::Quaternion</span></code>.
-To convert between them in C++, use the methods of <code class="docutils literal notranslate"><span class="pre">tf2_geometry_msgs</span></code>.</p>
+<h2><a class="toc-backref" href="#id4">ROS 2中的四元数类型</a><a class="headerlink" href="#quaternion-types-in-ros-2" title="永久链接至标题"></a></h2>
+<p>ROS 2使用两种四元数数据类型：<code class="docutils literal notranslate"><span class="pre">tf2::Quaternion``和它的等效类型``geometry_msgs::msg::Quaternion</span></code>。在C++中进行类型转换，可以使用``tf2_geometry_msgs``中的方法。</p>
 <p>C++</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_geometry_msgs/tf2_geometry_msgs.hpp&gt;</span><span class="cp"></span>
 <span class="p">...</span><span class="w"></span>
@@ -460,11 +457,10 @@ To convert between them in C++, use the methods of <code class="docutils literal
 </div>
 </div>
 <div class="section" id="quaternion-operations">
-<h2><a class="toc-backref" href="#id5">Quaternion operations</a><a class="headerlink" href="#quaternion-operations" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id5">四元数操作</a><a class="headerlink" href="#quaternion-operations" title="永久链接至标题"></a></h2>
 <div class="section" id="think-in-rpy-then-convert-to-quaternion">
-<h3><a class="toc-backref" href="#id6">1 Think in RPY then convert to quaternion</a><a class="headerlink" href="#think-in-rpy-then-convert-to-quaternion" title="永久链接至标题"></a></h3>
-<p>It's easy for us to think of rotations about axes, but hard to think in terms of quaternions.
-A suggestion is to calculate target rotations in terms of roll (about an X-axis), pitch (about the Y-axis), and yaw (about the Z-axis), and then convert to a quaternion.</p>
+<h3><a class="toc-backref" href="#id6">1. 首先按照RPY（滚转、俯仰、偏航）的思维进行计算，然后再转换为四元数。</a><a class="headerlink" href="#think-in-rpy-then-convert-to-quaternion" title="永久链接至标题"></a></h3>
+<p>我们更容易以轴旋转的方式思考，但很难用四元数来思考。一个建议是首先按照滚转（绕X轴）、俯仰（绕Y轴）和偏航（绕Z轴）计算目标旋转，然后再将其转换为四元数。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># quaternion_from_euler method is available in turtle_tf2_py/turtle_tf2_py/turtle_tf2_broadcaster.py</span>
 <span class="n">q</span> <span class="o">=</span> <span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">1.5707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5707</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The quaternion representation is x: </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> y: </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> z: </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1"> w: </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
@@ -472,9 +468,8 @@ A suggestion is to calculate target rotations in terms of roll (about an X-axis)
 </div>
 </div>
 <div class="section" id="applying-a-quaternion-rotation">
-<h3><a class="toc-backref" href="#id7">2 Applying a quaternion rotation</a><a class="headerlink" href="#applying-a-quaternion-rotation" title="永久链接至标题"></a></h3>
-<p>To apply the rotation of one quaternion to a pose, simply multiply the previous quaternion of the pose by the quaternion representing the desired rotation.
-The order of this multiplication matters.</p>
+<h3><a class="toc-backref" href="#id7">2 应用四元数旋转</a><a class="headerlink" href="#applying-a-quaternion-rotation" title="永久链接至标题"></a></h3>
+<p>要将一个四元数的旋转应用于姿势，只需将姿势的先前四元数乘以表示所需旋转的四元数。此乘法的顺序很重要。</p>
 <p>C++</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_geometry_msgs/tf2_geometry_msgs.hpp&gt;</span><span class="cp"></span>
 <span class="p">...</span><span class="w"></span>
@@ -497,16 +492,15 @@ The order of this multiplication matters.</p>
 </div>
 </div>
 <div class="section" id="inverting-a-quaternion">
-<h3><a class="toc-backref" href="#id8">3 Inverting a quaternion</a><a class="headerlink" href="#inverting-a-quaternion" title="永久链接至标题"></a></h3>
-<p>An easy way to invert a quaternion is to negate the w-component:</p>
+<h3><a class="toc-backref" href="#id8">3 反转一个四元数</a><a class="headerlink" href="#inverting-a-quaternion" title="永久链接至标题"></a></h3>
+<p>反转一个四元数的简单方法是对 w 分量取负：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="relative-rotations">
-<h3><a class="toc-backref" href="#id9">4 Relative rotations</a><a class="headerlink" href="#relative-rotations" title="永久链接至标题"></a></h3>
-<p>Say you have two quaternions from the same frame, <code class="docutils literal notranslate"><span class="pre">q_1</span></code> and <code class="docutils literal notranslate"><span class="pre">q_2</span></code>.
-You want to find the relative rotation, <code class="docutils literal notranslate"><span class="pre">q_r</span></code>, that converts <code class="docutils literal notranslate"><span class="pre">q_1</span></code> to <code class="docutils literal notranslate"><span class="pre">q_2</span></code> in a following manner:</p>
+<h3><a class="toc-backref" href="#id9">4 相对旋转</a><a class="headerlink" href="#relative-rotations" title="永久链接至标题"></a></h3>
+<p>假设您有来自同一帧的两个四元数 <code class="xref any docutils literal notranslate"><span class="pre">q_1</span></code> 和 <code class="xref any docutils literal notranslate"><span class="pre">q_2</span></code>。您希望找到相对旋转 <code class="xref any docutils literal notranslate"><span class="pre">q_r</span></code>，它以以下方式将 <code class="xref any docutils literal notranslate"><span class="pre">q_1</span></code> 转换为 <code class="xref any docutils literal notranslate"><span class="pre">q_2</span></code>：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">q_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q_r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q_1</span><span class="w"></span>
 </pre></div>
 </div>
