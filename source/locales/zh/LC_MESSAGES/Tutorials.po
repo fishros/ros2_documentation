@@ -15580,62 +15580,62 @@ msgstr "身体和头部之间的连接是一个连续关节，意味着它可以
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:61
 msgid "The only additional information we have to add is the axis of rotation, here specified by an xyz triplet, which specifies a vector around which the head will rotate. Since we want it to go around the z axis, we specify the vector \"0 0 1\"."
-msgstr "The only additional information we have to add is the axis of rotation, here specified by an xyz triplet, which specifies a vector around which the head will rotate. Since we want it to go around the z axis, we specify the vector \"0 0 1\"."
+msgstr "我们要补充的唯一附加信息是旋转轴，这里用一个xyz三元组来指定，它指定了头部将绕其旋转的矢量。由于我们希望它绕z轴旋转，我们指定矢量\"0 0 1\"。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:65
 msgid "The Gripper"
-msgstr "The Gripper"
+msgstr "夹爪"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:77
 msgid "Both the right and the left gripper joints are modeled as revolute joints. This means that they rotate in the same way that the continuous joints do, but they have strict limits. Hence, we must include the limit tag specifying the upper and lower limits of the joint (in radians). We also must specify a maximum velocity and effort for this joint but the actual values don't matter for our purposes here."
-msgstr "Both the right and the left gripper joints are modeled as revolute joints. This means that they rotate in the same way that the continuous joints do, but they have strict limits. Hence, we must include the limit tag specifying the upper and lower limits of the joint (in radians). We also must specify a maximum velocity and effort for this joint but the actual values don't matter for our purposes here."
+msgstr "右夹爪和左夹爪关节都被建模为旋转关节。这意味着它们以与连续关节相同的方式旋转，但它们有严格的限制。因此，我们必须包含限制标签，指定关节的上限和下限（以弧度为单位）。我们还必须为该关节指定最大速度和力量，但实际值对我们这里的目的不重要。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:83
 msgid "The Gripper Arm"
-msgstr "The Gripper Arm"
+msgstr "夹爪臂"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:94
 msgid "The gripper arm is a different kind of joint, namely a prismatic joint. This means that it moves along an axis, not around it. This translational movement is what allows our robot model to extend and retract its gripper arm."
-msgstr "The gripper arm is a different kind of joint, namely a prismatic joint. This means that it moves along an axis, not around it. This translational movement is what allows our robot model to extend and retract its gripper arm."
+msgstr "夹爪臂是一种不同类型的关节，即移动关节。这意味着它沿一个轴线移动，而不是围绕轴旋转。这种平移运动使我们的机器人模型能够伸展和收缩夹爪臂。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:98
 msgid "The limits of the prismatic arm are specified in the same way as a revolute joint, except that the units are meters, not radians."
-msgstr "The limits of the prismatic arm are specified in the same way as a revolute joint, except that the units are meters, not radians."
+msgstr "与旋转关节相同，平移臂的限制也是以相同的方式指定，只是单位是米，而不是弧度。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:101
 msgid "Other Types of Joints"
-msgstr "Other Types of Joints"
+msgstr "其他类型的关节"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:103
 msgid "There are two other kinds of joints that move around in space. Whereas the prismatic joint can only move along one dimension, a planar joint can move around in a plane, or two dimensions. Furthermore, a floating joint is unconstrained, and can move around in any of the three dimensions. These joints cannot be specified by just one number, and therefore aren’t included in this tutorial."
-msgstr "There are two other kinds of joints that move around in space. Whereas the prismatic joint can only move along one dimension, a planar joint can move around in a plane, or two dimensions. Furthermore, a floating joint is unconstrained, and can move around in any of the three dimensions. These joints cannot be specified by just one number, and therefore aren’t included in this tutorial."
+msgstr "还有另外两种可以在空间中移动的关节。与棱柱关节只能沿一个维度移动不同，平面关节可以在平面内或两个维度上移动。此外，浮动关节没有限制，可以在三个维度中移动。这些关节不能仅通过一个数值来指定，因此在本教程中不包括它们。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:109
 msgid "Specifying the Pose"
-msgstr "Specifying the Pose"
+msgstr "指定姿态"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:111
 msgid "As you move the sliders around in the GUI, the model moves in Rviz. How is this done? First the `GUI <https://index.ros.org/p/joint_state_publisher_gui>`_ parses the URDF and finds all the non-fixed joints and their limits. Then, it uses the values of the sliders to publish `sensor_msgs/msg/JointState <https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg>`_ messages. Those are then used by `robot_state_publisher <https://index.ros.org/p/robot_state_publisher>`_ to calculate all of transforms between the different parts. The resulting transform tree is then used to display all of the shapes in Rviz."
-msgstr "As you move the sliders around in the GUI, the model moves in Rviz. How is this done? First the `GUI <https://index.ros.org/p/joint_state_publisher_gui>`_ parses the URDF and finds all the non-fixed joints and their limits. Then, it uses the values of the sliders to publish `sensor_msgs/msg/JointState <https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg>`_ messages. Those are then used by `robot_state_publisher <https://index.ros.org/p/robot_state_publisher>`_ to calculate all of transforms between the different parts. The resulting transform tree is then used to display all of the shapes in Rviz."
+msgstr "当您在GUI中移动滑块时，模型会在Rviz中移动。这是如何实现的？首先，`GUI <https://index.ros.org/p/joint_state_publisher_gui>`_解析URDF并找到所有非固定关节及其限制。然后，它使用滑块的值发布`sensor_msgs/msg/JointState <https://github.com/ros2/common_interfaces/blob/eloquent/sensor_msgs/msg/JointState.msg>`_消息。然后，`robot_state_publisher <https://index.ros.org/p/robot_state_publisher>`_使用这些消息计算不同部分之间的所有变换。生成的变换树然后用于在Rviz中显示所有形状。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:120
 msgid "Now that you have a visibly functional model, you can :doc:`add in some physical properties <./Adding-Physical-and-Collision-Properties-to-a-URDF-Model>`, or :doc:`start using xacro to simplify your code <./Using-Xacro-to-Clean-Up-a-URDF-File>`."
-msgstr "Now that you have a visibly functional model, you can :doc:`add in some physical properties <./Adding-Physical-and-Collision-Properties-to-a-URDF-Model>`, or :doc:`start using xacro to simplify your code <./Using-Xacro-to-Clean-Up-a-URDF-File>`."
+msgstr "现在您已经拥有一个可见的功能模型，您可以:doc:`添加一些物理属性 <./Adding-Physical-and-Collision-Properties-to-a-URDF-Model>`，或者:doc:`开始使用xacro来简化您的代码 <./Using-Xacro-to-Clean-Up-a-URDF-File>`。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:8
 msgid "Building a visual robot model from scratch"
-msgstr "Building a visual robot model from scratch"
+msgstr "从头开始构建一个可视化的机器人模型"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.rst:10
