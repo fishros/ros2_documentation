@@ -302,7 +302,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Security.html">About ROS 2 Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">About internal ROS 2 interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 </ul>
@@ -381,9 +381,9 @@
 <li><p><a class="reference internal" href="#basic-use" id="id3">基本用法</a></p></li>
 <li><p><a class="reference internal" href="#types-of-executors" id="id4">执行器的类型</a></p></li>
 <li><p><a class="reference internal" href="#callback-groups" id="id5">回调组</a></p></li>
-<li><p><a class="reference internal" href="#scheduling-semantics" id="id6">Scheduling semantics</a></p></li>
-<li><p><a class="reference internal" href="#outlook" id="id7">Outlook</a></p></li>
-<li><p><a class="reference internal" href="#further-information" id="id8">Further information</a></p></li>
+<li><p><a class="reference internal" href="#scheduling-semantics" id="id6">调度语义</a></p></li>
+<li><p><a class="reference internal" href="#outlook" id="id7">展望</a></p></li>
+<li><p><a class="reference internal" href="#further-information" id="id8">更多信息&quot;</a></p></li>
 </ul>
 </div>
 <div class="section" id="overview">
@@ -473,63 +473,43 @@ Therefore, the Static Single-Threaded Executor should be used only with nodes th
 </pre></div>
 </div>
 </div></div>
-<p>All subscriptions, timers, etc. that are created without the indication of a callback group are assigned to the <em>default callback group</em>.
-The default callback group can be queried via <code class="docutils literal notranslate"><span class="pre">NodeBaseInterface::get_default_callback_group()</span></code> in rclcpp
-and by <code class="docutils literal notranslate"><span class="pre">Node.default_callback_group</span></code> in rclpy.</p>
-<p>There are two types of callback groups, where the type has to be specified at instantiation time:</p>
+<p>所有没有指定回调组的订阅、定时器等都被分配到*默认回调组*。可以通过``NodeBaseInterface::get_default_callback_group()``（在rclcpp中）和``Node.default_callback_group``（在rclpy中）查询默认回调组。</p>
+<p>有两种类型的回调组，类型必须在实例化时指定：</p>
 <ul class="simple">
-<li><p><em>Mutually exclusive:</em> Callbacks of this group must not be executed in parallel.</p></li>
-<li><p><em>Reentrant:</em> Callbacks of this group may be executed in parallel.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>互斥（Mutually exclusive）：<a href="#id3"><span class="problematic" id="id4">*</span></a>该组的回调不能并行执行。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>可重入（Reentrant）：<a href="#id3"><span class="problematic" id="id4">*</span></a>该组的回调可以并行执行。</p></li>
 </ul>
-<p>Callbacks of different callback groups may always be executed in parallel.
-The Multi-Threaded Executor uses its threads as a pool to process as many callbacks as possible in parallel according to these conditions.
-For tips on how to use callback groups efficiently, see <a class="reference internal" href="../How-To-Guides/Using-callback-groups.html"><span class="doc">Using Callback Groups</span></a>.</p>
-<p>The Executor base class in rclcpp also has the function <code class="docutils literal notranslate"><span class="pre">add_callback_group(..)</span></code>, which allows distributing callback groups to different Executors.
-By configuring the underlying threads using the operating system scheduler, specific callbacks can be prioritized over other callbacks.
-For example, the subscriptions and timers of a control loop can be prioritized over all other subscriptions and standard services of a node.
-The <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor">examples_rclcpp_cbg_executor package</a> provides a demo of this mechanism.</p>
+<p>不同回调组的回调可以并行执行。多线程执行器（Multi-Threaded Executor）使用线程池根据这些条件并行处理尽可能多的回调。有关如何高效使用回调组的提示，请参阅:doc:<a class="reference internal" href="../How-To-Guides/Using-callback-groups.html"><span class="doc">使用回调组</span></a>。</p>
+<p>在rclcpp中，Executor基类还具有函数``add_callback_group(..)``，可以将回调组分配给不同的执行器。通过使用操作系统调度器配置底层线程，可以使特定的回调优先于其他回调。例如，可以将控制循环的订阅和定时器优先于节点的所有其他订阅和标准服务。<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor">examples_rclcpp_cbg_executor package</a> 提供了该机制的演示。</p>
 </div>
 <div class="section" id="scheduling-semantics">
-<h2><a class="toc-backref" href="#id6">Scheduling semantics</a><a class="headerlink" href="#scheduling-semantics" title="永久链接至标题"></a></h2>
-<p>If the processing time of the callbacks is shorter than the period with which messages and events occur, the Executor basically processes them in FIFO order.
-However, if the processing time of some callbacks is longer, messages and events will be queued on the lower layers of the stack.
-The wait set mechanism reports only very little information about these queues to the Executor.
-In detail, it only reports whether there are any messages for a certain topic or not.
-The Executor uses this information to process the messages (including services and actions) in a round-robin fashion - but not in FIFO order.
-The following flow diagram visualizes this scheduling semantics.</p>
+<h2><a class="toc-backref" href="#id6">调度语义</a><a class="headerlink" href="#scheduling-semantics" title="永久链接至标题"></a></h2>
+<p>如果回调函数的处理时间短于消息和事件发生的周期，执行器基本上按照先进先出（FIFO）的顺序处理它们。然而，如果某些回调函数的处理时间较长，消息和事件将在堆栈的较低层次上排队。等待集机制对这些队列向执行器仅报告了非常少的信息。具体而言，它只报告某个主题是否有任何消息。执行器使用这些信息以循环轮询的方式处理消息（包括服务和动作），而不是按照先进先出的顺序。下面的流程图可视化了这种调度语义。</p>
 <img alt="../_images/executors_scheduling_semantics.png" src="../_images/executors_scheduling_semantics.png" />
-<p>This semantics was first described in a <a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">paper by Casini et al. at ECRTS 2019</a>.
-(Note: The paper also explains that timer events are prioritized over all other messages. <a class="reference external" href="https://github.com/ros2/rclcpp/pull/841">This prioritization was removed in Eloquent.</a>)</p>
+<p>这种语义首次在2019年的ECRTS会议上由Casini等人在一篇论文中描述。[链接](<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf</a>)（注意：该论文还解释了计时器事件优先于所有其他消息的优先级，这个优先级在Eloquent中被移除了。[链接](<a class="reference external" href="https://github.com/ros2/rclcpp/pull/841">https://github.com/ros2/rclcpp/pull/841</a>)）</p>
 </div>
 <div class="section" id="outlook">
-<h2><a class="toc-backref" href="#id7">Outlook</a><a class="headerlink" href="#outlook" title="永久链接至标题"></a></h2>
-<p>While the three Executors of rclcpp work well for most applications, there are some issues that make them not suitable for real-time applications, which require well-defined execution times, determinism, and custom control over the execution order.
-Here is a summary of some of these issues:</p>
+<h2><a class="toc-backref" href="#id7">展望</a><a class="headerlink" href="#outlook" title="永久链接至标题"></a></h2>
+<p>虽然rclcpp的三个执行器在大多数应用中运行良好，但存在一些问题，使它们不适用于实时应用程序，实时应用程序需要定义明确的执行时间、确定性和对执行顺序的自定义控制。以下是其中一些问题的摘要：</p>
 <ol class="arabic simple">
-<li><p>Complex and mixed scheduling semantics.
-Ideally you want well defined scheduling semantics to perform a formal timing analysis.</p></li>
-<li><p>Callbacks may suffer from priority inversion.
-Higher priority callbacks may be blocked by lower priority callbacks.</p></li>
-<li><p>No explicit control over the callbacks execution order.</p></li>
-<li><p>No built-in control over triggering for specific topics.</p></li>
+<li><p>复杂和混合的调度语义。理想情况下，您希望有明确定义的调度语义以进行形式化的定时分析。</p></li>
+<li><p>回调函数可能会受到优先级反转的影响。较高优先级的回调函数可能会被较低优先级的回调函数阻塞。</p></li>
+<li><p>无法明确控制回调函数的执行顺序。</p></li>
+<li><p>没有内置的机制来触发特定主题的回调函数。</p></li>
 </ol>
-<p>Additionally, the executor overhead in terms of CPU and memory usage is considerable.
-The Static Single-Threaded Executor reduces this overhead greatly but it might not be enough for some applications.</p>
-<p>These issues have been partially addressed by the following developments:</p>
+<p>此外，执行器在CPU和内存使用方面的开销相当大。静态单线程执行器大大减少了这种开销，但对于某些应用程序可能还不够。</p>
+<p>这些问题已经部分得到以下改进的解决：</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp">rclcpp WaitSet</a>: The <code class="docutils literal notranslate"><span class="pre">WaitSet</span></code> class of rclcpp allows waiting directly on subscriptions, timers, service servers, action servers, etc. instead of using an Executor.
-It can be used to implement deterministic, user-defined processing sequences, possibly processing multiple messages from different subscriptions together.
-The <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/wait_set">examples_rclcpp_wait_set package</a> provides several examples for the use of this user-level wait set mechanism.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">rclc Executor</a>: This Executor from the C Client Library <em>rclc</em>, developed for micro-ROS, gives the user fine-grained control over the execution order of callbacks and allows for custom trigger conditions to activate callbacks.
-Furthermore, it implements ideas of the Logical Execution Time (LET) semantics.</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp">rclcpp WaitSet</a>：rclcpp的``WaitSet``类允许直接等待订阅、定时器、服务服务器、动作服务器等，而无需使用执行器。它可以用于实现确定性的、用户定义的处理序列，可能同时处理来自不同订阅的多个消息。<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/wait_set">examples_rclcpp_wait_set package</a> 提供了使用此用户级等待集机制的多个示例。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">rclc Executor</a>：这个来自C客户端库*rclc*的Executor是为micro-ROS开发的，它可以让用户对回调的执行顺序进行细粒度控制，并允许自定义触发条件来激活回调。此外，它实现了逻辑执行时间（LET）语义的概念。&quot;</p></li>
 </ul>
 </div>
 <div class="section" id="further-information">
-<h2><a class="toc-backref" href="#id8">Further information</a><a class="headerlink" href="#further-information" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id8">更多信息&quot;</a><a class="headerlink" href="#further-information" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Michael Pöhnl et al.: <a class="reference external" href="https://www.apex.ai/roscon-21">&quot;ROS 2 Executor: How to make it efficient, real-time and deterministic?&quot;</a>. Workshop at ROS World 2021. Virtual event. 19 October 2021.</p></li>
-<li><p>Ralph Lange: <a class="reference external" href="https://www.youtube.com/watch?v=Sz-nllmtcc8&amp;t=109s">&quot;Advanced Execution Management with ROS 2&quot;</a>. ROS Industrial Conference. Virtual event. 16 December 2020.</p></li>
-<li><p>Daniel Casini, Tobias Blass, Ingo Lütkebohle, and Björn Brandenburg: <a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling”</a>, Proc. of 31st ECRTS 2019, Stuttgart, Germany, July 2019.</p></li>
+<li><p>Michael Pöhnl等人：<a class="reference external" href="https://www.apex.ai/roscon-21">&quot;ROS 2 Executor: How to make it efficient, real-time and deterministic?&quot;</a>. ROS World 2021的研讨会。虚拟活动。2021年10月19日。&quot;</p></li>
+<li><p>Ralph Lange：<a class="reference external" href="https://www.youtube.com/watch?v=Sz-nllmtcc8&amp;t=109s">&quot;Advanced Execution Management with ROS 2&quot;</a>. ROS Industrial Conference。虚拟活动。2020年12月16日。&quot;</p></li>
+<li><p>Daniel Casini，Tobias Blass，Ingo Lütkebohle和Björn Brandenburg：<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling”</a>，第31届ECRTS 2019会议论文集，德国斯图加特，2019年7月。&quot;</p></li>
 </ul>
 </div>
 </div>
