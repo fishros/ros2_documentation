@@ -14766,62 +14766,62 @@ msgstr "然后，我们需要设置正在创建的链接的父帧的名称，本
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:178 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:199
 msgid "Finally, we need to set the name of the child node of the link we're creating, in this case this is the name of the turtle itself."
-msgstr "Finally, we need to set the name of the child node of the link we're creating, in this case this is the name of the turtle itself."
+msgstr "最后，我们需要设置链接创建的子节点的名称，这里的子节点名称就是乌龟自身的名称。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:180 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:201
 msgid "The handler function for the turtle pose message broadcasts this turtle's translation and rotation, and publishes it as a transform from frame ``world`` to frame ``turtleX``."
-msgstr "The handler function for the turtle pose message broadcasts this turtle's translation and rotation, and publishes it as a transform from frame ``world`` to frame ``turtleX``."
+msgstr "处理乌龟姿态消息的处理函数会广播该乌龟的平移和旋转，并将其发布为从帧``world``到帧``turtleX``的变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:192 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:213
 msgid "Here we copy the information from the 3D turtle pose into the 3D transform."
-msgstr "Here we copy the information from the 3D turtle pose into the 3D transform."
+msgstr "在这里，我们将3D乌龟姿态的信息复制到3D变换中。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:212 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:232
 msgid "Finally we take the transform that we constructed and pass it to the ``sendTransform`` method of the ``TransformBroadcaster`` that will take care of broadcasting."
-msgstr "Finally we take the transform that we constructed and pass it to the ``sendTransform`` method of the ``TransformBroadcaster`` that will take care of broadcasting."
+msgstr "最后，我们将构建的变换传递给``TransformBroadcaster``的``sendTransform``方法，它会负责广播。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:224
 msgid "Now open the ``CMakeLists.txt`` add the executable and name it ``turtle_tf2_broadcaster``, which you'll use later with ``ros2 run``."
-msgstr "Now open the ``CMakeLists.txt`` add the executable and name it ``turtle_tf2_broadcaster``, which you'll use later with ``ros2 run``."
+msgstr "现在打开``CMakeLists.txt``，添加可执行文件并将其命名为``turtle_tf2_broadcaster``，稍后可以在``ros2 run``中使用它。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:249 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:260
 msgid "Now create a launch file for this demo. With your text editor, create a new file called ``turtle_tf2_demo.launch.py`` in the ``launch`` folder, and add the following lines:"
-msgstr "Now create a launch file for this demo. With your text editor, create a new file called ``turtle_tf2_demo.launch.py`` in the ``launch`` folder, and add the following lines:"
+msgstr "现在为此演示创建一个启动文件。使用文本编辑器，在``launch``文件夹中创建一个名为``turtle_tf2_demo.launch.py``的新文件，并添加以下内容："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:278 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:289
 msgid "First we import required modules from the ``launch`` and ``launch_ros`` packages. It should be noted that ``launch`` is a generic launching framework (not ROS 2 specific) and ``launch_ros`` has ROS 2 specific things, like nodes that we import here."
-msgstr "First we import required modules from the ``launch`` and ``launch_ros`` packages. It should be noted that ``launch`` is a generic launching framework (not ROS 2 specific) and ``launch_ros`` has ROS 2 specific things, like nodes that we import here."
+msgstr "首先我们从 ``launch`` 和 ``launch_ros`` 包中导入所需的模块。需要注意的是，``launch`` 是一个通用的启动框架（不特定于ROS 2），而 ``launch_ros`` 则有ROS 2特定的功能，例如在这里我们导入的节点。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:286 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:297
 msgid "Now we run our nodes that start the turtlesim simulation and broadcast ``turtle1`` state to the tf2 using our ``turtle_tf2_broadcaster`` node."
-msgstr "Now we run our nodes that start the turtlesim simulation and broadcast ``turtle1`` state to the tf2 using our ``turtle_tf2_broadcaster`` node."
+msgstr "现在我们运行节点，启动turtlesim仿真，并使用我们的 ``turtle_tf2_broadcaster`` 节点将 ``turtle1`` 状态广播到tf2。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:309 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:320
 msgid "Open ``package.xml`` with your text editor. Add the following dependencies corresponding to your launch file's import statements:"
-msgstr "Open ``package.xml`` with your text editor. Add the following dependencies corresponding to your launch file's import statements:"
+msgstr "使用文本编辑器打开 ``package.xml``。根据你的启动文件的导入语句，添加以下依赖项："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:317 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:328
 msgid "This declares the additional required ``launch`` and ``launch_ros`` dependencies when its code is executed."
-msgstr "This declares the additional required ``launch`` and ``launch_ros`` dependencies when its code is executed."
+msgstr "当执行其代码时，这将声明额外所需的 ``launch`` 和 ``launch_ros`` 依赖项。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:324
 msgid "Reopen ``CMakeLists.txt`` and add the line so that the launch files from the ``launch/`` folder would be installed."
-msgstr "Reopen ``CMakeLists.txt`` and add the line so that the launch files from the ``launch/`` folder would be installed."
+msgstr "重新打开 ``CMakeLists.txt`` 并添加该行，以便安装 ``launch/`` 文件夹中的启动文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:331 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:352
 msgid "You can learn more about creating launch files in :doc:`this tutorial <../Launch/Creating-Launch-Files>`."
-msgstr "You can learn more about creating launch files in :doc:`this tutorial <../Launch/Creating-Launch-Files>`."
+msgstr "你可以在 :doc:`这个教程 <../Launch/Creating-Launch-Files>` 中了解更多关于创建启动文件的信息。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:334 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:355 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:328 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:281 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:285 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:304
