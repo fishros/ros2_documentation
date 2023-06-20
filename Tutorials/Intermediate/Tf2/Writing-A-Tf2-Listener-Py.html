@@ -155,7 +155,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="Introduction-To-Tf2.html">介绍``tf2``</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Py.html">Writing a static broadcaster (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html">Writing a static broadcaster (C++)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++）</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">编写监听器（Python）</a></li>
@@ -535,9 +535,8 @@
 </div>
 <div class="section" id="examine-the-code">
 <h4>1.1 检查代码<a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
-<p>To understand how the service behind spawning turtle works, please refer to <a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html"><span class="doc">writing a simple service and client (Python)</span></a> tutorial.</p>
-<p>Now, let's take a look at the code that is relevant to get access to frame transformations.
-The <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> package provides an implementation of a <code class="docutils literal notranslate"><span class="pre">TransformListener</span></code> to help make the task of receiving transforms easier.</p>
+<p>要了解生成海龟背后的服务如何工作，请参考 <a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html"><span class="doc">编写简单服务和客户端（Python）</span></a> 教程。</p>
+<p>现在，让我们看一下与获取帧转换相关的代码。<code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> 包提供了一个 <code class="docutils literal notranslate"><span class="pre">TransformListener</span></code> 的实现，以帮助简化接收转换的任务。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf2_ros.transform_listener</span> <span class="kn">import</span> <span class="n">TransformListener</span>
 </pre></div>
 </div>
@@ -551,8 +550,7 @@ The <code class="docutils literal notranslate"><span class="pre">tf2_ros</span><
 <li><p>源帧</p></li>
 <li><p>我们想要进行变换的时间</p></li>
 </ol>
-<p>Providing <code class="docutils literal notranslate"><span class="pre">rclpy.time.Time()</span></code> will just get us the latest available transform.
-All this is wrapped in a try-except block to handle possible exceptions.</p>
+<p>提供 <code class="docutils literal notranslate"><span class="pre">rclpy.time.Time()</span></code> 只会获取最新可用的转换。所有这些都包装在 try-except 块中，以处理可能的异常。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tf_buffer</span><span class="o">.</span><span class="n">lookup_transform</span><span class="p">(</span>
     <span class="n">to_frame_rel</span><span class="p">,</span>
     <span class="n">from_frame_rel</span><span class="p">,</span>
