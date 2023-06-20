@@ -3320,62 +3320,62 @@ msgstr "从ROS 1迁移"
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:118
 msgid "The :doc:`Launch file migration guide <../How-To-Guides/Launch-files-migration-guide>` explains how to migrate ``param`` and ``rosparam`` launch tags from ROS 1 to ROS 2."
-msgstr "The :doc:`Launch file migration guide <../How-To-Guides/Launch-files-migration-guide>` explains how to migrate ``param`` and ``rosparam`` launch tags from ROS 1 to ROS 2."
+msgstr "在 :doc:`启动文件迁移指南 <../How-To-Guides/Launch-files-migration-guide>` 中，解释了如何将 ROS 1 中的 ``param`` 和 ``rosparam`` 启动标签迁移到 ROS 2。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:120
 msgid "The :doc:`YAML parameter file migration guide <../How-To-Guides/Parameters-YAML-files-migration-guide>` explains how to migrate parameter files from ROS 1 to ROS 2."
-msgstr "The :doc:`YAML parameter file migration guide <../How-To-Guides/Parameters-YAML-files-migration-guide>` explains how to migrate parameter files from ROS 1 to ROS 2."
+msgstr "在 :doc:`YAML 参数文件迁移指南 <../How-To-Guides/Parameters-YAML-files-migration-guide>` 中，解释了如何将参数文件从 ROS 1 迁移到 ROS 2。"
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:122
 msgid "In ROS 1, the ``roscore`` acted like a global parameter blackboard where all nodes could get and set parameters. Since there is no central ``roscore`` in ROS 2, that functionality no longer exists. The recommended approach in ROS 2 is to use per-node parameters that are closely tied to the nodes that use them. If a global blackboard is still needed, it is possible to create a dedicated node for this purpose. ROS 2 ships with one in the ``ros-humble-demo-nodes-cpp`` package called ``parameter_blackboard``; it can be run with:"
-msgstr "In ROS 1, the ``roscore`` acted like a global parameter blackboard where all nodes could get and set parameters. Since there is no central ``roscore`` in ROS 2, that functionality no longer exists. The recommended approach in ROS 2 is to use per-node parameters that are closely tied to the nodes that use them. If a global blackboard is still needed, it is possible to create a dedicated node for this purpose. ROS 2 ships with one in the ``ros-humble-demo-nodes-cpp`` package called ``parameter_blackboard``; it can be run with:"
+msgstr "在 ROS 1 中，``roscore`` 的作用类似于全局参数黑板，所有节点都可以获取和设置参数。由于 ROS 2 中没有中央 ``roscore``，这个功能不再存在。ROS 2 中推荐的方法是使用与使用它们的节点密切相关的每个节点参数。如果仍然需要全局黑板，可以为此创建一个专用节点。ROS 2 中附带了一个名为 ``parameter_blackboard`` 的节点，位于 ``ros-humble-demo-nodes-cpp`` 包中；可以使用以下命令运行："
 
 
 #: ../../source/Concepts/About-ROS-2-Parameters.rst:132
 msgid "The code for the ``parameter_blackboard`` is `here <https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/parameters/parameter_blackboard.cpp>`__."
-msgstr "The code for the ``parameter_blackboard`` is `here <https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/parameters/parameter_blackboard.cpp>`__."
+msgstr "``parameter_blackboard`` 的代码在 `此处 <https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/parameters/parameter_blackboard.cpp>`__。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:8
 msgid "About ROS 2 interfaces"
-msgstr "About ROS 2 interfaces"
+msgstr "关于 ROS 2 接口"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:14
 msgid "1. Background"
-msgstr "1. Background"
+msgstr "1. 背景"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:16
 msgid "ROS applications typically communicate through interfaces of one of three types: messages, services and actions. ROS 2 uses a simplified description language, the interface definition language (IDL), to describe these interfaces. This description makes it easy for ROS tools to automatically generate source code for the interface type in several target languages."
-msgstr "ROS applications typically communicate through interfaces of one of three types: messages, services and actions. ROS 2 uses a simplified description language, the interface definition language (IDL), to describe these interfaces. This description makes it easy for ROS tools to automatically generate source code for the interface type in several target languages."
+msgstr "ROS 应用通常通过三种类型的接口进行通信：消息（messages）、服务（services）和动作（actions）。ROS 2 使用一种简化的描述语言，即接口定义语言（IDL），来描述这些接口。这种描述使得 ROS 工具能够自动为接口类型在多种目标语言中生成源代码。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:20
 msgid "In this document we will describe the supported types:"
-msgstr "In this document we will describe the supported types:"
+msgstr "在本文档中，我们将描述支持的类型："
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:22
 msgid "msg: ``.msg`` files are simple text files that describe the fields of a ROS message. They are used to generate source code for messages in different languages."
-msgstr "msg: ``.msg`` files are simple text files that describe the fields of a ROS message. They are used to generate source code for messages in different languages."
+msgstr "msg: ``.msg`` 文件是描述 ROS 消息字段的简单文本文件。它们用于在不同语言中生成消息的源代码。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:23
 msgid "srv: ``.srv`` files describe a service. They are composed of two parts: a request and a response. The request and response are message declarations."
-msgstr "srv: ``.srv`` files describe a service. They are composed of two parts: a request and a response. The request and response are message declarations."
+msgstr "srv: ``.srv`` 文件描述一个服务。它由两部分组成：请求和响应。请求和响应都是消息声明。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:24
 msgid "action: ``.action`` files describe actions. They are composed of three parts: a goal, a result, and feedback. Each part is a message declaration itself."
-msgstr "action: ``.action`` files describe actions. They are composed of three parts: a goal, a result, and feedback. Each part is a message declaration itself."
+msgstr "action: ``.action`` 文件描述一个动作。它由三部分组成：目标、结果和反馈。每个部分本身都是消息声明。"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:29
 msgid "2. Message description specification"
-msgstr "2. Message description specification"
+msgstr "2. 消息描述规范"
 
 
 #: ../../source/Concepts/About-ROS-Interfaces.rst:31
