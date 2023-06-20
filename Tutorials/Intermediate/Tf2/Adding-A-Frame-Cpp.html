@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="Using time (Python)" href="Learning-About-Tf2-And-Time-Py.html" />
-    <link rel="prev" title="Adding a frame (Python)" href="Adding-A-Frame-Py.html" /> 
+    <link rel="prev" title="添加一个帧（Python）" href="Adding-A-Frame-Py.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -160,7 +160,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Cpp.html">Writing a broadcaster (C++)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Py.html">Writing a listener (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Py.html">Adding a frame (Python)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Py.html">添加一个帧（Python）</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">添加一个框架（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Py.html">Using time (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Cpp.html">Using time (C++)</a></li>
@@ -400,8 +400,8 @@
 <li><p><a class="reference internal" href="#id1" id="id16">2.1 检查代码</a></p></li>
 <li><p><a class="reference internal" href="#id2" id="id17">2.2 CMakeLists.txt</a></p></li>
 <li><p><a class="reference internal" href="#id3" id="id18">2.3 编写启动文件</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id19">2.4 Build</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id20">2.5 Run</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id19">2.4 构建</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id20">2.5 运行</a></p></li>
 </ul>
 </li>
 </ul>
@@ -744,7 +744,7 @@
 </div>
 <div class="section" id="id3">
 <h4><a class="toc-backref" href="#id18">2.3 编写启动文件</a><a class="headerlink" href="#id3" title="永久链接至标题"></a></h4>
-<p>To test this code, create a new launch file <code class="docutils literal notranslate"><span class="pre">turtle_tf2_dynamic_frame_demo.launch.py</span></code> and paste the following code:</p>
+<p>为了测试这段代码，请创建一个名为``turtle_tf2_dynamic_frame_demo.launch.py``的新启动文件，并粘贴以下代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
@@ -776,7 +776,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h4><a class="toc-backref" href="#id19">2.4 Build</a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
+<h4><a class="toc-backref" href="#id19">2.4 构建</a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
 <p>在你的工作空间的根目录中运行 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>，以检查缺少的依赖项。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-5-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-5-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-5-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-5-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
@@ -815,20 +815,19 @@
 </div></div>
 </div>
 <div class="section" id="id5">
-<h4><a class="toc-backref" href="#id20">2.5 Run</a><a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
-<p>Now you can start the dynamic frame demo:</p>
+<h4><a class="toc-backref" href="#id20">2.5 运行</a><a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
+<p>现在你可以启动动态框架演示：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_cpp turtle_tf2_dynamic_frame_demo.launch.py</span>
 </pre></div>
 </div>
-<p>You should see that the second turtle is following the carrot's position that is constantly changing.</p>
+<p>你应该看到第二只乌龟正在跟随不断变化的胡萝卜位置。</p>
 <img alt="../../../_images/carrot_dynamic.png" src="../../../_images/carrot_dynamic.png" />
 </div>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id21">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you learned about the tf2 transformation tree, its structure, and its features.
-You also learned that it is easiest to think inside a local frame, and learned to add extra fixed and dynamic frames for that local frame.</p>
+<p>在本教程中，你学习了tf2变换树的结构和特性。你还学会了在一个本地框架内进行思考，并学会为该本地框架添加额外的固定和动态框架。</p>
 </div>
 </div>
 
@@ -837,7 +836,7 @@ You also learned that it is easiest to think inside a local frame, and learned t
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Adding-A-Frame-Py.html" class="btn btn-neutral float-left" title="Adding a frame (Python)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Adding-A-Frame-Py.html" class="btn btn-neutral float-left" title="添加一个帧（Python）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Learning-About-Tf2-And-Time-Py.html" class="btn btn-neutral float-right" title="Using time (Python)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
