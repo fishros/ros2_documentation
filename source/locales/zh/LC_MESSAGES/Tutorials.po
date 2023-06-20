@@ -12701,17 +12701,17 @@ msgstr "**目标：**学习使用ParameterEventHandler类监视并响应参数�
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:14
 msgid "**Minimum Platform:** Galactic"
-msgstr "**Minimum Platform:** Galactic"
+msgstr "**最低平台要求：**Galactic"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:23
 msgid "Often a node needs to respond to changes to its own parameters or another node's parameters. The ParameterEventHandler class makes it easy to listen for parameter changes so that your code can respond to them. This tutorial will show you how to use the C++ version of the ParameterEventHandler class to monitor for changes to a node's own parameters as well as changes to another node's parameters."
-msgstr "Often a node needs to respond to changes to its own parameters or another node's parameters. The ParameterEventHandler class makes it easy to listen for parameter changes so that your code can respond to them. This tutorial will show you how to use the C++ version of the ParameterEventHandler class to monitor for changes to a node's own parameters as well as changes to another node's parameters."
+msgstr "通常节点需要对自己的参数或其他节点的参数变化做出响应。ParameterEventHandler类使得监听参数变化并响应变得容易。本教程将展示如何使用C++版本的ParameterEventHandler类来监视节点自身参数的变化以及其他节点的参数变化。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:30
 msgid "Before starting this tutorial, you should first complete the following tutorials:"
-msgstr "Before starting this tutorial, you should first complete the following tutorials:"
+msgstr "在开始本教程之前，您应该先完成以下教程："
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:32
@@ -12726,57 +12726,57 @@ msgstr ":doc:`../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP`"
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:35
 msgid "In addition, you must be running the Galactic distribution of ROS 2."
-msgstr "In addition, you must be running the Galactic distribution of ROS 2."
+msgstr "另外，您必须使用 ROS 2 的 Galactic 版本。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:40
 msgid "In this tutorial, you will create a new package to contain some sample code, write some C++ code to use the ParameterEventHandler class, and test the resulting code."
-msgstr "In this tutorial, you will create a new package to contain some sample code, write some C++ code to use the ParameterEventHandler class, and test the resulting code."
+msgstr "在本教程中，您将创建一个新的包以包含一些示例代码，编写一些 C++ 代码来使用 ParameterEventHandler 类，并测试生成的代码。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:46
 msgid "First, open a new terminal and :doc:`source your ROS 2 installation <../Beginner-CLI-Tools/Configuring-ROS2-Environment>` so that ``ros2`` commands will work."
-msgstr "First, open a new terminal and :doc:`source your ROS 2 installation <../Beginner-CLI-Tools/Configuring-ROS2-Environment>` so that ``ros2`` commands will work."
+msgstr "首先，打开一个新的终端并 :doc:`source your ROS 2 installation <../Beginner-CLI-Tools/Configuring-ROS2-Environment>` 以便 ``ros2`` 命令能够正常工作。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:50
 msgid "Recall that packages should be created in the ``src`` directory, not the root of the workspace. So, navigate into ``ros2_ws/src`` and then create a new package there:"
-msgstr "Recall that packages should be created in the ``src`` directory, not the root of the workspace. So, navigate into ``ros2_ws/src`` and then create a new package there:"
+msgstr "请记住，包应该创建在 ``src`` 目录中，而不是工作空间的根目录。因此，进入 ``ros2_ws/src``，然后在那里创建一个新的包："
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:57
 msgid "Your terminal will return a message verifying the creation of your package ``cpp_parameter_event_handler`` and all its necessary files and folders."
-msgstr "Your terminal will return a message verifying the creation of your package ``cpp_parameter_event_handler`` and all its necessary files and folders."
+msgstr "您的终端将返回一个消息，验证您的包 ``cpp_parameter_event_handler`` 及其所有必要的文件和文件夹的创建。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:64
 msgid "Because you used the ``--dependencies`` option during package creation, you don’t have to manually add dependencies to ``package.xml`` or ``CMakeLists.txt``. As always, though, make sure to add the description, maintainer email and name, and license information to ``package.xml``."
-msgstr "Because you used the ``--dependencies`` option during package creation, you don’t have to manually add dependencies to ``package.xml`` or ``CMakeLists.txt``. As always, though, make sure to add the description, maintainer email and name, and license information to ``package.xml``."
+msgstr "因为您在创建软件包时使用了``--dependencies``选项，所以您不需要手动将依赖项添加到``package.xml``或``CMakeLists.txt``中。不过，您仍需确保将描述、维护者电子邮件和姓名以及许可信息添加到``package.xml``中。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:76
 msgid "Inside the ``ros2_ws/src/cpp_parameter_event_handler/src`` directory, create a new file called ``parameter_event_handler.cpp`` and paste the following code within:"
-msgstr "Inside the ``ros2_ws/src/cpp_parameter_event_handler/src`` directory, create a new file called ``parameter_event_handler.cpp`` and paste the following code within:"
+msgstr "在``ros2_ws/src/cpp_parameter_event_handler/src``目录中创建一个名为``parameter_event_handler.cpp``的新文件，并将以下代码粘贴其中："
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:123
 msgid "The first statement, ``#include <memory>`` is included so that the code can utilize the std::make_shared template. The next, ``#include \"rclcpp/rclcpp.hpp\"`` is included to allow the code to reference the various functionality provided by the rclcpp interface, including the ParameterEventHandler class."
-msgstr "The first statement, ``#include <memory>`` is included so that the code can utilize the std::make_shared template. The next, ``#include \"rclcpp/rclcpp.hpp\"`` is included to allow the code to reference the various functionality provided by the rclcpp interface, including the ParameterEventHandler class."
+msgstr "第一条语句``#include <memory>``是为了让代码可以利用std::make_shared模板。接下来的``#include \"rclcpp/rclcpp.hpp\"``是为了让代码可以引用rclcpp接口提供的各种功能，包括ParameterEventHandler类。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:126
 msgid "After the class declaration, the code defines a class, ``SampleNodeWithParameters``. The constructor for the class declares an integer parameter ``an_int_param``, with a default value of 0. Next, the code creates a ``ParameterEventHandler`` that will be used to monitor changes to parameters. Finally, the code creates a lambda function and sets it as the callback to invoke whenever ``an_int_param`` is updated."
-msgstr "After the class declaration, the code defines a class, ``SampleNodeWithParameters``. The constructor for the class declares an integer parameter ``an_int_param``, with a default value of 0. Next, the code creates a ``ParameterEventHandler`` that will be used to monitor changes to parameters. Finally, the code creates a lambda function and sets it as the callback to invoke whenever ``an_int_param`` is updated."
+msgstr "在类声明之后，代码定义了一个名为``SampleNodeWithParameters``的类。该类的构造函数声明了一个整型参数``an_int_param``，默认值为0。接下来，代码创建了一个将用于监视参数变化的``ParameterEventHandler``。最后，代码创建了一个lambda函数，并将其设置为在``an_int_param``更新时调用的回调函数。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:133
 msgid "It is very important to save the handle that is returned by ``add_parameter_callback``; otherwise, the callback will not be properly registered."
-msgstr "It is very important to save the handle that is returned by ``add_parameter_callback``; otherwise, the callback will not be properly registered."
+msgstr "非常重要的一点是要保存``add_parameter_callback``返回的句柄；否则，回调函数将无法正确注册。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:157
 msgid "Following the ``SampleNodeWithParameters`` is a typical ``main`` function which initializes ROS, spins the sample node so that it can send and receive messages, and then shuts down after the user enters ^C at the console."
-msgstr "Following the ``SampleNodeWithParameters`` is a typical ``main`` function which initializes ROS, spins the sample node so that it can send and receive messages, and then shuts down after the user enters ^C at the console."
+msgstr "在``SampleNodeWithParameters``之后是一个典型的``main``函数，它初始化ROS，使示例节点能够发送和接收消息，然后在用户在控制台输入^C后关闭。"
 
 
 #: ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:174
