@@ -395,9 +395,9 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#try-some-examples" id="id12">尝试一些示例</a></p></li>
-<li><p><a class="reference internal" href="#next-steps-after-installing" id="id13">Next steps after installing</a></p></li>
-<li><p><a class="reference internal" href="#additional-rmw-implementations-optional" id="id14">Additional RMW implementations (optional)</a></p></li>
-<li><p><a class="reference internal" href="#alternate-compilers" id="id15">Alternate compilers</a></p>
+<li><p><a class="reference internal" href="#next-steps-after-installing" id="id13">安装后的下一步</a></p></li>
+<li><p><a class="reference internal" href="#additional-rmw-implementations-optional" id="id14">其他RMW实现（可选）</a></p></li>
+<li><p><a class="reference internal" href="#alternate-compilers" id="id15">备选编译器</a></p>
 <ul>
 <li><p><a class="reference internal" href="#clang" id="id16">Clang</a></p></li>
 </ul>
@@ -534,21 +534,18 @@ ros2 run demo_nodes_cpp talker
 ros2 run demo_nodes_py listener
 </pre></div>
 </div>
-<p>You should see the <code class="docutils literal notranslate"><span class="pre">talker</span></code> saying that it's <code class="docutils literal notranslate"><span class="pre">Publishing</span></code> messages and the <code class="docutils literal notranslate"><span class="pre">listener</span></code> saying <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">heard</span></code> those messages.
-This verifies both the C++ and Python APIs are working properly.
-Hooray!</p>
+<p>你应该看到“talker”说它正在“发布”消息，而“listener”说“我听到了”这些消息。这验证了C++和Python API都正常工作。太棒了！</p>
 </div>
 <div class="section" id="next-steps-after-installing">
-<h2><a class="toc-backref" href="#id13">Next steps after installing</a><a class="headerlink" href="#next-steps-after-installing" title="永久链接至标题"></a></h2>
-<p>Continue with the <a class="reference internal" href="../../Tutorials.html"><span class="doc">tutorials and demos</span></a> to configure your environment, create your own workspace and packages, and learn ROS 2 core concepts.</p>
+<h2><a class="toc-backref" href="#id13">安装后的下一步</a><a class="headerlink" href="#next-steps-after-installing" title="永久链接至标题"></a></h2>
+<p>继续进行:doc:<a class="reference internal" href="../../Tutorials.html"><span class="doc">教程和演示</span></a>，以配置你的环境，创建自己的工作空间和包，并学习ROS 2的核心概念。</p>
 </div>
 <div class="section" id="additional-rmw-implementations-optional">
-<h2><a class="toc-backref" href="#id14">Additional RMW implementations (optional)</a><a class="headerlink" href="#additional-rmw-implementations-optional" title="永久链接至标题"></a></h2>
-<p>The default middleware that ROS 2 uses is <code class="docutils literal notranslate"><span class="pre">Fast</span> <span class="pre">DDS</span></code>, but the middleware (RMW) can be replaced at runtime.
-See the <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">guide</span></a> on how to work with multiple RMWs.</p>
+<h2><a class="toc-backref" href="#id14">其他RMW实现（可选）</a><a class="headerlink" href="#additional-rmw-implementations-optional" title="永久链接至标题"></a></h2>
+<p>ROS 2使用的默认中间件是“Fast DDS”，但是中间件（RMW）可以在运行时替换。请参阅:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>指南 &lt;../../How-To-Guides/Working-with-multiple-RMW-implementations&gt;`以了解如何使用多个RMW。</p>
 </div>
 <div class="section" id="alternate-compilers">
-<h2><a class="toc-backref" href="#id15">Alternate compilers</a><a class="headerlink" href="#alternate-compilers" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id15">备选编译器</a><a class="headerlink" href="#alternate-compilers" title="永久链接至标题"></a></h2>
 <p>Using a different compiler besides gcc to compile ROS 2 is easy. If you set the environment variables <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> to executables for a working C and C++ compiler, respectively, and retrigger CMake configuration (by using <code class="docutils literal notranslate"><span class="pre">--force-cmake-config</span></code> or by deleting the packages you want to be affected), CMake will reconfigure and use the different compiler.</p>
 <div class="section" id="clang">
 <h3><a class="toc-backref" href="#id16">Clang</a><a class="headerlink" href="#clang" title="永久链接至标题"></a></h3>
