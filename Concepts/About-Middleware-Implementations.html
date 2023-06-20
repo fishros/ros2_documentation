@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About ROS 2 middleware implementations &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于ROS 2中间件实现 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -302,7 +302,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot;</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">About ROS 2 middleware implementations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于ROS 2中间件实现</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 </ul>
 </li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>About ROS 2 middleware implementations</li>
+      <li>关于ROS 2中间件实现</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Middleware-Implementations.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,16 +372,14 @@
 
 
   <div class="section" id="about-ros-2-middleware-implementations">
-<h1>About ROS 2 middleware implementations<a class="headerlink" href="#about-ros-2-middleware-implementations" title="永久链接至标题"></a></h1>
-<p>ROS middleware implementations are sets of <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">packages</span></a> that implement some of the internal ROS interfaces, e.g. the <code class="docutils literal notranslate"><span class="pre">rmw</span></code>, <code class="docutils literal notranslate"><span class="pre">rcl</span></code>, and <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a>.</p>
+<h1>关于ROS 2中间件实现<a class="headerlink" href="#about-ros-2-middleware-implementations" title="永久链接至标题"></a></h1>
+<p>ROS中间件实现是一组|packages|，用于实现一些内部的ROS接口，例如``rmw``、<a href="#id1"><span class="problematic" id="id2">``</span></a>rcl``和``rosidl``|APIs|。</p>
 <div class="section" id="common-packages-for-dds-middleware-packages">
-<h2>Common Packages for DDS Middleware Packages<a class="headerlink" href="#common-packages-for-dds-middleware-packages" title="永久链接至标题"></a></h2>
-<p>All of the current ROS middleware implementations are based on full or partial DDS implementations.
-For example, there is a middleware implementation that uses RTI's Connext DDS and an implementation which uses eProsima's Fast DDS.
-Because of this, there are some shared <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">packages</span></a> amongst most DDS based middleware implementations.</p>
-<p>In the <a class="reference external" href="https://github.com/ros2/rosidl_dds">ros2/rosidl_dds</a> repository on <a class="reference external" href="https://github.com/">GitHub</a>, there is the following <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">package</span></a>:</p>
+<h2>DDS中间件的常见包<a class="headerlink" href="#common-packages-for-dds-middleware-packages" title="永久链接至标题"></a></h2>
+<p>所有当前的ROS中间件实现都基于完整或部分的DDS实现。例如，有一种中间件实现使用RTI的Connext DDS，另一种实现使用eProsima的Fast DDS。因此，在大多数基于DDS的中间件实现之间存在一些共享的|packages|。</p>
+<p>在|GitHub|_上的`ros2/rosidl_dds &lt;<a class="reference external" href="https://github.com/ros2/rosidl_dds">https://github.com/ros2/rosidl_dds</a>&gt;`_代码库中，有以下|package|：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rosidl_generator_dds_idl</span></code>: provides tools to generate DDS <code class="docutils literal notranslate"><span class="pre">.idl</span></code> files from <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> files, e.g. <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files, <code class="docutils literal notranslate"><span class="pre">.srv</span></code> files, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rosidl_generator_dds_idl</span></code>：提供从``rosidl``文件（例如``.msg``文件、<a href="#id1"><span class="problematic" id="id2">``</span></a>.srv``文件等）生成DDS <a href="#id3"><span class="problematic" id="id4">``</span></a>.idl``文件的工具。</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">rosidl_generator_dds_idl</span></code> <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">package</span></a> generates a DDS <code class="docutils literal notranslate"><span class="pre">.idl</span></code> file for each <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> file, e.g. <code class="docutils literal notranslate"><span class="pre">.msg</span></code> file, defined by <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">packages</span></a> containing messages.
 Currently DDS based ROS middleware implementations make use of this generator's output <code class="docutils literal notranslate"><span class="pre">.idl</span></code> files to generate pre-compiled type support that is vendor specific.</p>
