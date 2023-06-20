@@ -421,29 +421,28 @@
 <p>这些是ROS 2日志记录基础设施的终端用户应使用的API，按客户端库进行划分。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}</span></code> - output the given printf-style message every time this line is hit</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_ONCE</span></code> - output the given printf-style message only the first time this line is hit</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_EXPRESSION</span></code> - output the given printf-style message only if the given expression is true</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_FUNCTION</span></code> - output the given printf-style message only if the given function returns true</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_SKIPFIRST</span></code> - output the given printf-style message all but the first time this line is hit</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_THROTTLE</span></code> - output the given printf-style message no more than the given rate in integer milliseconds</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_SKIPFIRST_THROTTLE</span></code> - output the given printf-style message no more than the given rate in integer milliseconds, but skip the first</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM</span></code> - output the given C++ stream-style message every time this line is hit</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_ONCE</span></code> - output the given C++ stream-style message only the first time this line is hit</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_EXPRESSION</span></code> - output the given C++ stream-style message only if the given expression is true</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_FUNCTION</span></code> - output the given C++ stream-style message only if the given function returns true</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_SKIPFIRST</span></code> - output the given C++ stream-style message all but the first time this line is hit</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_THROTTLE</span></code> - output the given C++ stream-style message no more than the given rate in integer milliseconds</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_SKIPFIRST_THROTTLE</span></code> - output the given C++ stream-style message no more than the given rate in integer milliseconds, but skip the first</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}</span></code> - 每次执行到这行时输出给定的 printf 样式的消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_ONCE</span></code> - 仅在第一次执行到这行时输出给定的 printf 样式的消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_EXPRESSION</span></code> - 仅在给定表达式为真时输出给定的 printf 样式的消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_FUNCTION</span></code> - 仅在给定函数返回 true 时输出给定的 printf 样式的消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_SKIPFIRST</span></code> - 第一次执行到这行时除外，输出给定的 printf 样式的消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_THROTTLE</span></code> - 以整数毫秒为单位，输出不超过给定速率的 printf 样式的消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_SKIPFIRST_THROTTLE</span></code> - 按照给定的整数毫秒速率输出printf风格的消息，但跳过第一次</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM</span></code> - 每次执行到此行时，输出给定的C++流式消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_ONCE</span></code> - 仅在第一次执行到此行时，输出给定的C++流式消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_EXPRESSION</span></code> - 仅在给定表达式为真时，输出给定的C++流式消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_FUNCTION</span></code> - 仅在给定函数返回真时，输出给定的C++流式消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_SKIPFIRST</span></code> - 第一次执行到此行时以外的其他时间，输出给定的C++流式消息</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_THROTTLE</span></code> - 以整数毫秒的速率输出给定的C++流式消息，不超过指定的速率</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_SKIPFIRST_THROTTLE</span></code> - 以整数毫秒的速率输出给定的C++流式消息，不超过指定的速率，但跳过第一个消息</p></li>
 </ul>
-<p>Each of the above APIs takes an <code class="docutils literal notranslate"><span class="pre">rclcpp::Logger</span></code> object as the first argument.
-This can be pulled from the node API by calling <code class="docutils literal notranslate"><span class="pre">node-&gt;get_logger()</span></code> (recommended), or by constructing a stand-alone <code class="docutils literal notranslate"><span class="pre">rclcpp::Logger</span></code> object.</p>
+<p>上述每个API的第一个参数都需要传递一个``rclcpp::Logger``对象。可以通过调用``node-&gt;get_logger()``（推荐）从节点API中获取该对象，或者构建一个独立的``rclcpp::Logger``对象。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_logging_set_logger_level</span></code> - Set the logging level for a particular logger name to the given severity level</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_logging_get_logger_effective_level</span></code> - Given a logger name, return the logger level (which may be unset)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_logging_set_logger_level</span></code> - 将特定记录器名称的日志级别设置为给定的严重级别</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_logging_get_logger_effective_level</span></code> - 给定记录器名称，返回记录器的级别（可能未设置）</p></li>
 </ul>
 </div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">logger.{debug,info,warning,error,fatal}</span></code> - output the given Python string to the logging infrastructure.  The calls accept the following keyword args to control behavior:</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">logger.{debug,info,warning,error,fatal}</span></code> - 将给定的Python字符串输出到日志记录基础设施。这些调用接受以下关键字参数来控制行为：</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">throttle_duration_sec</span></code> - if not None, the duration of the throttle interval in floating-point seconds</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">skip_first</span></code> - if True, output the message all but the first time this line is hit</p></li>
