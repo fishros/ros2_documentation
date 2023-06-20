@@ -139,7 +139,7 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../Intermediate.html">中级</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../Rosdep.html">Managing Dependencies with rosdep</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">Creating an action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">创建一个动作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cpp.html">Writing an action server and client (C++)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Writing an action server and client (Python)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Composition.html">在单个进程中组合多个节点</a></li>
@@ -402,14 +402,14 @@
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>You will need the <code class="docutils literal notranslate"><span class="pre">action_tutorials_interfaces</span></code> package and the <code class="docutils literal notranslate"><span class="pre">Fibonacci.action</span></code>
-interface defined in the previous tutorial, <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action</span></a>.</p>
+interface defined in the previous tutorial, <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">创建一个动作</span></a>.</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="writing-an-action-server">
 <h3><a class="toc-backref" href="#id4">1 Writing an action server</a><a class="headerlink" href="#writing-an-action-server" title="永久链接至标题"></a></h3>
 <p>Let's focus on writing an action server that computes the Fibonacci sequence
-using the action we created in the <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action</span></a> tutorial.</p>
+using the action we created in the <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">创建一个动作</span></a> tutorial.</p>
 <p>Until now, you've created packages and used <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> to run your nodes.
 To keep things simple in this tutorial, however, we’ll scope the action server to a single file.
 If you'd like to see what a complete package for the actions tutorials looks like, check out
@@ -634,7 +634,7 @@ The class is initialized by calling the <code class="docutils literal notranslat
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;fibonacci_action_client&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Also in the class constructor, we create an action client using the custom action definition from the previous tutorial on <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">Creating an action</span></a>:</p>
+<p>Also in the class constructor, we create an action client using the custom action definition from the previous tutorial on <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">创建一个动作</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_action_client</span> <span class="o">=</span> <span class="n">ActionClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fibonacci</span><span class="p">,</span> <span class="s1">&#39;fibonacci&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
