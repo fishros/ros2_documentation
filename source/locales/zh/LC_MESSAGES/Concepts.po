@@ -502,12 +502,12 @@ msgstr "``catkin``：``catkin_package()``、``catkin_install_python()`` 等。"
 
 #: ../../source/Concepts/About-Catment.rst:34
 msgid "``ament``: ``ament_target_dependencies()``, ``ament_export_dependencies()``, ``ament_package()``, etc."
-msgstr "``ament``: ``ament_target_dependencies()``, ``ament_export_dependencies()``, ``ament_package()``, etc."
+msgstr "``ament``: ``ament_target_dependencies()``, ``ament_export_dependencies()``, ``ament_package()``, 等等。"
 
 
 #: ../../source/Concepts/About-Catment.rst:37
 msgid "Provides a tool that can be used to iterate in dependency order over a workspace full of packages, building and perhaps installing each one."
-msgstr "Provides a tool that can be used to iterate in dependency order over a workspace full of packages, building and perhaps installing each one."
+msgstr "提供了一个工具，可以按照依赖顺序遍历一个包含多个软件包的工作空间，构建并可能安装每个软件包。"
 
 
 #: ../../source/Concepts/About-Catment.rst:40
@@ -517,7 +517,7 @@ msgstr "``rosbuild``: ``rosmake``"
 
 #: ../../source/Concepts/About-Catment.rst:41
 msgid "``catkin``: ``catkin build``, ``catkin_make``, ``catkin_make_isolated``, etc."
-msgstr "``catkin``: ``catkin build``, ``catkin_make``, ``catkin_make_isolated``, etc."
+msgstr "``catkin``: ``catkin build``, ``catkin_make``, ``catkin_make_isolated``，等等。"
 
 
 #: ../../source/Concepts/About-Catment.rst:42
@@ -527,37 +527,37 @@ msgstr "``ament``: ``ament build``"
 
 #: ../../source/Concepts/About-Catment.rst:44
 msgid "The common thread that ties all of these systems together is the division of the code into **packages**\\ , with each package containing a manifest file (``manifest.xml`` or ``package.xml``). This manifest is required (with some exceptions) for both parts of the meta-build system (API and build tool) to function."
-msgstr "The common thread that ties all of these systems together is the division of the code into **packages**\\ , with each package containing a manifest file (``manifest.xml`` or ``package.xml``). This manifest is required (with some exceptions) for both parts of the meta-build system (API and build tool) to function."
+msgstr "将所有这些系统联系在一起的共同线索是将代码划分为**包**，每个包包含一个清单文件（``manifest.xml`` 或 ``package.xml``）。这个清单文件对于元构建系统的两个部分（API 和构建工具）都是必需的（有一些例外），以便其正常运行。"
 
 
 #: ../../source/Concepts/About-Catment.rst:48
 msgid "Postulates"
-msgstr "Postulates"
+msgstr "假设"
 
 
 #: ../../source/Concepts/About-Catment.rst:51
 msgid "**While we usually consider the two aspects of a meta-build system to be coupled, they needn't be.** The API used inside a package and the tool that iterates over the packages can be considered largely independent, with the package manifest forming the interface between them. There's no reason in principle why, for example, ``rosmake`` couldn't be modified to iterate over a workspace filled with ``catkin`` packages, stepping into them in dependency order and doing the usual ``mkdir build; cd build; cmake ..; make install`` routine for each one (with appropriate flags passed to ``cmake`` and ``make``)."
-msgstr "**While we usually consider the two aspects of a meta-build system to be coupled, they needn't be.** The API used inside a package and the tool that iterates over the packages can be considered largely independent, with the package manifest forming the interface between them. There's no reason in principle why, for example, ``rosmake`` couldn't be modified to iterate over a workspace filled with ``catkin`` packages, stepping into them in dependency order and doing the usual ``mkdir build; cd build; cmake ..; make install`` routine for each one (with appropriate flags passed to ``cmake`` and ``make``)."
+msgstr "**尽管我们通常认为元构建系统的两个方面是耦合在一起的，但它们并不一定是。**包内部使用的API和迭代包的工具可以被认为是相互独立的，而包清单则形成了它们之间的接口。原则上没有理由不这样做，例如，“rosmake”可以被修改为在一个充满“catkin”包的工作空间中进行迭代，按照依赖顺序进入每个包，并对每个包执行通常的“mkdir build; cd build; cmake ..; make install”例程（同时向“cmake”和“make”传递适当的标志）"
 
 
 #: ../../source/Concepts/About-Catment.rst:55
 msgid "**The effort required to migrate from one meta-build system to another should be minimized.** The mass migration from ``rosbuild`` to ``catkin`` was difficult and remains a sore point for many in the community. While it's reasonable to ask developers to make changes in exchange for getting access to new functionality, the changes that are required should be as small as possible without sacrificing the effectiveness of the new system. This is especially true when the old system is in widespread use."
-msgstr "**The effort required to migrate from one meta-build system to another should be minimized.** The mass migration from ``rosbuild`` to ``catkin`` was difficult and remains a sore point for many in the community. While it's reasonable to ask developers to make changes in exchange for getting access to new functionality, the changes that are required should be as small as possible without sacrificing the effectiveness of the new system. This is especially true when the old system is in widespread use."
+msgstr "**将从一个元构建系统迁移到另一个的工作量应该最小化。**从“rosbuild”迁移到“catkin”的大规模迁移对社区的许多人来说都是困难的，仍然是一个痛点。虽然要求开发者做出改变以获得新功能是合理的，但所需的改变应该尽可能小，而不会牺牲新系统的有效性。当旧系统被广泛使用时，这一点尤为重要"
 
 
 #: ../../source/Concepts/About-Catment.rst:61
 msgid "Corollary: **Migration to a new meta-build system should not be required without a very good reason.** If a developer doesn't want the functionality offered by the new system, then they shouldn't be coerced into migrating from the old system unless there's something irrevocably broken about the old system (e.g. ``rosbuild``\\ 's in-source build pattern and lack of an \"install\" step)."
-msgstr "Corollary: **Migration to a new meta-build system should not be required without a very good reason.** If a developer doesn't want the functionality offered by the new system, then they shouldn't be coerced into migrating from the old system unless there's something irrevocably broken about the old system (e.g. ``rosbuild``\\ 's in-source build pattern and lack of an \"install\" step)."
+msgstr "推论：**除非有非常充分的理由，否则不应要求迁移到新的元构建系统。**如果开发者不需要新系统提供的功能，那么除非旧系统出现了不可挽回的问题（例如，“rosbuild”的源代码构建模式和缺乏“install”步骤），否则不应强制他们从旧系统迁移"
 
 
 #: ../../source/Concepts/About-Catment.rst:65
 msgid "**Interoperability is a good thing.** Whenever possible (not all combinations will be practical), developers should be able to mix and match meta-build systems, including mixing their different aspects (i.e., use the building tool from one system and the API from another). Such mixing and matching is especially important when developers want to combine a large existing codebase using one meta-build system (e.g. ROS with ``catkin``) with new libraries and tools offered by a codebase using another meta-build system (e.g. ROS 2 with ``ament``). Ideally, that kind of combination can be done without requiring changes to the API used by either codebase and without telling the developer which builder tool to use."
-msgstr "**Interoperability is a good thing.** Whenever possible (not all combinations will be practical), developers should be able to mix and match meta-build systems, including mixing their different aspects (i.e., use the building tool from one system and the API from another). Such mixing and matching is especially important when developers want to combine a large existing codebase using one meta-build system (e.g. ROS with ``catkin``) with new libraries and tools offered by a codebase using another meta-build system (e.g. ROS 2 with ``ament``). Ideally, that kind of combination can be done without requiring changes to the API used by either codebase and without telling the developer which builder tool to use."
+msgstr "**互操作性是一件好事。**只要可能（并非所有组合都是实际可行的），开发者应该能够混合和匹配元构建系统，包括混合使用它们的不同方面（即，使用一个系统的构建工具和另一个系统的API）。当开发者想要将使用一个元构建系统（如ROS与“catkin”）的大型现有代码库与使用另一个元构建系统（如ROS 2与“ament”）的代码库提供的新库和工具结合起来时，这种混合和匹配尤其重要。理想情况下，这种组合可以在不要求任何代码库使用的API进行更改的情况下完成，也不会告诉开发者使用哪个构建工具"
 
 
 #: ../../source/Concepts/About-Catment.rst:71
 msgid "Corollary: **Workspaces needn't be homogeneous.** There's no reason that we shouldn't be able to freely mix, say, ``catkin`` and ``ament`` packages in one workspace, with dependencies going in both directions, so long as the builder tool in use knows how to build them both. The primary interface between packages (at least, CMake-controlled packages) is their CMake configuration file. So long as that configuration file follows the standard protocol (setting ``foo_LIBRARIES``, etc.), then it shouldn't matter who wrote the file. It could be auto-generated by ``catkin`` or ``ament``, or even manually crafted by a developer who wants to use plain CMake in their package, but still have that package depended-upon by ``catkin`` or ``ament`` packages."
-msgstr "Corollary: **Workspaces needn't be homogeneous.** There's no reason that we shouldn't be able to freely mix, say, ``catkin`` and ``ament`` packages in one workspace, with dependencies going in both directions, so long as the builder tool in use knows how to build them both. The primary interface between packages (at least, CMake-controlled packages) is their CMake configuration file. So long as that configuration file follows the standard protocol (setting ``foo_LIBRARIES``, etc.), then it shouldn't matter who wrote the file. It could be auto-generated by ``catkin`` or ``ament``, or even manually crafted by a developer who wants to use plain CMake in their package, but still have that package depended-upon by ``catkin`` or ``ament`` packages."
+msgstr "推论：**工作空间不需要是同构的。**只要正在使用的构建工具知道如何构建它们，我们就没有理由不允许在一个工作空间中自由混合使用“catkin”和“amen"
 
 
 #: ../../source/Concepts/About-Catment.rst:78
