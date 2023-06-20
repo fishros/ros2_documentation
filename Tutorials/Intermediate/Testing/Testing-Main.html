@@ -375,25 +375,22 @@
   <div class="section" id="testing">
 <span id="testingmain"></span><h1>测试<a class="headerlink" href="#testing" title="永久链接至标题"></a></h1>
 <div class="section" id="why-automatic-tests">
-<h2>Why automatic tests?<a class="headerlink" href="#why-automatic-tests" title="永久链接至标题"></a></h2>
-<p>Here are some of the many good reasons why should we have automated tests:</p>
+<h2>为什么需要自动化测试？<a class="headerlink" href="#why-automatic-tests" title="永久链接至标题"></a></h2>
+<p>以下是为什么我们应该进行自动化测试的许多重要原因：</p>
 <ul class="simple">
-<li><p>You can make incremental updates to your code more quickly. ROS has hundreds of packages with many interdependencies, so it can be hard to anticipate the problems a small change might cause. If your change passes the unit tests, you can be more confident that you haven't introduced problems — or at least the problems aren't your fault.</p></li>
-<li><p>You can refactor your code with greater confidence. Passing the unit tests verifies that you haven't introduced any bugs while refactoring. This gives you this wonderful freedom from change fear!</p></li>
-<li><p>It leads to better designed code. Unit tests force you to write your code so that it can be more easily tested. This often means keeping your underlying functions and framework separate, which is one of our design goals with ROS code.</p></li>
-<li><p>They prevent recurring bugs (bug regressions). It's a good practice to write a unit test for every bug you fix. In fact, write the unit test before you fix the bug. This will help you to precisely, or even deterministically, reproduce the bug, and much more precisely understand what the problem is. As a result, you will also create a better patch, which you can then test with your regression test to verify that the bug is fixed. That way the bug won't accidentally get reintroduced if the code gets modified later on. It also means that it will be easier to convince the reviewer of the patch that the problem is solved, and the contribution is of high quality.</p></li>
-<li><p>Other people can work on your code more easily (an automatic form of documentation). It can be hard to figure out whether or not you've broken someone else's code when you make a change. The unit tests are a tool for other developers to validate their changes. Automatic tests document your coding decisions, and communicate to other developers automatically about their violation. Thus tests become documentation for your code — a documentation that does not need to be read for the most time, and when it does need to be inspected the test system will precisely indicate what to read (which tests fail). By writing automatic tests you make other contributors faster. This improves the entire ROS project.</p></li>
-<li><p>It is much easier to become a contributor to ROS if we have automated unit tests. It is very difficult for new external developers to contribute to your components. When they make changes to code, they are often doing it in the blind, driven by a lot of guesswork. By providing a harness of automated tests, you help them in the task. They get immediate feedback for their changes. It becomes easier to contribute to a project, and new contributors to join more easily. Also their first contributions are of higher quality, which decreases the workload on maintainers. A win-win!</p></li>
-<li><p>Automatic tests simplify maintainership. Especially for mature packages, which change more slowly, and mostly need to be updated to new dependencies, an automatic test suite helps to very quickly establish whether the package still works. This makes it much easier to decide whether the package is still supported or not.</p></li>
-<li><p>Automatic tests amplify the value of Continuous Integration. Regression tests, along with normal scenario-based requirements tests, contribute to overall body of automated tests for your component. Your component is better tested against evolution of other APIs that it depends on (CI servers will tell you better and more precisely what problems develop in your code).</p></li>
+<li><p>您可以更快地对代码进行增量更新。ROS有数百个包，其中存在许多相互依赖关系，因此很难预测小改动可能引起的问题。如果您的更改通过了单元测试，那么您可以更加自信地认为您没有引入问题——或者至少问题不是您造成的。</p></li>
+<li><p>您可以更有信心地重构代码。通过通过单元测试可以验证在重构过程中是否引入了任何错误。这使您摆脱了对变更的恐惧感！</p></li>
+<li><p>它可以导致更好的设计代码。单元测试迫使您编写更易于测试的代码。这通常意味着将底层函数和框架分离，这是我们在ROS代码中的设计目标之一。</p></li>
+<li><p>它可以防止重现的错误（回归错误）。对于您修复的每个错误，编写单元测试是一种良好的实践。实际上，在修复错误之前编写单元测试。这将帮助您精确地或甚至是确定性地重现错误，并更加准确地理解问题所在。结果，您还将创建一个更好的补丁，然后可以使用回归测试来验证错误是否已修复。这样，如果以后修改了代码，错误就不会被意外重新引入。这还意味着更容易说服补丁的审阅者问题已得到解决，贡献的质量较高。</p></li>
+<li><p>其他人可以更轻松地在你的代码上工作（自动文档的形式）。当你进行更改时，很难弄清楚你是否破坏了其他人的代码。单元测试是其他开发人员验证其更改的工具。自动化测试记录了你的编码决策，并自动向其他开发人员传达了有关违规情况的信息。因此，测试成为你代码的文档-一种无需大部分时间阅读的文档，而当需要检查时，测试系统将准确指示要阅读的内容（哪些测试失败）。通过编写自动化测试，你使其他贡献者更快速。这改进了整个ROS项目。</p></li>
+<li><p>如果我们有自动化的单元测试，成为ROS的贡献者将容易得多。对于新的外部开发人员来说，很难为你的组件做出贡献。当他们更改代码时，通常是在盲目操作，靠很多猜测。通过提供一套自动化测试的支持，你可以帮助他们完成任务。他们会立即获得对其更改的反馈。这使得为项目做出贡献变得更容易，新的贡献者也更容易加入。此外，他们的首次贡献质量更高，这减轻了维护者的工作负担。双赢！</p></li>
+<li><p>自动化测试简化了维护工作。对于成熟的软件包而言，变化较慢，主要需要更新到新的依赖项，自动化测试套件有助于快速确定软件包是否仍然可用。这使得决定软件包是否仍然受支持变得更容易。</p></li>
+<li><p>自动化测试放大了持续集成的价值。回归测试以及基于常规场景的需求测试一起，为组件的整体自动化测试体系做出了贡献。你的组件在与其所依赖的其他API的演化方面得到了更好的测试（CI服务器将更好、更准确地告知你代码中存在的问题）。</p></li>
 </ul>
-<p>Perhaps the most important benefit of writing tests is that tests make you a good citizen.
-Tests influence quality in the long term.
-It is a well accepted practice in many open-source projects.
-By writing regressions tests, you are contributing to long term quality of the ROS ecosystem.</p>
+<p>编写测试的最重要的好处也许是让你成为一个良好的开发者。测试对长期的质量产生影响。这是许多开源项目中被广泛接受的实践。通过编写回归测试，你正在为ROS生态系统的长期质量做出贡献。</p>
 </div>
 <div class="section" id="is-this-all-coming-for-free">
-<h2>Is this all coming for free?<a class="headerlink" href="#is-this-all-coming-for-free" title="永久链接至标题"></a></h2>
+<h2>这一切都是免费的吗？<a class="headerlink" href="#is-this-all-coming-for-free" title="永久链接至标题"></a></h2>
 <p>Of course, there is never free lunch.
 To get the benefits of testing, some investment is necessary.</p>
 <ul class="simple">
