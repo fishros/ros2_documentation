@@ -12961,67 +12961,67 @@ msgstr "``rosdep``将在其路径或特定软件包中检查``package.xml``文�
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:60
 msgid "The central index is known as ``rosdistro``, which `may be found here <https://github.com/ros/rosdistro>`_. We'll explore that more in the next section."
-msgstr "The central index is known as ``rosdistro``, which `may be found here <https://github.com/ros/rosdistro>`_. We'll explore that more in the next section."
+msgstr "中心索引被称为``rosdistro``，可以在此处找到：<https://github.com/ros/rosdistro>。我们将在下一节中更详细地探讨这个问题。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:64
 msgid "How do I know what keys to put in my package.xml?"
-msgstr "How do I know what keys to put in my package.xml?"
+msgstr "我怎么知道要在我的``package.xml``文件中放入哪些键呢？"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:66
 msgid "Great question, I'm glad you asked!"
-msgstr "Great question, I'm glad you asked!"
+msgstr "很好的问题，我很高兴你问了！"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:68
 msgid "For ROS packages (e.g. ``nav2_bt_navigator``), you may simply place the name of the package. You can find a list of all released ROS packages in ``rosdistro`` at ``<distro>/distribution.yaml`` for your given ROS distribution."
-msgstr "For ROS packages (e.g. ``nav2_bt_navigator``), you may simply place the name of the package. You can find a list of all released ROS packages in ``rosdistro`` at ``<distro>/distribution.yaml`` for your given ROS distribution."
+msgstr "对于ROS包（例如``nav2_bt_navigator``），你可以直接放置包的名称。你可以在给定的ROS发行版的``rosdistro``中的``<distro>/distribution.yaml``中找到所有已发布的ROS包的列表。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:71
 msgid "For non-ROS package system dependencies, we will need to find the keys for a particular library. In general, there are two files of interest: ``rosdep/base.yaml`` and ``rosdep/python.yaml``. ``base.yaml`` in general contains the ``apt`` system dependencies. ``python.yaml`` in general contains the ``pip`` python dependencies."
-msgstr "For non-ROS package system dependencies, we will need to find the keys for a particular library. In general, there are two files of interest: ``rosdep/base.yaml`` and ``rosdep/python.yaml``. ``base.yaml`` in general contains the ``apt`` system dependencies. ``python.yaml`` in general contains the ``pip`` python dependencies."
+msgstr "对于非ROS包系统依赖，我们需要找到特定库的键。一般来说，有两个感兴趣的文件：``rosdep/base.yaml``和``rosdep/python.yaml``。``base.yaml``通常包含``apt``系统依赖项。``python.yaml``通常包含``pip``的Python依赖项。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:76
 msgid "To find a key, search for your library in this file and find the name in ``yaml`` that contains it. This is the key to put in a ``package.xml`` file."
-msgstr "To find a key, search for your library in this file and find the name in ``yaml`` that contains it. This is the key to put in a ``package.xml`` file."
+msgstr "要找到一个键，在文件中搜索你的库，并找到包含它的``yaml``中的名称。这就是要放在``package.xml``文件中的键。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:79
 msgid "For example, imagine a package had a dependency on ``doxygen`` because it is a great piece of software that cares about quality documentation (hint hint). We would search ``base.yaml`` for ``doxygen`` and come across:"
-msgstr "For example, imagine a package had a dependency on ``doxygen`` because it is a great piece of software that cares about quality documentation (hint hint). We would search ``base.yaml`` for ``doxygen`` and come across:"
+msgstr "例如，假设一个软件包依赖于``doxygen``，因为它是一款关注文档质量的优秀软件（暗示暗示）。我们会在``base.yaml``中搜索``doxygen``，然后找到如下内容："
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:97
 msgid "That means our rosdep key is ``doxygen``, which would resolve to those various names in different operating system's package managers for installation."
-msgstr "That means our rosdep key is ``doxygen``, which would resolve to those various names in different operating system's package managers for installation."
+msgstr "这意味着我们的rosdep键是``doxygen``，在不同操作系统的软件包管理器中，它会解析为不同的名称进行安装。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:100
 msgid "What if my library isn't in rosdistro?"
-msgstr "What if my library isn't in rosdistro?"
+msgstr "如果我的库不在rosdistro中怎么办？"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:102
 msgid "If your library isn't in ``rosdistro``, you can experience the greatness that is open-source software development: you can add it yourself! Pull requests for rosdistro are typically merged well within a week."
-msgstr "If your library isn't in ``rosdistro``, you can experience the greatness that is open-source software development: you can add it yourself! Pull requests for rosdistro are typically merged well within a week."
+msgstr "如果你的库不在``rosdistro``中，你可以体验开源软件开发的伟大之处：你可以自己添加！通常，针对rosdistro的拉取请求在一周内就会合并。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:105
 msgid "`Detailed instructions may be found here <https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions>`_ for how to contribute new rosdep keys. If for some reason these may not be contributed openly, it is possible to fork rosdistro and maintain a alternate index for use."
-msgstr "`Detailed instructions may be found here <https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions>`_ for how to contribute new rosdep keys. If for some reason these may not be contributed openly, it is possible to fork rosdistro and maintain a alternate index for use."
+msgstr "关于如何贡献新的rosdep键，可以在此处找到详细说明：<https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions>。如果由于某些原因无法公开贡献，也可以fork rosdistro并维护一个备用索引供使用。"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:110
 msgid "How do I use the rosdep tool?"
-msgstr "How do I use the rosdep tool?"
+msgstr "如何使用rosdep工具？"
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:112
 msgid "Now that we have some understanding of ``rosdep``, ``package.xml``, and ``rosdistro``, we're ready to use the utility itself! Firstly, if this is the first time using ``rosdep``, it must be initialized via:"
-msgstr "Now that we have some understanding of ``rosdep``, ``package.xml``, and ``rosdistro``, we're ready to use the utility itself! Firstly, if this is the first time using ``rosdep``, it must be initialized via:"
+msgstr "现在我们对``rosdep``、``package.xml``和``rosdistro``有了一些了解，我们准备好使用这个工具了！首先，如果这是第一次使用``rosdep``，必须通过以下命令进行初始化："
 
 
 #: ../../source/Tutorials/Intermediate/Rosdep.rst:120
