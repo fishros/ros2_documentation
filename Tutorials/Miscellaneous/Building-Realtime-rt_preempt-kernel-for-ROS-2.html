@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building a real-time Linux kernel [community-contributed] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>构建实时Linux内核[社区贡献] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -233,7 +233,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../Miscellaneous.html">杂项</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Deploying-ROS-2-on-IBM-Cloud.html">Deploying on IBM Cloud Kubernetes [community-contributed]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Eclipse-Oxygen-with-ROS-2-and-rviz2.html">Using Eclipse Oxygen with <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> [community-contributed]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Building a real-time Linux kernel [community-contributed]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">构建实时Linux内核[社区贡献]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包</a></li>
 </ul>
 </li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../Miscellaneous.html">杂项</a> &raquo;</li>
-      <li>Building a real-time Linux kernel [community-contributed]</li>
+      <li>构建实时Linux内核[社区贡献]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,59 +373,57 @@
 
 
   <div class="section" id="building-a-real-time-linux-kernel-community-contributed">
-<h1>Building a real-time Linux kernel [community-contributed]<a class="headerlink" href="#building-a-real-time-linux-kernel-community-contributed" title="永久链接至标题"></a></h1>
-<p>This tutorial begins with a clean Ubuntu 20.04.1 install on Intel x86_64. Actual kernel is 5.4.0-54-generic, but we will install the Latest Stable RT_PREEMPT Version. To build the kernel you need at least 30GB free disk space.</p>
-<p>Check <a class="reference external" href="https://wiki.linuxfoundation.org/realtime/start">https://wiki.linuxfoundation.org/realtime/start</a> for the latest stable version, at the time of writing this is &quot;Latest Stable Version 5.4-rt&quot;.
-If we click on the <a class="reference external" href="http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/">link</a>, we get the exact version.
-Currently it is patch-5.4.78-rt44.patch.gz.</p>
+<h1>构建实时Linux内核[社区贡献]<a class="headerlink" href="#building-a-real-time-linux-kernel-community-contributed" title="永久链接至标题"></a></h1>
+<p>本教程以在Intel x86_64上进行干净的Ubuntu 20.04.1安装为起点。实际内核版本为5.4.0-54-generic，但我们将安装最新稳定的RT_PREEMPT版本。要构建内核，您需要至少30GB的可用磁盘空间。</p>
+<p>请查看https://wiki.linuxfoundation.org/realtime/start，了解最新的稳定版本。目前是&quot;Latest Stable Version 5.4-rt&quot;。如果我们点击`链接 &lt;<a class="reference external" href="http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/">http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/</a>&gt;`_，我们将得到确切的版本。目前的版本是patch-5.4.78-rt44.patch.gz。</p>
 <img alt="../../_images/realtime-kernel-patch-version.png" src="../../_images/realtime-kernel-patch-version.png" />
-<p>We create a directory in our home dir with</p>
+<p>我们在我们的主目录中创建一个目录，名称为</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/kernel
 </pre></div>
 </div>
-<p>and switch into it with</p>
+<p>并切换到该目录，使用</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/kernel
 </pre></div>
 </div>
-<p>We can go with a browser to <a class="reference external" href="https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/">https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/</a> and see if the version is there. You can download it from the site and move it manually from /Downloads to the /kernel folder, or download it using wget by right clicking the link using &quot;copy link location&quot;. Example:</p>
+<p>我们可以使用浏览器访问 <a class="reference external" href="https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/">https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/</a> ，查看该版本是否存在。您可以从该网站下载并手动将其从/Downloads移动到/kernel文件夹中，或者使用wget下载，方法是右键点击链接并选择“复制链接地址”。示例：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.4.78.tar.gz
 </pre></div>
 </div>
-<p>unpack it with</p>
+<p>使用以下命令解压缩</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar -xzf linux-5.4.78.tar.gz
 </pre></div>
 </div>
-<p>download rt_preempt patch matching the Kernel version we just downloaded over at <a class="reference external" href="http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/">http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/</a></p>
+<p>在 <a class="reference external" href="http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/">http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/</a> 下载与刚刚下载的内核版本匹配的rt_preempt补丁</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.78-rt44.patch.gz
 </pre></div>
 </div>
-<p>unpack it with</p>
+<p>使用以下命令解压缩</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gunzip patch-5.4.78-rt44.patch.gz
 </pre></div>
 </div>
-<p>Then switch into the linux directory with</p>
+<p>然后切换到linux目录，使用命令</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> linux-5.4.78/
 </pre></div>
 </div>
-<p>and patch the kernel with the realtime patch</p>
+<p>并使用实时补丁对内核进行补丁</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>patch -p1 &lt; ../patch-5.4.78-rt44.patch
 </pre></div>
 </div>
-<p>We simply want to use the config of our Ubuntu installation, so we get the Ubuntu config with</p>
+<p>我们只想使用我们的Ubuntu安装的配置，所以我们使用以下命令获取Ubuntu的配置</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /boot/config-5.4.0-54-generic .config
 </pre></div>
 </div>
-<p>Open Software &amp; Updates. in the Ubuntu Software menu tick the 'Source code' box</p>
-<p>We need some tools to build kernel, install them with</p>
+<p>在Ubuntu软件菜单中的“开放软件和更新”中勾选“源代码”框</p>
+<p>我们需要一些构建内核的工具，使用以下命令进行安装</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get build-dep linux
 sudo apt-get install libncurses-dev flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf fakeroot
 </pre></div>
 </div>
-<p>To enable all Ubuntu configurations, we simply use</p>
+<p>为了启用所有的Ubuntu配置，我们只需要使用以下命令</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yes <span class="s1">&#39;&#39;</span> <span class="p">|</span> make oldconfig
 </pre></div>
 </div>
-<p>Then we need to enable rt_preempt in the kernel. We call</p>
+<p>然后我们需要在内核中启用rt_preempt。我们调用以下命令</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make menuconfig
 </pre></div>
 </div>
