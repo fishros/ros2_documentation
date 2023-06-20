@@ -14376,92 +14376,92 @@ msgstr "首先，让我们回到上一教程 :doc:`使用时间 <./Learning-Abou
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:36
 msgid "Now, instead of making the second turtle go to where the carrot is now, we will make the second turtle go to where the first carrot was 5 seconds ago. Edit the ``lookupTransform()`` call in ``turtle_tf2_listener.cpp`` file to"
-msgstr "Now, instead of making the second turtle go to where the carrot is now, we will make the second turtle go to where the first carrot was 5 seconds ago. Edit the ``lookupTransform()`` call in ``turtle_tf2_listener.cpp`` file to"
+msgstr "现在，不再让第二只乌龟去当前胡萝卜所在的位置，而是让第二只乌龟去第一个胡萝卜5秒钟前所在的位置。在``turtle_tf2_listener.cpp``文件中编辑``lookupTransform()``调用："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:48 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:48
 msgid "Now if you run this, during the first 5 seconds, the second turtle would not know where to go because we do not yet have a 5-second history of poses of the carrot. But what happens after these 5 seconds? Let's just give it a try:"
-msgstr "Now if you run this, during the first 5 seconds, the second turtle would not know where to go because we do not yet have a 5-second history of poses of the carrot. But what happens after these 5 seconds? Let's just give it a try:"
+msgstr "如果现在运行这段代码，在前5秒钟内，第二只乌龟将不知道该去哪里，因为我们还没有5秒钟的胡萝卜位置历史记录。但是在这5秒钟之后会发生什么呢？让我们试一试："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:57 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:57
 msgid "You should now notice that your turtle is driving around uncontrollably like in this screenshot. Let's try to understand reason behind that behavior."
-msgstr "You should now notice that your turtle is driving around uncontrollably like in this screenshot. Let's try to understand reason behind that behavior."
+msgstr "现在你应该注意到，你的乌龟在像这个截图中一样无法控制地四处移动。让我们试着理解背后的原因。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:59 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:59
 msgid "In our code we asked tf2 the following question: \"What was the pose of ``carrot1`` 5 seconds ago, relative to ``turtle2`` 5 seconds ago?\". This means we are controlling the second turtle based on where it was 5 seconds ago as well as where the first carrot was 5 seconds ago."
-msgstr "In our code we asked tf2 the following question: \"What was the pose of ``carrot1`` 5 seconds ago, relative to ``turtle2`` 5 seconds ago?\". This means we are controlling the second turtle based on where it was 5 seconds ago as well as where the first carrot was 5 seconds ago."
+msgstr "在我们的代码中，我们向tf2提出了以下问题：“相对于5秒前的``turtle2``，``carrot1``的姿势是什么？” 这意味着我们控制第二只乌龟的位置是基于它5秒钟前的位置以及第一个胡萝卜5秒钟前的位置。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:61 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:61
 msgid "However, what we really want to ask is: \"What was the pose of ``carrot1`` 5 seconds ago, relative to the current position of the ``turtle2``?\"."
-msgstr "However, what we really want to ask is: \"What was the pose of ``carrot1`` 5 seconds ago, relative to the current position of the ``turtle2``?\"."
+msgstr "然而，我们真正想要问的是：“相对于当前``turtle2``的位置，``carrot1``在5秒钟前的姿势是什么？”"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:64
 msgid "Advanced API for lookupTransform()"
-msgstr "Advanced API for lookupTransform()"
+msgstr "高级API用于查找变换（lookupTransform()）"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:66
 msgid "To ask the tf2 that particular question, we will use an advanced API that gives us the power to say explicitly when to acquire the specified transformations. This is done by calling the ``lookupTransform()`` method with additional parameters. Your code now would look like this:"
-msgstr "To ask the tf2 that particular question, we will use an advanced API that gives us the power to say explicitly when to acquire the specified transformations. This is done by calling the ``lookupTransform()`` method with additional parameters. Your code now would look like this:"
+msgstr "为了询问tf2这个特定问题，我们将使用一个高级API，使我们能够明确地指定何时获取指定的转换。这是通过调用``lookupTransform()``方法并使用附加参数来实现的。你的代码现在应该是这样的："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:82
 msgid "The advanced API for ``lookupTransform()`` takes six arguments:"
-msgstr "The advanced API for ``lookupTransform()`` takes six arguments:"
+msgstr "``lookupTransform()``的高级API接受六个参数："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:84 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:83 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:231 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:200
 msgid "Target frame"
-msgstr "Target frame"
+msgstr "目标帧"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:86 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:85
 msgid "The time to transform to"
-msgstr "The time to transform to"
+msgstr "要进行转换的时间"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:88 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:87 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:233 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:202
 msgid "Source frame"
-msgstr "Source frame"
+msgstr "源帧"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:90 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:89
 msgid "The time at which source frame will be evaluated"
-msgstr "The time at which source frame will be evaluated"
+msgstr "评估源帧的时间"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:92 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:91
 msgid "Frame that does not change over time, in this case the ``world`` frame"
-msgstr "Frame that does not change over time, in this case the ``world`` frame"
+msgstr "在这种情况下，``world``帧是随时间不变的帧"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:94 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:93
 msgid "Time to wait for the target frame to become available"
-msgstr "Time to wait for the target frame to become available"
+msgstr "等待目标帧可用的时间"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:96 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:95
 msgid "To sum up, tf2 does the following in the background. In the past, it computes the transform from the ``carrot1`` to the ``world``. In the ``world`` frame, tf2 time travels from the past to now. And at the current time, tf2 computes the transform from the ``world`` to the ``turtle2``."
-msgstr "To sum up, tf2 does the following in the background. In the past, it computes the transform from the ``carrot1`` to the ``world``. In the ``world`` frame, tf2 time travels from the past to now. And at the current time, tf2 computes the transform from the ``world`` to the ``turtle2``."
+msgstr "总结一下，在后台，tf2会进行以下操作：它会计算从``carrot1``到``world``的变换。在``world``帧中，tf2会在过去到现在的时间上进行移动。而在当前时间，tf2会计算从``world``到``turtle2``的变换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:102 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:101
 msgid "Checking the results"
-msgstr "Checking the results"
+msgstr "检查结果"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:104 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:103
 msgid "Let's run the simulation again, this time with the advanced time-travel API:"
-msgstr "Let's run the simulation again, this time with the advanced time-travel API:"
+msgstr "让我们再次运行模拟，这次使用高级的时间旅行API："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:112 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:111
 msgid "And yes, the second turtle is directed to where the first carrot was 5 seconds ago!"
-msgstr "And yes, the second turtle is directed to where the first carrot was 5 seconds ago!"
+msgstr "是的，第二只乌龟被定向到了第一根胡萝卜5秒前的位置！"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:117
