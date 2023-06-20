@@ -24,7 +24,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="RHEL (binary)" href="RHEL-Install-Binary.html" />
+    <link rel="next" title="RHEL（二进制）" href="RHEL-Install-Binary.html" />
     <link rel="prev" title="Windows (source)" href="Windows-Development-Setup.html" /> 
 </head>
 
@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Ubuntu-Install-Binary.html">Ubuntu (binary)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Windows-Development-Setup.html">Windows (source)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">RHEL（源代码）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="RHEL-Install-Binary.html">RHEL (binary)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RHEL-Install-Binary.html">RHEL（二进制）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="macOS-Development-Setup.html">macOS (source)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fedora-Development-Setup.html">Fedora（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Latest-Development-Setup.html">最新的开发版本（源码）</a></li>
@@ -402,9 +402,9 @@
 <li><p><a class="reference internal" href="#clang" id="id16">Clang</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#stay-up-to-date" id="id17">Stay up to date</a></p></li>
+<li><p><a class="reference internal" href="#stay-up-to-date" id="id17">保持更新</a></p></li>
 <li><p><a class="reference internal" href="#troubleshooting" id="id18">故障排除</a></p></li>
-<li><p><a class="reference internal" href="#uninstall" id="id19">Uninstall</a></p></li>
+<li><p><a class="reference internal" href="#uninstall" id="id19">卸载</a></p></li>
 </ul>
 </div>
 <div class="section" id="system-requirements">
@@ -546,10 +546,10 @@ ros2 run demo_nodes_py listener
 </div>
 <div class="section" id="alternate-compilers">
 <h2><a class="toc-backref" href="#id15">备选编译器</a><a class="headerlink" href="#alternate-compilers" title="永久链接至标题"></a></h2>
-<p>Using a different compiler besides gcc to compile ROS 2 is easy. If you set the environment variables <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> to executables for a working C and C++ compiler, respectively, and retrigger CMake configuration (by using <code class="docutils literal notranslate"><span class="pre">--force-cmake-config</span></code> or by deleting the packages you want to be affected), CMake will reconfigure and use the different compiler.</p>
+<p>使用除gcc之外的其他编译器编译ROS 2很容易。如果你将环境变量``CC``和``CXX``分别设置为可执行的C和C++编译器，并重新触发CMake配置（通过使用``--force-cmake-config``或删除要受影响的软件包），CMake将重新配置并使用不同的编译器。</p>
 <div class="section" id="clang">
 <h3><a class="toc-backref" href="#id16">Clang</a><a class="headerlink" href="#clang" title="永久链接至标题"></a></h3>
-<p>To configure CMake to detect and use Clang:</p>
+<p>配置CMake以检测并使用Clang的方法：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo dnf install clang
 <span class="nb">export</span> <span class="nv">CC</span><span class="o">=</span>clang
 <span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</span>clang++
@@ -559,19 +559,18 @@ colcon build --cmake-force-configure
 </div>
 </div>
 <div class="section" id="stay-up-to-date">
-<h2><a class="toc-backref" href="#id17">Stay up to date</a><a class="headerlink" href="#stay-up-to-date" title="永久链接至标题"></a></h2>
-<p>See <a class="reference internal" href="../Maintaining-a-Source-Checkout.html"><span class="doc">Maintain source checkout</span></a> to periodically refresh your source installation.</p>
+<h2><a class="toc-backref" href="#id17">保持更新</a><a class="headerlink" href="#stay-up-to-date" title="永久链接至标题"></a></h2>
+<p>参见:doc:<a href="#id1"><span class="problematic" id="id2">`</span></a>../Maintaining-a-Source-Checkout`以定期刷新你的源代码安装。</p>
 </div>
 <div class="section" id="troubleshooting">
 <h2><a class="toc-backref" href="#id18">故障排除</a><a class="headerlink" href="#troubleshooting" title="永久链接至标题"></a></h2>
-<p>Troubleshooting techniques can be found <a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html#linux-troubleshooting"><span class="std std-ref">here</span></a>.</p>
+<p>故障排除技术可以在此处找到：<a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html#linux-troubleshooting"><span class="std std-ref">这里</span></a>。</p>
 </div>
 <div class="section" id="uninstall">
-<h2><a class="toc-backref" href="#id19">Uninstall</a><a class="headerlink" href="#uninstall" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id19">卸载</a><a class="headerlink" href="#uninstall" title="永久链接至标题"></a></h2>
 <ol class="arabic">
-<li><p>If you installed your workspace with colcon as instructed above, &quot;uninstalling&quot; could be just a matter of opening a new terminal and not sourcing the workspace's <code class="docutils literal notranslate"><span class="pre">setup</span></code> file.
-This way, your environment will behave as though there is no Humble install on your system.</p></li>
-<li><p>If you're also trying to free up space, you can delete the entire workspace directory with:</p>
+<li><p>如果按照上述指示使用 colcon 安装了工作空间，则“卸载”可能只是打开新终端而不加载工作空间的“setup”文件。这样，您的环境将表现得好像系统中没有安装 Humble。</p></li>
+<li><p>如果您还想释放空间，可以使用以下命令删除整个工作空间目录：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf ~/ros2_humble
 </pre></div>
 </div>
@@ -586,7 +585,7 @@ This way, your environment will behave as though there is no Humble install on y
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Windows-Development-Setup.html" class="btn btn-neutral float-left" title="Windows (source)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="RHEL-Install-Binary.html" class="btn btn-neutral float-right" title="RHEL (binary)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="RHEL-Install-Binary.html" class="btn btn-neutral float-right" title="RHEL（二进制）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
