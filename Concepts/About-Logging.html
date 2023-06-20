@@ -378,8 +378,8 @@
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id1">概述</a></p></li>
-<li><p><a class="reference internal" href="#severity-level" id="id2">Severity level</a></p></li>
-<li><p><a class="reference internal" href="#apis" id="id3">APIs</a></p></li>
+<li><p><a class="reference internal" href="#severity-level" id="id2">严重程度级别</a></p></li>
+<li><p><a class="reference internal" href="#apis" id="id3">API</a></p></li>
 <li><p><a class="reference internal" href="#configuration" id="id4">配置</a></p>
 <ul>
 <li><p><a class="reference internal" href="#environment-variables" id="id5">Environment variables</a></p></li>
@@ -402,28 +402,23 @@
 <h2><a class="toc-backref" href="#id1">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
 <p>ROS 2 中的日志记录子系统旨在将日志消息传递到各种目标，包括：</p>
 <ul class="simple">
-<li><p>To the console (if one is attached)</p></li>
-<li><p>To log files on disk (if local storage is available)</p></li>
-<li><p>To the <code class="docutils literal notranslate"><span class="pre">/rosout</span></code> topic on the ROS 2 network</p></li>
+<li><p>输出到控制台（如果有连接的话）</p></li>
+<li><p>输出到磁盘上的日志文件（如果有本地存储可用）</p></li>
+<li><p>输出到ROS 2网络上的``/rosout``主题</p></li>
 </ul>
-<p>By default, log messages in ROS 2 nodes will go out to the console (on stderr), to log files on disk, and to the <code class="docutils literal notranslate"><span class="pre">/rosout</span></code> topic on the ROS 2 network.
-All of the targets can be individually enabled or disabled on a per-node basis.</p>
-<p>The rest of this document will go over some of the ideas behind the logging subsystem.</p>
+<p>默认情况下，ROS 2节点中的日志消息将输出到控制台（stderr）、输出到磁盘上的日志文件以及输出到ROS 2网络上的``/rosout``主题。所有这些目标都可以在每个节点上独立启用或禁用。</p>
+<p>本文档的其余部分将介绍日志子系统背后的一些概念。</p>
 </div>
 <div class="section" id="severity-level">
-<h2><a class="toc-backref" href="#id2">Severity level</a><a class="headerlink" href="#severity-level" title="永久链接至标题"></a></h2>
-<p>Log messages have a severity level associated with them: <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">WARN</span></code>, <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> or <code class="docutils literal notranslate"><span class="pre">FATAL</span></code>, in ascending order.</p>
-<p>A logger will only process log messages with severity at or higher than a specified level chosen for the logger.</p>
-<p>Each node has a logger associated with it that automatically includes the node's name and namespace.
-If the node's name is externally remapped to something other than what is defined in the source code, it will be reflected in the logger name.
-Non-node loggers can also be created that use a specific name.</p>
-<p>Logger names represent a hierarchy.
-If the level of a logger named &quot;abc.def&quot; is unset, it will defer to the level of its parent named &quot;abc&quot;, and if that level is also unset, the default logger level will be used.
-When the level of logger &quot;abc&quot; is changed, all of its descendants (e.g. &quot;abc.def&quot;, &quot;abc.ghi.jkl&quot;) will have their level impacted unless their level has been explicitly set.</p>
+<h2><a class="toc-backref" href="#id2">严重程度级别</a><a class="headerlink" href="#severity-level" title="永久链接至标题"></a></h2>
+<p>日志消息与严重级别关联：<a href="#id1"><span class="problematic" id="id2">``</span></a>DEBUG``（调试）、<a href="#id3"><span class="problematic" id="id4">``</span></a>INFO``（信息）、<a href="#id5"><span class="problematic" id="id6">``</span></a>WARN``（警告）、<a href="#id7"><span class="problematic" id="id8">``</span></a>ERROR``（错误）或 <a href="#id9"><span class="problematic" id="id10">``</span></a>FATAL``（致命），按升序排列。</p>
+<p>记录器仅处理具有不低于记录器指定级别的严重级别的日志消息。</p>
+<p>每个节点都有一个与之关联的记录器，自动包含节点的名称和命名空间。如果节点的名称在外部重映射为源代码中定义的其他内容，则会反映在记录器名称中。还可以创建使用特定名称的非节点记录器。</p>
+<p>记录器名称表示层次结构。如果名称为“abc.def”的记录器的级别未设置，它将推迟到其父级名称为“abc”的级别，如果该级别也未设置，则使用默认记录器级别。更改记录器“abc”的级别时，除非明确设置了它们的级别，否则会影响其所有后代（例如“abc.def”、“abc.ghi.jkl”）的级别。</p>
 </div>
 <div class="section" id="apis">
-<h2><a class="toc-backref" href="#id3">APIs</a><a class="headerlink" href="#apis" title="永久链接至标题"></a></h2>
-<p>These are the APIs that end users of the ROS 2 logging infrastructure should use, split up by client library.</p>
+<h2><a class="toc-backref" href="#id3">API</a><a class="headerlink" href="#apis" title="永久链接至标题"></a></h2>
+<p>这些是ROS 2日志记录基础设施的终端用户应使用的API，按客户端库进行划分。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}</span></code> - output the given printf-style message every time this line is hit</p></li>
