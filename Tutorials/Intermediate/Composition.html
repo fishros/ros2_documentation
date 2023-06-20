@@ -394,11 +394,11 @@
 <li><p><a class="reference internal" href="#unloading-components" id="id10">卸载组件</a></p></li>
 <li><p><a class="reference internal" href="#remapping-container-name-and-namespace" id="id11">重新映射容器名称和命名空间</a></p></li>
 <li><p><a class="reference internal" href="#remap-component-names-and-namespaces" id="id12">重新映射组件名称和命名空间</a></p></li>
-<li><p><a class="reference internal" href="#passing-parameter-values-into-components" id="id13">Passing parameter values into components</a></p></li>
-<li><p><a class="reference internal" href="#passing-additional-arguments-into-components" id="id14">Passing additional arguments into components</a></p></li>
+<li><p><a class="reference internal" href="#passing-parameter-values-into-components" id="id13">将参数值传递给组件</a></p></li>
+<li><p><a class="reference internal" href="#passing-additional-arguments-into-components" id="id14">向组件传递附加参数</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#composable-nodes-as-shared-libraries" id="id15">Composable nodes as shared libraries</a></p></li>
+<li><p><a class="reference internal" href="#composable-nodes-as-shared-libraries" id="id15">可组合节点作为共享库</a></p></li>
 <li><p><a class="reference internal" href="#composing-non-node-derived-components" id="id16">Composing Non-Node Derived Components</a></p></li>
 </ul>
 </div>
@@ -587,24 +587,24 @@ Unloaded component <span class="m">2</span> from <span class="s1">&#39;/Componen
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run rclcpp_components component_container
 </pre></div>
 </div>
-<p>Some examples of how to remap names and namespaces.</p>
-<p>Remap node name:</p>
+<p>一些重新映射名称和命名空间的示例。</p>
+<p>重新映射节点名称：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager composition composition::Talker --node-name talker2
 </pre></div>
 </div>
-<p>Remap namespace:</p>
+<p>重新映射命名空间：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager composition composition::Talker --node-namespace /ns
 </pre></div>
 </div>
-<p>Remap both:</p>
+<p>同时重新映射：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager composition composition::Talker --node-name talker3 --node-namespace /ns2
 </pre></div>
 </div>
-<p>Now use <code class="docutils literal notranslate"><span class="pre">ros2</span></code> command line utility:</p>
+<p>现在使用``ros2``命令行工具：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component list
 </pre></div>
 </div>
-<p>In the console you should see corresponding entries:</p>
+<p>在控制台中，您应该看到相应的条目：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/ComponentManager
    <span class="m">1</span>  /talker2
    <span class="m">2</span>  /ns/talker
@@ -617,26 +617,23 @@ Unloaded component <span class="m">2</span> from <span class="s1">&#39;/Componen
 </div>
 </div>
 <div class="section" id="passing-parameter-values-into-components">
-<h3><a class="toc-backref" href="#id13">Passing parameter values into components</a><a class="headerlink" href="#passing-parameter-values-into-components" title="永久链接至标题"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">component</span> <span class="pre">load</span></code> command-line supports passing arbitrary parameters to the node as it is constructed.
-This functionality can be used as follows:</p>
+<h3><a class="toc-backref" href="#id13">将参数值传递给组件</a><a class="headerlink" href="#passing-parameter-values-into-components" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">component</span> <span class="pre">load</span></code> 命令行支持在构建节点时传递任意参数。可以按以下方式使用此功能：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager image_tools image_tools::Cam2Image -p burger_mode:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="passing-additional-arguments-into-components">
-<h3><a class="toc-backref" href="#id14">Passing additional arguments into components</a><a class="headerlink" href="#passing-additional-arguments-into-components" title="永久链接至标题"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">component</span> <span class="pre">load</span></code> command-line supports passing particular options to the component manager for use when constructing the node.
-As of now, the only command-line option that is supported is to instantiate a node using intra-process communication.
-This functionality can be used as follows:</p>
+<h3><a class="toc-backref" href="#id14">向组件传递附加参数</a><a class="headerlink" href="#passing-additional-arguments-into-components" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">component</span> <span class="pre">load</span></code> 命令行支持在构建节点时向组件管理器传递特定选项。目前，唯一支持的命令行选项是使用进程内通信实例化节点。可以按以下方式使用此功能：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 component load /ComponentManager composition composition::Talker -e use_intra_process_comms:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="composable-nodes-as-shared-libraries">
-<h2><a class="toc-backref" href="#id15">Composable nodes as shared libraries</a><a class="headerlink" href="#composable-nodes-as-shared-libraries" title="永久链接至标题"></a></h2>
-<p>If you want to export a composable node as a shared library from a package and use that node in another package that does link-time composition, add code to the CMake file which imports the actual targets in downstream packages.</p>
+<h2><a class="toc-backref" href="#id15">可组合节点作为共享库</a><a class="headerlink" href="#composable-nodes-as-shared-libraries" title="永久链接至标题"></a></h2>
+<p>如果您想从软件包中将可组合节点导出为共享库，并在另一个软件包中使用该节点进行链接时组合，请在 CMake 文件中添加代码以导入下游软件包中的实际目标。</p>
 <p>Then install the generated file and export the generated file.</p>
 <p>A practical example can be seen here: <a class="reference external" href="https://discourse.ros.org/t/ament-best-practice-for-sharing-libraries/3602">ROS Discourse - Ament best practice for sharing libraries</a></p>
 </div>
