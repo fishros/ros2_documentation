@@ -382,7 +382,7 @@
 <li><p><a class="reference internal" href="#use-cases-with-experimental-implementations" id="id3">使用案例和实验性实现</a></p>
 <ul>
 <li><p><a class="reference internal" href="#adding-ros-packages-to-a-ros-2-workspace-and-building-with-ament-build" id="id4">将ROS包添加到ROS 2工作空间并使用``ament build``进行构建</a></p></li>
-<li><p><a class="reference internal" href="#building-ros-2-packages-with-catkin-make-isolated" id="id5">Building ROS 2 packages with <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code></a></p></li>
+<li><p><a class="reference internal" href="#building-ros-2-packages-with-catkin-make-isolated" id="id5">使用``catkin_make_isolated``构建ROS 2包</a></p></li>
 <li><p><a class="reference internal" href="#combining-all-of-ros-and-ros-2-in-one-workspace-and-building-it-todo" id="id6">Combining all of ROS and ROS 2 in one workspace and building it (TODO)</a></p></li>
 <li><p><a class="reference internal" href="#using-bloom-to-release-ament-packages-todo" id="id7">Using <code class="docutils literal notranslate"><span class="pre">bloom</span></code> to release <code class="docutils literal notranslate"><span class="pre">ament</span></code> packages (TODO)</a></p></li>
 </ul>
@@ -462,19 +462,18 @@ git checkout catkin
  ./src/ament_tools/scripts/ament.py build
 </pre></div>
 </div>
-<p>Now build the ROS packages:</p>
+<p>现在构建ROS软件包：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. <span class="nv">$HOME</span>/ament_ws/install/setup.bash
 <span class="nb">cd</span> ~/ros_catkin_ws
 ament build
 </pre></div>
 </div>
-<p>Voila: you used the <code class="docutils literal notranslate"><span class="pre">ament</span></code> build tool to build your <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages, without having to migrate them.</p>
+<p>看哪：你使用了``ament``构建工具来构建你的``catkin``软件包，而无需迁移它们。</p>
 </div>
 <div class="section" id="variation-using-the-catkin-api-in-a-ros-2-package">
-<h4>Variation: Using the <code class="docutils literal notranslate"><span class="pre">catkin</span></code> API in a ROS 2 package<a class="headerlink" href="#variation-using-the-catkin-api-in-a-ros-2-package" title="永久链接至标题"></a></h4>
-<p>Let's say that you're building on top of ROS 2, which internally uses the <code class="docutils literal notranslate"><span class="pre">ament</span></code> API, and you want to add a new package using the <code class="docutils literal notranslate"><span class="pre">catkin</span></code> API.</p>
-<p>To make this work, you need a Python3 installation of <code class="docutils literal notranslate"><span class="pre">catkin</span></code> (the binary debians use Python2.7).
-Here's an example of doing that, installing to <code class="docutils literal notranslate"><span class="pre">$HOME/catkin</span></code>:</p>
+<h4>变化：在ROS 2软件包中使用``catkin`` API<a class="headerlink" href="#variation-using-the-catkin-api-in-a-ros-2-package" title="永久链接至标题"></a></h4>
+<p>假设你正在构建基于ROS 2的软件包，它在内部使用``ament`` API，并且你想要添加一个使用``catkin`` API的新软件包。</p>
+<p>为了使其工作，你需要一个Python 3安装的``catkin``（二进制Debian包使用Python 2.7）。这里是一个安装到``$HOME/catkin``的示例：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install catkin_pkg</span>
 git clone https://github.com/ros-infrastructure/catkin_pkg.git
 <span class="nb">cd</span> catkin_pkg
@@ -490,27 +489,23 @@ mkdir build
 make install
 </pre></div>
 </div>
-<p>To use that version of catkin, you just need to source the <code class="docutils literal notranslate"><span class="pre">$HOME/catkin/setup.bash</span></code> file.</p>
-<p>Let's assume that you have the usual ROS 2 workspace in <code class="docutils literal notranslate"><span class="pre">~/ros2_ws</span></code>, and that you're on the <code class="docutils literal notranslate"><span class="pre">catkin</span></code> branches in <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> and <code class="docutils literal notranslate"><span class="pre">ament_tools</span></code>.
-Add to that workspace the <code class="docutils literal notranslate"><span class="pre">image_tools_catkin</span></code> package from <a class="reference external" href="https://github.com/gerkey/catment">https://github.com/gerkey/catment</a>.
-It's a simple port of the ROS 2 <code class="docutils literal notranslate"><span class="pre">image_tools</span></code> package, taking it from the <code class="docutils literal notranslate"><span class="pre">ament</span></code> API to the <code class="docutils literal notranslate"><span class="pre">catkin</span></code> API.
-To build it:</p>
+<p>要使用那个版本的catkin，你只需要source <a href="#id1"><span class="problematic" id="id2">``</span></a>$HOME/catkin/setup.bash``文件。</p>
+<p>假设您在``~/ros2_ws``中有一个常规的ROS 2工作空间，并且您在``ament_package``和``ament_tools``的``catkin``分支上。在该工作空间中添加来自https://github.com/gerkey/catment的``image_tools_catkin``包。它是ROS 2 <code class="docutils literal notranslate"><span class="pre">image_tools``包的一个简单移植，将其从``ament</span></code> API转换为``catkin`` API。要构建它：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_ws
 . <span class="nv">$HOME</span>/catkin/setup.bash
 ./src/ament/ament_tools/scripts/ament.py build
 </pre></div>
 </div>
-<p>Voila: when adding new packages atop ROS 2, you're free to choose which CMake API you prefer inside your package.</p>
+<p>大功告成：在构建ROS 2上的新包时，您可以自由选择首选的CMake API来编写您的包。</p>
 <ul class="simple">
-<li><p><strong>Caveat</strong>: Requires commenting out the use of <code class="docutils literal notranslate"><span class="pre">CATKIN_DEPENDS</span></code> inside <code class="docutils literal notranslate"><span class="pre">catkin_package()</span></code>, because somewhere somebody was getting upset that things like <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> aren't <code class="docutils literal notranslate"><span class="pre">catkin</span></code> packages.
-That constraint needs to be relaxed somehow.</p></li>
-<li><p><strong>TODO</strong>: The same demo but with an <code class="docutils literal notranslate"><span class="pre">ament</span></code> package that depends on a <code class="docutils literal notranslate"><span class="pre">catkin</span></code> package (this is easy).</p></li>
-<li><p><strong>TODO</strong>: The same demo but with a package that has a vanilla <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> that uses neither <code class="docutils literal notranslate"><span class="pre">ament</span></code> nor <code class="docutils literal notranslate"><span class="pre">catkin</span></code>, and provides a manually generated <code class="docutils literal notranslate"><span class="pre">fooConfig.cmake</span></code> file that exports the right stuff to make it look the same to outsiders.</p></li>
+<li><p><strong>注意</strong>：需要在``catkin_package()``中注释掉对``CATKIN_DEPENDS``的使用，因为某个地方有人因为像``rclcpp``之类的不是``catkin``包而感到不满。需要以某种方式放宽这个约束。</p></li>
+<li><p><strong>TODO</strong>：使用依赖于``catkin``包的``ament``包进行相同的演示（这很容易）。</p></li>
+<li><p><strong>TODO</strong>：使用既不使用``ament``也不使用``catkin``的普通``CMakeLists.txt``的包进行相同的演示，并提供一个手动生成的``fooConfig.cmake``文件，向外部提供正确的内容以使其看起来与外部包相同。</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="building-ros-2-packages-with-catkin-make-isolated">
-<h3><a class="toc-backref" href="#id5">Building ROS 2 packages with <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code></a><a class="headerlink" href="#building-ros-2-packages-with-catkin-make-isolated" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id5">使用``catkin_make_isolated``构建ROS 2包</a><a class="headerlink" href="#building-ros-2-packages-with-catkin-make-isolated" title="永久链接至标题"></a></h3>
 <p>Let's say that you're already familiar with ROS and <code class="docutils literal notranslate"><span class="pre">catkin</span></code> and you're excited to try ROS 2, but you're not in the mood to learn about <code class="docutils literal notranslate"><span class="pre">ament</span></code>.
 You'd rather stick to what you know, such as using <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code> to build everything.
 Here is a patch that allows you to do that:</p>
