@@ -376,23 +376,22 @@
   <div class="section" id="writing-basic-tests-with-python">
 <h1>使用Python编写基本测试<a class="headerlink" href="#writing-basic-tests-with-python" title="永久链接至标题"></a></h1>
 <p>起点：我们假设您已经设置了一个 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html#createpkg"><span class="std std-ref">基本的ament_python包</span></a>，并且您想为其添加一些测试。</p>
-<p>If you are using ament_cmake_python, refer to the the <a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Python-Documentation.html"><span class="doc">ament_cmake_python docs</span></a> for how to make tests dicoverable.
-The test contents and invocation with <code class="docutils literal notranslate"><span class="pre">colcon</span></code> remain the same.</p>
+<p>如果您使用的是 <code class="xref any docutils literal notranslate"><span class="pre">ament_cmake_python</span></code>，请参考 <a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Python-Documentation.html"><span class="doc">ament_cmake_python 文档</span></a> 了解如何使测试可被发现。测试的内容和使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 运行测试的方式保持不变。</p>
 <div class="section" id="package-setup">
 <h2>软件包设置<a class="headerlink" href="#package-setup" title="永久链接至标题"></a></h2>
 <div class="section" id="setup-py">
 <h3>setup.py<a class="headerlink" href="#setup-py" title="永久链接至标题"></a></h3>
-<p>Your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> must a test dependency on <code class="docutils literal notranslate"><span class="pre">pytest</span></code> within the call to <code class="docutils literal notranslate"><span class="pre">setup(...)</span></code>:</p>
+<p>您的 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 在调用 <code class="docutils literal notranslate"><span class="pre">setup(...)</span></code> 时必须添加对 <code class="docutils literal notranslate"><span class="pre">pytest</span></code> 的测试依赖：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pytest&#39;</span><span class="p">],</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="test-files-and-folders">
-<h3>Test Files and Folders<a class="headerlink" href="#test-files-and-folders" title="永久链接至标题"></a></h3>
-<p>Your test code needs to go in a folder named <code class="docutils literal notranslate"><span class="pre">tests</span></code> in the root of your package.</p>
-<p>Any file that contains tests that you want to run must have the pattern <code class="docutils literal notranslate"><span class="pre">test_FOO.py</span></code> where <code class="docutils literal notranslate"><span class="pre">FOO</span></code> can be replaced with anything.</p>
+<h3>测试文件和文件夹<a class="headerlink" href="#test-files-and-folders" title="永久链接至标题"></a></h3>
+<p>您的测试代码需要放在包的根目录下名为 <code class="docutils literal notranslate"><span class="pre">tests</span></code> 的文件夹中。</p>
+<p>任何包含您想要运行的测试的文件必须符合 <code class="docutils literal notranslate"><span class="pre">test_FOO.py</span></code> 的模式，其中的 <code class="docutils literal notranslate"><span class="pre">FOO</span></code> 可以替换为任何内容。</p>
 <div class="section" id="example-package-layout">
-<h4>Example package layout:<a class="headerlink" href="#example-package-layout" title="永久链接至标题"></a></h4>
+<h4>示例软件包布局：<a class="headerlink" href="#example-package-layout" title="永久链接至标题"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awesome_ros_package</span><span class="o">/</span>
   <span class="n">awesome_ros_package</span><span class="o">/</span>
       <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
@@ -410,8 +409,8 @@ The test contents and invocation with <code class="docutils literal notranslate"
 </div>
 </div>
 <div class="section" id="test-contents">
-<h2>Test Contents<a class="headerlink" href="#test-contents" title="永久链接至标题"></a></h2>
-<p>You can now write tests to your heart's content. There are <a class="reference external" href="https://docs.pytest.org">plenty of resources on pytest</a>, but in short, you can write functions with the <code class="docutils literal notranslate"><span class="pre">test_</span></code> prefix and include whatever assert statements you'd like.</p>
+<h2>测试内容<a class="headerlink" href="#test-contents" title="永久链接至标题"></a></h2>
+<p>您现在可以尽情编写测试。pytest &lt;<a class="reference external" href="https://docs.pytest.org">https://docs.pytest.org</a>&gt;`__ 提供了很多资源，简单来说，您可以编写以 <code class="docutils literal notranslate"><span class="pre">test_</span></code> 前缀开头的函数，并包含任何您想要的 assert 语句。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_math</span><span class="p">():</span>
     <span class="k">assert</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span>   <span class="c1"># This should fail for most mathematical systems</span>
 </pre></div>
@@ -422,13 +421,12 @@ The test contents and invocation with <code class="docutils literal notranslate"
 <p>有关如何从命令行运行测试和检查测试结果的详细信息，请参阅 <a class="reference internal" href="CLI.html"><span class="doc">教程</span></a>。</p>
 </div>
 <div class="section" id="special-commands">
-<h2>Special Commands<a class="headerlink" href="#special-commands" title="永久链接至标题"></a></h2>
-<p>Beyond the <a class="reference internal" href="CLI.html"><span class="doc">standard colcon testing commands</span></a> you can also specify arguments to the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> framework from the command line with the <code class="docutils literal notranslate"><span class="pre">--pytest-args</span></code> flag.
-For example, you can specify the name of the function to run with</p>
+<h2>特殊命令<a class="headerlink" href="#special-commands" title="永久链接至标题"></a></h2>
+<p>除了 <a class="reference internal" href="CLI.html"><span class="doc">标准 colcon 测试命令</span></a> 之外，您还可以通过命令行使用 <code class="docutils literal notranslate"><span class="pre">--pytest-args</span></code> 标志指定 <code class="docutils literal notranslate"><span class="pre">pytest</span></code> 框架的参数。例如，您可以指定要运行的函数的名称：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test --packages-select &lt;name-of-pkg&gt; --pytest-args -k name_of_the_test_function</span>
 </pre></div>
 </div>
-<p>To see the pytest output while running the tests, use these flags:</p>
+<p>要在运行测试时查看 pytest 输出，请使用以下标志：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon test --event-handlers console_cohesion+</span>
 </pre></div>
 </div>
