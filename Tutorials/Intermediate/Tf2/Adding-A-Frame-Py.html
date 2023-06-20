@@ -25,7 +25,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="Adding a frame (C++)" href="Adding-A-Frame-Cpp.html" />
+    <link rel="next" title="添加一个框架（C++）" href="Adding-A-Frame-Cpp.html" />
     <link rel="prev" title="Writing a listener (C++)" href="Writing-A-Tf2-Listener-Cpp.html" /> 
 </head>
 
@@ -161,7 +161,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Py.html">Writing a listener (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++)</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Adding a frame (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Cpp.html">Adding a frame (C++)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Cpp.html">添加一个框架（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Py.html">Using time (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Cpp.html">Using time (C++)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Py.html">Traveling in time (Python)</a></li>
@@ -376,17 +376,17 @@
 
   <div class="section" id="adding-a-frame-python">
 <span id="addingaframepy"></span><h1>Adding a frame (Python)<a class="headerlink" href="#adding-a-frame-python" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn how to to add an extra frame to tf2.</p>
+<p><strong>目标:</strong> 学习如何在tf2中添加额外的帧。</p>
 <p><strong>教程级别：</strong> 中级</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟</p>
 <div class="contents local topic" id="contents">
 <p class="topic-title">内容</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id6">背景</a></p></li>
-<li><p><a class="reference internal" href="#tf2-tree" id="id7">tf2 tree</a></p></li>
+<li><p><a class="reference internal" href="#tf2-tree" id="id7">tf2树</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id8">任务</a></p>
 <ul>
-<li><p><a class="reference internal" href="#write-the-fixed-frame-broadcaster" id="id9">1 Write the fixed frame broadcaster</a></p>
+<li><p><a class="reference internal" href="#write-the-fixed-frame-broadcaster" id="id9">1. 编写固定帧广播器</a></p>
 <ul>
 <li><p><a class="reference internal" href="#examine-the-code" id="id10">1.1 检查代码</a></p></li>
 <li><p><a class="reference internal" href="#add-an-entry-point" id="id11">1.2 Add an entry point</a></p></li>
@@ -414,24 +414,17 @@
 <p>In previous tutorials, we recreated the turtle demo by writing a <a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html"><span class="doc">tf2 broadcaster</span></a> and a <a class="reference internal" href="Writing-A-Tf2-Listener-Py.html"><span class="doc">tf2 listener</span></a>.
 This tutorial will teach you how to add extra fixed and dynamic frames to the transformation tree.
 In fact, adding a frame in tf2 is very similar to creating the tf2 broadcaster, but this example will show you some additional features of tf2.</p>
-<p>For many tasks related to transformations, it is easier to think inside a local frame.
-For example, it is easiest to reason about laser scan measurements in a frame at the center of the laser scanner.
-tf2 allows you to define a local frame for each sensor, link, or joint in your system.
-When transforming from one frame to another, tf2 will take care of all the hidden intermediate frame transformations that are introduced.</p>
+<p>对于与变换相关的许多任务，以本地帧为基础更容易思考。例如，在激光扫描测量中，最容易理解的是以激光扫描仪中心的帧为基准。tf2允许你为系统中的每个传感器、链接或关节定义一个本地帧。在从一个帧转换到另一个帧时，tf2将处理引入的所有隐藏中间帧变换。</p>
 </div>
 <div class="section" id="tf2-tree">
-<h2><a class="toc-backref" href="#id7">tf2 tree</a><a class="headerlink" href="#tf2-tree" title="永久链接至标题"></a></h2>
-<p>tf2 builds up a tree structure of frames and, thus, does not allow a closed loop in the frame structure.
-This means that a frame only has one single parent, but it can have multiple children.
-Currently, our tf2 tree contains three frames: <code class="docutils literal notranslate"><span class="pre">world</span></code>, <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> and <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>.
-The two turtle frames are children of the <code class="docutils literal notranslate"><span class="pre">world</span></code> frame.
-If we want to add a new frame to tf2, one of the three existing frames needs to be the parent frame, and the new one will become its child frame.</p>
+<h2><a class="toc-backref" href="#id7">tf2树</a><a class="headerlink" href="#tf2-tree" title="永久链接至标题"></a></h2>
+<p>tf2构建了一个帧的树结构，因此不允许帧结构中存在闭环。这意味着一个帧只有一个父帧，但可以有多个子帧。目前，我们的tf2树包含三个帧：<code class="docutils literal notranslate"><span class="pre">world</span></code>、<code class="docutils literal notranslate"><span class="pre">turtle1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>。两个乌龟帧是 <code class="docutils literal notranslate"><span class="pre">world</span></code> 帧的子帧。如果我们想要在tf2中添加一个新的帧，需要选择三个现有帧中的一个作为父帧，新的帧将成为其子帧。</p>
 <img alt="../../../_images/turtlesim_frames.png" src="../../../_images/turtlesim_frames.png" />
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id8">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-fixed-frame-broadcaster">
-<h3><a class="toc-backref" href="#id9">1 Write the fixed frame broadcaster</a><a class="headerlink" href="#write-the-fixed-frame-broadcaster" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id9">1. 编写固定帧广播器</a><a class="headerlink" href="#write-the-fixed-frame-broadcaster" title="永久链接至标题"></a></h3>
 <p>In our turtle example, we'll add a new frame <code class="docutils literal notranslate"><span class="pre">carrot1</span></code>, which will be the child of the <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>.
 This frame will serve as the goal for the second turtle.</p>
 <p>Let's first create the source files. Go to the <code class="docutils literal notranslate"><span class="pre">learning_tf2_py</span></code> package we created in the previous tutorials.
@@ -818,7 +811,7 @@ You also learned that it is easiest to think inside a local frame, and learned t
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Writing-A-Tf2-Listener-Cpp.html" class="btn btn-neutral float-left" title="Writing a listener (C++)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Adding-A-Frame-Cpp.html" class="btn btn-neutral float-right" title="Adding a frame (C++)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Adding-A-Frame-Cpp.html" class="btn btn-neutral float-right" title="添加一个框架（C++）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
