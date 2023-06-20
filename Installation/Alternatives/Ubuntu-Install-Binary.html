@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ubuntu (binary) &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>Ubuntu（二进制） &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -51,7 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../RHEL-Install-RPMs.html">RHEL (RPM)</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Alternatives.html">替代方案</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Ubuntu-Development-Setup.html">Ubuntu（源代码）</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Ubuntu (binary)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ubuntu（二进制）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Windows-Development-Setup.html">Windows (source)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Development-Setup.html">RHEL（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RHEL-Install-Binary.html">RHEL（二进制）</a></li>
@@ -360,7 +360,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Installation.html">安装</a> &raquo;</li>
           <li><a href="../Alternatives.html">替代方案</a> &raquo;</li>
-      <li>Ubuntu (binary)</li>
+      <li>Ubuntu（二进制）</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Installation/Alternatives/Ubuntu-Install-Binary.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -373,7 +373,7 @@
 
 
   <div class="section" id="ubuntu-binary">
-<h1>Ubuntu (binary)<a class="headerlink" href="#ubuntu-binary" title="永久链接至标题"></a></h1>
+<h1>Ubuntu（二进制）<a class="headerlink" href="#ubuntu-binary" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
@@ -383,7 +383,7 @@
 <li><p><a class="reference internal" href="#installing-and-initializing-rosdep" id="id4">安装和初始化 rosdep</a></p></li>
 <li><p><a class="reference internal" href="#installing-the-missing-dependencies" id="id5">安装缺失的依赖项</a></p>
 <ul>
-<li><p><a class="reference internal" href="#install-development-tools-optional" id="id6">Install development tools (optional)</a></p></li>
+<li><p><a class="reference internal" href="#install-development-tools-optional" id="id6">安装开发工具（可选）</a></p></li>
 <li><p><a class="reference internal" href="#install-additional-dds-implementations-optional" id="id7">安装额外的DDS实现（可选）</a></p></li>
 </ul>
 </li>
@@ -394,21 +394,21 @@
 </li>
 <li><p><a class="reference internal" href="#try-some-examples" id="id10">尝试一些示例</a></p></li>
 <li><p><a class="reference internal" href="#next-steps-after-installing" id="id11">安装后的下一步</a></p></li>
-<li><p><a class="reference internal" href="#using-the-ros-1-bridge" id="id12">Using the ROS 1 bridge</a></p></li>
+<li><p><a class="reference internal" href="#using-the-ros-1-bridge" id="id12">使用 ROS 1 桥接器</a></p></li>
 <li><p><a class="reference internal" href="#additional-rmw-implementations-optional" id="id13">其他RMW实现（可选）</a></p></li>
 <li><p><a class="reference internal" href="#troubleshooting" id="id14">故障排除</a></p></li>
 <li><p><a class="reference internal" href="#uninstall" id="id15">卸载</a></p></li>
 </ul>
 </div>
-<p>This page explains how to install ROS 2 on Ubuntu Linux from a pre-built binary package.</p>
+<p>本页面说明如何从预构建的二进制软件包在Ubuntu Linux上安装ROS 2。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>预构建的二进制文件不包含所有的ROS 2软件包。所有`ROS基础版本&lt;<a class="reference external" href="https://ros.org/reps/rep-2001.html#ros-base">https://ros.org/reps/rep-2001.html#ros-base</a>&gt;`_中的软件包都被包含在内，只包含了`ROS桌面版本&lt;<a class="reference external" href="https://ros.org/reps/rep-2001.html#desktop-variants">https://ros.org/reps/rep-2001.html#desktop-variants</a>&gt;`_中的一个子集。软件包的确切列表由`此ros2.repos文件&lt;<a class="reference external" href="https://github.com/ros2/ros2/blob/humble/ros2.repos">https://github.com/ros2/ros2/blob/humble/ros2.repos</a>&gt;`_中列出的存储库描述。</p>
 </div>
-<p>There are also <a class="reference internal" href="../Ubuntu-Install-Debians.html"><span class="doc">Debian packages</span></a> available.</p>
+<p>还有可用的：doc:<a class="reference internal" href="../Ubuntu-Install-Debians.html"><span class="doc">Debian软件包</span></a>。</p>
 <div class="section" id="system-requirements">
 <h2><a class="toc-backref" href="#id1">系统要求</a><a class="headerlink" href="#system-requirements" title="永久链接至标题"></a></h2>
-<p>We currently support Ubuntu Linux Jammy (22.04) 64-bit x86 and 64-bit ARM.</p>
+<p>我们目前支持Ubuntu Linux Jammy（22.04）64位x86和64位ARM。</p>
 </div>
 <div class="section" id="add-the-ros-2-apt-repository">
 <h2><a class="toc-backref" href="#id2">添加 ROS 2 apt 仓库</a><a class="headerlink" href="#add-the-ros-2-apt-repository" title="永久链接至标题"></a></h2>
@@ -432,7 +432,7 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 <h2><a class="toc-backref" href="#id3">正在下载 ROS 2</a><a class="headerlink" href="#downloading-ros-2" title="永久链接至标题"></a></h2>
 <ul>
 <li><p>前往 <a class="reference external" href="https://github.com/ros2/ros2/releases">发布页面</a></p></li>
-<li><p>Download the latest package for Ubuntu; let's assume that it ends up at <code class="docutils literal notranslate"><span class="pre">~/Downloads/ros2-package-linux-x86_64.tar.bz2</span></code>.</p>
+<li><p>下载适用于Ubuntu的最新软件包；假设它最终保存在``~/Downloads/ros2-package-linux-x86_64.tar.bz2``。</p>
 <ul class="simple">
 <li><p>注意：可能有多个二进制下载选项，可能会导致文件名不同。</p></li>
 </ul>
@@ -457,8 +457,7 @@ rosdep update
 </div>
 <div class="section" id="installing-the-missing-dependencies">
 <span id="linux-install-binary-install-missing-dependencies"></span><h2><a class="toc-backref" href="#id5">安装缺失的依赖项</a><a class="headerlink" href="#installing-the-missing-dependencies" title="永久链接至标题"></a></h2>
-<p>ROS 2 packages are built on frequently updated Ubuntu systems.
-It is always recommended that you ensure your system is up to date before installing new packages.</p>
+<p>ROS 2 包是建立在频繁更新的 Ubuntu 系统上的。在安装新的包之前，始终建议确保您的系统是最新的。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt upgrade
 </pre></div>
 </div>
@@ -466,9 +465,9 @@ It is always recommended that you ensure your system is up to date before instal
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep install --from-paths ~/ros2_humble/ros2-linux/share --ignore-src -y --skip-keys <span class="s2">&quot;cyclonedds fastcdr fastrtps rti-connext-dds-6.0.1 urdfdom_headers&quot;</span>
 </pre></div>
 </div>
-<p><strong>Note</strong>: If you're using a distribution that is based on Ubuntu (like Linux Mint) but does not identify itself as such, you'll get an error message like <code class="docutils literal notranslate"><span class="pre">Unsupported</span> <span class="pre">OS</span> <span class="pre">[mint]</span></code>. In this case append <code class="docutils literal notranslate"><span class="pre">--os=ubuntu:jammy</span></code> to the above command.</p>
+<p><strong>注意</strong>：如果您使用的是基于 Ubuntu 的发行版（如 Linux Mint），但它没有将自己标识为 Ubuntu，您将收到类似 <code class="docutils literal notranslate"><span class="pre">Unsupported</span> <span class="pre">OS</span> <span class="pre">[mint]</span></code> 的错误消息。在这种情况下，请在上述命令后面添加 <code class="docutils literal notranslate"><span class="pre">--os=ubuntu:jammy</span></code>。</p>
 <div class="section" id="install-development-tools-optional">
-<h3><a class="toc-backref" href="#id6">Install development tools (optional)</a><a class="headerlink" href="#install-development-tools-optional" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id6">安装开发工具（可选）</a><a class="headerlink" href="#install-development-tools-optional" title="永久链接至标题"></a></h3>
 <p>If you are going to build ROS packages or otherwise do development, you can also install the development tools:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-dev-tools
 </pre></div>
@@ -510,8 +509,8 @@ ros2 run demo_nodes_py listener
 <p>继续进行:doc:<a class="reference internal" href="../../Tutorials.html"><span class="doc">教程和演示</span></a>，以配置你的环境，创建自己的工作空间和包，并学习ROS 2的核心概念。</p>
 </div>
 <div class="section" id="using-the-ros-1-bridge">
-<h2><a class="toc-backref" href="#id12">Using the ROS 1 bridge</a><a class="headerlink" href="#using-the-ros-1-bridge" title="永久链接至标题"></a></h2>
-<p>The ROS 1 bridge can connect topics from ROS 1 to ROS 2 and vice-versa. See the dedicated <a class="reference external" href="https://github.com/ros2/ros1_bridge/blob/master/README.md">documentation</a> on how to build and use the ROS 1 bridge.</p>
+<h2><a class="toc-backref" href="#id12">使用 ROS 1 桥接器</a><a class="headerlink" href="#using-the-ros-1-bridge" title="永久链接至标题"></a></h2>
+<p>ROS 1 桥接器可以连接 ROS 1 和 ROS 2 的主题。请参阅专门的 <a class="reference external" href="https://github.com/ros2/ros1_bridge/blob/master/README.md">文档</a> 以了解如何构建和使用 ROS 1 桥接器。</p>
 </div>
 <div class="section" id="additional-rmw-implementations-optional">
 <h2><a class="toc-backref" href="#id13">其他RMW实现（可选）</a><a class="headerlink" href="#additional-rmw-implementations-optional" title="永久链接至标题"></a></h2>
