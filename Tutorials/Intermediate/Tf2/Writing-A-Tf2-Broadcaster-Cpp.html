@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
     <link rel="next" title="Writing a listener (Python)" href="Writing-A-Tf2-Listener-Py.html" />
-    <link rel="prev" title="Writing a broadcaster (Python)" href="Writing-A-Tf2-Broadcaster-Py.html" /> 
+    <link rel="prev" title="编写广播器（Python）" href="Writing-A-Tf2-Broadcaster-Py.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -156,7 +156,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Introduction-To-Tf2.html">介绍``tf2``</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Py.html">Writing a static broadcaster (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html">Writing a static broadcaster (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html">Writing a broadcaster (Python)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python）</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">编写广播器（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Py.html">Writing a listener (Python)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++)</a></li>
@@ -388,8 +388,8 @@
 <ul>
 <li><p><a class="reference internal" href="#write-the-broadcaster-node" id="id6">1. 编写广播器节点</a></p></li>
 <li><p><a class="reference internal" href="#write-the-launch-file" id="id7">2 编写启动文件</a></p></li>
-<li><p><a class="reference internal" href="#build" id="id8">3 Build</a></p></li>
-<li><p><a class="reference internal" href="#run" id="id9">4 Run</a></p></li>
+<li><p><a class="reference internal" href="#build" id="id8">3 构建</a></p></li>
+<li><p><a class="reference internal" href="#run" id="id9">4 运行</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id10">摘要</a></p></li>
@@ -651,7 +651,7 @@
 </div>
 </div>
 <div class="section" id="build">
-<h3><a class="toc-backref" href="#id8">3 Build</a><a class="headerlink" href="#build" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id8">3 构建</a><a class="headerlink" href="#build" title="永久链接至标题"></a></h3>
 <p>在你的工作空间的根目录中运行 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code>，以检查缺少的依赖项。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
@@ -690,8 +690,8 @@
 </div></div>
 </div>
 <div class="section" id="run">
-<h3><a class="toc-backref" href="#id9">4 Run</a><a class="headerlink" href="#run" title="永久链接至标题"></a></h3>
-<p>Now run the launch file that will start the turtlesim simulation node and <code class="docutils literal notranslate"><span class="pre">turtle_tf2_broadcaster</span></code> node:</p>
+<h3><a class="toc-backref" href="#id9">4 运行</a><a class="headerlink" href="#run" title="永久链接至标题"></a></h3>
+<p>现在运行启动文件，启动turtlesim仿真节点和``turtle_tf2_broadcaster``节点:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_cpp turtle_tf2_demo.launch.py</span>
 </pre></div>
 </div>
@@ -699,15 +699,13 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run turtlesim turtle_teleop_key</span>
 </pre></div>
 </div>
-<p>You will now see that the turtlesim simulation have started with one turtle that you can control.</p>
+<p>你会看到turtlesim仿真已经启动，并且有一只你可以控制的乌龟。</p>
 <img alt="../../../_images/turtlesim_broadcast.png" src="../../../_images/turtlesim_broadcast.png" />
-<p>Now, use the <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code> tool to check if the turtle pose is actually getting broadcast to tf2:</p>
+<p>现在，使用``tf2_echo``工具检查乌龟的姿态是否真的被广播到tf2:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run tf2_ros tf2_echo world turtle1</span>
 </pre></div>
 </div>
-<p>This should show you the pose of the first turtle.
-Drive around the turtle using the arrow keys (make sure your <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> terminal window is active, not your simulator window).
-In your console output you will see something similar to this:</p>
+<p>这应该会显示第一只乌龟的姿态。使用箭头键驱动乌龟（确保你的``turtle_teleop_key``终端窗口处于活动状态，而不是仿真器窗口）。在控制台输出中，你会看到类似于以下内容:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">At time 1625137663.912474878</span>
 <span class="go">- Translation: [5.276, 7.930, 0.000]</span>
 <span class="go">- Rotation: in Quaternion [0.000, 0.000, 0.934, -0.357]</span>
@@ -722,14 +720,12 @@ In your console output you will see something similar to this:</p>
 <span class="go">- Rotation: in Quaternion [0.000, 0.000, -0.365, 0.931]</span>
 </pre></div>
 </div>
-<p>If you run <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code> for the transform between the <code class="docutils literal notranslate"><span class="pre">world</span></code> and <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>, you should not see a transform, because the second turtle is not there yet.
-However, as soon as we add the second turtle in the next tutorial, the pose of <code class="docutils literal notranslate"><span class="pre">turtle2</span></code> will be broadcast to tf2.</p>
+<p>如果你对``world``和``turtle2``之间的变换运行``tf2_echo``命令，你将不会看到任何变换，因为第二只乌龟尚未出现。然而，一旦我们在下一个教程中添加第二只乌龟，<a href="#id1"><span class="problematic" id="id2">``</span></a>turtle2``的位姿将会被广播到tf2。</p>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id10">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial you learned how to broadcast the pose of the robot (position and orientation of the turtle) to tf2 and how to use the <code class="docutils literal notranslate"><span class="pre">tf2_echo</span></code> tool.
-To actually use the transforms broadcasted to tf2, you should move on to the next tutorial about creating a <a class="reference internal" href="Writing-A-Tf2-Listener-Cpp.html"><span class="doc">tf2 listener</span></a>.</p>
+<p>在本教程中，你学会了如何将机器人的位姿（乌龟的位置和方向）广播到tf2，并学会了如何使用``tf2_echo``工具。要实际使用广播到tf2的变换，请继续进行下一个教程，了解如何创建一个：<code class="docutils literal notranslate"><span class="pre">tf2</span> <span class="pre">listener</span></code>。</p>
 </div>
 </div>
 
@@ -738,7 +734,7 @@ To actually use the transforms broadcasted to tf2, you should move on to the nex
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Writing-A-Tf2-Broadcaster-Py.html" class="btn btn-neutral float-left" title="Writing a broadcaster (Python)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Writing-A-Tf2-Broadcaster-Py.html" class="btn btn-neutral float-left" title="编写广播器（Python）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Writing-A-Tf2-Listener-Py.html" class="btn btn-neutral float-right" title="Writing a listener (Python)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
