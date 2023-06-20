@@ -655,27 +655,26 @@
 </div>
 </div>
 <div class="section" id="qos-events">
-<h2>QoS events<a class="headerlink" href="#qos-events" title="永久链接至标题"></a></h2>
-<p>Some QoS policies have possible events related to them.
-Developers may provide each publisher and subscription with callback functions that are triggered by these QoS events and handle them in a way they see fit, similar to how messages received on a topic are handled.</p>
-<p>Developers may subscribe to the following QoS events that are associated with a publisher:</p>
+<h2>QoS 事件<a class="headerlink" href="#qos-events" title="永久链接至标题"></a></h2>
+<p>一些QoS策略与可能的事件相关联。开发人员可以为每个发布者和订阅者提供与这些QoS事件相关的回调函数，并以他们认为合适的方式处理这些事件，类似于处理在主题上接收到的消息的方式。</p>
+<p>开发人员可以订阅与发布者相关联的以下QoS事件：</p>
 <ul>
-<li><p>Offered deadline missed</p>
-<p>The publisher has not published a message within the expected duration that was set out by the deadline QoS policy.</p>
+<li><p>提供的截止期限未达成</p>
+<p>发布者在截止期限QoS策略规定的预期持续时间内未发布消息。</p>
 </li>
-<li><p>Liveliness lost</p>
-<p>The publisher has failed to indicate its liveliness within the lease duration.</p>
+<li><p>活跃性丧失</p>
+<p>发布者未在租约期限内指示其活跃性。</p>
 </li>
-<li><p>Offered incompatible QoS</p>
-<p>The publisher has encountered a subscription on the same topic that is requesting a QoS profile that the offered QoS profile cannot satisfy, resulting in no connection between the publisher and that subscription.</p>
+<li><p>提供的QoS不兼容</p>
+<p>发布者遇到了在相同主题上订阅的请求一个无法满足提供的QoS配置文件的QoS配置文件，导致发布者与该订阅之间没有连接。</p>
 </li>
 </ul>
-<p>Developers may subscribe to the following QoS events that are associated with a subscription:</p>
+<p>开发者可以订阅与订阅相关的以下QoS事件：</p>
 <ul>
-<li><p>Requested deadline missed</p>
-<p>The subscription has not received a message within the expected duration that was set out by the deadline QoS policy.</p>
+<li><p>请求的截止时间已过</p>
+<p>该订阅在预期的持续时间内未收到消息，该持续时间由截止时间的QoS策略设置。</p>
 </li>
-<li><p>Liveliness changed</p>
+<li><p>可用性发生变化</p>
 <p>The subscription has noticed that one or more publishers on the subscribed topic has failed to indicate their liveliness within the lease duration.</p>
 </li>
 <li><p>Requested incompatible QoS</p>
