@@ -374,27 +374,21 @@
 
   <div class="section" id="gurumnetworks-gurumdds">
 <h1>GurumNetworks GurumDDS<a class="headerlink" href="#gurumnetworks-gurumdds" title="永久链接至标题"></a></h1>
-<p>rmw_gurumdds is a implementation of the ROS middleware interface using GurumNetworks GurumDDS.
-More information about GurumDDS is available on our website: <a class="reference external" href="https://gurum.cc/index_eng">https://gurum.cc/index_eng</a></p>
+<p>rmw_gurumdds是使用GurumNetworks GurumDDS实现的ROS中间件接口。有关GurumDDS的更多信息，请访问我们的网站：<a class="reference external" href="https://gurum.cc/index_eng">https://gurum.cc/index_eng</a></p>
 <div class="section" id="prerequisites">
 <h2>先决条件<a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>The following description assumes that you have completed the 'Environment setup' process
-from the <a class="reference internal" href="../Ubuntu-Install-Debians.html"><span class="doc">Installing ROS 2 via Debian Packages</span></a> or
-from the <a class="reference internal" href="../Alternatives/Ubuntu-Development-Setup.html"><span class="doc">Building ROS 2 on Ubuntu Linux</span></a>.</p>
-<p>rmw_gurumdds requires version of GurumDDS-2.8.x.
-Debian packages of GurumDDS are provided in the ROS 2 apt repositories on ubuntu.
-Windows binary installer of GurumDDS will be supported soon.</p>
-<p>GurumDDS requires a license. See the next page: <a class="reference external" href="https://gurum.cc/free_trial_eng.html">https://gurum.cc/free_trial_eng.html</a></p>
-<p>After requesting a trial license, please download the license from the license homepage.
-After getting a license, move it to the following location.</p>
+<p>以下说明假设您已完成 <a class="reference internal" href="../Ubuntu-Install-Debians.html"><span class="doc">通过Debian软件包安装ROS 2</span></a> 或 <a class="reference internal" href="../Alternatives/Ubuntu-Development-Setup.html"><span class="doc">在Ubuntu Linux上构建ROS 2</span></a> 中的 '环境设置' 过程。</p>
+<p>rmw_gurumdds 需要 GurumDDS-2.8.x 的版本。GurumDDS 的 Debian 包可以在 Ubuntu 上的 ROS 2 apt 仓库中获取。GurumDDS 的 Windows 二进制安装程序即将支持。</p>
+<p>GurumDDS 需要许可证。请参阅下一页：<a class="reference external" href="https://gurum.cc/free_trial_eng.html">https://gurum.cc/free_trial_eng.html</a></p>
+<p>在申请试用许可证后，请从许可证主页下载许可证。获取许可证后，请将其移至以下位置。</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 45%" />
 <col style="width: 55%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>DDS Version</p></th>
-<th class="head"><p>License Location</p></th>
+<tr class="row-odd"><th class="head"><p>DDS 版本</p></th>
+<th class="head"><p>许可证位置</p></th>
 </tr>
 </thead>
 <tbody>
@@ -442,10 +436,10 @@ rosdep install --from src -i --rosdistro humble
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_gurumdds_cpp
 </pre></div>
 </div>
-<p>See also: <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">Working with multiple RMW implementations</span></a></p>
+<p>参见：<a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">使用多个RMW实现</span></a></p>
 </div>
 <div class="section" id="run-the-talker-and-listener">
-<h2>Run the talker and listener<a class="headerlink" href="#run-the-talker-and-listener" title="永久链接至标题"></a></h2>
+<h2>运行发布者和订阅者<a class="headerlink" href="#run-the-talker-and-listener" title="永久链接至标题"></a></h2>
 <p>Now run <code class="docutils literal notranslate"><span class="pre">talker</span></code> and <code class="docutils literal notranslate"><span class="pre">listener</span></code> to test GurumDDS.
 Don't forget to set up environment by setup script.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker
