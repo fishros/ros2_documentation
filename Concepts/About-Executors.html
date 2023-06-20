@@ -379,8 +379,8 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id2">概述</a></p></li>
 <li><p><a class="reference internal" href="#basic-use" id="id3">基本用法</a></p></li>
-<li><p><a class="reference internal" href="#types-of-executors" id="id4">Types of Executors</a></p></li>
-<li><p><a class="reference internal" href="#callback-groups" id="id5">Callback groups</a></p></li>
+<li><p><a class="reference internal" href="#types-of-executors" id="id4">执行器的类型</a></p></li>
+<li><p><a class="reference internal" href="#callback-groups" id="id5">回调组</a></p></li>
 <li><p><a class="reference internal" href="#scheduling-semantics" id="id6">Scheduling semantics</a></p></li>
 <li><p><a class="reference internal" href="#outlook" id="id7">Outlook</a></p></li>
 <li><p><a class="reference internal" href="#further-information" id="id8">Further information</a></p></li>
@@ -412,23 +412,19 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The call to <code class="docutils literal notranslate"><span class="pre">spin(node)</span></code> basically expands to an instantiation and invocation of the Single-Threaded Executor, which is the simplest Executor:</p>
+<p>对 <code class="docutils literal notranslate"><span class="pre">spin(node)</span></code> 的调用基本上扩展为单线程执行器的实例化和调用，这是最简单的执行器：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">executors</span><span class="o">::</span><span class="n">SingleThreadedExecutor</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 <span class="n">executor</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
 <span class="n">executor</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>By invoking <code class="docutils literal notranslate"><span class="pre">spin()</span></code> of the Executor instance, the current thread starts querying the rcl and middleware layers for incoming messages and other events and calls the corresponding callback functions until the node shuts down.
-In order not to counteract the QoS settings of the middleware, an incoming message is not stored in a queue on the Client Library layer but kept in the middleware until it is taken for processing by a callback function.
-(This is a crucial difference to ROS 1.)
-A <em>wait set</em> is used to inform the Executor about available messages on the middleware layer, with one binary flag per queue.
-The <em>wait set</em> is also used to detect when timers expire.</p>
+<p>通过调用执行器实例的 <code class="docutils literal notranslate"><span class="pre">spin()</span></code>，当前线程开始查询 rcl 和中间件层的传入消息和其他事件，并调用相应的回调函数，直到节点关闭。为了不影响中间件的 QoS 设置，在客户端库层不会将传入消息存储在队列中，而是在中间件中保持，直到由回调函数进行处理。（这是与 ROS 1 的一个重要区别。）一个 <em>等待集</em> 用于通知执行器中间件层上可用的消息，每个队列对应一个二进制标志。<em>等待集</em> 还用于检测计时器到期的情况。</p>
 <img alt="../_images/executors_basic_principle.png" src="../_images/executors_basic_principle.png" />
-<p>The Single-Threaded Executor is also used by the container process for <a class="reference internal" href="About-Composition.html"><span class="doc">components</span></a>, i.e. in all cases where nodes are created and executed without an explicit main function.</p>
+<p>单线程执行器还被容器进程用于 <a class="reference internal" href="About-Composition.html"><span class="doc">组件</span></a>，即在所有没有显式主函数的情况下创建和执行节点的情况下。</p>
 </div>
 <div class="section" id="types-of-executors">
-<h2><a class="toc-backref" href="#id4">Types of Executors</a><a class="headerlink" href="#types-of-executors" title="永久链接至标题"></a></h2>
-<p>Currently, rclcpp provides three Executor types, derived from a shared parent class:</p>
+<h2><a class="toc-backref" href="#id4">执行器的类型</a><a class="headerlink" href="#types-of-executors" title="永久链接至标题"></a></h2>
+<p>目前，rclcpp 提供了三种执行器类型，它们派生自一个共享的父类：</p>
 <div class="graphviz"><img src="../_images/graphviz-c1160194dae16051e00be2abef23d0fce5e7c347.png" alt="digraph Flatland {
 
    Executor -&gt; SingleThreadedExecutor [dir = back, arrowtail = empty];
@@ -444,7 +440,7 @@ The <em>wait set</em> is also used to detect when timers expire.</p>
 The <em>Static Single-Threaded Executor</em> optimizes the runtime costs for scanning the structure of a node in terms of subscriptions, timers, service servers, action servers, etc.
 It performs this scan only once when the node is added, while the other two executors regularly scan for such changes.
 Therefore, the Static Single-Threaded Executor should be used only with nodes that create all subscriptions, timers, etc. during initialization.</p>
-<p>All three executors can be used with multiple nodes by calling <code class="docutils literal notranslate"><span class="pre">add_node(..)</span></code> for each node.</p>
+<p>通过为每个节点调用``add_node（..）``，可以使用所有三个执行者与多个节点一起使用。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 <span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 <span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
@@ -456,16 +452,11 @@ Therefore, the Static Single-Threaded Executor should be used only with nodes th
 <span class="n">executor</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In the above example, the one thread of a Static Single-Threaded Executor is used to serve three nodes together.
-In case of a Multi-Threaded Executor, the actual parallelism depends on the callback groups.</p>
+<p>在上面的示例中，使用一个静态单线程执行者的一个线程来同时服务三个节点。在多线程执行者的情况下，实际并行性取决于回调组。</p>
 </div>
 <div class="section" id="callback-groups">
-<h2><a class="toc-backref" href="#id5">Callback groups</a><a class="headerlink" href="#callback-groups" title="永久链接至标题"></a></h2>
-<p>ROS 2 allows organizing the callbacks of a node in groups.
-In rclcpp, such a <em>callback group</em> can be created by the <code class="docutils literal notranslate"><span class="pre">create_callback_group</span></code> function of the Node class.
-In rclpy, the same is done by calling the constructor of the specific callback group type.
-The callback group must be stored throughout execution of the node (eg. as a class member), or otherwise the executor won't be able to trigger the callbacks.
-Then, this callback group can be specified when creating a subscription, timer, etc. - for example by the subscription options:</p>
+<h2><a class="toc-backref" href="#id5">回调组</a><a class="headerlink" href="#callback-groups" title="永久链接至标题"></a></h2>
+<p>ROS 2允许将节点的回调组织成组。在rclcpp中，可以通过Node类的``create_callback_group``函数创建这样一个*回调组*。在rclpy中，可以通过调用特定回调组类型的构造函数来完成相同的操作。回调组必须在节点的执行过程中保留（例如，作为类成员），否则执行者将无法触发回调。然后，在创建订阅、定时器等时可以指定此回调组-例如，通过订阅选项：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">my_callback_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
 
