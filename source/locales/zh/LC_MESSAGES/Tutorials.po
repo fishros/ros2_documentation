@@ -17180,32 +17180,32 @@ msgstr "以下说明假定您使用的是Linux系统，并已经在Ubuntu 18.04�
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:39
 msgid "Step 1: Setting up your system"
-msgstr "Step 1: Setting up your system"
+msgstr "步骤1：设置您的系统"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:41
 msgid "Before we go into how the exact process works, lets first make sure all the required software is properly installed. We'll point you towards the appropriate sources to set up your system and only highlight the details that pertain to our use-case."
-msgstr "Before we go into how the exact process works, lets first make sure all the required software is properly installed. We'll point you towards the appropriate sources to set up your system and only highlight the details that pertain to our use-case."
+msgstr "在我们详细介绍具体过程之前，让我们先确保所有所需软件已正确安装。我们将指引您到适当的来源以设置您的系统，并仅强调与我们使用场景相关的细节。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:47
 msgid "a) Docker files?"
-msgstr "a) Docker files?"
+msgstr "a) Docker文件？"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:49
 msgid "Docker files are a form of containers that can run separate from your system, this way, you can set-up potentially hundreds of different projects without affecting one another. You can even set-up different versions of Linux on one machine, without the need for virtual machine. Docker files have an advantage of saving space and only utilizing your system resources when running. In addition, dockers are versatile and transferable. They contain all the required pre-requisites to run separately, meaning that you can easily use a docker file for a specific system or service without any cubersome steps!"
-msgstr "Docker files are a form of containers that can run separate from your system, this way, you can set-up potentially hundreds of different projects without affecting one another. You can even set-up different versions of Linux on one machine, without the need for virtual machine. Docker files have an advantage of saving space and only utilizing your system resources when running. In addition, dockers are versatile and transferable. They contain all the required pre-requisites to run separately, meaning that you can easily use a docker file for a specific system or service without any cubersome steps!"
+msgstr "Docker文件是一种容器形式，可以独立于您的系统运行。这样，您可以设置可能有数百个不同项目而彼此不受影响。您甚至可以在一台机器上设置不同版本的Linux，而无需使用虚拟机。Docker文件具有节省空间和仅在运行时利用您的系统资源的优势。此外，Docker具有灵活和可转移的特性。它们包含所有运行所需的预设条件，这意味着您可以轻松地为特定的系统或服务使用Docker文件，而无需进行任何复杂的步骤！"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:59
 msgid "Excited yet? Let's start off by installing docker to your system by following the following `link <https://docs.docker.com/get-docker/>`__. From the tutorial, you should have done some sanity checks to make sure docker is properly set-up. Just in case, however, let's run the following command once again that uses the hello-world docker image:"
-msgstr "Excited yet? Let's start off by installing docker to your system by following the following `link <https://docs.docker.com/get-docker/>`__. From the tutorial, you should have done some sanity checks to make sure docker is properly set-up. Just in case, however, let's run the following command once again that uses the hello-world docker image:"
+msgstr "感到兴奋了吗？让我们从按照以下 `链接 <https://docs.docker.com/get-docker/>`__ 安装docker到您的系统开始吧。根据教程，您应该进行一些健全性检查以确保docker已正确设置。然而，为了保险起见，让我们再次运行以下命令，使用hello-world docker映像："
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:69
 msgid "You should obtain the following output:"
-msgstr "You should obtain the following output:"
+msgstr "您应该得到以下输出："
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:95
@@ -17215,27 +17215,27 @@ msgstr "b) ROS2 Image"
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:97
 msgid "ROS `announced <https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2>`__ image containers for several ROS distributions in January 2019. More detailed instructions on the use of ROS2 docker images can be found `here <https://hub.docker.com/_/ros/>`__."
-msgstr "ROS `announced <https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2>`__ image containers for several ROS distributions in January 2019. More detailed instructions on the use of ROS2 docker images can be found `here <https://hub.docker.com/_/ros/>`__."
+msgstr "ROS `宣布 <https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2>`__ 2019年1月发布了几个ROS发行版的官方Docker镜像容器。有关使用ROS2 Docker镜像的详细说明，请参阅 `此处 <https://hub.docker.com/_/ros/>`__。"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:103
 msgid "Let's skip through that and get to real-deal right away; creating a local ROS2 docker. We'll create our own Dockerfile (instead of using a ready Image) since we'll need this method for deployment on IBM Cloud. First, we create a new directory which will hold our Dockerfile and any other files we need later on and navigate to it. Using your favorite $EDITOR of choice, open a new file named *Dockerfile* (make sure the file naming is correct):"
-msgstr "Let's skip through that and get to real-deal right away; creating a local ROS2 docker. We'll create our own Dockerfile (instead of using a ready Image) since we'll need this method for deployment on IBM Cloud. First, we create a new directory which will hold our Dockerfile and any other files we need later on and navigate to it. Using your favorite $EDITOR of choice, open a new file named *Dockerfile* (make sure the file naming is correct):"
+msgstr "让我们直接跳过这些，立即开始创建本地ROS2 Docker。由于我们需要将其部署到IBM Cloud上，我们将创建自己的Dockerfile（而不是使用现成的镜像）。首先，创建一个新目录，用于保存我们的Dockerfile和稍后需要的任何其他文件，并进入该目录。使用您喜欢的$EDITOR，打开一个名为*Dockerfile*的新文件（确保文件名正确）："
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:119
 msgid "Insert the following in the *Dockerfile*, and save it (also found `here <https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile>`__):"
-msgstr "Insert the following in the *Dockerfile*, and save it (also found `here <https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile>`__):"
+msgstr "将以下内容插入*Dockerfile*中，并保存它（也可以在 `此处 <https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile>`__ 找到）："
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:137
 msgid "**FROM**: creates a layer from the ros:foxy Docker image"
-msgstr "**FROM**: creates a layer from the ros:foxy Docker image"
+msgstr "**FROM**：使用ros:foxy Docker镜像创建一个层"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:138
 msgid "**RUN**: builds your container by installing vim into it and creating a directory called /ros2_home"
-msgstr "**RUN**: builds your container by installing vim into it and creating a directory called /ros2_home"
+msgstr "**RUN**：通过将vim安装到容器中并创建一个名为/ros2_home的目录来构建您的容器"
 
 
 #: ../../source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst:140
