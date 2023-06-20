@@ -14016,62 +14016,62 @@ msgstr "现在您可以运行启动文件。"
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:115
 msgid "You should notice that ``lookupTransform()`` will actually block until the transform between the two turtles becomes available (this will usually take a few milliseconds). Once the timeout has been reached (fifty milliseconds in this case), an exception will be raised only if the transform is still not available."
-msgstr "You should notice that ``lookupTransform()`` will actually block until the transform between the two turtles becomes available (this will usually take a few milliseconds). Once the timeout has been reached (fifty milliseconds in this case), an exception will be raised only if the transform is still not available."
+msgstr "请注意，``lookupTransform()`` 函数将阻塞直到两个乌龟之间的变换可用（通常需要几毫秒）。一旦超时时间到达（此例中为50毫秒），仅当变换仍不可用时才会引发异常。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:121
 msgid "In this tutorial, you learned how to acquire a transform at a specific timestamp and how to wait for a transform to be available on the tf2 tree when using the ``lookupTransform()`` function."
-msgstr "In this tutorial, you learned how to acquire a transform at a specific timestamp and how to wait for a transform to be available on the tf2 tree when using the ``lookupTransform()`` function."
+msgstr "在本教程中，您学会了如何在特定时间戳获取变换，并在使用``lookupTransform()``函数时等待变换在tf2树上可用。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:8
 msgid "Using time (Python)"
-msgstr "Using time (Python)"
+msgstr "使用时间（Python）"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:10
 msgid "**Goal:** Learn to use the ``timeout`` in ``lookup_transform`` function to wait for a transform to be available on the tf2 tree."
-msgstr "**Goal:** Learn to use the ``timeout`` in ``lookup_transform`` function to wait for a transform to be available on the tf2 tree."
+msgstr "**目标：**学习如何在``lookup_transform``函数中使用``timeout``参数来等待变换在tf2树上可用。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:23
 msgid "In previous tutorials, we recreated the turtle demo by writing a :doc:`tf2 broadcaster <./Writing-A-Tf2-Broadcaster-Py>` and a :doc:`tf2 listener <./Writing-A-Tf2-Listener-Py>`. We also learned how to :doc:`add a new frame to the transformation tree <./Adding-A-Frame-Py>`. Now we will learn more about the ``timeout`` argument which makes the ``lookup_transform`` wait for the specified transform for up to the specified duration before throwing an exception. This tool can be useful to listen for transforms that are published at varying rates or those incoming source with unreliable networking and non negligible latency. This tutorial will teach you how use the timeout in ``lookup_transform`` function to wait for a transform to be available on the tf2 tree."
-msgstr "In previous tutorials, we recreated the turtle demo by writing a :doc:`tf2 broadcaster <./Writing-A-Tf2-Broadcaster-Py>` and a :doc:`tf2 listener <./Writing-A-Tf2-Listener-Py>`. We also learned how to :doc:`add a new frame to the transformation tree <./Adding-A-Frame-Py>`. Now we will learn more about the ``timeout`` argument which makes the ``lookup_transform`` wait for the specified transform for up to the specified duration before throwing an exception. This tool can be useful to listen for transforms that are published at varying rates or those incoming source with unreliable networking and non negligible latency. This tutorial will teach you how use the timeout in ``lookup_transform`` function to wait for a transform to be available on the tf2 tree."
+msgstr "在之前的教程中，我们通过编写 :doc:`tf2广播器 <./Writing-A-Tf2-Broadcaster-Py>`和 :doc:`tf2监听器 <./Writing-A-Tf2-Listener-Py>`来重现了乌龟演示。我们还学习了如何 :doc:`向变换树添加新的坐标系 <./Adding-A-Frame-Py>`。现在我们将更深入了解``timeout``参数，它使``lookup_transform``在指定的持续时间内等待指定的变换，然后才抛出异常。这个工具对于监听以不同速率发布的变换或具有不可靠网络和非常大延迟的传入源非常有用。本教程将教您如何使用``lookup_transform``函数中的timeout来等待tf2树上的变换可用。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:33
 msgid "1 Update the listener node"
-msgstr "1 Update the listener node"
+msgstr "1. 更新监听器节点"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:35
 msgid "Edit ``turtle_tf2_listener.py`` and remove the ``timeout=Duration(seconds=1.0)`` parameter that is passed to the ``lookup_transform()`` call on line 76. It should look like shown below:"
-msgstr "Edit ``turtle_tf2_listener.py`` and remove the ``timeout=Duration(seconds=1.0)`` parameter that is passed to the ``lookup_transform()`` call on line 76. It should look like shown below:"
+msgstr "编辑 ``turtle_tf2_listener.py`` 并删除传递给第 76 行的 ``lookup_transform()`` 调用的 ``timeout=Duration(seconds=1.0)`` 参数。修改后的代码应如下所示："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:45
 msgid "Moreover, import additional exceptions that we will handle in the beginning of the file:"
-msgstr "Moreover, import additional exceptions that we will handle in the beginning of the file:"
+msgstr "此外，在文件开头导入额外的异常，我们将在文件开头处理它们："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:51
 msgid "Edit the exception handling on line 81 by adding newly imported exceptions and ``raise`` statement to see the exception:"
-msgstr "Edit the exception handling on line 81 by adding newly imported exceptions and ``raise`` statement to see the exception:"
+msgstr "通过添加新导入的异常和 ``raise`` 语句，编辑第 81 行的异常处理以查看异常信息："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:60
 msgid "If you now try to run the launch file, you will notice that it is failing:"
-msgstr "If you now try to run the launch file, you will notice that it is failing:"
+msgstr "如果你现在尝试运行启动文件，你会注意到它执行失败："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:67
 msgid "2 Fix the listener node"
-msgstr "2 Fix the listener node"
+msgstr "2 修复监听节点"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:69
 msgid "You now should notice that ``lookup_transform()`` is failing. It tells you that the frame does not exist or that the data is in the future. To fix this, edit your code on line 76 as shown below (return the ``timeout`` parameter):"
-msgstr "You now should notice that ``lookup_transform()`` is failing. It tells you that the frame does not exist or that the data is in the future. To fix this, edit your code on line 76 as shown below (return the ``timeout`` parameter):"
+msgstr "现在你应该注意到 ``lookup_transform()`` 执行失败。它告诉你帧不存在或数据在未来。为了修复这个问题，在第 76 行的代码中做如下修改（返回 ``timeout`` 参数）："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:80
