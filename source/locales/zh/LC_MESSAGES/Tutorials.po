@@ -14886,92 +14886,92 @@ msgstr "我们需要给要发布的变换添加时间戳，我们将使用``self
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:241
 msgid "You can also publish static transforms with the same pattern by instantiating a ``tf2_ros.StaticTransformBroadcaster`` instead of a ``tf2_ros.TransformBroadcaster``. The static transforms will be published on the ``/tf_static`` topic and will be sent only when required, not periodically. For more details see :doc:`here <./Writing-A-Tf2-Static-Broadcaster-Py>`."
-msgstr "You can also publish static transforms with the same pattern by instantiating a ``tf2_ros.StaticTransformBroadcaster`` instead of a ``tf2_ros.TransformBroadcaster``. The static transforms will be published on the ``/tf_static`` topic and will be sent only when required, not periodically. For more details see :doc:`here <./Writing-A-Tf2-Static-Broadcaster-Py>`."
+msgstr "你也可以通过实例化``tf2_ros.StaticTransformBroadcaster``而不是``tf2_ros.TransformBroadcaster``来发布相同模式的静态变换。静态变换将发布到``/tf_static``话题，并且仅在需要时发送，而不是周期性地发送。有关更多详细信息，请参阅：:doc:`此处 <./Writing-A-Tf2-Static-Broadcaster-Py>`。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:318
 msgid "Navigate one level back to the ``src/learning_tf2_py`` directory, where the ``setup.py``, ``setup.cfg``, and ``package.xml`` files are located."
-msgstr "Navigate one level back to the ``src/learning_tf2_py`` directory, where the ``setup.py``, ``setup.cfg``, and ``package.xml`` files are located."
+msgstr "返回到``src/learning_tf2_py``目录的上一级，该目录中包含``setup.py``、``setup.cfg``和``package.xml``文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:333
 msgid "2.3 Update setup.py"
-msgstr "2.3 Update setup.py"
+msgstr "2.3 更新 setup.py"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:335
 msgid "Reopen ``setup.py`` and add the line so that the launch files from the ``launch/`` folder would be installed. The ``data_files`` field should now look like this:"
-msgstr "Reopen ``setup.py`` and add the line so that the launch files from the ``launch/`` folder would be installed. The ``data_files`` field should now look like this:"
+msgstr "重新打开``setup.py``并添加以下行，以便安装``launch/``文件夹中的启动文件。``data_files``字段现在应该如下所示："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:345
 msgid "Also add the appropriate imports at the top of the file:"
-msgstr "Also add the appropriate imports at the top of the file:"
+msgstr "还要在文件顶部添加适当的导入："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:473
 msgid "In this tutorial you learned how to broadcast the pose of the robot (position and orientation of the turtle) to tf2 and how to use the ``tf2_echo`` tool. To actually use the transforms broadcasted to tf2, you should move on to the next tutorial about creating a :doc:`tf2 listener <./Writing-A-Tf2-Listener-Py>`."
-msgstr "In this tutorial you learned how to broadcast the pose of the robot (position and orientation of the turtle) to tf2 and how to use the ``tf2_echo`` tool. To actually use the transforms broadcasted to tf2, you should move on to the next tutorial about creating a :doc:`tf2 listener <./Writing-A-Tf2-Listener-Py>`."
+msgstr "在本教程中，您学习了如何将机器人的姿态（乌龟的位置和方向）广播到tf2，以及如何使用``tf2_echo``工具。要实际使用广播到tf2的变换，请继续下一个有关创建:doc:`tf2监听器 <./Writing-A-Tf2-Listener-Py>`的教程。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:8
 msgid "Writing a listener (C++)"
-msgstr "Writing a listener (C++)"
+msgstr "编写监听器（C++）"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:10 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:10
 msgid "**Goal:** Learn how to use tf2 to get access to frame transformations."
-msgstr "**Goal:** Learn how to use tf2 to get access to frame transformations."
+msgstr "**目标：**学习如何使用tf2来获取帧变换的访问权限。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:23 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:23
 msgid "In previous tutorials we created a tf2 broadcaster to publish the pose of a turtle to tf2."
-msgstr "In previous tutorials we created a tf2 broadcaster to publish the pose of a turtle to tf2."
+msgstr "在之前的教程中，我们创建了一个tf2广播器，将乌龟的姿态发布到tf2中。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:25 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:25
 msgid "In this tutorial we'll create a tf2 listener to start using tf2."
-msgstr "In this tutorial we'll create a tf2 listener to start using tf2."
+msgstr "在本教程中，我们将创建一个tf2监听器，开始使用tf2。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:30
 msgid "This tutorial assumes you have completed the :doc:`tf2 static broadcaster tutorial (C++) <./Writing-A-Tf2-Static-Broadcaster-Cpp>` and the :doc:`tf2 broadcaster tutorial (C++) <./Writing-A-Tf2-Broadcaster-Cpp>`. In the previous tutorial, we created a ``learning_tf2_cpp`` package, which is where we will continue working from."
-msgstr "This tutorial assumes you have completed the :doc:`tf2 static broadcaster tutorial (C++) <./Writing-A-Tf2-Static-Broadcaster-Cpp>` and the :doc:`tf2 broadcaster tutorial (C++) <./Writing-A-Tf2-Broadcaster-Cpp>`. In the previous tutorial, we created a ``learning_tf2_cpp`` package, which is where we will continue working from."
+msgstr "本教程假设您已经完成了：doc:`tf2静态广播器教程（C++）<./Writing-A-Tf2-Static-Broadcaster-Cpp>`和：doc:`tf2广播器教程（C++）<./Writing-A-Tf2-Broadcaster-Cpp>`。在之前的教程中，我们创建了一个``learning_tf2_cpp``软件包，我们将从这里继续工作。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:37 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:37
 msgid "1 Write the listener node"
-msgstr "1 Write the listener node"
+msgstr "1 编写监听器节点"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:39
 msgid "Let's first create the source files. Go to the ``learning_tf2_cpp`` package we created in the previous tutorial. Inside the ``src`` directory download the example listener code by entering the following command:"
-msgstr "Let's first create the source files. Go to the ``learning_tf2_cpp`` package we created in the previous tutorial. Inside the ``src`` directory download the example listener code by entering the following command:"
+msgstr "首先，我们需要创建源文件。转到我们在上一个教程中创建的“learning_tf2_cpp”包。在“src”目录中，通过输入以下命令来下载示例监听器代码："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:213
 msgid "To understand how the service behind spawning turtle works, please refer to :doc:`writing a simple service and client (C++) <../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client>` tutorial."
-msgstr "To understand how the service behind spawning turtle works, please refer to :doc:`writing a simple service and client (C++) <../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client>` tutorial."
+msgstr "要了解生成海龟背后的服务是如何工作的，请参考:doc:`编写一个简单的服务和客户端（C++）<../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client>` 教程。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:215
 msgid "Now, let's take a look at the code that is relevant to get access to frame transformations. The ``tf2_ros`` contains a ``TransformListener`` header file implementation that makes the task of receiving transforms easier."
-msgstr "Now, let's take a look at the code that is relevant to get access to frame transformations. The ``tf2_ros`` contains a ``TransformListener`` header file implementation that makes the task of receiving transforms easier."
+msgstr "现在，让我们看一下与获取帧变换相关的代码。``tf2_ros``包含了一个``TransformListener``头文件的实现，使得接收变换的任务更加容易。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:222 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:192
 msgid "Here, we create a ``TransformListener`` object. Once the listener is created, it starts receiving tf2 transformations over the wire, and buffers them for up to 10 seconds."
-msgstr "Here, we create a ``TransformListener`` object. Once the listener is created, it starts receiving tf2 transformations over the wire, and buffers them for up to 10 seconds."
+msgstr "在这里，我们创建了一个``TransformListener``对象。一旦创建了监听器，它就开始通过网络接收tf2变换，并将其缓冲最多10秒。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:229 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:198
 msgid "Finally, we query the listener for a specific transformation. We call ``lookup_transform`` method with following arguments:"
-msgstr "Finally, we query the listener for a specific transformation. We call ``lookup_transform`` method with following arguments:"
+msgstr "最后，我们查询监听器以获取特定的变换。我们使用以下参数调用``lookup_transform``方法："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:235 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:204
 msgid "The time at which we want to transform"
-msgstr "The time at which we want to transform"
+msgstr "我们想要进行变换的时间"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:237
