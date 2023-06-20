@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using stamped datatypes with tf2_ros::MessageFilter &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>使用带时间戳的数据类型与``tf2_ros::MessageFilter`` &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -164,11 +164,11 @@
 <li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Cpp.html">添加一个框架（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Py.html">使用时间（Python）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++）</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Py.html">Traveling in time (Python)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Py.html">时间旅行（Python）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Cpp.html">时间旅行（C++）</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Debugging-Tf2-Problems.html">调试</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Quaternion-Fundamentals.html">四元数基础知识</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">使用带时间戳的数据类型与``tf2_ros::MessageFilter``</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Testing/Testing-Main.html">测试</a><ul>
@@ -362,7 +362,7 @@
           <li><a href="../../../Tutorials.html">教程</a> &raquo;</li>
           <li><a href="../../Intermediate.html">中级</a> &raquo;</li>
           <li><a href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a> &raquo;</li>
-      <li>Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code></li>
+      <li>使用带时间戳的数据类型与``tf2_ros::MessageFilter``</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -375,8 +375,8 @@
 
 
   <div class="section" id="using-stamped-datatypes-with-tf2-ros-messagefilter">
-<span id="usingstampeddatatypeswithtf2rosmessagefilter"></span><h1>Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code><a class="headerlink" href="#using-stamped-datatypes-with-tf2-ros-messagefilter" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn how to use <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code> to process stamped datatypes.</p>
+<span id="usingstampeddatatypeswithtf2rosmessagefilter"></span><h1>使用带时间戳的数据类型与``tf2_ros::MessageFilter``<a class="headerlink" href="#using-stamped-datatypes-with-tf2-ros-messagefilter" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>了解如何使用``tf2_ros::MessageFilter``处理带时间戳的数据类型。</p>
 <p><strong>教程级别：</strong> 中级</p>
 <p><strong>时间:</strong> 10分钟</p>
 <div class="contents local topic" id="contents">
@@ -409,8 +409,7 @@
 </div>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id3">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>This tutorial explains how to use sensor data with tf2.
-Some real-world examples of sensor data are:</p>
+<p>本教程解释了如何在tf2中使用传感器数据。一些传感器数据的真实世界示例包括：</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>cameras, both mono and stereo</p></li>
