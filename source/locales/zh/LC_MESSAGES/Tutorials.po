@@ -16476,92 +16476,92 @@ msgstr "现在我们已经构建了动作服务器，可以运行它了。源激
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:254
 msgid "3 Writing an action client"
-msgstr "3 Writing an action client"
+msgstr "3 编写动作客户端"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:257
 msgid "3.1 Writing the action client code"
-msgstr "3.1 Writing the action client code"
+msgstr "3.1 编写动作客户端代码"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:259
 msgid "Open up ``action_tutorials_cpp/src/fibonacci_action_client.cpp``, and put the following code in:"
-msgstr "Open up ``action_tutorials_cpp/src/fibonacci_action_client.cpp``, and put the following code in:"
+msgstr "打开 ``action_tutorials_cpp/src/fibonacci_action_client.cpp``，并将以下代码放入其中："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:272
 msgid "The constructor for the ``FibonacciActionClient`` class initializes the node name as ``fibonacci_action_client``:"
-msgstr "The constructor for the ``FibonacciActionClient`` class initializes the node name as ``fibonacci_action_client``:"
+msgstr "``FibonacciActionClient`` 类的构造函数将节点名称初始化为 ``fibonacci_action_client``："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:278
 msgid "The constructor also instantiates a new action client:"
-msgstr "The constructor also instantiates a new action client:"
+msgstr "构造函数还实例化了一个新的动作客户端："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:284
 msgid "An action client requires 3 things:"
-msgstr "An action client requires 3 things:"
+msgstr "动作客户端需要三样东西："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:287
 msgid "A ROS 2 node to add the action client to: ``this``."
-msgstr "A ROS 2 node to add the action client to: ``this``."
+msgstr "一个用于添加动作客户端的ROS 2节点：``this``。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:290
 msgid "We also instantiate a ROS timer that will kick off the one and only call to ``send_goal``:"
-msgstr "We also instantiate a ROS timer that will kick off the one and only call to ``send_goal``:"
+msgstr "我们还实例化了一个ROS定时器，它将触发对``send_goal``的唯一调用："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:296
 msgid "When the timer expires, it will call ``send_goal``:"
-msgstr "When the timer expires, it will call ``send_goal``:"
+msgstr "当定时器到期时，它将调用``send_goal``："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:302
 msgid "This function does the following:"
-msgstr "This function does the following:"
+msgstr "此函数执行以下操作："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:304
 msgid "Cancels the timer (so it is only called once)."
-msgstr "Cancels the timer (so it is only called once)."
+msgstr "取消定时器的操作（因此只调用一次）。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:305
 msgid "Waits for the action server to come up."
-msgstr "Waits for the action server to come up."
+msgstr "等待动作服务器启动。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:306
 msgid "Instantiates a new ``Fibonacci::Goal``."
-msgstr "Instantiates a new ``Fibonacci::Goal``."
+msgstr "实例化一个新的 ``Fibonacci::Goal``。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:307
 msgid "Sets the response, feedback, and result callbacks."
-msgstr "Sets the response, feedback, and result callbacks."
+msgstr "设置响应、反馈和结果的回调函数。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:308
 msgid "Sends the goal to the server."
-msgstr "Sends the goal to the server."
+msgstr "将目标发送到服务器。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:310
 msgid "When the server receives and accepts the goal, it will send a response to the client. That response is handled by ``goal_response_callback``:"
-msgstr "When the server receives and accepts the goal, it will send a response to the client. That response is handled by ``goal_response_callback``:"
+msgstr "当服务器接收并接受目标后，它将向客户端发送响应。这个响应由 ``goal_response_callback`` 处理："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:317
 msgid "Assuming the goal was accepted by the server, it will start processing. Any feedback to the client will be handled by the ``feedback_callback``:"
-msgstr "Assuming the goal was accepted by the server, it will start processing. Any feedback to the client will be handled by the ``feedback_callback``:"
+msgstr "假设服务器接受了目标，它将开始处理。任何对客户端的反馈将由 ``feedback_callback`` 处理："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:324
 msgid "When the server is finished processing, it will return a result to the client. The result is handled by the ``result_callback``:"
-msgstr "When the server is finished processing, it will return a result to the client. The result is handled by the ``result_callback``:"
+msgstr "当服务器处理完成后，将向客户端返回结果。结果由 ``result_callback`` 处理："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:331
