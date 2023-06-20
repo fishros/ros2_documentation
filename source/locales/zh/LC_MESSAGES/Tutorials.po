@@ -15521,61 +15521,61 @@ msgstr "下一步"
 
 #: ../../source/Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst:147
 msgid "Reduce the amount of code and annoying math you have to do by :doc:`using xacro <./Using-Xacro-to-Clean-Up-a-URDF-File>`."
-msgstr "Reduce the amount of code and annoying math you have to do by :doc:`using xacro <./Using-Xacro-to-Clean-Up-a-URDF-File>`."
+msgstr "通过 :doc:`使用xacro <./Using-Xacro-to-Clean-Up-a-URDF-File>` 减少您需要编写的代码和繁琐的数学计算量。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:8
 msgid "Building a movable robot model"
-msgstr "Building a movable robot model"
+msgstr "构建一个可移动的机器人模型。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:10
 msgid "**Goal:** Learn how to define movable joints in URDF."
-msgstr "**Goal:** Learn how to define movable joints in URDF."
+msgstr "**目标：**学习如何在URDF中定义可移动关节。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:20
 msgid "In this tutorial, we’re going to revise the R2D2 model we made in the :doc:`previous tutorial <./Building-a-Visual-Robot-Model-with-URDF-from-Scratch>` so that it has movable joints. In the previous model, all of the joints were fixed. Now we’ll explore three other important types of joints: continuous, revolute and prismatic."
-msgstr "In this tutorial, we’re going to revise the R2D2 model we made in the :doc:`previous tutorial <./Building-a-Visual-Robot-Model-with-URDF-from-Scratch>` so that it has movable joints. In the previous model, all of the joints were fixed. Now we’ll explore three other important types of joints: continuous, revolute and prismatic."
+msgstr "在本教程中，我们将对在 :doc:`上一个教程 <./Building-a-Visual-Robot-Model-with-URDF-from-Scratch>` 中创建的R2D2模型进行修改，使其具有可移动关节。在之前的模型中，所有的关节都是固定的。现在我们将探索其他三种重要的关节类型：连续关节、旋转关节和平移关节。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:24
 msgid "Make sure you have installed all prerequisites before continuing. See the :doc:`previous tutorial <./Building-a-Visual-Robot-Model-with-URDF-from-Scratch>` for information on what is required."
-msgstr "Make sure you have installed all prerequisites before continuing. See the :doc:`previous tutorial <./Building-a-Visual-Robot-Model-with-URDF-from-Scratch>` for information on what is required."
+msgstr "在继续之前，请确保您已安装了所有先决条件。有关所需内容，请参阅 :doc:`上一个教程 <./Building-a-Visual-Robot-Model-with-URDF-from-Scratch>`。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:27
 msgid "Again, all of the robot models mentioned in this tutorial can be found in the `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ package."
-msgstr "Again, all of the robot models mentioned in this tutorial can be found in the `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ package."
+msgstr "同样，本教程中提到的所有机器人模型都可以在 `urdf_tutorial <https://index.ros.org/p/urdf_tutorial>`_ 包中找到。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:29
 msgid "`Here is the new urdf <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/06-flexible.urdf>`_ with flexible joints. You can compare it to the previous version to see everything that has changed, but we’re just going to focus on three example joints."
-msgstr "`Here is the new urdf <https://github.com/ros/urdf_tutorial/blob/ros2/urdf/06-flexible.urdf>`_ with flexible joints. You can compare it to the previous version to see everything that has changed, but we’re just going to focus on three example joints."
+msgstr "这里是带有灵活关节的新URDF文件，您可以将其与先前版本进行比较，看看发生了哪些变化，但我们将只关注三个示例关节。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:32
 msgid "To visualize and control this model, run the same command as the last tutorial:"
-msgstr "To visualize and control this model, run the same command as the last tutorial:"
+msgstr "要可视化和控制此模型，请运行与上一个教程相同的命令："
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:38
 msgid "However now this will also pop up a GUI that allows you to control the values of all the non-fixed joints. Play with the model some and see how it moves. Then, we can take a look at how we accomplished this."
-msgstr "However now this will also pop up a GUI that allows you to control the values of all the non-fixed joints. Play with the model some and see how it moves. Then, we can take a look at how we accomplished this."
+msgstr "然而，现在这将会弹出一个GUI界面，允许您控制所有非固定关节的值。试着动一下模型，看看它如何移动。然后，我们可以看看我们是如何实现这一点的。"
 
 
 msgid "Screenshot of Flexible Model"
-msgstr "Screenshot of Flexible Model"
+msgstr "灵活模型的截图"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:47
 msgid "The Head"
-msgstr "The Head"
+msgstr "头部"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:58
 msgid "The connection between the body and the head is a continuous joint, meaning that it can take on any angle from negative infinity to positive infinity. The wheels are also modeled like this, so that they can roll in both directions forever."
-msgstr "The connection between the body and the head is a continuous joint, meaning that it can take on any angle from negative infinity to positive infinity. The wheels are also modeled like this, so that they can roll in both directions forever."
+msgstr "身体和头部之间的连接是一个连续关节，意味着它可以取负无穷到正无穷的任意角度。车轮也是这样建模的，因此它们可以永远向两个方向滚动。"
 
 
 #: ../../source/Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.rst:61
