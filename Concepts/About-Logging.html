@@ -383,10 +383,10 @@
 <li><p><a class="reference internal" href="#configuration" id="id4">配置</a></p>
 <ul>
 <li><p><a class="reference internal" href="#environment-variables" id="id5">环境变量</a></p></li>
-<li><p><a class="reference internal" href="#node-creation" id="id6">Node creation</a></p></li>
+<li><p><a class="reference internal" href="#node-creation" id="id6">节点创建</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#logging-subsystem-design" id="id7">Logging subsystem design</a></p>
+<li><p><a class="reference internal" href="#logging-subsystem-design" id="id7">日志子系统设计</a></p>
 <ul>
 <li><p><a class="reference internal" href="#rcutils" id="id8">rcutils</a></p></li>
 <li><p><a class="reference internal" href="#rcl-logging-spdlog" id="id9">rcl_logging_spdlog</a></p></li>
@@ -482,29 +482,26 @@
 </ul>
 </div>
 <div class="section" id="node-creation">
-<h3><a class="toc-backref" href="#id6">Node creation</a><a class="headerlink" href="#node-creation" title="永久链接至标题"></a></h3>
-<p>When initializing a ROS 2 node, it is possible to control some aspects of the behavior via node options.
-Since these are per-node options, they can be set differently for different nodes even when the nodes are composed into a single process.</p>
+<h3><a class="toc-backref" href="#id6">节点创建</a><a class="headerlink" href="#node-creation" title="永久链接至标题"></a></h3>
+<p>当初始化ROS 2节点时，可以通过节点选项来控制一些行为方面的细节。由于这些是每个节点的选项，即使将节点组合到单个进程中，也可以为不同的节点设置不同的选项。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">log_levels</span></code> - The log level to use for a component within this particular node.  This can be set with the following: <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--log-level</span> <span class="pre">talker:=DEBUG</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">external_log_config_file</span></code> - The external file to use to configure the backend logger.  If it is NULL, the default configuration will be used.  Note that the format of this file is backend-specific (and is currently unimplemented for the default backend logger of spdlog).  This can be set with the following: <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--log-config-file</span> <span class="pre">log-config.txt</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">log_stdout_disabled</span></code> - Whether to disable writing log messages to the console.  This can be done with the following: <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-stdout-logs</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">log_rosout_disabled</span></code> - Whether to disable writing log messages out to <code class="docutils literal notranslate"><span class="pre">/rosout</span></code>.  This can significantly save on network bandwidth, but external observers will not be able to monitor logging.  This can be done with the following: <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-rosout-logs</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">log_ext_lib_disabled</span></code> - Whether to completely disable the use of an external logger.  This may be faster in some cases, but means that logs will not be written to disk.  This can be done with the following: <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-external-lib-logs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_levels</span></code> - 在此特定节点内使用的组件的日志级别。可以使用以下命令设置：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--log-level</span> <span class="pre">talker:=DEBUG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">external_log_config_file</span></code> - 用于配置后端日志记录器的外部文件。如果为NULL，则将使用默认配置。请注意，此文件的格式是特定于后端的（当前未实现默认后端记录器spdlog的配置）。可以使用以下命令设置：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--log-config-file</span> <span class="pre">log-config.txt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_stdout_disabled</span></code> - 是否禁止将日志消息写入控制台。可以使用以下命令执行：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-stdout-logs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_rosout_disabled</span></code> - 是否禁止将日志消息写入``/rosout``。这可以大大节省网络带宽，但外部观察者将无法监视日志记录。可以使用以下命令执行：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-rosout-logs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_ext_lib_disabled</span></code> - 是否完全禁用外部日志记录器的使用。在某些情况下，这可能更快，但意味着日志不会写入磁盘。可以使用以下命令来实现：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-external-lib-logs</span></code></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="logging-subsystem-design">
-<h2><a class="toc-backref" href="#id7">Logging subsystem design</a><a class="headerlink" href="#logging-subsystem-design" title="永久链接至标题"></a></h2>
-<p>The image below shows the five main pieces to the logging subsystem and how they interact.</p>
+<h2><a class="toc-backref" href="#id7">日志子系统设计</a><a class="headerlink" href="#logging-subsystem-design" title="永久链接至标题"></a></h2>
+<p>下图显示了日志子系统的五个主要组件及其交互方式。</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/ros2_logging_architecture.png"><img alt="ROS 2 logging architecture" src="../_images/ros2_logging_architecture.png" style="width: 550px;" /></a>
+<a class="reference internal image-reference" href="../_images/ros2_logging_architecture.png"><img alt="ROS 2 日志架构" src="../_images/ros2_logging_architecture.png" style="width: 550px;" /></a>
 </div>
 <div class="section" id="rcutils">
 <h3><a class="toc-backref" href="#id8">rcutils</a><a class="headerlink" href="#rcutils" title="永久链接至标题"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">rcutils</span></code> has a logging implementation that can format log messages according to a certain format (see <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> above), and output those log messages to a console.
-<code class="docutils literal notranslate"><span class="pre">rcutils</span></code> implements a complete logging solution, but allows higher-level components to insert themselves into the logging infrastructure in a dependency-injection model.
-This will become more evident when we talk about the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> layer below.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rcutils``具有一个日志实现，可以根据特定格式（参见上面的``配置</span></code>）格式化日志消息，并将这些日志消息输出到控制台。<a href="#id1"><span class="problematic" id="id2">``</span></a>rcutils``实现了一个完整的日志解决方案，但允许较高级别的组件以依赖注入模型插入到日志基础设施中。当我们谈到下面的``rcl``层时，这将变得更加明显。</p>
 <p>Note that this is a <em>per-process</em> logging implementation, so anything that is configured at this level will affect the entire process, not just individual nodes.</p>
 </div>
 <div class="section" id="rcl-logging-spdlog">
