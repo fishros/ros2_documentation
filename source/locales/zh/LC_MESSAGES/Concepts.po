@@ -1247,17 +1247,17 @@ msgstr "当前活跃的ROS 2二进制发布版本已经内置了对多个RMW实�
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:58
 msgid "Other RMWs like Cyclone DDS, Connext or GurumDDS can be enabled by :doc:`installing additional packages <../Installation/DDS-Implementations>`, but without having to rebuild anything or replace any existing packages."
-msgstr "Other RMWs like Cyclone DDS, Connext or GurumDDS can be enabled by :doc:`installing additional packages <../Installation/DDS-Implementations>`, but without having to rebuild anything or replace any existing packages."
+msgstr "其他像Cyclone DDS、Connext或GurumDDS这样的RMW可以通过:doc:`安装附加包 <../Installation/DDS-Implementations>`进行启用，但无需重新构建任何内容或替换任何现有包。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:60
 msgid "A ROS 2 workspace that has been built from source may build and install multiple RMW implementations simultaneously. While the core ROS 2 code is being compiled, any RMW implementation that is found will be built if the relevant DDS/RTPS implementation has been installed properly and the relevant environment variables have been configured. For example, if the code for the `RMW package for RTI Connext DDS <https://github.com/ros2/rmw_connextdds>`__ is in the workspace, it will be built if an installation of RTI's Connext Pro can also be found."
-msgstr "A ROS 2 workspace that has been built from source may build and install multiple RMW implementations simultaneously. While the core ROS 2 code is being compiled, any RMW implementation that is found will be built if the relevant DDS/RTPS implementation has been installed properly and the relevant environment variables have been configured. For example, if the code for the `RMW package for RTI Connext DDS <https://github.com/ros2/rmw_connextdds>`__ is in the workspace, it will be built if an installation of RTI's Connext Pro can also be found."
+msgstr "从源代码构建的ROS 2工作空间可以同时构建和安装多个RMW实现。在编译核心ROS 2代码时，如果发现了任何RMW实现，并且相关的DDS/RTPS实现已经正确安装并配置了相关的环境变量，那么这些RMW实现将会被构建。例如，如果工作空间中存在`RMW package for RTI Connext DDS <https://github.com/ros2/rmw_connextdds>`__的代码，那么如果还可以找到RTI的Connext Pro的安装，它也将被构建。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:64
 msgid "For many cases you will find that nodes using different RMW implementations are able to communicate, however this is not true under all circumstances. Here is a list of inter-vendor communication configurations that are not supported:"
-msgstr "For many cases you will find that nodes using different RMW implementations are able to communicate, however this is not true under all circumstances. Here is a list of inter-vendor communication configurations that are not supported:"
+msgstr "在许多情况下，使用不同RMW实现的节点可以进行通信，但并非在所有情况下都成立。以下是不支持的跨厂商通信配置列表："
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:67
@@ -1267,7 +1267,7 @@ msgstr "Fast DDS <-> Connext"
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:68
 msgid "``WString`` published by Fast DDS can't be received correctly by Connext on macOS"
-msgstr "``WString`` published by Fast DDS can't be received correctly by Connext on macOS"
+msgstr "在macOS上，Fast DDS发布的``WString``无法被Connext正确接收"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:70
@@ -1277,32 +1277,32 @@ msgstr "Connext <-> Cyclone DDS"
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:70
 msgid "does not support pub/sub communication for ``WString``"
-msgstr "does not support pub/sub communication for ``WString``"
+msgstr "不支持 ``WString`` 类型的发布/订阅通信"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:73
 msgid "Default RMW implementation"
-msgstr "Default RMW implementation"
+msgstr "默认的RMW实现"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:75
 msgid "If a ROS 2 workspace has multiple RMW implementations, Fast DDS is selected as the default RMW implementation if it is available. If the Fast DDS RMW implementation is not installed, the RMW implementation with the first RMW implementation identifier in alphabetical order will be used. The implementation identifier is the name of the ROS package that provides the RMW implementation, e.g. ``rmw_cyclonedds_cpp``. For example, if both ``rmw_cyclonedds_cpp`` and ``rmw_connextdds`` ROS packages are installed, ``rmw_connextdds`` would be the default. If ``rmw_fastrtps_cpp`` is ever installed, it would be the default."
-msgstr "If a ROS 2 workspace has multiple RMW implementations, Fast DDS is selected as the default RMW implementation if it is available. If the Fast DDS RMW implementation is not installed, the RMW implementation with the first RMW implementation identifier in alphabetical order will be used. The implementation identifier is the name of the ROS package that provides the RMW implementation, e.g. ``rmw_cyclonedds_cpp``. For example, if both ``rmw_cyclonedds_cpp`` and ``rmw_connextdds`` ROS packages are installed, ``rmw_connextdds`` would be the default. If ``rmw_fastrtps_cpp`` is ever installed, it would be the default."
+msgstr "如果一个ROS 2工作空间有多个RMW实现，如果可用的话会选择Fast DDS作为默认的RMW实现。如果未安装Fast DDS的RMW实现，将使用按字母顺序排列的第一个RMW实现标识符的RMW实现。实现标识符是提供RMW实现的ROS软件包的名称，例如 ``rmw_cyclonedds_cpp``。例如，如果安装了 ``rmw_cyclonedds_cpp`` 和 ``rmw_connextdds`` 两个ROS软件包，``rmw_connextdds`` 将成为默认的。如果以后安装了 ``rmw_fastrtps_cpp``，它将成为默认的。"
 
 
 #: ../../source/Concepts/About-Different-Middleware-Vendors.rst:81
 msgid "See the :doc:`guide <../How-To-Guides/Working-with-multiple-RMW-implementations>` for how to specify which RMW implementation is to be used when running the ROS 2 examples."
-msgstr "See the :doc:`guide <../How-To-Guides/Working-with-multiple-RMW-implementations>` for how to specify which RMW implementation is to be used when running the ROS 2 examples."
+msgstr "请参考 :doc:`指南 <../How-To-Guides/Working-with-multiple-RMW-implementations>`，了解如何在运行ROS 2示例时指定要使用的RMW实现。"
 
 
 #: ../../source/Concepts/About-Domain-ID.rst:3
 msgid "The ROS_DOMAIN_ID"
-msgstr "The ROS_DOMAIN_ID"
+msgstr "ROS_DOMAIN_ID"
 
 
 #: ../../source/Concepts/About-Domain-ID.rst:8
 msgid "As explained elsewhere, the default middleware that ROS 2 uses for communication is DDS. In DDS, the primary mechanism for having different logical networks share a physical network is known as the Domain ID. ROS 2 nodes on the same domain can freely discover and send messages to each other, while ROS 2 nodes on different domains cannot. All ROS 2 nodes use domain ID 0 by default. To avoid interference between different groups of computers running ROS 2 on the same network, a different domain ID should be set for each group."
-msgstr "As explained elsewhere, the default middleware that ROS 2 uses for communication is DDS. In DDS, the primary mechanism for having different logical networks share a physical network is known as the Domain ID. ROS 2 nodes on the same domain can freely discover and send messages to each other, while ROS 2 nodes on different domains cannot. All ROS 2 nodes use domain ID 0 by default. To avoid interference between different groups of computers running ROS 2 on the same network, a different domain ID should be set for each group."
+msgstr "如其他地方所解释的，ROS 2用于通信的默认中间件是DDS。在DDS中，不同逻辑网络共享物理网络的主要机制被称为Domain ID。同一域中的ROS 2节点可以自由地发现和相互发送消息，而不同域中的ROS 2节点则不能。所有ROS 2节点默认使用域ID 0。为了避免在同一网络上运行ROS 2的不同计算机组之间的干扰，应为每个组设置不同的域ID。"
 
 
 #: ../../source/Concepts/About-Domain-ID.rst:15
