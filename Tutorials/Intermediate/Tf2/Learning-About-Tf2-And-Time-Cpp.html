@@ -385,8 +385,8 @@
 <li><p><a class="reference internal" href="#tasks" id="id2">任务</a></p>
 <ul>
 <li><p><a class="reference internal" href="#tf2-and-time" id="id3">1 tf2 和时间</a></p></li>
-<li><p><a class="reference internal" href="#wait-for-transforms" id="id4">2 Wait for transforms</a></p></li>
-<li><p><a class="reference internal" href="#checking-the-results" id="id5">3 Checking the results</a></p></li>
+<li><p><a class="reference internal" href="#wait-for-transforms" id="id4">2 等待转换</a></p></li>
+<li><p><a class="reference internal" href="#checking-the-results" id="id5">3 检查结果</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id6">摘要</a></p></li>
@@ -400,24 +400,20 @@
 <h2><a class="toc-backref" href="#id2">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="tf2-and-time">
 <h3><a class="toc-backref" href="#id3">1 tf2 和时间</a><a class="headerlink" href="#tf2-and-time" title="永久链接至标题"></a></h3>
-<p>So let's go back to where we ended in the <a class="reference internal" href="Adding-A-Frame-Cpp.html"><span class="doc">adding a frame tutorial</span></a>.
-Go to <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> package.
-Open <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener.cpp</span></code> and take a look at the <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> call:</p>
+<p>让我们回到上一个教程 <a class="reference internal" href="Adding-A-Frame-Cpp.html"><span class="doc">添加一个帧</span></a> 结束的地方。打开 <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code> 包中的 <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener.cpp</span></code>，并查看 <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> 的调用：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
 <span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="n">fromFrameRel</span><span class="p">,</span><span class="w"></span>
 <span class="w">   </span><span class="n">tf2</span><span class="o">::</span><span class="n">TimePointZero</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>You can see that we specified a time equal to 0 by calling <code class="docutils literal notranslate"><span class="pre">tf2::TimePointZero</span></code>.</p>
+<p>你可以看到我们通过调用 <code class="docutils literal notranslate"><span class="pre">tf2::TimePointZero</span></code> 指定了时间为 0。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">tf2</span></code> package has it's own time type <code class="docutils literal notranslate"><span class="pre">tf2::TimePoint</span></code>, which is different from <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code>.
-Many APIs in the package <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> automatically convert between <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code> and <code class="docutils literal notranslate"><span class="pre">tf2::TimePoint</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">rclcpp::Time(0,</span> <span class="pre">0,</span> <span class="pre">this-&gt;get_clock()-&gt;get_clock_type())</span></code> could have been used here, but it would have been converted to <code class="docutils literal notranslate"><span class="pre">tf2::TimePointZero</span></code> anyways.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tf2</span></code> 包有自己的时间类型 <code class="docutils literal notranslate"><span class="pre">tf2::TimePoint</span></code>，与 <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code> 不同。在 <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> 包中，许多 API 自动在 <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code> 和 <code class="docutils literal notranslate"><span class="pre">tf2::TimePoint</span></code> 之间进行转换。</p>
+<p><code class="docutils literal notranslate"><span class="pre">rclcpp::Time(0,</span> <span class="pre">0,</span> <span class="pre">this-&gt;get_clock()-&gt;get_clock_type())</span></code> 可以在此处使用，但它最终会被转换为 <code class="docutils literal notranslate"><span class="pre">tf2::TimePointZero</span></code>。</p>
 </div>
-<p>For tf2, time 0 means &quot;the latest available&quot; transform in the buffer.
-Now, change this line to get the transform at the current time, <code class="docutils literal notranslate"><span class="pre">this-&gt;get_clock()-&gt;now()</span></code>:</p>
+<p>对于 tf2，时间 0 表示缓冲区中的“最新可用”变换。现在，将此行更改为获取当前时间的变换，即 <code class="docutils literal notranslate"><span class="pre">this-&gt;get_clock()-&gt;now()</span></code>:</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
 <span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
 <span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
@@ -425,27 +421,22 @@ Now, change this line to get the transform at the current time, <code class="doc
 <span class="w">   </span><span class="n">now</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Now try to run the launch file.</p>
+<p>现在尝试运行启动文件。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_cpp turtle_tf2_demo.launch.py</span>
 </pre></div>
 </div>
-<p>You will notice that it fails and outputs something similar to this:</p>
+<p>您会注意到它失败并输出类似于以下内容：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1629873136.345688064] [listener]: Could not transform turtle1 to turtle2: Lookup would</span>
 <span class="go">require extrapolation into the future.  Requested time 1629873136.345539 but the latest data</span>
 <span class="go">is at time 1629873136.338804, when looking up transform from frame [turtle1] to frame [turtle2]</span>
 </pre></div>
 </div>
-<p>It tells you that the frame does not exist or that the data is in the future.</p>
-<p>To understand why is this happening we need to understand how buffers work.
-Firstly, each listener has a buffer where it stores all the coordinate transforms coming from the different tf2 broadcasters.
-Secondly, when a broadcaster sends out a transform, it takes some time before that transform gets into the buffer (usually a couple of milliseconds).
-As a result, when you request a frame transform at time &quot;now&quot;, you should wait a few milliseconds for that information to arrive.</p>
+<p>它告诉您该帧不存在或数据位于未来。</p>
+<p>要理解为什么会发生这种情况，我们需要了解缓冲区的工作原理。首先，每个监听器都有一个缓冲区，用于存储来自不同tf2广播器的所有坐标转换。其次，当广播器发送一个转换时，需要一些时间才能将该转换放入缓冲区（通常需要几毫秒）。因此，当您在“现在”时间请求帧转换时，您应该等待几毫秒，以便该信息到达。</p>
 </div>
 <div class="section" id="wait-for-transforms">
-<h3><a class="toc-backref" href="#id4">2 Wait for transforms</a><a class="headerlink" href="#wait-for-transforms" title="永久链接至标题"></a></h3>
-<p>tf2 provides a nice tool that will wait until a transform becomes available.
-You use this by adding a timeout parameter to <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code>.
-To fix this, edit your code as shown below (add the last timeout parameter):</p>
+<h3><a class="toc-backref" href="#id4">2 等待转换</a><a class="headerlink" href="#wait-for-transforms" title="永久链接至标题"></a></h3>
+<p>tf2提供了一个很好的工具，可以等待直到转换可用。您可以通过向“lookupTransform()”添加一个超时参数来使用该工具。要修复这个问题，请按照下面的代码进行编辑（添加最后一个超时参数）：</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Time</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_clock</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">now</span><span class="p">();</span><span class="w"></span>
 <span class="n">transformStamped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tf_buffer_</span><span class="o">-&gt;</span><span class="n">lookupTransform</span><span class="p">(</span><span class="w"></span>
 <span class="w">   </span><span class="n">toFrameRel</span><span class="p">,</span><span class="w"></span>
@@ -454,12 +445,11 @@ To fix this, edit your code as shown below (add the last timeout parameter):</p>
 <span class="w">   </span><span class="mi">50</span><span class="n">ms</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">lookupTransform()</span></code> can take four arguments, where the last one is an optional timeout.
-It will block for up to that duration waiting for it to timeout.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>lookupTransform()``可以接受四个参数，其中最后一个是可选的超时参数。它会阻塞最多该持续时间，直到超时。</p>
 </div>
 <div class="section" id="checking-the-results">
-<h3><a class="toc-backref" href="#id5">3 Checking the results</a><a class="headerlink" href="#checking-the-results" title="永久链接至标题"></a></h3>
-<p>You can now run the launch file.</p>
+<h3><a class="toc-backref" href="#id5">3 检查结果</a><a class="headerlink" href="#checking-the-results" title="永久链接至标题"></a></h3>
+<p>现在您可以运行启动文件。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch learning_tf2_cpp turtle_tf2_demo.launch.py</span>
 </pre></div>
 </div>
