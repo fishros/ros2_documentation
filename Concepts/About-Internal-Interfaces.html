@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About internal ROS 2 interfaces &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于内部ROS 2接口&#34; &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -301,7 +301,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Security.html">About ROS 2 Security</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">About internal ROS 2 interfaces</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于内部ROS 2接口&quot;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 </ul>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>About internal ROS 2 interfaces</li>
+      <li>关于内部ROS 2接口&quot;</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Internal-Interfaces.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,113 +372,64 @@
 
 
   <div class="section" id="about-internal-ros-2-interfaces">
-<h1>About internal ROS 2 interfaces<a class="headerlink" href="#about-internal-ros-2-interfaces" title="永久链接至标题"></a></h1>
-<p>The internal ROS interfaces are public C <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a> that are intended for use by developers who are creating <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client libraries</span></a> or adding a new underlying middleware, but are not intended for use by typical ROS users.
-The ROS <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client libraries</span></a> provide the user facing <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a> that most ROS users are familiar with, and may come in a variety of programming languages.</p>
+<h1>关于内部ROS 2接口&quot;<a class="headerlink" href="#about-internal-ros-2-interfaces" title="永久链接至标题"></a></h1>
+<p>ROS内部接口是面向开发人员的公共C <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a>，用于创建|客户端库|或添加新的底层中间件，但不适用于普通ROS用户。ROS <a href="#id4"><span class="problematic" id="id5">|客户端库|提供了大多数ROS用户熟悉的面向用户的|APIs|</span></a>，可以使用多种编程语言实现。</p>
 <div class="section" id="internal-api-architecture-overview">
-<h2>Internal API Architecture Overview<a class="headerlink" href="#internal-api-architecture-overview" title="永久链接至标题"></a></h2>
-<p>There are two main internal interfaces:</p>
+<h2>内部API架构概述<a class="headerlink" href="#internal-api-architecture-overview" title="永久链接至标题"></a></h2>
+<p>有两个主要的内部接口：</p>
 <ul class="simple">
-<li><p>the ROS middleware interface (<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>)</p></li>
-<li><p>the ROS client library interface (<code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>)</p></li>
+<li><p>ROS中间件接口（<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>）</p></li>
+<li><p>ROS客户端库接口（<code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>）</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> is the interface between the ROS 2 software stack and the underlying middleware implementation.
-The underlying middleware used for ROS 2 is either a DDS or RTPS implementation, and is responsible for discovery, publish and subscribe mechanics, request-reply mechanics for services, and serialization of message types.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> is a slightly higher level <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> which is used to implement the <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client libraries</span></a> and does not touch the middleware implementation directly, but rather does so through the ROS middleware interface (<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>) abstraction.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 是ROS 2软件栈与底层中间件实现之间的接口。ROS 2使用的底层中间件可以是DDS或RTPS实现，负责发现、发布和订阅机制、服务的请求-响应机制以及消息类型的序列化。</p>
+<p><code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 是一个稍微高层的 <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>，用于实现 <a href="#id6"><span class="problematic" id="id7">|客户端库|</span></a>，不直接涉及中间件实现，而是通过 ROS 中间件接口（<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>）进行操作。</p>
 <div class="figure align-default">
-<img alt="ros2 software stack" src="../_images/ros_client_library_api_stack.png" />
+<img alt="ROS2 软件堆栈" src="../_images/ros_client_library_api_stack.png" />
 </div>
-<p>As the diagram shows, these <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a> are stacked such that the typical ROS user will use the <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client library</span></a> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>, e.g. <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>, to implement their code (executable or library).
-The implementation of the <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client libraries</span></a>, e.g. <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>, use the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> interface which provides access to the ROS graph and graph events.
-The <code class="docutils literal notranslate"><span class="pre">rcl</span></code> implementation in turn uses the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> to access the ROS graph.
-The purpose of the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> implementation is to provide a common implementation for more complex ROS concepts and utilities that may be used by various <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client libraries</span></a>, while remaining agnostic to the underlying middleware being used.
-The purpose of the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> interface is to capture the absolute minimum middleware functionality needed to support ROS's client libraries.
-Finally, the implementation of the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> is provided by a middleware implementation specific <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">package</span></a>, e.g. <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code>, the library of which is compiled against vendor specific DDS interfaces and types.</p>
-<p>In the diagram above there is also a box labeled <code class="docutils literal notranslate"><span class="pre">ros_to_dds</span></code>, and the purpose of this box is to represent a category of possible packages which allow the user to access DDS vendor specific objects and settings using the ROS equivalents.
-One of the goals of this abstraction interface is to completely insulate the ROS user space code from the middleware being used, so that changing DDS vendors or even middleware technology has a minimal impact on the users code.
-However, we recognize that on occasion it is useful to reach into the implementation and manually adjust settings despite the consequences that might have.
-By requiring the use of one of these packages in order to access the underlying DDS vendor's objects, we can avoid exposing vendor specific symbols and headers in the normal interface.
-It also makes it easy to see what code is potentially violating the vendor portability by inspecting the package's dependencies to see if one of these <code class="docutils literal notranslate"><span class="pre">ros_to_dds</span></code> packages are being used.</p>
+<p>如图所示，这些 <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 被堆叠在一起，以便典型的 ROS 用户可以使用 <a href="#id8"><span class="problematic" id="id9">|客户端库|</span></a> 的 <a href="#id10"><span class="problematic" id="id11">|API|（例如 ``rclcpp``）来实现他们的代码（可执行文件或库）。 |客户端库|</span></a> 的实现（例如 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>）使用提供对 ROS 图和图事件的访问的 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> 接口。而 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> 的实现则使用 <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 来访问 ROS 图。<code class="docutils literal notranslate"><span class="pre">rcl</span></code> 实现的目的是为各种 <a href="#id12"><span class="problematic" id="id13">|客户端库|</span></a> 提供用于更复杂 ROS 概念和实用程序的通用实现，同时对所使用的底层中间件保持不可知。<code class="docutils literal notranslate"><span class="pre">rmw</span></code> 接口的目的是捕获支持 ROS 客户端库所需的绝对最低限度的中间件功能。最后，<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 的实现由特定中间件实现的 <a href="#id14"><span class="problematic" id="id15">|软件包|</span></a> 提供，例如 <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code>，其库编译针对特定供应商的 DDS 接口和类型。</p>
+<p>在上图中，还有一个标有 <code class="docutils literal notranslate"><span class="pre">ros_to_dds</span></code> 的方框，该方框的目的是代表一类可能的软件包，允许用户使用 ROS 等效方式访问 DDS 供应商特定的对象和设置。这个抽象接口的目标之一是完全隔离 ROS 用户空间代码与所使用的中间件之间的关系，以便在更改 DDS 供应商甚至中间件技术时对用户代码的影响最小化。但我们也认识到，有时候尽管可能带来后果，从实现中手动调整设置也是有用的。通过要求使用这些软件包来访问底层 DDS 供应商的对象，我们可以避免在正常接口中暴露供应商特定的符号和头文件。通过检查软件包的依赖关系，可以轻松查看哪些代码可能违反了供应商的可移植性，以确定是否使用了这些 <code class="docutils literal notranslate"><span class="pre">ros_to_dds</span></code> 软件包。</p>
 </div>
 <div class="section" id="type-specific-interfaces">
-<span id="id1"></span><h2>Type Specific Interfaces<a class="headerlink" href="#type-specific-interfaces" title="永久链接至标题"></a></h2>
-<p>All along the way there are some parts of the <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a> that are necessarily specific to the message types being exchanged, e.g. publishing a message or subscribing to a topic, and therefore require generated code for each message type.
-The following diagram layouts the path from user defined <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> files, e.g. <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files, to the type specific code used by the user and system to perform type specific functions:</p>
+<span id="id1"></span><h2>特定类型的接口<a class="headerlink" href="#type-specific-interfaces" title="永久链接至标题"></a></h2>
+<p>在整个过程中，有些 <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 部分必然与交换的消息类型有关，例如发布消息或订阅主题，因此需要为每个消息类型生成代码。以下图表展示了从用户定义的 <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> 文件（例</p>
 <div class="figure align-default" id="id2">
-<img alt="ros2 idl static type support stack" src="../_images/ros_idl_api_stack_static.png" />
-<p class="caption"><span class="caption-text">Figure: flow chart of &quot;static&quot; type support generation, from <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> files to user facing code.</span><a class="headerlink" href="#id2" title="永久链接至图片"></a></p>
+<img alt="ROS2 IDL 静态类型支持堆栈" src="../_images/ros_idl_api_stack_static.png" />
+<p class="caption"><span class="caption-text">图: 从``rosidl``文件到用户界面代码的“静态”类型支持生成流程图。</span><a class="headerlink" href="#id2" title="永久链接至图片"></a></p>
 </div>
-<p>The right hand side of the diagram shows how the <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files are passed directly to language specific code generators, e.g. <code class="docutils literal notranslate"><span class="pre">rosidl_generator_cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">rosidl_generator_py</span></code>.
-These generators are responsible for creating the code that the user will include (or import) and use as the in-memory representation of the messages that were defined in the <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files.
-For example, consider the message <code class="docutils literal notranslate"><span class="pre">std_msgs/String</span></code>, a user might use this file in C++ with the statement <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;std_msgs/msg/string.hpp&gt;</span></code>, or they might use the statement <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">std_msgs.msg</span> <span class="pre">import</span> <span class="pre">String</span></code> in Python.
-These statements work because of the files generated by these language specific (but middleware agnostic) generator packages.</p>
-<p>Separately, the <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files are used to generate type support code for each type.
-In this context, type support means: meta data or functions that are specific to a given type and that are used by the system to perform particular tasks for the given type.
-The type support for a given message might include things like a list of the names and types for each field in the message.
-It might also contain a reference to code that can perform particular tasks for that type, e.g. publish a message.</p>
+<p>图的右侧显示了如何直接将``.msg``文件传递给特定语言的代码生成器，例如``rosidl_generator_cpp``或``rosidl_generator_py``。这些生成器负责创建用户将包含（或导入）并用作内存中表示``.msg``文件中定义的消息的代码。例如，考虑消息``std_msgs/String``，用户可以在C++中使用语句``#include &lt;std_msgs/msg/string.hpp&gt;``，或者在Python中使用语句``from std_msgs.msg import String``。这些语句之所以有效，是因为这些特定语言（但与中间件无关）的生成器包生成的文件。</p>
+<p>另外，<a href="#id1"><span class="problematic" id="id2">``</span></a>.msg``文件用于为每种类型生成类型支持代码。在此上下文中，类型支持指的是与给定类型特定且由系统用于执行特定任务的元数据或函数。给定消息的类型支持可能包括诸如消息中每个字段的名称和类型列表等内容。它还可以包含对能够执行该类型特定任务的代码的引用，例如发布消息。</p>
 <div class="section" id="static-type-support">
-<h3>Static Type Support<a class="headerlink" href="#static-type-support" title="永久链接至标题"></a></h3>
-<p>When the type support references code to do particular functions for a specific message type, that code sometimes needs to do middleware specific work.
-For example, consider the type specific publish function, when using &quot;vendor A&quot; the function will need to call some of &quot;vendor A&quot;'s <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>, but when using &quot;vendor B&quot; it will need to call &quot;vendor B&quot;'s <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>.
-To allow for middleware vendor specific code, the user defined <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files may result in the generation of vendor specific code.
-This vendor specific code is still hidden from the user through the type support abstraction, which is similar to how the &quot;Private Implementation&quot; (or Pimpl) pattern works.</p>
+<h3>静态类型支持<a class="headerlink" href="#static-type-support" title="永久链接至标题"></a></h3>
+<p>当类型支持引用代码为特定消息类型执行特定功能时，该代码有时需要执行特定于中间件的工作。例如，考虑特定类型的发布函数，在使用“供应商A”时，该函数需要调用“供应商A”的一些API，但在使用“供应商B”时，它需要调用“供应商B”的API。为了允许特定于中间件供应商的代码，用户定义的``.msg``文件可能会生成特定于供应商的代码。通过类型支持抽象，该特定于供应商的代码仍对用户隐藏，类似于“私有实现”（或Pimpl）模式的工作方式。</p>
 </div>
 <div class="section" id="static-type-support-with-dds">
-<h3>Static Type Support with DDS<a class="headerlink" href="#static-type-support-with-dds" title="永久链接至标题"></a></h3>
-<p>For middleware vendors based on DDS, and specifically those which generate code based on the OMG IDL files (<code class="docutils literal notranslate"><span class="pre">.idl</span></code> files), the user defined <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> files (<code class="docutils literal notranslate"><span class="pre">.msg</span></code> files) are converted into equivalent OMG IDL files (<code class="docutils literal notranslate"><span class="pre">.idl</span></code> files).
-From these OMG IDL files, vendor specific code is created and then used within the type specific functions which are referenced by the type support for a given type.
-The above diagram shows this on the left hand side, where the <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files are consumed by the <code class="docutils literal notranslate"><span class="pre">rosidl_dds</span></code> package to produce <code class="docutils literal notranslate"><span class="pre">.idl</span></code> files, and then those <code class="docutils literal notranslate"><span class="pre">.idl</span></code> files are given to language specific and DDS vendor specific type support generation packages.</p>
-<p>For example, consider the Fast DDS implementation, which has a package called <code class="docutils literal notranslate"><span class="pre">rosidl_typesupport_fastrtps_cpp</span></code>.
-This package is responsible for generating code to handle things like converting a C++ message object into a serialized octet buffer to be written over the network.
-This code, while specific to Fast DDS, is still not exposed to the user because of the abstraction in the type support code.</p>
+<h3>DDS支持的静态类型<a class="headerlink" href="#static-type-support-with-dds" title="永久链接至标题"></a></h3>
+<p>对于基于DDS的中间件供应商，特别是基于OMG IDL文件（<code class="docutils literal notranslate"><span class="pre">.idl``文件）生成代码的供应商，用户定义的``rosidl``文件（</span></code>.msg``文件）会被转换为等效的OMG IDL文件（<code class="docutils literal notranslate"><span class="pre">.idl``文件）。从这些OMG</span> <span class="pre">IDL文件中，创建供应商特定的代码，然后在特定类型的函数中使用这些代码，这些函数由给定类型的类型支持引用。上面的图表显示了左侧的情况，</span></code>.msg``文件被``rosidl_dds``软件包使用以生成``.idl``文件，然后将这些``.idl``文件提供给特定语言和DDS供应商的类型支持生成软件包。</p>
+<p>例如，考虑Fast DDS实现，它有一个名为``rosidl_typesupport_fastrtps_cpp``的软件包。该软件包负责生成处理诸如将C++消息对象转换为序列化的八位字节缓冲区以便通过网络写入等任务的代码。尽管这些代码是针对Fast DDS特定的，但由于类型支持代码中的抽象，用户仍然无需直接接触到这些代码。</p>
 </div>
 <div class="section" id="dynamic-type-support">
-<h3>Dynamic Type Support<a class="headerlink" href="#dynamic-type-support" title="永久链接至标题"></a></h3>
-<p>Another way to implement type support is to have generic functions for things like publishing to a topic, rather than generating a version of the function for each message type.
-In order to accomplish this, this generic function needs some meta information about the message type being published, things like a list of field names and types in the order in which they appear in the message type.
-Then to publish a message, you call a generic publish function and pass a message to be published along with a structure which contains the necessary meta data about the message type.
-This is referred to as &quot;dynamic&quot; type support, as opposed to &quot;static&quot; type support which requires generated versions of a function for each type.</p>
+<h3>动态类型支持<a class="headerlink" href="#dynamic-type-support" title="永久链接至标题"></a></h3>
+<p>实现类型支持的另一种方法是为诸如发布到主题之类的通用功能编写通用函数，而不是为每种消息类型生成函数的版本。为了实现这一点，这个通用函数需要一些关于正在发布的消息类型的元信息，例如消息类型中字段名称和类型的列表，以它们在消息类型中出现的顺序。然后，为了发布一条消息，您调用一个通用的发布函数，并传递要发布的消息以及包含有关消息类型的必要元数据的结构体。这被称为&quot;动态&quot;类型支持，与为每种类型生成函数的&quot;静态&quot;类型支持相对应。</p>
 <div class="figure align-default" id="id3">
-<img alt="ros2 idl dynamic type support stack" src="../_images/ros_idl_api_stack_dynamic.png" />
-<p class="caption"><span class="caption-text">Figure: flow chart of &quot;dynamic&quot; type support generation, from <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> files to user facing code.</span><a class="headerlink" href="#id3" title="永久链接至图片"></a></p>
+<img alt="ros2 idl动态类型支持栈" src="../_images/ros_idl_api_stack_dynamic.png" />
+<p class="caption"><span class="caption-text">图：&quot;动态&quot;类型支持生成的流程图，从``rosidl``文件到用户界面代码。</span><a class="headerlink" href="#id3" title="永久链接至图片"></a></p>
 </div>
-<p>The above diagram shows the flow from user defined <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> files to generated user facing code.
-It is very similar to the diagram for static type support, and differs only in how the type support is generated which is represented by the left hand side of the diagram.
-In dynamic type support the <code class="docutils literal notranslate"><span class="pre">.msg</span></code> files are converted directly into user facing code.</p>
-<p>This code is also middleware agnostic, because it only contains meta information about the messages.
-The function to actually do the work, e.g. publishing to a topic, is generic to the message type and will make any necessary calls to the middleware specific <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a>.
-Note that rather than dds vendor specific packages providing the type support code, which is the case in static type support, this method has middleware agnostic package for each language, e.g. <code class="docutils literal notranslate"><span class="pre">rosidl_typesupport_introspection_c</span></code> and <code class="docutils literal notranslate"><span class="pre">rosidl_typesupport_introspection_cpp</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">introspection</span></code> part of the package name refers to the ability to introspect any message instance with the generated meta data for the message type.
-This is the fundamental capability that allows for generic implementations of functions like &quot;publish to a topic&quot;.</p>
-<p>This approach has the advantage that all generated code is middleware agnostic, which means it can be reused for different middleware implementations, so long as they allow for dynamic type support.
-It also results in less generated code, which reduces compile time and code size.</p>
-<p>However, dynamic type support requires that the underlying middleware support a similar form of dynamic type support.
-In the case of DDS the DDS-XTypes standard allows for publishing of messages using meta information rather than generated code.
-DDS-XTypes, or something like it, is required in the underlying middleware in order to support dynamic type support.
-Also, this approach to type support is normally slower than the static type support alternative.
-The type specific generated code in static type support can be written to be more efficient as it does not need to iterate over the message type's meta data to perform things like serialization.</p>
+<p>上图显示了从用户定义的``rosidl``文件到生成的用户界面代码的流程。它与静态类型支持的流程图非常相似，只在类型支持生成的方式上有所不同，这在图的左侧表示。在动态类型支持中，<a href="#id1"><span class="problematic" id="id2">``</span></a>.msg``文件直接转换为用户界面代码。</p>
+<p>这段代码也是中间件无关的，因为它只包含有关消息的元信息。实际执行工作的函数（例如发布到话题）对消息类型是通用的，并将根据需要调用特定中间件的API。请注意，与静态类型支持不同，不是由DDS供应商特定的软件包提供类型支持代码，而是每种语言都有一个中间件无关的软件包，例如``rosidl_typesupport_introspection_c``和``rosidl_typesupport_introspection_cpp``。软件包名称中的``introspection``部分指的是使用生成的元数据对任何消息实例进行内省的能力。这是允许实现诸如“发布到话题”等通用函数的基本能力。</p>
+<p>这种方法的优点是所有生成的代码都是中间件无关的，这意味着可以在不同的中间件实现中重用它们，只要它们支持动态类型支持。它还会生成较少的代码，从而减少编译时间和代码大小。</p>
+<p>然而，动态类型支持要求底层中间件支持类似的动态类型支持形式。对于DDS，DDS-XTypes标准允许使用元信息而不是生成的代码发布消息。在底层中间件中需要DDS-XTypes或类似的东西来支持动态类型支持。此外，与静态类型支持相比，这种类型支持方法通常较慢。静态类型支持中的类型特定生成代码可以编写得更高效，因为它不需要迭代消息类型的元数据来执行诸如序列化之类的操作。</p>
 </div>
 </div>
 <div class="section" id="the-rcl-repository">
-<h2>The <code class="docutils literal notranslate"><span class="pre">rcl</span></code> Repository<a class="headerlink" href="#the-rcl-repository" title="永久链接至标题"></a></h2>
-<p>The ROS Client Library interface (<code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>) can be used by <a class="reference internal" href="../Glossary.html#term-client_library"><span class="xref std std-term">client libraries</span></a> (e.g. <code class="docutils literal notranslate"><span class="pre">rclc</span></code>, <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>, <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>, etc.) in order to avoid duplicating logic and features.
-By reusing the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>, client libraries can be smaller and more consistent with each other.
-Some parts of the client library are intentionally left out of the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> because the language idiomatic method should be used to implement those parts of the system.
-A good example of this is the execution model, which <code class="docutils literal notranslate"><span class="pre">rcl</span></code> does not address at all.
-Instead the client library should provide a language idiomatic solution like <code class="docutils literal notranslate"><span class="pre">pthreads</span></code> in C, <code class="docutils literal notranslate"><span class="pre">std::thread</span></code> in C++11, and <code class="docutils literal notranslate"><span class="pre">threading.Thread</span></code> in Python.
-Generally the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> interface provides functions that are not specific to a language pattern and are not specific to a particular message type.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> is located in the <a class="reference external" href="https://github.com/ros2/rcl">ros2/rcl</a> repository on <a class="reference external" href="https://github.com/">GitHub</a> and contains the interface as C headers.
-The <code class="docutils literal notranslate"><span class="pre">rcl</span></code> C implementation is provided by the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">package</span></a> in the same repository.
-This implementation avoids direct contact with the middleware by instead using the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> and <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">APIs</span></a>.</p>
-<p>For a complete definition of the <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>, see <a class="reference external" href="http://docs.ros.org/en/humble/p/rcl/">the rcl docs</a>.</p>
+<h2><a href="#id1"><span class="problematic" id="id2">``</span></a>rcl``代码库<a class="headerlink" href="#the-rcl-repository" title="永久链接至标题"></a></h2>
+<p>ROS客户端库接口（<code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>）可被|客户端库|（例如``rclc``、<code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>、<code class="docutils literal notranslate"><span class="pre">rclpy``等）使用，以避免重复逻辑和功能。通过重用``rcl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>，客户端库可以更小且更一致。客户端库的某些部分故意未包含在``rcl`` <a href="#id1"><span class="problematic" id="id2">|</span></a>API|中，因为应使用语言惯用方法来实现系统的这些部分。一个很好的例子是执行模型，<code class="docutils literal notranslate"><span class="pre">rcl``根本不涉及。相反，客户端库应该提供一种语言惯用的解决方案，比如C中的``pthreads</span></code>，C++11中的``std::thread``和Python中的``threading.Thread``。一般来说，<a href="#id3"><span class="problematic" id="id4">``</span></a>rcl``接口提供的函数不特定于语言模式，也不特定于特定的消息类型。</p>
+<p><code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a href="#id1"><span class="problematic" id="id2">|</span></a>API|位于|GitHub|_上的`ros2/rcl &lt;<a class="reference external" href="https://github.com/ros2/rcl">https://github.com/ros2/rcl</a>&gt;`_仓库中，包含C头文件作为接口。<code class="docutils literal notranslate"><span class="pre">rcl</span></code> C实现由同一仓库中的``rcl`` <a href="#id3"><span class="problematic" id="id4">|</span></a>package|提供。该实现通过使用``rmw``和``rosidl`` <a href="#id5"><span class="problematic" id="id6">|</span></a>APIs|来避免与中间件的直接接触。</p>
+<p>有关完整的``rcl`` <a href="#id1"><span class="problematic" id="id2">|</span></a>API|定义，请参阅`rcl文档 &lt;<a class="reference external" href="http://docs.ros.org/en/humble/p/rcl/">http://docs.ros.org/en/humble/p/rcl/</a>&gt;`_。</p>
 </div>
 <div class="section" id="the-rmw-repository">
-<h2>The <code class="docutils literal notranslate"><span class="pre">rmw</span></code> Repository<a class="headerlink" href="#the-rmw-repository" title="永久链接至标题"></a></h2>
-<p>The ROS middleware interface (<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>) is the minimal set of primitive middleware capabilities needed to build ROS on top.
-Providers of different middleware implementations must implement this interface in order to support the entire ROS stack on top.
-Currently all of the middleware implementations are for different DDS vendors.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> is located in the <a class="reference external" href="https://github.com/ros2/rmw">ros2/rmw</a> repository.
-The <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">package</span></a> contains the C headers which define the interface, the implementation of which is provided by the various <a class="reference internal" href="../Glossary.html#term-package"><span class="xref std std-term">packages</span></a> of rmw implementations for different DDS vendors.</p>
+<h2><a href="#id1"><span class="problematic" id="id2">``</span></a>rmw``仓库<a class="headerlink" href="#the-rmw-repository" title="永久链接至标题"></a></h2>
+<p>ROS中间件接口（<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>）是构建ROS所需的最小原始中间件功能集。不同中间件实现的提供者必须实现此接口，以支持整个ROS堆栈。目前，所有中间件实现均为不同的DDS供应商提供。</p>
+<p><code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a href="#id1"><span class="problematic" id="id2">|</span></a>API|位于|GitHub|_上的`ros2/rmw &lt;<a class="reference external" href="https://github.com/ros2/rmw">https://github.com/ros2/rmw</a>&gt;`_仓库中。<code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a href="#id3"><span class="problematic" id="id4">|</span></a>package|包含定义接口的C头文件，其实现由不同DDS供应商的rmw实现的各个|packages|提供。</p>
 <p>For a definition of the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a>, see <a class="reference external" href="http://docs.ros.org/en/humble/p/rmw/">the rmw docs</a>.</p>
 </div>
 <div class="section" id="the-rosidl-repository">
@@ -510,7 +461,7 @@ The packages that provide this type support through introspection of the data ar
 </ul>
 <p>In the case where type support is to be generated at compile time instead of being generated programmatically, a package specific to the rmw implementation will need to be used.
 This is because typically a particular rmw implementation will require data to be stored and manipulated in a manner that is specific to the DDS vendor in order for the DDS implementation to make use of it.
-See the <a class="reference internal" href="#type-specific-interfaces"><span class="std std-ref">Type Specific Interfaces</span></a> section above for more details.</p>
+See the <a class="reference internal" href="#type-specific-interfaces"><span class="std std-ref">特定类型的接口</span></a> section above for more details.</p>
 <p>For more information on what exactly is in the <code class="docutils literal notranslate"><span class="pre">rosidl</span></code> <a class="reference internal" href="../Glossary.html#term-API"><span class="xref std std-term">API</span></a> (static and generated) see this page:</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
