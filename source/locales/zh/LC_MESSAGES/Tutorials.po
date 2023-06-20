@@ -13446,47 +13446,47 @@ msgstr "现在你可以开始运行海龟广播器演示："
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:310 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:288
 msgid "You should notice that the new ``carrot1`` frame appeared in the transformation tree."
-msgstr "You should notice that the new ``carrot1`` frame appeared in the transformation tree."
+msgstr "请注意新的 ``carrot1`` 帧已经出现在转换树中。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:314 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:292
 msgid "If you drive the first turtle around, you should notice that the behavior didn't change from the previous tutorial, even though we added a new frame. That's because adding an extra frame does not affect the other frames and our listener is still using the previously defined frames."
-msgstr "If you drive the first turtle around, you should notice that the behavior didn't change from the previous tutorial, even though we added a new frame. That's because adding an extra frame does not affect the other frames and our listener is still using the previously defined frames."
+msgstr "如果你让第一个海龟四处移动，你会注意到行为与上一个教程中没有改变，即使我们添加了一个新的帧。这是因为添加额外的帧不会影响其他帧，我们的监听器仍然使用先前定义的帧。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:317 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:295
 msgid "Therefore if we want our second turtle to follow the carrot instead of the first turtle, we need to change value of the ``target_frame``. This can be done two ways. One way is to pass the ``target_frame`` argument to the launch file directly from the console:"
-msgstr "Therefore if we want our second turtle to follow the carrot instead of the first turtle, we need to change value of the ``target_frame``. This can be done two ways. One way is to pass the ``target_frame`` argument to the launch file directly from the console:"
+msgstr "因此，如果我们希望第二只海龟跟随胡萝卜而不是第一只海龟，我们需要更改 ``target_frame`` 的值。有两种方法可以做到这一点。一种方法是直接从控制台将 ``target_frame`` 参数传递给启动文件："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:325 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:303
 msgid "The second way is to update the launch file. To do so, open the ``turtle_tf2_fixed_frame_demo.launch.py`` file, and add the ``'target_frame': 'carrot1'`` parameter via ``launch_arguments`` argument."
-msgstr "The second way is to update the launch file. To do so, open the ``turtle_tf2_fixed_frame_demo.launch.py`` file, and add the ``'target_frame': 'carrot1'`` parameter via ``launch_arguments`` argument."
+msgstr "第二种方法是更新启动文件。为此，打开 ``turtle_tf2_fixed_frame_demo.launch.py`` 文件，并通过 ``launch_arguments`` 参数添加 ``'target_frame': 'carrot1'`` 参数。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:336
 msgid "Now rebuild the package, restart the ``turtle_tf2_fixed_frame_demo.launch.py``, and you'll see the second turtle following the carrot instead of the first turtle!"
-msgstr "Now rebuild the package, restart the ``turtle_tf2_fixed_frame_demo.launch.py``, and you'll see the second turtle following the carrot instead of the first turtle!"
+msgstr "现在重新构建包，重新启动 ``turtle_tf2_fixed_frame_demo.launch.py``，你将看到第二只海龟跟随胡萝卜而不是第一只海龟！"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:341 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:319
 msgid "2 Write the dynamic frame broadcaster"
-msgstr "2 Write the dynamic frame broadcaster"
+msgstr "2 编写动态帧广播器"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:343 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:321
 msgid "The extra frame we published in this tutorial is a fixed frame that doesn't change over time in relation to the parent frame. However, if you want to publish a moving frame you can code the broadcaster to change the frame over time. Let's change our ``carrot1`` frame so that it changes relative to ``turtle1`` frame over time. Now download the dynamic frame broadcaster code by entering the following command:"
-msgstr "The extra frame we published in this tutorial is a fixed frame that doesn't change over time in relation to the parent frame. However, if you want to publish a moving frame you can code the broadcaster to change the frame over time. Let's change our ``carrot1`` frame so that it changes relative to ``turtle1`` frame over time. Now download the dynamic frame broadcaster code by entering the following command:"
+msgstr "在本教程中，我们发布的额外帧是一个固定的帧，相对于父帧不会随时间变化。然而，如果你想要发布一个移动的帧，你可以编写广播器以随时间改变帧。让我们将``carrot1``帧改变成相对于``turtle1``帧随时间变化的帧。现在通过输入以下命令下载动态帧广播器的代码："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:376
 msgid "Now open the file called ``dynamic_frame_tf2_broadcaster.cpp``:"
-msgstr "Now open the file called ``dynamic_frame_tf2_broadcaster.cpp``:"
+msgstr "现在打开名为``dynamic_frame_tf2_broadcaster.cpp``的文件："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:439 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:407
 msgid "Instead of a fixed definition of our x and y offsets, we are using the ``sin()`` and ``cos()`` functions on the current time so that the offset of ``carrot1`` is constantly changing."
-msgstr "Instead of a fixed definition of our x and y offsets, we are using the ``sin()`` and ``cos()`` functions on the current time so that the offset of ``carrot1`` is constantly changing."
+msgstr "我们不再使用固定的x和y偏移量定义，而是使用``sin()``和``cos()``函数来根据当前时间不断改变``carrot1``的偏移量。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:449
@@ -13496,12 +13496,12 @@ msgstr "2.2 CMakeLists.txt"
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:453
 msgid "Now open the ``CMakeLists.txt`` add the executable and name it ``dynamic_frame_tf2_broadcaster``."
-msgstr "Now open the ``CMakeLists.txt`` add the executable and name it ``dynamic_frame_tf2_broadcaster``."
+msgstr "现在打开``CMakeLists.txt``，添加可执行文件并将其命名为``dynamic_frame_tf2_broadcaster``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:474 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:430
 msgid "2.3 Write the launch file"
-msgstr "2.3 Write the launch file"
+msgstr "2.3 编写启动文件"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:476
