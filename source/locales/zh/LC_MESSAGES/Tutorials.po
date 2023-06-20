@@ -13946,72 +13946,72 @@ msgstr "1 tf2 和时间"
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:35
 msgid "So let's go back to where we ended in the :doc:`adding a frame tutorial <./Adding-A-Frame-Cpp>`. Go to ``learning_tf2_cpp`` package. Open ``turtle_tf2_listener.cpp`` and take a look at the ``lookupTransform()`` call:"
-msgstr "So let's go back to where we ended in the :doc:`adding a frame tutorial <./Adding-A-Frame-Cpp>`. Go to ``learning_tf2_cpp`` package. Open ``turtle_tf2_listener.cpp`` and take a look at the ``lookupTransform()`` call:"
+msgstr "让我们回到上一个教程 :doc:`添加一个帧 <./Adding-A-Frame-Cpp>` 结束的地方。打开 ``learning_tf2_cpp`` 包中的 ``turtle_tf2_listener.cpp``，并查看 ``lookupTransform()`` 的调用："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:46
 msgid "You can see that we specified a time equal to 0 by calling ``tf2::TimePointZero``."
-msgstr "You can see that we specified a time equal to 0 by calling ``tf2::TimePointZero``."
+msgstr "你可以看到我们通过调用 ``tf2::TimePointZero`` 指定了时间为 0。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:50
 msgid "The ``tf2`` package has it's own time type ``tf2::TimePoint``, which is different from ``rclcpp::Time``. Many APIs in the package ``tf2_ros`` automatically convert between ``rclcpp::Time`` and ``tf2::TimePoint``."
-msgstr "The ``tf2`` package has it's own time type ``tf2::TimePoint``, which is different from ``rclcpp::Time``. Many APIs in the package ``tf2_ros`` automatically convert between ``rclcpp::Time`` and ``tf2::TimePoint``."
+msgstr "``tf2`` 包有自己的时间类型 ``tf2::TimePoint``，与 ``rclcpp::Time`` 不同。在 ``tf2_ros`` 包中，许多 API 自动在 ``rclcpp::Time`` 和 ``tf2::TimePoint`` 之间进行转换。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:53
 msgid "``rclcpp::Time(0, 0, this->get_clock()->get_clock_type())`` could have been used here, but it would have been converted to ``tf2::TimePointZero`` anyways."
-msgstr "``rclcpp::Time(0, 0, this->get_clock()->get_clock_type())`` could have been used here, but it would have been converted to ``tf2::TimePointZero`` anyways."
+msgstr "``rclcpp::Time(0, 0, this->get_clock()->get_clock_type())`` 可以在此处使用，但它最终会被转换为 ``tf2::TimePointZero``。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:55
 msgid "For tf2, time 0 means \"the latest available\" transform in the buffer. Now, change this line to get the transform at the current time, ``this->get_clock()->now()``:"
-msgstr "For tf2, time 0 means \"the latest available\" transform in the buffer. Now, change this line to get the transform at the current time, ``this->get_clock()->now()``:"
+msgstr "对于 tf2，时间 0 表示缓冲区中的“最新可用”变换。现在，将此行更改为获取当前时间的变换，即 ``this->get_clock()->now()``:"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:66
 msgid "Now try to run the launch file."
-msgstr "Now try to run the launch file."
+msgstr "现在尝试运行启动文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:72
 msgid "You will notice that it fails and outputs something similar to this:"
-msgstr "You will notice that it fails and outputs something similar to this:"
+msgstr "您会注意到它失败并输出类似于以下内容："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:80
 msgid "It tells you that the frame does not exist or that the data is in the future."
-msgstr "It tells you that the frame does not exist or that the data is in the future."
+msgstr "它告诉您该帧不存在或数据位于未来。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:82
 msgid "To understand why is this happening we need to understand how buffers work. Firstly, each listener has a buffer where it stores all the coordinate transforms coming from the different tf2 broadcasters. Secondly, when a broadcaster sends out a transform, it takes some time before that transform gets into the buffer (usually a couple of milliseconds). As a result, when you request a frame transform at time \"now\", you should wait a few milliseconds for that information to arrive."
-msgstr "To understand why is this happening we need to understand how buffers work. Firstly, each listener has a buffer where it stores all the coordinate transforms coming from the different tf2 broadcasters. Secondly, when a broadcaster sends out a transform, it takes some time before that transform gets into the buffer (usually a couple of milliseconds). As a result, when you request a frame transform at time \"now\", you should wait a few milliseconds for that information to arrive."
+msgstr "要理解为什么会发生这种情况，我们需要了解缓冲区的工作原理。首先，每个监听器都有一个缓冲区，用于存储来自不同tf2广播器的所有坐标转换。其次，当广播器发送一个转换时，需要一些时间才能将该转换放入缓冲区（通常需要几毫秒）。因此，当您在“现在”时间请求帧转换时，您应该等待几毫秒，以便该信息到达。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:88
 msgid "2 Wait for transforms"
-msgstr "2 Wait for transforms"
+msgstr "2 等待转换"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:90
 msgid "tf2 provides a nice tool that will wait until a transform becomes available. You use this by adding a timeout parameter to ``lookupTransform()``. To fix this, edit your code as shown below (add the last timeout parameter):"
-msgstr "tf2 provides a nice tool that will wait until a transform becomes available. You use this by adding a timeout parameter to ``lookupTransform()``. To fix this, edit your code as shown below (add the last timeout parameter):"
+msgstr "tf2提供了一个很好的工具，可以等待直到转换可用。您可以通过向“lookupTransform()”添加一个超时参数来使用该工具。要修复这个问题，请按照下面的代码进行编辑（添加最后一个超时参数）："
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:103
 msgid "The ``lookupTransform()`` can take four arguments, where the last one is an optional timeout. It will block for up to that duration waiting for it to timeout."
-msgstr "The ``lookupTransform()`` can take four arguments, where the last one is an optional timeout. It will block for up to that duration waiting for it to timeout."
+msgstr "``lookupTransform()``可以接受四个参数，其中最后一个是可选的超时参数。它会阻塞最多该持续时间，直到超时。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:107
 msgid "3 Checking the results"
-msgstr "3 Checking the results"
+msgstr "3 检查结果"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:109 ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:87
 msgid "You can now run the launch file."
-msgstr "You can now run the launch file."
+msgstr "现在您可以运行启动文件。"
 
 
 #: ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:115
