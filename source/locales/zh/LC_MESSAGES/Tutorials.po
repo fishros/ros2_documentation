@@ -16686,62 +16686,62 @@ msgstr "这是一旦接受目标就会被调用来执行目标的方法。"
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:82
 msgid "Let's try running our action server:"
-msgstr "Let's try running our action server:"
+msgstr "让我们尝试运行我们的动作服务器："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:104
 msgid "In another terminal, we can use the command line interface to send a goal:"
-msgstr "In another terminal, we can use the command line interface to send a goal:"
+msgstr "在另一个终端中，我们可以使用命令行界面发送一个目标："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:110
 msgid "In the terminal that is running the action server, you should see a logged message \"Executing goal...\" followed by a warning that the goal state was not set. By default, if the goal handle state is not set in the execute callback it assumes the *aborted* state."
-msgstr "In the terminal that is running the action server, you should see a logged message \"Executing goal...\" followed by a warning that the goal state was not set. By default, if the goal handle state is not set in the execute callback it assumes the *aborted* state."
+msgstr "在正在运行动作服务器的终端中，您应该看到一个记录的消息“正在执行目标...”，然后是一个警告，说明目标状态未设置。默认情况下，如果在执行回调中未设置目标处理状态，则假定为“中止”状态。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:113
 msgid "We can use the method `succeed() <http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed>`_ on the goal handle to indicate that the goal was successful:"
-msgstr "We can use the method `succeed() <http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed>`_ on the goal handle to indicate that the goal was successful:"
+msgstr "我们可以使用方法` succeed() <http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed>`_ 来表示目标已成功："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:120
 msgid "Now if you restart the action server and send another goal, you should see the goal finished with the status ``SUCCEEDED``."
-msgstr "Now if you restart the action server and send another goal, you should see the goal finished with the status ``SUCCEEDED``."
+msgstr "现在，如果重新启动动作服务器并发送另一个目标，您应该看到目标以``SUCCEEDED``状态完成。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:122
 msgid "Now let's make our goal execution actually compute and return the requested Fibonacci sequence:"
-msgstr "Now let's make our goal execution actually compute and return the requested Fibonacci sequence:"
+msgstr "现在让我们实际计算并返回请求的斐波那契数列："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:129
 msgid "After computing the sequence, we assign it to the result message field before returning."
-msgstr "After computing the sequence, we assign it to the result message field before returning."
+msgstr "计算序列后，我们在返回之前将其分配给结果消息字段。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:131
 msgid "Again, restart the action server and send another goal. You should see the goal finish with the proper result sequence."
-msgstr "Again, restart the action server and send another goal. You should see the goal finish with the proper result sequence."
+msgstr "然后重新启动动作服务器并发送另一个目标。您应该看到目标以正确的结果序列完成。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:135
 msgid "1.2 Publishing feedback"
-msgstr "1.2 Publishing feedback"
+msgstr "1.2 发布反馈"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:137
 msgid "One of the nice things about actions is the ability to provide feedback to an action client during goal execution. We can make our action server publish feedback for action clients by calling the goal handle's `publish_feedback() <http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback>`_ method."
-msgstr "One of the nice things about actions is the ability to provide feedback to an action client during goal execution. We can make our action server publish feedback for action clients by calling the goal handle's `publish_feedback() <http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback>`_ method."
+msgstr "动作的一个好处是在目标执行期间向动作客户端提供反馈。我们可以通过调用目标处理器的 `publish_feedback() <http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback>`_ 方法，使我们的动作服务器为动作客户端发布反馈。"
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:140
 msgid "We'll replace the ``sequence`` variable, and use a feedback message to store the sequence instead. After every update of the feedback message in the for-loop, we publish the feedback message and sleep for dramatic effect:"
-msgstr "We'll replace the ``sequence`` variable, and use a feedback message to store the sequence instead. After every update of the feedback message in the for-loop, we publish the feedback message and sleep for dramatic effect:"
+msgstr "我们将替换 ``sequence`` 变量，并使用反馈消息来存储序列。在 for 循环中每次更新反馈消息后，我们都会发布反馈消息并休眠以产生戏剧效果："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:147
 msgid "After restarting the action server, we can confirm that feedback is now published by using the command line tool with the ``--feedback`` option:"
-msgstr "After restarting the action server, we can confirm that feedback is now published by using the command line tool with the ``--feedback`` option:"
+msgstr "重新启动动作服务器后，我们可以使用带有 ``--feedback`` 选项的命令行工具来确认现在已发布反馈："
 
 
 #: ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:154
