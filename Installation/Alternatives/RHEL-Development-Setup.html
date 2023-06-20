@@ -387,14 +387,14 @@
 </li>
 <li><p><a class="reference internal" href="#get-ros-2-code" id="id6">获取ROS 2代码</a></p></li>
 <li><p><a class="reference internal" href="#install-dependencies-using-rosdep" id="id7">使用rosdep安装依赖项</a></p></li>
-<li><p><a class="reference internal" href="#install-additional-dds-implementations-optional" id="id8">Install additional DDS implementations (optional)</a></p></li>
-<li><p><a class="reference internal" href="#build-the-code-in-the-workspace" id="id9">Build the code in the workspace</a></p></li>
-<li><p><a class="reference internal" href="#environment-setup" id="id10">Environment setup</a></p>
+<li><p><a class="reference internal" href="#install-additional-dds-implementations-optional" id="id8">安装额外的DDS实现（可选）</a></p></li>
+<li><p><a class="reference internal" href="#build-the-code-in-the-workspace" id="id9">在工作空间中构建代码</a></p></li>
+<li><p><a class="reference internal" href="#environment-setup" id="id10">环境设置</a></p>
 <ul>
-<li><p><a class="reference internal" href="#source-the-setup-script" id="id11">Source the setup script</a></p></li>
+<li><p><a class="reference internal" href="#source-the-setup-script" id="id11">执行设置脚本</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#try-some-examples" id="id12">Try some examples</a></p></li>
+<li><p><a class="reference internal" href="#try-some-examples" id="id12">尝试一些示例</a></p></li>
 <li><p><a class="reference internal" href="#next-steps-after-installing" id="id13">Next steps after installing</a></p></li>
 <li><p><a class="reference internal" href="#additional-rmw-implementations-optional" id="id14">Additional RMW implementations (optional)</a></p></li>
 <li><p><a class="reference internal" href="#alternate-compilers" id="id15">Alternate compilers</a></p>
@@ -497,29 +497,24 @@ rosdep install --from-paths src --ignore-src -y --skip-keys <span class="s2">&qu
 </div>
 </div>
 <div class="section" id="install-additional-dds-implementations-optional">
-<h2><a class="toc-backref" href="#id8">Install additional DDS implementations (optional)</a><a class="headerlink" href="#install-additional-dds-implementations-optional" title="永久链接至标题"></a></h2>
-<p>If you would like to use another DDS or RTPS vendor besides the default, you can find instructions <a class="reference internal" href="../DDS-Implementations.html"><span class="doc">here</span></a>.</p>
+<h2><a class="toc-backref" href="#id8">安装额外的DDS实现（可选）</a><a class="headerlink" href="#install-additional-dds-implementations-optional" title="永久链接至标题"></a></h2>
+<p>如果您想使用默认之外的其他DDS或RTPS供应商，您可以在这里找到说明：<a class="reference internal" href="../DDS-Implementations.html"><span class="doc">这里</span></a>。</p>
 </div>
 <div class="section" id="build-the-code-in-the-workspace">
-<h2><a class="toc-backref" href="#id9">Build the code in the workspace</a><a class="headerlink" href="#build-the-code-in-the-workspace" title="永久链接至标题"></a></h2>
-<p>If you have already installed ROS 2 another way (either via RPMs or the binary distribution), make sure that you run the below commands in a fresh environment that does not have those other installations sourced.
-Also ensure that you do not have <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/opt/ros/${ROS_DISTRO}/setup.bash</span></code> in your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>.
-You can make sure that ROS 2 is not sourced with the command <code class="docutils literal notranslate"><span class="pre">printenv</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">ROS</span></code>.
-The output should be empty.</p>
-<p>More info on working with a ROS workspace can be found in <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"><span class="doc">this tutorial</span></a>.</p>
+<h2><a class="toc-backref" href="#id9">在工作空间中构建代码</a><a class="headerlink" href="#build-the-code-in-the-workspace" title="永久链接至标题"></a></h2>
+<p>如果您已经以其他方式安装了ROS 2（通过RPM或二进制分发），请确保在一个新环境中运行以下命令，该环境没有其他安装被引用。还要确保您的``.bashrc``中没有``source /opt/ros/${ROS_DISTRO}/setup.bash``。您可以使用命令``printenv | grep -i ROS``确保ROS 2没有被引用。输出应为空。</p>
+<p>有关在ROS工作空间中的操作的更多信息，请参阅：<a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"><span class="doc">本教程</span></a>。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ros2_humble/
 colcon build --symlink-install --cmake-args -DTHIRDPARTY_Asio<span class="o">=</span>ON --no-warn-unused-cli
 </pre></div>
 </div>
-<p>Note: if you are having trouble compiling all examples and this is preventing you from completing a successful build, you can use <code class="docutils literal notranslate"><span class="pre">COLCON_IGNORE</span></code> in the same manner as <a class="reference external" href="https://github.com/ros-infrastructure/rep/blob/master/rep-0128.rst">CATKIN_IGNORE</a> to ignore the subtree or remove the folder from the workspace.
-Take for instance: you would like to avoid installing the large OpenCV library.
-Well then simply run <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">COLCON_IGNORE</span></code> in the <code class="docutils literal notranslate"><span class="pre">cam2image</span></code> demo directory to leave it out of the build process.</p>
+<p>注意：如果您在编译所有示例时遇到问题，这导致您无法成功构建，您可以像使用 <a class="reference external" href="https://github.com/ros-infrastructure/rep/blob/master/rep-0128.rst">CATKIN_IGNORE</a> 中的``COLCON_IGNORE``一样，忽略子树或从工作空间中删除该文件夹。例如，假设您希望避免安装庞大的OpenCV库。那么只需在``cam2image``演示目录中运行``touch COLCON_IGNORE``，即可将其排除在构建过程之外。</p>
 </div>
 <div class="section" id="environment-setup">
-<h2><a class="toc-backref" href="#id10">Environment setup</a><a class="headerlink" href="#environment-setup" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id10">环境设置</a><a class="headerlink" href="#environment-setup" title="永久链接至标题"></a></h2>
 <div class="section" id="source-the-setup-script">
-<h3><a class="toc-backref" href="#id11">Source the setup script</a><a class="headerlink" href="#source-the-setup-script" title="永久链接至标题"></a></h3>
-<p>Set up your environment by sourcing the following file.</p>
+<h3><a class="toc-backref" href="#id11">执行设置脚本</a><a class="headerlink" href="#source-the-setup-script" title="永久链接至标题"></a></h3>
+<p>通过源化以下文件来设置您的环境。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace &quot;.bash&quot; with your shell if you&#39;re not using bash</span>
 <span class="c1"># Possible values are: setup.bash, setup.sh, setup.zsh</span>
 . ~/ros2_humble/install/local_setup.bash
@@ -528,13 +523,13 @@ Well then simply run <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <div class="section" id="try-some-examples">
-<span id="rhel-talker-listener"></span><h2><a class="toc-backref" href="#id12">Try some examples</a><a class="headerlink" href="#try-some-examples" title="永久链接至标题"></a></h2>
-<p>In one terminal, source the setup file and then run a C++ <code class="docutils literal notranslate"><span class="pre">talker</span></code>:</p>
+<span id="rhel-talker-listener"></span><h2><a class="toc-backref" href="#id12">尝试一些示例</a><a class="headerlink" href="#try-some-examples" title="永久链接至标题"></a></h2>
+<p>在一个终端中，先源化设置文件，然后运行C++的``talker``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. ~/ros2_humble/install/local_setup.bash
 ros2 run demo_nodes_cpp talker
 </pre></div>
 </div>
-<p>In another terminal source the setup file and then run a Python <code class="docutils literal notranslate"><span class="pre">listener</span></code>:</p>
+<p>在另一个终端中，先源化设置文件，然后运行Python的``listener``：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. ~/ros2_humble/install/local_setup.bash
 ros2 run demo_nodes_py listener
 </pre></div>
