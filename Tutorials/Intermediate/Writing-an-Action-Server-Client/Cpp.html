@@ -637,7 +637,7 @@ ros2 pkg create --dependencies action_tutorials_interfaces rclcpp rclcpp_action 
 </pre></div>
 </div>
 <p>这个实现只是告诉客户端它接受了取消请求。</p>
-<p>The last of the callbacks accepts a new goal and starts processing it:</p>
+<p>最后一个回调函数接受一个新的目标并开始处理它：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">handle_accepted</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GoalHandleFibonacci</span><span class="o">&gt;</span><span class="w"> </span><span class="n">goal_handle</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">placeholders</span><span class="p">;</span><span class="w"></span>
@@ -646,8 +646,8 @@ ros2 pkg create --dependencies action_tutorials_interfaces rclcpp rclcpp_action 
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Since the execution is a long-running operation, we spawn off a thread to do the actual work and return from <code class="docutils literal notranslate"><span class="pre">handle_accepted</span></code> quickly.</p>
-<p>All further processing and updates are done in the <code class="docutils literal notranslate"><span class="pre">execute</span></code> method in the new thread:</p>
+<p>由于执行是一个长时间运行的操作，我们创建一个线程来执行实际的工作，并快速从``handle_accepted``返回。</p>
+<p>所有进一步的处理和更新都在新线程的``execute``方法中进行：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GoalHandleFibonacci</span><span class="o">&gt;</span><span class="w"> </span><span class="n">goal_handle</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Executing goal&quot;</span><span class="p">);</span><span class="w"></span>
@@ -685,16 +685,13 @@ ros2 pkg create --dependencies action_tutorials_interfaces rclcpp rclcpp_action 
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This work thread processes one sequence number of the Fibonacci sequence every second, publishing a feedback update for each step.
-When it has finished processing, it marks the <code class="docutils literal notranslate"><span class="pre">goal_handle</span></code> as succeeded, and quits.</p>
-<p>We now have a fully functioning action server.  Let's get it built and running.</p>
+<p>该工作线程每秒处理斐波那契数列的一个序列数，对每一步都发布一个反馈更新。当它完成处理时，将``goal_handle``标记为成功并退出。</p>
+<p>现在我们有一个完全功能的动作服务器。让我们构建并运行它。</p>
 </div>
 <div class="section" id="compiling-the-action-server">
-<h4>2.2 Compiling the action server<a class="headerlink" href="#compiling-the-action-server" title="永久链接至标题"></a></h4>
-<p>In the previous section we put the action server code into place.
-To get it to compile and run, we need to do a couple of additional things.</p>
-<p>First we need to setup the CMakeLists.txt so that the action server is compiled.
-Open up <code class="docutils literal notranslate"><span class="pre">action_tutorials_cpp/CMakeLists.txt</span></code>, and add the following right after the <code class="docutils literal notranslate"><span class="pre">find_package</span></code> calls:</p>
+<h4>2.2 编译动作服务器<a class="headerlink" href="#compiling-the-action-server" title="永久链接至标题"></a></h4>
+<p>在前一节中，我们已经放置了动作服务器的代码。为了使其编译和运行，我们还需要进行一些额外的操作。</p>
+<p>首先，我们需要设置CMakeLists.txt以便编译动作服务器。打开``action_tutorials_cpp/CMakeLists.txt``文件，在``find_package``调用之后添加以下内容：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_library</span><span class="p">(</span><span class="s">action_server</span><span class="w"> </span><span class="s">SHARED</span>
 <span class="w">  </span><span class="s">src/fibonacci_action_server.cpp</span><span class="p">)</span>
 <span class="nb">target_include_directories</span><span class="p">(</span><span class="s">action_server</span><span class="w"> </span><span class="s">PRIVATE</span>
@@ -715,16 +712,15 @@ Open up <code class="docutils literal notranslate"><span class="pre">action_tuto
 <span class="w">  </span><span class="s">RUNTIME</span><span class="w"> </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">bin</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And now we can compile the package.  Go to the top-level of the <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, and run:</p>
+<p>现在我们可以编译该软件包。进入``ros2_ws``的顶级目录，运行以下命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build
 </pre></div>
 </div>
-<p>This should compile the entire workspace, including the <code class="docutils literal notranslate"><span class="pre">fibonacci_action_server</span></code> in the <code class="docutils literal notranslate"><span class="pre">action_tutorials_cpp</span></code> package.</p>
+<p>这将编译整个工作空间，包括``action_tutorials_cpp``软件包中的``fibonacci_action_server``。</p>
 </div>
 <div class="section" id="running-the-action-server">
-<h4>2.3 Running the action server<a class="headerlink" href="#running-the-action-server" title="永久链接至标题"></a></h4>
-<p>Now that we have the action server built, we can run it.
-Source the workspace we just built (<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>), and try to run the action server:</p>
+<h4>2.3 运行动作服务器<a class="headerlink" href="#running-the-action-server" title="永久链接至标题"></a></h4>
+<p>现在我们已经构建了动作服务器，可以运行它了。源激活我们刚刚构建的工作空间（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>），并尝试运行动作服务器：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run action_tutorials_cpp fibonacci_action_server
 </pre></div>
 </div>
@@ -995,7 +991,7 @@ Open up <code class="docutils literal notranslate"><span class="pre">action_tuto
 <span class="w">  </span><span class="s">RUNTIME</span><span class="w"> </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">bin</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And now we can compile the package.  Go to the top-level of the <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>, and run:</p>
+<p>现在我们可以编译该软件包。进入``ros2_ws``的顶级目录，运行以下命令：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build
 </pre></div>
 </div>
