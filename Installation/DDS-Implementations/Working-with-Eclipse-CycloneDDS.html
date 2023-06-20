@@ -374,42 +374,40 @@
 
   <div class="section" id="eclipse-cyclone-dds">
 <h1>Eclipse Cyclone DDS<a class="headerlink" href="#eclipse-cyclone-dds" title="永久链接至标题"></a></h1>
-<p>Eclipse Cyclone DDS is a very performant and robust open-source DDS implementation.
-Cyclone DDS is developed completely in the open as an Eclipse IoT project.
-See also: <a class="reference external" href="https://projects.eclipse.org/projects/iot.cyclonedds">https://projects.eclipse.org/projects/iot.cyclonedds</a></p>
+<p>Eclipse Cyclone DDS是一个非常高效和稳健的开源DDS实现。Cyclone DDS是作为Eclipse IoT项目完全公开开发的。另请参阅：<a class="reference external" href="https://projects.eclipse.org/projects/iot.cyclonedds">https://projects.eclipse.org/projects/iot.cyclonedds</a></p>
 <div class="section" id="prerequisites">
 <h2>先决条件<a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>Have <a class="reference external" href="https://wiki.ros.org/rosdep#Installing_rosdep">rosdep installed</a></p>
+<p>已安装 <a class="reference external" href="https://wiki.ros.org/rosdep#Installing_rosdep">rosdep</a></p>
 </div>
 <div class="section" id="install-packages">
-<h2>Install packages<a class="headerlink" href="#install-packages" title="永久链接至标题"></a></h2>
-<p>The easiest way is to install from ROS 2 apt repository.</p>
+<h2>安装软件包<a class="headerlink" href="#install-packages" title="永久链接至标题"></a></h2>
+<p>最简单的方式是从ROS 2的apt仓库安装。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-humble-rmw-cyclonedds-cpp
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-from-source-code">
-<h2>Build from source code<a class="headerlink" href="#build-from-source-code" title="永久链接至标题"></a></h2>
-<p>Building from source code is also another way to install.</p>
-<p>First, clone Cyclone DDS and rmw_cyclonedds in the ROS 2 workspace source directory.</p>
+<h2>从源代码构建<a class="headerlink" href="#build-from-source-code" title="永久链接至标题"></a></h2>
+<p>从源代码构建也是安装的另一种方式。</p>
+<p>首先，在ROS 2工作空间源目录中克隆Cyclone DDS和rmw_cyclonedds。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ros2_ws/src
 git clone https://github.com/ros2/rmw_cyclonedds ros2/rmw_cyclonedds -b humble
 git clone https://github.com/eclipse-cyclonedds/cyclonedds eclipse-cyclonedds/cyclonedds
 </pre></div>
 </div>
-<p>Then, install necessary packages for Cyclone DDS.</p>
+<p>然后，安装Cyclone DDS所需的包。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ..
 rosdep install --from src -i
 </pre></div>
 </div>
-<p>Finally, run colcon build.</p>
+<p>最后，运行colcon build。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --symlink-install
 </pre></div>
 </div>
 </div>
 <div class="section" id="switch-to-rmw-cyclonedds">
-<h2>Switch to rmw_cyclonedds<a class="headerlink" href="#switch-to-rmw-cyclonedds" title="永久链接至标题"></a></h2>
-<p>Switch from other rmw to rmw_cyclonedds by specifying the environment variable.</p>
+<h2>切换到rmw_cyclonedds。<a class="headerlink" href="#switch-to-rmw-cyclonedds" title="永久链接至标题"></a></h2>
+<p>通过指定环境变量，从其他rmw切换到rmw_cyclonedds。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_cyclonedds_cpp
 </pre></div>
 </div>
