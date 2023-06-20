@@ -386,7 +386,7 @@
 <li><p><a class="reference internal" href="#tasks" id="id3">任务</a></p>
 <ul>
 <li><p><a class="reference internal" href="#writing-an-action-server" id="id4">1 编写动作服务器</a></p></li>
-<li><p><a class="reference internal" href="#writing-an-action-client" id="id5">2 Writing an action client</a></p></li>
+<li><p><a class="reference internal" href="#writing-an-action-client" id="id5">2 编写一个动作客户端</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#summary" id="id6">摘要</a></p></li>
@@ -576,9 +576,8 @@
 </div>
 </div>
 <div class="section" id="writing-an-action-client">
-<h3><a class="toc-backref" href="#id5">2 Writing an action client</a><a class="headerlink" href="#writing-an-action-client" title="永久链接至标题"></a></h3>
-<p>We'll also scope the action client to a single file.
-Open a new file, let's call it <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client.py</span></code>, and add the following boilerplate code:</p>
+<h3><a class="toc-backref" href="#id5">2 编写一个动作客户端</a><a class="headerlink" href="#writing-an-action-client" title="永久链接至标题"></a></h3>
+<p>我们还将将动作客户端限定在单个文件范围内。打开一个新文件，我们称之为``fibonacci_action_client.py``，然后添加以下样板代码：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">from</span> <span class="nn">rclpy.action</span> <span class="kn">import</span> <span class="n">ActionClient</span>
 <span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -615,18 +614,17 @@ Open a new file, let's call it <code class="docutils literal notranslate"><span 
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>We've defined a class <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> that is a subclass of <code class="docutils literal notranslate"><span class="pre">Node</span></code>.
-The class is initialized by calling the <code class="docutils literal notranslate"><span class="pre">Node</span></code> constructor, naming our node <code class="docutils literal notranslate"><span class="pre">fibonacci_action_client</span></code>:</p>
+<p>我们定义了一个名为``FibonacciActionClient``的类，它是``Node``的子类。通过调用``Node``构造函数来初始化该类，将我们的节点命名为``fibonacci_action_client``：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;fibonacci_action_client&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Also in the class constructor, we create an action client using the custom action definition from the previous tutorial on <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">创建一个动作</span></a>:</p>
+<p>在类的构造函数中，我们还使用之前教程中的自定义动作定义来创建一个动作客户端： <a class="reference internal" href="../Creating-an-Action.html"><span class="doc">创建一个动作</span></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_action_client</span> <span class="o">=</span> <span class="n">ActionClient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Fibonacci</span><span class="p">,</span> <span class="s1">&#39;fibonacci&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We create an <code class="docutils literal notranslate"><span class="pre">ActionClient</span></code> by passing it three arguments:</p>
+<p>我们通过传递三个参数来创建一个``ActionClient``：</p>
 <ol class="arabic simple">
-<li><p>A ROS 2 node to add the action client to: <code class="docutils literal notranslate"><span class="pre">self</span></code></p></li>
+<li><p>要添加动作客户端的 ROS 2 节点：<code class="docutils literal notranslate"><span class="pre">self</span></code></p></li>
 <li><p>The type of the action: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code></p></li>
 <li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code></p></li>
 </ol>
