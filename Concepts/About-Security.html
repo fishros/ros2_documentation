@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About ROS 2 Security &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于ROS 2安全性 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -298,7 +298,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">About ROS 2 Security</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于ROS 2安全性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot;</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>About ROS 2 Security</li>
+      <li>关于ROS 2安全性</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Security.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,7 +372,7 @@
 
 
   <div class="section" id="about-ros-2-security">
-<span id="ros-2-security"></span><h1>About ROS 2 Security<a class="headerlink" href="#about-ros-2-security" title="永久链接至标题"></a></h1>
+<span id="ros-2-security"></span><h1>关于ROS 2安全性<a class="headerlink" href="#about-ros-2-security" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
@@ -391,13 +391,8 @@
 </div>
 <div class="section" id="overview">
 <h2><a class="toc-backref" href="#id1">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>Built-in ROS 2 security features enable control over communications throughout the ROS graph.
-This not only allows for encrypting data in transit between ROS domain participants, but also enables authentication of participants sending data, ensures the integrity of data being sent, and enables domain-wide access controls.</p>
-<p>ROS 2 security services are provided by the underlying <a class="reference external" href="https://www.omg.org/spec/DDS/">Data Distribution Service (DDS)</a> which is used for communications between nodes.
-DDS vendors provide open source and commercial DDS implementations that work with ROS.
-However, in order to create a specification-compliant implementation of DDS, all vendors must include security plugins as outlined in the <a class="reference external" href="https://www.omg.org/spec/DDS-SECURITY/About-DDS-SECURITY/">DDS Security Specification</a>.
-ROS security features take advantage of these DDS security plugins to provide policy-based encryption, authentication and access control.
-DDS and ROS security is enabled through predefined configuration files and environment variables.</p>
+<p>内置的ROS 2安全功能使得在ROS图中的通信可以进行控制。这不仅允许对ROS领域参与者之间传输的数据进行加密，还可以对发送数据的参与者进行身份验证，确保被发送的数据的完整性，并启用领域范围的访问控制。</p>
+<p>ROS 2安全服务由底层的`数据分发服务 (DDS) &lt;<a class="reference external" href="https://www.omg.org/spec/DDS/">https://www.omg.org/spec/DDS/</a>&gt;`_ 提供，该服务用于节点之间的通信。DDS供应商提供与ROS配合使用的开源和商业DDS实现。然而，为了创建符合规范的DDS实现，所有供应商都必须包括在`DDS安全规范 &lt;<a class="reference external" href="https://www.omg.org/spec/DDS-SECURITY/About-DDS-SECURITY/">https://www.omg.org/spec/DDS-SECURITY/About-DDS-SECURITY/</a>&gt;`_ 中概述的安全插件。ROS安全功能利用这些DDS安全插件提供基于策略的加密、身份验证和访问控制。DDS和ROS安全通过预定义的配置文件和环境变量进行启用。</p>
 </div>
 <div class="section" id="the-security-enclave">
 <h2><a class="toc-backref" href="#id2">The Security Enclave</a><a class="headerlink" href="#the-security-enclave" title="永久链接至标题"></a></h2>
