@@ -470,7 +470,7 @@
 </pre></div>
 </div>
 <p>这是一旦接受目标就会被调用来执行目标的方法。</p>
-<p>Let's try running our action server:</p>
+<p>让我们尝试运行我们的动作服务器：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 fibonacci_action_server.py
 </pre></div>
@@ -482,13 +482,12 @@
 </pre></div>
 </div>
 </div></div>
-<p>In another terminal, we can use the command line interface to send a goal:</p>
+<p>在另一个终端中，我们可以使用命令行界面发送一个目标：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 action send_goal fibonacci action_tutorials_interfaces/action/Fibonacci <span class="s2">&quot;{order: 5}&quot;</span>
 </pre></div>
 </div>
-<p>In the terminal that is running the action server, you should see a logged message &quot;Executing goal...&quot; followed by a warning that the goal state was not set.
-By default, if the goal handle state is not set in the execute callback it assumes the <em>aborted</em> state.</p>
-<p>We can use the method <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed">succeed()</a> on the goal handle to indicate that the goal was successful:</p>
+<p>在正在运行动作服务器的终端中，您应该看到一个记录的消息“正在执行目标...”，然后是一个警告，说明目标状态未设置。默认情况下，如果在执行回调中未设置目标处理状态，则假定为“中止”状态。</p>
+<p>我们可以使用方法` succeed() &lt;<a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed">http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.succeed</a>&gt;`_ 来表示目标已成功：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal_handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Executing goal...&#39;</span><span class="p">)</span>
 <span class="hll">        <span class="n">goal_handle</span><span class="o">.</span><span class="n">succeed</span><span class="p">()</span>
@@ -496,8 +495,8 @@ By default, if the goal handle state is not set in the execute callback it assum
         <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-<p>Now if you restart the action server and send another goal, you should see the goal finished with the status <code class="docutils literal notranslate"><span class="pre">SUCCEEDED</span></code>.</p>
-<p>Now let's make our goal execution actually compute and return the requested Fibonacci sequence:</p>
+<p>现在，如果重新启动动作服务器并发送另一个目标，您应该看到目标以``SUCCEEDED``状态完成。</p>
+<p>现在让我们实际计算并返回请求的斐波那契数列：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal_handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Executing goal...&#39;</span><span class="p">)</span>
 
@@ -513,15 +512,12 @@ By default, if the goal handle state is not set in the execute callback it assum
 </span>        <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
-<p>After computing the sequence, we assign it to the result message field before returning.</p>
-<p>Again, restart the action server and send another goal.
-You should see the goal finish with the proper result sequence.</p>
+<p>计算序列后，我们在返回之前将其分配给结果消息字段。</p>
+<p>然后重新启动动作服务器并发送另一个目标。您应该看到目标以正确的结果序列完成。</p>
 <div class="section" id="publishing-feedback">
-<h4>1.2 Publishing feedback<a class="headerlink" href="#publishing-feedback" title="永久链接至标题"></a></h4>
-<p>One of the nice things about actions is the ability to provide feedback to an action client during goal execution.
-We can make our action server publish feedback for action clients by calling the goal handle's <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback">publish_feedback()</a> method.</p>
-<p>We'll replace the <code class="docutils literal notranslate"><span class="pre">sequence</span></code> variable, and use a feedback message to store the sequence instead.
-After every update of the feedback message in the for-loop, we publish the feedback message and sleep for dramatic effect:</p>
+<h4>1.2 发布反馈<a class="headerlink" href="#publishing-feedback" title="永久链接至标题"></a></h4>
+<p>动作的一个好处是在目标执行期间向动作客户端提供反馈。我们可以通过调用目标处理器的 <a class="reference external" href="http://docs.ros2.org/latest/api/rclpy/api/actions.html#rclpy.action.server.ServerGoalHandle.publish_feedback">publish_feedback()</a> 方法，使我们的动作服务器为动作客户端发布反馈。</p>
+<p>我们将替换 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 变量，并使用反馈消息来存储序列。在 for 循环中每次更新反馈消息后，我们都会发布反馈消息并休眠以产生戏剧效果：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">time</span>
 </span>
 <span class="kn">import</span> <span class="nn">rclpy</span>
@@ -573,7 +569,7 @@ After every update of the feedback message in the for-loop, we publish the feedb
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>After restarting the action server, we can confirm that feedback is now published by using the command line tool with the <code class="docutils literal notranslate"><span class="pre">--feedback</span></code> option:</p>
+<p>重新启动动作服务器后，我们可以使用带有 <code class="docutils literal notranslate"><span class="pre">--feedback</span></code> 选项的命令行工具来确认现在已发布反馈：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 action send_goal --feedback fibonacci action_tutorials_interfaces/action/Fibonacci <span class="s2">&quot;{order: 5}&quot;</span>
 </pre></div>
 </div>
