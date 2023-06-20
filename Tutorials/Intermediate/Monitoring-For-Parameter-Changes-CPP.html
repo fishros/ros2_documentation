@@ -138,7 +138,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">中级</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Rosdep.html">Managing Dependencies with rosdep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Rosdep.html">使用rosdep管理依赖关系</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Creating-an-Action.html">创建一个动作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-an-Action-Server-Client/Cpp.html">Writing an action server and client (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Writing-an-Action-Server-Client/Py.html">Writing an action server and client (Python)</a></li>
@@ -620,11 +620,11 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run demo_nodes_cpp parameter_blackboard</span>
 </pre></div>
 </div>
-<p>Finally, from a third terminal (with ROS initialized), let's set a parameter on the parameter_blackboard node:</p>
+<p>最后，在第三个终端（已初始化ROS），让我们在parameter_blackboard节点上设置一个参数：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 param set parameter_blackboard a_double_param 3.45</span>
 </pre></div>
 </div>
-<p>Upon executing this command, you should see output in the parameter_event_handler window, indicating that the callback function was invoked upon the parameter update:</p>
+<p>执行此命令后，你应该在parameter_event_handler窗口中看到输出，表示在参数更新时调用了回调函数：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1606952588.237531933] [node_with_parameters]: cb2: Received an update to parameter &quot;a_double_param&quot; of type: double: &quot;3.45&quot;</span>
 </pre></div>
 </div>
@@ -633,13 +633,11 @@
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id7">摘要</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>You created a node with a parameter and used the ParameterEventHandler class to set a callback to monitor changes to that parameter.
-You also used the same class to monitor changes to a remote node.
-The ParameterEventHandler is a convenient way to monitor for parameter changes so that you can then respond to the updated values.</p>
+<p>你创建了一个带有参数的节点，并使用ParameterEventHandler类设置了一个回调函数来监控该参数的变化。你还使用相同的类监控了远程节点的变化。ParameterEventHandler是一种方便的方法，用于监控参数的变化，以便你可以对更新的值做出响应。</p>
 </div>
 <div class="section" id="related-content">
 <h2><a class="toc-backref" href="#id8">相关内容</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
-<p>To learn how to adapt ROS 1 parameter files for ROS 2, see the <a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html"><span class="doc">Migrating YAML parameter files from ROS 1 to ROS2</span></a> tutorial.</p>
+<p>要了解如何将ROS 1参数文件适应ROS 2，请参阅：<a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html"><span class="doc">从ROS 1迁移YAML参数文件到ROS 2的教程</span></a>。</p>
 </div>
 </div>
 
