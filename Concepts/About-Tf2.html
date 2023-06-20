@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About tf2 &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于tf2 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -299,7 +299,7 @@
 <li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Security.html">关于ROS 2安全性</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">About tf2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于tf2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">关于ROS 2中间件实现</a></li>
@@ -359,7 +359,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../Concepts.html">概念</a> &raquo;</li>
-      <li>About tf2</li>
+      <li>关于tf2</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Tf2.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -372,30 +372,28 @@
 
 
   <div class="section" id="about-tf2">
-<span id="abouttf2"></span><h1>About tf2<a class="headerlink" href="#about-tf2" title="永久链接至标题"></a></h1>
+<span id="abouttf2"></span><h1>关于tf2<a class="headerlink" href="#about-tf2" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id1">概述</a></p></li>
-<li><p><a class="reference internal" href="#properties-of-tf2" id="id2">Properties of tf2</a></p></li>
+<li><p><a class="reference internal" href="#properties-of-tf2" id="id2">tf2 的特性</a></p></li>
 <li><p><a class="reference internal" href="#tutorials" id="id3">教程</a></p></li>
 <li><p><a class="reference internal" href="#paper" id="id4">Paper</a></p></li>
 </ul>
 </div>
 <div class="section" id="overview">
 <h2><a class="toc-backref" href="#id1">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>tf2 is the transform library, which lets the user keep track of multiple coordinate frames over time.
-tf2 maintains the relationship between coordinate frames in a tree structure buffered in time and lets the user transform points, vectors, etc. between any two coordinate frames at any desired point in time.</p>
+<p>tf2 是一个变换库，它允许用户随时间跟踪多个坐标系。tf2 在时间上维护坐标系之间的关系，以树状结构缓存，并允许用户在任意时间点之间转换点、向量等等。</p>
 <img alt="../_images/ros2_tf2_frames.png" src="../_images/ros2_tf2_frames.png" />
 </div>
 <div class="section" id="properties-of-tf2">
-<h2><a class="toc-backref" href="#id2">Properties of tf2</a><a class="headerlink" href="#properties-of-tf2" title="永久链接至标题"></a></h2>
-<p>A robotic system typically has many 3D coordinate frames that change over time, such as a world frame, base frame, gripper frame, head frame, etc.
-tf2 keeps track of all these frames over time, and allows you to ask questions like:</p>
+<h2><a class="toc-backref" href="#id2">tf2 的特性</a><a class="headerlink" href="#properties-of-tf2" title="永久链接至标题"></a></h2>
+<p>一个机器人系统通常有许多随时间变化的 3D 坐标系，例如世界坐标系、基准坐标系、夹爪坐标系、头部坐标系等等。tf2 能够随时间跟踪所有这些坐标系，并允许你提出如下问题：</p>
 <ul class="simple">
-<li><p>Where was the head frame relative to the world frame 5 seconds ago?</p></li>
-<li><p>What is the pose of the object in my gripper relative to my base?</p></li>
-<li><p>What is the current pose of the base frame in the map frame?</p></li>
+<li><p>头部坐标系相对于世界坐标系在 5 秒前的位置在哪里？</p></li>
+<li><p>我的基准坐标系中物体的姿态相对于我的夹爪是什么？</p></li>
+<li><p>地图坐标系中基准坐标系的当前姿态是什么？</p></li>
 </ul>
 <p>tf2 can operate in a distributed system.
 This means all the information about the coordinate frames of a robot is available to all ROS 2 components on any computer in the system.
