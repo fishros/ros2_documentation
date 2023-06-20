@@ -625,11 +625,11 @@
 <p>我们通过传递三个参数来创建一个``ActionClient``：</p>
 <ol class="arabic simple">
 <li><p>要添加动作客户端的 ROS 2 节点：<code class="docutils literal notranslate"><span class="pre">self</span></code></p></li>
-<li><p>The type of the action: <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code></p></li>
-<li><p>The action name: <code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code></p></li>
+<li><p>动作的类型：<code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code></p></li>
+<li><p>动作的名称：<code class="docutils literal notranslate"><span class="pre">'fibonacci'</span></code></p></li>
 </ol>
-<p>Our action client will be able to communicate with action servers of the same action name and type.</p>
-<p>We also define a method <code class="docutils literal notranslate"><span class="pre">send_goal</span></code> in the <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> class:</p>
+<p>我们的动作客户端将能够与具有相同名称和类型的动作服务器进行通信。</p>
+<p>我们还在``FibonacciActionClient``类中定义了一个方法``send_goal``：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">send_goal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
         <span class="n">goal_msg</span> <span class="o">=</span> <span class="n">Fibonacci</span><span class="o">.</span><span class="n">Goal</span><span class="p">()</span>
         <span class="n">goal_msg</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
@@ -639,11 +639,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">goal_msg</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This method waits for the action server to be available, then sends a goal to the server.
-It returns a future that we can later wait on.</p>
-<p>After the class definition, we define a function <code class="docutils literal notranslate"><span class="pre">main()</span></code> that initializes ROS 2
-and creates an instance of our <code class="docutils literal notranslate"><span class="pre">FibonacciActionClient</span></code> node.
-It then sends a goal and waits until that goal has been completed.</p>
+<p>该方法等待动作服务器可用，然后向服务器发送一个目标。它返回一个未来对象，我们可以稍后等待该对象。</p>
+<p>在类定义之后，我们定义了一个函数``main()``，它初始化ROS 2并创建``FibonacciActionClient``节点的一个实例。然后它发送一个目标并等待该目标完成。</p>
 <p>Finally, we call <code class="docutils literal notranslate"><span class="pre">main()</span></code> in the entry point of our Python program.</p>
 <p>Let's test our action client by first running the action server built earlier:</p>
 <div class="sphinx-tabs docutils container">
