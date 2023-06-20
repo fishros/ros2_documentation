@@ -385,11 +385,11 @@
 <li><p><a class="reference internal" href="#physical-properties" id="id2">物理属性</a></p>
 <ul>
 <li><p><a class="reference internal" href="#inertia" id="id3">惯性</a></p></li>
-<li><p><a class="reference internal" href="#contact-coefficients" id="id4">Contact Coefficients</a></p></li>
-<li><p><a class="reference internal" href="#joint-dynamics" id="id5">Joint Dynamics</a></p></li>
+<li><p><a class="reference internal" href="#contact-coefficients" id="id4">接触系数</a></p></li>
+<li><p><a class="reference internal" href="#joint-dynamics" id="id5">关节动力学</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#other-tags" id="id6">Other Tags</a></p></li>
+<li><p><a class="reference internal" href="#other-tags" id="id6">其他标签</a></p></li>
 <li><p><a class="reference internal" href="#next-steps" id="id7">下一步</a></p></li>
 </ul>
 </div>
@@ -483,50 +483,39 @@
 </table>
 </div></blockquote>
 </li>
-<li><p>This information can be provided to you by modeling programs such as MeshLab.
-The inertia of geometric primitives (cylinder, box, sphere) can be computed using Wikipedia's <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors">list of moment of inertia tensors</a> (and is used in the above example).</p></li>
-<li><p>The inertia tensor depends on both the mass and the distribution of mass of the object.
-A good first approximation is to assume equal distribution of mass in the volume of the object and compute the inertia tensor based on the object's shape, as outlined above.</p></li>
-<li><p>If unsure what to put, a matrix with ixx/iyy/izz=1e-3 or smaller is often a reasonable default for a mid-sized link (it corresponds to a box of 0.1 m side length with a mass of 0.6 kg).
-The identity matrix is a particularly bad choice, since it is often much too high (it corresponds to a box of 0.1 m side length with a mass of 600 kg!).</p></li>
-<li><p>You can also specify an origin tag to specify the center of gravity and the inertial reference frame (relative to the link's reference frame).</p></li>
-<li><p>When using realtime controllers, inertia elements of zero (or almost zero) can cause the robot model to collapse without warning, and all links will appear with their origins coinciding with the world origin.</p></li>
+<li><p>这些信息可以由诸如MeshLab之类的建模程序提供。可以使用维基百科的`惯性矩张量列表&lt;<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors">https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors</a>&gt;`_来计算几何原始体（圆柱体、长方体、球体）的惯性（在上面的示例中使用）。</p></li>
+<li><p>惯性张量取决于物体的质量和质量分布。一个很好的第一近似是假设物体的质量在体积上均匀分布，并基于物体的形状计算惯性张量，如上所述。</p></li>
+<li><p>如果不确定应该填写什么，一个常见的中等大小连接的合理默认值是ixx/iyy/izz=1e-3或更小（它对应于一边长为0.1米、质量为0.6千克的长方体）。恒等矩阵是一个特别糟糕的选择，因为它通常太大（它对应于一边长为0.1米、质量为600千克的长方体）。</p></li>
+<li><p>您还可以指定一个原点标签，以指定重心和惯性参考系（相对于链接的参考系）。</p></li>
+<li><p>在使用实时控制器时，惯性元素为零（或几乎为零）可能导致机器人模型突然崩溃，并且所有链接将与世界原点重合。</p></li>
 </ul>
 </div>
 <div class="section" id="contact-coefficients">
-<h3><a class="toc-backref" href="#id4">Contact Coefficients</a><a class="headerlink" href="#contact-coefficients" title="永久链接至标题"></a></h3>
-<p>You can also define how the links behave when they are in contact with one another.
-This is done with a subelement of the collision tag called contact_coefficients.
-There are three attributes to specify:</p>
+<h3><a class="toc-backref" href="#id4">接触系数</a><a class="headerlink" href="#contact-coefficients" title="永久链接至标题"></a></h3>
+<p>您还可以定义链接在彼此接触时的行为。这可以通过碰撞标签的子元素contact_coefficients来实现。有三个属性需要指定：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>mu - <a class="reference external" href="https://simple.wikipedia.org/wiki/Coefficient_of_friction">Friction coefficient</a></p></li>
-<li><p>kp - <a class="reference external" href="https://en.wikipedia.org/wiki/Stiffness">Stiffness coefficient</a></p></li>
-<li><p>kd - <a class="reference external" href="https://en.wikipedia.org/wiki/Damping_ratio#Damping_ratio_definition">Dampening coefficient</a></p></li>
+<li><p>mu - <a class="reference external" href="https://simple.wikipedia.org/wiki/Coefficient_of_friction">摩擦系数</a></p></li>
+<li><p>kp - <a class="reference external" href="https://en.wikipedia.org/wiki/Stiffness">刚度系数</a></p></li>
+<li><p>kd - <a class="reference external" href="https://en.wikipedia.org/wiki/Damping_ratio#Damping_ratio_definition">阻尼系数</a></p></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="joint-dynamics">
-<h3><a class="toc-backref" href="#id5">Joint Dynamics</a><a class="headerlink" href="#joint-dynamics" title="永久链接至标题"></a></h3>
-<p>How the joint moves is defined by the dynamics tag for the joint.
-There are two attributes here:</p>
+<h3><a class="toc-backref" href="#id5">关节动力学</a><a class="headerlink" href="#joint-dynamics" title="永久链接至标题"></a></h3>
+<p>关节的运动由关节的动力学标签定义。这里有两个属性：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">friction</span></code> - The physical static friction.
-For prismatic joints, the units are Newtons.
-For revolving joints, the units are Newton meters.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">damping</span></code> - The physical damping value.
-For prismatic joints, the units are Newton seconds per meter.
-For revolving joints, Newton meter seconds per radian.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">摩擦</span></code> - 物理静摩擦力。对于平移关节，单位为牛顿；对于旋转关节，单位为牛顿·米。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">阻尼</span></code> - 物理阻尼值。对于平移关节，单位为牛顿秒/米；对于旋转关节，单位为牛顿·米秒/弧度。</p></li>
 </ul>
 </div></blockquote>
-<p>If not specified, these coefficients default to zero.</p>
+<p>如果未指定，则这些系数默认为零。</p>
 </div>
 </div>
 <div class="section" id="other-tags">
-<h2><a class="toc-backref" href="#id6">Other Tags</a><a class="headerlink" href="#other-tags" title="永久链接至标题"></a></h2>
-<p>In the realm of pure URDF (i.e. excluding Gazebo-specific tags), there are two remaining tags to help define the joints: calibration and safety controller.
-Check out the <a class="reference external" href="https://wiki.ros.org/urdf/XML/joint">spec</a>, as they are not included in this tutorial.</p>
+<h2><a class="toc-backref" href="#id6">其他标签</a><a class="headerlink" href="#other-tags" title="永久链接至标题"></a></h2>
+<p>在纯URDF领域（即不包括Gazebo特定标签的情况下），还有两个剩余的标签可用于定义关节：校准和安全控制器。请查看`规范 &lt;<a class="reference external" href="https://wiki.ros.org/urdf/XML/joint">https://wiki.ros.org/urdf/XML/joint</a>&gt;`_，因为它们在本教程中没有包含。</p>
 </div>
 <div class="section" id="next-steps">
 <h2><a class="toc-backref" href="#id7">下一步</a><a class="headerlink" href="#next-steps" title="永久链接至标题"></a></h2>
