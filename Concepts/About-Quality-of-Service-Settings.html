@@ -531,7 +531,7 @@
 </table>
 <p><em>截止期限 QoS 策略的兼容性：</em></p>
 <blockquote>
-<div><p>Assume <em>x</em> and <em>y</em> are arbitrary valid duration values.</p>
+<div><p>假设 <em>x</em> 和 <em>y</em> 是任意有效的持续时间值。</p>
 </div></blockquote>
 <table class="docutils align-default">
 <colgroup>
@@ -546,16 +546,16 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Default</p></td>
-<td><p>Default</p></td>
+<tr class="row-even"><td><p>默认</p></td>
+<td><p>默认</p></td>
 <td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Default</p></td>
+<tr class="row-odd"><td><p>默认</p></td>
 <td><p><em>x</em></p></td>
 <td><p>否</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
-<td><p>Default</p></td>
+<td><p>默认</p></td>
 <td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
@@ -563,16 +563,16 @@
 <td><p>是</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
-<td><p><em>y</em> (where <em>y</em> &gt; <em>x</em>)</p></td>
+<td><p><em>y*（其中 *y</em> &gt; <em>x</em>）</p></td>
 <td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
-<td><p><em>y</em> (where <em>y</em> &lt; <em>x</em>)</p></td>
+<td><p><em>y*（其中 *y</em> &lt; <em>x</em>）</p></td>
 <td><p>否</p></td>
 </tr>
 </tbody>
 </table>
-<p><em>Compatibility of liveliness QoS policies:</em></p>
+<p><em>活跃性 QoS 策略的兼容性:</em></p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -586,27 +586,27 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Automatic</p></td>
-<td><p>Automatic</p></td>
+<tr class="row-even"><td><p>自动</p></td>
+<td><p>自动</p></td>
 <td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Automatic</p></td>
-<td><p>Manual by topic</p></td>
+<tr class="row-odd"><td><p>自动</p></td>
+<td><p>按主题手动</p></td>
 <td><p>否</p></td>
 </tr>
-<tr class="row-even"><td><p>Manual by topic</p></td>
-<td><p>Automatic</p></td>
+<tr class="row-even"><td><p>按主题手动</p></td>
+<td><p>自动</p></td>
 <td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Manual by topic</p></td>
-<td><p>Manual by topic</p></td>
+<tr class="row-odd"><td><p>按主题手动</p></td>
+<td><p>按主题手动</p></td>
 <td><p>是</p></td>
 </tr>
 </tbody>
 </table>
-<p><em>Compatibility of lease duration QoS policies:</em></p>
+<p><em>租约持续时间QoS策略的兼容性:</em></p>
 <blockquote>
-<div><p>Assume <em>x</em> and <em>y</em> are arbitrary valid duration values.</p>
+<div><p>假设 <em>x</em> 和 <em>y</em> 是任意有效的持续时间值。</p>
 </div></blockquote>
 <table class="docutils align-default">
 <colgroup>
@@ -621,16 +621,16 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Default</p></td>
-<td><p>Default</p></td>
+<tr class="row-even"><td><p>默认</p></td>
+<td><p>默认</p></td>
 <td><p>是</p></td>
 </tr>
-<tr class="row-odd"><td><p>Default</p></td>
+<tr class="row-odd"><td><p>默认</p></td>
 <td><p><em>x</em></p></td>
 <td><p>否</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
-<td><p>Default</p></td>
+<td><p>默认</p></td>
 <td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
@@ -638,23 +638,20 @@
 <td><p>是</p></td>
 </tr>
 <tr class="row-even"><td><p><em>x</em></p></td>
-<td><p><em>y</em> (where <em>y</em> &gt; <em>x</em>)</p></td>
+<td><p><em>y*（其中 *y</em> &gt; <em>x</em>）</p></td>
 <td><p>是</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>x</em></p></td>
-<td><p><em>y</em> (where <em>y</em> &lt; <em>x</em>)</p></td>
+<td><p><em>y*（其中 *y</em> &lt; <em>x</em>）</p></td>
 <td><p>否</p></td>
 </tr>
 </tbody>
 </table>
-<p>In order for a connection to be made, all of the policies that affect compatibility must be compatible.
-For example, even if a requested and offered QoS profile pair has compatible reliability QoS policies, but they have incompatible durability QoS policies, a connection will still not be made.</p>
-<p>When connections are not made, no messages will be passed between the publisher and subscription.
-There are mechanisms to detect this situation, which will be covered in a later section.</p>
+<p>为了建立连接，必须使所有影响兼容性的策略相互兼容。例如，即使请求和提供的QoS配置文件对可靠性QoS策略是兼容的，但如果它们的持久性QoS策略不兼容，仍然无法建立连接。</p>
+<p>当无法建立连接时，发布者和订阅者之间将不会传递任何消息。有机制可以检测到这种情况，将在后面的章节中介绍。</p>
 <div class="section" id="id1">
 <h3>与ROS 1的比较<a class="headerlink" href="#id1" title="永久链接至标题"></a></h3>
-<p>Historically in ROS 1, any publisher and subscriber with the same message type on the same topic would be connected.
-The possibility of incompatible requested and offered QoS profiles is something new to be aware of when using ROS 2.</p>
+<p>在ROS 1中，具有相同消息类型和相同主题的任何发布者和订阅者都将建立连接。在使用ROS 2时，需要注意可能存在不兼容的请求和提供的QoS配置文件的情况。</p>
 </div>
 </div>
 <div class="section" id="qos-events">
