@@ -1354,24 +1354,24 @@
 <li><p>将质量声明更新为 QL 1（<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/116">#116</a>）</p></li>
 <li><p>更新软件包维护者（<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/112">#112</a>）</p></li>
 <li><p>将软件包的质量级别提升至 3（<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/108">#108</a>）</p></li>
-<li><p>Document that Time and Duration are explictly ROS Time (<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/103">#103</a>)</p></li>
+<li><p>时间和持续时间是显式的 ROS 时间 (<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/103">#103</a>)</p></li>
 <li><p>添加指向 REP-2006 的安全漏洞政策（<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/106">#106</a>）</p></li>
 <li><p>更新质量声明以反映软件包版本（<a class="reference external" href="https://github.com/ros2/rcl_interfaces/issues/107">#107</a>）</p></li>
-<li><p>Contributors: Chris Lalancette, Michel Hidalgo, Stephen Brawner, Tully Foote, brawner, shonigmann</p></li>
+<li><p>贡献者：Chris Lalancette，Michel Hidalgo，Stephen Brawner，Tully Foote，brawner，shonigmann</p></li>
 </ul>
 </div>
 <div class="section" id="camera-calibration-parsers">
 <h2><a class="reference external" href="https://github.com/ros-perception/image_common/tree/ros2/camera_calibration_parsers/CHANGELOG.rst">camera_calibration_parsers</a><a class="headerlink" href="#camera-calibration-parsers" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Fix formatting and include paths for linters (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/157">#157</a>)</p></li>
-<li><p>ROS2 Using the filesystem helper in rcpputils (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/133">#133</a>)</p></li>
-<li><p>[Windows][ros2] Avoid build break for Visual Studio 2019 v16.3 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/135">#135</a>)</p></li>
-<li><p>Camera Calibration Parsers ROS2 Port (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/105">#105</a>)</p></li>
-<li><p>Image Transport ROS2 port (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/84">#84</a>)</p></li>
-<li><p>Use Boost_LIBRARIES instead of Boost_PYTHON_LIBRARY This was causing issues when building with python3 since then <code class="docutils literal notranslate"><span class="pre">Boost_PYTHON_LIBRARY</span></code> is not set, instead cmake sets <code class="docutils literal notranslate"><span class="pre">Boost_PYTHON3_LIBRARY</span></code>. So instead of adding each library separately, using <code class="docutils literal notranslate"><span class="pre">Boost_LIBRARIES</span></code> seems to be better. For reference, from the cmake docs: <code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">Boost_LIBRARIES</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">-</span> <span class="pre">Boost</span> <span class="pre">component</span> <span class="pre">libraries</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">linked</span> <span class="pre">Boost\_&lt;C&gt;_LIBRARY</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">-</span> <span class="pre">Libraries</span> <span class="pre">to</span> <span class="pre">link</span> <span class="pre">for</span> <span class="pre">component</span> <span class="pre">&lt;C&gt;</span> <span class="pre">`</span></code></p></li>
-<li><p>Properly detect Boost Python 2 or 3 This fixes <a class="reference external" href="https://github.com/ros-perception/image_common/issues/59">#59</a></p></li>
+<li><p>修复格式和包含用于 linters 的路径 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/157">#157</a>)</p></li>
+<li><p>ROS2 在 rcpputils 中使用文件系统助手 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/133">#133</a>)</p></li>
+<li><p>[Windows][ros2] 避免 Visual Studio 2019 v16.3 的构建中断 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/135">#135</a>)</p></li>
+<li><p>相机标定解析器 ROS2 移植 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/105">#105</a>)</p></li>
+<li><p>图像传输 ROS2 移植 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/84">#84</a>)</p></li>
+<li><p>使用 Boost_LIBRARIES 而不是 Boost_PYTHON_LIBRARY，这样可以解决与 Python 3 构建时的问题，因为 <code class="docutils literal notranslate"><span class="pre">Boost_PYTHON_LIBRARY</span></code> 没有设置，而是使用 cmake 设置了 <code class="docutils literal notranslate"><span class="pre">Boost_PYTHON3_LIBRARY</span></code>。所以使用 <code class="docutils literal notranslate"><span class="pre">Boost_LIBRARIES</span></code> 而不是分别添加每个库似乎更好。参考 cmake 文档： <code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">Boost_LIBRARIES</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">-</span> <span class="pre">要链接的</span> <span class="pre">Boost</span> <span class="pre">组件库</span> <span class="pre">Boost\_&lt;C&gt;_LIBRARY</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">-</span> <span class="pre">为组件</span> <span class="pre">&lt;C&gt;</span> <span class="pre">链接的库</span> <span class="pre">`</span></code></p></li>
+<li><p>正确检测 Boost Python 2 或 3，修复 <a class="reference external" href="https://github.com/ros-perception/image_common/issues/59">#59</a></p></li>
 <li><p>1.11.11</p></li>
-<li><p>update changelogs</p></li>
+<li><p>更新变更日志</p></li>
 <li><p>Add install target for python wrapper library</p></li>
 <li><p>Only link against needed Boost libraries 9829b02 introduced a python dependency into find_package(Boost..) which results in ${Boost_LIBRARIES} containing boost_python and such a dependency to libpython at link time. With this patch we only link against the needed libraries.</p></li>
 <li><p>Add python wrapper for readCalibration. Reads .ini or .yaml calibration file and returns camera name and sensor_msgs/cameraInfo.</p></li>
@@ -1396,16 +1396,16 @@
 <div class="section" id="camera-info-manager">
 <h2><a class="reference external" href="https://github.com/ros-perception/image_common/tree/ros2/camera_info_manager/CHANGELOG.rst">camera_info_manager</a><a class="headerlink" href="#camera-info-manager" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Fix formatting and include paths for linters (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/157">#157</a>)</p></li>
+<li><p>修复格式和包含用于 linters 的路径 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/157">#157</a>)</p></li>
 <li><p>Enable Windows build. (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/159">#159</a>)</p></li>
 <li><p>Fix abort criteria for setCameraInfoService callback (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/132">#132</a>)</p></li>
 <li><p>camera_info_manager ROS2 port (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/94">#94</a>)</p></li>
-<li><p>Image Transport ROS2 port (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/84">#84</a>)</p></li>
+<li><p>图像传输 ROS2 移植 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/84">#84</a>)</p></li>
 <li><p>Fix the find_package(catkin) redundancy</p></li>
 <li><p>Add a dependency between the test and the test executable</p></li>
 <li><p>Add camera_calibration_parsers dependency to camera_info_manager</p></li>
 <li><p>1.11.11</p></li>
-<li><p>update changelogs</p></li>
+<li><p>更新变更日志</p></li>
 <li><p>Return empty CameraInfo when !ros::ok()</p></li>
 <li><p>Return empty CameraInfo when !ros::ok()</p></li>
 <li><p>fix compilation on Fedora, fixes <a class="reference external" href="https://github.com/ros-perception/image_common/issues/42">#42</a></p></li>
@@ -1825,7 +1825,7 @@
 <ul class="simple">
 <li><p>[ros2] image_common metapackage (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/129">#129</a>)</p></li>
 <li><p>1.11.11</p></li>
-<li><p>update changelogs</p></li>
+<li><p>更新变更日志</p></li>
 <li><p>add Jack as maintainer</p></li>
 <li><p>comply to REP 0127</p></li>
 <li><p>add missing description</p></li>
@@ -1845,7 +1845,7 @@
 <div class="section" id="image-transport">
 <h2><a class="reference external" href="https://github.com/ros-perception/image_common/tree/ros2/image_transport/CHANGELOG.rst">image_transport</a><a class="headerlink" href="#image-transport" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Fix formatting and include paths for linters (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/157">#157</a>)</p></li>
+<li><p>修复格式和包含用于 linters 的路径 (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/157">#157</a>)</p></li>
 <li><p>Fix QoS initialization from RMW QoS profile (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/158">#158</a>)</p></li>
 <li><p>add missing set header (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/140">#140</a>)</p></li>
 <li><p>Update to use new count APIs (<a class="reference external" href="https://github.com/ros-perception/image_common/issues/128">#128</a>)</p></li>
@@ -1865,7 +1865,7 @@
 <li><p>image_transport/tutorial: Add dependency on generated msg Without this, build fails on Kinetic because ResizedImage.h has not been generated yet.</p></li>
 <li><p>image_transport/tutorial: Add missing catkin_INCLUDE_DIRS Without this, compilation files on Kinetic because ros.h cannot be found.</p></li>
 <li><p>1.11.11</p></li>
-<li><p>update changelogs</p></li>
+<li><p>更新变更日志</p></li>
 <li><p>fix linkage in tutorials</p></li>
 <li><p>Use $catkin_EXPORTED_TARGETS</p></li>
 <li><p>image_transport: fix CameraSubscriber shutdown (circular shared_ptr ref) CameraSubscriber uses a private boost::shared_ptr to share an impl object between copied instances. In CameraSubscriber::CameraSubscriber(), it handed this shared_ptr to boost::bind() and saved the created wall timer in the impl object, thus creating a circular reference. The impl object was therefore never freed. Fix that by passing a plain pointer to boost::bind().</p></li>
