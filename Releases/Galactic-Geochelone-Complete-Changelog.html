@@ -1498,15 +1498,15 @@
 <div class="section" id="cyclonedds">
 <h2><a class="reference external" href="https://github.com/eclipse-cyclonedds/cyclonedds/tree/iceoryx/CHANGELOG.rst">cyclonedds</a><a class="headerlink" href="#cyclonedds" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>DATA_AVAILABLE was not always triggered when by a dispose and sometimes triggered in the absence of an observable state change (arrival of a dispose for an already-disposed instance where the dispose had not yet been read);</p></li>
-<li><p>Restores functionality of the &quot;raw ethernet&quot; mode as well as IPv6 with link-local addresses, both accidentally broken in 0.6.0;</p></li>
-<li><p>Fixes a crash in processing endpoint discovery data containing unrecognised locator kinds;</p></li>
-<li><p>Fixes type conversion for local historical data (e.g., mixed use of ROS 2 C/C++ type supports in combination with transient-local endpoints within a single process);</p></li>
-<li><p>Fixes a use-after-free of &quot;lease&quot; objects with manual-by-topic writers;</p></li>
-<li><p>Mark instance as &quot;alive&quot; in the reader history and generate an invalid sample to notify the application even if the sample itself is dropped because the same or a later one is present already (e.g., on reconnecting to a transient-local writer);</p></li>
-<li><p>Fix a crash when doing an instance lookup on a built-in topic using the key value;</p></li>
-<li><p>No longer auto-dispose instances as soon as some registered writer disappears, instead do it only when all of them have unregistered it;</p></li>
-<li><p>Fix performance of read_instance and take_instance by performing a proper instance lookup.</p></li>
+<li><p>在销毁时，不一定总是触发DATA_AVAILABLE，并且有时在没有可观察到的状态更改的情况下触发（对于已经处于销毁状态的实例的销毁到达，但尚未读取销毁的情况）；</p></li>
+<li><p>恢复了“原始以太网”模式以及IPv6与链路本地地址的功能，这两者在0.6.0中意外中断；</p></li>
+<li><p>修复了处理包含无法识别的定位器种类的端点发现数据时的崩溃；</p></li>
+<li><p>修复了本地历史数据的类型转换问题（例如，在单个进程中将ROS 2 C/C++类型支持与瞬态本地端点混合使用时）；</p></li>
+<li><p>修复了手动按主题写入器中&quot;租约&quot;对象的使用后释放；</p></li>
+<li><p>在读取器历史记录中标记实例为&quot;活动&quot;，并生成一个无效的样本，即使样本本身被丢弃，也会通知应用程序，因为相同或更新的样本已存在（例如，在重新连接到临时局部写入器时）；</p></li>
+<li><p>修复了在使用键值对对内置主题进行实例查找时的崩溃；</p></li>
+<li><p>不再在某个已注册的写入器消失后立即自动释放实例，而是只在所有写入器都注销时才这样做；</p></li>
+<li><p>通过执行适当的实例查找来改善read_instance和take_instance的性能。</p></li>
 </ul>
 </div>
 <div class="section" id="demo-nodes-cpp">
