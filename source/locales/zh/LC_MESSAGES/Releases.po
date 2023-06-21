@@ -9797,52 +9797,52 @@ msgstr "默认优化SQLite存储 (`#568 <https://github.com/ros2/rosbag2/issues/
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3122
 msgid "Fix a bug on parsing wrong description in plugin xml file (`#578 <https://github.com/ros2/rosbag2/issues/578>`__)"
-msgstr "Fix a bug on parsing wrong description in plugin xml file (`#578 <https://github.com/ros2/rosbag2/issues/578>`__)"
+msgstr "修复解析插件xml文件中错误描述的bug（`#578 <https://github.com/ros2/rosbag2/issues/578>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3123 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3417 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3637
 msgid "Compress bag files in separate threads (`#506 <https://github.com/ros2/rosbag2/issues/506>`__)"
-msgstr "Compress bag files in separate threads (`#506 <https://github.com/ros2/rosbag2/issues/506>`__)"
+msgstr "在单独的线程中压缩包文件（`#506 <https://github.com/ros2/rosbag2/issues/506>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3124
 msgid "Sqlite storage double buffering (`#546 <https://github.com/ros2/rosbag2/issues/546>`__) * Double buffers * Circular queue and FLUSH option as define * Minor naming and lexical fixes. * Removed FLUSH_BUFFERS define check. * Sqlite3 storage logging fixes. * Sqlite3 storage circular buffer with pre allocated memory. * Sqlite3 storage buffers moved to shared_ptrs. * Uncrustify * Moved double buffers to writer * Buffer layer reset in seq compression writer in rosbag2 cpp * Buffer layer for rosbag2 writer refactor * Changed buffers in BufferLayer to std vectors. * BufferLayer uncrustify * Removed non-applicable test for writer cache. * BufferLayer review fixes * Rosbag metadata msgs count fixed for BufferLayer * Condition variable for buffer layer sync. * Fixed buffer locks * Buffers in BufferLayer refactored, moved into new class * Buffer layer split bags fixed. * Storage options include fix in buffer layer header. * Mutex around swapping buffers in buffer layer. * Fixed cache 0 bug in buffer layer. * Minor buffer layer refactor. * Counting messages in writer refactored. * Changed default cache size to 100Mb and updated parameter description * Applied review remarks: - significant refactoring: separation of cache classes - applied suggested improvements - some renaming - reduce code duplication that would otherwise increase with cache refactor, between compression and plain writers * Applied review comments - cache consumer now takes a callback and is independent of storage - namespace changes, renaming, cleaning - counting and logging messages by topic * linter * Changes after review: fixing flushing, topic counts, and more * Fix for splitting - flushing state now correctly turns off * cache classes documentation * simplified signature * a couple of tests for cache * address review: explicit constructor and doxygen styling * Windows warnings fix * fixed type mismatch warning on Windows * added minor comment Co-authored-by: Piotr Jaroszek <piotr.jaroszek@robotec.ai>"
-msgstr "Sqlite storage double buffering (`#546 <https://github.com/ros2/rosbag2/issues/546>`__) * Double buffers * Circular queue and FLUSH option as define * Minor naming and lexical fixes. * Removed FLUSH_BUFFERS define check. * Sqlite3 storage logging fixes. * Sqlite3 storage circular buffer with pre allocated memory. * Sqlite3 storage buffers moved to shared_ptrs. * Uncrustify * Moved double buffers to writer * Buffer layer reset in seq compression writer in rosbag2 cpp * Buffer layer for rosbag2 writer refactor * Changed buffers in BufferLayer to std vectors. * BufferLayer uncrustify * Removed non-applicable test for writer cache. * BufferLayer review fixes * Rosbag metadata msgs count fixed for BufferLayer * Condition variable for buffer layer sync. * Fixed buffer locks * Buffers in BufferLayer refactored, moved into new class * Buffer layer split bags fixed. * Storage options include fix in buffer layer header. * Mutex around swapping buffers in buffer layer. * Fixed cache 0 bug in buffer layer. * Minor buffer layer refactor. * Counting messages in writer refactored. * Changed default cache size to 100Mb and updated parameter description * Applied review remarks: - significant refactoring: separation of cache classes - applied suggested improvements - some renaming - reduce code duplication that would otherwise increase with cache refactor, between compression and plain writers * Applied review comments - cache consumer now takes a callback and is independent of storage - namespace changes, renaming, cleaning - counting and logging messages by topic * linter * Changes after review: fixing flushing, topic counts, and more * Fix for splitting - flushing state now correctly turns off * cache classes documentation * simplified signature * a couple of tests for cache * address review: explicit constructor and doxygen styling * Windows warnings fix * fixed type mismatch warning on Windows * added minor comment Co-authored-by: Piotr Jaroszek <piotr.jaroszek@robotec.ai>"
+msgstr "Sqlite存储双缓冲（`#546 <https://github.com/ros2/rosbag2/issues/546>`__) * 双缓冲 * 循环队列和定义的FLUSH选项 * 次要的命名和词法修复 * 删除FLUSH_BUFFERS定义检查 * Sqlite3存储日志修复 * Sqlite3存储具有预分配内存的循环缓冲区 * Sqlite3存储缓冲区移到shared_ptrs * Uncrustify * 将双缓冲区移动到写入器中 * rosbag2 cpp中序列压缩写入器中的缓冲区层重置 * rosbag2写入器的缓冲区层重构 * 将BufferLayer中的缓冲区更改为std向量 * BufferLayer uncrustify * 删除不适用于writer缓存的测试 * BufferLayer修复修复 * BufferLayer修复Rosbag元数据消息计数 * 缓冲区层同步的条件变量 * 修复缓冲锁 * 重构BufferLayer中的缓冲区，移入新类 * 修复BufferLayer拆分包 * BufferLayer标头中的存储选项包含修复 * 缓冲区层中交换缓冲区周围的互斥锁 * 修复缓冲区层中的缓存0 bug * 次要的缓冲区层重构 * 重构writer中的消息计数 * 将默认缓存大小更改为100Mb并更新参数描述 * 应用审查意见： - 重大重构：缓存类的分离 - 应用建议的改进 - 一些重命名 - 减少代码重复，否则在缓存重构、压缩和普通写入器之间会增加 * 应用审查意见 - 缓存消费者现在采用回调函数，并且与存储无关 - 命名空间更改，重命名，清理 - 按主题计数和记录消息 * linter * 审查后的更改：修复刷新、主题计数等 * 修复拆分的错误 - 刷新状态现在正确关闭 * 缓存类文档 * 简化的签名 * 一些缓存测试 * 处理审查意见：显式构造函数和doxygen样式 * 修复Windows警告 * 在Windows上修复类型不匹配的警告 * 添加次要注释 共同撰写者：Piotr Jaroszek <piotr.jaroszek@robotec.ai>"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3125 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3499 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3563
 msgid "read yaml config file (`#497 <https://github.com/ros2/rosbag2/issues/497>`__)"
-msgstr "read yaml config file (`#497 <https://github.com/ros2/rosbag2/issues/497>`__)"
+msgstr "读"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3126
 msgid "List all storage plugins in plugin xml file (`#554 <https://github.com/ros2/rosbag2/issues/554>`__)"
-msgstr "List all storage plugins in plugin xml file (`#554 <https://github.com/ros2/rosbag2/issues/554>`__)"
+msgstr "列出插件 XML 文件中的所有存储插件 (`#554 <https://github.com/ros2/rosbag2/issues/554>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3127 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3395 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3419 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3465 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3500 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3523 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3547 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3564 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3599 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3639
 msgid "add storage_config_uri (`#493 <https://github.com/ros2/rosbag2/issues/493>`__)"
-msgstr "add storage_config_uri (`#493 <https://github.com/ros2/rosbag2/issues/493>`__)"
+msgstr "添加 storage_config_uri (`#493 <https://github.com/ros2/rosbag2/issues/493>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3128
 msgid "Update deprecated qos policy value names (`#548 <https://github.com/ros2/rosbag2/issues/548>`__)"
-msgstr "Update deprecated qos policy value names (`#548 <https://github.com/ros2/rosbag2/issues/548>`__)"
+msgstr "更新已弃用的 QoS 策略值名称 (`#548 <https://github.com/ros2/rosbag2/issues/548>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3129
 msgid "Add record test for ros2bag (`#523 <https://github.com/ros2/rosbag2/issues/523>`__)"
-msgstr "Add record test for ros2bag (`#523 <https://github.com/ros2/rosbag2/issues/523>`__)"
+msgstr "为 ros2bag 添加记录测试 (`#523 <https://github.com/ros2/rosbag2/issues/523>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3130 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3600
 msgid "Removed duplicated code in record (`#534 <https://github.com/ros2/rosbag2/issues/534>`__)"
-msgstr "Removed duplicated code in record (`#534 <https://github.com/ros2/rosbag2/issues/534>`__)"
+msgstr "移除记录中的重复代码 (`#534 <https://github.com/ros2/rosbag2/issues/534>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3131 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3468 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3601
 msgid "Change default cache size for sequential_writer to a non zero value (`#533 <https://github.com/ros2/rosbag2/issues/533>`__)"
-msgstr "Change default cache size for sequential_writer to a non zero value (`#533 <https://github.com/ros2/rosbag2/issues/533>`__)"
+msgstr "将顺序写入器的默认缓存大小更改为非零值 (`#533 <https://github.com/ros2/rosbag2/issues/533>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3132 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3396 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3420 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3470 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3501 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3525 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3548 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3565 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3578 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3602 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:3640 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:4461 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:4487 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:5134
