@@ -3893,23 +3893,23 @@
 <h2><a class="reference external" href="https://github.com/ros2/rosbag2/tree/galactic/rosbag2_compression/CHANGELOG.rst">rosbag2_compression</a><a class="headerlink" href="#rosbag2-compression" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>显式将emersonknapp添加为维护人员 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/692">#692</a>)</p></li>
-<li><p>Reindexer core (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) Add a new C++ Reindexer class for reconstructing metadata from bags that are missing it.</p></li>
+<li><p>重新索引器核心 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) 添加一个新的C++ Reindexer类，用于从缺失元数据的包中重建元数据。</p></li>
 <li><p>通过CLI查询rosbag2_py的可用存储实现 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/659">#659</a>)</p></li>
 <li><p>将zstd压缩器移至自己的包 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/636">#636</a>)</p></li>
-<li><p>Remove rosbag2_compression test dependencies on zstd implementation in prep for moving it into a separate package (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/637">#637</a>)</p></li>
-<li><p>Make compressor implementations into a plugin via pluginlib (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/624">#624</a>)</p></li>
-<li><p>Use ZSTD's streaming interface for [de]compressing files (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/543">#543</a>)</p></li>
-<li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
-<li><p>Fix relative metadata paths in SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/613">#613</a>)</p></li>
-<li><p>Fix deadlock race condition on compression shutdown (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/616">#616</a>)</p></li>
-<li><p>Deduplicate SequentialCompressionReader business logic, add fallback to find bagfiles in incorrectly-written metadata (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/612">#612</a>)</p></li>
+<li><p>移除 rosbag2_compression 测试对 zstd 实现的依赖，以便将其移入单独的软件包 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/637">#637</a>)</p></li>
+<li><p>通过 pluginlib 将压缩器实现转换为插件 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/624">#624</a>)</p></li>
+<li><p>使用 ZSTD 的流接口来进行文件的[解压缩] (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/543">#543</a>)</p></li>
+<li><p>修复 rosbag2_storage 在二进制安装时的构建问题 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
+<li><p>修复 SequentialCompressionWriter 中的相对元数据路径 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/613">#613</a>)</p></li>
+<li><p>修复在压缩关闭时的死锁竞态条件 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/616">#616</a>)</p></li>
+<li><p>去重顺序压缩读取器的业务逻辑，添加回退以在错误编写的元数据中查找包文件 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/612">#612</a>)</p></li>
 <li><p>在单独的线程中压缩包文件（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
-<li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
+<li><p>Sqlite 存储双缓冲 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
 <li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>更新package.xml文件，使用最新的Open Robotics维护人员（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
-<li><p>Do not expect empty StorageOptions URI to work in CompressionWriterTest (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/526">#526</a>)</p></li>
-<li><p>Remove some code duplication between SequentialWriter and SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/527">#527</a>)</p></li>
-<li><p>Fix exception thrown given invalid arguments with compression enabled (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/488">#488</a>)</p></li>
+<li><p>在 CompressionWriterTest 中不要指望空的 StorageOptions URI 能正常工作 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/526">#526</a>)</p></li>
+<li><p>消除 SequentialWriter 和 SequentialCompressionWriter 之间的部分代码重复 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/527">#527</a>)</p></li>
+<li><p>修复启用压缩时出现无效参数时抛出的异常 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/488">#488</a>)</p></li>
 <li><p>在rosbag2_cpp中添加数据库目录创建 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/450">#450</a>)</p></li>
 <li><p>Consolidate ZSTD utility functions (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/459">#459</a>)</p></li>
 <li><p>添加逐条消息的ZSTD压缩 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/418">#418</a>)</p></li>
@@ -3935,19 +3935,19 @@
 <li><p>Enable thread safety analysis for rosbag2_cpp and add annotations in TimeControllerClock (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/710">#710</a>)</p></li>
 <li><p>PlayerClock initial implementation - Player functionally unchanged (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/689">#689</a>)</p></li>
 <li><p>显式将emersonknapp添加为维护人员 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/692">#692</a>)</p></li>
-<li><p>Reindexer core (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) Add a new C++ Reindexer class for reconstructing metadata from bags that are missing it.</p></li>
+<li><p>重新索引器核心 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) 添加一个新的C++ Reindexer类，用于从缺失元数据的包中重建元数据。</p></li>
 <li><p>use rclcpp serialized messages to write data (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/457">#457</a>)</p></li>
 <li><p>alternative write api (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/676">#676</a>)</p></li>
 <li><p>在rosbag2_cpp中的RMW实现搜索转换器 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/670">#670</a>)</p></li>
 <li><p>通过CLI查询rosbag2_py的可用存储实现 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/659">#659</a>)</p></li>
 <li><p>Fix --topics flag for ros2 bag play being ignored for all bags after the first one. (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/619">#619</a>)</p></li>
 <li><p>Fix a crash in test_message_cache. (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/635">#635</a>)</p></li>
-<li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
-<li><p>Deduplicate SequentialCompressionReader business logic, add fallback to find bagfiles in incorrectly-written metadata (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/612">#612</a>)</p></li>
+<li><p>修复 rosbag2_storage 在二进制安装时的构建问题 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
+<li><p>去重顺序压缩读取器的业务逻辑，添加回退以在错误编写的元数据中查找包文件 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/612">#612</a>)</p></li>
 <li><p>include what you use (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/600">#600</a>)</p></li>
 <li><p>Only dereference the data pointer if it is valid. (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/581">#581</a>)</p></li>
 <li><p>Add back rosbag2_cpp::StorageOptions as deprecated (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/563">#563</a>)</p></li>
-<li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
+<li><p>Sqlite 存储双缓冲 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
 <li><p>correct master build (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/552">#552</a>)</p></li>
 <li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Mutex around writer access in recorder (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/491">#491</a>)</p></li>
@@ -3955,7 +3955,7 @@
 <li><p>将顺序写入器的默认缓存大小更改为非零值 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
 <li><p>SequentialWriter to cache by message size instead of message count (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/530">#530</a>)</p></li>
 <li><p>更新package.xml文件，使用最新的Open Robotics维护人员（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
-<li><p>Remove some code duplication between SequentialWriter and SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/527">#527</a>)</p></li>
+<li><p>消除 SequentialWriter 和 SequentialCompressionWriter 之间的部分代码重复 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/527">#527</a>)</p></li>
 <li><p>disable sanitizer by default (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/517">#517</a>)</p></li>
 <li><p>Fix typo in error message (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/475">#475</a>)</p></li>
 <li><p>introduce defaults for the C++ API (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/452">#452</a>)</p></li>
@@ -3980,7 +3980,7 @@
 <li><p>report of performance improvements in rosbag2 (roughly since Foxy) (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/651">#651</a>)</p></li>
 <li><p>Performance benchmarking improvements (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/634">#634</a>)</p></li>
 <li><p>Performance benchmarking refactor (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/594">#594</a>)</p></li>
-<li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
+<li><p>Sqlite 存储双缓冲 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
 <li><p>读</p></li>
 <li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>更新package.xml文件，使用最新的Open Robotics维护人员（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
@@ -4002,7 +4002,7 @@
 <li><p>在rosbag2_cpp中的RMW实现搜索转换器 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/670">#670</a>)</p></li>
 <li><p>使用rosbag2_py获取ros2 bag信息 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/673">#673</a>)</p></li>
 <li><p>通过CLI查询rosbag2_py的可用存储实现 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/659">#659</a>)</p></li>
-<li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
+<li><p>修复 rosbag2_storage 在二进制安装时的构建问题 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
 <li><p>通过转换qos持续时间值修复在cyclonedds上的测试 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/606">#606</a>)</p></li>
 <li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Workaround pybind11 bug on Windows when CMAKE_BUILD_TYPE=RelWithDebInfo (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/538">#538</a>)</p></li>
@@ -4020,7 +4020,7 @@
 <li><p>Remove -Werror from builds, enable it in Action CI (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/722">#722</a>)</p></li>
 <li><p>PlayerClock initial implementation - Player functionally unchanged (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/689">#689</a>)</p></li>
 <li><p>显式将emersonknapp添加为维护人员 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/692">#692</a>)</p></li>
-<li><p>Reindexer core (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) Add a new C++ Reindexer class for reconstructing metadata from bags that are missing it.</p></li>
+<li><p>重新索引器核心 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) 添加一个新的C++ Reindexer类，用于从缺失元数据的包中重建元数据。</p></li>
 <li><p>Remove outdated pluginlib cmake script from rosbag2_storage (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/661">#661</a>)</p></li>
 <li><p>通过CLI查询rosbag2_py的可用存储实现 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/659">#659</a>)</p></li>
 <li><p>Shorten some excessively long lines of CMake (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/648">#648</a>)</p></li>
@@ -4038,8 +4038,8 @@
 <ul class="simple">
 <li><p>Remove -Werror from builds, enable it in Action CI (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/722">#722</a>)</p></li>
 <li><p>显式将emersonknapp添加为维护人员 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/692">#692</a>)</p></li>
-<li><p>Reindexer core (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) Add a new C++ Reindexer class for reconstructing metadata from bags that are missing it.</p></li>
-<li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
+<li><p>重新索引器核心 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) 添加一个新的C++ Reindexer类，用于从缺失元数据的包中重建元数据。</p></li>
+<li><p>修复 rosbag2_storage 在二进制安装时的构建问题 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
 <li><p>Mutex protection for db writing and stl collections in writer &amp; storage (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/603">#603</a>)</p></li>
 <li><p>默认优化SQLite存储 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/568">#568</a>)</p></li>
 <li><p>读</p></li>
@@ -4065,7 +4065,7 @@
 <ul class="simple">
 <li><p>Remove -Werror from builds, enable it in Action CI (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/722">#722</a>)</p></li>
 <li><p>显式将emersonknapp添加为维护人员 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/692">#692</a>)</p></li>
-<li><p>Reindexer core (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) Add a new C++ Reindexer class for reconstructing metadata from bags that are missing it.</p></li>
+<li><p>重新索引器核心 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/641">#641</a>) 添加一个新的C++ Reindexer类，用于从缺失元数据的包中重建元数据。</p></li>
 <li><p>use rclcpp serialized messages to write data (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/457">#457</a>)</p></li>
 <li><p>Alternative write api (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/676">#676</a>)</p></li>
 <li><p>在rosbag2_cpp中的RMW实现搜索转换器 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/670">#670</a>)</p></li>
@@ -4073,7 +4073,7 @@
 <li><p>Remove temporary directory platform-specific logic from test fixture (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/660">#660</a>)</p></li>
 <li><p>Fix --topics flag for ros2 bag play being ignored for all bags after the first one. (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/619">#619</a>)</p></li>
 <li><p>将zstd压缩器移至自己的包 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/636">#636</a>)</p></li>
-<li><p>Fix relative metadata paths in SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/613">#613</a>)</p></li>
+<li><p>修复 SequentialCompressionWriter 中的相对元数据路径 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/613">#613</a>)</p></li>
 <li><p>Recorder的--regex和--exclude选项 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/604">#604</a>)</p></li>
 <li><p>通过转换qos持续时间值修复在cyclonedds上的测试 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/606">#606</a>)</p></li>
 <li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
@@ -4108,7 +4108,7 @@
 <li><p>Add QoS decoding translation for infinite durations to RMW_DURATION_INFINITE (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/684">#684</a>)</p></li>
 <li><p>Add support for rmw_connextdds (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/671">#671</a>)</p></li>
 <li><p>Use rosbag2_py for ros2 bag info (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/673">#673</a>)</p></li>
-<li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
+<li><p>修复 rosbag2_storage 在二进制安装时的构建问题 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
 <li><p>Regex and exclude fix for rosbag recorder (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/620">#620</a>)</p></li>
 <li><p>Recorder的--regex和--exclude选项 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/604">#604</a>)</p></li>
 <li><p>默认优化SQLite存储 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/568">#568</a>)</p></li>
