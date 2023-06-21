@@ -1866,21 +1866,21 @@
 <li><p>image_transport/tutorial：添加丢失的 catkin_INCLUDE_DIRS。如果没有此项，在 Kinetic 上编译文件时将找不到 ros.h。</p></li>
 <li><p>1.11.11</p></li>
 <li><p>更新变更日志</p></li>
-<li><p>fix linkage in tutorials</p></li>
+<li><p>修复教程中的链接错误</p></li>
 <li><p>使用$catkin_EXPORTED_TARGETS</p></li>
-<li><p>image_transport: fix CameraSubscriber shutdown (circular shared_ptr ref) CameraSubscriber uses a private boost::shared_ptr to share an impl object between copied instances. In CameraSubscriber::CameraSubscriber(), it handed this shared_ptr to boost::bind() and saved the created wall timer in the impl object, thus creating a circular reference. The impl object was therefore never freed. Fix that by passing a plain pointer to boost::bind().</p></li>
-<li><p>avoid a memory copy for the raw publisher</p></li>
-<li><p>add a way to publish an image with only the data pointer</p></li>
-<li><p>Make function inline to avoid duplicated names when linking statically</p></li>
-<li><p>add plugin examples for the tutorial</p></li>
-<li><p>update instructions for catkin</p></li>
-<li><p>remove uselessly linked library fixes <a class="reference external" href="https://github.com/ros-perception/image_common/issues/28">#28</a></p></li>
-<li><p>add a tutorial for image_transport</p></li>
+<li><p>image_transport: 修复CameraSubscriber的关闭问题（循环共享指针引用）CameraSubscriber使用一个私有的boost::shared_ptr在复制的实例之间共享impl对象。在CameraSubscriber::CameraSubscriber()中，它将这个shared_ptr交给boost::bind()并保存在impl对象中创建的wall timer，从而创建了一个循环引用。因此，impl对象从未被释放。通过传递一个普通指针给boost::bind()来修复这个问题。</p></li>
+<li><p>避免在原始发布者中进行内存拷贝</p></li>
+<li><p>添加一种仅使用数据指针发布图像的方法</p></li>
+<li><p>将函数内联以避免静态链接时的重复命名</p></li>
+<li><p>为教程添加插件示例</p></li>
+<li><p>更新catkin的说明</p></li>
+<li><p>移除无用的链接库修复 <a class="reference external" href="https://github.com/ros-perception/image_common/issues/28">#28</a></p></li>
+<li><p>添加一个image_transport的教程</p></li>
 <li><p>将Jack添加为维护者</p></li>
-<li><p>update my email address</p></li>
+<li><p>更新我的电子邮件地址</p></li>
 <li><p>修复URL</p></li>
-<li><p>use the pluginlib script to remove some warnings</p></li>
-<li><p>added license headers to various cpp and h files</p></li>
+<li><p>使用pluginlib脚本来移除一些警告</p></li>
+<li><p>为各种cpp和h文件添加许可证头</p></li>
 <li><p>get rid of the deprecated class_loader interface</p></li>
 <li><p>CMakeLists.txt clean up</p></li>
 <li><p>更新package.xml文件以处理新的catkin buildtool_depend需求</p></li>
