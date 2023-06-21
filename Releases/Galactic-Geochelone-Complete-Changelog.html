@@ -3628,16 +3628,16 @@
 <li><p>Recorder的--regex和--exclude选项 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/604">#604</a>)</p></li>
 <li><p>通过转换qos持续时间值修复在cyclonedds上的测试 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/606">#606</a>)</p></li>
 <li><p>默认优化SQLite存储 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/568">#568</a>)</p></li>
-<li><p>Fix a bug on parsing wrong description in plugin xml file (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/578">#578</a>)</p></li>
-<li><p>Compress bag files in separate threads (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
-<li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>) * Double buffers * Circular queue and FLUSH option as define * Minor naming and lexical fixes. * Removed FLUSH_BUFFERS define check. * Sqlite3 storage logging fixes. * Sqlite3 storage circular buffer with pre allocated memory. * Sqlite3 storage buffers moved to shared_ptrs. * Uncrustify * Moved double buffers to writer * Buffer layer reset in seq compression writer in rosbag2 cpp * Buffer layer for rosbag2 writer refactor * Changed buffers in BufferLayer to std vectors. * BufferLayer uncrustify * Removed non-applicable test for writer cache. * BufferLayer review fixes * Rosbag metadata msgs count fixed for BufferLayer * Condition variable for buffer layer sync. * Fixed buffer locks * Buffers in BufferLayer refactored, moved into new class * Buffer layer split bags fixed. * Storage options include fix in buffer layer header. * Mutex around swapping buffers in buffer layer. * Fixed cache 0 bug in buffer layer. * Minor buffer layer refactor. * Counting messages in writer refactored. * Changed default cache size to 100Mb and updated parameter description * Applied review remarks: - significant refactoring: separation of cache classes - applied suggested improvements - some renaming - reduce code duplication that would otherwise increase with cache refactor, between compression and plain writers * Applied review comments - cache consumer now takes a callback and is independent of storage - namespace changes, renaming, cleaning - counting and logging messages by topic * linter * Changes after review: fixing flushing, topic counts, and more * Fix for splitting - flushing state now correctly turns off * cache classes documentation * simplified signature * a couple of tests for cache * address review: explicit constructor and doxygen styling * Windows warnings fix * fixed type mismatch warning on Windows * added minor comment Co-authored-by: Piotr Jaroszek &lt;<a class="reference external" href="mailto:piotr&#46;jaroszek&#37;&#52;&#48;robotec&#46;ai">piotr<span>&#46;</span>jaroszek<span>&#64;</span>robotec<span>&#46;</span>ai</a>&gt;</p></li>
-<li><p>read yaml config file (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/497">#497</a>)</p></li>
-<li><p>List all storage plugins in plugin xml file (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/554">#554</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
-<li><p>Update deprecated qos policy value names (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/548">#548</a>)</p></li>
-<li><p>Add record test for ros2bag (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/523">#523</a>)</p></li>
-<li><p>Removed duplicated code in record (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/534">#534</a>)</p></li>
-<li><p>Change default cache size for sequential_writer to a non zero value (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
+<li><p>修复解析插件xml文件中错误描述的bug（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/578">#578</a>)</p></li>
+<li><p>在单独的线程中压缩包文件（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
+<li><p>Sqlite存储双缓冲（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>) * 双缓冲 * 循环队列和定义的FLUSH选项 * 次要的命名和词法修复 * 删除FLUSH_BUFFERS定义检查 * Sqlite3存储日志修复 * Sqlite3存储具有预分配内存的循环缓冲区 * Sqlite3存储缓冲区移到shared_ptrs * Uncrustify * 将双缓冲区移动到写入器中 * rosbag2 cpp中序列压缩写入器中的缓冲区层重置 * rosbag2写入器的缓冲区层重构 * 将BufferLayer中的缓冲区更改为std向量 * BufferLayer uncrustify * 删除不适用于writer缓存的测试 * BufferLayer修复修复 * BufferLayer修复Rosbag元数据消息计数 * 缓冲区层同步的条件变量 * 修复缓冲锁 * 重构BufferLayer中的缓冲区，移入新类 * 修复BufferLayer拆分包 * BufferLayer标头中的存储选项包含修复 * 缓冲区层中交换缓冲区周围的互斥锁 * 修复缓冲区层中的缓存0 bug * 次要的缓冲区层重构 * 重构writer中的消息计数 * 将默认缓存大小更改为100Mb并更新参数描述 * 应用审查意见： - 重大重构：缓存类的分离 - 应用建议的改进 - 一些重命名 - 减少代码重复，否则在缓存重构、压缩和普通写入器之间会增加 * 应用审查意见 - 缓存消费者现在采用回调函数，并且与存储无关 - 命名空间更改，重命名，清理 - 按主题计数和记录消息 * linter * 审查后的更改：修复刷新、主题计数等 * 修复拆分的错误 - 刷新状态现在正确关闭 * 缓存类文档 * 简化的签名 * 一些缓存测试 * 处理审查意见：显式构造函数和doxygen样式 * 修复Windows警告 * 在Windows上修复类型不匹配的警告 * 添加次要注释 共同撰写者：Piotr Jaroszek &lt;<a class="reference external" href="mailto:piotr&#46;jaroszek&#37;&#52;&#48;robotec&#46;ai">piotr<span>&#46;</span>jaroszek<span>&#64;</span>robotec<span>&#46;</span>ai</a>&gt;</p></li>
+<li><p>读</p></li>
+<li><p>列出插件 XML 文件中的所有存储插件 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/554">#554</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>更新已弃用的 QoS 策略值名称 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/548">#548</a>)</p></li>
+<li><p>为 ros2bag 添加记录测试 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/523">#523</a>)</p></li>
+<li><p>移除记录中的重复代码 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/534">#534</a>)</p></li>
+<li><p>将顺序写入器的默认缓存大小更改为非零值 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>[ros2bag test_record] Gets rid of time.sleep and move to using command.wait_for_output (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/525">#525</a>)</p></li>
 <li><p>Add pytest.ini back to ros2bag. (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/492">#492</a>)</p></li>
@@ -3882,7 +3882,7 @@
 <li><p>显式将emersonknapp添加为维护人员 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/692">#692</a>)</p></li>
 <li><p>RMW-implementation-searcher converter in rosbag2_cpp (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/670">#670</a>)</p></li>
 <li><p>Move zstd compressor to its own package (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/636">#636</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>AMENT_IGNORE rosbag2_py for now (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/509">#509</a>)</p></li>
 <li><p>rosbag2_py reader and writer (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/308">#308</a>)</p></li>
@@ -3903,9 +3903,9 @@
 <li><p>Fix relative metadata paths in SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/613">#613</a>)</p></li>
 <li><p>Fix deadlock race condition on compression shutdown (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/616">#616</a>)</p></li>
 <li><p>Deduplicate SequentialCompressionReader business logic, add fallback to find bagfiles in incorrectly-written metadata (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/612">#612</a>)</p></li>
-<li><p>Compress bag files in separate threads (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
+<li><p>在单独的线程中压缩包文件（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
 <li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>Do not expect empty StorageOptions URI to work in CompressionWriterTest (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/526">#526</a>)</p></li>
 <li><p>Remove some code duplication between SequentialWriter and SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/527">#527</a>)</p></li>
@@ -3949,10 +3949,10 @@
 <li><p>Add back rosbag2_cpp::StorageOptions as deprecated (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/563">#563</a>)</p></li>
 <li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
 <li><p>correct master build (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/552">#552</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Mutex around writer access in recorder (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/491">#491</a>)</p></li>
 <li><p>if cache data exists, it needs to flush the data into the storage before shutdown (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/541">#541</a>)</p></li>
-<li><p>Change default cache size for sequential_writer to a non zero value (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
+<li><p>将顺序写入器的默认缓存大小更改为非零值 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
 <li><p>SequentialWriter to cache by message size instead of message count (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/530">#530</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>Remove some code duplication between SequentialWriter and SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/527">#527</a>)</p></li>
@@ -3981,8 +3981,8 @@
 <li><p>Performance benchmarking improvements (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/634">#634</a>)</p></li>
 <li><p>Performance benchmarking refactor (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/594">#594</a>)</p></li>
 <li><p>Sqlite storage double buffering (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/546">#546</a>)</p></li>
-<li><p>read yaml config file (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/497">#497</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>读</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>performance testing packages (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/442">#442</a>)</p></li>
 <li><p>Contributors: Adam Dąbrowski, Karsten Knese, Michael Jeronimo, Piotr Jaroszek</p></li>
@@ -4004,7 +4004,7 @@
 <li><p>通过CLI查询rosbag2_py的可用存储实现 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/659">#659</a>)</p></li>
 <li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
 <li><p>通过转换qos持续时间值修复在cyclonedds上的测试 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/606">#606</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Workaround pybind11 bug on Windows when CMAKE_BUILD_TYPE=RelWithDebInfo (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/538">#538</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>Fix rosbag2_py on Windows debug and stop ignoring the package (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/531">#531</a>)</p></li>
@@ -4027,7 +4027,7 @@
 <li><p>SQLite storage optimized by default (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/568">#568</a>) * Use optimized pragmas by default in sqlite storage. Added option to use former behavior</p></li>
 <li><p>Use std::filesystem compliant non-member <code class="docutils literal notranslate"><span class="pre">exists</span></code> function for path object (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/593">#593</a>)</p></li>
 <li><p>Update codes since rcutils_calculate_directory_size() is changed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/567">#567</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>Add split by time to recording (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/409">#409</a>)</p></li>
 <li><p>Contributors: Adam Dąbrowski, Barry Xu, Emerson Knapp, Josh Langsfeld, Karsten Knese, Michael Jeronimo, Scott K Logan, jhdcs</p></li>
@@ -4042,8 +4042,8 @@
 <li><p>Fix build issues when rosbag2_storage is binary installed (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/585">#585</a>)</p></li>
 <li><p>Mutex protection for db writing and stl collections in writer &amp; storage (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/603">#603</a>)</p></li>
 <li><p>默认优化SQLite存储 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/568">#568</a>)</p></li>
-<li><p>read yaml config file (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/497">#497</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>读</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>Contributors: Adam Dąbrowski, Emerson Knapp, Karsten Knese, Michael Jeronimo, P. J. Reed, jhdcs</p></li>
 </ul>
@@ -4076,9 +4076,9 @@
 <li><p>Fix relative metadata paths in SequentialCompressionWriter (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/613">#613</a>)</p></li>
 <li><p>Recorder的--regex和--exclude选项 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/604">#604</a>)</p></li>
 <li><p>通过转换qos持续时间值修复在cyclonedds上的测试 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/606">#606</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
-<li><p>Removed duplicated code in record (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/534">#534</a>)</p></li>
-<li><p>Change default cache size for sequential_writer to a non zero value (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>移除记录中的重复代码 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/534">#534</a>)</p></li>
+<li><p>将顺序写入器的默认缓存大小更改为非零值 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/533">#533</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>Mark flaky tests as xfail for now (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/520">#520</a>)</p></li>
 <li><p>introduce defaults for the C++ API (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/452">#452</a>)</p></li>
@@ -4113,9 +4113,9 @@
 <li><p>Recorder的--regex和--exclude选项 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/604">#604</a>)</p></li>
 <li><p>默认优化SQLite存储 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/568">#568</a>)</p></li>
 <li><p>Fixed playing if unknown message types exist (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/592">#592</a>)</p></li>
-<li><p>Compress bag files in separate threads (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
+<li><p>在单独的线程中压缩包文件（<a class="reference external" href="https://github.com/ros2/rosbag2/issues/506">#506</a>)</p></li>
 <li><p>Stabilize test_record by reducing copies of executors and messages (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/576">#576</a>)</p></li>
-<li><p>add storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
+<li><p>添加 storage_config_uri (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/493">#493</a>)</p></li>
 <li><p>Update the package.xml files with the latest Open Robotics maintainers (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/535">#535</a>)</p></li>
 <li><p>resolve memory leak for serialized message (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/502">#502</a>)</p></li>
 <li><p>Use shared logic for importing the rosbag2_transport_py library in Python (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/482">#482</a>)</p></li>
