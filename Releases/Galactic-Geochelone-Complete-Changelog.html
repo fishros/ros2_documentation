@@ -1057,18 +1057,18 @@
 <h2><a class="reference external" href="https://github.com/ament/ament_cmake/tree/galactic/ament_cmake_target_dependencies/CHANGELOG.rst">ament_cmake_target_dependencies</a><a class="headerlink" href="#ament-cmake-target-dependencies" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>Force SYSTEM keyword in ament_target_dependencies() at the start. (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/303">#303</a>)</p></li>
-<li><p>Add SYSTEM keyword option to ament_target_dependencies (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/297">#297</a>) * Add SYSTEM keyword option to ament_target_dependencies * Add documentation of SYSTEM keyword for ament_target_dependencies</p></li>
+<li><p>为ament_target_dependencies添加SYSTEM关键字选项 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/297">#297</a>) * 为ament_target_dependencies添加SYSTEM关键字选项 * 为ament_target_dependencies添加SYSTEM关键字的文档</p></li>
 <li><p>更新包维护者 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/286">#286</a>)</p></li>
-<li><p>ordered interface include dirs and use privately to ensure workspace order (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/260">#260</a>)</p></li>
-<li><p>Contributors: Andre Nguyen, Dirk Thomas, Michel Hidalgo</p></li>
+<li><p>按顺序包含接口目录并使用私有方式以确保工作空间顺序 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/260">#260</a>)</p></li>
+<li><p>贡献者: Andre Nguyen, Dirk Thomas, Michel Hidalgo</p></li>
 </ul>
 </div>
 <div class="section" id="ament-cmake-test">
 <h2><a class="reference external" href="https://github.com/ament/ament_cmake/tree/galactic/ament_cmake_test/CHANGELOG.rst">ament_cmake_test</a><a class="headerlink" href="#ament-cmake-test" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>更新包维护者 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/286">#286</a>)</p></li>
-<li><p>Fix skipped test reporting in CTest (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/279">#279</a>) This is a follow-up to c67cdf2. When the SKIP_RETURN_CODE gets set to 0, the value is interpreted as 'false', and the test property is never actually added.</p></li>
-<li><p>limit test time to three decimals (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/271">#271</a>)</p></li>
+<li><p>修复CTest中跳过的测试报告问题 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/279">#279</a>) 这是对c67cdf2的后续。当SKIP_RETURN_CODE设置为0时，该值被解释为“false”，实际上从未添加测试属性。</p></li>
+<li><p>将测试时间限制为三位小数 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/271">#271</a>)</p></li>
 <li><p>Add actual test time to xUnit result files (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/270">#270</a>) * Add actual test time to xUnit result files Fixes <a class="reference external" href="https://github.com/ament/ament_cmake/issues/269">#269</a> * Report test_time even with skipped test * Set time attribute for testcase element</p></li>
 <li><p>Add SKIP_RETURN_CODE argument to ament_add_test (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/264">#264</a>) This makes the <code class="docutils literal notranslate"><span class="pre">run_test.py</span></code> wrapper aware of the <code class="docutils literal notranslate"><span class="pre">SKIP_RETURN_CODE</span></code> property on CTest tests. In the existing implementation, the wrapper detects that no result file was generated and overrides the special return code coming from the test, making the the CTest feature fail completely. This change makes the wrapper script aware of the special return code, and when detected, will write a 'skipped' result file instead of a 'failed' result file, and pass along the special return code as-is. Now the gtest result and the ctest results both show the test as 'skipped' when the special return flag is used. Note that none of this behavior is enabled by default, which is important because we wouldn't want a test to fail and return a code which we've decided is the special 'skip' return code. Only tests which are aware of this feature should use it.</p></li>
 <li><p>Contributors: Dirk Thomas, Michel Hidalgo, Ruffin, Scott K Logan</p></li>
