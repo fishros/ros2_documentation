@@ -921,19 +921,19 @@
 <li><p>将AMENT_RUN_PERFORMANCE_TESTS作为CMake选项 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/280">#280</a>)</p></li>
 <li><p>使用CMake变量跳过性能测试 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/278">#278</a>) 这些测试可能相当耗费资源，因此我们不希望默认运行它们。最好的方式是在默认情况下跳过测试，并在运行时能够具体取消跳过，但我无法在CMake或CTest中找到实现该行为的机制，而不依赖环境变量。</p></li>
 <li><p>处理Google Benchmark的“aggregate”结果 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/276">#276</a>) 之前，我假设Google Benchmark生成的所有结果都是“iteration”类型。现在我对Google Benchmark有了更多的了解，开始生成一些包含不同属性的“aggregate”结果。此更改添加了对“aggregate”结果的支持，并且应该可以轻松添加我们将来遇到的任何其他结果模式。为了前向兼容性，不支持的类型将生成警告消息，但不会导致测试失败。这使得转换对于Google Benchmark添加现有机制的新测量具有容错性。</p></li>
-<li><p>Initial Google Benchmark results conversion (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/275">#275</a>)</p></li>
-<li><p>Handle missing results file for Google Benchmark (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/265">#265</a>)</p></li>
-<li><p>Initial ament_cmake_google_benchmark package (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/261">#261</a>)</p></li>
-<li><p>Contributors: Michel Hidalgo, Scott K Logan, brawner</p></li>
+<li><p>初始的 Google 基准测试结果转换 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/275">#275</a>)</p></li>
+<li><p>处理缺失的 Google 基准测试结果文件 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/265">#265</a>)</p></li>
+<li><p>初始的 ament_cmake_google_benchmark 包 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/261">#261</a>)</p></li>
+<li><p>贡献者：Michel Hidalgo，Scott K Logan，brawner</p></li>
 </ul>
 </div>
 <div class="section" id="ament-cmake-gtest">
 <h2><a class="reference external" href="https://github.com/ament/ament_cmake/tree/galactic/ament_cmake_gtest/CHANGELOG.rst">ament_cmake_gtest</a><a class="headerlink" href="#ament-cmake-gtest" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Disable gtest warning when building in Release (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/298">#298</a>) <a class="reference external" href="https://github.com/google/googletest/issues/1303">https://github.com/google/googletest/issues/1303</a></p></li>
+<li><p>在 Release 构建时禁用 gtest 警告 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/298">#298</a>) <a class="reference external" href="https://github.com/google/googletest/issues/1303">https://github.com/google/googletest/issues/1303</a></p></li>
 <li><p>更新包维护者 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/286">#286</a>)</p></li>
-<li><p>[ament_cmake_gtest] ensure gtest to consume the correct headers. (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/267">#267</a>) * ensure gtest to consume the correct headers. * add another patch.</p></li>
-<li><p>Contributors: Michel Hidalgo, Sean Yen, Victor Lopez</p></li>
+<li><p>[ament_cmake_gtest] 确保 gtest 使用正确的头文件。 (<a class="reference external" href="https://github.com/ament/ament_cmake/issues/267">#267</a>) * 确保 gtest 使用正确的头文件。 * 添加另一个修补程序。</p></li>
+<li><p>贡献者：Michel Hidalgo，Sean Yen，Victor Lopez</p></li>
 </ul>
 </div>
 <div class="section" id="ament-cmake-include-directories">
@@ -954,7 +954,7 @@
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/galactic/ament_cmake_lint_cmake/CHANGELOG.rst">ament_cmake_lint_cmake</a><a class="headerlink" href="#ament-cmake-lint-cmake" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>移除Claire作为维护者。（<a class="reference external" href="https://github.com/ament/ament_lint/issues/312">#312</a>） * 移除Claire作为维护者。 * 移除无效的电子邮件地址。 * 移除更多无效的电子邮件地址。 * 将setup.py维护者切换为Audrow。</p></li>
-<li><p>ament_lint_cmake: default linelength in argumentparser for consistency (<a class="reference external" href="https://github.com/ament/ament_lint/issues/306">#306</a>)</p></li>
+<li><p>ament_lint_cmake：为了一致性，在 argumentparser 中设置默认行长度 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/306">#306</a>)</p></li>
 <li><p>0.10.3</p></li>
 <li><p>Fix ament_lint_cmake line length expression (<a class="reference external" href="https://github.com/ament/ament_lint/issues/236">#236</a>) This regular expression is using the re.VERBOSE flag, meaning that characters after an un-escaped '#' character are interpreted as a comment and are not part of the expression. Also set the default maximum line length to 140 columns.</p></li>
 <li><p>添加Audrow作为维护者。（<a class="reference external" href="https://github.com/ament/ament_lint/issues/294">#294</a>)</p></li>
@@ -1219,7 +1219,7 @@
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/galactic/ament_lint_cmake/CHANGELOG.rst">ament_lint_cmake</a><a class="headerlink" href="#ament-lint-cmake" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>移除Claire作为维护者。（<a class="reference external" href="https://github.com/ament/ament_lint/issues/312">#312</a>） * 移除Claire作为维护者。 * 移除无效的电子邮件地址。 * 移除更多无效的电子邮件地址。 * 将setup.py维护者切换为Audrow。</p></li>
-<li><p>ament_lint_cmake: default linelength in argumentparser for consistency (<a class="reference external" href="https://github.com/ament/ament_lint/issues/306">#306</a>)</p></li>
+<li><p>ament_lint_cmake：为了一致性，在 argumentparser 中设置默认行长度 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/306">#306</a>)</p></li>
 <li><p>0.10.3</p></li>
 <li><p>Fix ament_lint_cmake line length expression (<a class="reference external" href="https://github.com/ament/ament_lint/issues/236">#236</a>) This regular expression is using the re.VERBOSE flag, meaning that characters after an un-escaped '#' character are interpreted as a comment and are not part of the expression. Also set the default maximum line length to 140 columns.</p></li>
 <li><p>添加Audrow作为维护者。（<a class="reference external" href="https://github.com/ament/ament_lint/issues/294">#294</a>)</p></li>
