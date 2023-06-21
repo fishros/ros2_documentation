@@ -1887,17 +1887,17 @@ msgstr "将测试时间限制为三位小数 (`#271 <https://github.com/ament/am
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:431
 msgid "Add actual test time to xUnit result files (`#270 <https://github.com/ament/ament_cmake/issues/270>`__) * Add actual test time to xUnit result files Fixes `#269 <https://github.com/ament/ament_cmake/issues/269>`__ * Report test_time even with skipped test * Set time attribute for testcase element"
-msgstr "Add actual test time to xUnit result files (`#270 <https://github.com/ament/ament_cmake/issues/270>`__) * Add actual test time to xUnit result files Fixes `#269 <https://github.com/ament/ament_cmake/issues/269>`__ * Report test_time even with skipped test * Set time attribute for testcase element"
+msgstr "将实际测试时间添加到xUnit结果文件中 (`#270 <https://github.com/ament/ament_cmake/issues/270>`__) * 将实际测试时间添加到xUnit结果文件中 修复 `#269 <https://github.com/ament/ament_cmake/issues/269>`__ * 即使在跳过测试时也报告测试时间 * 为testcase元素设置时间属性"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:432
 msgid "Add SKIP_RETURN_CODE argument to ament_add_test (`#264 <https://github.com/ament/ament_cmake/issues/264>`__) This makes the ``run_test.py`` wrapper aware of the ``SKIP_RETURN_CODE`` property on CTest tests. In the existing implementation, the wrapper detects that no result file was generated and overrides the special return code coming from the test, making the the CTest feature fail completely. This change makes the wrapper script aware of the special return code, and when detected, will write a 'skipped' result file instead of a 'failed' result file, and pass along the special return code as-is. Now the gtest result and the ctest results both show the test as 'skipped' when the special return flag is used. Note that none of this behavior is enabled by default, which is important because we wouldn't want a test to fail and return a code which we've decided is the special 'skip' return code. Only tests which are aware of this feature should use it."
-msgstr "Add SKIP_RETURN_CODE argument to ament_add_test (`#264 <https://github.com/ament/ament_cmake/issues/264>`__) This makes the ``run_test.py`` wrapper aware of the ``SKIP_RETURN_CODE`` property on CTest tests. In the existing implementation, the wrapper detects that no result file was generated and overrides the special return code coming from the test, making the the CTest feature fail completely. This change makes the wrapper script aware of the special return code, and when detected, will write a 'skipped' result file instead of a 'failed' result file, and pass along the special return code as-is. Now the gtest result and the ctest results both show the test as 'skipped' when the special return flag is used. Note that none of this behavior is enabled by default, which is important because we wouldn't want a test to fail and return a code which we've decided is the special 'skip' return code. Only tests which are aware of this feature should use it."
+msgstr "向ament_add_test添加SKIP_RETURN_CODE参数 (`#264 <https://github.com/ament/ament_cmake/issues/264>`__) 这使得``run_test.py``包装器能够识别CTest测试上的``SKIP_RETURN_CODE``属性。在现有的实现中，包装器检测到未生成结果文件，并覆盖来自测试的特殊返回码，使得CTest功能完全失败。此更改使得包装器脚本能够识别特殊返回码，当检测到时，将写入一个“跳过”结果文件而不是一个“失败”结果文件，并原样传递特殊返回码。现在，gtest结果和ctest结果都在使用特殊返回标志时将测试显示为“跳过”。请注意，默认情况下不启用任何这些行为，这很重要，因为我们不希望测试失败并返回一个我们已经确定为特殊“跳过”返回码的代码。只有意识到此功能的测试才应使用它。"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:433
 msgid "Contributors: Dirk Thomas, Michel Hidalgo, Ruffin, Scott K Logan"
-msgstr "Contributors: Dirk Thomas, Michel Hidalgo, Ruffin, Scott K Logan"
+msgstr "贡献者：Dirk Thomas、Michel Hidalgo、Ruffin、Scott K Logan"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:438
@@ -1922,37 +1922,37 @@ msgstr "`ament_copyright <https://github.com/ament/ament_lint/tree/galactic/amen
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:474
 msgid "Use non-blind except for open() (`#307 <https://github.com/ament/ament_lint/issues/307>`__)"
-msgstr "Use non-blind except for open() (`#307 <https://github.com/ament/ament_lint/issues/307>`__)"
+msgstr "使用非盲目的方式，除了 open() (`#307 <https://github.com/ament/ament_lint/issues/307>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:475
 msgid "Add optional file header style (`#304 <https://github.com/ament/ament_lint/issues/304>`__) * Add optional file header style * Fix test on ament_copyright"
-msgstr "Add optional file header style (`#304 <https://github.com/ament/ament_lint/issues/304>`__) * Add optional file header style * Fix test on ament_copyright"
+msgstr "添加可选的文件头风格 (`#304 <https://github.com/ament/ament_lint/issues/304>`__) * 添加可选的文件头风格 * 修复 ament_copyright 上的测试"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:479
 msgid "add mit-0 as a valid license to ament_copyright (`#284 <https://github.com/ament/ament_lint/issues/284>`__)"
-msgstr "add mit-0 as a valid license to ament_copyright (`#284 <https://github.com/ament/ament_lint/issues/284>`__)"
+msgstr "将 mit-0 添加为 ament_copyright 的有效许可证 (`#284 <https://github.com/ament/ament_lint/issues/284>`__)"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:480
 msgid "Support Python 3.8-provided importlib.metadata (`#290 <https://github.com/ament/ament_lint/issues/290>`__) The importlib_metadata package is a backport of the importlib.metadata module from Python 3.8. Fedora (and possibly others) no longer package importlib_metadata because they ship Python versions which have the functionality built-in."
-msgstr "Support Python 3.8-provided importlib.metadata (`#290 <https://github.com/ament/ament_lint/issues/290>`__) The importlib_metadata package is a backport of the importlib.metadata module from Python 3.8. Fedora (and possibly others) no longer package importlib_metadata because they ship Python versions which have the functionality built-in."
+msgstr "支持 Python 3.8 提供的 importlib.metadata (`#290 <https://github.com/ament/ament_lint/issues/290>`__) importlib_metadata 包是 Python 3.8 的 importlib.metadata 模块的后端。Fedora（可能还有其他发行版）不再打包 importlib_metadata，因为它们提供了内置功能的 Python 版本。"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:482
 msgid "added bsd 2 clause simplified license to ament_copyright (`#267 <https://github.com/ament/ament_lint/issues/267>`__) * added bsd 2 clause simplified license to ament_copyright"
-msgstr "added bsd 2 clause simplified license to ament_copyright (`#267 <https://github.com/ament/ament_lint/issues/267>`__) * added bsd 2 clause simplified license to ament_copyright"
+msgstr "向 ament_copyright 添加了 BSD 2 项简化许可证 (`#267 <https://github.com/ament/ament_lint/issues/267>`__) * 向 ament_copyright 添加了 BSD 2 项简化许可证"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:483
 msgid "Remove use of pkg_resources from ament_lint. (`#260 <https://github.com/ament/ament_lint/issues/260>`__) Replace it with the use of the more modern importlib_metadata library.  There are a couple of reasons to do this: 1.  pkg_resources is quite slow to import; on my machine, just firing up the python interpreter takes ~35ms, while firing up the python interpreter and importing pkg_resources takes ~175ms.  Firing up the python interpreter and importing importlib_metadata takes ~70ms.  Removing 100ms per invocation of the command-line both makes it speedier for users, and will speed up our tests (which call out to the command-line quite a lot). 2.  pkg_resources is somewhat deprecated and being replaced by importlib.  https://importlib-metadata.readthedocs.io/en/latest/using.html describes some of it Note: By itself, this change is not enough to completely remove our dependence on pkg_resources.  We'll also have to do something about the console_scripts that setup.py generates.  That will be a separate effort."
-msgstr "Remove use of pkg_resources from ament_lint. (`#260 <https://github.com/ament/ament_lint/issues/260>`__) Replace it with the use of the more modern importlib_metadata library.  There are a couple of reasons to do this: 1.  pkg_resources is quite slow to import; on my machine, just firing up the python interpreter takes ~35ms, while firing up the python interpreter and importing pkg_resources takes ~175ms.  Firing up the python interpreter and importing importlib_metadata takes ~70ms.  Removing 100ms per invocation of the command-line both makes it speedier for users, and will speed up our tests (which call out to the command-line quite a lot). 2.  pkg_resources is somewhat deprecated and being replaced by importlib.  https://importlib-metadata.readthedocs.io/en/latest/using.html describes some of it Note: By itself, this change is not enough to completely remove our dependence on pkg_resources.  We'll also have to do something about the console_scripts that setup.py generates.  That will be a separate effort."
+msgstr "从ament_lint中移除对pkg_resources的使用。(`#260 <https://github.com/ament/ament_lint/issues/260>`__) 用更现代的importlib_metadata库替换它的使用。这样做有几个原因：1. pkg_resources导入速度较慢；在我的机器上，启动Python解释器只需要约35毫秒，而启动Python解释器并导入pkg_resources需要约175毫秒。启动Python解释器并导入importlib_metadata需要约70毫秒。每次调用命令行时减少100毫秒，这样可以提高用户速度，并加快我们的测试速度（测试经常调用命令行）。2. pkg_resources已经有点过时，并正在被importlib替换。https://importlib-metadata.readthedocs.io/en/latest/using.html中描述了其中的一些内容。注意：仅仅做这个更改还不足以完全摆脱对pkg_resources的依赖。我们还必须对setup.py生成的console_scripts做一些处理。那将是一个单独的工作。"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:485
 msgid "Contributors: Alfi Maulana, Audrow Nash, Chris Lalancette, Christophe Bedard, Claire Wang, Evan Flynn, M. Mei, Scott K Logan"
-msgstr "Contributors: Alfi Maulana, Audrow Nash, Chris Lalancette, Christophe Bedard, Claire Wang, Evan Flynn, M. Mei, Scott K Logan"
+msgstr "贡献者：Alfi Maulana，Audrow Nash，Chris Lalancette，Christophe Bedard，Claire Wang，Evan Flynn，M. Mei，Scott K Logan"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:490
@@ -1962,17 +1962,17 @@ msgstr "`ament_cppcheck <https://github.com/ament/ament_lint/tree/galactic/ament
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:494 ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:509
 msgid "Fix file exclusion behavior in ament_cppcheck and ament_cpplint (`#299 <https://github.com/ament/ament_lint/issues/299>`__) * fix exclude behavior in ament_cppcheck and ament_cpplint * fix flake8 errors * add missing realpath() conversion"
-msgstr "Fix file exclusion behavior in ament_cppcheck and ament_cpplint (`#299 <https://github.com/ament/ament_lint/issues/299>`__) * fix exclude behavior in ament_cppcheck and ament_cpplint * fix flake8 errors * add missing realpath() conversion"
+msgstr "修复ament_cppcheck和ament_cpplint中的文件排除行为问题(`#299 <https://github.com/ament/ament_lint/issues/299>`__) * 修复ament_cppcheck和ament_cpplint中的排除行为 * 修复flake8错误 * 添加缺失的realpath()转换"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:497
 msgid "Suppress unknownMacro (`#268 <https://github.com/ament/ament_lint/issues/268>`__) cppcheck creates an unknownMacro error when it cannot resolve a macro. Since we don't pass in all dependent headers, we don't expect all macros to be discoverable by cppcheck."
-msgstr "Suppress unknownMacro (`#268 <https://github.com/ament/ament_lint/issues/268>`__) cppcheck creates an unknownMacro error when it cannot resolve a macro. Since we don't pass in all dependent headers, we don't expect all macros to be discoverable by cppcheck."
+msgstr "抑制unknownMacro错误(`#268 <https://github.com/ament/ament_lint/issues/268>`__) 当cppcheck无法解析宏时，会生成unknownMacro错误。由于我们没有传入所有依赖的头文件，我们不希望cppcheck能够发现所有的宏。"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:500
 msgid "Contributors: Audrow Nash, Chris Lalancette, Claire Wang, Dan Rose, M. Mei, Scott K Logan"
-msgstr "Contributors: Audrow Nash, Chris Lalancette, Claire Wang, Dan Rose, M. Mei, Scott K Logan"
+msgstr "贡献者：Audrow Nash，Chris Lalancette，Claire Wang，Dan Rose，M. Mei，Scott K Logan"
 
 
 #: ../../source/Releases/Galactic-Geochelone-Complete-Changelog.rst:505
