@@ -2931,26 +2931,26 @@
 <li><p>在Transition和State的reset()中记录错误而不是抛出异常，标记为no except (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1297">#1297</a>)</p></li>
 <li><p>删除未使用的私有函数 (rclcpp::Node 和 rclcpp_lifecycle::Node) (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1294">#1294</a>)</p></li>
 <li><p>删除依赖于rmw的单元测试检查 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1293">#1293</a>)</p></li>
-<li><p>Added missing tests for rclcpp lifecycle (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1240">#1240</a>)</p></li>
+<li><p>为rclcpp生命周期添加了缺失的测试 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1240">#1240</a>)</p></li>
 <li><p>关于未使用add_on_set_parameters_callback的结果进行警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1238">#1238</a>)</p></li>
 <li><p>移除已弃用的 set_on_parameters_set_callback 函数 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1199">#1199</a>)</p></li>
 <li><p>提升到 QD 级别 3 并修复链接 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1158">#1158</a>)</p></li>
-<li><p>Fix race in test_lifecycle_service_client (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1204">#1204</a>)</p></li>
+<li><p>修复test_lifecycle_service_client中的竞态条件 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1204">#1204</a>)</p></li>
 <li><p>修复 doxygen 警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1163">#1163</a>)</p></li>
-<li><p>Contributors: Alejandro Hernández Cordero, Andrea Sorbini, BriceRenaudeau, Claire Wang, Colin MacKenzie, Dirk Thomas, Ivan Santiago Paunovic, Jacob Perron, Karsten Knese, Louise Poubel, Nikolai Morin, Stephen Brawner, anaelle-sw, brawner, shonigmann, tomoya</p></li>
+<li><p>贡献者: Alejandro Hernández Cordero, Andrea Sorbini, BriceRenaudeau, Claire Wang, Colin MacKenzie, Dirk Thomas, Ivan Santiago Paunovic, Jacob Perron, Karsten Knese, Louise Poubel, Nikolai Morin, Stephen Brawner, anaelle-sw, brawner, shonigmann, tomoya</p></li>
 </ul>
 </div>
 <div class="section" id="rclpy">
 <h2><a class="reference external" href="https://github.com/ros2/rclpy/tree/galactic/rclpy/CHANGELOG.rst">rclpy</a><a class="headerlink" href="#rclpy" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Break log function execution ASAP if configured severity is too high (<a class="reference external" href="https://github.com/ros2/rclpy/issues/776">#776</a>) (<a class="reference external" href="https://github.com/ros2/rclpy/issues/783">#783</a>)</p></li>
-<li><p>typo fix. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/768">#768</a>)</p></li>
-<li><p>Restore exceptions for Connext and message timestamps on Windows (<a class="reference external" href="https://github.com/ros2/rclpy/issues/765">#765</a>)</p></li>
-<li><p>Use correct type when creating test publisher (<a class="reference external" href="https://github.com/ros2/rclpy/issues/764">#764</a>)</p></li>
-<li><p>Add a test for destroy_node while spinning (<a class="reference external" href="https://github.com/ros2/rclpy/issues/663">#663</a>)</p></li>
-<li><p>Add __enter__ and __exit__ to Waitable (<a class="reference external" href="https://github.com/ros2/rclpy/issues/761">#761</a>)</p></li>
-<li><p>Check if shutdown callback weak method is valid before calling it (<a class="reference external" href="https://github.com/ros2/rclpy/issues/754">#754</a>)</p></li>
-<li><p>Change index.ros.org -&gt; docs.ros.org. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/755">#755</a>)</p></li>
+<li><p>如果配置的严重程度过高，尽快中断日志函数执行 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/776">#776</a>) (<a class="reference external" href="https://github.com/ros2/rclpy/issues/783">#783</a>)</p></li>
+<li><p>修复拼写错误 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/768">#768</a>)</p></li>
+<li><p>恢复Windows上的Connext和消息时间戳的异常处理 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/765">#765</a>)</p></li>
+<li><p>在创建测试发布者时使用正确的类型 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/764">#764</a>)</p></li>
+<li><p>在旋转过程中添加destroy_node的测试 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/663">#663</a>)</p></li>
+<li><p>在Waitable中添加__enter__和__exit__ (<a class="reference external" href="https://github.com/ros2/rclpy/issues/761">#761</a>)</p></li>
+<li><p>在调用之前检查关闭回调弱引用方法是否有效 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/754">#754</a>)</p></li>
+<li><p>将index.ros.org更改为docs.ros.org (<a class="reference external" href="https://github.com/ros2/rclpy/issues/755">#755</a>)</p></li>
 <li><p>Use py::class_ for rcl_event_t (<a class="reference external" href="https://github.com/ros2/rclpy/issues/750">#750</a>)</p></li>
 <li><p>Convert Clock to use a C++ Class (<a class="reference external" href="https://github.com/ros2/rclpy/issues/749">#749</a>)</p></li>
 <li><p>Convert Service to use C++ Class (<a class="reference external" href="https://github.com/ros2/rclpy/issues/747">#747</a>)</p></li>
