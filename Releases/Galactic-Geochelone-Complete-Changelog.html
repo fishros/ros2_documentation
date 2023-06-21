@@ -1372,18 +1372,18 @@
 <li><p>正确检测 Boost Python 2 或 3，修复 <a class="reference external" href="https://github.com/ros-perception/image_common/issues/59">#59</a></p></li>
 <li><p>1.11.11</p></li>
 <li><p>更新变更日志</p></li>
-<li><p>Add install target for python wrapper library</p></li>
-<li><p>Only link against needed Boost libraries 9829b02 introduced a python dependency into find_package(Boost..) which results in ${Boost_LIBRARIES} containing boost_python and such a dependency to libpython at link time. With this patch we only link against the needed libraries.</p></li>
-<li><p>Add python wrapper for readCalibration. Reads .ini or .yaml calibration file and returns camera name and sensor_msgs/cameraInfo.</p></li>
-<li><p>Use $catkin_EXPORTED_TARGETS</p></li>
-<li><p>Remove no-longer-neccessary flags to allow OS X to use 0.3 and 0.5 of yaml-cpp.</p></li>
-<li><p>remove buggy CMake message</p></li>
-<li><p>fix <a class="reference external" href="https://github.com/ros-perception/image_common/issues/39">#39</a></p></li>
-<li><p>make sure test does not fail</p></li>
-<li><p>[camera_calibration_parsers] Better error message when calib file can't be written</p></li>
-<li><p>add rosbash as a test dependency</p></li>
-<li><p>add a test dependency now that we have tests</p></li>
-<li><p>parse distortion of arbitraty length in INI This fixes <a class="reference external" href="https://github.com/ros-perception/image_common/issues/33">#33</a></p></li>
+<li><p>为Python包装库添加安装目标</p></li>
+<li><p>仅链接所需的Boost库 9829b02引入了一个对Python的依赖，结果是${Boost_LIBRARIES}包含boost_python和类似的在链接时对libpython的依赖。通过这个补丁，我们只链接所需的库。</p></li>
+<li><p>为readCalibration添加Python包装器。读取.ini或.yaml标定文件，并返回相机名称和sensor_msgs/cameraInfo。</p></li>
+<li><p>使用$catkin_EXPORTED_TARGETS</p></li>
+<li><p>删除不再需要的标志，以允许OS X使用yaml-cpp的0.3和0.5版本。</p></li>
+<li><p>删除有缺陷的CMake消息</p></li>
+<li><p>修复 <a class="reference external" href="https://github.com/ros-perception/image_common/issues/39">#39</a></p></li>
+<li><p>确保测试不会失败</p></li>
+<li><p>[camera_calibration_parsers] 当无法写入校准文件时提供更好的错误消息</p></li>
+<li><p>将 rosbash 添加为测试依赖项</p></li>
+<li><p>添加一个测试依赖项，因为我们现在有了测试</p></li>
+<li><p>解析INI文件中任意长度的畸变，修复了 <a class="reference external" href="https://github.com/ros-perception/image_common/issues/33">#33</a></p></li>
 <li><p>add a test to parse INI calibration files with 5 or 8 D param</p></li>
 <li><p>Add yaml-cpp case for building on Android</p></li>
 <li><p>Fix catkin_make failure (due to yaml-cpp deps) for mac os</p></li>
@@ -1867,7 +1867,7 @@
 <li><p>1.11.11</p></li>
 <li><p>更新变更日志</p></li>
 <li><p>fix linkage in tutorials</p></li>
-<li><p>Use $catkin_EXPORTED_TARGETS</p></li>
+<li><p>使用$catkin_EXPORTED_TARGETS</p></li>
 <li><p>image_transport: fix CameraSubscriber shutdown (circular shared_ptr ref) CameraSubscriber uses a private boost::shared_ptr to share an impl object between copied instances. In CameraSubscriber::CameraSubscriber(), it handed this shared_ptr to boost::bind() and saved the created wall timer in the impl object, thus creating a circular reference. The impl object was therefore never freed. Fix that by passing a plain pointer to boost::bind().</p></li>
 <li><p>avoid a memory copy for the raw publisher</p></li>
 <li><p>add a way to publish an image with only the data pointer</p></li>
