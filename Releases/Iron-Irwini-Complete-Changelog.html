@@ -1927,28 +1927,28 @@
 <li><p>rosbag2_storage_mcap: 合并到rosbag2仓库 (<a class="reference external" href="https://github.com/ros2/rosbag2/issues/1163">#1163</a>)</p></li>
 <li><p>修复Windows构建 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/73">#73</a>) 更新mcap版本到最新的兼容Windows的发布版。为测试添加可见性宏。为visibility_control添加clang-format预处理程序缩进，以使其可读。</p></li>
 <li><p>mcap_vendor: 更新到v0.6.0 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/69">#69</a>)</p></li>
-<li><p>Cleanup in <code class="docutils literal notranslate"><span class="pre">mcap_vendor</span></code> package (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/62">#62</a>)</p></li>
-<li><p>Switch to using the vendored zstd library. (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/59">#59</a>)</p></li>
-<li><p>Support timestamp-ordered playback (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/50">#50</a>)</p></li>
-<li><p>Support regex topic filtering</p></li>
-<li><p>Add all lz4 sources to fix undefined symbols at runtime (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/46">#46</a>)</p></li>
-<li><p>Upgrade mcap to fix LZ4 error and segfault (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/42">#42</a>) Incorporates fixes from <a class="reference external" href="https://github.com/foxglove/mcap/pull/478">https://github.com/foxglove/mcap/pull/478</a> and <a class="reference external" href="https://github.com/foxglove/mcap/pull/482">https://github.com/foxglove/mcap/pull/482</a></p></li>
-<li><p>Add missing buildtool_depend on git (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/37">#37</a>) This vendor package uses git to fetch sources for other packages. It should declare a dependency on that build tool. This should address the current cause of RPM build failures for RHEL: <a class="reference external" href="https://build.ros2.org/view/Rbin_rhel_el864/job/Rbin_rhel_el864__mcap_vendor__rhel_8_x86_64__binary/">https://build.ros2.org/view/Rbin_rhel_el864/job/Rbin_rhel_el864__mcap_vendor__rhel_8_x86_64__binary/</a></p></li>
-<li><p>Test Foxy &amp; Galactic in CI, fix missing test_depends in mcap_vendor/package.xml (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/33">#33</a>)</p></li>
-<li><p>fix: minor issues (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/31">#31</a>) * remove unnecessary block * use target_link_libraries instead of ament_target_dependencies * remove ros environment * add prefix to compile definition</p></li>
-<li><p>Update email address for Foxglove maintainers (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/32">#32</a>)</p></li>
-<li><p>Added mcap_vendor package. Updated CMakeLists.txt to fetch dependencies with FetchContent rather than Conan.</p></li>
-<li><p>Contributors: Chris Lalancette, Cristóbal Arroyo, Daisuke Nishimatsu, Emerson Knapp, Jacob Bandes-Storch, James Smith, Michael Orlov, Scott K Logan, james-rms</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">mcap_vendor</span></code> 包中进行清理 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/62">#62</a>)</p></li>
+<li><p>切换到使用内置的 zstd 库 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/59">#59</a>)</p></li>
+<li><p>支持按时间戳排序的回放 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/50">#50</a>)</p></li>
+<li><p>支持正则表达式主题过滤</p></li>
+<li><p>添加所有 lz4 源码以修复运行时的未定义符号 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/46">#46</a>)</p></li>
+<li><p>升级 mcap 以修复 LZ4 错误和段错误 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/42">#42</a>) 包含来自 <a class="reference external" href="https://github.com/foxglove/mcap/pull/478">https://github.com/foxglove/mcap/pull/478</a> 和 <a class="reference external" href="https://github.com/foxglove/mcap/pull/482">https://github.com/foxglove/mcap/pull/482</a> 的修复</p></li>
+<li><p>添加丢失的对git的buildtool_depend (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/37">#37</a>) 该供应商包使用git来获取其他软件包的源代码。它应该声明对该构建工具的依赖关系。这应该解决目前在RHEL上的RPM构建失败的原因：<a class="reference external" href="https://build.ros2.org/view/Rbin_rhel_el864/job/Rbin_rhel_el864__mcap_vendor__rhel_8_x86_64__binary/">https://build.ros2.org/view/Rbin_rhel_el864/job/Rbin_rhel_el864__mcap_vendor__rhel_8_x86_64__binary/</a></p></li>
+<li><p>在CI中测试Foxy和Galactic，修复mcap_vendor/package.xml中缺失的test_depends (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/33">#33</a>)</p></li>
+<li><p>修复：次要问题 (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/31">#31</a>) * 移除不必要的块 * 使用target_link_libraries代替ament_target_dependencies * 移除ROS环境 * 添加前缀到编译定义</p></li>
+<li><p>更新Foxglove维护人员的电子邮件地址 (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/32">#32</a>)</p></li>
+<li><p>添加mcap_vendor包。更新CMakeLists.txt，使用FetchContent而不是Conan来获取依赖项。</p></li>
+<li><p>贡献者：Chris Lalancette，Cristóbal Arroyo，Daisuke Nishimatsu，Emerson Knapp，Jacob Bandes-Storch，James Smith，Michael Orlov，Scott S Logan，james-rms</p></li>
 </ul>
 </div>
 <div class="section" id="message-filters">
 <h2><a class="reference external" href="https://github.com/ros2/message_filters/tree/iron/CHANGELOG.rst">message_filters</a><a class="headerlink" href="#message-filters" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Update message_filters to C++17. (<a class="reference external" href="https://github.com/ros2/message_filters/issues/88">#88</a>)</p></li>
-<li><p>Fix cache.h std::placeholder namespace (<a class="reference external" href="https://github.com/ros2/message_filters/issues/87">#87</a>)</p></li>
-<li><p>[rolling] Update maintainers - 2022-11-07 (<a class="reference external" href="https://github.com/ros2/message_filters/issues/85">#85</a>)</p></li>
-<li><p>Add a simpler aproximate time sync policy: ApproximateEpsilonTime (<a class="reference external" href="https://github.com/ros2/message_filters/issues/84">#84</a>)</p></li>
-<li><p>Add latest time zero-order-hold sync policy (<a class="reference external" href="https://github.com/ros2/message_filters/issues/73">#73</a>)</p></li>
+<li><p>将 message_filters 更新至 C++17。(<a class="reference external" href="https://github.com/ros2/message_filters/issues/88">#88</a>)</p></li>
+<li><p>修复 cache.h 中的 std::placeholder 命名空间。(<a class="reference external" href="https://github.com/ros2/message_filters/issues/87">#87</a>)</p></li>
+<li><p>[rolling] 更新维护者信息 - 2022-11-07。(<a class="reference external" href="https://github.com/ros2/message_filters/issues/85">#85</a>)</p></li>
+<li><p>添加一个更简单的近似时间同步策略：ApproximateEpsilonTime。(<a class="reference external" href="https://github.com/ros2/message_filters/issues/84">#84</a>)</p></li>
+<li><p>添加最新时间零阶保持同步策略。(<a class="reference external" href="https://github.com/ros2/message_filters/issues/73">#73</a>)</p></li>
 <li><p>Fix python examples and add a new example in documentation (<a class="reference external" href="https://github.com/ros2/message_filters/issues/79">#79</a>)</p></li>
 <li><p>将rolling镜像同步到master分支</p></li>
 <li><p>Adding fix to subscribe() call with raw node pointer and subscriber options (<a class="reference external" href="https://github.com/ros2/message_filters/issues/76">#76</a>)</p></li>
@@ -3219,20 +3219,20 @@
 <li><p>set defaults for SQLite plugin parity (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/68">#68</a>)</p></li>
 <li><p>rosbag2_storage_mcap: add storage preset profiles (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/57">#57</a>)</p></li>
 <li><p>rename test_fixture_interfaces package to testdata (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/64">#64</a>)</p></li>
-<li><p>Switch to using the vendored zstd library. (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/59">#59</a>)</p></li>
+<li><p>切换到使用内置的 zstd 库 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/59">#59</a>)</p></li>
 <li><p>Add set_read_order reader API (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/54">#54</a>)</p></li>
 <li><p>Some minor improvements in rosbag2_storage_mcap after review (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/58">#58</a>)</p></li>
 <li><p>Revert &quot;rosbag2_storage_mcap: add storage preset profiles&quot;</p></li>
 <li><p>rosbag2_storage_mcap: add storage preset profiles</p></li>
 <li><p>Store IDL message definitions in Schema records when no MSG definition is available (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/43">#43</a>)</p></li>
-<li><p>Support timestamp-ordered playback (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/50">#50</a>)</p></li>
-<li><p>Support regex topic filtering</p></li>
-<li><p>Add all lz4 sources to fix undefined symbols at runtime (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/46">#46</a>)</p></li>
+<li><p>支持按时间戳排序的回放 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/50">#50</a>)</p></li>
+<li><p>支持正则表达式主题过滤</p></li>
+<li><p>添加所有 lz4 源码以修复运行时的未定义符号 (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/46">#46</a>)</p></li>
 <li><p>Upgrade mcap to fix LZ4 error and segfault (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/42">#42</a>)</p></li>
 <li><p>Fix build for Foxy (<a class="reference external" href="https://github.com/ros-tooling/rosbag2_storage_mcap/issues/34">#34</a>)</p></li>
-<li><p>fix: minor issues (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/31">#31</a>) * remove unnecessary block * use target_link_libraries instead of ament_target_dependencies * remove ros environment * add prefix to compile definition</p></li>
-<li><p>Update email address for Foxglove maintainers (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/32">#32</a>)</p></li>
-<li><p>Added mcap_vendor package. Updated CMakeLists.txt to fetch dependencies with FetchContent rather than Conan.</p></li>
+<li><p>修复：次要问题 (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/31">#31</a>) * 移除不必要的块 * 使用target_link_libraries代替ament_target_dependencies * 移除ROS环境 * 添加前缀到编译定义</p></li>
+<li><p>更新Foxglove维护人员的电子邮件地址 (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/32">#32</a>)</p></li>
+<li><p>添加mcap_vendor包。更新CMakeLists.txt，使用FetchContent而不是Conan来获取依赖项。</p></li>
 <li><p>CMake build script will now execute pip install conan automatically.</p></li>
 <li><p>[1.0.0] Use Summary section for get_metadata() and seek(), implement remaining methods (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/17">#17</a>)</p></li>
 <li><p>feat: add play impl (<a class="reference external" href="https://github.com/wep21/rosbag2_storage_mcap/issues/16">#16</a>)</p></li>
