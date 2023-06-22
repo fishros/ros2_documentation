@@ -2292,18 +2292,18 @@
 <li><p>为NodeInterfaces添加默认构造函数 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2094">#2094</a>)</p></li>
 <li><p>修复时钟状态缓存时间为副本而非引用 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2092">#2092</a>)</p></li>
 <li><p>修复-Wmaybe-uninitialized警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2081">#2081</a>)</p></li>
-<li><p>Fix the keep_last warning when using system defaults. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2082">#2082</a>)</p></li>
-<li><p>Add in a fix for older compilers. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2075">#2075</a>)</p></li>
-<li><p>Implement Unified Node Interface (NodeInterfaces class) (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2041">#2041</a>)</p></li>
-<li><p>Do not throw exception if trying to dequeue an empty intra-process buffer (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2061">#2061</a>)</p></li>
-<li><p>Move event callback binding to PublisherBase and SubscriptionBase (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2066">#2066</a>)</p></li>
-<li><p>Implement validity checks for rclcpp::Clock (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2040">#2040</a>)</p></li>
-<li><p>Explicitly set callback type (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2059">#2059</a>)</p></li>
-<li><p>Fix logging macros to build with msvc and cpp20 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2063">#2063</a>)</p></li>
-<li><p>Add clock type to node_options (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1982">#1982</a>)</p></li>
-<li><p>Fix nullptr dereference in prune_requests_older_than (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2008">#2008</a>)</p></li>
-<li><p>Remove templating on to_rcl_subscription_options (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2056">#2056</a>)</p></li>
-<li><p>Fix SharedFuture from async_send_request never becoming valid (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2044">#2044</a>)</p></li>
+<li><p>修复使用系统默认值时的keep_last警告。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2082">#2082</a>）</p></li>
+<li><p>为旧编译器添加修复。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2075">#2075</a>）</p></li>
+<li><p>实现统一节点接口（NodeInterfaces类）。(<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2041">#2041</a>)</p></li>
+<li><p>如果尝试从空的进程内缓冲区中出列，不抛出异常。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2061">#2061</a>）</p></li>
+<li><p>将事件回调绑定移动到PublisherBase和SubscriptionBase。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2066">#2066</a>）</p></li>
+<li><p>为rclcpp::Clock实现有效性检查。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2040">#2040</a>）</p></li>
+<li><p>显式设置回调类型 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2059">#2059</a>)</p></li>
+<li><p>修复使用 msvc 和 cpp20 构建日志宏 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2063">#2063</a>)</p></li>
+<li><p>向 node_options 添加时钟类型 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1982">#1982</a>)</p></li>
+<li><p>修复 prune_requests_older_than 中的 nullptr 解引用 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2008">#2008</a>)</p></li>
+<li><p>移除对 to_rcl_subscription_options 的模板化 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2056">#2056</a>)</p></li>
+<li><p>修复 async_send_request 生成的 SharedFuture 从不变为有效 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2044">#2044</a>)</p></li>
 <li><p>Add in a warning for a KeepLast depth of 0. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2048">#2048</a>)</p></li>
 <li><p>Mark rclcpp::Clock::now() as const (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2050">#2050</a>)</p></li>
 <li><p>Fix a case that did not throw ParameterUninitializedException (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2036">#2036</a>)</p></li>
@@ -2353,7 +2353,7 @@
 <li><p>extract the result response before the callback is issued. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2132">#2132</a>)</p></li>
 <li><p>将所有 rclcpp 包更新至 C++17 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2121">#2121</a>)</p></li>
 <li><p>Fix the GoalUUID to_string representation (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1999">#1999</a>)</p></li>
-<li><p>Explicitly set callback type (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2059">#2059</a>)</p></li>
+<li><p>显式设置回调类型 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2059">#2059</a>)</p></li>
 <li><p>Update maintainers (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2043">#2043</a>)</p></li>
 <li><p>Do not clear entities callbacks on destruction (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2002">#2002</a>)</p></li>
 <li><p>Revert &quot;Introduce executors new spin_for method, replace spin_until_future_complete with spin_until_complete. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1821">#1821</a>) (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1874">#1874</a>)&quot; (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1956">#1956</a>)</p></li>
@@ -2382,8 +2382,8 @@
 <li><p>将所有 rclcpp 包更新至 C++17 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2121">#2121</a>)</p></li>
 <li><p>Use the correct macro for LifecycleNode::get_fully_qualified_name (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2117">#2117</a>)</p></li>
 <li><p>add get_fully_qualified_name to rclcpp_lifecycle (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2115">#2115</a>)</p></li>
-<li><p>Implement Unified Node Interface (NodeInterfaces class) (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2041">#2041</a>)</p></li>
-<li><p>Add clock type to node_options (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1982">#1982</a>)</p></li>
+<li><p>实现统一节点接口（NodeInterfaces类）。(<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2041">#2041</a>)</p></li>
+<li><p>向 node_options 添加时钟类型 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1982">#1982</a>)</p></li>
 <li><p>Update maintainers (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2043">#2043</a>)</p></li>
 <li><p>LifecycleNode on_configure doc fix. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/2034">#2034</a>)</p></li>
 <li><p>Bugfix 20210810 get current state (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1756">#1756</a>)</p></li>
