@@ -2312,30 +2312,30 @@
 <li><p>删除在 galactic 期间被弃用的内容 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1913">#1913</a>)</p></li>
 <li><p>修复了rosdoc2问题（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1897">#1897</a>）</p></li>
 <li><p>安装头文件到include/${PROJECT_NAME} (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1888">#1888</a>)</p></li>
-<li><p>LifecycleNode::on_deactivate deactivate all managed entities. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1885">#1885</a>)</p></li>
-<li><p>Automatically transition lifecycle entities when node transitions (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1863">#1863</a>)</p></li>
+<li><p>LifecycleNode::on_deactivate 停用所有托管实体。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1885">#1885</a>)</p></li>
+<li><p>当节点转换时自动转换生命周期实体。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1863">#1863</a>)</p></li>
 <li><p>按请求移除作者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1818">#1818</a>)</p></li>
 <li><p>更新维护者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1817">#1817</a>)</p></li>
 <li><p>在基准测试中抑制 clang 的未使用变量警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1802">#1802</a>)</p></li>
-<li><p>Update forward declarations of <code class="docutils literal notranslate"><span class="pre">rcl_lifecycle</span></code> types (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1788">#1788</a>)</p></li>
+<li><p>更新``rcl_lifecycle``类型的前向声明。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1788">#1788</a>)</p></li>
 <li><p>废弃了``void shared_ptr&lt;MessageT&gt;``订阅回调签名（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1713">#1713</a>）</p></li>
 <li><p>更新客户端API以能够移除待处理的请求。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>）</p></li>
-<li><p>Change log level for lifecycle_publisher. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1715">#1715</a>)</p></li>
-<li><p>Fix: RCLCPP_PUBLIC -&gt; RCLCPP_LIFECYCLE_PUBLIC (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1732">#1732</a>)</p></li>
-<li><p>Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
+<li><p>更改lifecycle_publisher的日志级别。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1715">#1715</a>)</p></li>
+<li><p>修复：RCLCPP_PUBLIC -&gt; RCLCPP_LIFECYCLE_PUBLIC (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1732">#1732</a>)</p></li>
+<li><p>使用rcpputils/scope_exit.hpp并移除rclcpp/scope_exit.hpp (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
 <li><p>移除不安全的 get_callback_groups API。调用者应改为使用 for_each_callback_group() 或在内部存储所需的回调组。</p></li>
 <li><p>添加 callback_groups_for_each。添加此方法的主要原因是使对 <a href="#id286"><span class="problematic" id="id287">callback_groups_</span></a> 向量的访问线程安全。通过使用接受 std::function 的 callback_groups_for_each，调用者只需提供所需的回调函数，而我们负责加锁。这个相当庞大的 PR 的其余部分是清理所有使用 get_callback_groups() 的地方，改为使用 callback_groups_for_each()。</p></li>
-<li><p>Fix destruction order in lifecycle benchmark (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1675">#1675</a>)</p></li>
+<li><p>修复生命周期基准测试中的销毁顺序 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1675">#1675</a>)</p></li>
 <li><p>[rclcpp] 类型适配功能 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1557">#1557</a>)</p></li>
-<li><p>Contributors: Abrar Rahman Protyasha, Alberto Soragna, Audrow Nash, Chris Lalancette, Christophe Bedard, Ivan Santiago Paunovic, Jacob Perron, Michel Hidalgo, Shane Loretz, Tomoya Fujita, William Woodall</p></li>
+<li><p>贡献者：Abrar Rahman Protyasha，Alberto Soragna，Audrow Nash，Chris Lalancette，Christophe Bedard，Ivan Santiago Paunovic，Jacob Perron，Michel Hidalgo，Shane Loretz，Tomoya Fujita，William Woodall</p></li>
 </ul>
 </div>
 <div class="section" id="rclpy">
 <h2><a class="reference external" href="https://github.com/ros2/rclpy/tree/humble/rclpy/CHANGELOG.rst">rclpy</a><a class="headerlink" href="#rclpy" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Make rclpy dependencies explicit (<a class="reference external" href="https://github.com/ros2/rclpy/issues/906">#906</a>)</p></li>
-<li><p>Avoid exception in Node constructor when use override for 'use_sim_time' (<a class="reference external" href="https://github.com/ros2/rclpy/issues/896">#896</a>)</p></li>
-<li><p>time_until_next_call returns max if timer is canceled. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/910">#910</a>)</p></li>
+<li><p>使rclpy的依赖关系明确 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/906">#906</a>)</p></li>
+<li><p>在使用'use_sim_time'进行覆盖时，避免在节点构造函数中出现异常 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/896">#896</a>)</p></li>
+<li><p>如果计时器已取消，time_until_next_call返回最大值 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/910">#910</a>)</p></li>
 <li><p>Properly implement action server/client handle cleanup. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/905">#905</a>)</p></li>
 <li><p>Make sure to take out contexts on Action{Client,Server}. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/904">#904</a>)</p></li>
 <li><p>Make sure to free the goal_status_array when done using it. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/902">#902</a>)</p></li>
