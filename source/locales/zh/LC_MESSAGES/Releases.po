@@ -31362,32 +31362,32 @@ msgstr "自从Dashing版本以后，您需要先声明一个参数，然后才�
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:76
 msgid "However, you can get the old behavior (mostly, see the note in the next paragraph) by using the ``allow_undeclared_parameters`` option when creating your node. You might want to do this in order to avoid code changes for now, or in order to fulfill some uncommon use cases. For example, a \"global parameter server\" or \"parameter blackboard\" may want to allow external nodes to set new parameters on itself without first declaring them, so it may use the ``allow_undeclared_parameters`` option to accomplish that. In most cases, however, this option is not recommended because it makes the rest of the parameter API less safe to bugs like parameter name typos and \"use before set\" logical errors."
-msgstr "However, you can get the old behavior (mostly, see the note in the next paragraph) by using the ``allow_undeclared_parameters`` option when creating your node. You might want to do this in order to avoid code changes for now, or in order to fulfill some uncommon use cases. For example, a \"global parameter server\" or \"parameter blackboard\" may want to allow external nodes to set new parameters on itself without first declaring them, so it may use the ``allow_undeclared_parameters`` option to accomplish that. In most cases, however, this option is not recommended because it makes the rest of the parameter API less safe to bugs like parameter name typos and \"use before set\" logical errors."
+msgstr "然而，您可以通过在创建节点时使用 ``allow_undeclared_parameters`` 选项来获得旧的行为（大多数情况下，请参阅下一段的注释）。您可能希望暂时这样做，以避免现在进行代码更改，或者以满足一些不常见的用例。例如，\"全局参数服务器\" 或 \"参数黑板\" 可能希望允许外部节点在未声明参数的情况下在自身上设置新的参数，因此它可以使用 ``allow_undeclared_parameters`` 选项来实现该功能。然而，在大多数情况下，不建议使用此选项，因为它会使其他参数 API 对于参数名称拼写错误和 \"在设置之前使用\" 的逻辑错误等 bug 变得不太安全。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:81
 msgid "Note that using ``allow_undeclared_parameters`` will get you most of the old behavior specifically for \"get\" and \"set\" methods, but it will not revert all the behavior changes related to parameters back to how it was for ROS Crystal. For that you need to also set the ``automatically_declare_parameters_from_overrides`` option to ``true``, which is described below in :ref:`Parameter Configuration using a YAML File <parameter-configuration-using-a-yaml-file>`."
-msgstr "Note that using ``allow_undeclared_parameters`` will get you most of the old behavior specifically for \"get\" and \"set\" methods, but it will not revert all the behavior changes related to parameters back to how it was for ROS Crystal. For that you need to also set the ``automatically_declare_parameters_from_overrides`` option to ``true``, which is described below in :ref:`Parameter Configuration using a YAML File <parameter-configuration-using-a-yaml-file>`."
+msgstr "请注意，使用 ``allow_undeclared_parameters`` 选项将为 \"get\" 和 \"set\" 方法提供大部分旧行为，但它不会将与参数相关的所有行为更改恢复到 ROS Crystal 的状态。为此，您还需要将 ``automatically_declare_parameters_from_overrides`` 选项设置为 ``true``，该选项在下面的 :ref:`Parameter Configuration using a YAML File <parameter-configuration-using-a-yaml-file>` 中进行了描述。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:85
 msgid "Declaring a Parameter with a ParameterDescriptor"
-msgstr "Declaring a Parameter with a ParameterDescriptor"
+msgstr "使用 ParameterDescriptor 声明参数"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:87
 msgid "Another benefit to declaring your parameters before using them, is that it allows you to declare a parameter descriptor at the same time."
-msgstr "Another benefit to declaring your parameters before using them, is that it allows you to declare a parameter descriptor at the same time."
+msgstr "在使用参数之前声明参数的另一个好处是可以同时声明参数描述符。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:89
 msgid "Now when declaring a parameter you may include a custom ``ParameterDescriptor`` as well as a name and default value. The ``ParameterDescriptor`` is defined as a message in ``rcl_interfaces/msg/ParameterDescriptor`` and contains meta data like ``description`` and constraints like ``read_only`` or ``integer_range``. These constraints can be used to reject invalid values when setting parameters and/or as hints to external tools about what values are valid for a given parameter. The ``read_only`` constraint will prevent the parameter's value from changing after being declared, as well as prevent if from being undeclared."
-msgstr "Now when declaring a parameter you may include a custom ``ParameterDescriptor`` as well as a name and default value. The ``ParameterDescriptor`` is defined as a message in ``rcl_interfaces/msg/ParameterDescriptor`` and contains meta data like ``description`` and constraints like ``read_only`` or ``integer_range``. These constraints can be used to reject invalid values when setting parameters and/or as hints to external tools about what values are valid for a given parameter. The ``read_only`` constraint will prevent the parameter's value from changing after being declared, as well as prevent if from being undeclared."
+msgstr "现在，当声明参数时，您可以同时包含自定义的 ``ParameterDescriptor``、名称和默认值。``ParameterDescriptor`` 在 ``rcl_interfaces/msg/ParameterDescriptor`` 中定义为一条消息，其中包含诸如 ``description`` 这样的元数据和诸如 ``read_only`` 或 ``integer_range`` 这样的约束。这些约束可用于在设置参数时拒绝无效值，或者作为对外部工具的提示，告知给定参数的有效值是什么。``read_only`` 约束将阻止参数在声明后更改其值，并防止其被撤销声明。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:94
 msgid "For reference, here's a link to the ``ParameterDescriptor`` message as of the time of writing this:"
-msgstr "For reference, here's a link to the ``ParameterDescriptor`` message as of the time of writing this:"
+msgstr "供参考，以下链接是撰写本文时的 ``ParameterDescriptor`` 消息的链接："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:96
@@ -31397,27 +31397,27 @@ msgstr "https://github.com/ros2/rcl_interfaces/blob/0aba5a142878c2077d7a03977087
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:101
 msgid "Parameter Configuration using a YAML File"
-msgstr "Parameter Configuration using a YAML File"
+msgstr "使用YAML文件进行参数配置"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:103
 msgid "As of Dashing, parameters in a YAML configuration file, e.g. passed to the node via the command line argument ``__params:=``, are only used to override a parameter's default value when declaring the parameter."
-msgstr "As of Dashing, parameters in a YAML configuration file, e.g. passed to the node via the command line argument ``__params:=``, are only used to override a parameter's default value when declaring the parameter."
+msgstr "从Dashing版本开始，YAML配置文件中的参数（例如通过命令行参数``__params:=``传递给节点）仅用于在声明参数时覆盖参数的默认值。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:105
 msgid "Before Dashing, any parameters you passed via a YAML file would be implicitly set on the node."
-msgstr "Before Dashing, any parameters you passed via a YAML file would be implicitly set on the node."
+msgstr "在Dashing版本之前，通过YAML文件传递的任何参数都会隐式设置在节点上。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:107
 msgid "Since Dashing, this is no longer the case, as parameters need to be declared in order to appear on the node to external observers, like ``ros2 param list``."
-msgstr "Since Dashing, this is no longer the case, as parameters need to be declared in order to appear on the node to external observers, like ``ros2 param list``."
+msgstr "从Dashing版本开始，情况已经改变，因为需要声明参数才能在节点外部观察者（如``ros2 param list``）中显示参数。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:109
 msgid "The old behavior may be achieved using the ``automatically_declare_parameters_from_overrides`` option when creating a node. This option, if set to ``true``, will automatically declare all parameters in the input YAML file when the node is constructed. This may be used to avoid major changes to your existing code or to serve specific use cases. For example, a \"global parameter server\" may want to be seeded with arbitrary parameters on launch, which it could not have declared ahead of time. Most of the time, however, this option is not recommended, as it may lead to setting a parameter in a YAML file with the assumption that the node will use it, even if the node does not actually use it."
-msgstr "The old behavior may be achieved using the ``automatically_declare_parameters_from_overrides`` option when creating a node. This option, if set to ``true``, will automatically declare all parameters in the input YAML file when the node is constructed. This may be used to avoid major changes to your existing code or to serve specific use cases. For example, a \"global parameter server\" may want to be seeded with arbitrary parameters on launch, which it could not have declared ahead of time. Most of the time, however, this option is not recommended, as it may lead to setting a parameter in a YAML file with the assumption that the node will use it, even if the node does not actually use it."
+msgstr "可以通过在创建节点时使用``automatically_declare_parameters_from_overrides``选项来实现旧的行为。如果将此选项设置为``true``，则在构造节点时会自动声明输入YAML文件中的所有参数。这可以用于避免对现有代码进行重大更改或满足特定的用例。例如，\"全局参数服务器\"可能希望在启动时使用任意参数进行初始化，而事先无法声明这些参数。然而，大多数情况下，不建议使用此选项，因为它可能导致在YAML文件中设置参数，并假设节点会使用该参数，即使节点实际上并未使用该参数。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:115
