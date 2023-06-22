@@ -30967,22 +30967,22 @@ msgstr "有关详细信息，请参见 https://github.com/ros2/rcutils/pull/121�
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:80
 msgid "rmw - ``rmw_init`` API Change"
-msgstr "rmw - ``rmw_init`` API Change"
+msgstr "rmw - ``rmw_init`` API 变更"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:82
 msgid "There are two new structs, the ``rcl_context_t`` and the ``rcl_init_options_t``, which are used with ``rmw_init``. The init options struct is used to pass options down to the middleware and is an input to ``rmw_init``. The context is a handle which is an output of ``rmw_init`` function is used to identify which init-shutdown cycle each entity is associated with, where an \"entity\" is anything created like a node, guard condition, etc."
-msgstr "There are two new structs, the ``rcl_context_t`` and the ``rcl_init_options_t``, which are used with ``rmw_init``. The init options struct is used to pass options down to the middleware and is an input to ``rmw_init``. The context is a handle which is an output of ``rmw_init`` function is used to identify which init-shutdown cycle each entity is associated with, where an \"entity\" is anything created like a node, guard condition, etc."
+msgstr "引入了两个新的结构体：``rcl_context_t`` 和 ``rcl_init_options_t``，它们与 ``rmw_init`` 一起使用。初始化选项结构体用于向中间件传递选项，并作为 ``rmw_init`` 的输入参数。上下文是一个句柄，是 ``rmw_init`` 函数的输出，用于标识每个实体与哪个初始化-关闭周期相关联，其中“实体”可以是节点、守护条件等。"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:86
 msgid "This is listed here because maintainers of alternative rmw implementations will need to implement these new functions to have their rmw implementation work in Crystal."
-msgstr "This is listed here because maintainers of alternative rmw implementations will need to implement these new functions to have their rmw implementation work in Crystal."
+msgstr "将此列在此处是因为替代 rmw 实现的维护人员需要实现这些新函数，以使其 rmw 实现在 Crystal 中正常工作。"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:88
 msgid "This is the function that had a signature change:"
-msgstr "This is the function that had a signature change:"
+msgstr "这是函数的签名发生变化的地方："
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:90
@@ -30992,7 +30992,7 @@ msgstr "`rmw_init <https://github.com/ros2/rmw/blob/b7234243588a70fce105ea20b073
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:92
 msgid "Additionally, there are these new functions which need to be implemented by each rmw implementation:"
-msgstr "Additionally, there are these new functions which need to be implemented by each rmw implementation:"
+msgstr "此外，每个 rmw 实现都需要实现以下这些新函数："
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:94
@@ -31017,7 +31017,7 @@ msgstr "`rmw_init_options_fini <https://github.com/ros2/rmw/blob/b7234243588a70f
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:99
 msgid "Here's an example of what minimally needs to be changed in an rmw implementation to adhere to this API change:"
-msgstr "Here's an example of what minimally needs to be changed in an rmw implementation to adhere to this API change:"
+msgstr "以下是一个示例，最小限度地更改 rmw 实现以符合此 API 更改："
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:101
@@ -31027,22 +31027,22 @@ msgstr "`rmw_fastrtps pr <https://github.com/ros2/rmw_fastrtps/pull/237/files>`_
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:103
 msgid "rcl - ``rcl_init`` API Change"
-msgstr "rcl - ``rcl_init`` API Change"
+msgstr "rcl - ``rcl_init`` API变更"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:105
 msgid "Like the ``rmw`` change above, there's two new structs in ``rcl`` called ``rcl_context_t`` and ``rcl_init_options_t``. The init options are passed into ``rcl_init`` as an input and the context is passed in as an output. The context is used to associate all other rcl entities to a specific init-shutdown cycle, effectively making init and shutdown no longer global functions, or rather those functions no longer use an global state and instead encapsulate all state within the context type."
-msgstr "Like the ``rmw`` change above, there's two new structs in ``rcl`` called ``rcl_context_t`` and ``rcl_init_options_t``. The init options are passed into ``rcl_init`` as an input and the context is passed in as an output. The context is used to associate all other rcl entities to a specific init-shutdown cycle, effectively making init and shutdown no longer global functions, or rather those functions no longer use an global state and instead encapsulate all state within the context type."
+msgstr "和上面的``rmw``变更一样，在``rcl``中引入了两个新的结构体，分别是``rcl_context_t``和``rcl_init_options_t``。初始化选项被作为输入参数传递给``rcl_init``函数，而上下文则作为输出参数传递。上下文用于将所有其他的rcl实体关联到特定的初始化-关闭周期，有效地使初始化和关闭不再是全局函数，或者说这些函数不再使用全局状态，而是将所有状态封装在上下文类型中。"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:109
 msgid "Any maintainers of a client library implementation (that also uses ``rcl`` under the hood) will need to make changes to work with Crystal."
-msgstr "Any maintainers of a client library implementation (that also uses ``rcl`` under the hood) will need to make changes to work with Crystal."
+msgstr "任何一个客户端库实现的维护者（也在底层使用``rcl``）都需要进行更改以适应Crystal。"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:111
 msgid "These functions were removed:"
-msgstr "These functions were removed:"
+msgstr "以下函数已被移除:"
 
 
 #: ../../source/Releases/Release-Crystal-Clemmys.rst:113
