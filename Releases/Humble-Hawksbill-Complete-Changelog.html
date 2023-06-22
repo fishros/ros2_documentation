@@ -2233,24 +2233,24 @@
 <li><p>使用FindPython3并明确python3依赖关系。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1745">#1745</a>)</p></li>
 <li><p>使用rosidl_get_typesupport_target()。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1729">#1729</a>)</p></li>
 <li><p>修复：如果sub_namespace为空，则返回无效的命名空间。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1658">#1658</a>)</p></li>
-<li><p>Add free function to wait for a subscription message. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1705">#1705</a>)</p></li>
-<li><p>Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
-<li><p>Remove unsafe get_callback_groups API. Callers should change to using for_each_callback_group(), or store the callback groups they need internally.</p></li>
-<li><p>Add in callback_groups_for_each. The main reason to add this method in is to make accesses to the callback_groups_ vector thread-safe.  By having a callback_groups_for_each that accepts a std::function, we can just have the callers give us the callback they are interested in, and we can take care of the locking. The rest of this fairly large PR is cleaning up all of the places that use get_callback_groups() to instead use callback_groups_for_each().</p></li>
-<li><p>Use a different mechanism to avoid timers being scheduled multiple times by the MultiThreadedExecutor (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1692">#1692</a>)</p></li>
-<li><p>Fix windows CI (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1726">#1726</a>) Fix bug in AnyServiceCallback introduced in <a class="reference external" href="https://github.com/ros2/rclcpp/issues/1709">#1709</a>.</p></li>
-<li><p>Support to defer to send a response in services. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1709">#1709</a>) Signed-off-by: Ivan Santiago Paunovic &lt;<a class="reference external" href="mailto:ivanpauno&#37;&#52;&#48;ekumenlabs&#46;com">ivanpauno<span>&#64;</span>ekumenlabs<span>&#46;</span>com</a>&gt;</p></li>
-<li><p>Fix documentation bug. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1719">#1719</a>) Signed-off-by: William Woodall &lt;<a class="reference external" href="mailto:william&#37;&#52;&#48;osrfoundation&#46;org">william<span>&#64;</span>osrfoundation<span>&#46;</span>org</a>&gt;</p></li>
-<li><p>Removed left over <code class="docutils literal notranslate"><span class="pre">is_initialized()</span></code> implementation (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1711">#1711</a>) Leftover from <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1622">https://github.com/ros2/rclcpp/pull/1622</a></p></li>
-<li><p>Fixed declare parameter methods for int and float vectors (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1696">#1696</a>)</p></li>
-<li><p>Cleaned up implementation of the intra-process manager (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1695">#1695</a>)</p></li>
-<li><p>Added the node name to an executor <code class="docutils literal notranslate"><span class="pre">runtime_error</span></code> (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1686">#1686</a>)</p></li>
-<li><p>Fixed a typo &quot;Attack&quot; -&gt; &quot;Attach&quot; (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1687">#1687</a>)</p></li>
-<li><p>Removed use of std::allocator&lt;&gt;::rebind (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1678">#1678</a>) rebind is deprecated in c++17 and removed in c++20</p></li>
-<li><p>Allow declare uninitialized parameters (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1673">#1673</a>)</p></li>
-<li><p>Fix syntax issue with gcc (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1674">#1674</a>)</p></li>
-<li><p>[service] Don't use a weak_ptr to avoid leaking (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1668">#1668</a>)</p></li>
-<li><p>Fix doc typo (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1663">#1663</a>)</p></li>
+<li><p>为等待订阅消息添加自由函数。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1705">#1705</a>)</p></li>
+<li><p>使用 rcpputils/scope_exit.hpp 并删除 rclcpp/scope_exit.hpp。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
+<li><p>移除不安全的 get_callback_groups API。调用者应改为使用 for_each_callback_group() 或在内部存储所需的回调组。</p></li>
+<li><p>添加 callback_groups_for_each。添加此方法的主要原因是使对 <a href="#id284"><span class="problematic" id="id285">callback_groups_</span></a> 向量的访问线程安全。通过使用接受 std::function 的 callback_groups_for_each，调用者只需提供所需的回调函数，而我们负责加锁。这个相当庞大的 PR 的其余部分是清理所有使用 get_callback_groups() 的地方，改为使用 callback_groups_for_each()。</p></li>
+<li><p>使用不同机制避免 MultiThreadedExecutor 多次调度定时器。(<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1692">#1692</a>)</p></li>
+<li><p>修复 Windows CI (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1726">#1726</a>)。修复 AnyServiceCallback 中引入的错误 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1709">#1709</a>)。</p></li>
+<li><p>支持延迟发送服务响应。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1709">#1709</a>）签署者：Ivan Santiago Paunovic &lt;<a class="reference external" href="mailto:ivanpauno&#37;&#52;&#48;ekumenlabs&#46;com">ivanpauno<span>&#64;</span>ekumenlabs<span>&#46;</span>com</a>&gt;</p></li>
+<li><p>修复文档错误。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1719">#1719</a>）签署者：William Woodall &lt;<a class="reference external" href="mailto:william&#37;&#52;&#48;osrfoundation&#46;org">william<span>&#64;</span>osrfoundation<span>&#46;</span>org</a>&gt;</p></li>
+<li><p>删除剩余的``is_initialized()``实现。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1711">#1711</a>）来源于 <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1622">https://github.com/ros2/rclcpp/pull/1622</a></p></li>
+<li><p>修复int和float向量的声明参数方法。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1696">#1696</a>）</p></li>
+<li><p>清理了进程内管理器的实现。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1695">#1695</a>）</p></li>
+<li><p>在executor的``runtime_error``中添加了节点名称。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1686">#1686</a>）</p></li>
+<li><p>修正了一个拼写错误 &quot;Attack&quot; -&gt; &quot;Attach&quot; (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1687">#1687</a>)</p></li>
+<li><p>移除了对 std::allocator&lt;&gt;::rebind 的使用 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1678">#1678</a>)，在 C++17 中已被弃用并在 C++20 中被移除</p></li>
+<li><p>允许声明未初始化的参数 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1673">#1673</a>)</p></li>
+<li><p>修复了与 gcc 的语法问题 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1674">#1674</a>)</p></li>
+<li><p>[service] 不使用 weak_ptr 以避免内存泄漏 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1668">#1668</a>)</p></li>
+<li><p>修正了文档中的拼写错误 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1663">#1663</a>)</p></li>
 <li><p>[rclcpp] Type Adaptation feature (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1557">#1557</a>)</p></li>
 <li><p>Do not attempt to use void allocators for memory allocation. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1657">#1657</a>)</p></li>
 <li><p>Keep custom allocator in publisher and subscription options alive. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1647">#1647</a>)</p></li>
@@ -2275,7 +2275,7 @@
 <li><p>更新维护者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1817">#1817</a>)</p></li>
 <li><p>在基准测试中抑制 clang 的未使用变量警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1802">#1802</a>)</p></li>
 <li><p>Deprecate the <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">shared_ptr&lt;MessageT&gt;</span></code> subscription callback signatures (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1713">#1713</a>)</p></li>
-<li><p>Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
+<li><p>使用 rcpputils/scope_exit.hpp 并删除 rclcpp/scope_exit.hpp。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
 <li><p>Fixed occasionally missing goal result caused by race condition (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1677">#1677</a>)</p></li>
 <li><p>Bump the benchmark timeout for benchmark_action_client (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1671">#1671</a>)</p></li>
 <li><p>Returns CancelResponse::REJECT while goal handle failed to transit to CANCELING state (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1641">#1641</a>)</p></li>
@@ -2323,8 +2323,8 @@
 <li><p>Change log level for lifecycle_publisher. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1715">#1715</a>)</p></li>
 <li><p>Fix: RCLCPP_PUBLIC -&gt; RCLCPP_LIFECYCLE_PUBLIC (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1732">#1732</a>)</p></li>
 <li><p>Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
-<li><p>Remove unsafe get_callback_groups API. Callers should change to using for_each_callback_group(), or store the callback groups they need internally.</p></li>
-<li><p>Add in callback_groups_for_each. The main reason to add this method in is to make accesses to the callback_groups_ vector thread-safe.  By having a callback_groups_for_each that accepts a std::function, we can just have the callers give us the callback they are interested in, and we can take care of the locking. The rest of this fairly large PR is cleaning up all of the places that use get_callback_groups() to instead use callback_groups_for_each().</p></li>
+<li><p>移除不安全的 get_callback_groups API。调用者应改为使用 for_each_callback_group() 或在内部存储所需的回调组。</p></li>
+<li><p>添加 callback_groups_for_each。添加此方法的主要原因是使对 <a href="#id286"><span class="problematic" id="id287">callback_groups_</span></a> 向量的访问线程安全。通过使用接受 std::function 的 callback_groups_for_each，调用者只需提供所需的回调函数，而我们负责加锁。这个相当庞大的 PR 的其余部分是清理所有使用 get_callback_groups() 的地方，改为使用 callback_groups_for_each()。</p></li>
 <li><p>Fix destruction order in lifecycle benchmark (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1675">#1675</a>)</p></li>
 <li><p>[rclcpp] Type Adaptation feature (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1557">#1557</a>)</p></li>
 <li><p>Contributors: Abrar Rahman Protyasha, Alberto Soragna, Audrow Nash, Chris Lalancette, Christophe Bedard, Ivan Santiago Paunovic, Jacob Perron, Michel Hidalgo, Shane Loretz, Tomoya Fujita, William Woodall</p></li>
