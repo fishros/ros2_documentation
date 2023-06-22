@@ -2221,18 +2221,18 @@
 <li><p>修复ParameterEventHandler实现中危险的std::bind捕获 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1770">#1770</a>)</p></li>
 <li><p>处理sigterm，与处理sigint的方式相同 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1771">#1771</a>)</p></li>
 <li><p>rclcpp::Node的拷贝构造函数：复制node_waitables_成员 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1799">#1799</a>)</p></li>
-<li><p>Extend NodeGraph to match what rcl provides. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1484">#1484</a>)</p></li>
-<li><p>Context::sleep_for(): replace recursion with do-while to avoid potential stack-overflow. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1765">#1765</a>)</p></li>
-<li><p>extend_sub_namespace(): Verify string::empty() before calling string::front(). (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1764">#1764</a>)</p></li>
-<li><p>Deprecate the <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">shared_ptr&lt;MessageT&gt;</span></code> subscription callback signatures. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1713">#1713</a>)</p></li>
-<li><p>Remove can_be_nullptr assignment check for QNX case. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1752">#1752</a>)</p></li>
-<li><p>Update client API to be able to remove pending requests. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>)</p></li>
-<li><p>Fix: Allow to add a node while spinning in the StaticSingleThreadedExecutor. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1690">#1690</a>)</p></li>
-<li><p>Add tracing instrumentation for executor and message taking. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1738">#1738</a>)</p></li>
-<li><p>Fix: Reset timer trigger time before execute in StaticSingleThreadedExecutor. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1739">#1739</a>)</p></li>
-<li><p>Use FindPython3 and make python3 dependency explicit. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1745">#1745</a>)</p></li>
-<li><p>Use rosidl_get_typesupport_target(). (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1729">#1729</a>)</p></li>
-<li><p>Fix returning invalid namespace if sub_namespace is empty. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1658">#1658</a>)</p></li>
+<li><p>扩展NodeGraph以匹配rcl提供的功能。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1484">#1484</a>）</p></li>
+<li><p>Context::sleep_for()：将递归替换为do-while，以避免潜在的堆栈溢出。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1765">#1765</a>）</p></li>
+<li><p>extend_sub_namespace()：在调用string::front()之前验证string::empty()。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1764">#1764</a>）</p></li>
+<li><p>废弃``void shared_ptr&lt;MessageT&gt;``订阅回调函数签名。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1713">#1713</a>）</p></li>
+<li><p>针对QNX情况移除can_be_nullptr赋值检查。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1752">#1752</a>）</p></li>
+<li><p>更新客户端API以能够移除待处理的请求。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>）</p></li>
+<li><p>修复：在StaticSingleThreadedExecutor中旋转时允许添加节点。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1690">#1690</a>)</p></li>
+<li><p>为执行器和消息接收添加跟踪仪器。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1738">#1738</a>)</p></li>
+<li><p>修复：在StaticSingleThreadedExecutor中执行之前重置计时器触发时间。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1739">#1739</a>)</p></li>
+<li><p>使用FindPython3并明确python3依赖关系。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1745">#1745</a>)</p></li>
+<li><p>使用rosidl_get_typesupport_target()。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1729">#1729</a>)</p></li>
+<li><p>修复：如果sub_namespace为空，则返回无效的命名空间。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1658">#1658</a>)</p></li>
 <li><p>Add free function to wait for a subscription message. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1705">#1705</a>)</p></li>
 <li><p>Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
 <li><p>Remove unsafe get_callback_groups API. Callers should change to using for_each_callback_group(), or store the callback groups they need internally.</p></li>
@@ -2300,7 +2300,7 @@
 <li><p>按请求移除作者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1818">#1818</a>)</p></li>
 <li><p>更新维护者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1817">#1817</a>)</p></li>
 <li><p>在基准测试中抑制 clang 的未使用变量警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1802">#1802</a>)</p></li>
-<li><p>Update client API to be able to remove pending requests. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>)</p></li>
+<li><p>更新客户端API以能够移除待处理的请求。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>）</p></li>
 <li><p>Deprecate method names that use CamelCase in rclcpp_components. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1716">#1716</a>)</p></li>
 <li><p>Added a hook to generate node options in ComponentManager (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1702">#1702</a>)</p></li>
 <li><p>Contributors: Alberto Soragna, Chris Lalancette, Daisuke Nishimatsu, Hirokazu Ishida, Ivan Santiago Paunovic, Jacob Perron, Rebecca Butler, Shane Loretz, gezp</p></li>
@@ -2319,7 +2319,7 @@
 <li><p>在基准测试中抑制 clang 的未使用变量警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1802">#1802</a>)</p></li>
 <li><p>Update forward declarations of <code class="docutils literal notranslate"><span class="pre">rcl_lifecycle</span></code> types (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1788">#1788</a>)</p></li>
 <li><p>Deprecate the <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">shared_ptr&lt;MessageT&gt;</span></code> subscription callback signatures (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1713">#1713</a>)</p></li>
-<li><p>Update client API to be able to remove pending requests. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>)</p></li>
+<li><p>更新客户端API以能够移除待处理的请求。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>）</p></li>
 <li><p>Change log level for lifecycle_publisher. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1715">#1715</a>)</p></li>
 <li><p>Fix: RCLCPP_PUBLIC -&gt; RCLCPP_LIFECYCLE_PUBLIC (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1732">#1732</a>)</p></li>
 <li><p>Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
