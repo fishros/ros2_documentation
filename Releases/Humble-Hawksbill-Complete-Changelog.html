@@ -1109,46 +1109,46 @@
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
 <li><p>添加 cppcheck 库选项（<a class="reference external" href="https://github.com/ament/ament_lint/issues/323">#323</a>）* 添加 ament_cppcheck 库选项* 通过 CMake 传递库选项合著者：William Wedler &lt;<a class="reference external" href="mailto:william&#46;wedler&#37;&#52;&#48;resquared&#46;com">william<span>&#46;</span>wedler<span>&#64;</span>resquared<span>&#46;</span>com</a>&gt;</p></li>
-<li><p>Contributors: Audrow Nash, Chris Lalancette, Will</p></li>
+<li><p>贡献者：Audrow Nash，Chris Lalancette，Will</p></li>
 </ul>
 </div>
 <div class="section" id="ament-cpplint">
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_cpplint/CHANGELOG.rst">ament_cpplint</a><a class="headerlink" href="#ament-cpplint" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>ignore NOLINT comments with categories that come from clang-tidy (<a class="reference external" href="https://github.com/ament/ament_lint/issues/339">#339</a>)</p></li>
+<li><p>忽略来自clang-tidy的分类NOLINT注释（<a class="reference external" href="https://github.com/ament/ament_lint/issues/339">#339</a>）</p></li>
 <li><p>在更改日志中更新即将发布的版本</p></li>
-<li><p>Reapply patches Reapply parts of 232428752251de61e84ef013bcd643e35eb9038d that are still relevant.</p></li>
-<li><p>Update cpplint version Point to the fork <a class="reference external" href="https://github.com/cpplint/cpplint">https://github.com/cpplint/cpplint</a> Contains updates for modern C++ standards (e.g. C++14 and C++17).</p></li>
+<li><p>重新应用补丁重新应用仍然相关的部分232428752251de61e84ef013bcd643e35eb9038d。</p></li>
+<li><p>更新cpplint版本指向https://github.com/cpplint/cpplint分支 包含对现代C++标准（例如C++14和C++17）的更新。</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
 <li><p>[ament_copyright] 修复文件排除行为 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] 修复文件排除行为 此提交修复了https://github.com/ament/ament_lint/issues/326中报告的错误的文件排除行为。具体来说，排除列表与``crawler``模块中遍历的文件进行匹配。受https://github.com/ament/ament_lint/pull/299/启发的更改。 * 在版权测试中更新排除文件路径 由于文件名不再在整个搜索树中不加区别地匹配，因此需要根据软件包的根目录更新版权测试中列出的排除文件。 * 添加测试用例以检查排除行为 具体来说，这些测试用例检查以下内容： - 错误排除单个文件名。 - 正确排除相对/绝对路径的文件名。 - 正确排除带有通配符的路径。 * 为crawler模块添加单元测试 这些单元测试确保``ament_copyright.crawler``模块正确展示了搜索和排除行为。</p></li>
-<li><p>Contributors: Abrar Rahman Protyasha, Audrow Nash, Dirk Thomas, Jacob Perron, William Woodall</p></li>
+<li><p>贡献者：Abrar Rahman Protyasha，Audrow Nash，Dirk Thomas，Jacob Perron，William Woodall</p></li>
 </ul>
 </div>
 <div class="section" id="ament-flake8">
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_flake8/CHANGELOG.rst">ament_flake8</a><a class="headerlink" href="#ament-flake8" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Remove use of distutils.version.LooseVersion. (<a class="reference external" href="https://github.com/ament/ament_lint/issues/346">#346</a>)</p></li>
+<li><p>移除对distutils.version.LooseVersion的使用。(<a class="reference external" href="https://github.com/ament/ament_lint/issues/346">#346</a>)</p></li>
 <li><p>在更改日志中更新即将发布的版本</p></li>
-<li><p>Ignore .*/_* dirs in ament_flake8 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/335">#335</a>) Other ament_* linters specifically ignore directories starting with a dot or underscore when crawling for files to lint. They also do so implicitly, so this change mimics that same pattern so that the behavior is consistent.</p></li>
+<li><p>在ament_flake8中忽略匹配.*_/*的目录。(<a class="reference external" href="https://github.com/ament/ament_lint/issues/335">#335</a>) 其他以ament_*开头的lint工具在遍历要进行lint检查的文件时，都会忽略以点号或下划线开头的目录。它们也会隐式地执行此操作，因此此更改模仿相同的模式，以保持行为的一致性。</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
-<li><p>Ignore flake8-blind-except B902 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/292">#292</a>)</p></li>
-<li><p>Contributors: Audrow Nash, Chris Lalancette, Scott K Logan</p></li>
+<li><p>忽略flake8-blind-except B902。(<a class="reference external" href="https://github.com/ament/ament_lint/issues/292">#292</a>)</p></li>
+<li><p>贡献者：Audrow Nash，Chris Lalancette，Scott K Logan</p></li>
 </ul>
 </div>
 <div class="section" id="ament-index-cpp">
 <h2><a class="reference external" href="https://github.com/ament/ament_index/tree/humble/ament_index_cpp/CHANGELOG.rst">ament_index_cpp</a><a class="headerlink" href="#ament-index-cpp" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Install includes to include/ (<a class="reference external" href="https://github.com/ament/ament_index/issues/83">#83</a>)</p></li>
-<li><p>Remove ament_export_include_directories and ament_export_libraries (<a class="reference external" href="https://github.com/ament/ament_index/issues/81">#81</a>)</p></li>
+<li><p>安装包含到include/目录中 (<a class="reference external" href="https://github.com/ament/ament_index/issues/83">#83</a>)</p></li>
+<li><p>移除ament_export_include_directories和ament_export_libraries (<a class="reference external" href="https://github.com/ament/ament_index/issues/81">#81</a>)</p></li>
 <li><p>贡献者：Shane Loretz</p></li>
 </ul>
 </div>
 <div class="section" id="ament-index-python">
 <h2><a class="reference external" href="https://github.com/ament/ament_index/tree/humble/ament_index_python/CHANGELOG.rst">ament_index_python</a><a class="headerlink" href="#ament-index-python" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Print warning when get_package_share_directory() does not exist (Fix <a class="reference external" href="https://github.com/ament/ament_index/issues/74">#74</a>) (<a class="reference external" href="https://github.com/ament/ament_index/issues/77">#77</a>)</p></li>
-<li><p>Fail lookups on invalid resource names (<a class="reference external" href="https://github.com/ament/ament_index/issues/69">#69</a>)</p></li>
-<li><p>Add get_package_share_path method (<a class="reference external" href="https://github.com/ament/ament_index/issues/73">#73</a>)</p></li>
+<li><p>在get_package_share_directory()不存在时打印警告 (修复`#74 &lt;<a class="reference external" href="https://github.com/ament/ament_index/issues/74">https://github.com/ament/ament_index/issues/74</a>&gt;`__) (<a class="reference external" href="https://github.com/ament/ament_index/issues/77">#77</a>)</p></li>
+<li><p>对于无效的资源名称，查找失败 (<a class="reference external" href="https://github.com/ament/ament_index/issues/69">#69</a>)</p></li>
+<li><p>添加get_package_share_path方法 (<a class="reference external" href="https://github.com/ament/ament_index/issues/73">#73</a>)</p></li>
 <li><p>Contributors: David V. Lu, rob-clarke</p></li>
 </ul>
 </div>
@@ -1219,7 +1219,7 @@
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_pep257/CHANGELOG.rst">ament_pep257</a><a class="headerlink" href="#ament-pep257" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>通过澄清不同工具的目的来改进文档 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/357">#357</a>)</p></li>
-<li><p>Remove use of distutils.version.LooseVersion. (<a class="reference external" href="https://github.com/ament/ament_lint/issues/346">#346</a>)</p></li>
+<li><p>移除对distutils.version.LooseVersion的使用。(<a class="reference external" href="https://github.com/ament/ament_lint/issues/346">#346</a>)</p></li>
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
 <li><p>Contributors: Audrow Nash, Bi0T1N, Chris Lalancette</p></li>
