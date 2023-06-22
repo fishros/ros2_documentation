@@ -498,21 +498,20 @@
 <li><p><a class="reference external" href="https://github.com/ros2/rcl/blob/657d9e84c73e4268176efd163e96fda73c1a76d9/rcl/include/rcl/publisher.h#L378-L404">rcl_publisher_get_context</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rcl/blob/657d9e84c73e4268176efd163e96fda73c1a76d9/rcl/include/rcl/publisher.h#L428-L439">rcl_publisher_is_valid_except_context</a></p></li>
 </ul>
-<p>These new and changed functions will impact how you handle init and shutdown in your client library.
-For examples, look at the following <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> and <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> PR's:</p>
+<p>这些新的和修改过的函数将影响您在客户端库中处理初始化和关闭的方式。有关示例，请查看以下 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> PR：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/587">rclcpp</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rclpy/pull/249">rclpy</a></p></li>
 </ul>
-<p>However, you may just continue to offer a single, global init and shutdown in your client library, and just store a single global context object.</p>
+<p>但是，您可以继续在您的客户端库中提供单个全局初始化和关闭，并只存储一个全局上下文对象。</p>
 </li>
 </ul>
 </div>
 <div class="section" id="known-issues">
 <h2><a class="toc-backref" href="#id4">已知问题</a><a class="headerlink" href="#known-issues" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>A race condition in Fast-RTPS 1.7.0 may cause messages to drop under stress (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/258">Issue</a>).</p></li>
-<li><p>Using the TRANSIENT_LOCAL QoS setting with rmw_fastrtps_cpp can crash applications with large messages (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/257">Issue</a>).</p></li>
+<li><p>Fast-RTPS 1.7.0 中的竞争条件可能会在压力下导致消息丢失（<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/258">Issue</a>）。</p></li>
+<li><p>在使用 rmw_fastrtps_cpp 的 TRANSIENT_LOCAL QoS 设置时，可能会导致具有大消息的应用程序崩溃（<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/257">Issue</a>）。</p></li>
 <li><p>Cross-vendor communication between rmw_fastrtps_cpp and other implementations is not functioning on Windows (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/246">Issue</a>).</p></li>
 <li><p>When using OpenSplice (version &lt; 6.9.190227) on macOS and Windows you might experience naming conflicts when when referencing field types with names from other packages if the same name also exist in the current package (<a class="reference external" href="https://github.com/ros2/rmw_opensplice/issues/259">Issue</a>).
 By updating to a newer OpenSplice version as well as at least the third patch release of Crystal the problem should be resolved.
