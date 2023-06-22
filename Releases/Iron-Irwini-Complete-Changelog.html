@@ -2554,22 +2554,22 @@
 <li><p>将writer_guid从int8_t更改为uint8_t以与rmw_gid_t保持一致 (<a class="reference external" href="https://github.com/ros2/rmw/issues/329">#329</a>)</p></li>
 <li><p>将rmw更新到C++17 (<a class="reference external" href="https://github.com/ros2/rmw/issues/346">#346</a>)</p></li>
 <li><p>将GID存储减小到16字节 (<a class="reference external" href="https://github.com/ros2/rmw/issues/345">#345</a>)</p></li>
-<li><p>Move the RMW_CHECK_TYPE_IDENTIFIERS_MATCH macro to a C header. (<a class="reference external" href="https://github.com/ros2/rmw/issues/343">#343</a>)</p></li>
-<li><p>[rolling] Update maintainers - 2022-11-07 (<a class="reference external" href="https://github.com/ros2/rmw/issues/337">#337</a>)</p></li>
-<li><p>Remove unused test_loaned_message_sequence.cpp (<a class="reference external" href="https://github.com/ros2/rmw/issues/336">#336</a>)</p></li>
-<li><p>callback can be NULL to clear in Listener APIs. (<a class="reference external" href="https://github.com/ros2/rmw/issues/332">#332</a>)</p></li>
-<li><p>Add rmw_get_gid_for_client method (<a class="reference external" href="https://github.com/ros2/rmw/issues/327">#327</a>)</p></li>
-<li><p>Add 'best available' QoS policies (<a class="reference external" href="https://github.com/ros2/rmw/issues/320">#320</a>) The best available policy should select the highest level of service for the QoS setting while matching with the majority of endpoints. For example, in the case of a DDS middleware subscription, this means: * Prefer reliable reliability if all existing publishers on the same topic are reliable, otherwise use best effort. * Prefer transient local durability if all existing publishers on the same topic are transient local, otherwise use volatile. * Prefer manual by topic liveliness if all existing publishers on the same topic are manual by topic, otherwise use automatic. * Use a deadline that is equal to the largest deadline of existing publishers on the same topic. * Use a liveliness lease duration that is equal to the largest lease duration of existing publishers on the same topic.</p></li>
-<li><p>Move statuses definitions to rmw/events_statuses/ (<a class="reference external" href="https://github.com/ros2/rmw/issues/232">#232</a>)</p></li>
-<li><p>Contributors: Audrow Nash, Barry Xu, Brian, Chris Lalancette, Emerson Knapp, Geoffrey Biggs, Jacob Perron, Lee, Minju, Nikolai Morin, Tomoya Fujita, William Woodall, methylDragon</p></li>
+<li><p>将 RMW_CHECK_TYPE_IDENTIFIERS_MATCH 宏移动到 C 头文件中。（<a class="reference external" href="https://github.com/ros2/rmw/issues/343">#343</a>）</p></li>
+<li><p>[rolling] 更新维护者 - 2022-11-07（<a class="reference external" href="https://github.com/ros2/rmw/issues/337">#337</a>）</p></li>
+<li><p>删除未使用的 test_loaned_message_sequence.cpp（<a class="reference external" href="https://github.com/ros2/rmw/issues/336">#336</a>）</p></li>
+<li><p>回调可以为 NULL 以在监听器 API 中清除。（<a class="reference external" href="https://github.com/ros2/rmw/issues/332">#332</a>）</p></li>
+<li><p>添加 rmw_get_gid_for_client 方法（<a class="reference external" href="https://github.com/ros2/rmw/issues/327">#327</a>）</p></li>
+<li><p>添加“最佳可用”QoS 策略（<a class="reference external" href="https://github.com/ros2/rmw/issues/320">#320</a>）最佳可用策略应该选择在 QoS 设置中具有最高服务级别的选项，并与大多数端点匹配。例如，在 DDS 中间件订阅的情况下，这意味着： * 如果同一主题上的所有现有发布者都是可靠的，则优先选择可靠性，否则使用尽力而为。 * 如果同一主题上的所有现有发布者都是瞬态本地的，则优先选择瞬态本地持久性，否则使用易失性。 * 如果同一主题上的所有现有发布者都是手动按主题的，则优先选择手动按主题的存活性，否则使用自动存活性。 * 使用等于同一主题上现有发布者的最大截止时间。 * 使用等于同一主题上现有发布者的最大存活性租约持续时间。</p></li>
+<li><p>将状态定义移动到 rmw/events_statuses/ (<a class="reference external" href="https://github.com/ros2/rmw/issues/232">#232</a>)</p></li>
+<li><p>贡献者: Audrow Nash, Barry Xu, Brian, Chris Lalancette, Emerson Knapp, Geoffrey Biggs, Jacob Perron, Lee, Minju, Nikolai Morin, Tomoya Fujita, William Woodall, methylDragon</p></li>
 </ul>
 </div>
 <div class="section" id="rmw-connextdds">
 <h2><a class="reference external" href="https://github.com/ros2/rmw_connextdds/tree/iron/rmw_connextdds/CHANGELOG.rst">rmw_connextdds</a><a class="headerlink" href="#rmw-connextdds" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Dynamic Subscription (BONUS: Allocators): rmw_connextdds (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/115">#115</a>)</p></li>
-<li><p>Revert &quot;Refactor serialization support to use allocators and refs&quot;</p></li>
-<li><p>Refactor serialization support to use allocators and refs</p></li>
+<li><p>动态订阅 (奖励: 分配器): rmw_connextdds (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/115">#115</a>)</p></li>
+<li><p>撤消&quot;重构序列化支持以使用分配器和引用&quot;</p></li>
+<li><p>重构序列化支持以使用分配器和引用</p></li>
 <li><p>Add stubs for new rmw interfaces (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/111">#111</a>)</p></li>
 <li><p>Add rmw_get_gid_for_client impl (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/92">#92</a>)</p></li>
 <li><p>Switch ROS2 -&gt; ROS 2 everywhere (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/83">#83</a>)</p></li>
@@ -2594,7 +2594,7 @@
 <div class="section" id="rmw-connextddsmicro">
 <h2><a class="reference external" href="https://github.com/ros2/rmw_connextdds/tree/iron/rmw_connextddsmicro/CHANGELOG.rst">rmw_connextddsmicro</a><a class="headerlink" href="#rmw-connextddsmicro" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Dynamic Subscription (BONUS: Allocators): rmw_connextdds (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/115">#115</a>)</p></li>
+<li><p>动态订阅 (奖励: 分配器): rmw_connextdds (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/115">#115</a>)</p></li>
 <li><p>Add stubs for new rmw interfaces (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/111">#111</a>)</p></li>
 <li><p>Add rmw_get_gid_for_client impl (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/92">#92</a>)</p></li>
 <li><p>Switch ROS2 -&gt; ROS 2 everywhere (<a class="reference external" href="https://github.com/ros2/rmw_connextdds/issues/83">#83</a>)</p></li>
@@ -2735,7 +2735,7 @@
 <div class="section" id="rmw-implementation-cmake">
 <h2><a class="reference external" href="https://github.com/ros2/rmw/tree/iron/rmw_implementation_cmake/CHANGELOG.rst">rmw_implementation_cmake</a><a class="headerlink" href="#rmw-implementation-cmake" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>[rolling] Update maintainers - 2022-11-07 (<a class="reference external" href="https://github.com/ros2/rmw/issues/337">#337</a>)</p></li>
+<li><p>[rolling] 更新维护者 - 2022-11-07（<a class="reference external" href="https://github.com/ros2/rmw/issues/337">#337</a>）</p></li>
 <li><p>贡献者：Audrow Nash</p></li>
 </ul>
 </div>
