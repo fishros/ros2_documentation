@@ -2278,32 +2278,32 @@
 <li><p>使用 rcpputils/scope_exit.hpp 并删除 rclcpp/scope_exit.hpp。 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1727">#1727</a>)</p></li>
 <li><p>修复了由竞争条件引起的偶尔丢失目标结果问题（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1677">#1677</a>）</p></li>
 <li><p>增加了benchmark_action_client的基准超时时间（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1671">#1671</a>）</p></li>
-<li><p>Returns CancelResponse::REJECT while goal handle failed to transit to CANCELING state (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1641">#1641</a>)</p></li>
-<li><p>Fix action server deadlock issue that caused by other mutexes locked in CancelCallback (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1635">#1635</a>)</p></li>
-<li><p>Contributors: Abrar Rahman Protyasha, Alberto Soragna, Chris Lalancette, Christophe Bedard, Jacob Perron, Kaven Yau, Shane Loretz, Tomoya Fujita, William Woodall, iRobot ROS, mauropasse</p></li>
+<li><p>在目标句柄未能转换为CANCELING状态时，返回CancelResponse::REJECT (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1641">#1641</a>)</p></li>
+<li><p>修复由CancelCallback中的其他互斥锁造成的动作服务器死锁问题 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1635">#1635</a>)</p></li>
+<li><p>贡献者：Abrar Rahman Protyasha，Alberto Soragna，Chris Lalancette，Christophe Bedard，Jacob Perron，Kaven Yau，Shane Loretz，Tomoya Fujita，William Woodall，iRobot ROS，mauropasse</p></li>
 </ul>
 </div>
 <div class="section" id="rclcpp-components">
 <h2><a class="reference external" href="https://github.com/ros2/rclcpp/tree/humble/rclcpp_components/CHANGELOG.rst">rclcpp_components</a><a class="headerlink" href="#rclcpp-components" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Select executor in node registration (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1898">#1898</a>)</p></li>
-<li><p>Fix rosdoc2 issues in rclcpp (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1897">#1897</a>)</p></li>
-<li><p>Fix bugprone-exception-escape in node_main.cpp.in (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1895">#1895</a>)</p></li>
-<li><p>small improvements to node_main.cpp.in</p></li>
+<li><p>在节点注册中选择执行器 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1898">#1898</a>)</p></li>
+<li><p>修复rclcpp中的rosdoc2问题 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1897">#1897</a>)</p></li>
+<li><p>修复 node_main.cpp.in 中的 bugprone-exception-escape (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1895">#1895</a>)</p></li>
+<li><p>对 node_main.cpp.in 进行小的改进</p></li>
 <li><p>安装头文件到include/${PROJECT_NAME} (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1888">#1888</a>)</p></li>
-<li><p>Use spin() in component_manager_isolated.hpp (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1881">#1881</a>)</p></li>
-<li><p>add use_global_arguments for node options of component nodes (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1776">#1776</a>)</p></li>
-<li><p>Add rclcpp_components::component (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1855">#1855</a>)</p></li>
-<li><p>Add parameter to configure number of thread (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1708">#1708</a>)</p></li>
-<li><p>remove RCLCPP_COMPONENTS_PUBLIC in class ComponentManagerIsolated (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1843">#1843</a>)</p></li>
-<li><p>create component_container_isolated (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1781">#1781</a>)</p></li>
+<li><p>在 component_manager_isolated.hpp 中使用 spin() (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1881">#1881</a>)</p></li>
+<li><p>为组件节点的节点选项添加 use_global_arguments (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1776">#1776</a>)</p></li>
+<li><p>添加 rclcpp_components::component (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1855">#1855</a>)</p></li>
+<li><p>添加配置线程数量的参数 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1708">#1708</a>)</p></li>
+<li><p>在ComponentManagerIsolated类中删除RCLCPP_COMPONENTS_PUBLIC（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1843">#1843</a>）</p></li>
+<li><p>创建component_container_isolated（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1781">#1781</a>）</p></li>
 <li><p>按请求移除作者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1818">#1818</a>)</p></li>
 <li><p>更新维护者 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1817">#1817</a>)</p></li>
 <li><p>在基准测试中抑制 clang 的未使用变量警告 (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1802">#1802</a>)</p></li>
 <li><p>更新客户端API以能够移除待处理的请求。（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1734">#1734</a>）</p></li>
-<li><p>Deprecate method names that use CamelCase in rclcpp_components. (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1716">#1716</a>)</p></li>
-<li><p>Added a hook to generate node options in ComponentManager (<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1702">#1702</a>)</p></li>
-<li><p>Contributors: Alberto Soragna, Chris Lalancette, Daisuke Nishimatsu, Hirokazu Ishida, Ivan Santiago Paunovic, Jacob Perron, Rebecca Butler, Shane Loretz, gezp</p></li>
+<li><p>在rclcpp_components中弃用使用CamelCase的方法名（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1716">#1716</a>）</p></li>
+<li><p>在ComponentManager中添加生成节点选项的钩子（<a class="reference external" href="https://github.com/ros2/rclcpp/issues/1702">#1702</a>）</p></li>
+<li><p>贡献者：Alberto Soragna，Chris Lalancette，Daisuke Nishimatsu，Hirokazu Ishida，Ivan Santiago Paunovic，Jacob Perron，Rebecca Butler，Shane Loretz，gezp</p></li>
 </ul>
 </div>
 <div class="section" id="rclcpp-lifecycle">
