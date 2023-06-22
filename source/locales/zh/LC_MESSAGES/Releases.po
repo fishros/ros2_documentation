@@ -17437,92 +17437,92 @@ msgstr "修复：如果sub_namespace为空，则返回无效的命名空间。 (
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1721
 msgid "Add free function to wait for a subscription message. (`#1705 <https://github.com/ros2/rclcpp/issues/1705>`__)"
-msgstr "Add free function to wait for a subscription message. (`#1705 <https://github.com/ros2/rclcpp/issues/1705>`__)"
+msgstr "为等待订阅消息添加自由函数。 (`#1705 <https://github.com/ros2/rclcpp/issues/1705>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1722 ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1764
 msgid "Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp. (`#1727 <https://github.com/ros2/rclcpp/issues/1727>`__)"
-msgstr "Use rcpputils/scope_exit.hpp and remove rclcpp/scope_exit.hpp. (`#1727 <https://github.com/ros2/rclcpp/issues/1727>`__)"
+msgstr "使用 rcpputils/scope_exit.hpp 并删除 rclcpp/scope_exit.hpp。 (`#1727 <https://github.com/ros2/rclcpp/issues/1727>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1723 ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1814
 msgid "Remove unsafe get_callback_groups API. Callers should change to using for_each_callback_group(), or store the callback groups they need internally."
-msgstr "Remove unsafe get_callback_groups API. Callers should change to using for_each_callback_group(), or store the callback groups they need internally."
+msgstr "移除不安全的 get_callback_groups API。调用者应改为使用 for_each_callback_group() 或在内部存储所需的回调组。"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1724 ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1815
 msgid "Add in callback_groups_for_each. The main reason to add this method in is to make accesses to the callback_groups\\_ vector thread-safe.  By having a callback_groups_for_each that accepts a std::function, we can just have the callers give us the callback they are interested in, and we can take care of the locking. The rest of this fairly large PR is cleaning up all of the places that use get_callback_groups() to instead use callback_groups_for_each()."
-msgstr "Add in callback_groups_for_each. The main reason to add this method in is to make accesses to the callback_groups\\_ vector thread-safe.  By having a callback_groups_for_each that accepts a std::function, we can just have the callers give us the callback they are interested in, and we can take care of the locking. The rest of this fairly large PR is cleaning up all of the places that use get_callback_groups() to instead use callback_groups_for_each()."
+msgstr "添加 callback_groups_for_each。添加此方法的主要原因是使对 callback_groups_ 向量的访问线程安全。通过使用接受 std::function 的 callback_groups_for_each，调用者只需提供所需的回调函数，而我们负责加锁。这个相当庞大的 PR 的其余部分是清理所有使用 get_callback_groups() 的地方，改为使用 callback_groups_for_each()。"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1725
 msgid "Use a different mechanism to avoid timers being scheduled multiple times by the MultiThreadedExecutor (`#1692 <https://github.com/ros2/rclcpp/issues/1692>`__)"
-msgstr "Use a different mechanism to avoid timers being scheduled multiple times by the MultiThreadedExecutor (`#1692 <https://github.com/ros2/rclcpp/issues/1692>`__)"
+msgstr "使用不同机制避免 MultiThreadedExecutor 多次调度定时器。(`#1692 <https://github.com/ros2/rclcpp/issues/1692>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1726
 msgid "Fix windows CI (`#1726 <https://github.com/ros2/rclcpp/issues/1726>`__) Fix bug in AnyServiceCallback introduced in `#1709 <https://github.com/ros2/rclcpp/issues/1709>`__."
-msgstr "Fix windows CI (`#1726 <https://github.com/ros2/rclcpp/issues/1726>`__) Fix bug in AnyServiceCallback introduced in `#1709 <https://github.com/ros2/rclcpp/issues/1709>`__."
+msgstr "修复 Windows CI (`#1726 <https://github.com/ros2/rclcpp/issues/1726>`__)。修复 AnyServiceCallback 中引入的错误 (`#1709 <https://github.com/ros2/rclcpp/issues/1709>`__)。"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1727
 msgid "Support to defer to send a response in services. (`#1709 <https://github.com/ros2/rclcpp/issues/1709>`__) Signed-off-by: Ivan Santiago Paunovic <ivanpauno@ekumenlabs.com>"
-msgstr "Support to defer to send a response in services. (`#1709 <https://github.com/ros2/rclcpp/issues/1709>`__) Signed-off-by: Ivan Santiago Paunovic <ivanpauno@ekumenlabs.com>"
+msgstr "支持延迟发送服务响应。（`#1709 <https://github.com/ros2/rclcpp/issues/1709>`__）签署者：Ivan Santiago Paunovic <ivanpauno@ekumenlabs.com>"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1728
 msgid "Fix documentation bug. (`#1719 <https://github.com/ros2/rclcpp/issues/1719>`__) Signed-off-by: William Woodall <william@osrfoundation.org>"
-msgstr "Fix documentation bug. (`#1719 <https://github.com/ros2/rclcpp/issues/1719>`__) Signed-off-by: William Woodall <william@osrfoundation.org>"
+msgstr "修复文档错误。（`#1719 <https://github.com/ros2/rclcpp/issues/1719>`__）签署者：William Woodall <william@osrfoundation.org>"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1729
 msgid "Removed left over ``is_initialized()`` implementation (`#1711 <https://github.com/ros2/rclcpp/issues/1711>`__) Leftover from https://github.com/ros2/rclcpp/pull/1622"
-msgstr "Removed left over ``is_initialized()`` implementation (`#1711 <https://github.com/ros2/rclcpp/issues/1711>`__) Leftover from https://github.com/ros2/rclcpp/pull/1622"
+msgstr "删除剩余的``is_initialized()``实现。（`#1711 <https://github.com/ros2/rclcpp/issues/1711>`__）来源于 https://github.com/ros2/rclcpp/pull/1622"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1730
 msgid "Fixed declare parameter methods for int and float vectors (`#1696 <https://github.com/ros2/rclcpp/issues/1696>`__)"
-msgstr "Fixed declare parameter methods for int and float vectors (`#1696 <https://github.com/ros2/rclcpp/issues/1696>`__)"
+msgstr "修复int和float向量的声明参数方法。（`#1696 <https://github.com/ros2/rclcpp/issues/1696>`__）"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1731
 msgid "Cleaned up implementation of the intra-process manager (`#1695 <https://github.com/ros2/rclcpp/issues/1695>`__)"
-msgstr "Cleaned up implementation of the intra-process manager (`#1695 <https://github.com/ros2/rclcpp/issues/1695>`__)"
+msgstr "清理了进程内管理器的实现。（`#1695 <https://github.com/ros2/rclcpp/issues/1695>`__）"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1732
 msgid "Added the node name to an executor ``runtime_error`` (`#1686 <https://github.com/ros2/rclcpp/issues/1686>`__)"
-msgstr "Added the node name to an executor ``runtime_error`` (`#1686 <https://github.com/ros2/rclcpp/issues/1686>`__)"
+msgstr "在executor的``runtime_error``中添加了节点名称。（`#1686 <https://github.com/ros2/rclcpp/issues/1686>`__）"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1733
 msgid "Fixed a typo \"Attack\" -> \"Attach\" (`#1687 <https://github.com/ros2/rclcpp/issues/1687>`__)"
-msgstr "Fixed a typo \"Attack\" -> \"Attach\" (`#1687 <https://github.com/ros2/rclcpp/issues/1687>`__)"
+msgstr "修正了一个拼写错误 \"Attack\" -> \"Attach\" (`#1687 <https://github.com/ros2/rclcpp/issues/1687>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1734
 msgid "Removed use of std::allocator<>::rebind (`#1678 <https://github.com/ros2/rclcpp/issues/1678>`__) rebind is deprecated in c++17 and removed in c++20"
-msgstr "Removed use of std::allocator<>::rebind (`#1678 <https://github.com/ros2/rclcpp/issues/1678>`__) rebind is deprecated in c++17 and removed in c++20"
+msgstr "移除了对 std::allocator<>::rebind 的使用 (`#1678 <https://github.com/ros2/rclcpp/issues/1678>`__)，在 C++17 中已被弃用并在 C++20 中被移除"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1735
 msgid "Allow declare uninitialized parameters (`#1673 <https://github.com/ros2/rclcpp/issues/1673>`__)"
-msgstr "Allow declare uninitialized parameters (`#1673 <https://github.com/ros2/rclcpp/issues/1673>`__)"
+msgstr "允许声明未初始化的参数 (`#1673 <https://github.com/ros2/rclcpp/issues/1673>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1736
 msgid "Fix syntax issue with gcc (`#1674 <https://github.com/ros2/rclcpp/issues/1674>`__)"
-msgstr "Fix syntax issue with gcc (`#1674 <https://github.com/ros2/rclcpp/issues/1674>`__)"
+msgstr "修复了与 gcc 的语法问题 (`#1674 <https://github.com/ros2/rclcpp/issues/1674>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1737
 msgid "[service] Don't use a weak_ptr to avoid leaking (`#1668 <https://github.com/ros2/rclcpp/issues/1668>`__)"
-msgstr "[service] Don't use a weak_ptr to avoid leaking (`#1668 <https://github.com/ros2/rclcpp/issues/1668>`__)"
+msgstr "[service] 不使用 weak_ptr 以避免内存泄漏 (`#1668 <https://github.com/ros2/rclcpp/issues/1668>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1738
 msgid "Fix doc typo (`#1663 <https://github.com/ros2/rclcpp/issues/1663>`__)"
-msgstr "Fix doc typo (`#1663 <https://github.com/ros2/rclcpp/issues/1663>`__)"
+msgstr "修正了文档中的拼写错误 (`#1663 <https://github.com/ros2/rclcpp/issues/1663>`__)"
 
 
 #: ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1739 ../../source/Releases/Humble-Hawksbill-Complete-Changelog.rst:1817
