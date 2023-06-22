@@ -2608,35 +2608,35 @@
 <li><p>修复类型大小对齐问题。(<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/550">#550</a>)</p></li>
 <li><p>添加rmw_publisher_wait_for_all_acked支持。(<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/519">#519</a>)</p></li>
 <li><p>贷款消息实现。(<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/523">#523</a>) * 向基础TypeSupport添加了is_plain_属性。 * 向基础TypeSupport添加了新方法。 * 实现了rmw_borrow_loaned_message。 * 实现了rmw_return_loaned_message_from_publisher。 * 在普通类型的发布者上启用了贷款消息。 * 获取贷款消息的实现。 * 在普通类型的订阅者上启用了贷款消息。</p></li>
-<li><p>Contributors: Barry Xu, Chen Lihui, Ivan Santiago Paunovic, Miguel Company, Shane Loretz, iRobot ROS, mauropasse</p></li>
+<li><p>贡献者: Barry Xu, Chen Lihui, Ivan Santiago Paunovic, Miguel Company, Shane Loretz, iRobot ROS, mauropasse</p></li>
 </ul>
 </div>
 <div class="section" id="rmw-fastrtps-shared-cpp">
 <h2><a class="reference external" href="https://github.com/ros2/rmw_fastrtps/tree/humble/rmw_fastrtps_shared_cpp/CHANGELOG.rst">rmw_fastrtps_shared_cpp</a><a class="headerlink" href="#rmw-fastrtps-shared-cpp" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Address linter waning for windows. (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/592">#592</a>)</p></li>
+<li><p>解决Windows上的linter警告 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/592">#592</a>)</p></li>
 <li><p>使用tracetools添加pub/sub初始化、发布和接收的仪器化。 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/591">#591</a>)</p></li>
 <li><p>添加内容过滤主题功能。 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/513">#513</a>)</p></li>
 <li><p>给消息信息结构添加序列号 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/587">#587</a>)</p></li>
 <li><p>添加EventsExecutor (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/468">#468</a>)</p></li>
-<li><p>Complete events support (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/583">#583</a>)</p></li>
+<li><p>完善事件支持 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/583">#583</a>)</p></li>
 <li><p>将头文件安装到include/${PROJECT_NAME} (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/578">#578</a>)</p></li>
-<li><p>Change default to synchronous (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/571">#571</a>)</p></li>
-<li><p>Fix cpplint error (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/574">#574</a>)</p></li>
-<li><p>Fixes for uncrustify 0.72 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/572">#572</a>)</p></li>
+<li><p>将默认设置更改为同步 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/571">#571</a>)</p></li>
+<li><p>修复cpplint错误 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/574">#574</a>)</p></li>
+<li><p>修复 uncrustify 0.72 的问题 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/572">#572</a>)</p></li>
 <li><p>添加客户端/服务端QoS获取器 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/560">#560</a>)</p></li>
-<li><p>Fix QoS depth settings for clients/service being ignored. (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/564">#564</a>)</p></li>
-<li><p>Update rmw_context_impl_t definition. (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/558">#558</a>)</p></li>
-<li><p>Update the LoanManager to do internal locking. (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/552">#552</a>)</p></li>
-<li><p>Pass the CRL down to Fast-DDS if available. (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/546">#546</a>)</p></li>
-<li><p>Use the new rmw_dds_common::get_security_files (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/544">#544</a>)</p></li>
-<li><p>Support for SubscriptionOptions::ignore_local_publications (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/536">#536</a>)</p></li>
+<li><p>修复客户端/服务的 QoS 深度设置被忽略的问题 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/564">#564</a>)</p></li>
+<li><p>更新 rmw_context_impl_t 的定义 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/558">#558</a>)</p></li>
+<li><p>更新 LoanManager 以进行内部锁定 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/552">#552</a>)</p></li>
+<li><p>如果可用，将 CRL 传递给 Fast-DDS (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/546">#546</a>)</p></li>
+<li><p>使用新的 rmw_dds_common::get_security_files (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/544">#544</a>)</p></li>
+<li><p>支持 SubscriptionOptions::ignore_local_publications (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/536">#536</a>)</p></li>
 <li><p>将链接从index.ros.org改为docs.ros.org。(<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/539">#539</a>)</p></li>
 <li><p>添加rmw_publisher_wait_for_all_acked支持。(<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/519">#519</a>)</p></li>
 <li><p>贷款消息实现。(<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/523">#523</a>) * 向基础TypeSupport添加了is_plain_属性。 * 向基础TypeSupport添加了新方法。 * 实现了rmw_borrow_loaned_message。 * 实现了rmw_return_loaned_message_from_publisher。 * 在普通类型的发布者上启用了贷款消息。 * 获取贷款消息的实现。 * 在普通类型的订阅者上启用了贷款消息。</p></li>
-<li><p>Export rmw_dds_common as an rmw_fastrtps_shared_cpp dependency (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/530">#530</a>)</p></li>
-<li><p>Update includes after rcutils/get_env.h deprecation (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/529">#529</a>)</p></li>
-<li><p>Contributors: Audrow Nash, Barry Xu, Chen Lihui, Chris Lalancette, Christophe Bedard, Ivan Santiago Paunovic, Jacob Perron, Jose Antonio Moral, Michel Hidalgo, Miguel Company, Shane Loretz, Tomoya Fujita, iRobot ROS, mauropasse</p></li>
+<li><p>将 rmw_dds_common 作为 rmw_fastrtps_shared_cpp 的依赖导出 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/530">#530</a>)</p></li>
+<li><p>在 rcutils/get_env.h 弃用后更新包含文件 (<a class="reference external" href="https://github.com/ros2/rmw_fastrtps/issues/529">#529</a>)</p></li>
+<li><p>贡献者: Audrow Nash, Barry Xu, Chen Lihui, Chris Lalancette, Christophe Bedard, Ivan Santiago Paunovic, Jacob Perron, Jose Antonio Moral, Michel Hidalgo, Miguel Company, Shane Loretz, Tomoya Fujita, iRobot ROS, mauropasse</p></li>
 </ul>
 </div>
 <div class="section" id="rmw-implementation">
