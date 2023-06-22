@@ -3917,19 +3917,19 @@
 <div class="section" id="test-tracetools">
 <h2><a class="reference external" href="https://gitlab.com/ros-tracing/ros2_tracing/-/blob/humble/test_tracetools/CHANGELOG.rst">test_tracetools</a><a class="headerlink" href="#test-tracetools" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Introduce constants for tracepoint names</p></li>
-<li><p>Move actual tests out of tracetools_test to new test_tracetools package</p></li>
+<li><p>为追踪点名称引入常量</p></li>
+<li><p>将实际测试从tracetools_test移至新的test_tracetools包</p></li>
 <li><p>贡献者: Christophe Bedard</p></li>
 </ul>
 </div>
 <div class="section" id="test-tracetools-launch">
 <h2><a class="reference external" href="https://gitlab.com/ros-tracing/ros2_tracing/-/blob/humble/test_tracetools_launch/CHANGELOG.rst">test_tracetools_launch</a><a class="headerlink" href="#test-tracetools-launch" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Add support for preloading pthread and dl instrumentation shared libs</p></li>
-<li><p>Remove profile_fast option and consider LD_PRELOADing both libs</p></li>
-<li><p>Fix multiple LdPreload actions not working and add test</p></li>
+<li><p>添加对预加载pthread和dl仪器共享库的支持</p></li>
+<li><p>移除profile_fast选项，并考虑同时预加载两个库</p></li>
+<li><p>修复多个LdPreload操作不起作用的问题，并添加测试</p></li>
 <li><p>废弃 'context_names' 参数，替换为 'context_fields'</p></li>
-<li><p>Move some tests from tracetools_launch to test_tracetools_launch</p></li>
+<li><p>将一些测试从tracetools_launch移动到test_tracetools_launch</p></li>
 <li><p>贡献者：Christophe Bedard，Ingo Lütkebohle</p></li>
 </ul>
 </div>
@@ -3937,16 +3937,16 @@
 <h2><a class="reference external" href="https://github.com/ros2/geometry2/tree/humble/tf2/CHANGELOG.rst">tf2</a><a class="headerlink" href="#tf2" title="永久链接至标题"></a></h2>
 <ul class="simple">
 <li><p>安装包含到include/${PROJECT_NAME}并使用现代CMake (<a class="reference external" href="https://github.com/ros2/geometry2/issues/493">#493</a>)</p></li>
-<li><p>forward declare fromMsg to avoid missing symbols in downstream libraries (<a class="reference external" href="https://github.com/ros2/geometry2/issues/485">#485</a>)</p></li>
-<li><p>tf2: Enable common linter tests (<a class="reference external" href="https://github.com/ros2/geometry2/issues/469">#469</a>)</p></li>
-<li><p>Move time functions into time.cpp.</p></li>
-<li><p>Change a for loop to a while loop.</p></li>
-<li><p>Switch to C++-style casts.</p></li>
-<li><p>Remove totally unused (and unreachable) code.</p></li>
-<li><p>Replace NULL with nullptr.</p></li>
-<li><p>Fix up some comments.</p></li>
-<li><p>Use std::make_shared where we can.</p></li>
-<li><p>Replace two comparisons with empty string to empty().</p></li>
+<li><p>从Msg中进行前向声明，以避免在下游库中丢失符号 (<a class="reference external" href="https://github.com/ros2/geometry2/issues/485">#485</a>)</p></li>
+<li><p>tf2：启用常见的linter测试 (<a class="reference external" href="https://github.com/ros2/geometry2/issues/469">#469</a>)</p></li>
+<li><p>将时间函数移动到time.cpp中。</p></li>
+<li><p>将for循环改为while循环。</p></li>
+<li><p>切换为 C++ 风格的转换。</p></li>
+<li><p>删除完全未使用（且无法访问）的代码。</p></li>
+<li><p>将 NULL 替换为 nullptr。</p></li>
+<li><p>修正一些注释。</p></li>
+<li><p>尽可能使用 std::make_shared。</p></li>
+<li><p>将两个与空字符串的比较替换为 empty()。</p></li>
 <li><p>Make sure to include-what-you-use.</p></li>
 <li><p>Remove unnecessary internal method.</p></li>
 <li><p>Remove long-deprecated walkToTopParent overload.</p></li>
@@ -4157,15 +4157,15 @@
 <ul class="simple">
 <li><p>Disable kernel tracing by default</p></li>
 <li><p>不要求内核跟踪器，并在未安装时进行检测</p></li>
-<li><p>Add support for preloading pthread and dl instrumentation shared libs</p></li>
-<li><p>Remove profile_fast option and consider LD_PRELOADing both libs</p></li>
+<li><p>添加对预加载pthread和dl仪器共享库的支持</p></li>
+<li><p>移除profile_fast选项，并考虑同时预加载两个库</p></li>
 <li><p>Improve event matching for shared lib preloading</p></li>
 <li><p>Improve LdPreload action's lib-finding function and add proper tests</p></li>
-<li><p>Fix multiple LdPreload actions not working and add test</p></li>
+<li><p>修复多个LdPreload操作不起作用的问题，并添加测试</p></li>
 <li><p>废弃 'context_names' 参数，替换为 'context_fields'</p></li>
 <li><p>Support per-domain context fields for the Trace action</p></li>
 <li><p>Improve LdPreload.get_shared_lib_path() for when a static lib may exist</p></li>
-<li><p>Move some tests from tracetools_launch to test_tracetools_launch</p></li>
+<li><p>将一些测试从tracetools_launch移动到test_tracetools_launch</p></li>
 <li><p>Expose Trace action as frontend action and support substitutions</p></li>
 <li><p>贡献者：Christophe Bedard，Ingo Lütkebohle</p></li>
 </ul>
@@ -4175,7 +4175,7 @@
 <ul class="simple">
 <li><p>Allow providing additional actions for TraceTestCase</p></li>
 <li><p>Remove default value for 'package' kwarg for TraceTestCase</p></li>
-<li><p>Move actual tests out of tracetools_test to new test_tracetools package</p></li>
+<li><p>将实际测试从tracetools_test移至新的test_tracetools包</p></li>
 <li><p>Add tests for rmw init/pub, take, and executor instrumentation</p></li>
 <li><p>Add field type assertion utilities to TraceTestCase</p></li>
 <li><p>Fixing deprecated subscriber callback warnings</p></li>
@@ -4187,7 +4187,7 @@
 <ul class="simple">
 <li><p>Disable kernel tracing by default</p></li>
 <li><p>不要求内核跟踪器，并在未安装时进行检测</p></li>
-<li><p>Introduce constants for tracepoint names</p></li>
+<li><p>为追踪点名称引入常量</p></li>
 <li><p>Optimize default tracing session channel config values</p></li>
 <li><p>废弃 'context_names' 参数，替换为 'context_fields'</p></li>
 <li><p>Support per-domain context fields for the Trace action</p></li>
