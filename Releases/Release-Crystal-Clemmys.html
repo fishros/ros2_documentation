@@ -379,7 +379,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#supported-platforms" id="id1">支持的平台</a></p></li>
 <li><p><a class="reference internal" href="#new-features-in-this-ros-2-release" id="id2">这个ROS 2版本的新功能有：</a></p></li>
-<li><p><a class="reference internal" href="#changes-since-the-bouncy-release" id="id3">Changes since the Bouncy release</a></p></li>
+<li><p><a class="reference internal" href="#changes-since-the-bouncy-release" id="id3">与Bouncy版本发布相比的更改</a></p></li>
 <li><p><a class="reference internal" href="#known-issues" id="id4">已知问题</a></p></li>
 </ul>
 </div>
@@ -414,21 +414,20 @@
 <li><p><a class="reference external" href="https://github.com/ros2/launch/pull/123">参数</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/launch/issues/116">嵌套启动文件</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/launch/issues/105">条件</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/launch/issues/117">Pass params to Nodes</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/launch/issues/117">将参数传递给节点</a></p></li>
 </ul>
 </li>
-<li><p>Laid the groundwork for <a class="reference external" href="https://github.com/ros2/rcl/pull/327">file-based logging and /rosout publishing</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/186">Time and Duration API in Python</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/202">Parameters work with Python nodes</a></p></li>
+<li><p>为 <a class="reference external" href="https://github.com/ros2/rcl/pull/327">基于文件的日志记录和/rosout发布功能奠定基础</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/186">Python中的时间和持续时间API</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/202">参数在Python节点中的工作</a></p></li>
 </ul>
 </div>
 <div class="section" id="changes-since-the-bouncy-release">
-<h2><a class="toc-backref" href="#id3">Changes since the Bouncy release</a><a class="headerlink" href="#changes-since-the-bouncy-release" title="永久链接至标题"></a></h2>
-<p>Changes since the <a class="reference internal" href="Release-Bouncy-Bolson.html"><span class="doc">Bouncy Bolson</span></a> release:</p>
+<h2><a class="toc-backref" href="#id3">与Bouncy版本发布相比的更改</a><a class="headerlink" href="#changes-since-the-bouncy-release" title="永久链接至标题"></a></h2>
+<p>与 <a class="reference internal" href="Release-Bouncy-Bolson.html"><span class="doc">Bouncy Bolson</span></a> 版本发布相比的更改：</p>
 <ul>
-<li><p>geometry2 - <code class="docutils literal notranslate"><span class="pre">tf2_ros::Buffer</span></code> API Change</p>
-<p><code class="docutils literal notranslate"><span class="pre">tf2_ros::Buffer</span></code> now uses <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code>, with the constructor requiring a <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code> to a <code class="docutils literal notranslate"><span class="pre">rclcpp::Clock</span></code> instance.
-See <a class="reference external" href="https://github.com/ros2/geometry2/pull/67">https://github.com/ros2/geometry2/pull/67</a> for details, with example usage:</p>
+<li><p>geometry2 - <code class="docutils literal notranslate"><span class="pre">tf2_ros::Buffer</span></code> API 更改</p>
+<p><code class="docutils literal notranslate"><span class="pre">tf2_ros::Buffer</span></code> 现在使用 <code class="docutils literal notranslate"><span class="pre">rclcpp::Time</span></code>，构造函数需要一个指向 <code class="docutils literal notranslate"><span class="pre">rclcpp::Clock</span></code> 实例的 <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code>。有关详细信息，请参见 <a class="reference external" href="https://github.com/ros2/geometry2/pull/67">https://github.com/ros2/geometry2/pull/67</a>，示例用法如下：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_ros/transform_listener.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rclcpp/rclcpp.hpp&gt;</span><span class="cp"></span>
 <span class="p">...</span><span class="w"></span>
@@ -438,11 +437,11 @@ See <a class="reference external" href="https://github.com/ros2/geometry2/pull/6
 </pre></div>
 </div>
 </li>
-<li><p>All <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> and <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> logging macros require semicolons.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rcutils/issues/113">https://github.com/ros2/rcutils/issues/113</a> for details.</p>
+<li><p>所有 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> 的日志宏都需要分号。</p>
+<p>有关详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rcutils/issues/113">https://github.com/ros2/rcutils/issues/113</a>。</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_get_error_string_safe()</span></code> and <code class="docutils literal notranslate"><span class="pre">rcl_get_error_string_safe()</span></code> have been replaced with <code class="docutils literal notranslate"><span class="pre">rcutils_get_error_string().str</span></code> and <code class="docutils literal notranslate"><span class="pre">rcl_get_error_string().str</span></code>.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rcutils/pull/121">https://github.com/ros2/rcutils/pull/121</a> for details.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_get_error_string_safe()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcl_get_error_string_safe()</span></code> 已被替换为 <code class="docutils literal notranslate"><span class="pre">rcutils_get_error_string().str</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcl_get_error_string().str</span></code>。</p>
+<p>有关详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rcutils/pull/121">https://github.com/ros2/rcutils/pull/121</a>。</p>
 </li>
 <li><p>rmw - <code class="docutils literal notranslate"><span class="pre">rmw_init</span></code> API Change</p>
 <p>There are two new structs, the <code class="docutils literal notranslate"><span class="pre">rcl_context_t</span></code> and the <code class="docutils literal notranslate"><span class="pre">rcl_init_options_t</span></code>, which are used with <code class="docutils literal notranslate"><span class="pre">rmw_init</span></code>.
