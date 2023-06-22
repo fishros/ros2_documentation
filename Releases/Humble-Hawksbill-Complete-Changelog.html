@@ -1069,8 +1069,8 @@
 <ul class="simple">
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
-<li><p>[ament_cmake_uncrustify] Add file exclude support (<a class="reference external" href="https://github.com/ament/ament_lint/issues/330">#330</a>) In the <code class="docutils literal notranslate"><span class="pre">ament_uncrustify</span></code> CMake function, the optional list argument <code class="docutils literal notranslate"><span class="pre">EXCLUDE</span></code> can now be used as an exclusion specifier.</p></li>
-<li><p>Contributors: Abrar Rahman Protyasha, Audrow Nash</p></li>
+<li><p>[ament_cmake_uncrustify] 添加文件排除支持 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/330">#330</a>) 在``ament_uncrustify`` CMake函数中，现在可以使用可选的列表参数``EXCLUDE``作为排除规范。</p></li>
+<li><p>贡献者：Abrar Rahman Protyasha, Audrow Nash</p></li>
 </ul>
 </div>
 <div class="section" id="ament-cmake-version">
@@ -1094,18 +1094,18 @@
 <div class="section" id="ament-copyright">
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_copyright/CHANGELOG.rst">ament_copyright</a><a class="headerlink" href="#ament-copyright" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Fix importlib_metadata warning on Python 3.10. (<a class="reference external" href="https://github.com/ament/ament_lint/issues/365">#365</a>)</p></li>
+<li><p>修复在Python 3.10上的importlib_metadata警告。 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/365">#365</a>)</p></li>
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
-<li><p>[ament_copyright] Fix file exclusion behavior (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] Fix file exclusion behavior This commit fixes the faulty file exclusion behavior reported in <a class="reference external" href="https://github.com/ament/ament_lint/issues/326">https://github.com/ament/ament_lint/issues/326</a>. Specifically, the exclusion list is matched against traversed files in the <code class="docutils literal notranslate"><span class="pre">crawler</span></code> module. Changes inspired by <a class="reference external" href="https://github.com/ament/ament_lint/pull/299/">https://github.com/ament/ament_lint/pull/299/</a>. * Update excluded file path in copyright tests Since file names are not indiscriminately matched throughout the search tree anymore, the excluded files listed in the copyright tests need to be updated relative to the root of the package. * Add test cases to check exclusion behavior Specifically, these tests check for: - Incorrect exclusion of single filenames. - Correct exclusion of relatively/absolutely addressed filenames. - Correct exclusion of wildcarded paths. * Add unit tests for crawler module These unit tests make sure both search and exclusion behaviors are correctly demonstrated by the <code class="docutils literal notranslate"><span class="pre">ament_copyright.crawler</span></code> module.</p></li>
-<li><p>Add SPDX identifiers to the licenses. (<a class="reference external" href="https://github.com/ament/ament_lint/issues/315">#315</a>)</p></li>
+<li><p>[ament_copyright] 修复文件排除行为 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] 修复文件排除行为 此提交修复了https://github.com/ament/ament_lint/issues/326中报告的错误的文件排除行为。具体来说，排除列表与``crawler``模块中遍历的文件进行匹配。受https://github.com/ament/ament_lint/pull/299/启发的更改。 * 在版权测试中更新排除文件路径 由于文件名不再在整个搜索树中不加区别地匹配，因此需要根据软件包的根目录更新版权测试中列出的排除文件。 * 添加测试用例以检查排除行为 具体来说，这些测试用例检查以下内容： - 错误排除单个文件名。 - 正确排除相对/绝对路径的文件名。 - 正确排除带有通配符的路径。 * 为crawler模块添加单元测试 这些单元测试确保``ament_copyright.crawler``模块正确展示了搜索和排除行为。</p></li>
+<li><p>为许可证添加SPDX标识符。 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/315">#315</a>)</p></li>
 <li><p>贡献者: Abrar Rahman Protyasha, Audrow Nash, Chris Lalancette</p></li>
 </ul>
 </div>
 <div class="section" id="ament-cppcheck">
 <h2><a class="reference external" href="https://github.com/ament/ament_lint/tree/humble/ament_cppcheck/CHANGELOG.rst">ament_cppcheck</a><a class="headerlink" href="#ament-cppcheck" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Disable cppcheck 2.x. (<a class="reference external" href="https://github.com/ament/ament_lint/issues/345">#345</a>)</p></li>
+<li><p>禁用cppcheck 2.x。 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/345">#345</a>)</p></li>
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
 <li><p>添加 cppcheck 库选项（<a class="reference external" href="https://github.com/ament/ament_lint/issues/323">#323</a>）* 添加 ament_cppcheck 库选项* 通过 CMake 传递库选项合著者：William Wedler &lt;<a class="reference external" href="mailto:william&#46;wedler&#37;&#52;&#48;resquared&#46;com">william<span>&#46;</span>wedler<span>&#64;</span>resquared<span>&#46;</span>com</a>&gt;</p></li>
@@ -1120,7 +1120,7 @@
 <li><p>Reapply patches Reapply parts of 232428752251de61e84ef013bcd643e35eb9038d that are still relevant.</p></li>
 <li><p>Update cpplint version Point to the fork <a class="reference external" href="https://github.com/cpplint/cpplint">https://github.com/cpplint/cpplint</a> Contains updates for modern C++ standards (e.g. C++14 and C++17).</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
-<li><p>[ament_copyright] Fix file exclusion behavior (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] Fix file exclusion behavior This commit fixes the faulty file exclusion behavior reported in <a class="reference external" href="https://github.com/ament/ament_lint/issues/326">https://github.com/ament/ament_lint/issues/326</a>. Specifically, the exclusion list is matched against traversed files in the <code class="docutils literal notranslate"><span class="pre">crawler</span></code> module. Changes inspired by <a class="reference external" href="https://github.com/ament/ament_lint/pull/299/">https://github.com/ament/ament_lint/pull/299/</a>. * Update excluded file path in copyright tests Since file names are not indiscriminately matched throughout the search tree anymore, the excluded files listed in the copyright tests need to be updated relative to the root of the package. * Add test cases to check exclusion behavior Specifically, these tests check for: - Incorrect exclusion of single filenames. - Correct exclusion of relatively/absolutely addressed filenames. - Correct exclusion of wildcarded paths. * Add unit tests for crawler module These unit tests make sure both search and exclusion behaviors are correctly demonstrated by the <code class="docutils literal notranslate"><span class="pre">ament_copyright.crawler</span></code> module.</p></li>
+<li><p>[ament_copyright] 修复文件排除行为 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] 修复文件排除行为 此提交修复了https://github.com/ament/ament_lint/issues/326中报告的错误的文件排除行为。具体来说，排除列表与``crawler``模块中遍历的文件进行匹配。受https://github.com/ament/ament_lint/pull/299/启发的更改。 * 在版权测试中更新排除文件路径 由于文件名不再在整个搜索树中不加区别地匹配，因此需要根据软件包的根目录更新版权测试中列出的排除文件。 * 添加测试用例以检查排除行为 具体来说，这些测试用例检查以下内容： - 错误排除单个文件名。 - 正确排除相对/绝对路径的文件名。 - 正确排除带有通配符的路径。 * 为crawler模块添加单元测试 这些单元测试确保``ament_copyright.crawler``模块正确展示了搜索和排除行为。</p></li>
 <li><p>Contributors: Abrar Rahman Protyasha, Audrow Nash, Dirk Thomas, Jacob Perron, William Woodall</p></li>
 </ul>
 </div>
@@ -1173,8 +1173,8 @@
 <ul class="simple">
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
-<li><p>[ament_copyright] Fix file exclusion behavior (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] Fix file exclusion behavior This commit fixes the faulty file exclusion behavior reported in <a class="reference external" href="https://github.com/ament/ament_lint/issues/326">https://github.com/ament/ament_lint/issues/326</a>. Specifically, the exclusion list is matched against traversed files in the <code class="docutils literal notranslate"><span class="pre">crawler</span></code> module. Changes inspired by <a class="reference external" href="https://github.com/ament/ament_lint/pull/299/">https://github.com/ament/ament_lint/pull/299/</a>. * Update excluded file path in copyright tests Since file names are not indiscriminately matched throughout the search tree anymore, the excluded files listed in the copyright tests need to be updated relative to the root of the package. * Add test cases to check exclusion behavior Specifically, these tests check for: - Incorrect exclusion of single filenames. - Correct exclusion of relatively/absolutely addressed filenames. - Correct exclusion of wildcarded paths. * Add unit tests for crawler module These unit tests make sure both search and exclusion behaviors are correctly demonstrated by the <code class="docutils literal notranslate"><span class="pre">ament_copyright.crawler</span></code> module.</p></li>
-<li><p>Contributors: Abrar Rahman Protyasha, Audrow Nash</p></li>
+<li><p>[ament_copyright] 修复文件排除行为 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] 修复文件排除行为 此提交修复了https://github.com/ament/ament_lint/issues/326中报告的错误的文件排除行为。具体来说，排除列表与``crawler``模块中遍历的文件进行匹配。受https://github.com/ament/ament_lint/pull/299/启发的更改。 * 在版权测试中更新排除文件路径 由于文件名不再在整个搜索树中不加区别地匹配，因此需要根据软件包的根目录更新版权测试中列出的排除文件。 * 添加测试用例以检查排除行为 具体来说，这些测试用例检查以下内容： - 错误排除单个文件名。 - 正确排除相对/绝对路径的文件名。 - 正确排除带有通配符的路径。 * 为crawler模块添加单元测试 这些单元测试确保``ament_copyright.crawler``模块正确展示了搜索和排除行为。</p></li>
+<li><p>贡献者：Abrar Rahman Protyasha, Audrow Nash</p></li>
 </ul>
 </div>
 <div class="section" id="ament-lint-common">
@@ -1211,7 +1211,7 @@
 <li><p>通过澄清不同工具的目的来改进文档 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/357">#357</a>)</p></li>
 <li><p>在更改日志中更新即将发布的版本</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
-<li><p>[ament_copyright] Fix file exclusion behavior (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] Fix file exclusion behavior This commit fixes the faulty file exclusion behavior reported in <a class="reference external" href="https://github.com/ament/ament_lint/issues/326">https://github.com/ament/ament_lint/issues/326</a>. Specifically, the exclusion list is matched against traversed files in the <code class="docutils literal notranslate"><span class="pre">crawler</span></code> module. Changes inspired by <a class="reference external" href="https://github.com/ament/ament_lint/pull/299/">https://github.com/ament/ament_lint/pull/299/</a>. * Update excluded file path in copyright tests Since file names are not indiscriminately matched throughout the search tree anymore, the excluded files listed in the copyright tests need to be updated relative to the root of the package. * Add test cases to check exclusion behavior Specifically, these tests check for: - Incorrect exclusion of single filenames. - Correct exclusion of relatively/absolutely addressed filenames. - Correct exclusion of wildcarded paths. * Add unit tests for crawler module These unit tests make sure both search and exclusion behaviors are correctly demonstrated by the <code class="docutils literal notranslate"><span class="pre">ament_copyright.crawler</span></code> module.</p></li>
+<li><p>[ament_copyright] 修复文件排除行为 (<a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>) * [ament_copyright] 修复文件排除行为 此提交修复了https://github.com/ament/ament_lint/issues/326中报告的错误的文件排除行为。具体来说，排除列表与``crawler``模块中遍历的文件进行匹配。受https://github.com/ament/ament_lint/pull/299/启发的更改。 * 在版权测试中更新排除文件路径 由于文件名不再在整个搜索树中不加区别地匹配，因此需要根据软件包的根目录更新版权测试中列出的排除文件。 * 添加测试用例以检查排除行为 具体来说，这些测试用例检查以下内容： - 错误排除单个文件名。 - 正确排除相对/绝对路径的文件名。 - 正确排除带有通配符的路径。 * 为crawler模块添加单元测试 这些单元测试确保``ament_copyright.crawler``模块正确展示了搜索和排除行为。</p></li>
 <li><p>Contributors: Abrar Rahman Protyasha, Audrow Nash, Bi0T1N</p></li>
 </ul>
 </div>
@@ -1249,7 +1249,7 @@
 <li><p>[ament_uncrustify] Fix file exclusion behavior (<a class="reference external" href="https://github.com/ament/ament_lint/issues/334">#334</a>) * [ament_uncrustify] Fix file exclusion behavior This PR fixes the file exclusion behavior reported in <a class="reference external" href="https://github.com/ament/ament_lint/issues/326">#326</a>. Specifically, the exclusion list is matched against files/directories as the search path is traversed. Tries to maintain consistency with <a class="reference external" href="https://github.com/ament/ament_lint/issues/327">#327</a>. * [ament_uncrustify] Add file exclusion tests * [ament_uncrustify] Remove erroneous pytest marker</p></li>
 <li><p>将维护者更新为 Michael Jeronimo 和 Michel Hidalgo (<a class="reference external" href="https://github.com/ament/ament_lint/issues/340">#340</a>)</p></li>
 <li><p>[ament_uncrustify] Add ament_lint tests (<a class="reference external" href="https://github.com/ament/ament_lint/issues/338">#338</a>) * Add <code class="docutils literal notranslate"><span class="pre">ament_lint</span></code> tests on <code class="docutils literal notranslate"><span class="pre">ament_uncrustify</span></code> * Address linter warnings in <code class="docutils literal notranslate"><span class="pre">ament_uncrustify</span></code></p></li>
-<li><p>Contributors: Abrar Rahman Protyasha, Audrow Nash</p></li>
+<li><p>贡献者：Abrar Rahman Protyasha, Audrow Nash</p></li>
 </ul>
 </div>
 <div class="section" id="ament-xmllint">
