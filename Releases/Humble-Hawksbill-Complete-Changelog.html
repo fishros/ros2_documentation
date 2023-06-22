@@ -2366,18 +2366,18 @@
 <li><p>避免client.call()中的竞争条件。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/838">#838</a>)</p></li>
 <li><p>处理SIGTERM。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/830">#830</a>)</p></li>
 <li><p>使用pybind11处理信号，并删除现在未使用的rclpy_common、pycapsule和handle代码。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/814">#814</a>)</p></li>
-<li><p>Fix memory leak in Service::take_request() and Client::take_response(). (<a class="reference external" href="https://github.com/ros2/rclpy/issues/828">#828</a>)</p></li>
-<li><p>Add Publisher.wait_for_all_acked(). (<a class="reference external" href="https://github.com/ros2/rclpy/issues/793">#793</a>)</p></li>
-<li><p>Only add one done callback to a future in Executor. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/816">#816</a>)</p></li>
-<li><p>Add convert function from ParameterValue to Python builtin. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/819">#819</a>)</p></li>
-<li><p>Call Context._logging_fini() in Context.try_shutdown(). (<a class="reference external" href="https://github.com/ros2/rclpy/issues/800">#800</a>)</p></li>
-<li><p>Lift LoggingSeverity enum as common dependency to logging and rcutils_logger modules (<a class="reference external" href="https://github.com/ros2/rclpy/issues/785">#785</a>)</p></li>
-<li><p>Set Context.__context to None in __init__(). (<a class="reference external" href="https://github.com/ros2/rclpy/issues/812">#812</a>)</p></li>
-<li><p>Remove unused function make_mock_subscription. (<a class="reference external" href="https://github.com/ros2/rclpy/issues/809">#809</a>)</p></li>
-<li><p>Removed common.c/h (<a class="reference external" href="https://github.com/ros2/rclpy/issues/789">#789</a>)</p></li>
-<li><p>Allow declaring uninitialized parameters (<a class="reference external" href="https://github.com/ros2/rclpy/issues/798">#798</a>)</p></li>
-<li><p>Reject cancel request if failed to transit to CANCEL_GOAL state (<a class="reference external" href="https://github.com/ros2/rclpy/issues/791">#791</a>)</p></li>
-<li><p>Deleted handle as it should no longer be used (<a class="reference external" href="https://github.com/ros2/rclpy/issues/786">#786</a>)</p></li>
+<li><p>修复Service::take_request()和Client::take_response()中的内存泄漏问题。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/828">#828</a>)</p></li>
+<li><p>添加Publisher.wait_for_all_acked()。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/793">#793</a>)</p></li>
+<li><p>仅向Executor中的一个future添加一个完成回调函数。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/816">#816</a>)</p></li>
+<li><p>添加从ParameterValue到Python内置类型的转换函数。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/819">#819</a>)</p></li>
+<li><p>在Context.try_shutdown()中调用Context._logging_fini()。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/800">#800</a>)</p></li>
+<li><p>将LoggingSeverity枚举作为logging和rcutils_logger模块的公共依赖项。 (<a class="reference external" href="https://github.com/ros2/rclpy/issues/785">#785</a>)</p></li>
+<li><p>在__init__()中将Context.__context设置为None。(<a class="reference external" href="https://github.com/ros2/rclpy/issues/812">#812</a>)</p></li>
+<li><p>删除未使用的函数make_mock_subscription。(<a class="reference external" href="https://github.com/ros2/rclpy/issues/809">#809</a>)</p></li>
+<li><p>删除common.c/h文件。(<a class="reference external" href="https://github.com/ros2/rclpy/issues/789">#789</a>)</p></li>
+<li><p>允许声明未初始化的参数。(<a class="reference external" href="https://github.com/ros2/rclpy/issues/798">#798</a>)</p></li>
+<li><p>如果无法转换到CANCEL_GOAL状态，则拒绝取消请求。(<a class="reference external" href="https://github.com/ros2/rclpy/issues/791">#791</a>)</p></li>
+<li><p>删除句柄，因为它不应再被使用。(<a class="reference external" href="https://github.com/ros2/rclpy/issues/786">#786</a>)</p></li>
 <li><p>Removed some functions in common.c and replaced them in utils.cpp (<a class="reference external" href="https://github.com/ros2/rclpy/issues/787">#787</a>)</p></li>
 <li><p>Moved exception.cpp/hpp to the _rclpy_pybind11 module (<a class="reference external" href="https://github.com/ros2/rclpy/issues/788">#788</a>)</p></li>
 <li><p>Print 'Infinite' for infinite durations in topic endpoint info (<a class="reference external" href="https://github.com/ros2/rclpy/issues/722">#722</a>)</p></li>
