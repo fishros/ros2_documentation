@@ -466,20 +466,19 @@
 <p>在Dashing版本之前，通过YAML文件传递的任何参数都会隐式设置在节点上。</p>
 <p>从Dashing版本开始，情况已经改变，因为需要声明参数才能在节点外部观察者（如``ros2 param list``）中显示参数。</p>
 <p>可以通过在创建节点时使用``automatically_declare_parameters_from_overrides``选项来实现旧的行为。如果将此选项设置为``true``，则在构造节点时会自动声明输入YAML文件中的所有参数。这可以用于避免对现有代码进行重大更改或满足特定的用例。例如，&quot;全局参数服务器&quot;可能希望在启动时使用任意参数进行初始化，而事先无法声明这些参数。然而，大多数情况下，不建议使用此选项，因为它可能导致在YAML文件中设置参数，并假设节点会使用该参数，即使节点实际上并未使用该参数。</p>
-<p>In the future we hope to have a checker that will warn you if you pass a parameter to a node that it was not expecting.</p>
-<p>The parameters in the YAML file will continue to influence the value of parameters when they are first declared.</p>
+<p>未来我们希望拥有一个检查器，如果您向节点传递了它不期望的参数，它将会提醒您。</p>
+<p>YAML文件中的参数将继续影响在首次声明时的参数值。</p>
 </div>
 </div>
 <div class="section" id="ament-cmake">
 <h3><a class="toc-backref" href="#id9">ament_cmake</a><a class="headerlink" href="#ament-cmake" title="永久链接至标题"></a></h3>
-<p>The CMake function <code class="docutils literal notranslate"><span class="pre">ament_index_has_resource</span></code> was returning either <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> or <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.
-As of <a class="reference external" href="https://github.com/ament/ament_cmake/pull/155">this release</a> it returns either the prefix path in case the resource was found or <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</p>
-<p>If you are using the return value in a CMake condition like this:</p>
+<p>CMake函数``ament_index_has_resource``以前返回``TRUE``或``FALSE``。从`此版本开始 &lt;<a class="reference external" href="https://github.com/ament/ament_cmake/pull/155">https://github.com/ament/ament_cmake/pull/155</a>&gt;`_，如果找到资源，它将返回前缀路径，否则返回``FALSE``。</p>
+<p>如果您在CMake条件中使用返回值，像这样：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">ament_index_has_resource</span><span class="p">(</span><span class="s">var</span><span class="w"> </span><span class="s">...</span><span class="p">)</span>
 <span class="nb">if</span><span class="p">(</span><span class="o">${</span><span class="nv">var</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>you need to update the condition to ensure it considers a string value as <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>:</p>
+<p>您需要更新条件以确保它将字符串值视为``TRUE``：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span><span class="p">(</span><span class="s">var</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -487,21 +486,20 @@ As of <a class="reference external" href="https://github.com/ament/ament_cmake/p
 <div class="section" id="rclcpp">
 <h3><a class="toc-backref" href="#id10">rclcpp</a><a class="headerlink" href="#rclcpp" title="永久链接至标题"></a></h3>
 <div class="section" id="behavior-change-for-node-get-node-names">
-<h4>Behavior Change for <code class="docutils literal notranslate"><span class="pre">Node::get_node_names()</span></code><a class="headerlink" href="#behavior-change-for-node-get-node-names" title="永久链接至标题"></a></h4>
-<p>The function <code class="docutils literal notranslate"><span class="pre">NodeGraph::get_node_names()</span></code>, and therefore also <code class="docutils literal notranslate"><span class="pre">Node::get_node_names()</span></code>, now returns a <code class="docutils literal notranslate"><span class="pre">std::vector&lt;std::string&gt;</span></code> containing fully qualified node names with their namespaces included, instead of just the node names.</p>
+<h4><a href="#id1"><span class="problematic" id="id2">``</span></a>Node::get_node_names()``的行为变更<a class="headerlink" href="#behavior-change-for-node-get-node-names" title="永久链接至标题"></a></h4>
+<p>函数``NodeGraph::get_node_names()``，以及因此也是``Node::get_node_names()``，现在返回一个包含完全限定的节点名称（包括命名空间）的``std::vector&lt;std::string&gt;``，而不仅仅是节点名称。</p>
 </div>
 <div class="section" id="changed-the-way-that-options-are-passed-to-nodes">
-<h4>Changed the Way that Options are Passed to Nodes<a class="headerlink" href="#changed-the-way-that-options-are-passed-to-nodes" title="永久链接至标题"></a></h4>
-<p>Extended arguments (beyond name and namespace) to the <code class="docutils literal notranslate"><span class="pre">rclcpp::Node()</span></code> constructor have been replaced with a <code class="docutils literal notranslate"><span class="pre">rclcpp::NodeOptions</span></code> structure.
-See <a class="reference external" href="https://github.com/ros2/rclcpp/pull/622/files">ros2/rclcpp#622</a> for details about the structure and default values of the options.</p>
-<p>If you are using any of the extended arguments to <code class="docutils literal notranslate"><span class="pre">rclcpp::Node()</span></code> like this:</p>
+<h4>更改了传递选项给节点的方式<a class="headerlink" href="#changed-the-way-that-options-are-passed-to-nodes" title="永久链接至标题"></a></h4>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rclcpp::Node()``构造函数的扩展参数（除了名称和命名空间）已被替换为``rclcpp::NodeOptions``结构。有关该结构和选项的默认值的详细信息，请参阅`ros2/rclcpp#622 &lt;<a class="reference external" href="https://github.com/ros2/rclcpp/pull/622/files">https://github.com/ros2/rclcpp/pull/622/files</a>&gt;`__。</p>
+<p>如果您正在使用类似以下方式的``rclcpp::Node()``的扩展参数：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">contexts</span><span class="o">::</span><span class="n">default_context</span><span class="o">::</span><span class="n">get_global_default_context</span><span class="p">();</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">args</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="p">(</span><span class="s">&quot;use_sim_time&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;foo_node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar_namespace&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>You need to update to use the <code class="docutils literal notranslate"><span class="pre">NodeOptions</span></code> structure</p>
+<p>您需要更新为使用``NodeOptions``结构。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">args</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="p">(</span><span class="s">&quot;use_sim_time&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">rclcpp</span><span class="o">::</span><span class="n">NodeOptions</span><span class="w"> </span><span class="n">node_options</span><span class="p">;</span><span class="w"></span>
@@ -512,26 +510,21 @@ See <a class="reference external" href="https://github.com/ros2/rclcpp/pull/622/
 </div>
 </div>
 <div class="section" id="changes-to-creating-publishers-and-subscriptions">
-<h4>Changes to Creating Publishers and Subscriptions<a class="headerlink" href="#changes-to-creating-publishers-and-subscriptions" title="永久链接至标题"></a></h4>
-<p>There have been a few changes to creating publishers and subscriptions which are new in Dashing:</p>
+<h4>创建发布者和订阅者的变化<a class="headerlink" href="#changes-to-creating-publishers-and-subscriptions" title="永久链接至标题"></a></h4>
+<p>在Dashing版本中，创建发布者和订阅者方面有一些变化：</p>
 <ul class="simple">
-<li><p>QoS settings are now passed using the new <code class="docutils literal notranslate"><span class="pre">rclcpp::QoS</span></code> class, and the API encourages the user to specify at least the history depth.</p></li>
-<li><p>Options are now passed as an object, i.e. <code class="docutils literal notranslate"><span class="pre">rclcpp::PublisherOptions</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp::SubscriptionOptions</span></code>.</p></li>
+<li><p>现在使用新的``rclcpp::QoS``类来传递QoS设置，并且API鼓励用户至少指定历史深度。</p></li>
+<li><p>选项现在作为对象传递，即``rclcpp::PublisherOptions``和``rclcpp::SubscriptionOptions``。</p></li>
 </ul>
-<p>All changes are backwards compatible (no code changes are required), but several existing call styles have been deprecated.
-Users are encouraged to update to the new signatures.</p>
+<p>所有的变化都向后兼容（无需更改代码），但是一些旧的调用方式已被弃用。建议用户更新为新的签名。</p>
 <hr class="docutils" />
-<p>In the past, when creating a publisher or subscription, you could either not specify any QoS settings (e.g. just provide topic name for a publisher) or you could specify a &quot;qos profile&quot; data structure (of type <code class="docutils literal notranslate"><span class="pre">rmw_qos_profile_t</span></code>) with all the settings already set.
-Now you must use the new <code class="docutils literal notranslate"><span class="pre">rclcpp::QoS</span></code> object to specify your QoS and at least the history settings for your QoS.
-This encourages the user to specify a history depth when using <code class="docutils literal notranslate"><span class="pre">KEEP_LAST</span></code>, rather than defaulting it to a value that may or may not be appropriate.</p>
-<p>In ROS 1, this was known as the <code class="docutils literal notranslate"><span class="pre">queue_size</span></code> and it was required in both C++ and Python.
-We're changing the ROS 2 API to bring this requirement back.</p>
+<p>在过去，创建发布者或订阅者时，可以不指定任何QoS设置（例如，对于发布者，只需提供主题名称），或者可以指定已设置了所有设置的“qos profile”数据结构（类型为``rmw_qos_profile_t``）。现在，您必须使用新的``rclcpp::QoS``对象来指定您的QoS，至少要为您的QoS指定历史设置。这鼓励用户在使用``KEEP_LAST``时指定历史深度，而不是将其默认为可能不合适的值。</p>
+<p>在ROS 1中，这被称为``queue_size``，在C++和Python中都是必需的。我们正在更改ROS 2 API以恢复此要求。</p>
 <hr class="docutils" />
-<p>Also, any options which could previously be passed during creation of a publisher or subscription have now been encapsulated in an <code class="docutils literal notranslate"><span class="pre">rclcpp::PublisherOptions</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp::SubscriptionOptions</span></code> class respectively.
-This allows for shorter signatures, more convenient use, and for adding new future options without breaking API.</p>
+<p>此外，以前可以在创建发布者或订阅时传递的任何选项现在已封装在``rclcpp::PublisherOptions``和``rclcpp::SubscriptionOptions``类中。这使得签名更短，使用更方便，并且可以在不破坏API的情况下添加新的未来选项。</p>
 <hr class="docutils" />
-<p>Some signatures for creating publishers and subscribers are now deprecated, and new signatures have been added to allow you to use the new <code class="docutils literal notranslate"><span class="pre">rclcpp::QoS</span></code> and publisher/subscription option classes.</p>
-<p>These are the new and recommended API's:</p>
+<p>一些创建发布者和订阅者的签名现在已经过时，并添加了新的签名，以允许您使用新的``rclcpp::QoS``和发布者/订阅者选项类。</p>
+<p>这些是新的推荐API：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">MessageT</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">AllocatorT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
@@ -563,7 +556,7 @@ This allows for shorter signatures, more convenient use, and for adding new futu
 <span class="w">  </span><span class="n">msg_mem_strat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>And these are the deprecated ones:</p>
+<p>这些是已过时的API：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"></span>
 <span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">MessageT</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">AllocatorT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">allocator</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
@@ -630,7 +623,7 @@ This allows for shorter signatures, more convenient use, and for adding new futu
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>The change to how QoS is passed is most likely to impact users.</p>
+<p>传递QoS的更改最有可能影响用户。</p>
 <p>A typical change for a publisher looks like this:</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- pub_ = create_publisher&lt;std_msgs::msg::String&gt;(&quot;chatter&quot;);</span><span class="w"></span>
 <span class="gi">+ pub_ = create_publisher&lt;std_msgs::msg::String&gt;(&quot;chatter&quot;, 10);</span><span class="w"></span>
