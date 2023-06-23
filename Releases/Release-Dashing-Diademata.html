@@ -624,19 +624,19 @@
 </div>
 <hr class="docutils" />
 <p>传递QoS的更改最有可能影响用户。</p>
-<p>A typical change for a publisher looks like this:</p>
+<p>一个出版商的典型更改如下所示：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- pub_ = create_publisher&lt;std_msgs::msg::String&gt;(&quot;chatter&quot;);</span><span class="w"></span>
 <span class="gi">+ pub_ = create_publisher&lt;std_msgs::msg::String&gt;(&quot;chatter&quot;, 10);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>And for a subscription:</p>
+<p>对于订阅，如下所示：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- sub_ = create_subscription&lt;std_msgs::msg::String&gt;(&quot;chatter&quot;, callback);</span><span class="w"></span>
 <span class="gi">+ sub_ = create_subscription&lt;std_msgs::msg::String&gt;(&quot;chatter&quot;, 10, callback);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>If you have no idea what depth to use and don't care right now (maybe just prototyping), then we recommend using <code class="docutils literal notranslate"><span class="pre">10</span></code>, as that was the default before and should preserve existing behavior.</p>
-<p>More in depth documentation about how to select an appropriate depth is forthcoming.</p>
-<p>This is an example of a slightly more involved change to avoid the newly deprecated API's:</p>
+<p>如果您对使用的深度没有概念并且现在不关心（可能只是原型设计），那么我们建议使用 <code class="docutils literal notranslate"><span class="pre">10</span></code>，因为这是之前的默认值，应该保留现有行为。</p>
+<p>有关如何选择适当的深度的更详细文档即将发布。</p>
+<p>这是一个稍微复杂一些的更改示例，以避免使用新弃用的 API：</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- // Creates a latched topic</span><span class="w"></span>
 <span class="gd">- rmw_qos_profile_t qos = rmw_qos_profile_default;</span><span class="w"></span>
 <span class="gd">- qos.depth = 1;</span><span class="w"></span>
@@ -651,20 +651,20 @@
 <span class="gi">+   rclcpp::QoS(1).transient_local());</span><span class="w"></span>
 </pre></div>
 </div>
-<p>See the pull request (and connected pull requests) that introduced the QoS change for more examples and details:</p>
+<p>有关引入 QoS 更改的拉取请求（以及相关的拉取请求）的更多示例和详细信息，请参见：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/713">https://github.com/ros2/rclcpp/pull/713</a></p>
 <ul>
 <li><p><a class="reference external" href="https://github.com/ros2/demos/pull/332">https://github.com/ros2/demos/pull/332</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/robot_state_publisher/pull/19">https://github.com/ros2/robot_state_publisher/pull/19</a></p></li>
-<li><p>and others...</p></li>
+<li><p>和其他...</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="changes-due-to-declare-parameter-change">
-<h4>Changes Due to Declare Parameter Change<a class="headerlink" href="#changes-due-to-declare-parameter-change" title="永久链接至标题"></a></h4>
-<p>For details about the actual behavior change, see <a class="reference internal" href="#declaring-parameters">Declaring Parameters</a> above.</p>
+<h4>由于参数声明更改而引起的变化<a class="headerlink" href="#changes-due-to-declare-parameter-change" title="永久链接至标题"></a></h4>
+<p>有关实际行为更改的详细信息，请参阅上述的`声明参数`_</p>
 <p>There are several new API calls in the <code class="docutils literal notranslate"><span class="pre">rclcpp::Node</span></code>'s interface:</p>
 <ul>
 <li><p>Methods that declare parameters given a name, optional default value, optional descriptor, and return the value actually set:</p>
@@ -856,7 +856,7 @@ For example, these calls are valid:</p>
 </ul>
 </div>
 <div class="section" id="id2">
-<h4>Changes Due to Declare Parameter Change<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
+<h4>由于参数声明更改而引起的变化<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
 <p>For details about the actual behavior change, see <a class="reference internal" href="#declaring-parameters">Declaring Parameters</a> above. The changes are analogous to the ones in <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>.</p>
 <p>These are the new API methods available in <code class="docutils literal notranslate"><span class="pre">rclpy.node.Node</span></code> interface:</p>
 <ul>
