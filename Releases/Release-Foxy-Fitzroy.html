@@ -734,8 +734,8 @@ See https://community.rti.com/kb/what-causes-error-discovered-remote-participant
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Name in Eloquent</p></th>
-<th class="head"><p>Name in Foxy</p></th>
+<tr class="row-odd"><th class="head"><p>Eloquent中的名称</p></th>
+<th class="head"><p>Foxy中的名称</p></th>
 </tr>
 </thead>
 <tbody>
@@ -753,9 +753,8 @@ See https://community.rti.com/kb/what-causes-error-discovered-remote-participant
 <div class="section" id="known-issues">
 <h2><a class="toc-backref" href="#id35">已知问题</a><a class="headerlink" href="#known-issues" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros2/ros2/issues/922">[ros2/ros2#922]</a> Services' performance is flaky for <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> nodes using eProsima Fast-RTPS or ADLINK CycloneDDS as RMW implementation.
-Specifically, service clients sometimes do not receive the response from servers.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/1212">[ros2/rclcpp#1212]</a> Ready reentrant Waitable objects can attempt to execute multiple times.</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/ros2/issues/922">[ros2/ros2#922]</a> 使用 eProsima Fast-RTPS 或 ADLINK CycloneDDS 作为 RMW 实现的 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> 节点的服务性能不稳定。具体而言，有时服务客户端无法接收到服务器的响应。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/1212">[ros2/rclcpp#1212]</a> 可重入的可等待对象可能会尝试执行多次。</p></li>
 </ul>
 </div>
 <div class="section" id="timeline-before-the-release">
@@ -764,27 +763,22 @@ Specifically, service clients sometimes do not receive the response from servers
 <blockquote>
 <div><div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>The dates below reflect an extension by roughly two weeks due to the coronavirus pandemic.</p>
+<p>以下日期反映了由于冠状病毒大流行而延长的大约两周时间。</p>
 </div>
 <dl class="simple">
-<dt>Wed. April 22nd, 2020</dt><dd><p>API and feature freeze for <code class="docutils literal notranslate"><span class="pre">ros_core</span></code> <a class="footnote-reference brackets" href="#id5" id="id2">1</a> packages.
-Note that this includes <code class="docutils literal notranslate"><span class="pre">rmw</span></code>, which is a recursive dependency of <code class="docutils literal notranslate"><span class="pre">ros_core</span></code>.
-Only bug fix releases should be made after this point.
-New packages can be released independently.</p>
+<dt>2020年4月22日，星期三</dt><dd><p><code class="docutils literal notranslate"><span class="pre">ros_core</span></code> <a class="footnote-reference brackets" href="#id5" id="id2">1</a> 包的 API 和功能冻结。请注意，这包括 <code class="docutils literal notranslate"><span class="pre">rmw</span></code>，它是 <code class="docutils literal notranslate"><span class="pre">ros_core</span></code> 的递归依赖项。在此之后，只能进行错误修复发布。新的软件包可以独立发布。</p>
 </dd>
-<dt>Mon. April 29th, 2020 (beta)</dt><dd><p>Updated releases of <code class="docutils literal notranslate"><span class="pre">desktop</span></code> <a class="footnote-reference brackets" href="#id6" id="id3">2</a> packages available.
-Testing of the new features.</p>
+<dt>2020年4月29日，星期一（测试版）</dt><dd><p>已提供更新的``desktop`` [2]_软件包。测试新功能。</p>
 </dd>
-<dt>Wed. May 27th, 2020 (release candidate)</dt><dd><p>Updated releases of <code class="docutils literal notranslate"><span class="pre">desktop</span></code> <a class="footnote-reference brackets" href="#id6" id="id4">2</a> packages available.</p>
+<dt>2020年5月27日（候选版本）</dt><dd><p>已提供更新的``desktop`` [2]_软件包。</p>
 </dd>
-<dt>Wed. June 3rd, 2020</dt><dd><p>Freeze rosdistro.
-No PRs for Foxy on the <a class="reference external" href="http://docs.ros.org/en/independent/api/rosdistro/html/rosdistro.html#module-rosdistro" title="(在 rosdistro)"><code class="xref any docutils literal notranslate"><span class="pre">rosdistro</span></code></a> repo will be merged (reopens after the release announcement).</p>
+<dt>2020年6月3日</dt><dd><p>冻结rosdistro。不会合并Foxy在`rosdistro`存储库上的PR（发布公告后重新开放）。</p>
 </dd>
 </dl>
 </div></blockquote>
 <dl class="footnote brackets">
 <dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>The <code class="docutils literal notranslate"><span class="pre">ros_core</span></code> variant described in the <a class="reference external" href="https://github.com/ros2/variants">variants</a> repository.</p>
+<dd><p><a href="#id1"><span class="problematic" id="id2">``</span></a>ros_core``变体在`variants &lt;<a class="reference external" href="https://github.com/ros2/variants">https://github.com/ros2/variants</a>&gt;`_存储库中描述。</p>
 </dd>
 <dt class="label" id="id6"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">desktop</span></code> variant described in the <a class="reference external" href="https://github.com/ros2/variants">variants</a> repository.</p>
