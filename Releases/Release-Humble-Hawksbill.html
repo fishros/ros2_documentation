@@ -450,11 +450,9 @@
 <div class="section" id="ros2topic">
 <h3><a class="toc-backref" href="#id31">ros2topic</a><a class="headerlink" href="#ros2topic" title="永久链接至标题"></a></h3>
 <div class="section" id="now-as-keyword-for-builtin-interfaces-msg-time-and-auto-for-std-msgs-msg-header">
-<h4><code class="docutils literal notranslate"><span class="pre">now</span></code> as keyword for <code class="docutils literal notranslate"><span class="pre">builtin_interfaces.msg.Time</span></code> and <code class="docutils literal notranslate"><span class="pre">auto</span></code> for <code class="docutils literal notranslate"><span class="pre">std_msgs.msg.Header</span></code><a class="headerlink" href="#now-as-keyword-for-builtin-interfaces-msg-time-and-auto-for-std-msgs-msg-header" title="永久链接至标题"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> now allows to set a <code class="docutils literal notranslate"><span class="pre">builtin_interfaces.msg.Time</span></code> message to the current time via the <code class="docutils literal notranslate"><span class="pre">now</span></code> keyword.
-Similarly, a <code class="docutils literal notranslate"><span class="pre">std_msg.msg.Header</span></code> message will be automatically generated when passed the keyword <code class="docutils literal notranslate"><span class="pre">auto</span></code>.
-This behavior matches that of ROS 1's <code class="docutils literal notranslate"><span class="pre">rostopic</span></code> (<a class="reference external" href="http://wiki.ros.org/ROS/YAMLCommandLine#Headers.2Ftimestamps">http://wiki.ros.org/ROS/YAMLCommandLine#Headers.2Ftimestamps</a>)</p>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/ros2cli/pull/751">ros2/ros2cli#751</a></p>
+<h4><code class="docutils literal notranslate"><span class="pre">now</span></code> 作为 <code class="docutils literal notranslate"><span class="pre">builtin_interfaces.msg.Time</span></code> 的关键字，<code class="docutils literal notranslate"><span class="pre">auto</span></code> 作为 <code class="docutils literal notranslate"><span class="pre">std_msgs.msg.Header</span></code> 的关键字。<a class="headerlink" href="#now-as-keyword-for-builtin-interfaces-msg-time-and-auto-for-std-msgs-msg-header" title="永久链接至标题"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> 现在允许使用关键字 <code class="docutils literal notranslate"><span class="pre">now</span></code> 将 <code class="docutils literal notranslate"><span class="pre">builtin_interfaces.msg.Time</span></code> 消息设置为当前时间。类似地，当传递关键字 <code class="docutils literal notranslate"><span class="pre">auto</span></code> 时，将自动生成 <code class="docutils literal notranslate"><span class="pre">std_msgs.msg.Header</span></code> 消息。此行为与 ROS 1 的 <code class="docutils literal notranslate"><span class="pre">rostopic</span></code> 一致（<a class="reference external" href="http://wiki.ros.org/ROS/YAMLCommandLine#Headers.2Ftimestamps">http://wiki.ros.org/ROS/YAMLCommandLine#Headers.2Ftimestamps</a>）。</p>
+<p>相关 PR: <a class="reference external" href="https://github.com/ros2/ros2cli/pull/751">ros2/ros2cli#751</a></p>
 </div>
 </div>
 </div>
@@ -463,20 +461,19 @@ This behavior matches that of ROS 1's <code class="docutils literal notranslate"
 <div class="section" id="ament-cmake-gen-version-h">
 <h3><a class="toc-backref" href="#id33">ament_cmake_gen_version_h</a><a class="headerlink" href="#ament-cmake-gen-version-h" title="永久链接至标题"></a></h3>
 <div class="section" id="generating-a-c-c-header-with-version-info">
-<h4>Generating a C/C++ header with version info<a class="headerlink" href="#generating-a-c-c-header-with-version-info" title="永久链接至标题"></a></h4>
-<p>A new CMake function to generate a header with the package version info was added to the <code class="docutils literal notranslate"><span class="pre">ament_cmake_gen_version_h</span></code> in <a class="reference external" href="https://github.com/ament/ament_cmake/pull/377">ament/ament_cmake#377</a>.
-Here's the simplest use case:</p>
+<h4>生成带有版本信息的 C/C++ 头文件<a class="headerlink" href="#generating-a-c-c-header-with-version-info" title="永久链接至标题"></a></h4>
+<p>在 <code class="docutils literal notranslate"><span class="pre">ament_cmake_gen_version_h</span></code> 中添加了一个新的 CMake 函数，用于生成带有包版本信息的头文件，详情请见 <a class="reference external" href="https://github.com/ament/ament_cmake/pull/377">ament/ament_cmake#377</a>。以下是最简单的使用示例：</p>
 <div class="highlight-CMake notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">my_project</span><span class="p">)</span>
 <span class="nb">add_library</span><span class="p">(</span><span class="s">my_lib</span><span class="w"> </span><span class="s">...</span><span class="p">)</span>
 <span class="nb">ament_generate_version_header</span><span class="p">(</span><span class="s">my_lib</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It will generate a header with version info from the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and make it available to targets that link against the <code class="docutils literal notranslate"><span class="pre">my_lib</span></code> library.</p>
-<p>How to include the header:</p>
+<p>它将从``package.xml``生成一个带有版本信息的头文件，并使其可用于链接到``my_lib``库的目标。</p>
+<p>如何包含该头文件：</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;my_project/version.h&gt;</span><span class="cp"></span>
 </pre></div>
 </div>
-<p>Where the header is installed to:</p>
+<p>头文件的安装位置：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">VERSION_HEADER</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">}</span><span class="s">/include/my_project/my_project/version.h</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -485,9 +482,9 @@ Here's the simplest use case:</p>
 <div class="section" id="launch">
 <h3><a class="toc-backref" href="#id34">启动</a><a class="headerlink" href="#launch" title="永久链接至标题"></a></h3>
 <div class="section" id="scoping-environment-variables-in-group-actions">
-<h4>Scoping environment variables in group actions<a class="headerlink" href="#scoping-environment-variables-in-group-actions" title="永久链接至标题"></a></h4>
-<p>Similar to launch configurations, now by default, the state of environment variables are scoped to group actions.</p>
-<p>For example, in the following launch files the executed processe will echo the value <code class="docutils literal notranslate"><span class="pre">1</span></code> (before Humble it would echo <code class="docutils literal notranslate"><span class="pre">2</span></code>):</p>
+<h4>在组操作中进行环境变量的作用域设置<a class="headerlink" href="#scoping-environment-variables-in-group-actions" title="永久链接至标题"></a></h4>
+<p>与启动配置类似，现在默认情况下，环境变量的状态会作用于组操作。</p>
+<p>例如，在以下启动文件中，执行的进程将回显值``1``（在Humble之前将回显``2``）：</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-WE1M" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-WE1M" name="WE1M" role="tab" tabindex="0">XML</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-WE1M" class="sphinx-tabs-panel group-tab" id="panel-0-WE1M" name="WE1M" role="tabpanel" tabindex="0"><div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
   <span class="nt">&lt;set_env</span> <span class="na">name=</span><span class="s">&quot;FOO&quot;</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
@@ -512,31 +509,29 @@ Here's the simplest use case:</p>
 </pre></div>
 </div>
 </div></div>
-<p>If you would like disable scoping for launch configurations and and environment variables you can set the <code class="docutils literal notranslate"><span class="pre">scoped</span></code> argument (or attribute) to false.</p>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/launch/pull/601">ros2/launch#601</a></p>
+<p>如果您想禁用启动配置和环境变量的作用域，您可以将``scoped``参数（或属性）设置为false。</p>
+<p>相关PR：<a class="reference external" href="https://github.com/ros2/launch/pull/601">ros2/launch#601</a></p>
 </div>
 <div class="section" id="launch-pytest">
 <h4>launch_pytest<a class="headerlink" href="#launch-pytest" title="永久链接至标题"></a></h4>
-<p>We've added a new package, <code class="docutils literal notranslate"><span class="pre">launch_pytest</span></code>, that acts as an alternative to <code class="docutils literal notranslate"><span class="pre">launch_testing</span></code>.
-<code class="docutils literal notranslate"><span class="pre">launch_pytest</span></code> is a simple pytest plugin that provides pytest fixtures to manage the lifetime of a launch service.</p>
-<p>Check out the <a class="reference external" href="https://github.com/ros2/launch/tree/humble/launch_pytest">package README for details and examples.</a></p>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/launch/pull/528">ros2/launch#528</a></p>
+<p>我们添加了一个新的软件包，<code class="docutils literal notranslate"><span class="pre">launch_pytest</span></code>，它可以作为``launch_testing``的替代方案。<a href="#id1"><span class="problematic" id="id2">``</span></a>launch_pytest``是一个简单的pytest插件，提供pytest fixtures来管理launch service的生命周期。</p>
+<p>请查看`软件包的README以获取详细信息和示例。&lt;<a class="reference external" href="https://github.com/ros2/launch/tree/humble/launch_pytest">https://github.com/ros2/launch/tree/humble/launch_pytest</a>&gt;`_</p>
+<p>相关PR：<a class="reference external" href="https://github.com/ros2/launch/pull/528">ros2/launch#528</a></p>
 </div>
 <div class="section" id="allow-matching-target-actions-with-a-callable">
-<h4>Allow matching target actions with a callable<a class="headerlink" href="#allow-matching-target-actions-with-a-callable" title="永久链接至标题"></a></h4>
-<p>Event handlers that take a target action object to match can now also take a callable instead to do the matching.</p>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/launch/pull/540">ros2/launch#540</a></p>
+<h4>允许使用可调用对象与目标动作进行匹配<a class="headerlink" href="#allow-matching-target-actions-with-a-callable" title="永久链接至标题"></a></h4>
+<p>现在，事件处理程序可以接受可调用对象来进行匹配，而不仅限于接受目标动作对象。</p>
+<p>相关 PR: <a class="reference external" href="https://github.com/ros2/launch/pull/540">ros2/launch#540</a></p>
 </div>
 <div class="section" id="access-to-math-module-when-evaluating-python-expressions">
-<h4>Access to math module when evaluating Python expressions<a class="headerlink" href="#access-to-math-module-when-evaluating-python-expressions" title="永久链接至标题"></a></h4>
-<p>Inside <code class="docutils literal notranslate"><span class="pre">PythonExpression</span></code> substitutions (<code class="docutils literal notranslate"><span class="pre">eval</span></code>) we can now use symbols from Python's math module.
-For example,</p>
+<h4>在评估 Python 表达式时可以访问 math 模块<a class="headerlink" href="#access-to-math-module-when-evaluating-python-expressions" title="永久链接至标题"></a></h4>
+<p>在``PythonExpression``替换（<code class="docutils literal notranslate"><span class="pre">eval</span></code>）中，我们现在可以使用 Python 的 math 模块中的符号。例如，</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;launch&gt;</span>
   <span class="nt">&lt;log</span> <span class="na">message=</span><span class="s">&quot;$(eval &#39;ceil(pi)&#39;)&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/launch/pull/557">ros2/launch#557</a></p>
+<p>相关 PR: <a class="reference external" href="https://github.com/ros2/launch/pull/557">ros2/launch#557</a></p>
 </div>
 <div class="section" id="boolean-substitutions">
 <h4>Boolean substitutions<a class="headerlink" href="#boolean-substitutions" title="永久链接至标题"></a></h4>
