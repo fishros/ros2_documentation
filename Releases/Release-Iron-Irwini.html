@@ -387,8 +387,8 @@
 <li><p><a class="reference internal" href="#pre-and-post-set-parameter-callback-support" id="id31">支持预设和后置设置参数回调</a></p></li>
 <li><p><a class="reference internal" href="#improved-discovery-options" id="id32">改进的发现选项</a></p></li>
 <li><p><a class="reference internal" href="#matched-events" id="id33">匹配事件</a></p></li>
-<li><p><a class="reference internal" href="#external-configuration-services-of-loggers" id="id34">External configuration services of loggers</a></p></li>
-<li><p><a class="reference internal" href="#type-description-distribution" id="id35">Type Description Distribution</a></p></li>
+<li><p><a class="reference internal" href="#external-configuration-services-of-loggers" id="id34">日志记录器的外部配置服务</a></p></li>
+<li><p><a class="reference internal" href="#type-description-distribution" id="id35">类型 描述 发行版</a></p></li>
 <li><p><a class="reference internal" href="#dynamic-types-and-dynamic-messages" id="id36">Dynamic Types and Dynamic Messages</a></p></li>
 <li><p><a class="reference internal" href="#launch" id="id37"><code class="docutils literal notranslate"><span class="pre">launch</span></code></a></p></li>
 <li><p><a class="reference internal" href="#launch-ros" id="id38"><code class="docutils literal notranslate"><span class="pre">launch_ros</span></code></a></p></li>
@@ -500,29 +500,25 @@
 <p>除了QoS事件之外，当任何发布者和订阅之间建立或断开连接时，还可以生成匹配事件。用户可以为每个发布者和订阅提供回调函数，这些函数由匹配事件触发，并以用户认为合适的方式处理它们，类似于处理在主题上收到的消息的方式。</p>
 <ul class="simple">
 <li><p>发布者：当它找到与主题匹配且具有兼容QoS的订阅，或者连接的订阅被断开时，会发生此事件。</p></li>
-<li><p>subscription: this event happens when it finds a publisher which matches the topic and has compatible QoS or a connected publisher is disconnected.</p></li>
+<li><p>订阅：当它找到与主题匹配且具有兼容QoS的发布者，或者已连接的发布者断开连接时，会发生此事件。</p></li>
 </ul>
-<p>See the tracking issue at <a class="reference external" href="https://github.com/ros2/rmw/issues/330">https://github.com/ros2/rmw/issues/330</a> for more information.</p>
+<p>有关更多信息，请参阅https://github.com/ros2/rmw/issues/330上的跟踪问题。</p>
 <ul class="simple">
-<li><p>C++ Demo of Matched Events: <a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp">https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp</a></p></li>
-<li><p>Python Demo of Matched Events: <a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py">https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py</a></p></li>
+<li><p>匹配事件的C++演示：<a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp">https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp</a></p></li>
+<li><p>匹配事件的Python演示：<a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py">https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py</a></p></li>
 </ul>
 </div>
 <div class="section" id="external-configuration-services-of-loggers">
-<h3><a class="toc-backref" href="#id34">External configuration services of loggers</a><a class="headerlink" href="#external-configuration-services-of-loggers" title="永久链接至标题"></a></h3>
-<p>It is now possible to configure node logger levels remotely via a service.
-When the <code class="docutils literal notranslate"><span class="pre">enable_logger_service</span></code> option is enabled during node creation, the <code class="docutils literal notranslate"><span class="pre">set_logger_levels</span></code> and <code class="docutils literal notranslate"><span class="pre">get_logger_levels</span></code> services will be available.</p>
-<p>Be advised that the <code class="docutils literal notranslate"><span class="pre">enable_logger_service</span></code> option is disabled by default, so the user needs to enable this option on node creation.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2/issues/1355">https://github.com/ros2/ros2/issues/1355</a> for more information.</p>
+<h3><a class="toc-backref" href="#id34">日志记录器的外部配置服务</a><a class="headerlink" href="#external-configuration-services-of-loggers" title="永久链接至标题"></a></h3>
+<p>现在可以通过服务远程配置节点记录器级别。在节点创建过程中启用``enable_logger_service``选项后，<a href="#id1"><span class="problematic" id="id2">``</span></a>set_logger_levels``和``get_logger_levels``服务将可用。</p>
+<p>请注意，默认情况下禁用了``enable_logger_service``选项，因此用户需要在节点创建时启用此选项。</p>
+<p>请参阅 <a class="reference external" href="https://github.com/ros2/ros2/issues/1355">https://github.com/ros2/ros2/issues/1355</a> 了解更多信息。</p>
 </div>
 <div class="section" id="type-description-distribution">
-<h3><a class="toc-backref" href="#id35">Type Description Distribution</a><a class="headerlink" href="#type-description-distribution" title="永久链接至标题"></a></h3>
-<p>It is now possible to communicate information about the types of ROS 2 messages, so that systems with potentially-different types of the same name may discover their compatibility more transparently.
-This umbrella of capabilities, which is defined by a subset of REP-2011: Evolving Message Types, has had many parts land in Iron.</p>
-<p>First, the introduction of the new package <a class="reference external" href="https://index.ros.org/p/type_description_interfaces/github-ros2-rcl_interfaces/#iron">type_description_interfaces</a> provides a common way to communicate the descriptions of ROS 2 communication interface types (msg, srv, action).</p>
-<p>Next, a method to hash type descriptions has been decided on, the ROS Interface Hashing Standard (RIHS) - starting with the first version RIHS01.
-RIHS hashes are automatically calculated for all compiled ROS types at build time, and baked into the generated code so that they can be inspected.
-These hashes are also communicated automatically during discovery, and included in <code class="docutils literal notranslate"><span class="pre">rmw_topic_endpoint_info_t</span></code> for graph introspection queries such as <code class="docutils literal notranslate"><span class="pre">get_publishers_info_by_topic</span></code>.</p>
+<h3><a class="toc-backref" href="#id35">类型 描述 发行版</a><a class="headerlink" href="#type-description-distribution" title="永久链接至标题"></a></h3>
+<p>现在可以传递有关ROS 2消息类型的信息，以便具有潜在不同类型但名称相同的系统可以更透明地发现它们的兼容性。这个能力集由REP-2011的一个子集定义：Evolving Message Types，在Iron中已经有了许多部分的进展。</p>
+<p>首先，新包 <a class="reference external" href="https://index.ros.org/p/type_description_interfaces/github-ros2-rcl_interfaces/#iron">type_description_interfaces</a> 的引入提供了一种通用的方式来传递ROS 2通信接口类型（msg、srv、action）的描述。</p>
+<p>接下来，已经确定了一种哈希类型描述的方法，即ROS Interface Hashing Standard（RIHS）- 从第一个版本RIHS01开始。RIHS哈希在构建时自动计算所有已编译的ROS类型，并嵌入到生成的代码中以供检查。这些哈希值也在发现过程中自动传递，并包含在``rmw_topic_endpoint_info_t``中，用于图形内省查询，例如``get_publishers_info_by_topic``。</p>
 <p>The full <code class="docutils literal notranslate"><span class="pre">TypeDescription</span></code> data structure, as well as the raw source text (such as <code class="docutils literal notranslate"><span class="pre">.msg</span></code> file) that were used to generate it are now baked in by default to the message libraries, so they can be used by <code class="docutils literal notranslate"><span class="pre">typesupport</span></code> or end users.
 While we expect this data to provide value to most users, some users trying to minimize bytes in their install space can disable the feature when building ROS 2 Core by defining the CMake variable <code class="docutils literal notranslate"><span class="pre">ROSIDL_GENERATOR_C_DISABLE_TYPE_DESCRIPTION_CODEGEN</span></code>.</p>
 <p>Finally, the new service <code class="docutils literal notranslate"><span class="pre">type_description_interfaces/GetTypeDescription.srv</span></code> has been defined to allow nodes, on encountering an unknown RIHS type hash, to request the full definition from the node advertising that type.
