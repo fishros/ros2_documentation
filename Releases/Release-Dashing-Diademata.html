@@ -919,45 +919,36 @@
 <h3><a class="toc-backref" href="#id13">rosidl</a><a class="headerlink" href="#rosidl" title="永久链接至标题"></a></h3>
 <p>在Crystal版本之前，每个消息生成器包都会使用``ament_cmake``扩展点``rosidl_generate_interfaces``注册自己，并传递一组``.msg``/<code class="docutils literal notranslate"><span class="pre">.srv</span></code>/<code class="docutils literal notranslate"><span class="pre">.action``文件。从Dashing版本开始，消息生成流程基于</span></code>.idl``文件。</p>
 <p>任何消息生成器包都需要更改并使用新的扩展点``rosidl_generate_idl_interfaces``进行注册，该扩展点仅传递``.idl``文件。已经更新了用于常见支持语言C、C++和Python的消息生成器，以及用于内省、Fast RTPS、Connext和OpenSplice的类型支持包（请参阅`ros2/rosidl#334 &lt;<a class="reference external" href="https://github.com/ros2/rosidl/pull/334/files">https://github.com/ros2/rosidl/pull/334/files</a>&gt;`__）。调用``rosidl_generate_interfaces()``的CMake代码可以直接传递``.idl``文件，也可以传递``.msg``/<code class="docutils literal notranslate"><span class="pre">.srv</span></code>/<code class="docutils literal notranslate"><span class="pre">.action``文件，这些文件在传递给每个消息生成器之前将被内部转换为</span></code>.idl``文件。</p>
-<p>The format of <code class="docutils literal notranslate"><span class="pre">.msg</span></code> / <code class="docutils literal notranslate"><span class="pre">.srv</span></code> / <code class="docutils literal notranslate"><span class="pre">.action</span></code> files is not being evolved in the future.
-The mapping between <code class="docutils literal notranslate"><span class="pre">.msg</span></code> / <code class="docutils literal notranslate"><span class="pre">.srv</span></code> / <code class="docutils literal notranslate"><span class="pre">.action</span></code> files and <code class="docutils literal notranslate"><span class="pre">.idl</span></code> files is described in <a class="reference external" href="https://design.ros2.org/articles/legacy_interface_definition.html">this design article</a>.
-A <a class="reference external" href="https://design.ros2.org/articles/idl_interface_definition.html">second design article</a> describes the supported features in <code class="docutils literal notranslate"><span class="pre">.idl</span></code> files.
-In order to leverage any of the new features existing interfaces need to be converted (e.g. using the command line tools  <code class="docutils literal notranslate"><span class="pre">msg2idl</span></code> / <code class="docutils literal notranslate"><span class="pre">srv2idl</span></code> / <code class="docutils literal notranslate"><span class="pre">action2idl</span></code>).</p>
-<p>To distinguish same type names, but with different namespaces, the introspection structs now contain a namespace field that replaces the package name (see <a class="reference external" href="https://github.com/ros2/rosidl/pull/355/files">ros2/rosidl#335</a>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">.msg</span></code> / <code class="docutils literal notranslate"><span class="pre">.srv</span></code> / <code class="docutils literal notranslate"><span class="pre">.action``文件的格式在未来不会进行改变。</span></code>.msg`` / <code class="docutils literal notranslate"><span class="pre">.srv</span></code> / <code class="docutils literal notranslate"><span class="pre">.action``文件与</span></code>.idl``文件之间的映射在`这篇设计文章 &lt;<a class="reference external" href="https://design.ros2.org/articles/legacy_interface_definition.html">https://design.ros2.org/articles/legacy_interface_definition.html</a>&gt;`__中有描述。<code class="xref any docutils literal notranslate"><span class="pre">第二篇设计文章</span> <span class="pre">&lt;https://design.ros2.org/articles/idl_interface_definition.html&gt;`__描述了`</span></code>.idl``文件中支持的特性。为了利用任何新特性，现有接口需要进行转换（例如使用命令行工具``msg2idl`` / <code class="docutils literal notranslate"><span class="pre">srv2idl</span></code> / <code class="docutils literal notranslate"><span class="pre">action2idl</span></code>）。</p>
+<p>为了区分具有不同命名空间的相同类型名称，内省结构现在包含一个命名空间字段，用于替换包名（参见`ros2/rosidl#335 &lt;<a class="reference external" href="https://github.com/ros2/rosidl/pull/355/files">https://github.com/ros2/rosidl/pull/355/files</a>&gt;`_）。</p>
 <div class="section" id="mapping-of-char-in-msg-files">
-<h4>Mapping of char in .msg files<a class="headerlink" href="#mapping-of-char-in-msg-files" title="永久链接至标题"></a></h4>
-<p>In <a class="reference external" href="https://wiki.ros.org/msg#Fields">ROS 1</a> <code class="docutils literal notranslate"><span class="pre">char</span></code> has been deprecated for a long time and is being mapped to <code class="docutils literal notranslate"><span class="pre">uint8</span></code>.
-In ROS 2 until Crystal <code class="docutils literal notranslate"><span class="pre">char</span></code> was mapped to a single character (<code class="docutils literal notranslate"><span class="pre">char</span></code> in C / C++, <code class="docutils literal notranslate"><span class="pre">str</span></code> with length 1 in Python) in an effort to provide a more natural mapping.
-As of Dashing the ROS 1 semantic has been restored and <code class="docutils literal notranslate"><span class="pre">char</span></code> maps to <code class="docutils literal notranslate"><span class="pre">uint8</span></code> again.</p>
+<h4>.msg文件中的char映射<a class="headerlink" href="#mapping-of-char-in-msg-files" title="永久链接至标题"></a></h4>
+<p>在`ROS 1 &lt;<a class="reference external" href="https://wiki.ros.org/msg#Fields">https://wiki.ros.org/msg#Fields</a>&gt;`__中，<code class="docutils literal notranslate"><span class="pre">char``已被废弃了很长时间，并且被映射为``uint8</span></code>。在ROS 2中，直到Crystal版本，<code class="docutils literal notranslate"><span class="pre">char``被映射为单个字符（C</span> <span class="pre">/</span> <span class="pre">C++中的``char</span></code>，Python中长度为1的``str``），以提供更自然的映射。从Dashing版本开始，恢复了ROS 1的语义，<code class="docutils literal notranslate"><span class="pre">char``再次映射为``uint8</span></code>。</p>
 </div>
 </div>
 <div class="section" id="rosidl-generator-cpp">
 <h3><a class="toc-backref" href="#id14">rosidl_generator_cpp</a><a class="headerlink" href="#rosidl-generator-cpp" title="永久链接至标题"></a></h3>
-<p>The C++ data structures generated for messages, services and actions provide setter methods for each field.
-Until Crystal each setter returned a pointer to the data structure itself to enable the named parameter idiom.
-As of Dashing these setters <a class="reference external" href="https://github.com/ros2/rosidl/pull/353">return a reference</a> instead since that seems to be the more common signature as well as it clarifies that the returned value can't be a <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>.</p>
+<p>为消息、服务和动作生成的C++数据结构为每个字段提供了设置方法。在Crystal版本之前，每个设置方法返回数据结构本身的指针，以实现命名参数惯用法。从Dashing版本开始，这些设置方法改为`返回引用 &lt;<a class="reference external" href="https://github.com/ros2/rosidl/pull/353">https://github.com/ros2/rosidl/pull/353</a>&gt;`__，因为这似乎是更常见的签名，而且它澄清了返回值不能为``nullptr``的事实。</p>
 </div>
 <div class="section" id="rosidl-generator-py">
 <h3><a class="toc-backref" href="#id15">rosidl_generator_py</a><a class="headerlink" href="#rosidl-generator-py" title="永久链接至标题"></a></h3>
-<p>Until Crystal an array (fixed size) or sequence (dynamic size, optionally with an upper boundary) field in a message was stored as a <code class="docutils literal notranslate"><span class="pre">list</span></code> in Python.
-As of Dashing the Python type for arrays / sequences of numeric values has been changed:</p>
+<p>直到 Crystal 版本，消息中的数组（固定大小）或序列（动态大小，可选上限）字段在 Python 中以``list``的形式存储。从 Dashing 版本开始，数值数组/序列的 Python 类型已经发生了变化：</p>
 <ul class="simple">
-<li><p>an array of numeric values is stored as a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is chosen to match the type of the numeric value)</p></li>
-<li><p>a sequence of numeric values is stored as an <code class="docutils literal notranslate"><span class="pre">array.array</span></code> (the <code class="docutils literal notranslate"><span class="pre">typename</span></code> is chosen to match the type of the numeric value)</p></li>
+<li><p>数值数组以``numpy.ndarray``的形式存储（<code class="docutils literal notranslate"><span class="pre">dtype</span></code> 被选择以匹配数值类型）</p></li>
+<li><p>数值序列以``array.array``的形式存储（<code class="docutils literal notranslate"><span class="pre">typename</span></code> 被选择以匹配数值类型）</p></li>
 </ul>
-<p>As before an array / sequence of non-numeric types is still represented as a <code class="docutils literal notranslate"><span class="pre">list</span></code> in Python.</p>
-<p>This change brings a number of benefits:</p>
+<p>与以前一样，非数值类型的数组/序列仍然在 Python 中表示为``list``。</p>
+<p>这个改变带来了一些好处：</p>
 <ul class="simple">
-<li><p>The new data structures ensure that each item in the array / sequence complies with the value range restrictions of the numeric type.</p></li>
-<li><p>The numeric values can be stored more efficiently in memory which avoid the overhead of Python objects for each item.</p></li>
-<li><p>The memory layout of both data structures allows to read and write all items of the array / sequence in a single operation which makes the conversion from and to Python significantly faster / more efficient.</p></li>
+<li><p>新的数据结构确保数组/序列中的每个项目都符合数值类型的值范围限制。</p></li>
+<li><p>数值可以更高效地存储在内存中，避免了每个项目的 Python 对象开销。</p></li>
+<li><p>这两种数据结构的内存布局允许在单个操作中读取和写入数组/序列的所有项目，这使得与 Python 之间的转换显著更快/更高效。</p></li>
 </ul>
 </div>
 <div class="section" id="launch">
 <h3><a class="toc-backref" href="#id16">启动</a><a class="headerlink" href="#launch" title="永久链接至标题"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">launch_testing</span></code> package caught up with the <code class="docutils literal notranslate"><span class="pre">launch</span></code> package redesign done in Bouncy Bolson.
-The legacy Python API, already moved into the <code class="docutils literal notranslate"><span class="pre">launch.legacy</span></code> submodule, has thus been deprecated and removed.</p>
-<p>See <code class="docutils literal notranslate"><span class="pre">launch</span></code> <a class="reference external" href="https://github.com/ros2/launch/tree/dashing/launch/examples">examples</a> and <a class="reference external" href="https://github.com/ros2/launch/tree/dashing/launch/doc">documentation</a> for reference on how to use its new API.</p>
+<p><code class="docutils literal notranslate"><span class="pre">launch_testing</span></code> 包已经赶上了 Bouncy Bolson 中对 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 包的重新设计。已将遗留的 Python API 移动到 <code class="docutils literal notranslate"><span class="pre">launch.legacy</span></code> 子模块中，并因此将其弃用并移除。</p>
+<p>请参考 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 的 <a class="reference external" href="https://github.com/ros2/launch/tree/dashing/launch/examples">示例</a> 和 <a class="reference external" href="https://github.com/ros2/launch/tree/dashing/launch/doc">文档</a> 了解如何使用其新 API。</p>
 <p>See <a class="reference external" href="https://github.com/ros2/demos">demos tests</a> for reference on how to use the new <code class="docutils literal notranslate"><span class="pre">launch_testing</span></code> API.</p>
 </div>
 <div class="section" id="rmw">
