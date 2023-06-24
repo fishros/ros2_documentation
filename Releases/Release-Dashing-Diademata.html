@@ -665,9 +665,9 @@
 <div class="section" id="changes-due-to-declare-parameter-change">
 <h4>由于参数声明更改而引起的变化<a class="headerlink" href="#changes-due-to-declare-parameter-change" title="永久链接至标题"></a></h4>
 <p>有关实际行为更改的详细信息，请参阅上述的`声明参数`_</p>
-<p>There are several new API calls in the <code class="docutils literal notranslate"><span class="pre">rclcpp::Node</span></code>'s interface:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rclcpp::Node``的接口中新增了几个API调用：</p>
 <ul>
-<li><p>Methods that declare parameters given a name, optional default value, optional descriptor, and return the value actually set:</p>
+<li><p>根据名称、可选默认值、可选描述符声明参数并返回实际设置的值的方法：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ParameterValue</span><span class="w"> </span><span class="o">&amp;</span><span class="w"></span>
 <span class="nf">rclcpp::Node::declare_parameter</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
@@ -700,7 +700,7 @@
 </pre></div>
 </div>
 </li>
-<li><p>A method to undeclare parameters and to check if a parameter has been declared:</p>
+<li><p>一个取消声明参数和检查参数是否已声明的方法：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"></span>
 <span class="nf">rclcpp::Node::undeclare_parameter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
 
@@ -709,7 +709,7 @@
 </pre></div>
 </div>
 </li>
-<li><p>Some convenience methods that did not previously exist:</p>
+<li><p>一些之前不存在的便捷方法：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">rcl_interfaces</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">SetParametersResult</span><span class="w"></span>
 <span class="nf">rclcpp::Node::set_parameter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Parameter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parameter</span><span class="p">);</span><span class="w"></span>
 
@@ -721,7 +721,7 @@
 </pre></div>
 </div>
 </li>
-<li><p>A new method to set the callback which is called anytime a parameter will be changed, giving you the opportunity to reject it:</p>
+<li><p>一种新的方法，用于设置每当参数将被更改时调用的回调函数，以便您有机会拒绝更改：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">OnParametersSetCallbackType</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">node_interfaces</span><span class="o">::</span><span class="n">NodeParametersInterface</span><span class="o">::</span><span class="n">OnParametersSetCallbackType</span><span class="p">;</span><span class="w"></span>
 
@@ -732,7 +732,7 @@
 </div>
 </li>
 </ul>
-<p>There were also several deprecated methods:</p>
+<p>还有几个已弃用的方法：</p>
 <blockquote>
 <div><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">ParameterT</span><span class="o">&gt;</span><span class="w"></span>
 <span class="p">[[</span><span class="n">deprecated</span><span class="p">(</span><span class="s">&quot;use declare_parameter() instead&quot;</span><span class="p">)]]</span><span class="w"></span>
