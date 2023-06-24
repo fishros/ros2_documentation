@@ -32315,27 +32315,27 @@ msgstr ""
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:80
 msgid "Here is the pull request for more detail: `https://github.com/ros2/common_interfaces/pull/74 <https://github.com/ros2/common_interfaces/pull/74>`_"
-msgstr "这是有关详细信息的拉取请求：`https://github.com/ros2/common_interfaces/pull/74 <https://github.com/ros2/common_interfaces/pull/74>`_"
+msgstr "这里是更详细的拉取请求: `https://github.com/ros2/common_interfaces/pull/74 <https://github.com/ros2/common_interfaces/pull/74>`_"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:82
 msgid "Static transform broadcasters and listeners now use QoS durability ``transient_local`` on the ``/tf_static`` topic. Similar to the latched setting in ROS 1, static transforms only need to be published once. New listeners will receive transforms from all static broadcasters that are alive and have published before. All publishers must be updated to use this durability setting or their messages won't be received by transform listeners. See this pull request for more detail: `https://github.com/ros2/geometry2/pull/160 <https://github.com/ros2/geometry2/pull/160>`_"
-msgstr "静态变换广播器和监听器现在在``/tf_static``主题上使用QoS持久性``transient_local``。类似于ROS 1中的latched设置，静态变换只需发布一次。新的监听器将接收到所有仍然存在并在之前发布过的静态广播器的变换。所有的发布者都必须更新为使用此持久性设置，否则它们的消息将不会被变换监听器接收。有关更多详细信息，请参阅此拉取请求：`https://github.com/ros2/geometry2/pull/160 <https://github.com/ros2/geometry2/pull/160>`_"
+msgstr "静态变换广播器和监听器现在在 ``/tf_static`` 主题上使用 QoS 持久性 ``transient_local``。类似于 ROS 1 中的 latched 设置，静态变换只需要发布一次。新的监听器将从所有活动且在之前发布过的静态广播器接收变换。所有发布者必须更新为使用此持久性设置，否则它们的消息将不会被变换监听器接收。有关更多详细信息，请参阅此拉取请求: `https://github.com/ros2/geometry2/pull/160 <https://github.com/ros2/geometry2/pull/160>`_"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:92
 msgid "API Break with ``get_actual_qos()``"
-msgstr "``get_actual_qos()``与API不兼容"
+msgstr "与 ``get_actual_qos()`` 产生的 API 兼容性问题"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:94
 msgid "Introduced in Dashing, the ``get_actual_qos()`` method on the ``PublisherBase`` and ``SubscriptionBase`` previously returned an rmw type, ``rmw_qos_profile_t``, but that made it awkward to reuse with the creation of other entities. Therefore it was updated to return a ``rclcpp::QoS`` instead."
-msgstr "在Dashing中引入了``get_actual_qos()``方法，在``PublisherBase``和``SubscriptionBase``上以前返回了一个rmw类型``rmw_qos_profile_t``，但这使得在创建其他实体时复用变得困难。因此，它被更新为返回``rclcpp::QoS``。"
+msgstr "在 Dashing 中引入的 ``get_actual_qos()`` 方法在 ``PublisherBase`` 和 ``SubscriptionBase`` 上先前返回了一个 rmw 类型 ``rmw_qos_profile_t``，但这样在创建其他实体时使用起来很麻烦。因此，它已更新为返回一个 ``rclcpp::QoS``。"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:97
 msgid "Existing code will need to use the ``rclcpp::QoS::get_rmw_qos_profile()`` method if the rmw profile is still required. For example:"
-msgstr "现有代码如果仍然需要rmw配置文件，则需要使用``rclcpp::QoS::get_rmw_qos_profile()``方法。例如："
+msgstr "现有的代码如果仍需要 rmw 配置文件，则需要使用 ``rclcpp::QoS::get_rmw_qos_profile()`` 方法。例如："
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:109
