@@ -388,7 +388,7 @@
 <li><p><a class="reference internal" href="#rmw" id="id7">rmw</a></p></li>
 <li><p><a class="reference internal" href="#ros2cli" id="id8">ros2cli</a></p></li>
 <li><p><a class="reference internal" href="#rviz" id="id9">rviz</a></p></li>
-<li><p><a class="reference internal" href="#tf2-buffer" id="id10">TF2 Buffer</a></p></li>
+<li><p><a class="reference internal" href="#tf2-buffer" id="id10">TF2 缓冲区</a></p></li>
 <li><p><a class="reference internal" href="#rcl" id="id11">rcl</a></p></li>
 </ul>
 </li>
@@ -506,30 +506,26 @@ w = 1\end{split}\]</div>
 <h3><a class="toc-backref" href="#id8">ros2cli</a><a class="headerlink" href="#ros2cli" title="永久链接至标题"></a></h3>
 <div class="section" id="ros2msg-and-ros2srv-deprecated">
 <h4>ros2msg和ros2srv已弃用<a class="headerlink" href="#ros2msg-and-ros2srv-deprecated" title="永久链接至标题"></a></h4>
-<p>The CLI tools <code class="docutils literal notranslate"><span class="pre">ros2msg</span></code> and <code class="docutils literal notranslate"><span class="pre">ros2srv</span></code> are deprecated.
-They have been replaced by the tool <code class="docutils literal notranslate"><span class="pre">ros2interface</span></code>, which also supports action and IDL interfaces.
-You can run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">interface</span> <span class="pre">--help</span></code> for usage.</p>
+<p>CLI工具``ros2msg``和``ros2srv``已被弃用。它们已被工具``ros2interface``替代，该工具还支持action和IDL接口。您可以运行``ros2 interface --help``获取用法信息。</p>
 </div>
 <div class="section" id="ros2node">
 <h4>ros2node<a class="headerlink" href="#ros2node" title="永久链接至标题"></a></h4>
-<p>Service clients have been added to ros2node info.
-As part of that change the Python function <code class="docutils literal notranslate"><span class="pre">ros2node.api.get_service_info</span></code>
-has been renamed to <code class="docutils literal notranslate"><span class="pre">ros2node.api.get_service_server_info</span></code>.</p>
+<p>Service客户端已添加到ros2node info。作为该更改的一部分，Python函数``ros2node.api.get_service_info``已更名为``ros2node.api.get_service_server_info``。</p>
 </div>
 </div>
 <div class="section" id="rviz">
 <h3><a class="toc-backref" href="#id9">rviz</a><a class="headerlink" href="#rviz" title="永久链接至标题"></a></h3>
 <div class="section" id="renamed-2d-nav-goal-tool">
-<h4>Renamed '2D Nav Goal' tool<a class="headerlink" href="#renamed-2d-nav-goal-tool" title="永久链接至标题"></a></h4>
-<p>The tool was renamed to '2D Goal Pose' and the default topic was changed from <code class="docutils literal notranslate"><span class="pre">/move_base_simple/goal</span></code> to <code class="docutils literal notranslate"><span class="pre">/goal_pose</span></code>.</p>
-<p>Here is the related pull request:</p>
+<h4>重命名为'2D Nav Goal'工具<a class="headerlink" href="#renamed-2d-nav-goal-tool" title="永久链接至标题"></a></h4>
+<p>该工具已更名为'2D Goal Pose'，默认话题从``/move_base_simple/goal``更改为``/goal_pose``。</p>
+<p>这是相关的pull请求：</p>
 <p><a class="reference external" href="https://github.com/ros2/rviz/pull/455">https://github.com/ros2/rviz/pull/455</a></p>
 </div>
 </div>
 <div class="section" id="tf2-buffer">
-<h3><a class="toc-backref" href="#id10">TF2 Buffer</a><a class="headerlink" href="#tf2-buffer" title="永久链接至标题"></a></h3>
-<p>TF2 buffers now have to be given a timer interface.</p>
-<p>If a timer interface is not given, an exception will be thrown.</p>
+<h3><a class="toc-backref" href="#id10">TF2 缓冲区</a><a class="headerlink" href="#tf2-buffer" title="永久链接至标题"></a></h3>
+<p>现在必须为 TF2 缓冲区提供定时器接口。</p>
+<p>如果未提供定时器接口，将抛出异常。</p>
 <p>例如：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">tf2_ros</span><span class="o">::</span><span class="n">Buffer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">get_clock</span><span class="p">());</span><span class="w"></span>
 <span class="c1">// The next two lines are new in Eloquent</span>
@@ -545,21 +541,19 @@ has been renamed to <code class="docutils literal notranslate"><span class="pre"
 <div class="section" id="rcl">
 <h3><a class="toc-backref" href="#id11">rcl</a><a class="headerlink" href="#rcl" title="永久链接至标题"></a></h3>
 <div class="section" id="ros-command-line-argument-changes">
-<h4>ROS command line argument changes<a class="headerlink" href="#ros-command-line-argument-changes" title="永久链接至标题"></a></h4>
-<p>To cope with an increasingly complex interface, with a now extended set of configuration options, ROS CLI syntax has been changed.
-As an example, a command line using Dashing syntax like:</p>
+<h4>ROS命令行参数更改<a class="headerlink" href="#ros-command-line-argument-changes" title="永久链接至标题"></a></h4>
+<p>为了应对日益复杂的接口，现在扩展了一组配置选项，ROS CLI的语法已经发生了变化。例如，使用Dashing语法的命令行如下：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run some_package some_node foo:=bar __params:=/path/to/params.yaml __log_level:=WARN --user-flag</span>
 </pre></div>
 </div>
-<p>is written using Eloquent (and onwards) syntax as:</p>
+<p>使用Eloquent（及更高版本）的语法编写如下：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run some_package some_node --ros-args --remap foo:=bar --params-file /path/to/params.yaml --log-level WARN -- --user-flag</span>
 </pre></div>
 </div>
-<p>This explicit syntax affords new features, like single parameter assignment <code class="docutils literal notranslate"><span class="pre">--param</span> <span class="pre">name:=value</span></code>.
-For further reference and rationale, check the <a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html">ROS command line arguments design document</a>.</p>
+<p>这种显式的语法提供了新功能，例如单参数赋值 <code class="docutils literal notranslate"><span class="pre">--param</span> <span class="pre">name:=value</span></code>。如需更多参考和解释，请查看 <a class="reference external" href="https://design.ros2.org/articles/ros_command_line_arguments.html">ROS命令行参数设计文档</a>。</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Former syntax has been deprecated and is due for removal in the next release.</p>
+<p>旧的语法已被弃用，并将在下一个版本中移除。</p>
 </div>
 </div>
 </div>
@@ -567,8 +561,7 @@ For further reference and rationale, check the <a class="reference external" hre
 <div class="section" id="known-issues">
 <h2><a class="toc-backref" href="#id12">已知问题</a><a class="headerlink" href="#known-issues" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros2/rosidl/issues/402">[ros2/rosidl#402]</a> <code class="docutils literal notranslate"><span class="pre">find_package(PCL)</span></code> interferes with ROS interface generation.
-Workaround: invoke <code class="docutils literal notranslate"><span class="pre">find_package(PCL)</span></code> <em>after</em> <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces()</span></code>.</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rosidl/issues/402">[ros2/rosidl#402]</a> <code class="docutils literal notranslate"><span class="pre">find_package(PCL)</span></code> 干扰了ROS接口生成。解决方法：在 <code class="docutils literal notranslate"><span class="pre">rosidl_generate_interfaces()</span></code> 之后调用 <code class="docutils literal notranslate"><span class="pre">find_package(PCL)</span></code>。</p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/893">[ros2/rclcpp#893]</a> <code class="docutils literal notranslate"><span class="pre">rclcpp::Context</span></code> 由于与 <code class="docutils literal notranslate"><span class="pre">rclcpp::GraphListener</span></code> 存在引用循环而无法销毁。这导致内存泄漏。由于破坏ABI的风险，修复尚未进行回溯。</p></li>
 </ul>
 </div>
