@@ -793,9 +793,9 @@
 <div class="section" id="common-interfaces">
 <h3><a class="toc-backref" href="#id42">common_interfaces</a><a class="headerlink" href="#common-interfaces" title="永久链接至标题"></a></h3>
 <div class="section" id="support-textures-and-embedded-meshes-for-marker-messages">
-<h4>Support Textures and Embedded Meshes for Marker Messages<a class="headerlink" href="#support-textures-and-embedded-meshes-for-marker-messages" title="永久链接至标题"></a></h4>
-<p>These two additions will improve the ability to both visualize data in new ways with standard messages and, simultaneously, enable the ability to track this data in rosbag.</p>
-<p><strong>Textures</strong> bring the addition of three new fields to markers:</p>
+<h4>为标记消息支持纹理和嵌入式网格<a class="headerlink" href="#support-textures-and-embedded-meshes-for-marker-messages" title="永久链接至标题"></a></h4>
+<p>这两个新增功能将提高使用标准消息以新方式可视化数据的能力，并同时使跟踪这些数据在rosbag中成为可能。</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>纹理**引入了三个新字段以支持标记：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Texture resource is a special URI that can either reference a texture file in</span>
 <span class="c1"># a format acceptable to (resource retriever)[https://index.ros.org/p/resource_retriever/]</span>
 <span class="c1"># or an embedded texture via a string matching the format:</span>
@@ -808,11 +808,9 @@ sensor_msgs/CompressedImage texture
 UVCoordinate<span class="o">[]</span> uv_coordinates
 </pre></div>
 </div>
-<p>RViz will fully support texture rendering through the embedded format.</p>
-<p>To those familiar with <code class="docutils literal notranslate"><span class="pre">mesh_resource</span></code>, <code class="docutils literal notranslate"><span class="pre">resource_retriever</span></code> should be familiar.
-This will allow the programmer to choose where they want to load data from, either a local file or a networked file.
-In the interest of being able to record all data in a rosbag, the ability to embed the texture image is included.</p>
-<p><strong>Meshes</strong> were modified in a similar way to add the ability to embed a raw Mesh file for the purpose of recording and are modified in a similar way. The Meshfile message has two fields:</p>
+<p>RViz将通过嵌入格式完全支持纹理渲染。</p>
+<p>对于熟悉``mesh_resource``的人来说，应该会熟悉``resource_retriever``。这将允许程序员选择从哪里加载数据，可以是本地文件或网络文件。为了能够记录在rosbag中的所有数据，包括了嵌入纹理图像的能力。</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>网格**以类似的方式进行了修改，以添加嵌入原始网格文件的能力，用于记录和修改。Meshfile消息有两个字段：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The filename is used for both debug purposes and to provide a file extension</span>
 <span class="c1"># for whatever parser is used.</span>
 string filename
@@ -821,55 +819,47 @@ string filename
 uint8<span class="o">[]</span> data
 </pre></div>
 </div>
-<p>The embedded <code class="docutils literal notranslate"><span class="pre">Meshfile</span></code> message is not yet supported in implementation.</p>
-<p>Related PRs: <a class="reference external" href="https://github.com/ros2/common_interfaces/pull/153">ros2/common_interfaces#153</a> <a class="reference external" href="https://github.com/ros2/rviz/pull/719">ros2/rviz#719</a></p>
+<p>尚不支持嵌入式“Meshfile”消息的实现。</p>
+<p>相关PR: <a class="reference external" href="https://github.com/ros2/common_interfaces/pull/153">ros2/common_interfaces#153</a> <a class="reference external" href="https://github.com/ros2/rviz/pull/719">ros2/rviz#719</a></p>
 </div>
 <div class="section" id="added-prism-type-to-solidprimitive">
-<h4>Added <code class="docutils literal notranslate"><span class="pre">PRISM</span></code> type to SolidPrimitive<a class="headerlink" href="#added-prism-type-to-solidprimitive" title="永久链接至标题"></a></h4>
-<p>The <code class="docutils literal notranslate"><span class="pre">SolidPrimitive</span></code> message had a new <code class="docutils literal notranslate"><span class="pre">PRISM</span></code> type added, along with the appropriate metadata.
-See <a class="reference external" href="https://github.com/ros2/common_interfaces/pull/167">ros2/common_interfaces#167</a> for more information.</p>
+<h4>为SolidPrimitive添加了“PRISM”类型<a class="headerlink" href="#added-prism-type-to-solidprimitive" title="永久链接至标题"></a></h4>
+<p>“SolidPrimitive”消息添加了新的“PRISM”类型，并附带适当的元数据。有关详细信息，请参阅`ros2/common_interfaces#167 &lt;<a class="reference external" href="https://github.com/ros2/common_interfaces/pull/167">https://github.com/ros2/common_interfaces/pull/167</a>&gt;`_。</p>
 </div>
 </div>
 <div class="section" id="rmw">
 <h3><a class="toc-backref" href="#id43">rmw</a><a class="headerlink" href="#rmw" title="永久链接至标题"></a></h3>
 <div class="section" id="struct-type-name-suffix-changed-from-t-to-s">
-<h4><code class="docutils literal notranslate"><span class="pre">struct</span></code> type name suffix changed from <code class="docutils literal notranslate"><span class="pre">_t</span></code> to <code class="docutils literal notranslate"><span class="pre">_s</span></code><a class="headerlink" href="#struct-type-name-suffix-changed-from-t-to-s" title="永久链接至标题"></a></h4>
-<p>To avoid type name duplication errors between <code class="docutils literal notranslate"><span class="pre">struct</span></code> type names and their <code class="docutils literal notranslate"><span class="pre">typedef</span></code>-ed aliases when generating code documentation, the suffix for all <code class="docutils literal notranslate"><span class="pre">struct</span></code> type names has been changed from <code class="docutils literal notranslate"><span class="pre">_t</span></code> to <code class="docutils literal notranslate"><span class="pre">_s</span></code>.
-Aliases with <code class="docutils literal notranslate"><span class="pre">_t</span></code> suffixes remain in place.
-Thus, this change is a breaking change only for code that uses full <code class="docutils literal notranslate"><span class="pre">struct</span></code> type specifiers i.e. <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">type_name_t</span></code>.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rmw/pull/313">ros2/rmw#313</a> for more details.</p>
+<h4>将“struct”类型名称后缀从“_t”更改为“_s”<a class="headerlink" href="#struct-type-name-suffix-changed-from-t-to-s" title="永久链接至标题"></a></h4>
+<p>为了避免在生成代码文档时出现“struct”类型名称和其“typedef”别名的重复错误，所有“struct”类型名称的后缀从“_t”更改为“_s”。保留了带有“_t”后缀的别名。因此，此更改仅对使用完整的“struct”类型说明符（即“struct type_name_t”）的代码产生了破坏性更改。</p>
+<p>详细信息请参见 <a class="reference external" href="https://github.com/ros2/rmw/pull/313">ros2/rmw#313</a>。</p>
 </div>
 </div>
 <div class="section" id="rmw-connextdds">
 <h3><a class="toc-backref" href="#id44">rmw_connextdds</a><a class="headerlink" href="#rmw-connextdds" title="永久链接至标题"></a></h3>
 <div class="section" id="use-connext-6-by-default">
-<h4>Use Connext 6 by default<a class="headerlink" href="#use-connext-6-by-default" title="永久链接至标题"></a></h4>
-<p>By default, Humble Hawksbill uses Connext 6.0.1 as the DDS implementation for <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code>.
-It is still possible to use Connext 5.3.1 with <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code>, but it must be rebuilt from source.</p>
+<h4>默认使用Connext 6。<a class="headerlink" href="#use-connext-6-by-default" title="永久链接至标题"></a></h4>
+<p>默认情况下，Humble Hawksbill 使用 Connext 6.0.1 作为 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 的 DDS 实现。仍然可以使用 Connext 5.3.1 和 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code>，但必须重新编译源代码。</p>
 </div>
 </div>
 <div class="section" id="rcl">
 <h3><a class="toc-backref" href="#id45">rcl</a><a class="headerlink" href="#rcl" title="永久链接至标题"></a></h3>
 <div class="section" id="id2">
-<h4><code class="docutils literal notranslate"><span class="pre">struct</span></code> type name suffix changed from <code class="docutils literal notranslate"><span class="pre">_t</span></code> to <code class="docutils literal notranslate"><span class="pre">_s</span></code><a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>To avoid type name duplication errors between <code class="docutils literal notranslate"><span class="pre">struct</span></code> type names and their <code class="docutils literal notranslate"><span class="pre">typedef</span></code>-ed aliases when generating code documentation, the suffix for all <code class="docutils literal notranslate"><span class="pre">struct</span></code> type names has been changed from <code class="docutils literal notranslate"><span class="pre">_t</span></code> to <code class="docutils literal notranslate"><span class="pre">_s</span></code>.
-Aliases with <code class="docutils literal notranslate"><span class="pre">_t</span></code> suffixes remain in place.
-Thus, this change is a breaking change only for code that uses full <code class="docutils literal notranslate"><span class="pre">struct</span></code> type specifiers i.e. <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">type_name_t</span></code>.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rcl/pull/932">ros2/rcl#932</a> for more details.</p>
+<h4>将“struct”类型名称后缀从“_t”更改为“_s”<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
+<p>为了避免在生成代码文档时出现“struct”类型名称和其“typedef”别名的重复错误，所有“struct”类型名称的后缀从“_t”更改为“_s”。保留了带有“_t”后缀的别名。因此，此更改仅对使用完整的“struct”类型说明符（即“struct type_name_t”）的代码产生了破坏性更改。</p>
+<p>详细信息请参见 <a class="reference external" href="https://github.com/ros2/rcl/pull/932">ros2/rcl#932</a>。</p>
 </div>
 <div class="section" id="ros-disable-loaned-messages-environment-variable-added">
-<h4>ROS_DISABLE_LOANED_MESSAGES environment variable added<a class="headerlink" href="#ros-disable-loaned-messages-environment-variable-added" title="永久链接至标题"></a></h4>
-<p>This environment variable can be used to disable loaned messages support, independently if the rmw supports them or not.
-For more details, see the guide <a class="reference internal" href="../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html"><span class="doc">Disabling Zero Copy Loaned Messages</span></a>.</p>
+<h4>添加了 ROS_DISABLE_LOANED_MESSAGES 环境变量。<a class="headerlink" href="#ros-disable-loaned-messages-environment-variable-added" title="永久链接至标题"></a></h4>
+<p>此环境变量可用于禁用借用消息支持，无论 rmw 是否支持它们。有关详细信息，请参阅指南：<a class="reference internal" href="../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html"><span class="doc">禁用零拷贝借用消息</span></a>。</p>
 </div>
 </div>
 <div class="section" id="rclcpp">
 <h3><a class="toc-backref" href="#id46">rclcpp</a><a class="headerlink" href="#rclcpp" title="永久链接至标题"></a></h3>
 <div class="section" id="support-type-adaption-for-publishers-and-subscriptions">
-<h4>Support Type Adaption for Publishers and Subscriptions<a class="headerlink" href="#support-type-adaption-for-publishers-and-subscriptions" title="永久链接至标题"></a></h4>
-<p>After defining a type adapter, custom data structures can be used directly by publishers and subscribers, which helps to avoid additional work for the programmer and potential sources of errors.
-This is especially useful when working with complex data types, such as when converting OpenCV's <code class="docutils literal notranslate"><span class="pre">cv::Mat</span></code> to ROS's <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Image</span></code> type.</p>
-<p>Here is an example of a type adapter that converts <code class="docutils literal notranslate"><span class="pre">std_msgs::msg::String</span></code> to <code class="docutils literal notranslate"><span class="pre">std::string</span></code>:</p>
+<h4>为发布者和订阅者支持类型适配<a class="headerlink" href="#support-type-adaption-for-publishers-and-subscriptions" title="永久链接至标题"></a></h4>
+<p>在定义类型适配器之后，发布者和订阅者可以直接使用自定义的数据结构，这有助于减少程序员的额外工作和潜在的错误源。在处理复杂数据类型时特别有用，比如将 OpenCV 的 <code class="docutils literal notranslate"><span class="pre">cv::Mat</span></code> 转换为 ROS 的 <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Image</span></code> 类型。</p>
+<p>以下是将 <code class="docutils literal notranslate"><span class="pre">std_msgs::msg::String</span></code> 转换为 <code class="docutils literal notranslate"><span class="pre">std::string</span></code> 的类型适配器示例：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;&gt;</span><span class="w"></span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">rclcpp</span><span class="o">::</span><span class="n">TypeAdapter</span><span class="o">&lt;</span><span class="w"></span>
 <span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"></span>
@@ -900,7 +890,7 @@ This is especially useful when working with complex data types, such as when con
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>And an example of how the type adapter can be used:</p>
+<p>以下是如何使用类型适配器的示例：</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">MyAdaptedType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeAdapter</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">// Publish a std::string</span>
@@ -915,11 +905,10 @@ This is especially useful when working with complex data types, such as when con
 <span class="w">  </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{...});</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To learn more, see the <a class="reference external" href="https://github.com/ros2/examples/blob/b83b18598b198b4a5ba44f9266c1bb39a393fa17/rclcpp/topics/minimal_publisher/member_function_with_type_adapter.cpp">publisher</a> and <a class="reference external" href="https://github.com/ros2/examples/blob/b83b18598b198b4a5ba44f9266c1bb39a393fa17/rclcpp/topics/minimal_subscriber/member_function_with_type_adapter.cpp">subscription</a> examples, as well as a more complex <a class="reference external" href="https://github.com/ros2/demos/pull/482">demo</a>.
-For more details, see <a class="reference external" href="https://ros.org/reps/rep-2007.html">REP 2007</a>.</p>
+<p>要了解更多信息，请参阅 <a class="reference external" href="https://github.com/ros2/examples/blob/b83b18598b198b4a5ba44f9266c1bb39a393fa17/rclcpp/topics/minimal_publisher/member_function_with_type_adapter.cpp">发布者示例</a> 和 <a class="reference external" href="https://github.com/ros2/examples/blob/b83b18598b198b4a5ba44f9266c1bb39a393fa17/rclcpp/topics/minimal_subscriber/member_function_with_type_adapter.cpp">订阅者示例</a>，以及更复杂的 <a class="reference external" href="https://github.com/ros2/demos/pull/482">演示示例</a>。有关详细信息，请参阅 <a class="reference external" href="https://ros.org/reps/rep-2007.html">REP 2007</a>。</p>
 </div>
 <div class="section" id="client-asnyc-send-request-request-returns-a-std-future-instead-of-a-std-shared-future">
-<h4><code class="docutils literal notranslate"><span class="pre">Client::asnyc_send_request(request)</span></code> returns a <code class="docutils literal notranslate"><span class="pre">std::future</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">std::shared_future</span></code><a class="headerlink" href="#client-asnyc-send-request-request-returns-a-std-future-instead-of-a-std-shared-future" title="永久链接至标题"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">Client::asnyc_send_request(request)</span></code> 返回一个 <code class="docutils literal notranslate"><span class="pre">std::future</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">std::shared_future</span></code>。<a class="headerlink" href="#client-asnyc-send-request-request-returns-a-std-future-instead-of-a-std-shared-future" title="永久链接至标题"></a></h4>
 <p>This change was implemented in <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1734">rclcpp#1734</a>.
 This breaks API, as <code class="docutils literal notranslate"><span class="pre">std::future::get()</span></code> methods extracts the value from the future.
 That means, if that method is called for a second time it will throw an exception.
