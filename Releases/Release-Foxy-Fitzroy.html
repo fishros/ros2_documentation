@@ -385,11 +385,11 @@
 <li><p><a class="reference internal" href="#launch-groupaction-scopes-environment" id="id13">启动 GroupAction 范围的环境</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#changes-in-patch-release-7-2022-02-08" id="id14">Changes in Patch Release 7 (2022-02-08)</a></p>
+<li><p><a class="reference internal" href="#changes-in-patch-release-7-2022-02-08" id="id14">Patch Release 7 变更（2022-02-08）</a></p>
 <ul>
-<li><p><a class="reference internal" href="#launch-set-env-frontend-behavior-change" id="id15">Launch set_env frontend behavior change</a></p></li>
-<li><p><a class="reference internal" href="#fix-launch-frontend-parser" id="id16">Fix launch frontend parser</a></p></li>
-<li><p><a class="reference internal" href="#fix-memory-leaks-and-undefined-behavior-in-rmw-fastrtps-dynamic-cpp" id="id17">Fix memory leaks and undefined behavior in rmw_fastrtps_dynamic_cpp</a></p></li>
+<li><p><a class="reference internal" href="#launch-set-env-frontend-behavior-change" id="id15">Launch set_env 前端行为变更</a></p></li>
+<li><p><a class="reference internal" href="#fix-launch-frontend-parser" id="id16">修复启动前端解析器</a></p></li>
+<li><p><a class="reference internal" href="#fix-memory-leaks-and-undefined-behavior-in-rmw-fastrtps-dynamic-cpp" id="id17">修复rmw_fastrtps_dynamic_cpp中的内存泄漏和未定义行为</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#changes-in-patch-release-2-2020-08-07" id="id18">Changes in Patch Release 2 (2020-08-07)</a></p>
@@ -488,43 +488,37 @@
 </div>
 </div>
 <div class="section" id="changes-in-patch-release-7-2022-02-08">
-<h2><a class="toc-backref" href="#id14">Changes in Patch Release 7 (2022-02-08)</a><a class="headerlink" href="#changes-in-patch-release-7-2022-02-08" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id14">Patch Release 7 变更（2022-02-08）</a><a class="headerlink" href="#changes-in-patch-release-7-2022-02-08" title="永久链接至标题"></a></h2>
 <div class="section" id="launch-set-env-frontend-behavior-change">
-<h3><a class="toc-backref" href="#id15">Launch set_env frontend behavior change</a><a class="headerlink" href="#launch-set-env-frontend-behavior-change" title="永久链接至标题"></a></h3>
-<p><a class="reference external" href="https://github.com/ros2/launch/pull/468">launch#468</a> inadvertently changed behavior to the scope of the <code class="docutils literal notranslate"><span class="pre">set_env</span></code> action in frontend launch files.
-Changes to environment variables using the <code class="docutils literal notranslate"><span class="pre">set_env</span></code> action are no longer scoped to parent <code class="docutils literal notranslate"><span class="pre">group</span></code> actions, and instead apply globally.
-Since it was backported, the change affects this release.</p>
-<p>We consider this change a regression and intend to fix the behavior in the next patch release and in future ROS distributions.
-We also plan to fix the behavior in Python launch files, which have never scoped setting environment variables properly.</p>
-<p>Related issues:</p>
+<h3><a class="toc-backref" href="#id15">Launch set_env 前端行为变更</a><a class="headerlink" href="#launch-set-env-frontend-behavior-change" title="永久链接至标题"></a></h3>
+<p><a class="reference external" href="https://github.com/ros2/launch/pull/468">launch#468</a> 错误地改变了前端启动文件中 <code class="docutils literal notranslate"><span class="pre">set_env</span></code> 操作的作用域。使用 <code class="docutils literal notranslate"><span class="pre">set_env</span></code> 操作更改环境变量不再局限于父级 <code class="docutils literal notranslate"><span class="pre">group</span></code> 操作，而是全局应用。由于该更改已被反向移植，因此影响到了这个版本。</p>
+<p>我们认为这个变更是一个回归问题，并打算在下一个补丁发布版本和未来的 ROS 发布版本中修复该行为。我们还计划修复 Python 启动文件中的行为，这些文件从未正确地限定设置环境变量。</p>
+<p>相关问题：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ros2/ros2/issues/1244">ros2#1244</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/launch/issues/597">launch#597</a></p></li>
 </ul>
 </div>
 <div class="section" id="fix-launch-frontend-parser">
-<h3><a class="toc-backref" href="#id16">Fix launch frontend parser</a><a class="headerlink" href="#fix-launch-frontend-parser" title="永久链接至标题"></a></h3>
-<p>A refactor of the launch frontend parser fixed some <a class="reference external" href="https://github.com/ros2/launch_ros/issues/214">issues parsing special characters</a>.
-As a result, there has been a small behavior change when it comes to parsing strings.
-For example, previously to pass a number as a string you would have to add extra quotation marks (two sets of quotation marks were needed if using a substitution):</p>
+<h3><a class="toc-backref" href="#id16">修复启动前端解析器</a><a class="headerlink" href="#fix-launch-frontend-parser" title="永久链接至标题"></a></h3>
+<p>对启动前端解析器进行了重构，修复了一些`解析特殊字符的问题 &lt;<a class="reference external" href="https://github.com/ros2/launch_ros/issues/214">https://github.com/ros2/launch_ros/issues/214</a>&gt;`_。因此，在解析字符串时有了一些小的行为变化。例如，以前要将数字作为字符串传递，需要添加额外的引号（如果使用替换，需要两组引号）：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- results in the string value &quot;&#39;3&#39;&quot; --&gt;</span>
 <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;&#39;&#39;3&#39;&#39;&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p>After the refactor, the above will result in the the string <code class="docutils literal notranslate"><span class="pre">&quot;''3''&quot;</span></code> (note the extra set of quotation marks).
-Now, users should use the <code class="docutils literal notranslate"><span class="pre">type</span></code> attribute to signal that the value should be interpreted as a string:</p>
+<p>在重构后，上述内容将得到字符串 <a href="#id1"><span class="problematic" id="id2">``</span></a>&quot;''3''&quot;<a href="#id3"><span class="problematic" id="id4">``</span></a>（注意额外的引号）。现在，用户应该使用``type``属性来表示值应该被解释为字符串：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span> <span class="na">value=</span><span class="s">&quot;3&quot;</span> <span class="na">type=</span><span class="s">&quot;str&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p>Related pull requests:</p>
+<p>相关拉取请求：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ros2/launch/pull/530">launch#530</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/launch_ros/pull/265">launch_ros#265</a></p></li>
 </ul>
 </div>
 <div class="section" id="fix-memory-leaks-and-undefined-behavior-in-rmw-fastrtps-dynamic-cpp">
-<h3><a class="toc-backref" href="#id17">Fix memory leaks and undefined behavior in rmw_fastrtps_dynamic_cpp</a><a class="headerlink" href="#fix-memory-leaks-and-undefined-behavior-in-rmw-fastrtps-dynamic-cpp" title="永久链接至标题"></a></h3>
-<p>API was changed in the following header files:</p>
+<h3><a class="toc-backref" href="#id17">修复rmw_fastrtps_dynamic_cpp中的内存泄漏和未定义行为</a><a class="headerlink" href="#fix-memory-leaks-and-undefined-behavior-in-rmw-fastrtps-dynamic-cpp" title="永久链接至标题"></a></h3>
+<p>以下头文件的API已更改：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_dynamic_cpp/TypeSupport.hpp</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_dynamic_cpp/TypeSupport_impl.hpp</span></code></p></li>
