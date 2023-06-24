@@ -31817,22 +31817,22 @@ msgstr "任何消息生成器包都需要更改并使用新的扩展点``rosidl_
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:656
 msgid "The format of ``.msg`` / ``.srv`` / ``.action`` files is not being evolved in the future. The mapping between ``.msg`` / ``.srv`` / ``.action`` files and ``.idl`` files is described in `this design article <https://design.ros2.org/articles/legacy_interface_definition.html>`__. A `second design article <https://design.ros2.org/articles/idl_interface_definition.html>`__ describes the supported features in ``.idl`` files. In order to leverage any of the new features existing interfaces need to be converted (e.g. using the command line tools  ``msg2idl`` / ``srv2idl`` / ``action2idl``)."
-msgstr "The format of ``.msg`` / ``.srv`` / ``.action`` files is not being evolved in the future. The mapping between ``.msg`` / ``.srv`` / ``.action`` files and ``.idl`` files is described in `this design article <https://design.ros2.org/articles/legacy_interface_definition.html>`__. A `second design article <https://design.ros2.org/articles/idl_interface_definition.html>`__ describes the supported features in ``.idl`` files. In order to leverage any of the new features existing interfaces need to be converted (e.g. using the command line tools  ``msg2idl`` / ``srv2idl`` / ``action2idl``)."
+msgstr "``.msg`` / ``.srv`` / ``.action``文件的格式在未来不会进行改变。``.msg`` / ``.srv`` / ``.action``文件与``.idl``文件之间的映射在`这篇设计文章 <https://design.ros2.org/articles/legacy_interface_definition.html>`__中有描述。`第二篇设计文章 <https://design.ros2.org/articles/idl_interface_definition.html>`__描述了``.idl``文件中支持的特性。为了利用任何新特性，现有接口需要进行转换（例如使用命令行工具``msg2idl`` / ``srv2idl`` / ``action2idl``）。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:661
 msgid "To distinguish same type names, but with different namespaces, the introspection structs now contain a namespace field that replaces the package name (see `ros2/rosidl#335 <https://github.com/ros2/rosidl/pull/355/files>`_)."
-msgstr "To distinguish same type names, but with different namespaces, the introspection structs now contain a namespace field that replaces the package name (see `ros2/rosidl#335 <https://github.com/ros2/rosidl/pull/355/files>`_)."
+msgstr "为了区分具有不同命名空间的相同类型名称，内省结构现在包含一个命名空间字段，用于替换包名（参见`ros2/rosidl#335 <https://github.com/ros2/rosidl/pull/355/files>`_）。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:664
 msgid "Mapping of char in .msg files"
-msgstr "Mapping of char in .msg files"
+msgstr ".msg文件中的char映射"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:666
 msgid "In `ROS 1 <https://wiki.ros.org/msg#Fields>`__ ``char`` has been deprecated for a long time and is being mapped to ``uint8``. In ROS 2 until Crystal ``char`` was mapped to a single character (``char`` in C / C++, ``str`` with length 1 in Python) in an effort to provide a more natural mapping. As of Dashing the ROS 1 semantic has been restored and ``char`` maps to ``uint8`` again."
-msgstr "In `ROS 1 <https://wiki.ros.org/msg#Fields>`__ ``char`` has been deprecated for a long time and is being mapped to ``uint8``. In ROS 2 until Crystal ``char`` was mapped to a single character (``char`` in C / C++, ``str`` with length 1 in Python) in an effort to provide a more natural mapping. As of Dashing the ROS 1 semantic has been restored and ``char`` maps to ``uint8`` again."
+msgstr "在`ROS 1 <https://wiki.ros.org/msg#Fields>`__中，``char``已被废弃了很长时间，并且被映射为``uint8``。在ROS 2中，直到Crystal版本，``char``被映射为单个字符（C / C++中的``char``，Python中长度为1的``str``），以提供更自然的映射。从Dashing版本开始，恢复了ROS 1的语义，``char``再次映射为``uint8``。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:671
@@ -31842,7 +31842,7 @@ msgstr "rosidl_generator_cpp"
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:673
 msgid "The C++ data structures generated for messages, services and actions provide setter methods for each field. Until Crystal each setter returned a pointer to the data structure itself to enable the named parameter idiom. As of Dashing these setters `return a reference <https://github.com/ros2/rosidl/pull/353>`__ instead since that seems to be the more common signature as well as it clarifies that the returned value can't be a ``nullptr``."
-msgstr "The C++ data structures generated for messages, services and actions provide setter methods for each field. Until Crystal each setter returned a pointer to the data structure itself to enable the named parameter idiom. As of Dashing these setters `return a reference <https://github.com/ros2/rosidl/pull/353>`__ instead since that seems to be the more common signature as well as it clarifies that the returned value can't be a ``nullptr``."
+msgstr "为消息、服务和动作生成的C++数据结构为每个字段提供了设置方法。在Crystal版本之前，每个设置方法返回数据结构本身的指针，以实现命名参数惯用法。从Dashing版本开始，这些设置方法改为`返回引用 <https://github.com/ros2/rosidl/pull/353>`__，因为这似乎是更常见的签名，而且它澄清了返回值不能为``nullptr``的事实。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:678
@@ -31852,42 +31852,42 @@ msgstr "rosidl_generator_py"
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:680
 msgid "Until Crystal an array (fixed size) or sequence (dynamic size, optionally with an upper boundary) field in a message was stored as a ``list`` in Python. As of Dashing the Python type for arrays / sequences of numeric values has been changed:"
-msgstr "Until Crystal an array (fixed size) or sequence (dynamic size, optionally with an upper boundary) field in a message was stored as a ``list`` in Python. As of Dashing the Python type for arrays / sequences of numeric values has been changed:"
+msgstr "直到 Crystal 版本，消息中的数组（固定大小）或序列（动态大小，可选上限）字段在 Python 中以``list``的形式存储。从 Dashing 版本开始，数值数组/序列的 Python 类型已经发生了变化："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:683
 msgid "an array of numeric values is stored as a ``numpy.ndarray`` (the ``dtype`` is chosen to match the type of the numeric value)"
-msgstr "an array of numeric values is stored as a ``numpy.ndarray`` (the ``dtype`` is chosen to match the type of the numeric value)"
+msgstr "数值数组以``numpy.ndarray``的形式存储（``dtype`` 被选择以匹配数值类型）"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:684
 msgid "a sequence of numeric values is stored as an ``array.array`` (the ``typename`` is chosen to match the type of the numeric value)"
-msgstr "a sequence of numeric values is stored as an ``array.array`` (the ``typename`` is chosen to match the type of the numeric value)"
+msgstr "数值序列以``array.array``的形式存储（``typename`` 被选择以匹配数值类型）"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:686
 msgid "As before an array / sequence of non-numeric types is still represented as a ``list`` in Python."
-msgstr "As before an array / sequence of non-numeric types is still represented as a ``list`` in Python."
+msgstr "与以前一样，非数值类型的数组/序列仍然在 Python 中表示为``list``。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:688
 msgid "This change brings a number of benefits:"
-msgstr "This change brings a number of benefits:"
+msgstr "这个改变带来了一些好处："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:690
 msgid "The new data structures ensure that each item in the array / sequence complies with the value range restrictions of the numeric type."
-msgstr "The new data structures ensure that each item in the array / sequence complies with the value range restrictions of the numeric type."
+msgstr "新的数据结构确保数组/序列中的每个项目都符合数值类型的值范围限制。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:691
 msgid "The numeric values can be stored more efficiently in memory which avoid the overhead of Python objects for each item."
-msgstr "The numeric values can be stored more efficiently in memory which avoid the overhead of Python objects for each item."
+msgstr "数值可以更高效地存储在内存中，避免了每个项目的 Python 对象开销。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:692
 msgid "The memory layout of both data structures allows to read and write all items of the array / sequence in a single operation which makes the conversion from and to Python significantly faster / more efficient."
-msgstr "The memory layout of both data structures allows to read and write all items of the array / sequence in a single operation which makes the conversion from and to Python significantly faster / more efficient."
+msgstr "这两种数据结构的内存布局允许在单个操作中读取和写入数组/序列的所有项目，这使得与 Python 之间的转换显著更快/更高效。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:695 ../../source/Releases/Release-Humble-Hawksbill.rst:92
@@ -31897,12 +31897,12 @@ msgstr "启动"
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:697
 msgid "The ``launch_testing`` package caught up with the ``launch`` package redesign done in Bouncy Bolson. The legacy Python API, already moved into the ``launch.legacy`` submodule, has thus been deprecated and removed."
-msgstr "The ``launch_testing`` package caught up with the ``launch`` package redesign done in Bouncy Bolson. The legacy Python API, already moved into the ``launch.legacy`` submodule, has thus been deprecated and removed."
+msgstr "``launch_testing`` 包已经赶上了 Bouncy Bolson 中对 ``launch`` 包的重新设计。已将遗留的 Python API 移动到 ``launch.legacy`` 子模块中，并因此将其弃用并移除。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:700
 msgid "See ``launch`` `examples <https://github.com/ros2/launch/tree/dashing/launch/examples>`__ and `documentation <https://github.com/ros2/launch/tree/dashing/launch/doc>`__ for reference on how to use its new API."
-msgstr "See ``launch`` `examples <https://github.com/ros2/launch/tree/dashing/launch/examples>`__ and `documentation <https://github.com/ros2/launch/tree/dashing/launch/doc>`__ for reference on how to use its new API."
+msgstr "请参考 ``launch`` 的 `示例 <https://github.com/ros2/launch/tree/dashing/launch/examples>`__ 和 `文档 <https://github.com/ros2/launch/tree/dashing/launch/doc>`__ 了解如何使用其新 API。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:702
