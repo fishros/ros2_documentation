@@ -35050,27 +35050,27 @@ msgstr "发布者的激活和停用转换将自动触发"
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:716
 msgid "Before, users needed to override ``LifecylceNode::on_activate()`` and ``LifecylceNode::on_deactivate()`` and call the similarly named methods on ``LifecyclePublisher`` to make the transition actually happen. Now, ``LifecylceNode`` provides a default interface of these methods that already do this. See the implementation of the ``lifecycle_talker`` node `here <https://github.com/ros2/demos/tree/humble/lifecycle>`__."
-msgstr "Before, users needed to override ``LifecylceNode::on_activate()`` and ``LifecylceNode::on_deactivate()`` and call the similarly named methods on ``LifecyclePublisher`` to make the transition actually happen. Now, ``LifecylceNode`` provides a default interface of these methods that already do this. See the implementation of the ``lifecycle_talker`` node `here <https://github.com/ros2/demos/tree/humble/lifecycle>`__."
+msgstr "之前，用户需要重写``LifecylceNode::on_activate()``和``LifecylceNode::on_deactivate()``方法，并在``LifecyclePublisher``上调用同名方法来实际进行过渡。现在，``LifecylceNode``提供了这些方法的默认接口，已经自动完成了这个过程。在这里可以查看``lifecycle_talker``节点的实现 `here <https://github.com/ros2/demos/tree/humble/lifecycle>`__。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:724
 msgid "Managed nodes"
-msgstr "Managed nodes"
+msgstr "管理节点"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:726
 msgid "Lifecycle nodes support was added to rclpy. A complete demo can be found `here <https://github.com/ros2/demos/tree/humble/lifecycle_py>`__."
-msgstr "Lifecycle nodes support was added to rclpy. A complete demo can be found `here <https://github.com/ros2/demos/tree/humble/lifecycle_py>`__."
+msgstr "在rclpy中添加了对Lifecycle节点的支持。可以在`这里 <https://github.com/ros2/demos/tree/humble/lifecycle_py>`__找到完整的演示。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:732
 msgid "Similar to the feature added to rclcpp."
-msgstr "Similar to the feature added to rclcpp."
+msgstr "类似于添加到rclcpp的功能。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:736
 msgid "Two new methods were added to allow sleeping on a particular clock in `ros2/rclpy#858 <https://github.com/ros2/rclpy/pull/858>`__ and `ros2/rclpy#864 <https://github.com/ros2/rclpy/pull/864>`__. ``sleep_until`` will suspend the current thread until the clock reaches a particular time. ``sleep_for`` will suspend the current thread until the clock advances a certain amount of time from when the method was called. Both methods will wake early if the ``Context`` is shutdown."
-msgstr "Two new methods were added to allow sleeping on a particular clock in `ros2/rclpy#858 <https://github.com/ros2/rclpy/pull/858>`__ and `ros2/rclpy#864 <https://github.com/ros2/rclpy/pull/864>`__. ``sleep_until`` will suspend the current thread until the clock reaches a particular time. ``sleep_for`` will suspend the current thread until the clock advances a certain amount of time from when the method was called. Both methods will wake early if the ``Context`` is shutdown."
+msgstr "添加了两个新的方法，允许在特定时钟上进行睡眠，详见 `ros2/rclpy#858 <https://github.com/ros2/rclpy/pull/858>`__ 和 `ros2/rclpy#864 <https://github.com/ros2/rclpy/pull/864>`__。``sleep_until``会挂起当前线程，直到时钟到达特定时间。``sleep_for``会挂起当前线程，直到时钟从调用该方法时经过一定的时间。两种方法都会在``Context``关闭时提前唤醒。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:742
@@ -35080,62 +35080,62 @@ msgstr "ros1_bridge"
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:744
 msgid "Since there is no official ROS 1 distribution on Ubuntu Jammy and forward, ``ros1_bridge`` is now compatible with the Ubuntu-packaged versions of ROS 1. More details about using ``ros1_bridge`` with Jammy packages are available in :doc:`the how-to guides <../How-To-Guides/Using-ros1_bridge-Jammy-upstream>`."
-msgstr "Since there is no official ROS 1 distribution on Ubuntu Jammy and forward, ``ros1_bridge`` is now compatible with the Ubuntu-packaged versions of ROS 1. More details about using ``ros1_bridge`` with Jammy packages are available in :doc:`the how-to guides <../How-To-Guides/Using-ros1_bridge-Jammy-upstream>`."
+msgstr "由于Ubuntu Jammy及更高版本没有官方的ROS 1分发版本，``ros1_bridge``现在与Ubuntu打包的ROS 1版本兼容。有关如何使用``ros1_bridge``与Jammy软件包的更多详细信息，请参阅:doc:`如何使用指南<../How-To-Guides/Using-ros1_bridge-Jammy-upstream>`。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:751
 msgid "``ros2`` commands disable output buffering by default"
-msgstr "``ros2`` commands disable output buffering by default"
+msgstr "``ros2``命令默认禁用输出缓冲"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:753
 msgid "Prior to this release, running a command like"
-msgstr "Prior to this release, running a command like"
+msgstr "在此版本之前，运行如下命令"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:759
 msgid "would not print any data until the output buffer was full. Users could work around this by setting ``PYTHONUNBUFFERED=1``, but that was not very user friendly."
-msgstr "would not print any data until the output buffer was full. Users could work around this by setting ``PYTHONUNBUFFERED=1``, but that was not very user friendly."
+msgstr "直到输出缓冲区满时，不会打印任何数据。用户可以通过设置``PYTHONUNBUFFERED=1``来解决此问题，但这不太友好。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:762
 msgid "Instead, all ``ros2`` commands now do line-buffering by default, so commands like the above work as soon as a newline is printed. To disable this behavior and use default python buffering rules, use the option ``--use-python-default-buffering``. See the `original issue <https://github.com/ros2/ros2cli/issues/595>`__ and the `pull request <https://github.com/ros2/ros2cli/pull/659>`__ for more information."
-msgstr "Instead, all ``ros2`` commands now do line-buffering by default, so commands like the above work as soon as a newline is printed. To disable this behavior and use default python buffering rules, use the option ``--use-python-default-buffering``. See the `original issue <https://github.com/ros2/ros2cli/issues/595>`__ and the `pull request <https://github.com/ros2/ros2cli/pull/659>`__ for more information."
+msgstr "现在，所有``ros2``命令默认进行行缓冲，因此像上述命令一样，只要打印了换行符，命令就会起作用。要禁用此行为并使用默认的Python缓冲规则，请使用选项``--use-python-default-buffering``。有关更多信息，请参阅`原始问题<https://github.com/ros2/ros2cli/issues/595>`__和`拉取请求<https://github.com/ros2/ros2cli/pull/659>`__。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:767
 msgid "``ros2 topic pub`` will wait for one matching subscription when using ``--times/--once/-1``"
-msgstr "``ros2 topic pub`` will wait for one matching subscription when using ``--times/--once/-1``"
+msgstr "使用``--times/--once/-1``选项时，``ros2 topic pub``将等待一个匹配的订阅。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:769
 msgid "When using ``--times/--once/-1`` flags, ``ros2 topic pub`` will wait for one matching subscription to be found before starting to publish. This avoids the issue of the ros2cli node starting to publish before discovering a matching subscription, which results in some of the first messages being lost. This is particularly unexpected when using a reliable qos profile."
-msgstr "When using ``--times/--once/-1`` flags, ``ros2 topic pub`` will wait for one matching subscription to be found before starting to publish. This avoids the issue of the ros2cli node starting to publish before discovering a matching subscription, which results in some of the first messages being lost. This is particularly unexpected when using a reliable qos profile."
+msgstr "当使用``--times/--once/-1``标志时，``ros2 topic pub``将等待找到一个匹配的订阅，然后开始发布。这样可以避免在ros2cli节点发现匹配的订阅之前开始发布，从而导致一些最初的消息丢失。当使用可靠的QoS配置文件时，这尤其令人意外。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:773
 msgid "The number of matching subscriptions to wait before starting publishing can be configured with the ``-w/--wait-matching-subscriptions`` flags, e.g.:"
-msgstr "The number of matching subscriptions to wait before starting publishing can be configured with the ``-w/--wait-matching-subscriptions`` flags, e.g.:"
+msgstr "可以使用``-w/--wait-matching-subscriptions``标志来配置在开始发布之前等待的匹配订阅数量，例如："
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:779
 msgid "to wait for three matching subscriptions before starting to publish."
-msgstr "to wait for three matching subscriptions before starting to publish."
+msgstr "等待三个匹配的订阅才开始发布。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:781
 msgid "``-w`` can also be used independently of ``--times/--once/-1`` but it only defaults to one when combined with them, otherwise the ``-w`` default is zero."
-msgstr "``-w`` can also be used independently of ``--times/--once/-1`` but it only defaults to one when combined with them, otherwise the ``-w`` default is zero."
+msgstr "``-w``也可以独立于``--times/--once/-1``使用，但只有在与它们组合时默认为一，否则``-w``的默认值为零。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:783
 msgid "See https://github.com/ros2/ros2cli/pull/642 for more details."
-msgstr "See https://github.com/ros2/ros2cli/pull/642 for more details."
+msgstr "有关更多详细信息，请参阅https://github.com/ros2/ros2cli/pull/642。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:786
 msgid "``ros2 param dump`` default output changed"
-msgstr "``ros2 param dump`` default output changed"
+msgstr "``ros2 param dump``的默认输出已更改。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:788
