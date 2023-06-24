@@ -475,43 +475,37 @@ w = 1\end{split}\]</div>
 <span class="n">my_func</span><span class="p">(</span><span class="n">some_pub</span><span class="o">-&gt;</span><span class="n">get_actual_qos</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">get_rmw_qos_profile</span><span class="p">());</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The rationale for breaking this directly rather than doing a tick-tock is that it is a new function and is expected to be used infrequently by users.
-Also, since only the return type is changing, adding a new function with a different would be to only way to do a deprecation cycle and <code class="docutils literal notranslate"><span class="pre">get_actual_qos()</span></code> is the most appropriate name, so we would be forced to pick a less obvious name for the method.</p>
+<p>这种直接进行更改而不是进行逐步迁移的原因是，这是一个新的函数，预计用户很少使用。此外，由于只有返回类型发生变化，添加一个具有不同返回类型的新函数是进行废弃周期和``get_actual_qos()``是最合适的名称的唯一方法，因此我们将被迫选择一个不太明显的方法名称。</p>
 </div>
 <div class="section" id="api-break-with-publisher-and-subscription-classes">
-<h4>API Break with Publisher and Subscription Classes<a class="headerlink" href="#api-break-with-publisher-and-subscription-classes" title="永久链接至标题"></a></h4>
-<p>In an effort to streamline the construction of Publishers and Subscriptions, the API of the constructors were changed.</p>
-<p>It would be impossible to support a deprecation cycle, because the old signature takes an rcl type and the new one takes the <code class="docutils literal notranslate"><span class="pre">NodeBaseInterface</span></code> type so that it can get additional information it now needs, and there's no way to get the additional information needed from just the rcl type.
-The new signature could possibly be backported if that would help contributors, but since the publishers and subscriptions are almost always created using the factory functions or some other higher level API, we do not expect this to be a problem for most users.</p>
-<p>Please see the original pr for more detail and comment there if this causes issues:</p>
-<p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/867">https://github.com/ros2/rclcpp/pull/867</a></p>
+<h4>与发布者和订阅者类的API变更<a class="headerlink" href="#api-break-with-publisher-and-subscription-classes" title="永久链接至标题"></a></h4>
+<p>为了简化发布者和订阅者的构建过程，构造函数的API已进行了更改。</p>
+<p>不可能支持废弃周期，因为旧的签名接受rcl类型，而新的签名接受``NodeBaseInterface``类型，以便获得现在所需的附加信息，并且无法仅通过rcl类型获取所需的附加信息。如果这有助于贡献者，新的签名可能会被回溯，但由于发布者和订阅者几乎总是使用工厂函数或其他更高级别的API创建，我们不认为这对大多数用户会构成问题。</p>
+<p>请查看原始的PR了解更多详细信息，并在那里进行评论，如果这引起了问题：</p>
+<p>[<a class="reference external" href="https://github.com/ros2/rclcpp/pull/867](https://github.com/ros2/rclcpp/pull/867">https://github.com/ros2/rclcpp/pull/867](https://github.com/ros2/rclcpp/pull/867</a>)</p>
 </div>
 <div class="section" id="compiler-warning-about-unused-result-of-add-on-set-parameters-callback">
-<h4>Compiler warning about unused result of <code class="docutils literal notranslate"><span class="pre">add_on_set_parameters_callback</span></code><a class="headerlink" href="#compiler-warning-about-unused-result-of-add-on-set-parameters-callback" title="永久链接至标题"></a></h4>
-<p><em>Since Eloquent Patch Release 2 (2020-12-04)</em></p>
-<p>Users should retain the  handle returned by <code class="docutils literal notranslate"><span class="pre">rclcpp::Node::add_on_set_parameters_callback</span></code>, otherwise their callback may be unregistered.
-A warning has been added to help identify bugs where the returned handle is not used.</p>
+<h4>编译器警告，关于未使用``add_on_set_parameters_callback``的结果<a class="headerlink" href="#compiler-warning-about-unused-result-of-add-on-set-parameters-callback" title="永久链接至标题"></a></h4>
+<p><em>自Eloquent Patch Release 2（2020-12-04）开始</em></p>
+<p>用户应该保留 <code class="docutils literal notranslate"><span class="pre">rclcpp::Node::add_on_set_parameters_callback</span></code> 返回的句柄，否则他们的回调可能会被取消注册。已添加警告以帮助识别未使用返回句柄的错误。</p>
 <p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/1243">https://github.com/ros2/rclcpp/pull/1243</a></p>
 </div>
 </div>
 <div class="section" id="rmw">
 <h3><a class="toc-backref" href="#id7">rmw</a><a class="headerlink" href="#rmw" title="永久链接至标题"></a></h3>
 <div class="section" id="api-break-due-to-addition-of-publisher-and-subscription-options">
-<h4>API Break Due to Addition of Publisher and Subscription Options<a class="headerlink" href="#api-break-due-to-addition-of-publisher-and-subscription-options" title="永久链接至标题"></a></h4>
-<p>The <code class="docutils literal notranslate"><span class="pre">rmw_create_publisher()</span></code> method had a new argument added of type <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">rmw_publisher_options_t</span> <span class="pre">*</span></code>.
-This new structure holds options (beyond the typesupport, topic name, and QoS) for new publishers.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">rmw_create_subscription()</span></code> method had one argument removed, <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">ignore_local_publications</span></code>, and replaced by the new options of type <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">rmw_subscription_options_t</span> <span class="pre">*</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">ignore_local_publications</span></code> option was moved into the new <code class="docutils literal notranslate"><span class="pre">rmw_subscription_options_t</span></code> type.</p>
-<p>In both cases the new argument, which are pointers, may never be null, and so the rmw implementations should check to make sure the options are not null.
-Additionally, the options should be copied into the corresponding rmw structure.</p>
-<p>See this pull request, and the associated pull requests for more details:</p>
+<h4>由于新增发布者和订阅者选项而导致的API变更。<a class="headerlink" href="#api-break-due-to-addition-of-publisher-and-subscription-options" title="永久链接至标题"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">rmw_create_publisher()</span></code> 方法新增了一个类型为 <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">rmw_publisher_options_t</span> <span class="pre">*</span></code> 的参数。这个新结构包含了用于新发布者的选项（除了类型支持、主题名称和QoS之外）。</p>
+<p>方法``rmw_create_subscription()``的一个参数被删除，即``bool ignore_local_publications``，并被新的类型为``const rmw_subscription_options_t <a href="#id1"><span class="problematic" id="id2">*</span></a><a href="#id3"><span class="problematic" id="id4">``</span></a>的选项所取代。<a href="#id5"><span class="problematic" id="id6">``</span></a>ignore_local_publications``选项被移入新的``rmw_subscription_options_t``类型中。</p>
+<p>在这两种情况下，这些新的参数（指针类型）不能为null，因此rmw实现应该检查选项是否为null。另外，应将选项复制到相应的rmw结构中。</p>
+<p>请参阅此pull request和相关的pull requests获取更多详细信息：</p>
 <p><a class="reference external" href="https://github.com/ros2/rmw/pull/187">https://github.com/ros2/rmw/pull/187</a></p>
 </div>
 </div>
 <div class="section" id="ros2cli">
 <h3><a class="toc-backref" href="#id8">ros2cli</a><a class="headerlink" href="#ros2cli" title="永久链接至标题"></a></h3>
 <div class="section" id="ros2msg-and-ros2srv-deprecated">
-<h4>ros2msg and ros2srv deprecated<a class="headerlink" href="#ros2msg-and-ros2srv-deprecated" title="永久链接至标题"></a></h4>
+<h4>ros2msg和ros2srv已弃用<a class="headerlink" href="#ros2msg-and-ros2srv-deprecated" title="永久链接至标题"></a></h4>
 <p>The CLI tools <code class="docutils literal notranslate"><span class="pre">ros2msg</span></code> and <code class="docutils literal notranslate"><span class="pre">ros2srv</span></code> are deprecated.
 They have been replaced by the tool <code class="docutils literal notranslate"><span class="pre">ros2interface</span></code>, which also supports action and IDL interfaces.
 You can run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">interface</span> <span class="pre">--help</span></code> for usage.</p>
