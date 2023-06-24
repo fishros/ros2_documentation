@@ -765,18 +765,16 @@
 </div></blockquote>
 </div>
 <div class="section" id="memory-strategy">
-<h4>Memory Strategy<a class="headerlink" href="#memory-strategy" title="永久链接至标题"></a></h4>
-<p>The interface <code class="docutils literal notranslate"><span class="pre">rclcpp::memory_strategy::MemoryStrategy</span></code> was using the typedef <code class="docutils literal notranslate"><span class="pre">WeakNodeVector</span></code> in various method signatures.
-As of Dashing the typedef has been been changed to <code class="docutils literal notranslate"><span class="pre">WeakNodeList</span></code> and with it the type of the parameter in various methods.
-Any custom memory strategy needs to be updated to match the modified interface.</p>
-<p>The relevant API change can be found in <a class="reference external" href="https://github.com/ros2/rclcpp/pull/741">ros2/rclcpp#741</a>.</p>
+<h4>内存策略<a class="headerlink" href="#memory-strategy" title="永久链接至标题"></a></h4>
+<p>接口``rclcpp::memory_strategy::MemoryStrategy``在各种方法签名中使用了``WeakNodeVector``的typedef。从Dashing开始，typedef已经被改为``WeakNodeList``，并且各种方法中的参数类型也随之改变。任何自定义的内存策略都需要更新以匹配修改后的接口。</p>
+<p>相关的API更改可以在`ros2/rclcpp#741 &lt;<a class="reference external" href="https://github.com/ros2/rclcpp/pull/741">https://github.com/ros2/rclcpp/pull/741</a>&gt;`__中找到。</p>
 </div>
 </div>
 <div class="section" id="rclcpp-components">
 <h3><a class="toc-backref" href="#id11">rclcpp_components</a><a class="headerlink" href="#rclcpp-components" title="永久链接至标题"></a></h3>
-<p>The correct way to implement composition in Dashing is by utilizing the <code class="docutils literal notranslate"><span class="pre">rclcpp_components</span></code> package.</p>
-<p>The following changes must be made to nodes in order to correctly implement runtime composition:</p>
-<p>The Node must have a constructor that takes <code class="docutils literal notranslate"><span class="pre">rclcpp::NodeOptions</span></code>:</p>
+<p>在Dashing中实现组合的正确方式是利用``rclcpp_components``包。</p>
+<p>为了正确实现运行时组合，必须对节点进行以下更改：</p>
+<p>节点必须有一个接受``rclcpp::NodeOptions``参数的构造函数:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Listener</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">Listener</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">NodeOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;listener&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"></span>
@@ -785,26 +783,24 @@ Any custom memory strategy needs to be updated to match the modified interface.<
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>C++ registration macros (if present) need to be updated to use the <code class="docutils literal notranslate"><span class="pre">rclcpp_components</span></code> equivalent.
-If not present, registration macros must be added in one translation unit.</p>
+<p>如果存在C++注册宏，需要更新为使用``rclcpp_components``的等效宏。如果不存在，则必须在一个翻译单元中添加注册宏。</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Insert at bottom of translation unit, e.g. listener.cpp</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp_components/register_node_macro.hpp&quot;</span><span class="cp"></span>
 <span class="c1">// Use fully-qualifed name in registration</span>
 <span class="n">RCLCPP_COMPONENTS_REGISTER_NODE</span><span class="p">(</span><span class="n">composition</span><span class="o">::</span><span class="n">Listener</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>CMake registration macros (if present) need to be updated.
-If not present, registration macros must be added to the project's CMake.</p>
+<p>如果存在CMake注册宏，需要进行更新。如果不存在，则必须将注册宏添加到项目的CMake中。</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_library</span><span class="p">(</span><span class="s">listener</span><span class="w"> </span><span class="s">src/listener.cpp</span><span class="p">)</span>
 <span class="nb">rclcpp_components_register_nodes</span><span class="p">(</span><span class="s">listener</span><span class="w"> </span><span class="s2">&quot;composition::Listener&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more information on composition, see <a class="reference external" href="https://index.ros.org/doc/ros2/Tutorials/Composition/">the tutorial</a></p>
+<p>有关组合的更多信息，请参阅`教程 &lt;<a class="reference external" href="https://index.ros.org/doc/ros2/Tutorials/Composition/">https://index.ros.org/doc/ros2/Tutorials/Composition/</a>&gt;`__。</p>
 </div>
 <div class="section" id="rclpy">
 <h3><a class="toc-backref" href="#id12">rclpy</a><a class="headerlink" href="#rclpy" title="永久链接至标题"></a></h3>
 <div class="section" id="changes-to-creating-publishers-subscriptions-and-qos-profiles">
-<h4>Changes to Creating Publishers, Subscriptions, and QoS Profiles<a class="headerlink" href="#changes-to-creating-publishers-subscriptions-and-qos-profiles" title="永久链接至标题"></a></h4>
+<h4>创建发布者、订阅者和QoS配置文件的更改<a class="headerlink" href="#changes-to-creating-publishers-subscriptions-and-qos-profiles" title="永久链接至标题"></a></h4>
 <p>Prior to Dashing, you could optionally provide a <code class="docutils literal notranslate"><span class="pre">QoSProfile</span></code> object when creating a publisher or subscription.
 In an effort to encourage users to specify a history depth for message queues, we now <strong>require</strong> that a depth value or <code class="docutils literal notranslate"><span class="pre">QoSProfile</span></code> object is given when creating publishers or subscriptions.</p>
 <p>To create a publisher, previously you would have written:</p>
