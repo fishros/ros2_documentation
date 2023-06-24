@@ -1010,32 +1010,27 @@
 <li><p>GOAL_EVENT_SET_CANCELED -&gt; GOAL_EVENT_CANCELED</p></li>
 </ul>
 </li>
-<li><p>Changes to <code class="docutils literal notranslate"><span class="pre">CancelGoal.srv</span></code>:</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">return_code</span></code> field was added to the response message of the <code class="docutils literal notranslate"><span class="pre">CancelGoal</span></code> service.
-This is to better communicate a reason for a failed service call.
-See the <a class="reference external" href="https://github.com/ros2/rcl_interfaces/pull/76">pull request</a> and connected issue for details.</p>
+<li><p>对 <code class="docutils literal notranslate"><span class="pre">CancelGoal.srv</span></code> 的更改:</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">CancelGoal</span></code> 服务的响应消息中添加了一个 <code class="docutils literal notranslate"><span class="pre">return_code</span></code> 字段。这是为了更好地传达服务调用失败的原因。有关详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rcl_interfaces/pull/76">拉取请求</a> 和相关问题。</p>
 </li>
 </ul>
 </div>
 <div class="section" id="rviz">
 <h3><a class="toc-backref" href="#id19">rviz</a><a class="headerlink" href="#rviz" title="永久链接至标题"></a></h3>
 <ul class="simple">
-<li><p>Plugins should use fully qualified type names otherwise a warning will be logged.
-For <a class="reference external" href="https://github.com/ros2/rviz/blob/dfceae319d49546f1e4ad39689853c18fef0001e/rviz_default_plugins/plugins_description.xml#L13">example</a>, use the type <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Image</span></code> instead of <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code>.
-See <a class="reference external" href="https://github.com/ros2/rviz/pull/387">PR introducing this change</a> for more details.</p></li>
+<li><p>插件应该使用完全限定的类型名称，否则将记录警告。例如，在 <a class="reference external" href="https://github.com/ros2/rviz/blob/dfceae319d49546f1e4ad39689853c18fef0001e/rviz_default_plugins/plugins_description.xml#L13">这个示例</a> 中，使用类型 <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Image</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">sensor_msgs/Image</span></code>。有关更多详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rviz/pull/387">引入此更改的 PR</a>。</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="known-issues">
 <h2><a class="toc-backref" href="#id20">已知问题</a><a class="headerlink" href="#known-issues" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/715">[ros2/rclcpp#715]</a> There is an inconsistency in the way that parameter YAML files are loaded between standalone ROS 2 nodes and composed ROS 2 nodes.
-Currently available workarounds are noted in an <a class="reference external" href="https://github.com/ros2/rclcpp/issues/715#issuecomment-497392626">issue comment</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/360">[ros2/rclpy#360]</a> rclpy nodes ignore <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">c</kbd></kbd> when using OpenSplice on Windows.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rosidl_typesupport_opensplice/issues/30">[ros2/rosidl_typesupport_opensplice#30]</a> There is a bug preventing nesting a message inside of a service or action definition with the same name when using OpenSplice.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/781">[ros2/rclcpp#781]</a> Calling <code class="docutils literal notranslate"><span class="pre">get_parameter</span></code>/<code class="docutils literal notranslate"><span class="pre">list_parameter</span></code> from within <code class="docutils literal notranslate"><span class="pre">on_set_parameter_callback</span></code> causes a deadlock on Dashing.  This is fixed for Eloquent, but is an ABI break so has not been backported to Dashing.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/912">[ros2/rclcpp#912]</a> Inter-process communication forces a message copy when intra-process communication takes place between an <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> publisher and a single <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> subscription (published <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> is internally being promoted to an <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code>).</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rosbag2/issues/125">[ros2/rosbag2#125]</a> Topics with unreliable QOS are not recorded.</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/715">[ros2/rclcpp#715]</a> 在独立的ROS 2节点和组合的ROS 2节点之间加载参数YAML文件的方式存在不一致。目前可用的解决方法在一个`问题评论中 &lt;<a class="reference external" href="https://github.com/ros2/rclcpp/issues/715#issuecomment-497392626">https://github.com/ros2/rclcpp/issues/715#issuecomment-497392626</a>&gt;`_ 中有说明。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/360">[ros2/rclpy#360]</a> 在使用OpenSplice时，rclpy节点在Windows上忽略 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">c</kbd></kbd> 命令。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rosidl_typesupport_opensplice/issues/30">[ros2/rosidl_typesupport_opensplice#30]</a> 使用OpenSplice时，在服务或动作定义中将消息嵌套在相同名称的消息中存在错误。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/781">[ros2/rclcpp#781]</a> 在 <code class="docutils literal notranslate"><span class="pre">on_set_parameter_callback</span></code> 中调用 <code class="docutils literal notranslate"><span class="pre">get_parameter</span></code>/<code class="docutils literal notranslate"><span class="pre">list_parameter</span></code> 会在Dashing版本中造成死锁。这在Eloquent版本中已经修复，但由于ABI的变动，未被反向移植到Dashing。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/912">[ros2/rclcpp#912]</a> 当在一个 <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> 发布者和一个单独的 <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> 订阅者之间进行进程内通信时（发布的 <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> 内部被升级为 <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code>），会强制执行消息的复制操作。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rosbag2/issues/125">[ros2/rosbag2#125]</a> 不会记录具有不可靠QOS的主题。</p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/715">[ros2/rclcpp#715]</a> Composable nodes cannot receive parameters via remapping. Supplying parameters to composable nodes can be accomplished using the methods described in <a class="reference external" href="https://github.com/ros2/rclcpp/issues/715#issuecomment-497392626">[this comment]</a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/893">[ros2/rclcpp#893]</a> <code class="docutils literal notranslate"><span class="pre">rclcpp::Context</span></code> is not destroyed because of a reference cycle with <code class="docutils literal notranslate"><span class="pre">rclcpp::GraphListener</span></code>. This causes a memory leak. A fix has not been backported because of the risk of breaking ABI.</p></li>
 </ul>
