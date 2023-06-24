@@ -404,7 +404,7 @@
 <li><p><a class="reference internal" href="#rosidl-generator-c-cpp-namespace-api-changes" id="id23">rosidl_generator_c|cpp 命名空间/API更改</a></p></li>
 <li><p><a class="reference internal" href="#default-working-directory-for-ament-add-test" id="id24">ament_add_test的默认工作目录</a></p></li>
 <li><p><a class="reference internal" href="#default-console-logging-format" id="id25">默认控制台日志格式</a></p></li>
-<li><p><a class="reference internal" href="#default-console-logging-output-stream" id="id26">Default Console Logging Output Stream</a></p></li>
+<li><p><a class="reference internal" href="#default-console-logging-output-stream" id="id26">默认控制台日志输出流</a></p></li>
 <li><p><a class="reference internal" href="#launch-ros" id="id27">launch_ros</a></p></li>
 <li><p><a class="reference internal" href="#rclcpp" id="id28">rclcpp</a></p></li>
 <li><p><a class="reference internal" href="#rclcpp-action" id="id29">rclcpp_action</a></p></li>
@@ -567,46 +567,38 @@
 </ul>
 </div>
 <div class="section" id="default-console-logging-output-stream">
-<h3><a class="toc-backref" href="#id26">Default Console Logging Output Stream</a><a class="headerlink" href="#default-console-logging-output-stream" title="永久链接至标题"></a></h3>
-<p>As of Foxy, all logging messages at all severity levels get logged to stderr by default.
-This ensures that logging messages come out immediately, and brings the ROS 2 logging system into alignment with most other logging systems.
-It is possible to change the stream to stdout at runtime via the RCUTILS_LOGGING_USE_STDOUT environment variable, but all logging messages will still go to the same stream.
-See <a class="reference external" href="https://github.com/ros2/rcutils/pull/196">https://github.com/ros2/rcutils/pull/196</a> for more details.</p>
+<h3><a class="toc-backref" href="#id26">默认控制台日志输出流</a><a class="headerlink" href="#default-console-logging-output-stream" title="永久链接至标题"></a></h3>
+<p>从Foxy版本开始，默认情况下，所有严重级别的日志消息都会被记录到stderr中。这确保日志消息立即输出，并使ROS 2日志系统与大多数其他日志系统保持一致。可以通过RCUTILS_LOGGING_USE_STDOUT环境变量在运行时将输出流更改为stdout，但所有日志消息仍将发送到同一输出流。有关更多详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rcutils/pull/196">https://github.com/ros2/rcutils/pull/196</a>。</p>
 </div>
 <div class="section" id="launch-ros">
 <h3><a class="toc-backref" href="#id27">launch_ros</a><a class="headerlink" href="#launch-ros" title="永久链接至标题"></a></h3>
 <div class="section" id="node-name-and-namespace-parameters-changed">
-<h4>Node name and namespace parameters changed<a class="headerlink" href="#node-name-and-namespace-parameters-changed" title="永久链接至标题"></a></h4>
-<p>The <code class="docutils literal notranslate"><span class="pre">Node</span></code> action parameters related to naming have been changed:</p>
+<h4>节点名称和命名空间参数已更改<a class="headerlink" href="#node-name-and-namespace-parameters-changed" title="永久链接至标题"></a></h4>
+<p>与命名相关的``Node``动作参数已更改：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">node_name</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">name</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">node_namespace</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">namespace</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">node_executable</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">executable</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">exec_name</span></code> has been added for naming the process associated with the node.
-Previously, users would have used the <code class="docutils literal notranslate"><span class="pre">name</span></code> keyword argument.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node_name``已更名为``name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node_namespace</span></code> 已更名为 <code class="docutils literal notranslate"><span class="pre">namespace</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node_executable</span></code> 已更名为 <code class="docutils literal notranslate"><span class="pre">executable</span></code></p></li>
+<li><p>已添加``exec_name`` 以命名与节点关联的进程。以前，用户可能使用了 <code class="docutils literal notranslate"><span class="pre">name</span></code> 关键字参数。</p></li>
 </ul>
-<p>The old parameters have been deprecated.</p>
-<p>These changes were made to make the launch frontend more idiomatic.
-For example, instead of</p>
+<p>旧参数已被弃用。</p>
+<p>这些更改是为了使启动界面更符合惯用语法。例如，以前的写法是</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;demo_nodes_cpp&quot;</span> <span class="na">exec=</span><span class="s">&quot;talker&quot;</span> <span class="na">node-name=</span><span class="s">&quot;foo&quot;</span> <span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p>we can now write</p>
+<p>现在我们可以写成</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;demo_nodes_cpp&quot;</span> <span class="na">exec=</span><span class="s">&quot;talker&quot;</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span> <span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p>This change also applies to <code class="docutils literal notranslate"><span class="pre">ComposableNodeContainer</span></code>, <code class="docutils literal notranslate"><span class="pre">ComposableNode</span></code>, and <code class="docutils literal notranslate"><span class="pre">LifecycleNode</span></code>.
-For examples, see the <a class="reference external" href="https://github.com/ros2/demos/pull/431">relevant changes to the demos.</a></p>
-<p><a class="reference external" href="https://github.com/ros2/launch_ros/pull/122">Related pull request in launch_ros.</a></p>
+<p>这个变更也适用于``ComposableNodeContainer``、<code class="docutils literal notranslate"><span class="pre">ComposableNode``和``LifecycleNode</span></code>。有关示例，请参阅`演示中的相关更改。 &lt;<a class="reference external" href="https://github.com/ros2/demos/pull/431">https://github.com/ros2/demos/pull/431</a>&gt;`_</p>
+<p><a class="reference external" href="https://github.com/ros2/launch_ros/pull/122">在launch_ros中的相关拉取请求。</a></p>
 </div>
 </div>
 <div class="section" id="rclcpp">
 <h3><a class="toc-backref" href="#id28">rclcpp</a><a class="headerlink" href="#rclcpp" title="永久链接至标题"></a></h3>
 <div class="section" id="change-in-advanced-subscription-callback-signature">
-<h4>Change in Advanced Subscription Callback Signature<a class="headerlink" href="#change-in-advanced-subscription-callback-signature" title="永久链接至标题"></a></h4>
-<p>With the pull request <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1047">https://github.com/ros2/rclcpp/pull/1047</a> the signature of callbacks which receive the message info with the message has changed.
-Previously it used the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> type <code class="docutils literal notranslate"><span class="pre">rmw_message_info_t</span></code>, but now uses the <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> type <code class="docutils literal notranslate"><span class="pre">rclcpp::MessageInfo</span></code>.
-The required changes are straightforward, and can be seen demonstrated in these pull requests:</p>
+<h4>高级订阅回调签名的变更<a class="headerlink" href="#change-in-advanced-subscription-callback-signature" title="永久链接至标题"></a></h4>
+<p>使用拉取请求`https://github.com/ros2/rclcpp/pull/1047 &lt;<a class="reference external" href="https://github.com/ros2/rclcpp/pull/1047">https://github.com/ros2/rclcpp/pull/1047</a>&gt;`_，接收消息信息的回调函数的签名已经发生了变化。之前使用``rmw``类型的``rmw_message_info_t``，现在使用``rclcpp``类型的``rclcpp::MessageInfo``。所需的更改很简单，并且可以在以下拉取请求中看到示例：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ros2/system_tests/pull/423/files">https://github.com/ros2/system_tests/pull/423/files</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rosbag2/pull/375/files">https://github.com/ros2/rosbag2/pull/375/files</a></p></li>
