@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Crystal Clemmys (crystal)" href="Release-Crystal-Clemmys.html" />
-    <link rel="prev" title="Eloquent Elusor (eloquent)" href="Release-Eloquent-Elusor.html" /> 
+    <link rel="prev" title="Eloquent Elusor（eloquent）" href="Release-Eloquent-Elusor.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -92,7 +92,7 @@
 <li class="toctree-l4"><a class="reference internal" href="Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Release-Eloquent-Elusor.html">Eloquent Elusor (<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>）</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>）</a></li>
@@ -397,7 +397,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#known-issues" id="id20">已知问题</a></p></li>
-<li><p><a class="reference internal" href="#timeline-before-the-release" id="id21">Timeline before the release</a></p></li>
+<li><p><a class="reference internal" href="#timeline-before-the-release" id="id21">发布前的时间线</a></p></li>
 </ul>
 </div>
 <p><em>Dashing Diademata</em> 是ROS 2的第四个版本。</p>
@@ -1031,31 +1031,26 @@
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/pull/781">[ros2/rclcpp#781]</a> 在 <code class="docutils literal notranslate"><span class="pre">on_set_parameter_callback</span></code> 中调用 <code class="docutils literal notranslate"><span class="pre">get_parameter</span></code>/<code class="docutils literal notranslate"><span class="pre">list_parameter</span></code> 会在Dashing版本中造成死锁。这在Eloquent版本中已经修复，但由于ABI的变动，未被反向移植到Dashing。</p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/912">[ros2/rclcpp#912]</a> 当在一个 <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> 发布者和一个单独的 <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> 订阅者之间进行进程内通信时（发布的 <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> 内部被升级为 <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code>），会强制执行消息的复制操作。</p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rosbag2/issues/125">[ros2/rosbag2#125]</a> 不会记录具有不可靠QOS的主题。</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/715">[ros2/rclcpp#715]</a> Composable nodes cannot receive parameters via remapping. Supplying parameters to composable nodes can be accomplished using the methods described in <a class="reference external" href="https://github.com/ros2/rclcpp/issues/715#issuecomment-497392626">[this comment]</a>.</p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/893">[ros2/rclcpp#893]</a> <code class="docutils literal notranslate"><span class="pre">rclcpp::Context</span></code> is not destroyed because of a reference cycle with <code class="docutils literal notranslate"><span class="pre">rclcpp::GraphListener</span></code>. This causes a memory leak. A fix has not been backported because of the risk of breaking ABI.</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/715">[ros2/rclcpp#715]</a> 可组合节点无法通过重映射接收参数。可以使用 <a class="reference external" href="https://github.com/ros2/rclcpp/issues/715#issuecomment-497392626">[此评论]</a> 中描述的方法向可组合节点提供参数。</p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/issues/893">[ros2/rclcpp#893]</a> <code class="docutils literal notranslate"><span class="pre">rclcpp::Context</span></code> 由于与 <code class="docutils literal notranslate"><span class="pre">rclcpp::GraphListener</span></code> 存在引用循环而无法销毁。这导致内存泄漏。由于破坏ABI的风险，修复尚未进行回溯。</p></li>
 </ul>
 </div>
 <div class="section" id="timeline-before-the-release">
-<h2><a class="toc-backref" href="#id21">Timeline before the release</a><a class="headerlink" href="#timeline-before-the-release" title="永久链接至标题"></a></h2>
-<p>A few milestones leading up to the release:</p>
+<h2><a class="toc-backref" href="#id21">发布前的时间线</a><a class="headerlink" href="#timeline-before-the-release" title="永久链接至标题"></a></h2>
+<p>发布前的一些关键节点：</p>
 <blockquote>
 <div><dl class="simple">
-<dt>Mon. Apr 8th (alpha)</dt><dd><p>First releases of core packages available.
-Testing can happen from now on (some features might not have landed yet).</p>
+<dt>4月8日（alpha版本）</dt><dd><p>核心软件包的首次发布可用。从现在开始可以进行测试（某些功能可能尚未完全实现）。</p>
 </dd>
-<dt>Thu. May 2nd</dt><dd><p>API freeze for core packages</p>
+<dt>星期四。5月2日</dt><dd><p>核心包的API冻结</p>
 </dd>
-<dt>Mon. May 6th (beta)</dt><dd><p>Updated releases of core packages available.
-Additional testing of the latest features.</p>
+<dt>星期一。5月6日（beta版）</dt><dd><p>可用的核心包更新版本。对最新功能进行额外测试。</p>
 </dd>
-<dt>Thu. May 16th</dt><dd><p>Feature freeze.
-Only bug fix releases should be made after this point.
-New packages can be released independently.</p>
+<dt>星期四。5月16日</dt><dd><p>功能冻结。在此之后，只能发布修复错误的版本。新包可以独立发布。</p>
 </dd>
-<dt>Mon. May 20th (release candidate)</dt><dd><p>Updated releases of core packages available.</p>
+<dt>周一，5月20日（发行候选版）</dt><dd><p>可用的核心软件包更新版本。</p>
 </dd>
-<dt>Wed. May 29th</dt><dd><p>Freeze rosdistro.
-No PRs for Dashing on the <a class="reference external" href="http://docs.ros.org/en/independent/api/rosdistro/html/rosdistro.html#module-rosdistro" title="(在 rosdistro)"><code class="xref any docutils literal notranslate"><span class="pre">rosdistro</span></code></a> repo will be merged (reopens after the release announcement).</p>
+<dt>周三，5月29日</dt><dd><p>冻结rosdistro。在`rosdistro`仓库中，不会合并任何关于Dashing的PR（在发布公告之后重新开放）。</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -1067,7 +1062,7 @@ No PRs for Dashing on the <a class="reference external" href="http://docs.ros.or
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Release-Eloquent-Elusor.html" class="btn btn-neutral float-left" title="Eloquent Elusor (eloquent)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Release-Eloquent-Elusor.html" class="btn btn-neutral float-left" title="Eloquent Elusor（eloquent）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="Release-Crystal-Clemmys.html" class="btn btn-neutral float-right" title="Crystal Clemmys (crystal)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
