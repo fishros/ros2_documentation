@@ -666,15 +666,14 @@ compatibility status    : ERROR: Best effort publisher and reliable subscription
 <h3><a class="toc-backref" href="#id27">Rosbag2新功能</a><a class="headerlink" href="#rosbag2-new-features" title="永久链接至标题"></a></h3>
 <div class="section" id="split-recording-by-time">
 <h4>按时间划分录制<a class="headerlink" href="#split-recording-by-time" title="永久链接至标题"></a></h4>
-<p>In Foxy, you could only split bags as they were recording by the size of the bag, now you can also split by the elapsed time.
-The following command will split bagfiles into 100-second chunks.</p>
+<p>在Foxy版本中，您只能按照包的大小进行分割包，现在您还可以按照经过的时间进行分割。以下命令将把包文件分割为100秒的块。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 bag record --all --max-bag-duration <span class="m">100</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ros2-bag-list">
 <h4>ros2 bag list<a class="headerlink" href="#ros2-bag-list" title="永久链接至标题"></a></h4>
-<p>This new command lists installed plugins of various types that rosbag2 uses.</p>
+<p>这个新命令列出了rosbag2使用的各种类型的已安装插件。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 bag list storage
 rosbag2_v2
 sqlite3
@@ -685,51 +684,40 @@ rosbag_v2_converter
 </div>
 </div>
 <div class="section" id="compression-implementation-is-a-plugin">
-<h4>Compression implementation is a plugin<a class="headerlink" href="#compression-implementation-is-a-plugin" title="永久链接至标题"></a></h4>
-<p>In Foxy, rosbag2 compression was hardcoded with a Zstd library implementation.
-This has been rearchitected so that compression implementations are a plugin, and can be swapped out without modifying the core rosbag2 codebase.
-The default plugin that ships with <code class="docutils literal notranslate"><span class="pre">ros-galactic-rosbag2</span></code> is still the Zstd plugin - but now more can be released and used, and by selectively installing packages Zstd could be excluded from an installation.</p>
+<h4>压缩实现是一个插件。<a class="headerlink" href="#compression-implementation-is-a-plugin" title="永久链接至标题"></a></h4>
+<p>在Foxy版本中，rosbag2的压缩是使用一个硬编码的Zstd库实现的。现在进行了重新架构，使得压缩实现成为一个插件，可以在不修改核心rosbag2代码库的情况下进行替换。随``ros-galactic-rosbag2``一起提供的默认插件仍然是Zstd插件，但现在可以发布和使用更多插件，并通过选择性安装包来排除Zstd插件。</p>
 </div>
 <div class="section" id="compress-per-message">
-<h4>Compress per-message<a class="headerlink" href="#compress-per-message" title="永久链接至标题"></a></h4>
-<p>In Foxy, you could automatically compress each rosbag file as it was split (per-file compression), but now you can also specify per-message compression.</p>
+<h4>按消息进行压缩。<a class="headerlink" href="#compress-per-message" title="永久链接至标题"></a></h4>
+<p>在Foxy中，您可以在拆分rosbag文件时自动压缩每个文件（每个文件的压缩），但现在您还可以指定每个消息的压缩。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 bag record --all --compression-format zstd --compression-mode message
 </pre></div>
 </div>
 </div>
 <div class="section" id="rosbag2-python-api">
 <h4>Rosbag2 Python API<a class="headerlink" href="#rosbag2-python-api" title="永久链接至标题"></a></h4>
-<p>A new package <code class="docutils literal notranslate"><span class="pre">rosbag2_py</span></code> has been released in Galactic, which provides a Python API.
-This package is a <code class="docutils literal notranslate"><span class="pre">pybind11</span></code> binding around the C++ API.
-As of the initial Galactic release, it does not yet expose all functionality available via the <code class="docutils literal notranslate"><span class="pre">rosbag2_cpp</span></code> API, but it is the sole connection for the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> CLI tool, so a good deal of functionality is available.</p>
+<p>在Galactic中发布了一个新的包“rosbag2_py”，提供了Python API。该包是围绕C++ API的“pybind11”绑定。在最初的Galactic版本中，它尚未暴露通过“rosbag2_cpp” API可用的所有功能，但它是“ros2 bag” CLI工具的唯一连接，因此提供了相当多的功能。</p>
 </div>
 <div class="section" id="performance-testing-package-and-performance-improvements">
-<h4>performance testing package and performance improvements<a class="headerlink" href="#performance-testing-package-and-performance-improvements" title="永久链接至标题"></a></h4>
-<p>A thorough performance analysis project was performed on rosbag2 since the Foxy release.
-The full initial report is available at <a class="reference external" href="https://github.com/ros2/rosbag2/blob/galactic/rosbag2_performance/rosbag2_performance_benchmarking/docs/rosbag2_performance_improvements.pdf">https://github.com/ros2/rosbag2/blob/galactic/rosbag2_performance/rosbag2_performance_benchmarking/docs/rosbag2_performance_improvements.pdf</a> .
-The package <code class="docutils literal notranslate"><span class="pre">rosbag2_performance_benchmarking</span></code> provides tools to run performance analyses, especially on recording, which helps us maintain and improve the performance of rosbag2.</p>
-<p>Following this report, key work was done do improve the performance to a much more usable state for actual robot workflows.
-To highlight a key metric - in a high bandwidth stress test (200Mbps), the Foxy release dropped up to 70% of messages, whereas the Galactic version was approximately 100% retention.
-Please see the linked report for more details.</p>
+<h4>性能测试包和性能改进<a class="headerlink" href="#performance-testing-package-and-performance-improvements" title="永久链接至标题"></a></h4>
+<p>自Foxy发布以来，对rosbag2进行了全面的性能分析项目。完整的初始报告可在https://github.com/ros2/rosbag2/blob/galactic/rosbag2_performance/rosbag2_performance_benchmarking/docs/rosbag2_performance_improvements.pdf中找到。包“rosbag2_performance_benchmarking”提供了运行性能分析的工具，特别是在记录方面，这有助于我们维护和改进rosbag2的性能。</p>
+<p>根据此报告，我们进行了关键工作，以将性能改进到更适用于实际机器人工作流程的状态。以一个关键指标为例 - 在高带宽压力测试（200Mbps）中，Foxy版本丢失了高达70％的消息，而Galactic版本保留了近100％。有关详细信息，请参阅链接的报告。</p>
 </div>
 <div class="section" id="regex-and-exclude-options-for-topic-selection">
-<h4><code class="docutils literal notranslate"><span class="pre">--regex</span></code> and <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> options for topic selection<a class="headerlink" href="#regex-and-exclude-options-for-topic-selection" title="永久链接至标题"></a></h4>
-<p>The new recording options <code class="docutils literal notranslate"><span class="pre">--regex</span></code> and <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> allow for fine-tuning the topics recorded in a bag, without having to explicitly list all topics.
-These options may be used together or separately, and in conjunction with <code class="docutils literal notranslate"><span class="pre">--all</span></code></p>
-<p>The following command will record only topics with &quot;scan&quot; in the name.</p>
+<h4><code class="docutils literal notranslate"><span class="pre">--regex</span></code> 和 <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> 选项用于选择话题<a class="headerlink" href="#regex-and-exclude-options-for-topic-selection" title="永久链接至标题"></a></h4>
+<p>新的录制选项 <code class="docutils literal notranslate"><span class="pre">--regex</span></code> 和 <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> 允许对录制的包中的话题进行精细调整，无需明确列出所有话题。这些选项可以一起或分别使用，并且可以与 <code class="docutils literal notranslate"><span class="pre">--all</span></code> 一起使用。</p>
+<p>下面的命令将只记录名称中包含“scan”的话题。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 bag record --regex <span class="s2">&quot;*scan*&quot;</span>
 </pre></div>
 </div>
-<p>The following command will record all topics except for ones in <code class="docutils literal notranslate"><span class="pre">/my_namespace/</span></code></p>
+<p>下面的命令将记录除 <code class="docutils literal notranslate"><span class="pre">/my_namespace/</span></code> 之外的所有话题。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 bag record --all --exclude <span class="s2">&quot;/my_namespace/*&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ros2-bag-reindex">
 <h4><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">reindex</span></code><a class="headerlink" href="#ros2-bag-reindex" title="永久链接至标题"></a></h4>
-<p>ROS 2 bags are represented by a directory, instead of a single file.
-This directory contains a <code class="docutils literal notranslate"><span class="pre">metadata.yaml</span></code> file, and one or more bag files.
-When the <code class="docutils literal notranslate"><span class="pre">metadata.yaml</span></code> file is lost or missing, <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">reindex</span> <span class="pre">$bag_dir</span></code> will attempt to reconstruct it by reading all the bag files in the directory.</p>
+<p>ROS 2的包由一个目录表示，而不是单个文件。该目录包含一个 <code class="docutils literal notranslate"><span class="pre">metadata.yaml</span></code> 文件和一个或多个包文件。当 <code class="docutils literal notranslate"><span class="pre">metadata.yaml</span></code> 文件丢失或缺失时，<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">reindex</span> <span class="pre">$bag_dir</span></code> 将尝试通过读取目录中的所有包文件来重建它。</p>
 </div>
 <div class="section" id="playback-time-control">
 <h4>Playback time control<a class="headerlink" href="#playback-time-control" title="永久链接至标题"></a></h4>
