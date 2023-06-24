@@ -35320,122 +35320,122 @@ msgstr "突发模式回放"
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:917
 msgid "While the playback of data from a bag in real-time is the most well-known use case for bag files, there are situations where you want the data in the bag as fast as possible. With pull request `977 <https://github.com/ros2/rosbag2/pull/977>`_, ``rosbag2`` has gained the ability to \"burst\" data from the bag. In burst mode, the data is played back as fast as possible. This is useful in applications such as machine learning."
-msgstr "While the playback of data from a bag in real-time is the most well-known use case for bag files, there are situations where you want the data in the bag as fast as possible. With pull request `977 <https://github.com/ros2/rosbag2/pull/977>`_, ``rosbag2`` has gained the ability to \"burst\" data from the bag. In burst mode, the data is played back as fast as possible. This is useful in applications such as machine learning."
+msgstr "虽然实时播放来自包文件的数据是包文件最常见的用例，但在某些情况下，您希望尽快获取包中的数据。通过拉取请求`977 <https://github.com/ros2/rosbag2/pull/977>`_，``rosbag2``获得了从包中“突发”数据的能力。在突发模式下，数据以最快的速度进行播放。这在机器学习等应用中非常有用。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:923
 msgid "Zero-Copy playback"
-msgstr "Zero-Copy playback"
+msgstr "零拷贝播放"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:925
 msgid "By default, if loaned message can be used, playback messages are published as loaned message. This can help to reduce the number of data copies, so there is a greater benefit for sending big data. Pull request `981 <https://github.com/ros2/rosbag2/pull/981>`_ adds ``--disable-loan-message`` option for playback."
-msgstr "By default, if loaned message can be used, playback messages are published as loaned message. This can help to reduce the number of data copies, so there is a greater benefit for sending big data. Pull request `981 <https://github.com/ros2/rosbag2/pull/981>`_ adds ``--disable-loan-message`` option for playback."
+msgstr "默认情况下，如果可以使用借用的消息，播放消息将作为借用的消息进行发布。这有助于减少数据的拷贝次数，因此对于发送大数据有更大的好处。拉取请求`981 <https://github.com/ros2/rosbag2/pull/981>`_为播放添加了``--disable-loan-message``选项。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:930
 msgid "Wait for an acknowledgment"
-msgstr "Wait for an acknowledgment"
+msgstr "等待确认"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:932
 msgid "This new option will wait until all published messages are acknowledged by all subscribers or until the timeout elapses in millisecond before play is terminated. Especially for the case of sending message with big size in a short time. This option is valid only if the publisher's QOS profile is RELIABLE. Pull request `951 <https://github.com/ros2/rosbag2/pull/951>`_ adds ``--wait-for-all-acked`` option for playback."
-msgstr "This new option will wait until all published messages are acknowledged by all subscribers or until the timeout elapses in millisecond before play is terminated. Especially for the case of sending message with big size in a short time. This option is valid only if the publisher's QOS profile is RELIABLE. Pull request `951 <https://github.com/ros2/rosbag2/pull/951>`_ adds ``--wait-for-all-acked`` option for playback."
+msgstr "这个新选项将等待所有发布的消息被所有订阅者确认，或者在播放终止之前等待超时（以毫秒为单位）。特别是在短时间内发送大尺寸的消息的情况下。只有当发布者的QOS配置文件为RELIABLE时，此选项才有效。拉取请求`951 <https://github.com/ros2/rosbag2/pull/951>`_为播放添加了``--wait-for-all-acked``选项。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:938
 msgid "Bag editing"
-msgstr "Bag editing"
+msgstr "包文件编辑"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:940
 msgid "``rosbag2`` is taking steps towards enabling the editing of bags, such as removing all messages for one topic or merging multiple bags into a single bag. Pull request `921 <https://github.com/ros2/rosbag2/pull/921>`_ adds bag rewriting and the ``ros2 bag convert`` verb."
-msgstr "``rosbag2`` is taking steps towards enabling the editing of bags, such as removing all messages for one topic or merging multiple bags into a single bag. Pull request `921 <https://github.com/ros2/rosbag2/pull/921>`_ adds bag rewriting and the ``ros2 bag convert`` verb."
+msgstr "``rosbag2`` 正在采取措施实现对包文件的编辑，例如删除特定主题的所有消息或将多个包文件合并为一个。Pull request `921 <https://github.com/ros2/rosbag2/pull/921>`_ 添加了包文件重写功能和 ``ros2 bag convert`` 命令。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:946
 msgid "Pull request `925 <https://github.com/ros2/rosbag2/pull/925>`_ makes ``rosbag2`` ignore \"leaf topics\" (topics without a publisher) when recording. These topics will no longer be automatically added to the bag."
-msgstr "Pull request `925 <https://github.com/ros2/rosbag2/pull/925>`_ makes ``rosbag2`` ignore \"leaf topics\" (topics without a publisher) when recording. These topics will no longer be automatically added to the bag."
+msgstr "Pull request `925 <https://github.com/ros2/rosbag2/pull/925>`_ 使 ``rosbag2`` 在记录时忽略\"叶子主题\"（没有发布者的主题）。这些主题将不再自动添加到包文件中。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:952
 msgid "When `installing ROS 2 on an Ubuntu 22.04 Jammy host <../../humble/Installation/Ubuntu-Install-Debians.html>`__ it is important to update your system before installing ROS 2 packages. It is *particularly* important to make sure that ``systemd`` and ``udev`` are updated to the latest available version otherwise installing ``ros-humble-desktop``, which depends on ``libudev1``, could cause the removal of system critical packages. Details can be found in `ros2/ros2#1272 <https://github.com/ros2/ros2/issues/1272>`_ and `Launchpad #1974196 <https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1974196>`_"
-msgstr "When `installing ROS 2 on an Ubuntu 22.04 Jammy host <../../humble/Installation/Ubuntu-Install-Debians.html>`__ it is important to update your system before installing ROS 2 packages. It is *particularly* important to make sure that ``systemd`` and ``udev`` are updated to the latest available version otherwise installing ``ros-humble-desktop``, which depends on ``libudev1``, could cause the removal of system critical packages. Details can be found in `ros2/ros2#1272 <https://github.com/ros2/ros2/issues/1272>`_ and `Launchpad #1974196 <https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1974196>`_"
+msgstr "在`在 Ubuntu 22.04 Jammy 主机上安装 ROS 2 <../../humble/Installation/Ubuntu-Install-Debians.html>`__ 之前，重要的是在安装 ROS 2 包之前更新您的系统。特别需要确保 ``systemd`` 和 ``udev`` 更新到最新版本，否则安装 ``ros-humble-desktop``（依赖于 ``libudev1``）可能会导致系统关键包被删除。详细信息可以在 `ros2/ros2#1272 <https://github.com/ros2/ros2/issues/1272>`_ 和 `Launchpad #1974196 <https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1974196>`_ 中找到。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:956
 msgid "When ROS 2 apt repositories are available, ROS 1 packages in Ubuntu are not installable.  See the :doc:`ros1_bridge on Ubuntu Jammy <../How-To-Guides/Using-ros1_bridge-Jammy-upstream>` document for more information."
-msgstr "When ROS 2 apt repositories are available, ROS 1 packages in Ubuntu are not installable.  See the :doc:`ros1_bridge on Ubuntu Jammy <../How-To-Guides/Using-ros1_bridge-Jammy-upstream>` document for more information."
+msgstr "当 ROS 2 apt 仓库可用时，无法安装 Ubuntu 上的 ROS 1 包。有关更多信息，请参阅 :doc:`Ubuntu Jammy 上的 ros1_bridge <../How-To-Guides/Using-ros1_bridge-Jammy-upstream>` 文档。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:958
 msgid "Some major Linux distributions have started patching Python to install packages to ``/usr/local``, which is breaking some parts of ``ament_package`` and builds with ``colcon``. In particular, using Ubuntu Jammy with ``setuptools`` installed from pip will manifest this misbehavior, and is therefore not recommended. There is currently a `proposed solution <https://github.com/colcon/colcon-core/pull/512>`_ which requires further testing before widespread release."
-msgstr "Some major Linux distributions have started patching Python to install packages to ``/usr/local``, which is breaking some parts of ``ament_package`` and builds with ``colcon``. In particular, using Ubuntu Jammy with ``setuptools`` installed from pip will manifest this misbehavior, and is therefore not recommended. There is currently a `proposed solution <https://github.com/colcon/colcon-core/pull/512>`_ which requires further testing before widespread release."
+msgstr "一些主要的 Linux 发行版已经开始修补 Python，将软件包安装到 ``/usr/local``，这破坏了 ``ament_package`` 和使用 ``colcon`` 构建的一些部分。特别是，在 Ubuntu Jammy 上使用从 pip 安装的 ``setuptools`` 将导致此问题，因此不推荐这样做。目前有一个 `提议的解决方案 <https://github.com/colcon/colcon-core/pull/512>`_ 需要进一步测试才能广泛发布。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:962
 msgid "ROS 2 bags that are split by size or duration are not played correctly. Only the last bag recorded is played. It is recommended to avoid splitting bags by size or duration. Details can be found in `ros2/rosbag2#966 <https://github.com/ros2/rosbag2/issues/966>`__."
-msgstr "ROS 2 bags that are split by size or duration are not played correctly. Only the last bag recorded is played. It is recommended to avoid splitting bags by size or duration. Details can be found in `ros2/rosbag2#966 <https://github.com/ros2/rosbag2/issues/966>`__."
+msgstr "拆分大小或持续时间的 ROS 2 包文件无法正确播放。只有最后一个记录的包文件会被播放。建议避免按大小或持续时间拆分包文件。详细信息可以在 `ros2/rosbag2#966 <https://github.com/ros2/rosbag2/issues/966>`__ 中找到。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:968 ../../source/Releases/Release-Iron-Irwini.rst:854
 msgid "Release Timeline"
-msgstr "Release Timeline"
+msgstr "发布时间线"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:971
 msgid "Mon. March 21, 2022 - Alpha + RMW freeze"
-msgstr "Mon. March 21, 2022 - Alpha + RMW freeze"
+msgstr "周一，2022年3月21日 - Alpha + RMW 冻结"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:971 ../../source/Releases/Release-Iron-Irwini.rst:863
 msgid "Preliminary testing and stabilization of ROS Base [1]_ packages, and API and feature freeze for RMW provider packages."
-msgstr "Preliminary testing and stabilization of ROS Base [1]_ packages, and API and feature freeze for RMW provider packages."
+msgstr "对ROS基础包进行初步测试和稳定，并对RMW提供者包的API和功能进行冻结。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:976
 msgid "Mon. April 4, 2022 - Freeze"
-msgstr "Mon. April 4, 2022 - Freeze"
+msgstr "周一，2022年4月4日 - 冻结"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:974 ../../source/Releases/Release-Iron-Irwini.rst:866
 msgid "API and feature freeze for ROS Base [1]_ packages in Rolling Ridley. Only bug fix releases should be made after this point. New packages can be released independently."
-msgstr "API and feature freeze for ROS Base [1]_ packages in Rolling Ridley. Only bug fix releases should be made after this point. New packages can be released independently."
+msgstr "对Rolling Ridley中的ROS基础包进行API和功能冻结。此后只能发布错误修复版本。新包可以独立发布。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:981
 msgid "Mon. April 18, 2022 - Branch"
-msgstr "Mon. April 18, 2022 - Branch"
+msgstr "周一，2022年4月18日 - 分支"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:979
 msgid "Branch from Rolling Ridley. ``rosdistro`` is reopened for Rolling PRs for ROS Base [1]_ packages. Humble development shifts from ``ros-rolling-*`` packages to ``ros-humble-*`` packages."
-msgstr "Branch from Rolling Ridley. ``rosdistro`` is reopened for Rolling PRs for ROS Base [1]_ packages. Humble development shifts from ``ros-rolling-*`` packages to ``ros-humble-*`` packages."
+msgstr "从Rolling Ridley分支。 ``rosdistro``已重新开放，用于ROS Base [1]_软件包的Rolling PRs。开发重心从``ros-rolling-*``软件包转移到``ros-humble-*``软件包。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:985
 msgid "Mon. April 25, 2022 - Beta"
-msgstr "Mon. April 25, 2022 - Beta"
+msgstr "2022年4月25日（星期一）- Beta版本"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:989
 msgid "Mon. May 16, 2022 - Release Candidate"
-msgstr "Mon. May 16, 2022 - Release Candidate"
+msgstr "2022年5月16日（星期一）- 正式候选版本"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:988 ../../source/Releases/Release-Iron-Irwini.rst:880
 msgid "Release Candidate packages are built. Updated releases of ROS Desktop [2]_ packages available."
-msgstr "Release Candidate packages are built. Updated releases of ROS Desktop [2]_ packages available."
+msgstr "构建了正式候选版本软件包。可获取更新的ROS Desktop [2]_软件包版本。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:993
 msgid "Thu. May 19, 2022 - Distro Freeze"
-msgstr "Thu. May 19, 2022 - Distro Freeze"
+msgstr "2022年5月19日（星期四）- 发行版冻结"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:992
 msgid "Freeze rosdistro. No PRs for Humble on the ``rosdistro`` repo will be merged (reopens after the release announcement)."
-msgstr "Freeze rosdistro. No PRs for Humble on the ``rosdistro`` repo will be merged (reopens after the release announcement)."
+msgstr "冻结rosdistro。在发布公告之前，``rosdistro``存储库上的Humble版本的PR将不会合并（发布公告后重新开放）。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:997
