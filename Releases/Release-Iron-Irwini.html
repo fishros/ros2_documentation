@@ -389,7 +389,7 @@
 <li><p><a class="reference internal" href="#matched-events" id="id33">匹配事件</a></p></li>
 <li><p><a class="reference internal" href="#external-configuration-services-of-loggers" id="id34">日志记录器的外部配置服务</a></p></li>
 <li><p><a class="reference internal" href="#type-description-distribution" id="id35">类型 描述 发行版</a></p></li>
-<li><p><a class="reference internal" href="#dynamic-types-and-dynamic-messages" id="id36">Dynamic Types and Dynamic Messages</a></p></li>
+<li><p><a class="reference internal" href="#dynamic-types-and-dynamic-messages" id="id36">动态类型和动态消息</a></p></li>
 <li><p><a class="reference internal" href="#launch" id="id37"><code class="docutils literal notranslate"><span class="pre">launch</span></code></a></p></li>
 <li><p><a class="reference internal" href="#launch-ros" id="id38"><code class="docutils literal notranslate"><span class="pre">launch_ros</span></code></a></p></li>
 <li><p><a class="reference internal" href="#launch-testing" id="id39"><code class="docutils literal notranslate"><span class="pre">launch_testing</span></code></a></p></li>
@@ -519,33 +519,24 @@
 <p>现在可以传递有关ROS 2消息类型的信息，以便具有潜在不同类型但名称相同的系统可以更透明地发现它们的兼容性。这个能力集由REP-2011的一个子集定义：Evolving Message Types，在Iron中已经有了许多部分的进展。</p>
 <p>首先，新包 <a class="reference external" href="https://index.ros.org/p/type_description_interfaces/github-ros2-rcl_interfaces/#iron">type_description_interfaces</a> 的引入提供了一种通用的方式来传递ROS 2通信接口类型（msg、srv、action）的描述。</p>
 <p>接下来，已经确定了一种哈希类型描述的方法，即ROS Interface Hashing Standard（RIHS）- 从第一个版本RIHS01开始。RIHS哈希在构建时自动计算所有已编译的ROS类型，并嵌入到生成的代码中以供检查。这些哈希值也在发现过程中自动传递，并包含在``rmw_topic_endpoint_info_t``中，用于图形内省查询，例如``get_publishers_info_by_topic``。</p>
-<p>The full <code class="docutils literal notranslate"><span class="pre">TypeDescription</span></code> data structure, as well as the raw source text (such as <code class="docutils literal notranslate"><span class="pre">.msg</span></code> file) that were used to generate it are now baked in by default to the message libraries, so they can be used by <code class="docutils literal notranslate"><span class="pre">typesupport</span></code> or end users.
-While we expect this data to provide value to most users, some users trying to minimize bytes in their install space can disable the feature when building ROS 2 Core by defining the CMake variable <code class="docutils literal notranslate"><span class="pre">ROSIDL_GENERATOR_C_DISABLE_TYPE_DESCRIPTION_CODEGEN</span></code>.</p>
-<p>Finally, the new service <code class="docutils literal notranslate"><span class="pre">type_description_interfaces/GetTypeDescription.srv</span></code> has been defined to allow nodes, on encountering an unknown RIHS type hash, to request the full definition from the node advertising that type.
-Work is in progress to provide this feature natively in ROS 2 Nodes, as an optional switch on node construction.
-This feature has not yet shipped, but is expected to be backported into Iron sometime mid-2023.
-Meanwhile, user nodes could implement this service indepedently, using the stable service interface.</p>
-<p>See <a class="reference external" href="https://github.com/ros-infrastructure/rep/pull/358">REP 2011</a> for the design proposal.
-See <a class="reference external" href="https://github.com/ros2/ros2/issues/1159">Type Description Distribution</a> for tracking development on the feature set.</p>
+<p>完整的``TypeDescription``数据结构以及用于生成它的原始源代码文本（例如``.msg``文件）现在默认包含在消息库中，以便``typesupport``或最终用户使用。虽然我们预计这些数据对大多数用户都有价值，但一些试图减少安装空间中的字节数的用户可以在构建ROS 2核心时通过定义CMake变量``ROSIDL_GENERATOR_C_DISABLE_TYPE_DESCRIPTION_CODEGEN``来禁用此功能。</p>
+<p>最后，定义了新的服务``type_description_interfaces/GetTypeDescription.srv``，允许节点在遇到未知的RIHS类型哈希时从广告该类型的节点请求完整的定义。正在进行的工作是在ROS 2节点中本地提供此功能，作为节点构造的可选开关。此功能尚未发布，但预计将在2023年中期之前后移入Iron。与此同时，用户节点可以使用稳定的服务接口独立实现此服务。</p>
+<p>有关设计提案，请参阅`REP 2011 &lt;<a class="reference external" href="https://github.com/ros-infrastructure/rep/pull/358">https://github.com/ros-infrastructure/rep/pull/358</a>&gt;`__。有关功能集的开发进展，请参阅`类型描述分发 &lt;<a class="reference external" href="https://github.com/ros2/ros2/issues/1159">https://github.com/ros2/ros2/issues/1159</a>&gt;`__。</p>
 </div>
 <div class="section" id="dynamic-types-and-dynamic-messages">
-<h3><a class="toc-backref" href="#id36">Dynamic Types and Dynamic Messages</a><a class="headerlink" href="#dynamic-types-and-dynamic-messages" title="永久链接至标题"></a></h3>
-<p>Alongside the type description distribution feature mentioned above, is the ability to construct and access dynamically created types at runtime (i.e., dynamic types).
-This feature is available in Iron for Fast DDS and <code class="docutils literal notranslate"><span class="pre">rcl</span></code>, with new <code class="docutils literal notranslate"><span class="pre">rmw</span></code> interfaces for supporting the taking of messages as dynamic messages (i.e., messages built from or following the structure of the dynamic type).</p>
-<p>First, utilities were introduced into <a class="reference external" href="https://index.ros.org/r/rosidl/github-ros2-rosidl/#iron">rosidl</a> to aid in the construction and manipulation of type descriptions.</p>
-<p>Next, the <a class="reference external" href="https://index.ros.org/r/rosidl_dynamic_typesupport/github-ros2-rosidl_dynamic_typesupport/#iron">rosidl_dynamic_typesupport</a> package was written and provides a middleware-agnostic interface to construct dynamic types and dynamic messages at runtime.
-Types can be constructed at runtime either programmatically, or by parsing a <code class="docutils literal notranslate"><span class="pre">type_description_interfaces/TypeDescription</span></code> message.</p>
+<h3><a class="toc-backref" href="#id36">动态类型和动态消息</a><a class="headerlink" href="#dynamic-types-and-dynamic-messages" title="永久链接至标题"></a></h3>
+<p>除了上述提到的类型描述分发功能之外，还可以在运行时构建和访问动态创建的类型（即动态类型）。此功能在Fast DDS和``rcl``中对Iron可用，并且为支持以动态类型获取消息（即从动态类型构建或遵循其结构的消息）提供了新的``rmw``接口。</p>
+<p>首先，在`rosidl &lt;<a class="reference external" href="https://index.ros.org/r/rosidl/github-ros2-rosidl/#iron">https://index.ros.org/r/rosidl/github-ros2-rosidl/#iron</a>&gt;`__中引入了一些实用工具，用于构建和操作类型描述。</p>
+<p>接下来，编写了`rosidl_dynamic_typesupport &lt;<a class="reference external" href="https://index.ros.org/r/rosidl_dynamic_typesupport/github-ros2-rosidl_dynamic_typesupport/#iron">https://index.ros.org/r/rosidl_dynamic_typesupport/github-ros2-rosidl_dynamic_typesupport/#iron</a>&gt;`__包，并提供了一个中间件无关的接口，用于在运行时构建动态类型和动态消息。类型可以通过编程方式或解析``type_description_interfaces/TypeDescription``消息在运行时进行构建。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">rosidl_dynamic_typesupport</span></code> library requires serialization support libraries to implement the middleware-specific dynamic type behavior.
-A serialization support library for Fast DDS was implemented in <a class="reference external" href="https://index.ros.org/r/rosidl_dynamic_typesupport_fastrtps/github-ros2-rosidl_dynamic_typesupport_fastrtps/#iron">rosidl_dynamic_typesupport_fastrtps</a>.
-Ideally more middlewares will implement support libraries, expanding the number of middlewares that support this feature.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rosidl_dynamic_typesupport``库需要序列化支持库来实现特定于中间件的动态类型行为。为Fast DDS实现了一个用于序列化支持的库`rosidl_dynamic_typesupport_fastrtps &lt;<a class="reference external" href="https://index.ros.org/r/rosidl_dynamic_typesupport_fastrtps/github-ros2-rosidl_dynamic_typesupport_fastrtps/#iron">https://index.ros.org/r/rosidl_dynamic_typesupport_fastrtps/github-ros2-rosidl_dynamic_typesupport_fastrtps/#iron</a>&gt;`__。理想情况下，将有更多中间件实现支持库，扩大支持此功能的中间件数量。</p>
 </div>
-<p>Finally, to support the use of dynamic types and dynamic messages, new methods were added to <a class="reference external" href="https://index.ros.org/r/rmw/github-ros2-rmw/#iron">rmw</a> and <a class="reference external" href="https://index.ros.org/r/rcl/github-ros2-rcl/#iron">rcl</a> that support:</p>
+<p>最后，为了支持使用动态类型和动态消息，向`rmw &lt;<a class="reference external" href="https://index.ros.org/r/rmw/github-ros2-rmw/#iron">https://index.ros.org/r/rmw/github-ros2-rmw/#iron</a>&gt;`__和`rcl &lt;<a class="reference external" href="https://index.ros.org/r/rcl/github-ros2-rcl/#iron">https://index.ros.org/r/rcl/github-ros2-rcl/#iron</a>&gt;`__添加了新的方法来支持：</p>
 <ul class="simple">
-<li><p>The ability to obtain of middleware-specific serialization support</p></li>
-<li><p>The ability to construct message type support at runtime that use dynamic types</p></li>
-<li><p>The ability to take dynamic messages using dynamic type</p></li>
+<li><p>获取特定于中间件的序列化支持的能力</p></li>
+<li><p>在运行时构建使用动态类型的消息类型支持的能力</p></li>
+<li><p>使用动态类型接收动态消息的能力</p></li>
 </ul>
 <p>Work is in progress to enable the use of dynamic types to create subscriptions in the client libraries (see the <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> issue below), though it is uncertain when the feature will land or be backported.
 This will allow users to subscribe to topics whose type descriptions are only known at runtime.
