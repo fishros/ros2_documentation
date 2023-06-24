@@ -801,51 +801,48 @@
 <h3><a class="toc-backref" href="#id12">rclpy</a><a class="headerlink" href="#rclpy" title="永久链接至标题"></a></h3>
 <div class="section" id="changes-to-creating-publishers-subscriptions-and-qos-profiles">
 <h4>创建发布者、订阅者和QoS配置文件的更改<a class="headerlink" href="#changes-to-creating-publishers-subscriptions-and-qos-profiles" title="永久链接至标题"></a></h4>
-<p>Prior to Dashing, you could optionally provide a <code class="docutils literal notranslate"><span class="pre">QoSProfile</span></code> object when creating a publisher or subscription.
-In an effort to encourage users to specify a history depth for message queues, we now <strong>require</strong> that a depth value or <code class="docutils literal notranslate"><span class="pre">QoSProfile</span></code> object is given when creating publishers or subscriptions.</p>
-<p>To create a publisher, previously you would have written:</p>
+<p>在Dashing之前，创建发布者或订阅时可以选择性地提供``QoSProfile``对象。为了鼓励用户为消息队列指定历史深度，现在我们**要求**在创建发布者或订阅时必须提供深度值或``QoSProfile``对象。</p>
+<p>以前，创建发布者的方式如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Empty</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">)</span>
 <span class="c1"># Or using a keyword argument for QoSProfile</span>
 <span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Empty</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="n">qos_profile</span><span class="o">=</span><span class="n">qos_profile_sensor_data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In Dashing, prefer the following API that provides a depth value or <code class="docutils literal notranslate"><span class="pre">QoSProfile</span></code> object as a third positional argument:</p>
+<p>在Dashing中，推荐使用以下 API，将深度值或``QoSProfile``对象作为第三个位置参数：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume a history setting of KEEP_LAST with depth 10</span>
 <span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Empty</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="c1"># Or pass a QoSProfile object directly</span>
 <span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Empty</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="n">qos_profile_sensor_data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Likewise for subscriptions, previously you would have written:</p>
+<p>同样地，以前创建订阅的方式如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">BasicTypes</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 <span class="c1"># Or using a keyword argument for QoSProfile</span>
 <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">BasicTypes</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="n">qos_profile</span><span class="o">=</span><span class="n">qos_profile_sensor_data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In Dashing:</p>
+<p>在Dashing中：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume a history setting of KEEP_LAST with depth 10</span>
 <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">BasicTypes</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
 <span class="c1"># Or pass a QoSProfile object directly</span>
 <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">BasicTypes</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="n">qos_profile_sensor_data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To ease the transition, users who do not use the new API will see deprecation warnings.</p>
-<p>Furthermore, we also require that when constructing <code class="docutils literal notranslate"><span class="pre">QoSProfile</span></code> objects that a history policy and/or depth is set.
-If a history policy of <code class="docutils literal notranslate"><span class="pre">KEEP_LAST</span></code> is provided, then a depth argument is also required.
-For example, these calls are valid:</p>
+<p>为了简化过渡，未使用新 API 的用户将看到废弃警告。</p>
+<p>此外，我们还要求在构建``QoSProfile``对象时设置历史策略和/或深度。如果提供了``KEEP_LAST``的历史策略，则还需要提供一个深度参数。例如，以下调用是有效的：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QoSProfile</span><span class="p">(</span><span class="n">history</span><span class="o">=</span><span class="n">QoSHistoryPolicy</span><span class="o">.</span><span class="n">RMW_QOS_POLICY_HISTORY_KEEP_ALL</span><span class="p">)</span>
 <span class="n">QoSProfile</span><span class="p">(</span><span class="n">history</span><span class="o">=</span><span class="n">QoSHistoryPolicy</span><span class="o">.</span><span class="n">RMW_QOS_POLICY_HISTORY_KEEP_LAST</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">QoSProfile</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># equivalent to the previous line</span>
 </pre></div>
 </div>
-<p>And these calls will cause a deprecation warning:</p>
+<p>而以下调用将引发弃用警告：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QoSProfile</span><span class="p">()</span>
 <span class="n">QoSProfile</span><span class="p">(</span><span class="n">reliability</span><span class="o">=</span><span class="n">QoSReliabilityPolicy</span><span class="o">.</span><span class="n">RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT</span><span class="p">)</span>
 <span class="c1"># KEEP_LAST but no depth</span>
 <span class="n">QoSProfile</span><span class="p">(</span><span class="n">history</span><span class="o">=</span><span class="n">QoSHistoryPolicy</span><span class="o">.</span><span class="n">RMW_QOS_POLICY_HISTORY_KEEP_LAST</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See the issue and pull request related to introducing this change for more details:</p>
+<p>有关引入此更改的问题和拉取请求的详细信息，请参阅：</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ros2/rclpy/issues/342">https://github.com/ros2/rclpy/issues/342</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ros2/rclpy/pull/344">https://github.com/ros2/rclpy/pull/344</a></p></li>
@@ -853,7 +850,7 @@ For example, these calls are valid:</p>
 </div>
 <div class="section" id="id2">
 <h4>由于参数声明更改而引起的变化<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>For details about the actual behavior change, see <a class="reference internal" href="#declaring-parameters">Declaring Parameters</a> above. The changes are analogous to the ones in <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>.</p>
+<p>有关实际行为变更的详细信息，请参阅上面的`声明参数`_。这些更改类似于``rclcpp``中的更改。</p>
 <p>These are the new API methods available in <code class="docutils literal notranslate"><span class="pre">rclpy.node.Node</span></code> interface:</p>
 <ul>
 <li><p>To declare parameters given a name, an optional default value (supported by <code class="docutils literal notranslate"><span class="pre">rcl_interfaces.msg.ParameterValue</span></code>) and an optional descriptor, returning the value actually set:</p>
