@@ -33985,122 +33985,122 @@ msgstr "spin_until_future_complete模板参数的更改。"
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:596
 msgid "The first template parameter of ``Executor::spin_until_future_complete`` was the future result type ``ResultT``, and the method only accepted a ``std::shared_future<ResultT>``. In order to accept other types of futures (e.g.: ``std::future``), that parameter was changed to the future type itself."
-msgstr "The first template parameter of ``Executor::spin_until_future_complete`` was the future result type ``ResultT``, and the method only accepted a ``std::shared_future<ResultT>``. In order to accept other types of futures (e.g.: ``std::future``), that parameter was changed to the future type itself."
+msgstr "``Executor::spin_until_future_complete``的第一个模板参数是未来的结果类型``ResultT``，该方法只接受``std::shared_future<ResultT>``。为了接受其他类型的未来对象（例如：``std::future``），该参数已更改为未来对象类型本身。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:599
 msgid "In places where a ``spin_until_future_complete`` call was relying on template argument deduction, no change is needed. If not, this is an example diff:"
-msgstr "In places where a ``spin_until_future_complete`` call was relying on template argument deduction, no change is needed. If not, this is an example diff:"
+msgstr "在依赖模板参数推导的``spin_until_future_complete``调用的地方，不需要更改。否则，以下是一个示例差异："
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:610
 msgid "For more details, see `ros2/rclcpp#1160 <https://github.com/ros2/rclcpp/pull/1160>`_. For an example of the needed changes in user code, see `ros-visualization/interactive_markers#72 <https://github.com/ros-visualization/interactive_markers/pull/72>`_."
-msgstr "For more details, see `ros2/rclcpp#1160 <https://github.com/ros2/rclcpp/pull/1160>`_. For an example of the needed changes in user code, see `ros-visualization/interactive_markers#72 <https://github.com/ros-visualization/interactive_markers/pull/72>`_."
+msgstr "有关详细信息，请参见`ros2/rclcpp#1160 <https://github.com/ros2/rclcpp/pull/1160>`_。有关用户代码中所需更改的示例，请参见`ros-visualization/interactive_markers#72 <https://github.com/ros-visualization/interactive_markers/pull/72>`_。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:614
 msgid "Change in default ``/clock`` subscription QoS profile"
-msgstr "Change in default ``/clock`` subscription QoS profile"
+msgstr "更改默认的``/clock``订阅 QoS 配置文件"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:616
 msgid "The default was changed from a reliable communication with history depth 10 to a best effort communication with history depth 1. See `ros2/rclcpp#1312 <https://github.com/ros2/rclcpp/pull/1312>`_."
-msgstr "The default was changed from a reliable communication with history depth 10 to a best effort communication with history depth 1. See `ros2/rclcpp#1312 <https://github.com/ros2/rclcpp/pull/1312>`_."
+msgstr "默认配置从可靠通信（历史深度为10）更改为尽力通信（历史深度为1）。请参见`ros2/rclcpp#1312 <https://github.com/ros2/rclcpp/pull/1312>`_。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:620
 msgid "Waitable API"
-msgstr "Waitable API"
+msgstr "可等待 API"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:622
 msgid "Waitable API was modified to avoid issues with the ``MultiThreadedExecutor``. This only affects users implementing a custom waitable. See `ros2/rclcpp#1241 <https://github.com/ros2/rclcpp/pull/1241>`_ for more details."
-msgstr "Waitable API was modified to avoid issues with the ``MultiThreadedExecutor``. This only affects users implementing a custom waitable. See `ros2/rclcpp#1241 <https://github.com/ros2/rclcpp/pull/1241>`_ for more details."
+msgstr "已修改 Waitable API 以避免与“MultiThreadedExecutor”出现问题。这只会影响实现自定义等待的用户。有关详细信息，请参阅 `ros2/rclcpp#1241 <https://github.com/ros2/rclcpp/pull/1241>`_。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:627
 msgid "Change in ``rclcpp``'s logging macros"
-msgstr "Change in ``rclcpp``'s logging macros"
+msgstr "``rclcpp`` 的日志宏发生了变化"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:628
 msgid "Previously, the logging macros were vulnerable to a `format string attack <https://owasp.org/www-community/attacks/Format_string_attack>`_, where the format string is evaluated and can potentially execute code, read the stack, or cause a segmentation fault in the running program. To address this security issue, the logging macro now accepts only string literals for it's format string argument."
-msgstr "Previously, the logging macros were vulnerable to a `format string attack <https://owasp.org/www-community/attacks/Format_string_attack>`_, where the format string is evaluated and can potentially execute code, read the stack, or cause a segmentation fault in the running program. To address this security issue, the logging macro now accepts only string literals for it's format string argument."
+msgstr "以前，日志宏容易受到 `格式字符串攻击 <https://owasp.org/www-community/attacks/Format_string_attack>`_ 的影响，其中格式字符串被评估并且有可能执行代码、读取堆栈或导致运行程序中的分段错误。为了解决这个安全问题，日志宏现在仅接受字符串字面值作为其格式字符串参数。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:631
 msgid "If you previously had code like:"
-msgstr "If you previously had code like:"
+msgstr "如果以前的代码如下所示："
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:638 ../../source/Releases/Release-Galactic-Geochelone.rst:662
 msgid "you should now replace it with:"
-msgstr "you should now replace it with:"
+msgstr "现在应将其替换为："
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:645
 msgid "or:"
-msgstr "or:"
+msgstr "或："
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:652
 msgid "This change removes some convenience from the logging macros, as ``std::string``\\s are no longer accepted as the format argument."
-msgstr "This change removes some convenience from the logging macros, as ``std::string``\\s are no longer accepted as the format argument."
+msgstr "这个更改从日志宏中移除了一些便利性，因为``std::string``不再被接受作为格式参数。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:655
 msgid "If you previously had code with no format arguments like:"
-msgstr "If you previously had code with no format arguments like:"
+msgstr "如果你之前的代码没有格式参数，例如："
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:670
 msgid "If you are using a ``std::string`` as a format string with format arguments, converting that string to a ``char *`` and using it as the format string will yield a format security warning. That's because the compiler has no way at compile to introspect into the ``std::string`` to verify the arguments.  To avoid the security warning, we recommend you build the string manually and pass it in with no format arguments like the previous example."
-msgstr "If you are using a ``std::string`` as a format string with format arguments, converting that string to a ``char *`` and using it as the format string will yield a format security warning. That's because the compiler has no way at compile to introspect into the ``std::string`` to verify the arguments.  To avoid the security warning, we recommend you build the string manually and pass it in with no format arguments like the previous example."
+msgstr "如果你正在使用``std::string``作为带有格式参数的格式字符串，将该字符串转换为``char *``并将其用作格式字符串将会产生格式安全警告。这是因为编译器在编译时无法深入了解``std::string``以验证参数。为避免安全警告，我们建议您手动构建字符串，并像前面的示例那样不带格式参数传递。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:672
 msgid "``std::stringstream`` types are still accepted as arguments to the stream logging macros. See `ros2/rclcpp#1442 <https://github.com/ros2/rclcpp/pull/1442>`_ for more details."
-msgstr "``std::stringstream`` types are still accepted as arguments to the stream logging macros. See `ros2/rclcpp#1442 <https://github.com/ros2/rclcpp/pull/1442>`_ for more details."
+msgstr "``std::stringstream``类型仍然可以作为流日志宏的参数接受。详见 `ros2/rclcpp#1442 <https://github.com/ros2/rclcpp/pull/1442>`_ 获取更多详细信息。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:676 ../../source/Releases/Release-Galactic-Geochelone.rst:749
 msgid "Parameter types are now static by default"
-msgstr "Parameter types are now static by default"
+msgstr "参数类型现在默认为静态"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:678
 msgid "Previously, the type of a parameter could be changed when a parameter was set. For example, if a parameter was declared as an integer, a later call to set the parameter could change that type to a string. This behavior could lead to bugs, and is rarely what the user wants. As of Galactic parameter types are static by default, and attempts to change the type will fail. If the previous dynamic behavior is desired, there is an mechanism to opt it in (see the code below)."
-msgstr "Previously, the type of a parameter could be changed when a parameter was set. For example, if a parameter was declared as an integer, a later call to set the parameter could change that type to a string. This behavior could lead to bugs, and is rarely what the user wants. As of Galactic parameter types are static by default, and attempts to change the type will fail. If the previous dynamic behavior is desired, there is an mechanism to opt it in (see the code below)."
+msgstr "以前，当设置参数时，参数的类型可以更改。例如，如果将参数声明为整数，后续对参数的设置可以将其类型更改为字符串。这种行为可能导致错误，并且很少是用户想要的。从Galactic开始，默认情况下参数类型是静态的，尝试更改类型将失败。如果需要先前的动态行为，可以选择将其加入（参见下面的代码）。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:701 ../../source/Releases/Release-Galactic-Geochelone.rst:777
 msgid "For more details see https://github.com/ros2/rclcpp/blob/galactic/rclcpp/doc/notes_on_statically_typed_parameters.md."
-msgstr "For more details see https://github.com/ros2/rclcpp/blob/galactic/rclcpp/doc/notes_on_statically_typed_parameters.md."
+msgstr "更多详细信息请参见 https://github.com/ros2/rclcpp/blob/galactic/rclcpp/doc/notes_on_statically_typed_parameters.md。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:706
 msgid "``qos_check_compatible`` is a new function for checking the compatibility of two QoS profiles."
-msgstr "``qos_check_compatible`` is a new function for checking the compatibility of two QoS profiles."
+msgstr "``qos_check_compatible`` 是一个用于检查两个 QoS 配置文件兼容性的新函数。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:708
 msgid "Related PR: `ros2/rclcpp#1554 <https://github.com/ros2/rclcpp/pull/1554>`_"
-msgstr "Related PR: `ros2/rclcpp#1554 <https://github.com/ros2/rclcpp/pull/1554>`_"
+msgstr "相关 PR：`ros2/rclcpp#1554 <https://github.com/ros2/rclcpp/pull/1554>`_"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:714
 msgid "Removal of deprecated Node.set_parameters_callback"
-msgstr "Removal of deprecated Node.set_parameters_callback"
+msgstr "删除了废弃的 Node.set_parameters_callback 函数。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:716
 msgid "The method ``Node.set_parameters_callback`` was `deprecated in ROS Foxy <https://github.com/ros2/rclpy/pull/504>`_ and has been `removed in ROS Galactic <https://github.com/ros2/rclpy/pull/633>`_. Use ``Node.add_on_set_parameters_callback()`` instead. Here is some example code using it."
-msgstr "The method ``Node.set_parameters_callback`` was `deprecated in ROS Foxy <https://github.com/ros2/rclpy/pull/504>`_ and has been `removed in ROS Galactic <https://github.com/ros2/rclpy/pull/633>`_. Use ``Node.add_on_set_parameters_callback()`` instead. Here is some example code using it."
+msgstr "方法 ``Node.set_parameters_callback`` 在 ROS Foxy 中被声明为`废弃 <https://github.com/ros2/rclpy/pull/504>`_，并在 ROS Galactic 中被`移除 <https://github.com/ros2/rclpy/pull/633>`_。请改用 ``Node.add_on_set_parameters_callback()``。以下是一些使用它的示例代码。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:742
 msgid "Run this command to see the parameter callback in action."
-msgstr "Run this command to see the parameter callback in action."
+msgstr "运行此命令以查看参数回调的实际效果。"
 
 
 #: ../../source/Releases/Release-Galactic-Geochelone.rst:751
