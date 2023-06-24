@@ -34960,82 +34960,82 @@ msgstr "``Client::asnyc_send_request(request)`` 返回一个 ``std::future`` 而
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:635
 msgid "This change was implemented in `rclcpp#1734 <https://github.com/ros2/rclcpp/pull/1734>`_. This breaks API, as ``std::future::get()`` methods extracts the value from the future. That means, if that method is called for a second time it will throw an exception. That doesn't happen with a ``std::shared_future``, as its ``get()`` method returns a ``const &``. Example:"
-msgstr "This change was implemented in `rclcpp#1734 <https://github.com/ros2/rclcpp/pull/1734>`_. This breaks API, as ``std::future::get()`` methods extracts the value from the future. That means, if that method is called for a second time it will throw an exception. That doesn't happen with a ``std::shared_future``, as its ``get()`` method returns a ``const &``. Example:"
+msgstr "此更改已在 `rclcpp#1734 <https://github.com/ros2/rclcpp/pull/1734>`_ 中实施。这会破坏API，因为``std::future::get()``方法会提取future中的值。这意味着，如果该方法被第二次调用，它将抛出异常。对于``std::shared_future``来说，情况不同，因为它的``get()``方法返回一个``const &``。示例："
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:649
 msgid "should be updated to:"
-msgstr "should be updated to:"
+msgstr "应该更新为："
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:660
 msgid "If a shared future is needed, the ``std::future::share()`` method can be used."
-msgstr "If a shared future is needed, the ``std::future::share()`` method can be used."
+msgstr "如果需要共享的future，可以使用``std::future::share()``方法。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:663 ../../source/Releases/Release-Humble-Hawksbill.rst:730
 msgid "``wait_for_all_acked`` method added to ``Publisher``"
-msgstr "``wait_for_all_acked`` method added to ``Publisher``"
+msgstr "向``Publisher``添加了``wait_for_all_acked``方法"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:665
 msgid "This new method will block until all messages in the publisher queue are acked by the matching subscriptions or the specified timeout expires. It is only useful for reliable publishers, as in the case of best effort QoS there's no acking. Examples:"
-msgstr "This new method will block until all messages in the publisher queue are acked by the matching subscriptions or the specified timeout expires. It is only useful for reliable publishers, as in the case of best effort QoS there's no acking. Examples:"
+msgstr "这个新方法将阻塞，直到发布者队列中的所有消息被匹配的订阅者确认或指定的超时时间过期。它只对可靠的发布者有用，因为在尽力传输的QoS情况下没有确认。示例："
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:677
 msgid "For a more complete example, see `here <https://github.com/ros2/examples/blob/humble/rclcpp/topics/minimal_publisher/member_function_with_wait_for_all_acked.cpp>`__."
-msgstr "For a more complete example, see `here <https://github.com/ros2/examples/blob/humble/rclcpp/topics/minimal_publisher/member_function_with_wait_for_all_acked.cpp>`__."
+msgstr "有关更完整的示例，请参见 `此处 <https://github.com/ros2/examples/blob/humble/rclcpp/topics/minimal_publisher/member_function_with_wait_for_all_acked.cpp>`__。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:680
 msgid "``get_callback_groups`` method removed from ``NodeBase`` and ``Node`` classes"
-msgstr "``get_callback_groups`` method removed from ``NodeBase`` and ``Node`` classes"
+msgstr "从``NodeBase``和``Node``类中移除了``get_callback_groups``方法"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:682
 msgid "``for_each_callback_group()`` method has replaced ``get_callback_groups()`` by providing a thread-safe way to access ``callback_groups_`` vector. ``for_each_callback_group()`` accepts a function as an argument, iterates over the stored callback groups, and calls the passed function to ones that are valid."
-msgstr "``for_each_callback_group()`` method has replaced ``get_callback_groups()`` by providing a thread-safe way to access ``callback_groups_`` vector. ``for_each_callback_group()`` accepts a function as an argument, iterates over the stored callback groups, and calls the passed function to ones that are valid."
+msgstr "``for_each_callback_group()``方法替代了``get_callback_groups()``方法，提供了一种线程安全的访问``callback_groups_``向量的方式。``for_each_callback_group()``接受一个函数作为参数，遍历存储的回调组，并调用传递的函数来处理有效的回调组。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:685
 msgid "For more details, please refer to this `pull request <https://github.com/ros2/rclcpp/pull/1723>`_."
-msgstr "For more details, please refer to this `pull request <https://github.com/ros2/rclcpp/pull/1723>`_."
+msgstr "更多详细信息，请参考此`pull request <https://github.com/ros2/rclcpp/pull/1723>`_。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:688
 msgid "``add_to_wait_set`` method from ``Waitable`` class changes its return type from ``bool`` to ``void``"
-msgstr "``add_to_wait_set`` method from ``Waitable`` class changes its return type from ``bool`` to ``void``"
+msgstr "``Waitable``类中的``add_to_wait_set``方法将返回类型从``bool``更改为``void``"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:689
 msgid "Before, classes derived from ``Waitable`` overriding ``add_to_wait_set`` were returning false when failing to add elements to the wait set, so the caller had to check this return value and throw or handle the error. This error handling should now be done directly on ``add_to_wait_set`` method, throwing if necessary. It is not required to return anything if no errors happened. Thus, this is a breaking change for downstream uses of ``Waitable``."
-msgstr "Before, classes derived from ``Waitable`` overriding ``add_to_wait_set`` were returning false when failing to add elements to the wait set, so the caller had to check this return value and throw or handle the error. This error handling should now be done directly on ``add_to_wait_set`` method, throwing if necessary. It is not required to return anything if no errors happened. Thus, this is a breaking change for downstream uses of ``Waitable``."
+msgstr "之前，派生自``Waitable``的类在无法将元素添加到等待集时返回false，因此调用者必须检查此返回值并抛出或处理错误。现在，此错误处理应直接在``add_to_wait_set``方法中完成，必要时抛出异常。如果没有发生错误，则不需要返回任何内容。因此，这是对``Waitable``的下游使用造成了破坏性变更。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:694 ../../source/Releases/Release-Humble-Hawksbill.rst:701
 msgid "See `ros2/rclcpp#1612 <https://github.com/ros2/rclcpp/pull/1612>`__ for more details."
-msgstr "See `ros2/rclcpp#1612 <https://github.com/ros2/rclcpp/pull/1612>`__ for more details."
+msgstr "有关更多详细信息，请参阅`ros2/rclcpp#1612 <https://github.com/ros2/rclcpp/pull/1612>`__。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:697
 msgid "``get_notify_guard_condition`` method return type from ``NodeBaseInterface`` class changed"
-msgstr "``get_notify_guard_condition`` method return type from ``NodeBaseInterface`` class changed"
+msgstr "``NodeBaseInterface``类中的``get_notify_guard_condition``方法的返回类型已更改"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:698
 msgid "Now ``rclcpp`` uses the ``GuardCondition`` class wrapper around ``rcl_guard_condition_t``, so ``get_notify_guard_condition`` returns a reference to the node's ``rclcpp::GuardCondition``. Thus, this is a breaking change for downstream uses of ``NodeBaseInterface`` and ``NodeBase``."
-msgstr "Now ``rclcpp`` uses the ``GuardCondition`` class wrapper around ``rcl_guard_condition_t``, so ``get_notify_guard_condition`` returns a reference to the node's ``rclcpp::GuardCondition``. Thus, this is a breaking change for downstream uses of ``NodeBaseInterface`` and ``NodeBase``."
+msgstr "现在``rclcpp``使用``GuardCondition``类对``rcl_guard_condition_t``进行封装，因此``get_notify_guard_condition``返回一个对节点的``rclcpp::GuardCondition``的引用。因此，这对于``NodeBaseInterface``和``NodeBase``的下游使用来说是一个破坏性变更。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:704 ../../source/Releases/Release-Humble-Hawksbill.rst:735
 msgid "``sleep_until`` and ``sleep_for`` methods added to ``Clock``"
-msgstr "``sleep_until`` and ``sleep_for`` methods added to ``Clock``"
+msgstr "向``Clock``添加了``sleep_until``和``sleep_for``方法"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:705
 msgid "Two new methods were added to allow sleeping on a particular clock in `ros2/rclcpp#1814 <https://github.com/ros2/rclcpp/pull/1814>`__ and `ros2/rclcpp#1828 <https://github.com/ros2/rclcpp/pull/1828>`__. ``Clock::sleep_until`` will suspend the current thread until the clock reaches a particular time. ``Clock::sleep_for`` will suspend the current thread until the clock advances a certain amount of time from when the method was called. Both methods will wake early if the ``Context`` is shutdown."
-msgstr "Two new methods were added to allow sleeping on a particular clock in `ros2/rclcpp#1814 <https://github.com/ros2/rclcpp/pull/1814>`__ and `ros2/rclcpp#1828 <https://github.com/ros2/rclcpp/pull/1828>`__. ``Clock::sleep_until`` will suspend the current thread until the clock reaches a particular time. ``Clock::sleep_for`` will suspend the current thread until the clock advances a certain amount of time from when the method was called. Both methods will wake early if the ``Context`` is shutdown."
+msgstr "在 `ros2/rclcpp#1814 <https://github.com/ros2/rclcpp/pull/1814>`__ 和 `ros2/rclcpp#1828 <https://github.com/ros2/rclcpp/pull/1828>`__ 中添加了两个新方法，允许在特定的时钟上进行休眠。``Clock::sleep_until``将暂停当前线程，直到时钟达到特定时间。``Clock::sleep_for``将暂停当前线程，直到时钟从调用该方法时起经过一定的时间。如果``Context``被关闭，两种方法都会提前唤醒。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:711
@@ -35045,7 +35045,7 @@ msgstr "rclcpp_lifecycle"
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:714
 msgid "Active and deactivate transitions of publishers will be triggered automatically"
-msgstr "Active and deactivate transitions of publishers will be triggered automatically"
+msgstr "发布者的激活和停用转换将自动触发"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:716
