@@ -35680,62 +35680,62 @@ msgstr "接下来，已经确定了一种哈希类型描述的方法，即ROS In
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:149
 msgid "The full ``TypeDescription`` data structure, as well as the raw source text (such as ``.msg`` file) that were used to generate it are now baked in by default to the message libraries, so they can be used by ``typesupport`` or end users. While we expect this data to provide value to most users, some users trying to minimize bytes in their install space can disable the feature when building ROS 2 Core by defining the CMake variable ``ROSIDL_GENERATOR_C_DISABLE_TYPE_DESCRIPTION_CODEGEN``."
-msgstr "The full ``TypeDescription`` data structure, as well as the raw source text (such as ``.msg`` file) that were used to generate it are now baked in by default to the message libraries, so they can be used by ``typesupport`` or end users. While we expect this data to provide value to most users, some users trying to minimize bytes in their install space can disable the feature when building ROS 2 Core by defining the CMake variable ``ROSIDL_GENERATOR_C_DISABLE_TYPE_DESCRIPTION_CODEGEN``."
+msgstr "完整的``TypeDescription``数据结构以及用于生成它的原始源代码文本（例如``.msg``文件）现在默认包含在消息库中，以便``typesupport``或最终用户使用。虽然我们预计这些数据对大多数用户都有价值，但一些试图减少安装空间中的字节数的用户可以在构建ROS 2核心时通过定义CMake变量``ROSIDL_GENERATOR_C_DISABLE_TYPE_DESCRIPTION_CODEGEN``来禁用此功能。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:152
 msgid "Finally, the new service ``type_description_interfaces/GetTypeDescription.srv`` has been defined to allow nodes, on encountering an unknown RIHS type hash, to request the full definition from the node advertising that type. Work is in progress to provide this feature natively in ROS 2 Nodes, as an optional switch on node construction. This feature has not yet shipped, but is expected to be backported into Iron sometime mid-2023. Meanwhile, user nodes could implement this service indepedently, using the stable service interface."
-msgstr "Finally, the new service ``type_description_interfaces/GetTypeDescription.srv`` has been defined to allow nodes, on encountering an unknown RIHS type hash, to request the full definition from the node advertising that type. Work is in progress to provide this feature natively in ROS 2 Nodes, as an optional switch on node construction. This feature has not yet shipped, but is expected to be backported into Iron sometime mid-2023. Meanwhile, user nodes could implement this service indepedently, using the stable service interface."
+msgstr "最后，定义了新的服务``type_description_interfaces/GetTypeDescription.srv``，允许节点在遇到未知的RIHS类型哈希时从广告该类型的节点请求完整的定义。正在进行的工作是在ROS 2节点中本地提供此功能，作为节点构造的可选开关。此功能尚未发布，但预计将在2023年中期之前后移入Iron。与此同时，用户节点可以使用稳定的服务接口独立实现此服务。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:157
 msgid "See `REP 2011 <https://github.com/ros-infrastructure/rep/pull/358>`__ for the design proposal. See `Type Description Distribution <https://github.com/ros2/ros2/issues/1159>`__ for tracking development on the feature set."
-msgstr "See `REP 2011 <https://github.com/ros-infrastructure/rep/pull/358>`__ for the design proposal. See `Type Description Distribution <https://github.com/ros2/ros2/issues/1159>`__ for tracking development on the feature set."
+msgstr "有关设计提案，请参阅`REP 2011 <https://github.com/ros-infrastructure/rep/pull/358>`__。有关功能集的开发进展，请参阅`类型描述分发 <https://github.com/ros2/ros2/issues/1159>`__。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:161
 msgid "Dynamic Types and Dynamic Messages"
-msgstr "Dynamic Types and Dynamic Messages"
+msgstr "动态类型和动态消息"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:163
 msgid "Alongside the type description distribution feature mentioned above, is the ability to construct and access dynamically created types at runtime (i.e., dynamic types). This feature is available in Iron for Fast DDS and ``rcl``, with new ``rmw`` interfaces for supporting the taking of messages as dynamic messages (i.e., messages built from or following the structure of the dynamic type)."
-msgstr "Alongside the type description distribution feature mentioned above, is the ability to construct and access dynamically created types at runtime (i.e., dynamic types). This feature is available in Iron for Fast DDS and ``rcl``, with new ``rmw`` interfaces for supporting the taking of messages as dynamic messages (i.e., messages built from or following the structure of the dynamic type)."
+msgstr "除了上述提到的类型描述分发功能之外，还可以在运行时构建和访问动态创建的类型（即动态类型）。此功能在Fast DDS和``rcl``中对Iron可用，并且为支持以动态类型获取消息（即从动态类型构建或遵循其结构的消息）提供了新的``rmw``接口。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:166
 msgid "First, utilities were introduced into `rosidl <https://index.ros.org/r/rosidl/github-ros2-rosidl/#iron>`__ to aid in the construction and manipulation of type descriptions."
-msgstr "First, utilities were introduced into `rosidl <https://index.ros.org/r/rosidl/github-ros2-rosidl/#iron>`__ to aid in the construction and manipulation of type descriptions."
+msgstr "首先，在`rosidl <https://index.ros.org/r/rosidl/github-ros2-rosidl/#iron>`__中引入了一些实用工具，用于构建和操作类型描述。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:168
 msgid "Next, the `rosidl_dynamic_typesupport <https://index.ros.org/r/rosidl_dynamic_typesupport/github-ros2-rosidl_dynamic_typesupport/#iron>`__ package was written and provides a middleware-agnostic interface to construct dynamic types and dynamic messages at runtime. Types can be constructed at runtime either programmatically, or by parsing a ``type_description_interfaces/TypeDescription`` message."
-msgstr "Next, the `rosidl_dynamic_typesupport <https://index.ros.org/r/rosidl_dynamic_typesupport/github-ros2-rosidl_dynamic_typesupport/#iron>`__ package was written and provides a middleware-agnostic interface to construct dynamic types and dynamic messages at runtime. Types can be constructed at runtime either programmatically, or by parsing a ``type_description_interfaces/TypeDescription`` message."
+msgstr "接下来，编写了`rosidl_dynamic_typesupport <https://index.ros.org/r/rosidl_dynamic_typesupport/github-ros2-rosidl_dynamic_typesupport/#iron>`__包，并提供了一个中间件无关的接口，用于在运行时构建动态类型和动态消息。类型可以通过编程方式或解析``type_description_interfaces/TypeDescription``消息在运行时进行构建。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:173
 msgid "The ``rosidl_dynamic_typesupport`` library requires serialization support libraries to implement the middleware-specific dynamic type behavior. A serialization support library for Fast DDS was implemented in `rosidl_dynamic_typesupport_fastrtps <https://index.ros.org/r/rosidl_dynamic_typesupport_fastrtps/github-ros2-rosidl_dynamic_typesupport_fastrtps/#iron>`__. Ideally more middlewares will implement support libraries, expanding the number of middlewares that support this feature."
-msgstr "The ``rosidl_dynamic_typesupport`` library requires serialization support libraries to implement the middleware-specific dynamic type behavior. A serialization support library for Fast DDS was implemented in `rosidl_dynamic_typesupport_fastrtps <https://index.ros.org/r/rosidl_dynamic_typesupport_fastrtps/github-ros2-rosidl_dynamic_typesupport_fastrtps/#iron>`__. Ideally more middlewares will implement support libraries, expanding the number of middlewares that support this feature."
+msgstr "``rosidl_dynamic_typesupport``库需要序列化支持库来实现特定于中间件的动态类型行为。为Fast DDS实现了一个用于序列化支持的库`rosidl_dynamic_typesupport_fastrtps <https://index.ros.org/r/rosidl_dynamic_typesupport_fastrtps/github-ros2-rosidl_dynamic_typesupport_fastrtps/#iron>`__。理想情况下，将有更多中间件实现支持库，扩大支持此功能的中间件数量。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:177
 msgid "Finally, to support the use of dynamic types and dynamic messages, new methods were added to `rmw <https://index.ros.org/r/rmw/github-ros2-rmw/#iron>`__ and `rcl <https://index.ros.org/r/rcl/github-ros2-rcl/#iron>`__ that support:"
-msgstr "Finally, to support the use of dynamic types and dynamic messages, new methods were added to `rmw <https://index.ros.org/r/rmw/github-ros2-rmw/#iron>`__ and `rcl <https://index.ros.org/r/rcl/github-ros2-rcl/#iron>`__ that support:"
+msgstr "最后，为了支持使用动态类型和动态消息，向`rmw <https://index.ros.org/r/rmw/github-ros2-rmw/#iron>`__和`rcl <https://index.ros.org/r/rcl/github-ros2-rcl/#iron>`__添加了新的方法来支持："
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:179
 msgid "The ability to obtain of middleware-specific serialization support"
-msgstr "The ability to obtain of middleware-specific serialization support"
+msgstr "获取特定于中间件的序列化支持的能力"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:180
 msgid "The ability to construct message type support at runtime that use dynamic types"
-msgstr "The ability to construct message type support at runtime that use dynamic types"
+msgstr "在运行时构建使用动态类型的消息类型支持的能力"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:181
 msgid "The ability to take dynamic messages using dynamic type"
-msgstr "The ability to take dynamic messages using dynamic type"
+msgstr "使用动态类型接收动态消息的能力"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:183
