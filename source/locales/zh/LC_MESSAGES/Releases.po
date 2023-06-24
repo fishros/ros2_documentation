@@ -35500,122 +35500,122 @@ msgstr "服务内省"
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:61
 msgid "It is now possible to enable service introspection on a per-service basis. When enabled, this allows users to see the metadata associated with the client requesting a service, the server accepting the request, the server sending the response, and the client accepting the response. Optionally, the contents of the client/server requests/responses can also be introspected. All of the information is published on a hidden topic generated from the name of the service. So if the service is called ``/myservice``, then the information will be published on ``/myservice/_service_event``."
-msgstr "It is now possible to enable service introspection on a per-service basis. When enabled, this allows users to see the metadata associated with the client requesting a service, the server accepting the request, the server sending the response, and the client accepting the response. Optionally, the contents of the client/server requests/responses can also be introspected. All of the information is published on a hidden topic generated from the name of the service. So if the service is called ``/myservice``, then the information will be published on ``/myservice/_service_event``."
+msgstr "现在可以按照每个服务的基础启用服务内省。启用后，用户可以查看与请求服务的客户端、接受请求的服务器、发送响应的服务器和接受响应的客户端相关联的元数据。还可以内省客户端/服务器请求/响应的内容。所有信息都发布在从服务名称生成的隐藏主题上。因此，如果服务名称为 ``/myservice``，则信息将发布在 ``/myservice/_service_event`` 上。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:67
 msgid "Note that this functionality is disabled by default; to enable it, users must call ``configure_introspection`` after creating a server client or server. There are examples showing how to do this in https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services (C++) and https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py (Python)."
-msgstr "Note that this functionality is disabled by default; to enable it, users must call ``configure_introspection`` after creating a server client or server. There are examples showing how to do this in https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services (C++) and https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py (Python)."
+msgstr "请注意，默认情况下，此功能已禁用；要启用它，用户必须在创建服务器客户端或服务器后调用 ``configure_introspection``。有示例展示了如何做到这一点，可以参考 https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services (C++) 和 https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py (Python)。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:70
 msgid "See `REP 2012 <https://github.com/ros-infrastructure/rep/pull/360>`__ and the tracking bug at https://github.com/ros2/ros2/issues/1285 for more information."
-msgstr "See `REP 2012 <https://github.com/ros-infrastructure/rep/pull/360>`__ and the tracking bug at https://github.com/ros2/ros2/issues/1285 for more information."
+msgstr "有关更多信息，请参见 `REP 2012 <https://github.com/ros-infrastructure/rep/pull/360>`__ 和追踪问题 https://github.com/ros2/ros2/issues/1285。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:73
 msgid "Pre and post set parameter callback support"
-msgstr "Pre and post set parameter callback support"
+msgstr "支持预设和后置设置参数回调"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:75
 msgid "For many releases now, users could register a callback to be called when parameters on a node were changed by an external entity (like ``ros2 param set``). This callback could examine the changed parameter types and values, and reject the whole lot if one of them didn't meet certain criteria. However, it could not modify the parameter list, nor should it have modified state (since there might be other callbacks after the set one that would reject the parameters)."
-msgstr "For many releases now, users could register a callback to be called when parameters on a node were changed by an external entity (like ``ros2 param set``). This callback could examine the changed parameter types and values, and reject the whole lot if one of them didn't meet certain criteria. However, it could not modify the parameter list, nor should it have modified state (since there might be other callbacks after the set one that would reject the parameters)."
+msgstr "很长一段时间以来，用户可以注册回调函数，当节点上的参数被外部实体（如 ``ros2 param set``）更改时，回调函数会被调用。该回调函数可以检查更改的参数类型和值，并在其中一个参数不满足特定条件时拒绝整个更改。但是，它不能修改参数列表，也不应修改状态（因为可能存在在设置回调函数之后会拒绝参数的其他回调函数）。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:79
 msgid "This release adds in a pre and post callback. The callbacks are called in this order:"
-msgstr "This release adds in a pre and post callback. The callbacks are called in this order:"
+msgstr "此版本添加了预设和后置回调。回调函数按照以下顺序调用："
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:82
 msgid "The \"pre\" set parameter callback, which can modify the list of parameters based on arbitrary criteria."
-msgstr "The \"pre\" set parameter callback, which can modify the list of parameters based on arbitrary criteria."
+msgstr "“pre”设置参数回调，可以根据任意标准修改参数列表。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:83
 msgid "The \"set\" parameter callback, which cannot modify the list and should only accept or reject the parameters based on their type and value (this is the existing callback)."
-msgstr "The \"set\" parameter callback, which cannot modify the list and should only accept or reject the parameters based on their type and value (this is the existing callback)."
+msgstr "“set”参数回调，不能修改参数列表，只能根据其类型和值接受或拒绝参数（这是现有的回调）。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:84
 msgid "The \"post\" set parameter callback, which can make state changes based on parameters and is only called if the previous two callbacks are successful."
-msgstr "The \"post\" set parameter callback, which can make state changes based on parameters and is only called if the previous two callbacks are successful."
+msgstr "“post”设置参数回调，可以根据参数进行状态更改，只有在前两个回调成功时才会调用。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:86
 msgid "There are examples of this in action in https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/parameters/set_parameters_callback.cpp (C++) and https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/parameters/set_parameters_callback.py (Python)."
-msgstr "There are examples of this in action in https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/parameters/set_parameters_callback.cpp (C++) and https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/parameters/set_parameters_callback.py (Python)."
+msgstr "在https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/parameters/set_parameters_callback.cpp（C++）和https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/parameters/set_parameters_callback.py（Python）中有示例。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:88
 msgid "See https://github.com/ros2/rclcpp/pull/1947, https://github.com/ros2/rclpy/pull/966, and https://github.com/ros2/demos/pull/565 for more information."
-msgstr "See https://github.com/ros2/rclcpp/pull/1947, https://github.com/ros2/rclpy/pull/966, and https://github.com/ros2/demos/pull/565 for more information."
+msgstr "有关更多信息，请参见https://github.com/ros2/rclcpp/pull/1947，https://github.com/ros2/rclpy/pull/966和https://github.com/ros2/demos/pull/565。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:91
 msgid "Improved discovery options"
-msgstr "Improved discovery options"
+msgstr "改进的发现选项"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:93
 msgid "Previous ROS 2 versions offered limited discovery options. The default behavior for DDS based RMW implementations was to discover any node reachable via multicast. It could be limited to the same machine by setting the environment variable ``ROS_LOCALHOST_ONLY``, but any additional configuration required configuring the middleware directly, usually via middleware specific XML files and environment variables. ROS Iron retains the same default discovery behavior, but deprecates ``ROS_LOCALHOST_ONLY`` in favor of more granular options."
-msgstr "Previous ROS 2 versions offered limited discovery options. The default behavior for DDS based RMW implementations was to discover any node reachable via multicast. It could be limited to the same machine by setting the environment variable ``ROS_LOCALHOST_ONLY``, but any additional configuration required configuring the middleware directly, usually via middleware specific XML files and environment variables. ROS Iron retains the same default discovery behavior, but deprecates ``ROS_LOCALHOST_ONLY`` in favor of more granular options."
+msgstr "之前的ROS 2版本提供了有限的发现选项。基于DDS的RMW实现的默认行为是通过多播发现任何可达节点。通过设置环境变量``ROS_LOCALHOST_ONLY``可以将其限制在同一台机器上，但是任何其他配置都需要直接配置中间件，通常是通过中间件特定的XML文件和环境变量。ROS Iron保留了相同的默认发现行为，但弃用了``ROS_LOCALHOST_ONLY``，采用了更精细的选项。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:98
 msgid "``ROS_AUTOMATIC_DISCOVERY_RANGE`` controls how far ROS nodes will try to discover each other. Valid options are:"
-msgstr "``ROS_AUTOMATIC_DISCOVERY_RANGE`` controls how far ROS nodes will try to discover each other. Valid options are:"
+msgstr "``ROS_AUTOMATIC_DISCOVERY_RANGE``控制ROS节点尝试发现彼此的范围。有效选项包括："
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:100
 msgid "``SUBNET`` - The default, and for DDS-based middlewares it will discover any node reachable via multicast."
-msgstr "``SUBNET`` - The default, and for DDS-based middlewares it will discover any node reachable via multicast."
+msgstr "``SUBNET`` - 默认选项，对于基于DDS的中间件，它将通过多播发现任何可达节点。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:101
 msgid "``LOCALHOST`` - Will only try to discover other nodes on the same machine."
-msgstr "``LOCALHOST`` - Will only try to discover other nodes on the same machine."
+msgstr "``LOCALHOST`` - 仅尝试发现同一台机器上的其他节点。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:102
 msgid "``OFF`` - Will not attempt to discover any other nodes automatically, even on the same machine."
-msgstr "``OFF`` - Will not attempt to discover any other nodes automatically, even on the same machine."
+msgstr "``OFF`` - 不会自动尝试发现任何其他节点，即使在同一台机器上。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:103
 msgid "``SYSTEM_DEFAULT`` - Will not change any discovery settings.  This is useful when you already have custom settings for your middleware and don't want ROS to change them."
-msgstr "``SYSTEM_DEFAULT`` - Will not change any discovery settings.  This is useful when you already have custom settings for your middleware and don't want ROS to change them."
+msgstr "``SYSTEM_DEFAULT`` - 不会更改任何发现设置。当您已经为中间件自定义了设置并且不希望ROS更改它们时，这很有用。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:105
 msgid "``ROS_STATIC_PEERS`` - A semicolon (``;``) separated list of addresses that ROS should try to discover nodes on.  This allows the user to connect to nodes on specifc machines (as long as their discovery range is not set to ``OFF``)."
-msgstr "``ROS_STATIC_PEERS`` - A semicolon (``;``) separated list of addresses that ROS should try to discover nodes on.  This allows the user to connect to nodes on specifc machines (as long as their discovery range is not set to ``OFF``)."
+msgstr "``ROS_STATIC_PEERS`` - 以分号（``;``）分隔的地址列表，ROS应该尝试在其中发现节点。这允许用户连接到特定机器上的节点（只要它们的发现范围没有设置为``OFF``）。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:107
 msgid "For example, you might have several robots with ``ROS_AUTOMATIC_DISCOVERY_RANGE`` set to ``LOCALHOST`` so they don't communicate with each other. When you want to connect RViz to one of them, you add it's address to ``ROS_STATIC_PEERS`` in your terminal. Now you can use ROS 2 CLI and visualization tools to interact with the robot."
-msgstr "For example, you might have several robots with ``ROS_AUTOMATIC_DISCOVERY_RANGE`` set to ``LOCALHOST`` so they don't communicate with each other. When you want to connect RViz to one of them, you add it's address to ``ROS_STATIC_PEERS`` in your terminal. Now you can use ROS 2 CLI and visualization tools to interact with the robot."
+msgstr "例如，您可能有多个机器人，将``ROS_AUTOMATIC_DISCOVERY_RANGE``设置为``LOCALHOST``，以便它们彼此之间不进行通信。当您想将RViz连接到其中一个机器人时，您可以将其地址添加到终端中的``ROS_STATIC_PEERS``。现在，您可以使用ROS 2 CLI和可视化工具与机器人进行交互。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:111
 msgid "See https://github.com/ros2/ros2/issues/1359 for more information about this feature."
-msgstr "See https://github.com/ros2/ros2/issues/1359 for more information about this feature."
+msgstr "有关此功能的更多信息，请参阅https://github.com/ros2/ros2/issues/1359。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:114
 msgid "Matched events"
-msgstr "Matched events"
+msgstr "匹配事件"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:116
 msgid "In addition to QoS events, matched events can be generated when any publisher and subscription establishes or drops the connection between them. Users can provide each publisher and subscription with callback functions that are triggered by matched events and handle them in a way they see fit, similar to how messages received on a topic are handled."
-msgstr "In addition to QoS events, matched events can be generated when any publisher and subscription establishes or drops the connection between them. Users can provide each publisher and subscription with callback functions that are triggered by matched events and handle them in a way they see fit, similar to how messages received on a topic are handled."
+msgstr "除了QoS事件之外，当任何发布者和订阅之间建立或断开连接时，还可以生成匹配事件。用户可以为每个发布者和订阅提供回调函数，这些函数由匹配事件触发，并以用户认为合适的方式处理它们，类似于处理在主题上收到的消息的方式。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:119
 msgid "publisher: this event happens when it finds a subscription which matches the topic and has compatible QoS or a connected subscription is disconnected."
-msgstr "publisher: this event happens when it finds a subscription which matches the topic and has compatible QoS or a connected subscription is disconnected."
+msgstr "发布者：当它找到与主题匹配且具有兼容QoS的订阅，或者连接的订阅被断开时，会发生此事件。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:120
