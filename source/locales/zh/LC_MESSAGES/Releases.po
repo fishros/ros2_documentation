@@ -32850,12 +32850,12 @@ msgstr "[https://discourse.ros.org/t/ros2-logging-format/11549](https://discours
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:215
 msgid "Default Console Logging Output Stream"
-msgstr "Default Console Logging Output Stream"
+msgstr "默认控制台日志输出流"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:217
 msgid "As of Foxy, all logging messages at all severity levels get logged to stderr by default. This ensures that logging messages come out immediately, and brings the ROS 2 logging system into alignment with most other logging systems. It is possible to change the stream to stdout at runtime via the RCUTILS_LOGGING_USE_STDOUT environment variable, but all logging messages will still go to the same stream. See `https://github.com/ros2/rcutils/pull/196 <https://github.com/ros2/rcutils/pull/196>`_ for more details."
-msgstr "As of Foxy, all logging messages at all severity levels get logged to stderr by default. This ensures that logging messages come out immediately, and brings the ROS 2 logging system into alignment with most other logging systems. It is possible to change the stream to stdout at runtime via the RCUTILS_LOGGING_USE_STDOUT environment variable, but all logging messages will still go to the same stream. See `https://github.com/ros2/rcutils/pull/196 <https://github.com/ros2/rcutils/pull/196>`_ for more details."
+msgstr "从Foxy版本开始，默认情况下，所有严重级别的日志消息都会被记录到stderr中。这确保日志消息立即输出，并使ROS 2日志系统与大多数其他日志系统保持一致。可以通过RCUTILS_LOGGING_USE_STDOUT环境变量在运行时将输出流更改为stdout，但所有日志消息仍将发送到同一输出流。有关更多详细信息，请参见 `https://github.com/ros2/rcutils/pull/196 <https://github.com/ros2/rcutils/pull/196>`_。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:223 ../../source/Releases/Release-Humble-Hawksbill.rst:201
@@ -32865,67 +32865,67 @@ msgstr "launch_ros"
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:226
 msgid "Node name and namespace parameters changed"
-msgstr "Node name and namespace parameters changed"
+msgstr "节点名称和命名空间参数已更改"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:228
 msgid "The ``Node`` action parameters related to naming have been changed:"
-msgstr "The ``Node`` action parameters related to naming have been changed:"
+msgstr "与命名相关的``Node``动作参数已更改："
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:230
 msgid "``node_name`` has been renamed to ``name``"
-msgstr "``node_name`` has been renamed to ``name``"
+msgstr "``node_name``已更名为``name``"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:231
 msgid "``node_namespace`` has been renamed to ``namespace``"
-msgstr "``node_namespace`` has been renamed to ``namespace``"
+msgstr "``node_namespace`` 已更名为 ``namespace``"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:232
 msgid "``node_executable`` has been renamed to ``executable``"
-msgstr "``node_executable`` has been renamed to ``executable``"
+msgstr "``node_executable`` 已更名为 ``executable``"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:233
 msgid "``exec_name`` has been added for naming the process associated with the node. Previously, users would have used the ``name`` keyword argument."
-msgstr "``exec_name`` has been added for naming the process associated with the node. Previously, users would have used the ``name`` keyword argument."
+msgstr "已添加``exec_name`` 以命名与节点关联的进程。以前，用户可能使用了 ``name`` 关键字参数。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:236
 msgid "The old parameters have been deprecated."
-msgstr "The old parameters have been deprecated."
+msgstr "旧参数已被弃用。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:238
 msgid "These changes were made to make the launch frontend more idiomatic. For example, instead of"
-msgstr "These changes were made to make the launch frontend more idiomatic. For example, instead of"
+msgstr "这些更改是为了使启动界面更符合惯用语法。例如，以前的写法是"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:245
 msgid "we can now write"
-msgstr "we can now write"
+msgstr "现在我们可以写成"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:251
 msgid "This change also applies to ``ComposableNodeContainer``, ``ComposableNode``, and ``LifecycleNode``. For examples, see the `relevant changes to the demos. <https://github.com/ros2/demos/pull/431>`_"
-msgstr "This change also applies to ``ComposableNodeContainer``, ``ComposableNode``, and ``LifecycleNode``. For examples, see the `relevant changes to the demos. <https://github.com/ros2/demos/pull/431>`_"
+msgstr "这个变更也适用于``ComposableNodeContainer``、``ComposableNode``和``LifecycleNode``。有关示例，请参阅`演示中的相关更改。 <https://github.com/ros2/demos/pull/431>`_"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:254
 msgid "`Related pull request in launch_ros. <https://github.com/ros2/launch_ros/pull/122>`_"
-msgstr "`Related pull request in launch_ros. <https://github.com/ros2/launch_ros/pull/122>`_"
+msgstr "`在launch_ros中的相关拉取请求。 <https://github.com/ros2/launch_ros/pull/122>`_"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:260
 msgid "Change in Advanced Subscription Callback Signature"
-msgstr "Change in Advanced Subscription Callback Signature"
+msgstr "高级订阅回调签名的变更"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:262
 msgid "With the pull request `https://github.com/ros2/rclcpp/pull/1047 <https://github.com/ros2/rclcpp/pull/1047>`_ the signature of callbacks which receive the message info with the message has changed. Previously it used the ``rmw`` type ``rmw_message_info_t``, but now uses the ``rclcpp`` type ``rclcpp::MessageInfo``. The required changes are straightforward, and can be seen demonstrated in these pull requests:"
-msgstr "With the pull request `https://github.com/ros2/rclcpp/pull/1047 <https://github.com/ros2/rclcpp/pull/1047>`_ the signature of callbacks which receive the message info with the message has changed. Previously it used the ``rmw`` type ``rmw_message_info_t``, but now uses the ``rclcpp`` type ``rclcpp::MessageInfo``. The required changes are straightforward, and can be seen demonstrated in these pull requests:"
+msgstr "使用拉取请求`https://github.com/ros2/rclcpp/pull/1047 <https://github.com/ros2/rclcpp/pull/1047>`_，接收消息信息的回调函数的签名已经发生了变化。之前使用``rmw``类型的``rmw_message_info_t``，现在使用``rclcpp``类型的``rclcpp::MessageInfo``。所需的更改很简单，并且可以在以下拉取请求中看到示例："
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:266
