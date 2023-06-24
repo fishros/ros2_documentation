@@ -32297,7 +32297,7 @@ msgstr "geometry_msgs"
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:71
 msgid "The ``geometry_msgs/msg/Quaternion.msg`` interface now default initializes to a valid quaternion, with the following values:"
-msgstr "The ``geometry_msgs/msg/Quaternion.msg`` interface now default initializes to a valid quaternion, with the following values:"
+msgstr "现在``geometry_msgs/msg/Quaternion.msg``接口的默认初始化为一个有效的四元数，具有以下值："
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:73
@@ -32315,27 +32315,27 @@ msgstr ""
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:80
 msgid "Here is the pull request for more detail: `https://github.com/ros2/common_interfaces/pull/74 <https://github.com/ros2/common_interfaces/pull/74>`_"
-msgstr "Here is the pull request for more detail: `https://github.com/ros2/common_interfaces/pull/74 <https://github.com/ros2/common_interfaces/pull/74>`_"
+msgstr "这里是更详细的拉取请求：`https://github.com/ros2/common_interfaces/pull/74 <https://github.com/ros2/common_interfaces/pull/74>`_"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:82
 msgid "Static transform broadcasters and listeners now use QoS durability ``transient_local`` on the ``/tf_static`` topic. Similar to the latched setting in ROS 1, static transforms only need to be published once. New listeners will receive transforms from all static broadcasters that are alive and have published before. All publishers must be updated to use this durability setting or their messages won't be received by transform listeners. See this pull request for more detail: `https://github.com/ros2/geometry2/pull/160 <https://github.com/ros2/geometry2/pull/160>`_"
-msgstr "Static transform broadcasters and listeners now use QoS durability ``transient_local`` on the ``/tf_static`` topic. Similar to the latched setting in ROS 1, static transforms only need to be published once. New listeners will receive transforms from all static broadcasters that are alive and have published before. All publishers must be updated to use this durability setting or their messages won't be received by transform listeners. See this pull request for more detail: `https://github.com/ros2/geometry2/pull/160 <https://github.com/ros2/geometry2/pull/160>`_"
+msgstr "静态变换广播器和监听器现在在``/tf_static``主题上使用持久性 QoS ``transient_local``。类似于 ROS 1 中的 latched 设置，静态变换只需要发布一次。新的监听器将从所有处于活动状态且在其之前已发布的静态广播器接收变换。所有的发布者必须更新为使用此持久性设置，否则它们的消息将无法被变换监听器接收。有关更多详细信息，请参阅此拉取请求：`https://github.com/ros2/geometry2/pull/160 <https://github.com/ros2/geometry2/pull/160>`_"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:92
 msgid "API Break with ``get_actual_qos()``"
-msgstr "API Break with ``get_actual_qos()``"
+msgstr "``get_actual_qos()`` 的 API 断裂"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:94
 msgid "Introduced in Dashing, the ``get_actual_qos()`` method on the ``PublisherBase`` and ``SubscriptionBase`` previously returned an rmw type, ``rmw_qos_profile_t``, but that made it awkward to reuse with the creation of other entities. Therefore it was updated to return a ``rclcpp::QoS`` instead."
-msgstr "Introduced in Dashing, the ``get_actual_qos()`` method on the ``PublisherBase`` and ``SubscriptionBase`` previously returned an rmw type, ``rmw_qos_profile_t``, but that made it awkward to reuse with the creation of other entities. Therefore it was updated to return a ``rclcpp::QoS`` instead."
+msgstr "在 Dashing 中引入了 ``PublisherBase`` 和 ``SubscriptionBase`` 上的 ``get_actual_qos()`` 方法，之前返回的是 rmw 类型 ``rmw_qos_profile_t``，但这使得在创建其他实体时使用起来很不方便。因此，它已被更新为返回 ``rclcpp::QoS``。"
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:97
 msgid "Existing code will need to use the ``rclcpp::QoS::get_rmw_qos_profile()`` method if the rmw profile is still required. For example:"
-msgstr "Existing code will need to use the ``rclcpp::QoS::get_rmw_qos_profile()`` method if the rmw profile is still required. For example:"
+msgstr "现有代码如果仍然需要 rmw 配置文件，需要使用 ``rclcpp::QoS::get_rmw_qos_profile()`` 方法。例如："
 
 
 #: ../../source/Releases/Release-Eloquent-Elusor.rst:109
