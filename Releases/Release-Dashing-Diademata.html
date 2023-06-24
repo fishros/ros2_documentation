@@ -983,8 +983,7 @@
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>Modification of <code class="docutils literal notranslate"><span class="pre">rmw</span></code>, now passes <code class="docutils literal notranslate"><span class="pre">rmw_publisher_allocation_t</span></code> or <code class="docutils literal notranslate"><span class="pre">rmw_subscription_allocation_t</span></code> to <code class="docutils literal notranslate"><span class="pre">rmw_publish</span></code> and <code class="docutils literal notranslate"><span class="pre">rmw_take</span></code>, respectively.
-Note that this argument can be <code class="docutils literal notranslate"><span class="pre">NULL</span></code> or <code class="docutils literal notranslate"><span class="pre">nullptr</span></code>, which keeps existing Crystal behavior.</p></li>
+<li><p>修改了``rmw``，现在分别向``rmw_publish``和``rmw_take``传递``rmw_publisher_allocation_t``或``rmw_subscription_allocation_t``。注意，此参数可以是``NULL``或``nullptr``，保持了现有的 Crystal 行为。</p></li>
 </ul>
 <blockquote>
 <div><ul class="simple">
@@ -993,25 +992,17 @@ Note that this argument can be <code class="docutils literal notranslate"><span 
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>Type names returned by <code class="docutils literal notranslate"><span class="pre">rmw_get_*_names_and_types*</span></code> functions should have a fully-qualified namespace.
-For example, instead of <code class="docutils literal notranslate"><span class="pre">rcl_interfaces/Parameter</span></code> and <code class="docutils literal notranslate"><span class="pre">rcl_interfaces/GetParameters</span></code>, the returned type names should be <code class="docutils literal notranslate"><span class="pre">rcl_interface/msg/Parameter</span></code> and <code class="docutils literal notranslate"><span class="pre">rcl_interfaces/srv/GetParameters</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rmw_get_*_names_and_types*</span></code> 函数返回的类型名称应具有完全限定的命名空间。例如，返回的类型名称应为 <code class="docutils literal notranslate"><span class="pre">rcl_interface/msg/Parameter</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcl_interfaces/srv/GetParameters</span></code>，而不是 <code class="docutils literal notranslate"><span class="pre">rcl_interfaces/Parameter</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcl_interfaces/GetParameters</span></code>。</p></li>
 </ul>
 </div>
 <div class="section" id="actions">
 <h3><a class="toc-backref" href="#id18">actions</a><a class="headerlink" href="#actions" title="永久链接至标题"></a></h3>
 <ul>
-<li><p>Changes to <code class="docutils literal notranslate"><span class="pre">rclcpp_action::Client</span></code> signatures:</p>
-<p>The signature of <a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L343">rclcpp_action::Client::async_send_goal</a> has changed.
-Now users can optionally provide callback functions for the <strong>goal response</strong> and the <strong>result</strong> using the new
-<a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L276">SendGoalOptions</a> struct.
-The goal response callback is called when an action server accepts or rejects the goal and the result callback is called when the result for the goal is received.
-Optional callbacks were also added to <a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L432-L434">rclcpp_action::Client::async_cancel_goal</a>
-and <a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L399-L401">rclcpp_action::Client::async_get_result</a>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">rclcpp_action::Client</span></code> 签名的更改:</p>
+<p><a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L343">rclcpp_action::Client::async_send_goal</a> 的签名已更改。现在用户可以使用新的 <a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L276">SendGoalOptions</a> 结构可选择性地提供回调函数来处理 <strong>目标响应</strong> 和 <strong>结果</strong>。当动作服务器接受或拒绝目标时，将调用目标响应回调函数，并在接收到目标的结果时调用结果回调函数。还在 <a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L432-L434">rclcpp_action::Client::async_cancel_goal</a> 和 <a class="reference external" href="https://github.com/ros2/rclcpp/blob/ef41059a751702274667e2164182c062b47c453d/rclcpp_action/include/rclcpp_action/client.hpp#L399-L401">rclcpp_action::Client::async_get_result</a> 中添加了可选回调函数。</p>
 </li>
-<li><p>Changes to goal transition names:</p>
-<p>The names of goal state transitions have been refactored to reflect the design documention.
-This affects <code class="docutils literal notranslate"><span class="pre">rcl_action</span></code>, <code class="docutils literal notranslate"><span class="pre">rclcpp_action</span></code>, and <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>.
-Here is a list of the event name changes (<em>Old name -&gt; New name</em>):</p>
+<li><p>目标转换名称的更改:</p>
+<p>目标状态转换的名称已进行了重构以反映设计文档。这会影响 <code class="docutils literal notranslate"><span class="pre">rcl_action</span></code>、<code class="docutils literal notranslate"><span class="pre">rclcpp_action</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>。以下是事件名称的更改列表 (<em>旧名称 -&gt; 新名称</em>)：</p>
 <ul class="simple">
 <li><p>GOAL_EVENT_CANCEL -&gt; GOAL_EVENT_CANCEL_GOAL</p></li>
 <li><p>GOAL_EVENT_SET_SUCCEEDED -&gt; GOAL_EVENT_SUCCEED</p></li>
