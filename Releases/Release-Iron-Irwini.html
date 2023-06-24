@@ -384,9 +384,9 @@
 <ul>
 <li><p><a class="reference internal" href="#api-documentation-generation-for-python-packages" id="id29">Python 软件包的 API 文档生成</a></p></li>
 <li><p><a class="reference internal" href="#service-introspection" id="id30">服务内省</a></p></li>
-<li><p><a class="reference internal" href="#pre-and-post-set-parameter-callback-support" id="id31">Pre and post set parameter callback support</a></p></li>
-<li><p><a class="reference internal" href="#improved-discovery-options" id="id32">Improved discovery options</a></p></li>
-<li><p><a class="reference internal" href="#matched-events" id="id33">Matched events</a></p></li>
+<li><p><a class="reference internal" href="#pre-and-post-set-parameter-callback-support" id="id31">支持预设和后置设置参数回调</a></p></li>
+<li><p><a class="reference internal" href="#improved-discovery-options" id="id32">改进的发现选项</a></p></li>
+<li><p><a class="reference internal" href="#matched-events" id="id33">匹配事件</a></p></li>
 <li><p><a class="reference internal" href="#external-configuration-services-of-loggers" id="id34">External configuration services of loggers</a></p></li>
 <li><p><a class="reference internal" href="#type-description-distribution" id="id35">Type Description Distribution</a></p></li>
 <li><p><a class="reference internal" href="#dynamic-types-and-dynamic-messages" id="id36">Dynamic Types and Dynamic Messages</a></p></li>
@@ -462,58 +462,44 @@
 </div>
 <div class="section" id="service-introspection">
 <h3><a class="toc-backref" href="#id30">服务内省</a><a class="headerlink" href="#service-introspection" title="永久链接至标题"></a></h3>
-<p>It is now possible to enable service introspection on a per-service basis.
-When enabled, this allows users to see the metadata associated with the client requesting a service, the server accepting the request, the server sending the response, and the client accepting the response.
-Optionally, the contents of the client/server requests/responses can also be introspected.
-All of the information is published on a hidden topic generated from the name of the service.
-So if the service is called <code class="docutils literal notranslate"><span class="pre">/myservice</span></code>, then the information will be published on <code class="docutils literal notranslate"><span class="pre">/myservice/_service_event</span></code>.</p>
-<p>Note that this functionality is disabled by default; to enable it, users must call <code class="docutils literal notranslate"><span class="pre">configure_introspection</span></code> after creating a server client or server.
-There are examples showing how to do this in <a class="reference external" href="https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services">https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services</a> (C++) and <a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py">https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py</a> (Python).</p>
-<p>See <a class="reference external" href="https://github.com/ros-infrastructure/rep/pull/360">REP 2012</a> and the tracking bug at <a class="reference external" href="https://github.com/ros2/ros2/issues/1285">https://github.com/ros2/ros2/issues/1285</a> for more information.</p>
+<p>现在可以按照每个服务的基础启用服务内省。启用后，用户可以查看与请求服务的客户端、接受请求的服务器、发送响应的服务器和接受响应的客户端相关联的元数据。还可以内省客户端/服务器请求/响应的内容。所有信息都发布在从服务名称生成的隐藏主题上。因此，如果服务名称为 <code class="docutils literal notranslate"><span class="pre">/myservice</span></code>，则信息将发布在 <code class="docutils literal notranslate"><span class="pre">/myservice/_service_event</span></code> 上。</p>
+<p>请注意，默认情况下，此功能已禁用；要启用它，用户必须在创建服务器客户端或服务器后调用 <code class="docutils literal notranslate"><span class="pre">configure_introspection</span></code>。有示例展示了如何做到这一点，可以参考 <a class="reference external" href="https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services">https://github.com/ros2/demos/tree/iron/demo_nodes_cpp/src/services</a> (C++) 和 <a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py">https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/services/introspection.py</a> (Python)。</p>
+<p>有关更多信息，请参见 <a class="reference external" href="https://github.com/ros-infrastructure/rep/pull/360">REP 2012</a> 和追踪问题 <a class="reference external" href="https://github.com/ros2/ros2/issues/1285">https://github.com/ros2/ros2/issues/1285</a>。</p>
 </div>
 <div class="section" id="pre-and-post-set-parameter-callback-support">
-<h3><a class="toc-backref" href="#id31">Pre and post set parameter callback support</a><a class="headerlink" href="#pre-and-post-set-parameter-callback-support" title="永久链接至标题"></a></h3>
-<p>For many releases now, users could register a callback to be called when parameters on a node were changed by an external entity (like <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">set</span></code>).
-This callback could examine the changed parameter types and values, and reject the whole lot if one of them didn't meet certain criteria.
-However, it could not modify the parameter list, nor should it have modified state (since there might be other callbacks after the set one that would reject the parameters).</p>
-<p>This release adds in a pre and post callback.
-The callbacks are called in this order:</p>
+<h3><a class="toc-backref" href="#id31">支持预设和后置设置参数回调</a><a class="headerlink" href="#pre-and-post-set-parameter-callback-support" title="永久链接至标题"></a></h3>
+<p>很长一段时间以来，用户可以注册回调函数，当节点上的参数被外部实体（如 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span> <span class="pre">set</span></code>）更改时，回调函数会被调用。该回调函数可以检查更改的参数类型和值，并在其中一个参数不满足特定条件时拒绝整个更改。但是，它不能修改参数列表，也不应修改状态（因为可能存在在设置回调函数之后会拒绝参数的其他回调函数）。</p>
+<p>此版本添加了预设和后置回调。回调函数按照以下顺序调用：</p>
 <ul class="simple">
-<li><p>The &quot;pre&quot; set parameter callback, which can modify the list of parameters based on arbitrary criteria.</p></li>
-<li><p>The &quot;set&quot; parameter callback, which cannot modify the list and should only accept or reject the parameters based on their type and value (this is the existing callback).</p></li>
-<li><p>The &quot;post&quot; set parameter callback, which can make state changes based on parameters and is only called if the previous two callbacks are successful.</p></li>
+<li><p>“pre”设置参数回调，可以根据任意标准修改参数列表。</p></li>
+<li><p>“set”参数回调，不能修改参数列表，只能根据其类型和值接受或拒绝参数（这是现有的回调）。</p></li>
+<li><p>“post”设置参数回调，可以根据参数进行状态更改，只有在前两个回调成功时才会调用。</p></li>
 </ul>
-<p>There are examples of this in action in <a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/parameters/set_parameters_callback.cpp">https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/parameters/set_parameters_callback.cpp</a> (C++) and <a class="reference external" href="https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/parameters/set_parameters_callback.py">https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/parameters/set_parameters_callback.py</a> (Python).</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1947">https://github.com/ros2/rclcpp/pull/1947</a>, <a class="reference external" href="https://github.com/ros2/rclpy/pull/966">https://github.com/ros2/rclpy/pull/966</a>, and <a class="reference external" href="https://github.com/ros2/demos/pull/565">https://github.com/ros2/demos/pull/565</a> for more information.</p>
+<p>在https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/parameters/set_parameters_callback.cpp（C++）和https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/parameters/set_parameters_callback.py（Python）中有示例。</p>
+<p>有关更多信息，请参见https://github.com/ros2/rclcpp/pull/1947，<a class="reference external" href="https://github.com/ros2/rclpy/pull">https://github.com/ros2/rclpy/pull</a>/966和https://github.com/ros2/demos/pull/565。</p>
 </div>
 <div class="section" id="improved-discovery-options">
-<h3><a class="toc-backref" href="#id32">Improved discovery options</a><a class="headerlink" href="#improved-discovery-options" title="永久链接至标题"></a></h3>
-<p>Previous ROS 2 versions offered limited discovery options.
-The default behavior for DDS based RMW implementations was to discover any node reachable via multicast.
-It could be limited to the same machine by setting the environment variable <code class="docutils literal notranslate"><span class="pre">ROS_LOCALHOST_ONLY</span></code>, but any additional configuration required configuring the middleware directly, usually via middleware specific XML files and environment variables.
-ROS Iron retains the same default discovery behavior, but deprecates <code class="docutils literal notranslate"><span class="pre">ROS_LOCALHOST_ONLY</span></code> in favor of more granular options.</p>
+<h3><a class="toc-backref" href="#id32">改进的发现选项</a><a class="headerlink" href="#improved-discovery-options" title="永久链接至标题"></a></h3>
+<p>之前的ROS 2版本提供了有限的发现选项。基于DDS的RMW实现的默认行为是通过多播发现任何可达节点。通过设置环境变量``ROS_LOCALHOST_ONLY``可以将其限制在同一台机器上，但是任何其他配置都需要直接配置中间件，通常是通过中间件特定的XML文件和环境变量。ROS Iron保留了相同的默认发现行为，但弃用了``ROS_LOCALHOST_ONLY``，采用了更精细的选项。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ROS_AUTOMATIC_DISCOVERY_RANGE</span></code> controls how far ROS nodes will try to discover each other. Valid options are:</p>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>ROS_AUTOMATIC_DISCOVERY_RANGE``控制ROS节点尝试发现彼此的范围。有效选项包括：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">SUBNET</span></code> - The default, and for DDS-based middlewares it will discover any node reachable via multicast.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LOCALHOST</span></code> - Will only try to discover other nodes on the same machine.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code> - Will not attempt to discover any other nodes automatically, even on the same machine.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SYSTEM_DEFAULT</span></code> - Will not change any discovery settings.  This is useful when you already have custom settings for your middleware and don't want ROS to change them.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBNET</span></code> - 默认选项，对于基于DDS的中间件，它将通过多播发现任何可达节点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCALHOST</span></code> - 仅尝试发现同一台机器上的其他节点。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code> - 不会自动尝试发现任何其他节点，即使在同一台机器上。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SYSTEM_DEFAULT</span></code> - 不会更改任何发现设置。当您已经为中间件自定义了设置并且不希望ROS更改它们时，这很有用。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ROS_STATIC_PEERS</span></code> - A semicolon (<code class="docutils literal notranslate"><span class="pre">;</span></code>) separated list of addresses that ROS should try to discover nodes on.  This allows the user to connect to nodes on specifc machines (as long as their discovery range is not set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROS_STATIC_PEERS</span></code> - 以分号（<code class="docutils literal notranslate"><span class="pre">;</span></code>）分隔的地址列表，ROS应该尝试在其中发现节点。这允许用户连接到特定机器上的节点（只要它们的发现范围没有设置为``OFF``）。</p></li>
 </ul>
-<p>For example, you might have several robots with <code class="docutils literal notranslate"><span class="pre">ROS_AUTOMATIC_DISCOVERY_RANGE</span></code> set to <code class="docutils literal notranslate"><span class="pre">LOCALHOST</span></code> so they don't communicate with each other.
-When you want to connect RViz to one of them, you add it's address to <code class="docutils literal notranslate"><span class="pre">ROS_STATIC_PEERS</span></code> in your terminal.
-Now you can use ROS 2 CLI and visualization tools to interact with the robot.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2/issues/1359">https://github.com/ros2/ros2/issues/1359</a> for more information about this feature.</p>
+<p>例如，您可能有多个机器人，将``ROS_AUTOMATIC_DISCOVERY_RANGE``设置为``LOCALHOST``，以便它们彼此之间不进行通信。当您想将RViz连接到其中一个机器人时，您可以将其地址添加到终端中的``ROS_STATIC_PEERS``。现在，您可以使用ROS 2 CLI和可视化工具与机器人进行交互。</p>
+<p>有关此功能的更多信息，请参阅https://github.com/ros2/ros2/issues/1359。</p>
 </div>
 <div class="section" id="matched-events">
-<h3><a class="toc-backref" href="#id33">Matched events</a><a class="headerlink" href="#matched-events" title="永久链接至标题"></a></h3>
-<p>In addition to QoS events, matched events can be generated when any publisher and subscription establishes or drops the connection between them.
-Users can provide each publisher and subscription with callback functions that are triggered by matched events and handle them in a way they see fit, similar to how messages received on a topic are handled.</p>
+<h3><a class="toc-backref" href="#id33">匹配事件</a><a class="headerlink" href="#matched-events" title="永久链接至标题"></a></h3>
+<p>除了QoS事件之外，当任何发布者和订阅之间建立或断开连接时，还可以生成匹配事件。用户可以为每个发布者和订阅提供回调函数，这些函数由匹配事件触发，并以用户认为合适的方式处理它们，类似于处理在主题上收到的消息的方式。</p>
 <ul class="simple">
-<li><p>publisher: this event happens when it finds a subscription which matches the topic and has compatible QoS or a connected subscription is disconnected.</p></li>
+<li><p>发布者：当它找到与主题匹配且具有兼容QoS的订阅，或者连接的订阅被断开时，会发生此事件。</p></li>
 <li><p>subscription: this event happens when it finds a publisher which matches the topic and has compatible QoS or a connected publisher is disconnected.</p></li>
 </ul>
 <p>See the tracking issue at <a class="reference external" href="https://github.com/ros2/rmw/issues/330">https://github.com/ros2/rmw/issues/330</a> for more information.</p>
