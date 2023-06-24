@@ -412,8 +412,8 @@
 <li><p><a class="reference internal" href="#rclpy" id="id38">rclpy</a></p></li>
 <li><p><a class="reference internal" href="#rclcpp-action" id="id39">rclcpp_action</a></p></li>
 <li><p><a class="reference internal" href="#rosidl-typesupport-introspection-c" id="id40">rosidl_typesupport_introspection_c</a></p></li>
-<li><p><a class="reference internal" href="#rcl-lifecycle-and-rclcpp-lifecycle" id="id41">rcl_lifecycle and rclcpp_lifecycle</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id42">rcl_lifecycle and rclcpp_lifecycle</a></p></li>
+<li><p><a class="reference internal" href="#rcl-lifecycle-and-rclcpp-lifecycle" id="id41">rcl_lifecycle 和 rclcpp_lifecycle</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id42">rcl_lifecycle 和 rclcpp_lifecycle</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#known-issues" id="id43">已知问题</a></p>
@@ -957,10 +957,7 @@ ros2 bag play my_bag --clock <span class="m">100</span>
 </div>
 <div class="section" id="id2">
 <h4>参数类型现在默认为静态<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
-<p>In Foxy and earlier a call to set a parameter could change its type.
-As of Galactic parameter types are static and cannot be changed by default.
-If the previous behavior is desired, then set <code class="docutils literal notranslate"><span class="pre">dynamic_typing</span></code> to true in the parameter descriptor.
-Here is an example.</p>
+<p>在Foxy版本及之前，调用设置参数的函数可能会改变参数的类型。从Galactic版本开始，参数类型是静态的，不能默认更改。如果需要保留之前的行为，请在参数描述符中设置``dynamic_typing``为true。以下是一个示例。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
 <span class="kn">import</span> <span class="nn">rclpy.node</span>
 <span class="kn">from</span> <span class="nn">rcl_interfaces.msg</span> <span class="kn">import</span> <span class="n">ParameterDescriptor</span>
@@ -972,7 +969,7 @@ Here is an example.</p>
 <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Run these commands to see how statically and dynamically typed parameters are different.</p>
+<p>运行以下命令以查看静态类型和动态类型参数的区别。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ros2 param <span class="nb">set</span> /static_param_example dynamic_param <span class="m">42</span>
 <span class="go">Set parameter successful</span>
 <span class="gp">$ </span>ros2 param <span class="nb">set</span> /static_param_example static_param <span class="m">42</span>
@@ -983,8 +980,7 @@ Here is an example.</p>
 </div>
 <div class="section" id="id3">
 <h4>新的 API 用于检查 QoS 配置文件的兼容性<a class="headerlink" href="#id3" title="永久链接至标题"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">rclpy.qos.qos_check_compatible</span></code> is <a class="reference external" href="https://github.com/ros2/rclpy/pull/708">a new function</a> for checking the compatibility of two QoS profiles.
-If the profiles are compatible, then a publisher and subscriber using them will be able to talk to each other.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rclpy.qos.qos_check_compatible``是一个用于检查两个QoS配置文件兼容性的`新函数&lt;<a class="reference external" href="https://github.com/ros2/rclpy/pull/708">https://github.com/ros2/rclpy/pull/708</a>&gt;`_。如果配置文件兼容，则使用它们的发布者和订阅者可以进行通信。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy.qos</span>
 
 <span class="n">publisher_profile</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">qos</span><span class="o">.</span><span class="n">qos_profile_sensor_data</span>
@@ -1002,34 +998,32 @@ If the profiles are compatible, then a publisher and subscriber using them will 
 <div class="section" id="rclcpp-action">
 <h3><a class="toc-backref" href="#id39">rclcpp_action</a><a class="headerlink" href="#rclcpp-action" title="永久链接至标题"></a></h3>
 <div class="section" id="action-client-goal-response-callback-signature-changed">
-<h4>Action client goal response callback signature changed<a class="headerlink" href="#action-client-goal-response-callback-signature-changed" title="永久链接至标题"></a></h4>
-<p>The goal response callback should now take a shared pointer to a goal handle, instead of a future.</p>
-<p>For <a class="reference external" href="https://github.com/ros2/examples/pull/291">example</a>, old signature:</p>
+<h4>动作客户端目标响应回调的签名已更改。<a class="headerlink" href="#action-client-goal-response-callback-signature-changed" title="永久链接至标题"></a></h4>
+<p>目标响应回调现在应接受一个目标句柄的共享指针，而不是一个future对象。</p>
+<p>例如`（参见&lt;<a class="reference external" href="https://github.com/ros2/examples/pull/291">https://github.com/ros2/examples/pull/291</a>&gt;`_），旧的签名为：</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">goal_response_callback</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_future</span><span class="o">&lt;</span><span class="n">GoalHandleFibonacci</span><span class="o">::</span><span class="n">SharedPtr</span><span class="o">&gt;</span><span class="w"> </span><span class="n">future</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>New signature:</p>
+<p>新签名:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">goal_response_callback</span><span class="p">(</span><span class="n">GoalHandleFibonacci</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">goal_handle</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1311">ros2/rclcpp#1311</a></p>
+<p>相关 PR: <a class="reference external" href="https://github.com/ros2/rclcpp/pull/1311">ros2/rclcpp#1311</a></p>
 </div>
 </div>
 <div class="section" id="rosidl-typesupport-introspection-c">
 <h3><a class="toc-backref" href="#id40">rosidl_typesupport_introspection_c</a><a class="headerlink" href="#rosidl-typesupport-introspection-c" title="永久链接至标题"></a></h3>
 <div class="section" id="api-break-in-function-that-gets-an-element-from-an-array">
-<h4>API break in function that gets an element from an array<a class="headerlink" href="#api-break-in-function-that-gets-an-element-from-an-array" title="永久链接至标题"></a></h4>
-<p>The signature of the function was changed because it was semantically different to all the other functions used to get an element from an array or sequence.
-This only affects authors of rmw implementations using the introspection typesupport.</p>
-<p>For further details, see <a class="reference external" href="https://github.com/ros2/rosidl/pull/531">ros2/rosidl#531</a>.</p>
+<h4>从数组中获取元素的函数发生了 API 破坏<a class="headerlink" href="#api-break-in-function-that-gets-an-element-from-an-array" title="永久链接至标题"></a></h4>
+<p>由于与从数组或序列中获取元素的其他所有函数在语义上有所不同，函数的签名发生了更改。这仅影响使用内省类型支持的 rmw 实现的作者。</p>
+<p>详细信息请参阅 <a class="reference external" href="https://github.com/ros2/rosidl/pull/531">ros2/rosidl#531</a>。</p>
 </div>
 </div>
 <div class="section" id="rcl-lifecycle-and-rclcpp-lifecycle">
-<h3><a class="toc-backref" href="#id41">rcl_lifecycle and rclcpp_lifecycle</a><a class="headerlink" href="#rcl-lifecycle-and-rclcpp-lifecycle" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id41">rcl_lifecycle 和 rclcpp_lifecycle</a><a class="headerlink" href="#rcl-lifecycle-and-rclcpp-lifecycle" title="永久链接至标题"></a></h3>
 <div class="section" id="rcl-s-lifecycle-state-machine-gets-new-init-api">
-<h4>RCL's lifecycle state machine gets new init API<a class="headerlink" href="#rcl-s-lifecycle-state-machine-gets-new-init-api" title="永久链接至标题"></a></h4>
-<p>The lifecycle state machine in rcl_lifecycle was modified to expect a newly introduced options struct, combining general configurations for the state machine.
-The option struct allows to indicate whether the state machine shall be initialized with default values, whether its attached services are active and which allocator to be used.</p>
+<h4>RCL 的生命周期状态机新增了初始化 API<a class="headerlink" href="#rcl-s-lifecycle-state-machine-gets-new-init-api" title="永久链接至标题"></a></h4>
+<p>rcl_lifecycle 中的生命周期状态机已被修改，以期望一个新引入的选项结构，该结构合并了状态机的通用配置。该选项结构允许指示是否使用默认值初始化状态机，其附加的服务是否处于活动状态，以及要使用的分配器。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rcl_ret_t</span><span class="w"></span>
 <span class="nf">rcl_lifecycle_state_machine_init</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">rcl_lifecycle_state_machine_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">state_machine</span><span class="p">,</span><span class="w"></span>
@@ -1045,10 +1039,8 @@ The option struct allows to indicate whether the state machine shall be initiali
 </div>
 </div>
 <div class="section" id="rcl-s-lifecycle-state-machine-stores-allocator-instance">
-<h4>RCL's lifecycle state machine stores allocator instance<a class="headerlink" href="#rcl-s-lifecycle-state-machine-stores-allocator-instance" title="永久链接至标题"></a></h4>
-<p>The options struct (discussed above) entails an instance of the allocator being used for initializing the state machine.
-This options struct and there the embodied allocator are being stored within the lifecycle state machine.
-As a direct consequence, the <code class="docutils literal notranslate"><span class="pre">rcl_lifecycle_fini</span> <span class="pre">function</span></code> no longer expects an allocator in its fini function but rather uses the allocator set in the options struct for deallocating its internal data structures.</p>
+<h4>RCL 的生命周期状态机存储分配器实例<a class="headerlink" href="#rcl-s-lifecycle-state-machine-stores-allocator-instance" title="永久链接至标题"></a></h4>
+<p>上述的选项结构包含用于初始化状态机的分配器实例。该选项结构以及其中的分配器被存储在生命周期状态机内。因此，“rcl_lifecycle_fini”函数在其结束函数中不再需要一个分配器，而是使用在选项结构中设置的分配器来释放其内部数据结构。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rcl_ret_t</span><span class="w"></span>
 <span class="nf">rcl_lifecycle_state_machine_fini</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">rcl_lifecycle_state_machine_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">state_machine</span><span class="p">,</span><span class="w"></span>
@@ -1057,7 +1049,7 @@ As a direct consequence, the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="section" id="rclcpp-s-lifecycle-node-exposes-option-to-not-instantiate-services">
-<h4>RCLCPP's lifecycle node exposes option to not instantiate services<a class="headerlink" href="#rclcpp-s-lifecycle-node-exposes-option-to-not-instantiate-services" title="永久链接至标题"></a></h4>
+<h4>RCLCPP 的生命周期节点提供了选项来不实例化服务<a class="headerlink" href="#rclcpp-s-lifecycle-node-exposes-option-to-not-instantiate-services" title="永久链接至标题"></a></h4>
 <p>In order to use rclcpp's lifecycle nodes without exposing its internal services such as <code class="docutils literal notranslate"><span class="pre">change_state</span></code>, <code class="docutils literal notranslate"><span class="pre">get_state</span></code> et. al., the constructor of a lifecycle node has a newly introduced parameter indicating whether or not the services shall be available.
 This boolean flag is set to true by default, not requiring any changes to existing API if not wished.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">explicit</span><span class="w"> </span><span class="n">LifecycleNode</span><span class="p">(</span><span class="w"></span>
@@ -1070,7 +1062,7 @@ This boolean flag is set to true by default, not requiring any changes to existi
 </div>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id42">rcl_lifecycle and rclcpp_lifecycle</a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id42">rcl_lifecycle 和 rclcpp_lifecycle</a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
 <div class="section" id="recording-split-by-time">
 <h4>Recording - Split by time<a class="headerlink" href="#recording-split-by-time" title="永久链接至标题"></a></h4>
 </div>
