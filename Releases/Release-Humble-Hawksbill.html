@@ -417,7 +417,7 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#known-issues" id="id59">已知问题</a></p></li>
-<li><p><a class="reference internal" href="#release-timeline" id="id60">Release Timeline</a></p></li>
+<li><p><a class="reference internal" href="#release-timeline" id="id60">发布时间线</a></p></li>
 </ul>
 </div>
 <p><em>Humble Hawksbill</em> 是 ROS 2 的第八个版本。以下是 Humble Hawksbill 自上一个版本以来的重要变化和功能亮点。有关自 Galactic 以来的所有更改的列表，请参阅 <a class="reference internal" href="Humble-Hawksbill-Complete-Changelog.html"><span class="doc">完整变更日志</span></a>。</p>
@@ -1093,73 +1093,50 @@ uint8<span class="o">[]</span> data
 </div>
 <div class="section" id="burst-mode-playback">
 <h4>突发模式回放<a class="headerlink" href="#burst-mode-playback" title="永久链接至标题"></a></h4>
-<p>While the playback of data from a bag in real-time is the most well-known use case for bag files, there are situations where you want the data in the bag as fast as possible.
-With pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/977">977</a>, <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> has gained the ability to &quot;burst&quot; data from the bag.
-In burst mode, the data is played back as fast as possible.
-This is useful in applications such as machine learning.</p>
+<p>虽然实时播放来自包文件的数据是包文件最常见的用例，但在某些情况下，您希望尽快获取包中的数据。通过拉取请求`977 &lt;<a class="reference external" href="https://github.com/ros2/rosbag2/pull/977">https://github.com/ros2/rosbag2/pull/977</a>&gt;`_，<a href="#id1"><span class="problematic" id="id2">``</span></a>rosbag2``获得了从包中“突发”数据的能力。在突发模式下，数据以最快的速度进行播放。这在机器学习等应用中非常有用。</p>
 </div>
 <div class="section" id="zero-copy-playback">
-<h4>Zero-Copy playback<a class="headerlink" href="#zero-copy-playback" title="永久链接至标题"></a></h4>
-<p>By default, if loaned message can be used, playback messages are published as loaned message.
-This can help to reduce the number of data copies, so there is a greater benefit for sending big data.
-Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/981">981</a> adds <code class="docutils literal notranslate"><span class="pre">--disable-loan-message</span></code> option for playback.</p>
+<h4>零拷贝播放<a class="headerlink" href="#zero-copy-playback" title="永久链接至标题"></a></h4>
+<p>默认情况下，如果可以使用借用的消息，播放消息将作为借用的消息进行发布。这有助于减少数据的拷贝次数，因此对于发送大数据有更大的好处。拉取请求`981 &lt;<a class="reference external" href="https://github.com/ros2/rosbag2/pull/981">https://github.com/ros2/rosbag2/pull/981</a>&gt;`_为播放添加了``--disable-loan-message``选项。</p>
 </div>
 <div class="section" id="wait-for-an-acknowledgment">
-<h4>Wait for an acknowledgment<a class="headerlink" href="#wait-for-an-acknowledgment" title="永久链接至标题"></a></h4>
-<p>This new option will wait until all published messages are acknowledged by all subscribers or until the timeout elapses in millisecond before play is terminated.
-Especially for the case of sending message with big size in a short time.
-This option is valid only if the publisher's QOS profile is RELIABLE.
-Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/951">951</a> adds <code class="docutils literal notranslate"><span class="pre">--wait-for-all-acked</span></code> option for playback.</p>
+<h4>等待确认<a class="headerlink" href="#wait-for-an-acknowledgment" title="永久链接至标题"></a></h4>
+<p>这个新选项将等待所有发布的消息被所有订阅者确认，或者在播放终止之前等待超时（以毫秒为单位）。特别是在短时间内发送大尺寸的消息的情况下。只有当发布者的QOS配置文件为RELIABLE时，此选项才有效。拉取请求`951 &lt;<a class="reference external" href="https://github.com/ros2/rosbag2/pull/951">https://github.com/ros2/rosbag2/pull/951</a>&gt;`_为播放添加了``--wait-for-all-acked``选项。</p>
 </div>
 <div class="section" id="bag-editing">
-<h4>Bag editing<a class="headerlink" href="#bag-editing" title="永久链接至标题"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> is taking steps towards enabling the editing of bags, such as removing all messages for one topic or merging multiple bags into a single bag.
-Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/921">921</a> adds bag rewriting and the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">convert</span></code> verb.</p>
+<h4>包文件编辑<a class="headerlink" href="#bag-editing" title="永久链接至标题"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 正在采取措施实现对包文件的编辑，例如删除特定主题的所有消息或将多个包文件合并为一个。Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/921">921</a> 添加了包文件重写功能和 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">convert</span></code> 命令。</p>
 </div>
 <div class="section" id="other-changes">
 <h4>其他变化<a class="headerlink" href="#other-changes" title="永久链接至标题"></a></h4>
-<p>Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/925">925</a> makes <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> ignore &quot;leaf topics&quot; (topics without a publisher) when recording.
-These topics will no longer be automatically added to the bag.</p>
+<p>Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/925">925</a> 使 <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 在记录时忽略&quot;叶子主题&quot;（没有发布者的主题）。这些主题将不再自动添加到包文件中。</p>
 </div>
 </div>
 </div>
 <div class="section" id="known-issues">
 <h2><a class="toc-backref" href="#id59">已知问题</a><a class="headerlink" href="#known-issues" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>When <a class="reference external" href="../../humble/Installation/Ubuntu-Install-Debians.html">installing ROS 2 on an Ubuntu 22.04 Jammy host</a> it is important to update your system before installing ROS 2 packages.
-It is <em>particularly</em> important to make sure that <code class="docutils literal notranslate"><span class="pre">systemd</span></code> and <code class="docutils literal notranslate"><span class="pre">udev</span></code> are updated to the latest available version otherwise installing <code class="docutils literal notranslate"><span class="pre">ros-humble-desktop</span></code>, which depends on <code class="docutils literal notranslate"><span class="pre">libudev1</span></code>, could cause the removal of system critical packages.
-Details can be found in <a class="reference external" href="https://github.com/ros2/ros2/issues/1272">ros2/ros2#1272</a> and <a class="reference external" href="https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1974196">Launchpad #1974196</a></p></li>
-<li><p>When ROS 2 apt repositories are available, ROS 1 packages in Ubuntu are not installable.  See the <a class="reference internal" href="../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html"><span class="doc">ros1_bridge on Ubuntu Jammy</span></a> document for more information.</p></li>
-<li><p>Some major Linux distributions have started patching Python to install packages to <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code>, which is breaking some parts of <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> and builds with <code class="docutils literal notranslate"><span class="pre">colcon</span></code>.
-In particular, using Ubuntu Jammy with <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> installed from pip will manifest this misbehavior, and is therefore not recommended.
-There is currently a <a class="reference external" href="https://github.com/colcon/colcon-core/pull/512">proposed solution</a> which requires further testing before widespread release.</p></li>
-<li><p>ROS 2 bags that are split by size or duration are not played correctly.
-Only the last bag recorded is played.
-It is recommended to avoid splitting bags by size or duration.
-Details can be found in <a class="reference external" href="https://github.com/ros2/rosbag2/issues/966">ros2/rosbag2#966</a>.</p></li>
+<li><p>在`在 Ubuntu 22.04 Jammy 主机上安装 ROS 2 &lt;../../humble/Installation/Ubuntu-Install-Debians.html&gt;`__ 之前，重要的是在安装 ROS 2 包之前更新您的系统。特别需要确保 <code class="docutils literal notranslate"><span class="pre">systemd</span></code> 和 <code class="docutils literal notranslate"><span class="pre">udev</span></code> 更新到最新版本，否则安装 <code class="docutils literal notranslate"><span class="pre">ros-humble-desktop``（依赖于</span> <span class="pre">``libudev1</span></code>）可能会导致系统关键包被删除。详细信息可以在 <a class="reference external" href="https://github.com/ros2/ros2/issues/1272">ros2/ros2#1272</a> 和 <a class="reference external" href="https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1974196">Launchpad #1974196</a> 中找到。</p></li>
+<li><p>当 ROS 2 apt 仓库可用时，无法安装 Ubuntu 上的 ROS 1 包。有关更多信息，请参阅 <a class="reference internal" href="../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html"><span class="doc">Ubuntu Jammy 上的 ros1_bridge</span></a> 文档。</p></li>
+<li><p>一些主要的 Linux 发行版已经开始修补 Python，将软件包安装到 <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code>，这破坏了 <code class="docutils literal notranslate"><span class="pre">ament_package</span></code> 和使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建的一些部分。特别是，在 Ubuntu Jammy 上使用从 pip 安装的 <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> 将导致此问题，因此不推荐这样做。目前有一个 <a class="reference external" href="https://github.com/colcon/colcon-core/pull/512">提议的解决方案</a> 需要进一步测试才能广泛发布。</p></li>
+<li><p>拆分大小或持续时间的 ROS 2 包文件无法正确播放。只有最后一个记录的包文件会被播放。建议避免按大小或持续时间拆分包文件。详细信息可以在 <a class="reference external" href="https://github.com/ros2/rosbag2/issues/966">ros2/rosbag2#966</a> 中找到。</p></li>
 </ul>
 </div>
 <div class="section" id="release-timeline">
-<h2><a class="toc-backref" href="#id60">Release Timeline</a><a class="headerlink" href="#release-timeline" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id60">发布时间线</a><a class="headerlink" href="#release-timeline" title="永久链接至标题"></a></h2>
 <blockquote>
 <div><dl class="simple">
-<dt>Mon. March 21, 2022 - Alpha + RMW freeze</dt><dd><p>Preliminary testing and stabilization of ROS Base <a class="footnote-reference brackets" href="#id25" id="id20">1</a> packages, and API and feature freeze for RMW provider packages.</p>
+<dt>周一，2022年3月21日 - Alpha + RMW 冻结</dt><dd><p>对ROS基础包进行初步测试和稳定，并对RMW提供者包的API和功能进行冻结。</p>
 </dd>
-<dt>Mon. April 4, 2022 - Freeze</dt><dd><p>API and feature freeze for ROS Base <a class="footnote-reference brackets" href="#id25" id="id21">1</a> packages in Rolling Ridley.
-Only bug fix releases should be made after this point.
-New packages can be released independently.</p>
+<dt>周一，2022年4月4日 - 冻结</dt><dd><p>对Rolling Ridley中的ROS基础包进行API和功能冻结。此后只能发布错误修复版本。新包可以独立发布。</p>
 </dd>
-<dt>Mon. April 18, 2022 - Branch</dt><dd><p>Branch from Rolling Ridley.
-<code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> is reopened for Rolling PRs for ROS Base <a class="footnote-reference brackets" href="#id25" id="id22">1</a> packages.
-Humble development shifts from <code class="docutils literal notranslate"><span class="pre">ros-rolling-*</span></code> packages to <code class="docutils literal notranslate"><span class="pre">ros-humble-*</span></code> packages.</p>
+<dt>周一，2022年4月18日 - 分支</dt><dd><p>从Rolling Ridley分支。 <a href="#id1"><span class="problematic" id="id2">``</span></a>rosdistro``已重新开放，用于ROS Base [1]_软件包的Rolling PRs。开发重心从``ros-rolling-<a href="#id3"><span class="problematic" id="id4">*</span></a><a href="#id5"><span class="problematic" id="id6">``</span></a>软件包转移到``ros-humble-<a href="#id7"><span class="problematic" id="id8">*</span></a><a href="#id9"><span class="problematic" id="id10">``</span></a>软件包。</p>
 </dd>
-<dt>Mon. April 25, 2022 - Beta</dt><dd><p>可用的ROS Desktop [2]_软件包的更新版本。请求进行常规测试。</p>
+<dt>2022年4月25日（星期一）- Beta版本</dt><dd><p>可用的ROS Desktop [2]_软件包的更新版本。请求进行常规测试。</p>
 </dd>
-<dt>Mon. May 16, 2022 - Release Candidate</dt><dd><p>Release Candidate packages are built.
-Updated releases of ROS Desktop <a class="footnote-reference brackets" href="#id26" id="id24">2</a> packages available.</p>
+<dt>2022年5月16日（星期一）- 正式候选版本</dt><dd><p>构建了正式候选版本软件包。可获取更新的ROS Desktop [2]_软件包版本。</p>
 </dd>
-<dt>Thu. May 19, 2022 - Distro Freeze</dt><dd><p>Freeze rosdistro.
-No PRs for Humble on the <code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> repo will be merged (reopens after the release announcement).</p>
+<dt>2022年5月19日（星期四）- 发行版冻结</dt><dd><p>冻结rosdistro。在发布公告之前，<a href="#id1"><span class="problematic" id="id2">``</span></a>rosdistro``存储库上的Humble版本的PR将不会合并（发布公告后重新开放）。</p>
 </dd>
 <dt>Mon. May 23, 2022 - General Availability</dt><dd><p>Release announcement.
 <code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> is reopened for Humble PRs.</p>
