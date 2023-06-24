@@ -412,7 +412,7 @@
 <li><p><a class="reference internal" href="#rmw-connext-cpp" id="id31">rmw_connext_cpp</a></p></li>
 <li><p><a class="reference internal" href="#rviz" id="id32">rviz</a></p></li>
 <li><p><a class="reference internal" href="#std-msgs" id="id33">std_msgs</a></p></li>
-<li><p><a class="reference internal" href="#security-features" id="id34">Security features</a></p></li>
+<li><p><a class="reference internal" href="#security-features" id="id34">安全功能</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#known-issues" id="id35">已知问题</a></p></li>
@@ -717,22 +717,18 @@ See https://community.rti.com/kb/what-causes-error-discovered-remote-participant
 </div>
 </div>
 <div class="section" id="security-features">
-<h3><a class="toc-backref" href="#id34">Security features</a><a class="headerlink" href="#security-features" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id34">安全功能</a><a class="headerlink" href="#security-features" title="永久链接至标题"></a></h3>
 <div class="section" id="use-of-security-enclaves">
-<h4>Use of security enclaves<a class="headerlink" href="#use-of-security-enclaves" title="永久链接至标题"></a></h4>
-<p>As of Foxy, domain participants are no longer mapped directly to ROS nodes.
-As a result, ROS 2 security features (which are specific to domain participants) are also no longer mapped directly to ROS nodes.
-Instead, Foxy introduces the concept of a security &quot;enclave&quot;, where an &quot;enclave&quot; is a process or group of processes that will share the same identity and access control rules.</p>
-<p>This means that security artifacts are <strong>not</strong> retrieved based on the node name anymore but based on the Security enclave name.
-A node enclave name can be set by using the ROS argument <code class="docutils literal notranslate"><span class="pre">--enclave</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_py</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--enclave</span> <span class="pre">/my_enclave</span></code></p>
-<p>Related design document: <a class="reference external" href="https://github.com/ros2/design/pull/274">https://github.com/ros2/design/pull/274</a></p>
-<p>Note that permissions files are limited by the underlying transport packet size, so grouping many permissions under the same enclave will <strong>not</strong> work if the resulting permissions file exceed 64kB.
-Related issue <a class="reference external" href="https://github.com/ros2/sros2/issues/228">[ros2/sros2#228]</a></p>
+<h4>使用安全飞地<a class="headerlink" href="#use-of-security-enclaves" title="永久链接至标题"></a></h4>
+<p>从Foxy版本开始，域参与者不再直接映射到ROS节点。因此，ROS 2的安全特性（特定于域参与者）也不再直接映射到ROS节点。相反，Foxy引入了安全&quot;enclave&quot;（飞地）的概念，其中&quot;enclave&quot;是一个进程或一组进程，它们将共享相同的身份和访问控制规则。</p>
+<p>这意味着安全工件不再基于节点名称进行检索，而是基于安全飞地的名称进行检索。可以使用ROS参数``--enclave``来设置节点飞地名称，例如``ros2 run demo_nodes_py talker --ros-args --enclave /my_enclave``。</p>
+<p>相关设计文档：<a class="reference external" href="https://github.com/ros2/design/pull/274">https://github.com/ros2/design/pull/274</a></p>
+<p>请注意，权限文件受底层传输数据包大小的限制，因此，如果生成的权限文件超过64kB，则无法将许多权限分组到同一个飞地中。相关问题`[ros2/sros2#228] &lt;<a class="reference external" href="https://github.com/ros2/sros2/issues/228">https://github.com/ros2/sros2/issues/228</a>&gt;`_</p>
 </div>
 <div class="section" id="renaming-of-the-environment-variables">
-<h4>Renaming of the environment variables<a class="headerlink" href="#renaming-of-the-environment-variables" title="永久链接至标题"></a></h4>
+<h4>环境变量的重命名<a class="headerlink" href="#renaming-of-the-environment-variables" title="永久链接至标题"></a></h4>
 <table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-text">Environment variables renaming</span><a class="headerlink" href="#id8" title="永久链接至表格"></a></caption>
+<caption><span class="caption-text">环境变量的重命名</span><a class="headerlink" href="#id8" title="永久链接至表格"></a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
