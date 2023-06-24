@@ -32730,122 +32730,122 @@ msgstr "``rmw_fastrtps_dynamic_cpp/TypeSupport_impl.hpp``"
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:142
 msgid "Though technically they are publically accessible, it is unlikely people are using them directly. Therefore, we decided to break API in order to fix memory leaks and undefined behavior."
-msgstr "Though technically they are publically accessible, it is unlikely people are using them directly. Therefore, we decided to break API in order to fix memory leaks and undefined behavior."
+msgstr "虽然从技术上讲它们是公开可访问的，但人们不太可能直接使用它们。因此，我们决定破坏API以修复内存泄漏和未定义行为。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:145
 msgid "The fix was originally submitted in `rmw_fastrtps#429 <https://github.com/ros2/rmw_fastrtps/pull/429>`_ and later backported to Foxy in `rmw_fastrtps#577 <https://github.com/ros2/rmw_fastrtps/pull/577>`_."
-msgstr "The fix was originally submitted in `rmw_fastrtps#429 <https://github.com/ros2/rmw_fastrtps/pull/429>`_ and later backported to Foxy in `rmw_fastrtps#577 <https://github.com/ros2/rmw_fastrtps/pull/577>`_."
+msgstr "修复最初在 `rmw_fastrtps#429 <https://github.com/ros2/rmw_fastrtps/pull/429>`_ 提交，并后来被回溯到Foxy中的 `rmw_fastrtps#577 <https://github.com/ros2/rmw_fastrtps/pull/577>`_。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:148
 msgid "Changes in Patch Release 2 (2020-08-07)"
-msgstr "Changes in Patch Release 2 (2020-08-07)"
+msgstr "Patch版本2的更改（2020-08-07）"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:151
 msgid "Bug in static_transform_publisher"
-msgstr "Bug in static_transform_publisher"
+msgstr "static_transform_publisher中的错误"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:152
 msgid "During the development of Foxy, a bug was introduced into the tf2_ros static_transform_publisher program. The implementation of the order of the Euler angles passed to static_transform_publisher disagrees with the documentation. Foxy patch release 2 `fixes <https://github.com/ros2/geometry2/pull/296>`_ the order so that the implementation agrees with the documentation (yaw, pitch, roll). For users who have started using the initial Foxy release or patch release 1, this means that any launch files that use static_transform_publisher will have to have the command-line order swapped according to the new order. For users who are coming from ROS 2 Dashing, ROS 2 Eloquent, or ROS 1, no changes need to be made to port to Foxy patch release 2."
-msgstr "During the development of Foxy, a bug was introduced into the tf2_ros static_transform_publisher program. The implementation of the order of the Euler angles passed to static_transform_publisher disagrees with the documentation. Foxy patch release 2 `fixes <https://github.com/ros2/geometry2/pull/296>`_ the order so that the implementation agrees with the documentation (yaw, pitch, roll). For users who have started using the initial Foxy release or patch release 1, this means that any launch files that use static_transform_publisher will have to have the command-line order swapped according to the new order. For users who are coming from ROS 2 Dashing, ROS 2 Eloquent, or ROS 1, no changes need to be made to port to Foxy patch release 2."
+msgstr "在Foxy的开发过程中，tf2_ros的static_transform_publisher程序引入了一个错误。传递给static_transform_publisher的欧拉角顺序的实现与文档不一致。Foxy的Patch版本2通过`修复 <https://github.com/ros2/geometry2/pull/296>`_ 顺序，使其与文档一致（偏航角、俯仰角、翻滚角）。对于已经开始使用初始版本或Patch版本1的用户，这意味着使用static_transform_publisher的任何启动文件都必须根据新的顺序交换命令行顺序。对于从ROS 2 Dashing、ROS 2 Eloquent或ROS 1迁移的用户，无需进行任何更改即可迁移到Foxy的Patch版本2。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:159
 msgid "Changes since the Eloquent release"
-msgstr "Changes since the Eloquent release"
+msgstr "自Eloquent版本以来的更改"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:162
 msgid "Classic CMake vs. modern CMake"
-msgstr "Classic CMake vs. modern CMake"
+msgstr "经典的CMake与现代的CMake对比"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:164
 msgid "In \"classic\" CMake a package provides CMake variables like ``<pkgname>_INCLUDE_DIRS`` and ``<pkgname>_LIBRARIES`` when being ``find_package()``-ed. With ``ament_cmake`` that is achieved by calling ``ament_export_include_directories`` and ``ament_export_libraries``. In combination with ``ament_export_dependencies``, ``ament_cmake`` ensures that all include directories and libraries of recursive dependencies are concatenated and included in these variables."
-msgstr "In \"classic\" CMake a package provides CMake variables like ``<pkgname>_INCLUDE_DIRS`` and ``<pkgname>_LIBRARIES`` when being ``find_package()``-ed. With ``ament_cmake`` that is achieved by calling ``ament_export_include_directories`` and ``ament_export_libraries``. In combination with ``ament_export_dependencies``, ``ament_cmake`` ensures that all include directories and libraries of recursive dependencies are concatenated and included in these variables."
+msgstr "在“经典”CMake中，当一个软件包被使用``find_package()``命令查找时，它会提供CMake变量，例如``<pkgname>_INCLUDE_DIRS``和``<pkgname>_LIBRARIES``。而使用``ament_cmake``时，可以通过调用``ament_export_include_directories``和``ament_export_libraries``来实现这一点。结合``ament_export_dependencies``使用，``ament_cmake``确保所有递归依赖的包含目录和库都被连接并包含在这些变量中。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:168
 msgid "In \"modern\" CMake a package provides an interface target instead (commonly named ``<pkgname>::<pkgname>``) which in itself encapsulates all recursive dependencies. In order to export a library target to use modern CMake ``ament_export_targets`` needs to be called with an export name which is also used when installing the libraries using ``install(TARGETS <libA> <libB> EXPORT <export_name> ...)``. The exported interface targets are available through the CMake variable ``<pkgname>_TARGETS``. For library targets to be exportable like this they must not rely on classic functions affecting global state like ``include_directories()`` but set the include directories on the target itself - for the build as well as install environment - using generator expressions, e.g. ``target_include_directories(<target> PUBLIC \"$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>\" \"$<INSTALL_INTERFACE:include>\")``."
-msgstr "In \"modern\" CMake a package provides an interface target instead (commonly named ``<pkgname>::<pkgname>``) which in itself encapsulates all recursive dependencies. In order to export a library target to use modern CMake ``ament_export_targets`` needs to be called with an export name which is also used when installing the libraries using ``install(TARGETS <libA> <libB> EXPORT <export_name> ...)``. The exported interface targets are available through the CMake variable ``<pkgname>_TARGETS``. For library targets to be exportable like this they must not rely on classic functions affecting global state like ``include_directories()`` but set the include directories on the target itself - for the build as well as install environment - using generator expressions, e.g. ``target_include_directories(<target> PUBLIC \"$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>\" \"$<INSTALL_INTERFACE:include>\")``."
+msgstr "在“现代”CMake中，软件包提供一个接口目标（通常命名为``<pkgname>::<pkgname>``），该接口目标本身封装了所有递归依赖项。为了导出一个库目标以使用现代CMake，需要使用``ament_export_targets``并提供一个导出名称，在使用``install(TARGETS <libA> <libB> EXPORT <export_name> ...)``安装库时也使用相同的导出名称。导出的接口目标可以通过CMake变量``<pkgname>_TARGETS``进行访问。为了使库目标能够以这种方式导出，它们不能依赖于影响全局状态的经典函数，如``include_directories()``，而是在目标本身上设置包含目录 - 用于构建环境和安装环境 - 使用生成器表达式，例如``target_include_directories(<target> PUBLIC \"$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>\" \"$<INSTALL_INTERFACE:include>\")``。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:173
 msgid "When ``ament_target_dependencies`` is used to add dependencies to a library target the function uses modern CMake targets when they are available. Otherwise it falls back to using classic CMake variables. As a consequence you should only export modern CMake targets if all dependencies are also providing modern CMake targets. **Otherwise the exported interface target will contain the absolute paths to include directories / libraries in the generated CMake logic which makes the package non-relocatable.**"
-msgstr "When ``ament_target_dependencies`` is used to add dependencies to a library target the function uses modern CMake targets when they are available. Otherwise it falls back to using classic CMake variables. As a consequence you should only export modern CMake targets if all dependencies are also providing modern CMake targets. **Otherwise the exported interface target will contain the absolute paths to include directories / libraries in the generated CMake logic which makes the package non-relocatable.**"
+msgstr "当使用``ament_target_dependencies``将依赖项添加到库目标时，该函数将使用现代CMake目标（如果可用）。否则，它将退回到使用经典CMake变量。因此，只有在所有依赖项也提供现代CMake目标时，才应导出现代CMake目标。**否则，导出的接口目标将包含在生成的CMake逻辑中的包含目录/库的绝对路径，使得软件包无法重定位。**"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:178
 msgid "For examples how packages have been updated to modern CMake in Foxy see `ros2/ros2#904 <https://github.com/ros2/ros2/issues/904>`_."
-msgstr "For examples how packages have been updated to modern CMake in Foxy see `ros2/ros2#904 <https://github.com/ros2/ros2/issues/904>`_."
+msgstr "有关在Foxy中将软件包更新为现代CMake的示例，请参见`ros2/ros2#904 <https://github.com/ros2/ros2/issues/904>`_。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:181
 msgid "ament_export_interfaces replaced by ament_export_targets"
-msgstr "ament_export_interfaces replaced by ament_export_targets"
+msgstr "ament_export_interfaces被ament_export_targets取代"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:183
 msgid "The CMake function ``ament_export_interfaces`` from the package ``ament_cmake_export_interfaces`` has been deprecated in favor of the function ``ament_export_targets`` in the new package ``ament_cmake_export_targets``. See the GitHub ticket `ament/ament_cmake#237 <https://github.com/ament/ament_cmake/issues/237>`_ for more context."
-msgstr "The CMake function ``ament_export_interfaces`` from the package ``ament_cmake_export_interfaces`` has been deprecated in favor of the function ``ament_export_targets`` in the new package ``ament_cmake_export_targets``. See the GitHub ticket `ament/ament_cmake#237 <https://github.com/ament/ament_cmake/issues/237>`_ for more context."
+msgstr "包``ament_cmake_export_interfaces``中的CMake函数``ament_export_interfaces``已被弃用，建议使用新包``ament_cmake_export_targets``中的函数``ament_export_targets``。有关更多信息，请参见GitHub工单`ament/ament_cmake#237 <https://github.com/ament/ament_cmake/issues/237>`_。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:187
 msgid "rosidl_generator_c|cpp namespace / API changes"
-msgstr "rosidl_generator_c|cpp namespace / API changes"
+msgstr "rosidl_generator_c|cpp 命名空间/API更改"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:189
 msgid "The packages ``rosidl_generator_c`` and ``rosidl_generator_cpp`` have been refactored with many headers and sources moved into the new packages ``rosidl_runtime_c`` and ``rosidl_runtime_cpp``. The intention is to remove run dependencies on the generator packages and therefore the code generation tools using Python. While moving the headers the include paths / namespaces were updated accordingly so in many cases changing include directives from the generator package to the runtime package is sufficient."
-msgstr "The packages ``rosidl_generator_c`` and ``rosidl_generator_cpp`` have been refactored with many headers and sources moved into the new packages ``rosidl_runtime_c`` and ``rosidl_runtime_cpp``. The intention is to remove run dependencies on the generator packages and therefore the code generation tools using Python. While moving the headers the include paths / namespaces were updated accordingly so in many cases changing include directives from the generator package to the runtime package is sufficient."
+msgstr "包``rosidl_generator_c``和``rosidl_generator_cpp``已进行了重构，许多头文件和源文件被移动到新包``rosidl_runtime_c``和``rosidl_runtime_cpp``中。目的是消除对生成器包的运行依赖，因此移除使用Python的代码生成工具。在移动头文件时，相应的包含路径和命名空间已进行了更新，因此在许多情况下，将包含指令从生成器包更改为运行时包即可。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:193
 msgid "The generated C / C++ code has also been refactored. The files ending in ``__struct.h|hpp``, ``__functions.h``, ``__traits.hpp``, etc. have been moved into a subdirectory ``detail`` but most code only includes the header named after the interface without any of these suffixes."
-msgstr "The generated C / C++ code has also been refactored. The files ending in ``__struct.h|hpp``, ``__functions.h``, ``__traits.hpp``, etc. have been moved into a subdirectory ``detail`` but most code only includes the header named after the interface without any of these suffixes."
+msgstr "生成的C / C++代码也已进行了重构。以``__struct.h|hpp``、``__functions.h``、``__traits.hpp``等结尾的文件已移动到子目录``detail``中，但大多数代码只包含与接口同名的头文件，不包含这些后缀。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:196
 msgid "Some types regarding string and sequence bounds have also been renamed to match the naming conventions but they aren't expected to be used in user code (above RMW implementation and type support packages)"
-msgstr "Some types regarding string and sequence bounds have also been renamed to match the naming conventions but they aren't expected to be used in user code (above RMW implementation and type support packages)"
+msgstr "一些涉及字符串和序列边界的类型也已重命名以符合命名约定，但不希望在用户代码中使用（超过了RMW实现和类型支持包）。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:198
 msgid "For more information see `ros2/rosidl#446 (for C) <https://github.com/ros2/rosidl/issues/446>`_ and `ros2/rosidl#447 (for C++) <https://github.com/ros2/rosidl/issues/447>`_."
-msgstr "For more information see `ros2/rosidl#446 (for C) <https://github.com/ros2/rosidl/issues/446>`_ and `ros2/rosidl#447 (for C++) <https://github.com/ros2/rosidl/issues/447>`_."
+msgstr "有关更多信息，请参见`ros2/rosidl#446（用于C）<https://github.com/ros2/rosidl/issues/446>`_和`ros2/rosidl#447（用于C++）<https://github.com/ros2/rosidl/issues/447>`_。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:201
 msgid "Default working directory for ament_add_test"
-msgstr "Default working directory for ament_add_test"
+msgstr "ament_add_test的默认工作目录"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:203
 msgid "The default working directory for tests added with ``ament_add_test`` has been changed to ``CMAKE_CURRENT_BINARY_DIR`` to match the behavior of CMake ``add_test``. Either update the tests to work with the new default or pass ``WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}`` to restore the previous value."
-msgstr "The default working directory for tests added with ``ament_add_test`` has been changed to ``CMAKE_CURRENT_BINARY_DIR`` to match the behavior of CMake ``add_test``. Either update the tests to work with the new default or pass ``WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}`` to restore the previous value."
+msgstr "使用``ament_add_test``添加的测试的默认工作目录已更改为``CMAKE_CURRENT_BINARY_DIR``，以匹配CMake的``add_test``行为。要么更新测试以适应新的默认值，要么传递``WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}``以恢复先前的值。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:207
 msgid "Default Console Logging Format"
-msgstr "Default Console Logging Format"
+msgstr "默认控制台日志格式"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:209
 msgid "The default console logging output format was changed to include the timestamp by default, see:"
-msgstr "The default console logging output format was changed to include the timestamp by default, see:"
+msgstr "默认控制台日志输出格式已更改，默认情况下包括时间戳，请参阅："
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:211
 msgid "`https://github.com/ros2/rcutils/pull/190 <https://github.com/ros2/rcutils/pull/190>`_"
-msgstr "`https://github.com/ros2/rcutils/pull/190 <https://github.com/ros2/rcutils/pull/190>`_"
+msgstr "[https://github.com/ros2/rcutils/pull/190](https://github.com/ros2/rcutils/pull/190)"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:212
 msgid "`https://discourse.ros.org/t/ros2-logging-format/11549 <https://discourse.ros.org/t/ros2-logging-format/11549>`_"
-msgstr "`https://discourse.ros.org/t/ros2-logging-format/11549 <https://discourse.ros.org/t/ros2-logging-format/11549>`_"
+msgstr "[https://discourse.ros.org/t/ros2-logging-format/11549](https://discourse.ros.org/t/ros2-logging-format/11549)"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:215
