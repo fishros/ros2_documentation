@@ -35260,32 +35260,32 @@ msgstr "用户必须指定*所有*的参数，即使只设置一个数字"
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:875
 msgid "Reading the command-line to figure out what it was publishing was tricky"
-msgstr "Reading the command-line to figure out what it was publishing was tricky"
+msgstr "阅读命令行以确定它发布的内容是困难的"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:877
 msgid "To fix both of these issues, the command-line handling has been changed to use flags instead, and all flags except for ``--frame-id`` and ``--child-frame-id`` are optional. Thus, the above command-line can be simplified to: ``ros2 run tf2_ros static_transform_publisher --frame-id foo --child-frame-id bar`` To change just the translation x, the command-line would be: ``ros2 run tf2_ros static_transform_publisher --x 1.5 --frame-id foo --child-frame-id bar``."
-msgstr "To fix both of these issues, the command-line handling has been changed to use flags instead, and all flags except for ``--frame-id`` and ``--child-frame-id`` are optional. Thus, the above command-line can be simplified to: ``ros2 run tf2_ros static_transform_publisher --frame-id foo --child-frame-id bar`` To change just the translation x, the command-line would be: ``ros2 run tf2_ros static_transform_publisher --x 1.5 --frame-id foo --child-frame-id bar``."
+msgstr "为了解决这两个问题，命令行处理方式已更改为使用标志，并且除了``--frame-id``和``--child-frame-id``之外的所有标志都是可选的。因此，上述命令行可以简化为：``ros2 run tf2_ros static_transform_publisher --frame-id foo --child-frame-id bar`` 要仅更改平移 x，命令行将是：``ros2 run tf2_ros static_transform_publisher --x 1.5 --frame-id foo --child-frame-id bar``。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:881
 msgid "The old-style arguments are still allowed in this release, but are deprecated and will print a warning. They will be removed in future releases. See https://github.com/ros2/geometry2/pull/392 for more details."
-msgstr "The old-style arguments are still allowed in this release, but are deprecated and will print a warning. They will be removed in future releases. See https://github.com/ros2/geometry2/pull/392 for more details."
+msgstr "在此版本中仍允许使用旧式参数，但已被弃用并将打印警告。它们将在未来的版本中移除。更多详细信息，请参阅 `https://github.com/ros2/geometry2/pull/392 <https://github.com/ros2/geometry2/pull/392>`_。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:886
 msgid "Transform listener spin thread no longer executes node callbacks"
-msgstr "Transform listener spin thread no longer executes node callbacks"
+msgstr "变换监听器的自旋线程不再执行节点回调"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:888
 msgid "``tf2_ros::TransformListener`` no longer spins on the provided node object. Instead, it creates a callback group to execute callbacks on the entities it creates internally. This means if you have set the parameter ``spin_thread=true`` when creating a transform listener, you can no longer depend on your own callbacks to be executed. You must call a ``spin`` function on your node (e.g. ``rclcpp::spin``), or add your node to your own executor."
-msgstr "``tf2_ros::TransformListener`` no longer spins on the provided node object. Instead, it creates a callback group to execute callbacks on the entities it creates internally. This means if you have set the parameter ``spin_thread=true`` when creating a transform listener, you can no longer depend on your own callbacks to be executed. You must call a ``spin`` function on your node (e.g. ``rclcpp::spin``), or add your node to your own executor."
+msgstr "``tf2_ros::TransformListener`` 不再在提供的节点对象上自旋。相反，它创建一个回调组以在内部创建的实体上执行回调。这意味着如果在创建变换监听器时设置了参数 ``spin_thread=true``，您不能再依赖于自己的回调函数被执行。您必须在节点上调用 ``spin`` 函数（例如 ``rclcpp::spin``），或将节点添加到自己的执行器中。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:894
 msgid "Related pull request: `geometry2#442 <https://github.com/ros2/geometry2/pull/442>`_"
-msgstr "Related pull request: `geometry2#442 <https://github.com/ros2/geometry2/pull/442>`_"
+msgstr "相关拉取请求：`geometry2#442 <https://github.com/ros2/geometry2/pull/442>`_"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:897
@@ -35295,27 +35295,27 @@ msgstr "rosbag2"
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:900 ../../source/Releases/Release-Iron-Irwini.rst:727
 msgid "New playback and recording controls"
-msgstr "New playback and recording controls"
+msgstr "新的回放和录制控制"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:902
 msgid "Several pull requests have been added to enhance the user's control over playback of bags. Pull request `931 <https://github.com/ros2/rosbag2/pull/931>`_ adds the ability to specify a time stamp to begin playing from. Due to pull request `789 <https://github.com/ros2/rosbag2/pull/789>`_ it is now possible to delay the start of playback by a specified interval."
-msgstr "Several pull requests have been added to enhance the user's control over playback of bags. Pull request `931 <https://github.com/ros2/rosbag2/pull/931>`_ adds the ability to specify a time stamp to begin playing from. Due to pull request `789 <https://github.com/ros2/rosbag2/pull/789>`_ it is now possible to delay the start of playback by a specified interval."
+msgstr "已经添加了几个拉取请求来增强用户对包回放的控制能力。拉取请求 `931 <https://github.com/ros2/rosbag2/pull/931>`_ 添加了指定开始播放时间戳的功能。由于拉取请求 `789 <https://github.com/ros2/rosbag2/pull/789>`_，现在可以通过指定的时间间隔延迟回放的开始。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:906
 msgid "Relatedly, ``rosbag2`` has gained new ways for users to control playback as it is happening. Pull request `847 <https://github.com/ros2/rosbag2/pull/847>`_ adds keyboard controls for pausing, resuming, and playing the next message during playback from a terminal. It is also possible to start playback paused thanks to pull requests `905 <https://github.com/ros2/rosbag2/pull/905>`_ and `904 <https://github.com/ros2/rosbag2/pull/904>`_, which makes it easy for the user to initiate playback and then step through messages, such as when debugging a pipeline. Pull request `836 <https://github.com/ros2/rosbag2/pull/836>`_ adds an interface for seeking within bags, allowing the user to move around within a bag during playback."
-msgstr "Relatedly, ``rosbag2`` has gained new ways for users to control playback as it is happening. Pull request `847 <https://github.com/ros2/rosbag2/pull/847>`_ adds keyboard controls for pausing, resuming, and playing the next message during playback from a terminal. It is also possible to start playback paused thanks to pull requests `905 <https://github.com/ros2/rosbag2/pull/905>`_ and `904 <https://github.com/ros2/rosbag2/pull/904>`_, which makes it easy for the user to initiate playback and then step through messages, such as when debugging a pipeline. Pull request `836 <https://github.com/ros2/rosbag2/pull/836>`_ adds an interface for seeking within bags, allowing the user to move around within a bag during playback."
+msgstr "与此相关的是，``rosbag2`` 已经增加了用户在回放过程中控制的新方法。拉取请求 `847 <https://github.com/ros2/rosbag2/pull/847>`_ 在终端上为暂停、恢复和播放下一条消息添加了键盘控制功能。还可以通过拉取请求 `905 <https://github.com/ros2/rosbag2/pull/905>`_ 和 `904 <https://github.com/ros2/rosbag2/pull/904>`_ 以暂停状态启动回放，这使得用户可以方便地启动回放，然后逐条消息进行调试，例如在调试管道时。拉取请求 `836 <https://github.com/ros2/rosbag2/pull/836>`_ 添加了一个在包内进行寻址的接口，允许用户在回放过程中在包内进行移动。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:911
 msgid "Finally, a new snapshot mode has been added to recording in pull request `851 <https://github.com/ros2/rosbag2/pull/851>`_. This mode, useful for incident recording, allows recording to begin filling up buffers, but not begin writing data to disc until a service is called."
-msgstr "Finally, a new snapshot mode has been added to recording in pull request `851 <https://github.com/ros2/rosbag2/pull/851>`_. This mode, useful for incident recording, allows recording to begin filling up buffers, but not begin writing data to disc until a service is called."
+msgstr "最后，录制中添加了一种新的快照模式，通过拉取请求 `851 <https://github.com/ros2/rosbag2/pull/851>`_ 实现。这种模式对于事件记录很有用，它允许录制开始填充缓冲区，但在调用服务之前不开始写入数据到磁盘。"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:915
 msgid "Burst-mode playback"
-msgstr "Burst-mode playback"
+msgstr "突发模式回放"
 
 
 #: ../../source/Releases/Release-Humble-Hawksbill.rst:917
