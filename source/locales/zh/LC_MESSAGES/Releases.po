@@ -35620,62 +35620,62 @@ msgstr "发布者：当它找到与主题匹配且具有兼容QoS的订阅，或
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:120
 msgid "subscription: this event happens when it finds a publisher which matches the topic and has compatible QoS or a connected publisher is disconnected."
-msgstr "subscription: this event happens when it finds a publisher which matches the topic and has compatible QoS or a connected publisher is disconnected."
+msgstr "订阅：当它找到与主题匹配且具有兼容QoS的发布者，或者已连接的发布者断开连接时，会发生此事件。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:122
 msgid "See the tracking issue at https://github.com/ros2/rmw/issues/330 for more information."
-msgstr "See the tracking issue at https://github.com/ros2/rmw/issues/330 for more information."
+msgstr "有关更多信息，请参阅https://github.com/ros2/rmw/issues/330上的跟踪问题。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:124
 msgid "C++ Demo of Matched Events: https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp"
-msgstr "C++ Demo of Matched Events: https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp"
+msgstr "匹配事件的C++演示：https://github.com/ros2/demos/blob/iron/demo_nodes_cpp/src/events/matched_event_detect.cpp"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:125
 msgid "Python Demo of Matched Events: https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py"
-msgstr "Python Demo of Matched Events: https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py"
+msgstr "匹配事件的Python演示：https://github.com/ros2/demos/blob/iron/demo_nodes_py/demo_nodes_py/events/matched_event_detect.py"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:128
 msgid "External configuration services of loggers"
-msgstr "External configuration services of loggers"
+msgstr "日志记录器的外部配置服务"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:130
 msgid "It is now possible to configure node logger levels remotely via a service. When the ``enable_logger_service`` option is enabled during node creation, the ``set_logger_levels`` and ``get_logger_levels`` services will be available."
-msgstr "It is now possible to configure node logger levels remotely via a service. When the ``enable_logger_service`` option is enabled during node creation, the ``set_logger_levels`` and ``get_logger_levels`` services will be available."
+msgstr "现在可以通过服务远程配置节点记录器级别。在节点创建过程中启用``enable_logger_service``选项后，``set_logger_levels``和``get_logger_levels``服务将可用。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:133
 msgid "Be advised that the ``enable_logger_service`` option is disabled by default, so the user needs to enable this option on node creation."
-msgstr "Be advised that the ``enable_logger_service`` option is disabled by default, so the user needs to enable this option on node creation."
+msgstr "请注意，默认情况下禁用了``enable_logger_service``选项，因此用户需要在节点创建时启用此选项。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:135
 msgid "See https://github.com/ros2/ros2/issues/1355 for more information."
-msgstr "See https://github.com/ros2/ros2/issues/1355 for more information."
+msgstr "请参阅 https://github.com/ros2/ros2/issues/1355 了解更多信息。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:138
 msgid "Type Description Distribution"
-msgstr "Type Description Distribution"
+msgstr "类型 描述 发行版"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:140
 msgid "It is now possible to communicate information about the types of ROS 2 messages, so that systems with potentially-different types of the same name may discover their compatibility more transparently. This umbrella of capabilities, which is defined by a subset of REP-2011: Evolving Message Types, has had many parts land in Iron."
-msgstr "It is now possible to communicate information about the types of ROS 2 messages, so that systems with potentially-different types of the same name may discover their compatibility more transparently. This umbrella of capabilities, which is defined by a subset of REP-2011: Evolving Message Types, has had many parts land in Iron."
+msgstr "现在可以传递有关ROS 2消息类型的信息，以便具有潜在不同类型但名称相同的系统可以更透明地发现它们的兼容性。这个能力集由REP-2011的一个子集定义：Evolving Message Types，在Iron中已经有了许多部分的进展。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:143
 msgid "First, the introduction of the new package `type_description_interfaces <https://index.ros.org/p/type_description_interfaces/github-ros2-rcl_interfaces/#iron>`__ provides a common way to communicate the descriptions of ROS 2 communication interface types (msg, srv, action)."
-msgstr "First, the introduction of the new package `type_description_interfaces <https://index.ros.org/p/type_description_interfaces/github-ros2-rcl_interfaces/#iron>`__ provides a common way to communicate the descriptions of ROS 2 communication interface types (msg, srv, action)."
+msgstr "首先，新包 `type_description_interfaces <https://index.ros.org/p/type_description_interfaces/github-ros2-rcl_interfaces/#iron>`__ 的引入提供了一种通用的方式来传递ROS 2通信接口类型（msg、srv、action）的描述。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:145
 msgid "Next, a method to hash type descriptions has been decided on, the ROS Interface Hashing Standard (RIHS) - starting with the first version RIHS01. RIHS hashes are automatically calculated for all compiled ROS types at build time, and baked into the generated code so that they can be inspected. These hashes are also communicated automatically during discovery, and included in ``rmw_topic_endpoint_info_t`` for graph introspection queries such as ``get_publishers_info_by_topic``."
-msgstr "Next, a method to hash type descriptions has been decided on, the ROS Interface Hashing Standard (RIHS) - starting with the first version RIHS01. RIHS hashes are automatically calculated for all compiled ROS types at build time, and baked into the generated code so that they can be inspected. These hashes are also communicated automatically during discovery, and included in ``rmw_topic_endpoint_info_t`` for graph introspection queries such as ``get_publishers_info_by_topic``."
+msgstr "接下来，已经确定了一种哈希类型描述的方法，即ROS Interface Hashing Standard（RIHS）- 从第一个版本RIHS01开始。RIHS哈希在构建时自动计算所有已编译的ROS类型，并嵌入到生成的代码中以供检查。这些哈希值也在发现过程中自动传递，并包含在``rmw_topic_endpoint_info_t``中，用于图形内省查询，例如``get_publishers_info_by_topic``。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:149
