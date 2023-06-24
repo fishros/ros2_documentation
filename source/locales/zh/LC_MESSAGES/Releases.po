@@ -31757,47 +31757,47 @@ msgstr "有关实际行为变更的详细信息，请参阅上面的`声明参�
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:579
 msgid "These are the new API methods available in ``rclpy.node.Node`` interface:"
-msgstr "These are the new API methods available in ``rclpy.node.Node`` interface:"
+msgstr "这些是 ``rclpy.node.Node`` 接口中的新 API 方法："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:581
 msgid "To declare parameters given a name, an optional default value (supported by ``rcl_interfaces.msg.ParameterValue``) and an optional descriptor, returning the value actually set:"
-msgstr "To declare parameters given a name, an optional default value (supported by ``rcl_interfaces.msg.ParameterValue``) and an optional descriptor, returning the value actually set:"
+msgstr "通过给定名称、可选的默认值（由 ``rcl_interfaces.msg.ParameterValue`` 支持）和可选的描述符来声明参数，并返回实际设置的值："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:600
 msgid "To undeclare previously declared parameters and to check if a parameter has been declared beforehand:"
-msgstr "To undeclare previously declared parameters and to check if a parameter has been declared beforehand:"
+msgstr "取消之前声明的参数并检查参数是否已经声明："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:608
 msgid "To get and set parameter descriptors:"
-msgstr "To get and set parameter descriptors:"
+msgstr "获取和设置参数描述符："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:622
 msgid "A convenience method to get parameters that may not have been declared:"
-msgstr "A convenience method to get parameters that may not have been declared:"
+msgstr "一个便利方法来获取可能尚未声明的参数："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:629 ../../source/Releases/Release-Humble-Hawksbill.rst:944 ../../source/Releases/Release-Iron-Irwini.rst:767
 msgid "Other changes"
-msgstr "Other changes"
+msgstr "其他变化"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:631
 msgid "``rclpy.parameter.Parameter`` can now guess its type without explicitly setting it (as long as it's one of the supported ones by ``rcl_interfaces.msg.ParameterValue``). For example, this code:"
-msgstr "``rclpy.parameter.Parameter`` can now guess its type without explicitly setting it (as long as it's one of the supported ones by ``rcl_interfaces.msg.ParameterValue``). For example, this code:"
+msgstr "现在``rclpy.parameter.Parameter``可以在没有显式设置类型的情况下猜测类型（只要它是由``rcl_interfaces.msg.ParameterValue``支持的类型之一）。例如，以下代码："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:638
 msgid "Is equivalent to this code:"
-msgstr "Is equivalent to this code:"
+msgstr "等效于以下代码："
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:644
 msgid "This change does not break existing API."
-msgstr "This change does not break existing API."
+msgstr "这个更改不会破坏现有的API。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:647
@@ -31807,12 +31807,12 @@ msgstr "rosidl"
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:649
 msgid "Until Crystal each message generator package registered itself using the ``ament_cmake`` extension point ``rosidl_generate_interfaces`` and was passed a set of ``.msg`` / ``.srv`` / ``.action`` files. As of Dashing the message generation pipeline is based on ``.idl`` files instead."
-msgstr "Until Crystal each message generator package registered itself using the ``ament_cmake`` extension point ``rosidl_generate_interfaces`` and was passed a set of ``.msg`` / ``.srv`` / ``.action`` files. As of Dashing the message generation pipeline is based on ``.idl`` files instead."
+msgstr "在Crystal版本之前，每个消息生成器包都会使用``ament_cmake``扩展点``rosidl_generate_interfaces``注册自己，并传递一组``.msg``/``.srv``/``.action``文件。从Dashing版本开始，消息生成流程基于``.idl``文件。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:652
 msgid "Any message generator package needs to change and register itself using the new extension point ``rosidl_generate_idl_interfaces`` which passes only ``.idl`` files instead. The message generators for the commonly supported languages C, C++, and Python as well as the typesupport packages for introspection, Fast RTPS, Connext and OpenSplice have already been updated (see `ros2/rosidl#334 <https://github.com/ros2/rosidl/pull/334/files>`__). The CMake code calling ``rosidl_generate_interfaces()`` can either pass ``.idl`` files directly or pass ``.msg`` / ``.srv`` / ``.action`` which will then internally be converted into ``.idl`` files before being passed to each message generator."
-msgstr "Any message generator package needs to change and register itself using the new extension point ``rosidl_generate_idl_interfaces`` which passes only ``.idl`` files instead. The message generators for the commonly supported languages C, C++, and Python as well as the typesupport packages for introspection, Fast RTPS, Connext and OpenSplice have already been updated (see `ros2/rosidl#334 <https://github.com/ros2/rosidl/pull/334/files>`__). The CMake code calling ``rosidl_generate_interfaces()`` can either pass ``.idl`` files directly or pass ``.msg`` / ``.srv`` / ``.action`` which will then internally be converted into ``.idl`` files before being passed to each message generator."
+msgstr "任何消息生成器包都需要更改并使用新的扩展点``rosidl_generate_idl_interfaces``进行注册，该扩展点仅传递``.idl``文件。已经更新了用于常见支持语言C、C++和Python的消息生成器，以及用于内省、Fast RTPS、Connext和OpenSplice的类型支持包（请参阅`ros2/rosidl#334 <https://github.com/ros2/rosidl/pull/334/files>`__）。调用``rosidl_generate_interfaces()``的CMake代码可以直接传递``.idl``文件，也可以传递``.msg``/``.srv``/``.action``文件，这些文件在传递给每个消息生成器之前将被内部转换为``.idl``文件。"
 
 
 #: ../../source/Releases/Release-Dashing-Diademata.rst:656
