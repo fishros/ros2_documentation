@@ -32945,52 +32945,52 @@ msgstr "`https://github.com/ros2/ros1_bridge/pull/253/files <https://github.com/
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:271
 msgid "Change in Serialized Message Callback Signature"
-msgstr "Change in Serialized Message Callback Signature"
+msgstr "序列化消息回调签名的更改"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:273
 msgid "The pull request `ros2/rclcpp#1081 <https://github.com/ros2/rclcpp/pull/1081>`_ introduces a new signature of the callbacks for retrieving ROS messages in serialized form. The previously used C-Struct `rcl_serialized_message_t <https://github.com/ros2/rmw/blob/foxy/rmw/include/rmw/serialized_message.h>`_ is being superseded by a C++ data type `rclcpp::SerializedMessage <https://github.com/ros2/rclcpp/blob/foxy/rclcpp/include/rclcpp/serialized_message.hpp>`_."
-msgstr "The pull request `ros2/rclcpp#1081 <https://github.com/ros2/rclcpp/pull/1081>`_ introduces a new signature of the callbacks for retrieving ROS messages in serialized form. The previously used C-Struct `rcl_serialized_message_t <https://github.com/ros2/rmw/blob/foxy/rmw/include/rmw/serialized_message.h>`_ is being superseded by a C++ data type `rclcpp::SerializedMessage <https://github.com/ros2/rclcpp/blob/foxy/rclcpp/include/rclcpp/serialized_message.hpp>`_."
+msgstr "拉取请求 `ros2/rclcpp#1081 <https://github.com/ros2/rclcpp/pull/1081>`_ 引入了一种新的回调签名，用于检索序列化形式的ROS消息。先前使用的 C 结构体 `rcl_serialized_message_t <https://github.com/ros2/rmw/blob/foxy/rmw/include/rmw/serialized_message.h>`_ 被 C++ 数据类型 `rclcpp::SerializedMessage <https://github.com/ros2/rclcpp/blob/foxy/rclcpp/include/rclcpp/serialized_message.hpp>`_ 取代。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:276
 msgid "The example nodes in ``demo_nodes_cpp``, namely ``talker_serialized_message`` as well as ``listener_serialized_message`` reflect these changes."
-msgstr "The example nodes in ``demo_nodes_cpp``, namely ``talker_serialized_message`` as well as ``listener_serialized_message`` reflect these changes."
+msgstr "``demo_nodes_cpp`` 中的示例节点，即 ``talker_serialized_message`` 和 ``listener_serialized_message`` 反映了这些更改。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:279
 msgid "Breaking change in Node Interface getters' signature"
-msgstr "Breaking change in Node Interface getters' signature"
+msgstr "节点接口获取器签名中的重大更改"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:281
 msgid "With pull request `ros2/rclcpp#1069 <https://github.com/ros2/rclcpp/pull/1069>`_, the signature of node interface getters has been modified to return shared ownership of node interfaces (i.e. an ``std::shared_ptr``) instead of a non-owning raw pointer. Required changes in downstream packages that relied on the previous signature are simple and straightforward: use the ``std::shared_ptr::get()`` method."
-msgstr "With pull request `ros2/rclcpp#1069 <https://github.com/ros2/rclcpp/pull/1069>`_, the signature of node interface getters has been modified to return shared ownership of node interfaces (i.e. an ``std::shared_ptr``) instead of a non-owning raw pointer. Required changes in downstream packages that relied on the previous signature are simple and straightforward: use the ``std::shared_ptr::get()`` method."
+msgstr "通过拉取请求 `ros2/rclcpp#1069 <https://github.com/ros2/rclcpp/pull/1069>`_，节点接口获取器的签名已被修改为返回节点接口的共享所有权（即 ``std::shared_ptr``），而不是非拥有的裸指针。依赖于先前签名的下游软件包所需的更改是简单而直接的：使用 ``std::shared_ptr::get()`` 方法。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:285
 msgid "Deprecate set_on_parameters_set_callback"
-msgstr "Deprecate set_on_parameters_set_callback"
+msgstr "弃用 set_on_parameters_set_callback"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:287
 msgid "Instead, use the ``rclcpp::Node`` methods ``add_on_set_parameters_callback`` and ``remove_on_set_parameters_callback`` for adding and removing functions that are called when parameters are set."
-msgstr "Instead, use the ``rclcpp::Node`` methods ``add_on_set_parameters_callback`` and ``remove_on_set_parameters_callback`` for adding and removing functions that are called when parameters are set."
+msgstr "相反，使用``rclcpp::Node``的``add_on_set_parameters_callback``和``remove_on_set_parameters_callback``方法来添加和删除在设置参数时调用的函数。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:289
 msgid "Related pull request: https://github.com/ros2/rclcpp/pull/1123"
-msgstr "Related pull request: https://github.com/ros2/rclcpp/pull/1123"
+msgstr "相关的拉取请求：https://github.com/ros2/rclcpp/pull/1123"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:292
 msgid "Breaking change in Publisher getter signature"
-msgstr "Breaking change in Publisher getter signature"
+msgstr "Publisher getter 签名的破坏性更改"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:294
 msgid "With pull request `ros2/rclcpp#1119 <https://github.com/ros2/rclcpp/pull/1119>`_, the signature of publisher handle getter has been modified to return shared ownership of the underlying rcl structure (i.e. an ``std::shared_ptr``) instead of a non-owning raw pointer. This was necessary to fix a segfault in certain circumstances. Required changes in downstream packages that relied on the previous signature are simple and straightforward: use the ``std::shared_ptr::get()`` method."
-msgstr "With pull request `ros2/rclcpp#1119 <https://github.com/ros2/rclcpp/pull/1119>`_, the signature of publisher handle getter has been modified to return shared ownership of the underlying rcl structure (i.e. an ``std::shared_ptr``) instead of a non-owning raw pointer. This was necessary to fix a segfault in certain circumstances. Required changes in downstream packages that relied on the previous signature are simple and straightforward: use the ``std::shared_ptr::get()`` method."
+msgstr "在拉取请求`ros2/rclcpp#1119 <https://github.com/ros2/rclcpp/pull/1119>`中，发布者句柄获取器的签名已修改为返回底层 rcl 结构的共享所有权（即``std::shared_ptr``），而不是非拥有原始指针。这是为了修复特定情况下的段错误而必要的。依赖于先前签名的下游软件包所需的更改是简单明了的：使用``std::shared_ptr::get()``方法。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:299 ../../source/Releases/Release-Galactic-Geochelone.rst:800
@@ -33000,37 +33000,37 @@ msgstr "rclcpp_action"
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:302
 msgid "Deprecate ClientGoalHandle::async_result()"
-msgstr "Deprecate ClientGoalHandle::async_result()"
+msgstr "弃用ClientGoalHandle::async_result()"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:304
 msgid "Using this API, it is possible to run into a race condition causing an exception to be thrown. Instead, prefer to use ``Client::async_get_result()``, which is safer."
-msgstr "Using this API, it is possible to run into a race condition causing an exception to be thrown. Instead, prefer to use ``Client::async_get_result()``, which is safer."
+msgstr "使用此API可能会遇到竞态条件，导致抛出异常。相反，请优先使用``Client::async_get_result()``，它更安全。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:307
 msgid "See `ros2/rclcpp#1120 <https://github.com/ros2/rclcpp/pull/1120>`_ and the connected issue for more info."
-msgstr "See `ros2/rclcpp#1120 <https://github.com/ros2/rclcpp/pull/1120>`_ and the connected issue for more info."
+msgstr "参见 `ros2/rclcpp#1120 <https://github.com/ros2/rclcpp/pull/1120>`_ 以及相关问题了解更多信息。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:313
 msgid "Support for multiple on parameter set callbacks"
-msgstr "Support for multiple on parameter set callbacks"
+msgstr "支持多个参数设置回调"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:315
 msgid "Use the ``Node`` methods ``add_on_set_parameters_callback`` and ``remove_on_set_parameters_callback`` for adding and removing functions that are called when parameters are set."
-msgstr "Use the ``Node`` methods ``add_on_set_parameters_callback`` and ``remove_on_set_parameters_callback`` for adding and removing functions that are called when parameters are set."
+msgstr "使用``Node``的方法``add_on_set_parameters_callback``和``remove_on_set_parameters_callback``来添加和移除在参数设置时调用的函数。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:317
 msgid "The method ``set_parameters_callback`` has been deprecated."
-msgstr "The method ``set_parameters_callback`` has been deprecated."
+msgstr "方法``set_parameters_callback``已被弃用。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:319
 msgid "Related pull requests: https://github.com/ros2/rclpy/pull/457, https://github.com/ros2/rclpy/pull/504"
-msgstr "Related pull requests: https://github.com/ros2/rclpy/pull/457, https://github.com/ros2/rclpy/pull/504"
+msgstr "相关的拉取请求: https://github.com/ros2/rclpy/pull/457, https://github.com/ros2/rclpy/pull/504"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:322
@@ -33040,22 +33040,22 @@ msgstr "rmw_connext_cpp"
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:325
 msgid "Connext 5.1 locator kinds compatibility mode"
-msgstr "Connext 5.1 locator kinds compatibility mode"
+msgstr "Connext 5.1定位器类型兼容模式"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:327
 msgid "Up to and including ``Eloquent``, ``rmw_connext_cpp`` was setting ``dds.transport.use_510_compatible_locator_kinds`` property to ``true``. This property is not being forced anymore, and shared transport communication between ``Foxy`` and previous releases will stop working. Logs similar to:"
-msgstr "Up to and including ``Eloquent``, ``rmw_connext_cpp`` was setting ``dds.transport.use_510_compatible_locator_kinds`` property to ``true``. This property is not being forced anymore, and shared transport communication between ``Foxy`` and previous releases will stop working. Logs similar to:"
+msgstr "在``Eloquent``版本及之前，``rmw_connext_cpp``会将``dds.transport.use_510_compatible_locator_kinds``属性设置为``true``。现在不再强制设置此属性，因此``Foxy``和之前版本之间的共享传输通信将停止工作。类似下面的日志将会出现:"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:339
 msgid "will be observed when this incompatibility happens."
-msgstr "will be observed when this incompatibility happens."
+msgstr "当发生此不兼容性时将会观察到。"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:341
 msgid "If compatibility is needed, it can be set up in an external QoS profiles files containing:"
-msgstr "If compatibility is needed, it can be set up in an external QoS profiles files containing:"
+msgstr "如果需要兼容性，可以在外部的QoS配置文件中进行设置，文件内容如下:"
 
 
 #: ../../source/Releases/Release-Foxy-Fitzroy.rst:358
