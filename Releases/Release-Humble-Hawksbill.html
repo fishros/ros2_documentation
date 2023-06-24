@@ -397,9 +397,9 @@
 <li><p><a class="reference internal" href="#rviz2" id="id39">rviz2</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#changes-since-the-galactic-release" id="id40">Changes since the Galactic release</a></p>
+<li><p><a class="reference internal" href="#changes-since-the-galactic-release" id="id40">自Galactic版本以来的更改。</a></p>
 <ul>
-<li><p><a class="reference internal" href="#c-headers-are-installed-in-a-subdirectory" id="id41">C++ headers are installed in a subdirectory</a></p></li>
+<li><p><a class="reference internal" href="#c-headers-are-installed-in-a-subdirectory" id="id41">C++头文件被安装在子目录中。</a></p></li>
 <li><p><a class="reference internal" href="#common-interfaces" id="id42">common_interfaces</a></p></li>
 <li><p><a class="reference internal" href="#rmw" id="id43">rmw</a></p></li>
 <li><p><a class="reference internal" href="#rmw-connextdds" id="id44">rmw_connextdds</a></p></li>
@@ -741,41 +741,34 @@
 <div class="section" id="rviz2">
 <h3><a class="toc-backref" href="#id39">rviz2</a><a class="headerlink" href="#rviz2" title="永久链接至标题"></a></h3>
 <div class="section" id="apply-textures-to-arbitrary-triangle-lists">
-<h4>Apply textures to arbitrary triangle lists<a class="headerlink" href="#apply-textures-to-arbitrary-triangle-lists" title="永久链接至标题"></a></h4>
-<p>We've added <a class="reference external" href="https://github.com/ros2/rviz/pull/719">the ability to apply textures defined via URI to arbitrary triangle lists using UV Coordinates</a>.
-Now we can create a gradient pull from a texture map instead of the default grayscale.
-This will enable complex coloring of markers.
-To use this, you should use the <code class="docutils literal notranslate"><span class="pre">visualization_msgs/Marker.msg</span></code> and fill the <code class="docutils literal notranslate"><span class="pre">texture_resource</span></code>, <code class="docutils literal notranslate"><span class="pre">texture</span></code>, <code class="docutils literal notranslate"><span class="pre">uv_coordinates</span></code> and <code class="docutils literal notranslate"><span class="pre">mesh_file</span></code> fields.
-You can find more information <a class="reference external" href="https://github.com/ros2/common_interfaces/pull/153">here</a>.</p>
+<h4>将纹理应用于任意三角形列表<a class="headerlink" href="#apply-textures-to-arbitrary-triangle-lists" title="永久链接至标题"></a></h4>
+<p>我们添加了“通过URI定义的纹理应用于任意三角形列表的能力&lt;<a class="reference external" href="https://github.com/ros2/rviz/pull/719">https://github.com/ros2/rviz/pull/719</a>&gt;`__。现在我们可以使用UV坐标从纹理图中创建梯度，而不是默认的灰度。这将实现标记的复杂着色。要使用此功能，您应该使用 <code class="docutils literal notranslate"><span class="pre">visualization_msgs/Marker.msg</span></code> 并填写 <code class="docutils literal notranslate"><span class="pre">texture_resource</span></code>、<code class="docutils literal notranslate"><span class="pre">texture</span></code>、<code class="docutils literal notranslate"><span class="pre">uv_coordinates</span></code> 和 <code class="docutils literal notranslate"><span class="pre">mesh_file</span></code> 字段。您可以在`这里 &lt;<a class="reference external" href="https://github.com/ros2/common_interfaces/pull/153">https://github.com/ros2/common_interfaces/pull/153</a>&gt;`__找到更多信息。</p>
 <img alt="../_images/triangle_marker_with_gradient.png" src="../_images/triangle_marker_with_gradient.png" />
 </div>
 <div class="section" id="visualization-of-mass-properties-including-inertia">
-<h4>Visualization of mass properties (including inertia)<a class="headerlink" href="#visualization-of-mass-properties-including-inertia" title="永久链接至标题"></a></h4>
-<p>We also added the ability to visualize inertias. To do this, you select enable 'Inertia' in the 'Mass Properties' under the robot model:</p>
+<h4>质量属性的可视化（包括惯性）<a class="headerlink" href="#visualization-of-mass-properties-including-inertia" title="永久链接至标题"></a></h4>
+<p>我们还添加了可视化惯性的功能。要做到这一点，您可以在机器人模型的“质量属性”下选择启用“惯性”：</p>
 <img alt="../_images/rviz_mass_inertia.png" src="../_images/rviz_mass_inertia.png" />
-<p>You can see an image of an inertia below.</p>
+<p>您可以在下面看到一个惯性的图像。</p>
 <img alt="../_images/tb4_inertia.png" src="../_images/tb4_inertia.png" />
 </div>
 <div class="section" id="visualize-yuv-images-in-rviz">
-<h4>Visualize YUV images in RViz<a class="headerlink" href="#visualize-yuv-images-in-rviz" title="永久链接至标题"></a></h4>
-<p>It is now possible to directly visualize YUV images inside of RViz, rather than having to convert to RGB first.
-See <a class="reference external" href="https://github.com/ros2/rviz/pull/701">ros2/rviz#701</a> for details.</p>
+<h4>在RViz中可视化YUV图像<a class="headerlink" href="#visualize-yuv-images-in-rviz" title="永久链接至标题"></a></h4>
+<p>现在可以直接在RViz中显示YUV图像，而无需先转换为RGB。有关详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rviz/pull/701">ros2/rviz#701</a>。</p>
 </div>
 <div class="section" id="allow-rendering-of-objects-100-meters">
-<h4>Allow rendering of objects &gt; 100 meters<a class="headerlink" href="#allow-rendering-of-objects-100-meters" title="永久链接至标题"></a></h4>
-<p>By default, RViz only renders objects that are within 100 meters of a camera.
-A new configuration property called &quot;Far Plane Distance&quot; in the rviz camera plugin allows that rendering distance to be configured.</p>
+<h4>允许渲染距离大于100米的物体。<a class="headerlink" href="#allow-rendering-of-objects-100-meters" title="永久链接至标题"></a></h4>
+<p>默认情况下，RViz仅渲染距离相机100米以内的物体。rviz相机插件中的一个新配置属性名为&quot;Far Plane Distance&quot;，可用于配置渲染距离。</p>
 <img alt="../_images/rviz2-far-plane-distance.png" src="../_images/rviz2-far-plane-distance.png" />
-<p>See <a class="reference external" href="https://github.com/ros2/rviz/pull/849">ros2/rviz#849</a> for more information.</p>
+<p>有关详细信息，请参见 <a class="reference external" href="https://github.com/ros2/rviz/pull/849">ros2/rviz#849</a>。</p>
 </div>
 </div>
 </div>
 <div class="section" id="changes-since-the-galactic-release">
-<h2><a class="toc-backref" href="#id40">Changes since the Galactic release</a><a class="headerlink" href="#changes-since-the-galactic-release" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id40">自Galactic版本以来的更改。</a><a class="headerlink" href="#changes-since-the-galactic-release" title="永久链接至标题"></a></h2>
 <div class="section" id="c-headers-are-installed-in-a-subdirectory">
-<h3><a class="toc-backref" href="#id41">C++ headers are installed in a subdirectory</a><a class="headerlink" href="#c-headers-are-installed-in-a-subdirectory" title="永久链接至标题"></a></h3>
-<p>In ROS 2 releases prior to Humble, C++ headers for all packages were installed into a single include directory.
-For instance, in Galactic, the directory structure looks like this (reduced for brevity):</p>
+<h3><a class="toc-backref" href="#id41">C++头文件被安装在子目录中。</a><a class="headerlink" href="#c-headers-are-installed-in-a-subdirectory" title="永久链接至标题"></a></h3>
+<p>在Humble之前的ROS 2版本中，所有软件包的C++头文件都安装在一个单独的包含目录中。例如，在Galactic中，目录结构如下（为简洁起见进行了简化）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/opt/ros/galactic/include/
 ├── rcl
 │   ├── node.h
@@ -783,10 +776,8 @@ For instance, in Galactic, the directory structure looks like this (reduced for 
 │   ├── node.hpp
 </pre></div>
 </div>
-<p>This structure can cause serious problems when trying to use overlays.
-That is, it is very possible to get the wrong set of header files due to include directory order.
-See <a class="reference external" href="https://colcon.readthedocs.io/en/released/user/overriding-packages.html">https://colcon.readthedocs.io/en/released/user/overriding-packages.html</a> for a detailed explanation of the problems.</p>
-<p>To help combat this, in Humble (and in all ROS 2 releases going forward), the directory structure has changed:</p>
+<p>这种结构在尝试使用覆盖时可能会引发严重问题。也就是说，由于包含目录的顺序问题，很可能获取到错误的头文件集合。请参阅https://colcon.readthedocs.io/en/released/user/overriding-packages.html，详细了解这些问题。</p>
+<p>为了解决这个问题，在Humble中（以及未来的所有ROS 2版本中），目录结构发生了变化：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/opt/ros/humble/include
 ├── rcl
 │   └── rcl
@@ -796,9 +787,8 @@ See <a class="reference external" href="https://colcon.readthedocs.io/en/release
 │       ├── node.hpp
 </pre></div>
 </div>
-<p>Note that downstream packages that use these headers do <em>not</em> have to change; using <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;rclcpp/node.hpp&gt;</span></code> works as it always did before.
-However, when using IDEs that are looking for include directories, it may be necessary to add the individual include directories to the search path.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2/issues/1150">https://github.com/ros2/ros2/issues/1150</a> for more information, including the reasoning behind this change.</p>
+<p>请注意，使用这些头文件的下游软件包**无需**进行更改；使用``#include &lt;rclcpp/node.hpp&gt;``与以前一样正常工作。然而，在使用寻找包含目录的IDE时，可能需要将各个包含目录添加到搜索路径中。</p>
+<p>请参阅https://github.com/ros2/ros2/issues/1150获取更多信息，包括此更改背后的原因。</p>
 </div>
 <div class="section" id="common-interfaces">
 <h3><a class="toc-backref" href="#id42">common_interfaces</a><a class="headerlink" href="#common-interfaces" title="永久链接至标题"></a></h3>
