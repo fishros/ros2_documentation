@@ -926,82 +926,55 @@
 </div>
 <div class="section" id="filtering-topics-via-regular-expression-during-playback">
 <h4>在播放过程中通过正则表达式过滤话题<a class="headerlink" href="#filtering-topics-via-regular-expression-during-playback" title="永久链接至标题"></a></h4>
-<p>Users sometimes need to replay only a subset of topics from recorded bags and the following two pull request
-adds such capability.
-Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1034">1034</a> adds a new option
-<code class="docutils literal notranslate"><span class="pre">--topics-regex</span></code> that allows filtering topics via regular expressions.
-The <code class="docutils literal notranslate"><span class="pre">--topics-regex</span></code> option accepts multiple regular expressions separated by space.
-And pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1046">1046</a> adds the ability to exclude some
-certain topics from being replayed by providing regular expression in a new <code class="docutils literal notranslate"><span class="pre">--exclude</span></code>
-(and <code class="docutils literal notranslate"><span class="pre">-x</span></code>) option.</p>
+<p>用户有时需要从记录的数据包中仅重放一部分主题，以下两个拉取请求添加了这种功能。拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1034">1034</a> 添加了一个新选项 <code class="docutils literal notranslate"><span class="pre">--topics-regex</span></code>，允许使用正则表达式来筛选主题。<code class="docutils literal notranslate"><span class="pre">--topics-regex</span></code> 选项接受多个以空格分隔的正则表达式。而拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1046">1046</a> 则通过在新的 <code class="docutils literal notranslate"><span class="pre">--exclude``（和</span> <span class="pre">``-x</span></code>）选项中提供正则表达式的方式，添加了排除某些特定主题的能力。</p>
 </div>
 <div class="section" id="allow-plugins-to-register-their-own-cli-verb-arguments">
-<h4>Allow plugins to register their own CLI verb arguments<a class="headerlink" href="#allow-plugins-to-register-their-own-cli-verb-arguments" title="永久链接至标题"></a></h4>
-<p>Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1209">1209</a> adds the ability for <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> plugins to
-register an optional Python entrypoint providing plugin-specific CLI argument values.
-As a result the command line option <code class="docutils literal notranslate"><span class="pre">--storage-preset-profile</span></code> for <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">record</span></code> verb will have
-different valid options depending on the underlying storage plugin.</p>
+<h4>允许插件注册自己的CLI动词参数<a class="headerlink" href="#allow-plugins-to-register-their-own-cli-verb-arguments" title="永久链接至标题"></a></h4>
+<p>拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1209">1209</a> 添加了 <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 插件注册可选的Python入口点的能力，以提供插件特定的CLI参数值。因此，<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">record</span></code> 动词的命令行选项 <code class="docutils literal notranslate"><span class="pre">--storage-preset-profile</span></code> 的有效选项将取决于底层存储插件。</p>
 </div>
 <div class="section" id="other-changes">
 <h4>其他变化<a class="headerlink" href="#other-changes" title="永久链接至标题"></a></h4>
-<p>The pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1038">1038</a> adds the ability to record
-any key/value pair in 'custom' field in metadata.yaml file.
-It is useful when users need to save some hardware specific id or coordinates where the recording was captured.
-And pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1180">1180</a> adds an option to change the underlying
-node name for the recorder via providing the new command line <code class="docutils literal notranslate"><span class="pre">--node-name</span></code> option.
-This option might be used for creating remote distributed recording with multiple rosbag2 recorder instances.
-It provides the ability to send service calls for managing the recording process to the dedicated
-rosbag2 recorder instances.</p>
+<p>拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1038">1038</a> 添加了在 metadata.yaml 文件的 'custom' 字段中记录任意键/值对的能力。当用户需要保存一些硬件特定的ID或记录捕获位置的坐标时，这很有用。而拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1180">1180</a> 则通过提供新的命令行选项 <code class="docutils literal notranslate"><span class="pre">--node-name</span></code> 来更改录制器的底层节点名称。该选项可以用于创建具有多个 rosbag2 录制器实例的远程分布式录制。它提供了向专用的 rosbag2 录制器实例发送服务调用以管理录制过程的能力。</p>
 </div>
 </div>
 <div class="section" id="rosidl-python">
 <h3><a class="toc-backref" href="#id63"><code class="docutils literal notranslate"><span class="pre">rosidl_python</span></code></a><a class="headerlink" href="#rosidl-python" title="永久链接至标题"></a></h3>
 <div class="section" id="modification-of-content-of-slots-attribute">
-<h4>Modification of content of <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> attribute<a class="headerlink" href="#modification-of-content-of-slots-attribute" title="永久链接至标题"></a></h4>
-<p>So far, the attribute <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> from the python message classes, have been used as the member that contains the field names of the message.
-In Iron, this attribute no longer contains only the field names from the message structure, but the field names for all the class members.
-Therefore, users shouldn't rely on this attribute to retrieve the field names information, instead, users should retrieve it using the method <code class="docutils literal notranslate"><span class="pre">get_field_and_field_types()</span></code>.</p>
+<h4>修改 <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> 属性的内容<a class="headerlink" href="#modification-of-content-of-slots-attribute" title="永久链接至标题"></a></h4>
+<p>到目前为止，Python消息类的属性``__slots__``一直被用作包含消息字段名称的成员。在Iron中，这个属性不再只包含消息结构的字段名称，而是包含所有类成员的字段名称。因此，用户不能依赖这个属性来获取字段名称信息，而应该使用方法``get_field_and_field_types()``来获取。</p>
 <p>有关更多信息，请参阅 <a class="reference external" href="https://github.com/ros2/rosidl_python/pull/194">https://github.com/ros2/rosidl_python/pull/194</a>。</p>
 </div>
 </div>
 <div class="section" id="rviz">
 <h3><a class="toc-backref" href="#id64"><code class="docutils literal notranslate"><span class="pre">rviz</span></code></a><a class="headerlink" href="#rviz" title="永久链接至标题"></a></h3>
 <div class="section" id="map-display-can-now-be-shown-as-binary">
-<h4>Map display can now be shown as binary<a class="headerlink" href="#map-display-can-now-be-shown-as-binary" title="永久链接至标题"></a></h4>
-<p>The RViz map display can now display the map as binary, with a settable threshold.
-This is useful in some cases to inspect maps or in combination with planners that have a settable threshold.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rviz/pull/846">https://github.com/ros2/rviz/pull/846</a> for more information.</p>
+<h4>地图显示现在可以显示为二进制<a class="headerlink" href="#map-display-can-now-be-shown-as-binary" title="永久链接至标题"></a></h4>
+<p>RViz地图显示现在可以将地图显示为二进制形式，并且可以设置阈值。在某些情况下，这对于检查地图或与可设置阈值的规划器结合使用非常有用。</p>
+<p>有关更多信息，请参阅https://github.com/ros2/rviz/pull/846。</p>
 </div>
 <div class="section" id="camera-display-plugin-respects-the-roi-in-the-camerainfo-message">
-<h4>Camera display plugin respects the ROI in the CameraInfo message<a class="headerlink" href="#camera-display-plugin-respects-the-roi-in-the-camerainfo-message" title="永久链接至标题"></a></h4>
-<p>The CameraDisplay plugin now honors the region-of-interest (ROI) settings in the CameraInfo message, if it is provided.
-This accounts for the fact that an image was cropped by the camera driver to reduce the bandwidth.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rviz/pull/864">https://github.com/ros2/rviz/pull/864</a> for more information.</p>
+<h4>相机显示插件将尊重CameraInfo消息中的感兴趣区域（ROI）。<a class="headerlink" href="#camera-display-plugin-respects-the-roi-in-the-camerainfo-message" title="永久链接至标题"></a></h4>
+<p>CameraDisplay插件现在可以根据提供的CameraInfo消息中的感兴趣区域（ROI）设置进行处理。这考虑到了摄像机驱动程序裁剪图像以减少带宽的情况。</p>
+<p>更多信息请参见 <a class="reference external" href="https://github.com/ros2/rviz/pull/864">https://github.com/ros2/rviz/pull/864</a>。</p>
 </div>
 <div class="section" id="binary-stl-files-from-solidworks-work-without-error">
-<h4>Binary STL files from SOLIDWORKS work without error<a class="headerlink" href="#binary-stl-files-from-solidworks-work-without-error" title="永久链接至标题"></a></h4>
-<p>A change was made to the STL loader such that it accepts binary STL files from SOLIDWORKS that have the word &quot;solid&quot; in them.
-This technically violates the STL specification, but is common enough that a special case is added to handle these files.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rviz/pull/917">https://github.com/ros2/rviz/pull/917</a> for more information.</p>
+<h4>来自SOLIDWORKS的二进制STL文件可以正常使用。<a class="headerlink" href="#binary-stl-files-from-solidworks-work-without-error" title="永久链接至标题"></a></h4>
+<p>对STL加载器进行了更改，以便接受来自SOLIDWORKS的具有&quot;solid&quot;一词的二进制STL文件。从技术上讲，这违反了STL规范，但这种情况非常常见，因此添加了特殊情况来处理这些文件。</p>
+<p>更多信息请参见 <a class="reference external" href="https://github.com/ros2/rviz/pull/917">https://github.com/ros2/rviz/pull/917</a>。</p>
 </div>
 </div>
 <div class="section" id="tracetools">
 <h3><a class="toc-backref" href="#id65"><code class="docutils literal notranslate"><span class="pre">tracetools</span></code></a><a class="headerlink" href="#tracetools" title="永久链接至标题"></a></h3>
 <div class="section" id="tracing-instrumentation-is-now-included-by-default-on-linux">
-<h4>Tracing instrumentation is now included by default on Linux<a class="headerlink" href="#tracing-instrumentation-is-now-included-by-default-on-linux" title="永久链接至标题"></a></h4>
-<p>The ROS 2 core has had tracing instrumentation for a while now.
-However, it was compiled out by default.
-To get the instrumentation, the LTTng tracer had to be manually installed before rebuilding ROS 2 from source.
-In Iron, the tracing instrumentation and tracepoints are included by default; the LTTng tracer is therefore now a ROS 2 dependency.</p>
-<p>Note that this only applies to Linux.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2_tracing/pull/31">https://github.com/ros2/ros2_tracing/pull/31</a> and <a class="reference external" href="https://github.com/ros2/ros2/issues/1177">https://github.com/ros2/ros2/issues/1177</a> for more information.
-See <a class="reference internal" href="../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html"><span class="doc">this how-to guide to remove the instrumentation (or add the instrumentation with Humble and older)</span></a>.</p>
+<h4>在Linux上，默认情况下包含跟踪工具仪表。<a class="headerlink" href="#tracing-instrumentation-is-now-included-by-default-on-linux" title="永久链接至标题"></a></h4>
+<p>ROS 2核心现在已经有了一段时间的追踪仪器。然而，默认情况下它被编译取消了。要获得仪器，必须在重建ROS 2源代码之前手动安装LTTng跟踪器。在Iron中，默认包含了追踪仪器和追踪点；因此，LTTng跟踪器现在是ROS 2的一个依赖项。</p>
+<p>请注意，这仅适用于Linux。</p>
+<p>请参阅https://github.com/ros2/ros2_tracing/pull/31和https://github.com/ros2/ros2/issues/1177获取更多信息。请参阅：<a class="reference internal" href="../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html"><span class="doc">此指南以移除仪器（或在Humble和更早版本中添加仪器）</span></a>。</p>
 </div>
 <div class="section" id="new-tracepoints-for-rclcpp-intra-process-are-added">
-<h4>New tracepoints for <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> intra-process are added<a class="headerlink" href="#new-tracepoints-for-rclcpp-intra-process-are-added" title="永久链接至标题"></a></h4>
-<p>New tracepoints have been added to support <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> intra-process communication.
-This allows the evaluation of the time between the message publishing and the callback start in intra-process communication.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2_tracing/pull/30">https://github.com/ros2/ros2_tracing/pull/30</a> and <a class="reference external" href="https://github.com/ros2/rclcpp/pull/2091">https://github.com/ros2/rclcpp/pull/2091</a> for more information.</p>
+<h4>新增了``rclcpp``进程内通信的追踪点<a class="headerlink" href="#new-tracepoints-for-rclcpp-intra-process-are-added" title="永久链接至标题"></a></h4>
+<p>新增了支持``rclcpp``进程内通信的追踪点。这允许评估消息发布和回调开始之间的时间（在进程内通信中）。</p>
+<p>请参阅https://github.com/ros2/ros2_tracing/pull/30和https://github.com/ros2/rclcpp/pull/2091获取更多信息。</p>
 </div>
 </div>
 </div>
