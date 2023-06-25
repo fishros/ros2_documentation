@@ -781,67 +781,58 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">launch_ros.actions.RosTimer</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">launch_ros.actions.ROSTimer</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">launch_ros.actions.PushRosNamespace</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">launch.actions.PushROSNamespace</span></code></p></li>
 </ul>
-<p>The old class names are still there, but will be deprecated.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/launch_ros/pull/326">https://github.com/ros2/launch_ros/pull/326</a> for more information.</p>
+<p>旧的类名仍然存在，但将被弃用。</p>
+<p>请参阅 <a class="reference external" href="https://github.com/ros2/launch_ros/pull/326">https://github.com/ros2/launch_ros/pull/326</a> 获取更多信息。</p>
 </div>
 </div>
 <div class="section" id="launch-xml">
 <h3><a class="toc-backref" href="#id52"><code class="docutils literal notranslate"><span class="pre">launch_xml</span></code></a><a class="headerlink" href="#launch-xml" title="永久链接至标题"></a></h3>
 <div class="section" id="expose-emulate-tty-to-xml-frontend">
-<h4>Expose <code class="docutils literal notranslate"><span class="pre">emulate_tty</span></code> to XML frontend<a class="headerlink" href="#expose-emulate-tty-to-xml-frontend" title="永久链接至标题"></a></h4>
-<p>It has been possible for several releases to have the <code class="docutils literal notranslate"><span class="pre">launch</span></code> Python code use pseudo-terminals to emulate a TTY (and hence do things like print colors).
-That functionality is now available in the XML frontend by passing the <code class="docutils literal notranslate"><span class="pre">emulate_tty</span></code> argument to an executable command.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/launch/pull/669">https://github.com/ros2/launch/pull/669</a> for more information.</p>
+<h4>向XML前端公开 <code class="docutils literal notranslate"><span class="pre">emulate_tty</span></code><a class="headerlink" href="#expose-emulate-tty-to-xml-frontend" title="永久链接至标题"></a></h4>
+<p>在几个发布版本中，通过伪终端模拟TTY（从而实现打印颜色等功能）已经成为可能。现在，通过向可执行命令传递 <code class="docutils literal notranslate"><span class="pre">emulate_tty</span></code> 参数，该功能在XML前端中也可用。</p>
+<p>更多信息请参见 <a class="reference external" href="https://github.com/ros2/launch/pull/669">https://github.com/ros2/launch/pull/669</a>。</p>
 </div>
 <div class="section" id="expose-sigterm-timeout-and-sigkill-timeout-to-xml-frontend">
-<h4>Expose <code class="docutils literal notranslate"><span class="pre">sigterm_timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">sigkill_timeout</span></code> to XML frontend<a class="headerlink" href="#expose-sigterm-timeout-and-sigkill-timeout-to-xml-frontend" title="永久链接至标题"></a></h4>
-<p>It has been possible for several releases to configure the maximum timeout value for the SIGTERM and SIGKILL signals in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> Python code.
-That functionality is now available in the XML frontend by passing the <code class="docutils literal notranslate"><span class="pre">sigterm_timeout</span></code> or <code class="docutils literal notranslate"><span class="pre">sigkill_timeout</span></code> argument to an executable command.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/launch/pull/667">https://github.com/ros2/launch/pull/667</a> for more information.</p>
+<h4>将``sigterm_timeout``和``sigkill_timeout``暴露给XML前端。<a class="headerlink" href="#expose-sigterm-timeout-and-sigkill-timeout-to-xml-frontend" title="永久链接至标题"></a></h4>
+<p>在``launch``的Python代码中，已经可以配置SIGTERM和SIGKILL信号的最大超时值。现在，通过将``sigterm_timeout``或``sigkill_timeout``参数传递给可执行命令，该功能也可在XML前端中使用。</p>
+<p>更多信息请参见 <a class="reference external" href="https://github.com/ros2/launch/pull/667">https://github.com/ros2/launch/pull/667</a>。</p>
 </div>
 </div>
 <div class="section" id="launch-yaml">
 <h3><a class="toc-backref" href="#id53"><code class="docutils literal notranslate"><span class="pre">launch_yaml</span></code></a><a class="headerlink" href="#launch-yaml" title="永久链接至标题"></a></h3>
 <div class="section" id="expose-emulate-tty-to-yaml-frontend">
-<h4>Expose <code class="docutils literal notranslate"><span class="pre">emulate_tty</span></code> to YAML frontend<a class="headerlink" href="#expose-emulate-tty-to-yaml-frontend" title="永久链接至标题"></a></h4>
-<p>It has been possible for several releases to have the <code class="docutils literal notranslate"><span class="pre">launch</span></code> Python code use pseudo-terminals to emulate a TTY (and hence do things like print colors).
-That functionality is now available in the YAML frontend by passing the <code class="docutils literal notranslate"><span class="pre">emulate_tty</span></code> argument to an executable command.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/launch/pull/669">https://github.com/ros2/launch/pull/669</a> for more information.</p>
+<h4>将``emulate_tty``暴露给YAML前端。<a class="headerlink" href="#expose-emulate-tty-to-yaml-frontend" title="永久链接至标题"></a></h4>
+<p>几个发布版本以来，已经可以让``launch`` Python代码使用伪终端来模拟TTY（从而执行诸如打印颜色之类的操作）。现在，在YAML前端通过向可执行命令传递``emulate_tty``参数即可使用该功能。</p>
+<p>更多信息请参见 <a class="reference external" href="https://github.com/ros2/launch/pull/669">https://github.com/ros2/launch/pull/669</a>。</p>
 </div>
 <div class="section" id="expose-sigterm-timeout-and-sigkill-timeout-to-yaml-frontend">
-<h4>Expose <code class="docutils literal notranslate"><span class="pre">sigterm_timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">sigkill_timeout</span></code> to YAML frontend<a class="headerlink" href="#expose-sigterm-timeout-and-sigkill-timeout-to-yaml-frontend" title="永久链接至标题"></a></h4>
-<p>It has been possible for several releases to configure the maximum timeout value for the SIGTERM and SIGKILL signals in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> Python code.
-That functionality is now available in the YAML frontend by passing the <code class="docutils literal notranslate"><span class="pre">sigterm_timeout</span></code> or <code class="docutils literal notranslate"><span class="pre">sigkill_timeout</span></code> argument to an executable command.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/launch/pull/667">https://github.com/ros2/launch/pull/667</a> for more information.</p>
+<h4>向YAML前端公开``sigterm_timeout``和``sigkill_timeout``<a class="headerlink" href="#expose-sigterm-timeout-and-sigkill-timeout-to-yaml-frontend" title="永久链接至标题"></a></h4>
+<p>几个发布版本以来，已经可以在``launch`` Python代码中配置SIGTERM和SIGKILL信号的最大超时值。现在，在YAML前端通过向可执行命令传递``sigterm_timeout``或``sigkill_timeout``参数即可使用该功能。</p>
+<p>更多信息请参见 <a class="reference external" href="https://github.com/ros2/launch/pull/667">https://github.com/ros2/launch/pull/667</a>。</p>
 </div>
 </div>
 <div class="section" id="message-filters">
 <h3><a class="toc-backref" href="#id54"><code class="docutils literal notranslate"><span class="pre">message_filters</span></code></a><a class="headerlink" href="#message-filters" title="永久链接至标题"></a></h3>
 <div class="section" id="new-approximate-time-policy">
-<h4>New approximate time policy<a class="headerlink" href="#new-approximate-time-policy" title="永久链接至标题"></a></h4>
-<p>Add in a simpler approximate time policy called <code class="docutils literal notranslate"><span class="pre">ApproximateEpsilonTime</span></code>.
-This time policy works like <code class="docutils literal notranslate"><span class="pre">ExactTime</span></code>, but allows timestamps being within a epsilon tolerance.
-See <a class="reference external" href="https://github.com/ros2/message_filters/pull/84">https://github.com/ros2/message_filters/pull/84</a> for more information.</p>
+<h4>新增近似时间策略<a class="headerlink" href="#new-approximate-time-policy" title="永久链接至标题"></a></h4>
+<p>新增了一种更简单的近似时间策略，称为``ApproximateEpsilonTime``。该时间策略类似于``ExactTime``，但允许时间戳在某个epsilon容差范围内。有关更多信息，请参阅https://github.com/ros2/message_filters/pull/84。</p>
 </div>
 <div class="section" id="new-upsampling-time-policy">
-<h4>New upsampling time policy<a class="headerlink" href="#new-upsampling-time-policy" title="永久链接至标题"></a></h4>
-<p>Adds in a new time policy called <code class="docutils literal notranslate"><span class="pre">LatestTime</span></code>.
-It can synchronize up to 9 messages by their rates with upsampling via zero-order-hold.
-See <a class="reference external" href="https://github.com/ros2/message_filters/pull/73">https://github.com/ros2/message_filters/pull/73</a> for more information.</p>
+<h4>新的上采样时间策略<a class="headerlink" href="#new-upsampling-time-policy" title="永久链接至标题"></a></h4>
+<p>增加了一个名为``LatestTime``的新时间策略。它可以通过零阶保持对最多9个消息进行按照其速率进行上采样的同步。更多信息请参见https://github.com/ros2/message_filters/pull/73。</p>
 </div>
 </div>
 <div class="section" id="rcl-yaml-param-parser">
 <h3><a class="toc-backref" href="#id55"><code class="docutils literal notranslate"><span class="pre">rcl_yaml_param_parser</span></code></a><a class="headerlink" href="#rcl-yaml-param-parser" title="永久链接至标题"></a></h3>
 <div class="section" id="support-for-yaml-str-syntax-in-parameter-files">
-<h4>Support for YAML <code class="docutils literal notranslate"><span class="pre">!!str</span></code> syntax in parameter files<a class="headerlink" href="#support-for-yaml-str-syntax-in-parameter-files" title="永久链接至标题"></a></h4>
-<p>It is now possible to force the ROS parameter file parser to interpret a field as a string using the YAML <code class="docutils literal notranslate"><span class="pre">!!str</span></code> syntax.
-See <a class="reference external" href="https://github.com/ros2/rcl/pull/999">https://github.com/ros2/rcl/pull/999</a> for more information.</p>
+<h4>在参数文件中支持YAML的``!!str``语法<a class="headerlink" href="#support-for-yaml-str-syntax-in-parameter-files" title="永久链接至标题"></a></h4>
+<p>现在可以通过使用YAML的``!!str``语法来强制ROS参数文件解析器将字段解释为字符串。更多信息请参见https://github.com/ros2/rcl/pull/999。</p>
 </div>
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id56"><code class="docutils literal notranslate"><span class="pre">rclcpp</span></code></a><a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
 <div class="section" id="default-number-of-threads-for-multi-threaded-executor-has-been-changed">
-<h4>Default number of threads for multi-threaded executor has been changed<a class="headerlink" href="#default-number-of-threads-for-multi-threaded-executor-has-been-changed" title="永久链接至标题"></a></h4>
+<h4>多线程执行器的默认线程数已更改<a class="headerlink" href="#default-number-of-threads-for-multi-threaded-executor-has-been-changed" title="永久链接至标题"></a></h4>
 <p>If the user doesn't specify otherwise, the default number of threads for the multi-threaded executor will be set to the number of CPUs on the machine.
 If the underlying OS doesn't support getting this information, it will be set to 2.</p>
 <p>See <a class="reference external" href="https://github.com/ros2/rclcpp/pull/2032">https://github.com/ros2/rclcpp/pull/2032</a> for more information.</p>
@@ -861,7 +852,7 @@ In Iron, the <code class="docutils literal notranslate"><span class="pre">RCLCPP
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id57"><code class="docutils literal notranslate"><span class="pre">rclpy</span></code></a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
 <div class="section" id="id5">
-<h4>Default number of threads for multi-threaded executor has been changed<a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
+<h4>多线程执行器的默认线程数已更改<a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
 <p>If the user doesn't specify otherwise, the default number of threads for the multi-threaded executor will be set to the number of CPUs on the machine.
 If the underlying OS doesn't support getting this information, it will be set to 2.</p>
 <p>See <a class="reference external" href="https://github.com/ros2/rclpy/pull/1031">https://github.com/ros2/rclpy/pull/1031</a> for more information.</p>
