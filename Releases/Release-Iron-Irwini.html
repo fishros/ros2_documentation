@@ -399,9 +399,9 @@
 <li><p><a class="reference internal" href="#ros2topic" id="id43"><code class="docutils literal notranslate"><span class="pre">ros2topic</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#changes-since-the-humble-release" id="id44">Changes since the Humble release</a></p>
+<li><p><a class="reference internal" href="#changes-since-the-humble-release" id="id44">自Humble版本以来的更改</a></p>
 <ul>
-<li><p><a class="reference internal" href="#change-to-the-default-console-logging-file-flushing-behavior" id="id45">Change to the default console logging file flushing behavior</a></p></li>
+<li><p><a class="reference internal" href="#change-to-the-default-console-logging-file-flushing-behavior" id="id45">更改默认控制台日志文件刷新行为</a></p></li>
 <li><p><a class="reference internal" href="#ament-cmake-auto" id="id46"><code class="docutils literal notranslate"><span class="pre">ament_cmake_auto</span></code></a></p></li>
 <li><p><a class="reference internal" href="#ament-cmake-nose" id="id47"><code class="docutils literal notranslate"><span class="pre">ament_cmake_nose</span></code></a></p></li>
 <li><p><a class="reference internal" href="#ament-lint" id="id48"><code class="docutils literal notranslate"><span class="pre">ament_lint</span></code></a></p></li>
@@ -690,9 +690,9 @@
 <p>有关更多信息，请参阅 <a class="reference external" href="https://github.com/ros2/ros2cli/pull/802">https://github.com/ros2/ros2cli/pull/802</a>。</p>
 </div>
 <div class="section" id="deprecated-options-were-removed">
-<h4>Deprecated options were removed<a class="headerlink" href="#deprecated-options-were-removed" title="永久链接至标题"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">--output-dir</span></code> and <code class="docutils literal notranslate"><span class="pre">--print</span></code> options with <code class="docutils literal notranslate"><span class="pre">dump</span></code> command have been removed.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2cli/pull/824">https://github.com/ros2/ros2cli/pull/824</a> for more information.</p>
+<h4>已删除过时选项<a class="headerlink" href="#deprecated-options-were-removed" title="永久链接至标题"></a></h4>
+<p>已删除``--output-dir``和``--print``选项，使用``dump``命令。</p>
+<p>请参阅https://github.com/ros2/ros2cli/pull/824获取更多信息。</p>
 </div>
 </div>
 <div class="section" id="ros2topic">
@@ -700,47 +700,43 @@
 <div class="section" id="now-as-keyword-for-builtin-interfaces-msg-time-and-auto-for-std-msgs-msg-header">
 <h4><code class="docutils literal notranslate"><span class="pre">now</span></code> 作为 <code class="docutils literal notranslate"><span class="pre">builtin_interfaces.msg.Time</span></code> 的关键字，<code class="docutils literal notranslate"><span class="pre">auto</span></code> 作为 <code class="docutils literal notranslate"><span class="pre">std_msgs.msg.Header</span></code> 的关键字。<a class="headerlink" href="#now-as-keyword-for-builtin-interfaces-msg-time-and-auto-for-std-msgs-msg-header" title="永久链接至标题"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> 现在允许使用关键字 <code class="docutils literal notranslate"><span class="pre">now</span></code> 将 <code class="docutils literal notranslate"><span class="pre">builtin_interfaces.msg.Time</span></code> 消息设置为当前时间。类似地，当传递关键字 <code class="docutils literal notranslate"><span class="pre">auto</span></code> 时，将自动生成 <code class="docutils literal notranslate"><span class="pre">std_msgs.msg.Header</span></code> 消息。此行为与 ROS 1 的 <code class="docutils literal notranslate"><span class="pre">rostopic</span></code> 一致（<a class="reference external" href="http://wiki.ros.org/ROS/YAMLCommandLine#Headers.2Ftimestamps">http://wiki.ros.org/ROS/YAMLCommandLine#Headers.2Ftimestamps</a>）。</p>
-<p>Related PR: <a class="reference external" href="https://github.com/ros2/ros2cli/pull/749">ros2/ros2cli#749</a></p>
+<p>相关PR：<a class="reference external" href="https://github.com/ros2/ros2cli/pull/749">ros2/ros2cli#749</a></p>
 </div>
 <div class="section" id="ros2-topic-pub-can-be-configured-to-wait-a-maximum-amount-of-time">
-<h4><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span></code> can be configured to wait a maximum amount of time<a class="headerlink" href="#ros2-topic-pub-can-be-configured-to-wait-a-maximum-amount-of-time" title="永久链接至标题"></a></h4>
-<p>The command <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">pub</span> <span class="pre">-w</span> <span class="pre">1</span></code> will wait for at least that number of subscribers before publishing a message.
-This release adds in a <code class="docutils literal notranslate"><span class="pre">--max-wait-time</span></code> option so that the command will only wait a maximum amount of time before quitting if no subscribers are seen.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2cli/pull/800">https://github.com/ros2/ros2cli/pull/800</a> for more information.</p>
+<h4><a href="#id1"><span class="problematic" id="id2">``</span></a>ros2 topic pub``可以配置等待的最长时间<a class="headerlink" href="#ros2-topic-pub-can-be-configured-to-wait-a-maximum-amount-of-time" title="永久链接至标题"></a></h4>
+<p>命令``ros2 topic pub -w 1``将在发布消息之前等待至少这么多个订阅者。此版本添加了``--max-wait-time``选项，以便命令在没有看到订阅者时，在最大等待时间内退出。</p>
+<p>请参阅 <a class="reference external" href="https://github.com/ros2/ros2cli/pull/800">https://github.com/ros2/ros2cli/pull/800</a> 获取更多信息。</p>
 </div>
 <div class="section" id="ros2-topic-echo-can-be-configured-to-wait-a-maximum-amount-of-time">
-<h4><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">echo</span></code> can be configured to wait a maximum amount of time<a class="headerlink" href="#ros2-topic-echo-can-be-configured-to-wait-a-maximum-amount-of-time" title="永久链接至标题"></a></h4>
-<p>The command <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">echo</span></code> now accepts a <code class="docutils literal notranslate"><span class="pre">--timeout</span></code> option, which controls the maximum amount of time that the command will wait for a publication to happen.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2cli/pull/792">https://github.com/ros2/ros2cli/pull/792</a> for more information.</p>
+<h4><a href="#id1"><span class="problematic" id="id2">``</span></a>ros2 topic echo``可以配置为等待最长时间<a class="headerlink" href="#ros2-topic-echo-can-be-configured-to-wait-a-maximum-amount-of-time" title="永久链接至标题"></a></h4>
+<p>命令``ros2 topic echo``现在接受``--timeout``选项，控制命令等待发布发生的最长时间。</p>
+<p>请参阅 <a class="reference external" href="https://github.com/ros2/ros2cli/pull/792">https://github.com/ros2/ros2cli/pull/792</a> 获取更多信息。</p>
 </div>
 <div class="section" id="deprecated-option-was-removed">
-<h4>Deprecated option was removed<a class="headerlink" href="#deprecated-option-was-removed" title="永久链接至标题"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">--lost-messages</span></code> option with <code class="docutils literal notranslate"><span class="pre">echo</span></code> command has been removed.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2cli/pull/824">https://github.com/ros2/ros2cli/pull/824</a> for more information.</p>
+<h4>已删除弃用选项<a class="headerlink" href="#deprecated-option-was-removed" title="永久链接至标题"></a></h4>
+<p>已删除``echo``命令中的``--lost-messages``选项。</p>
+<p>请参阅https://github.com/ros2/ros2cli/pull/824获取更多信息。</p>
 </div>
 </div>
 </div>
 <div class="section" id="changes-since-the-humble-release">
-<h2><a class="toc-backref" href="#id44">Changes since the Humble release</a><a class="headerlink" href="#changes-since-the-humble-release" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id44">自Humble版本以来的更改</a><a class="headerlink" href="#changes-since-the-humble-release" title="永久链接至标题"></a></h2>
 <div class="section" id="change-to-the-default-console-logging-file-flushing-behavior">
-<h3><a class="toc-backref" href="#id45">Change to the default console logging file flushing behavior</a><a class="headerlink" href="#change-to-the-default-console-logging-file-flushing-behavior" title="永久链接至标题"></a></h3>
-<p>This specifically applies to the default <code class="docutils literal notranslate"><span class="pre">spdlog</span></code> based logging backend in ROS 2, implemented in <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code>.
-Log file flushing was changed to flush every time an &quot;error&quot; log message is used, e.g. each <code class="docutils literal notranslate"><span class="pre">RCLCPP_ERROR()</span></code> call, and also periodically every five seconds.</p>
-<p>Previously, <code class="docutils literal notranslate"><span class="pre">spdlog</span></code> was used without configuring anything other than creating the sink for logging to a file.</p>
-<p>We tested the change and did not find that the CPU overhead was significant, even on machines with slow disks (e.g. sd cards).
-However, if this change is causing you problems, you can get the old behavior by setting the <code class="docutils literal notranslate"><span class="pre">RCL_LOGGING_SPDLOG_EXPERIMENTAL_OLD_FLUSHING_BEHAVIOR=1</span></code> environment variable.</p>
-<p>Later we would like to have support for a full configuration file (see: <a class="reference external" href="https://github.com/ros2/rcl_logging/issues/92">https://github.com/ros2/rcl_logging/issues/92</a>), giving you more flexibility in how the logging is done, but that is work that is only planned right now.</p>
+<h3><a class="toc-backref" href="#id45">更改默认控制台日志文件刷新行为</a><a class="headerlink" href="#change-to-the-default-console-logging-file-flushing-behavior" title="永久链接至标题"></a></h3>
+<p>这主要适用于ROS 2中基于``spdlog``的默认日志记录后端（实现在``rcl_logging_spdlog``中）。日志文件刷新已更改为在每次使用&quot;error&quot;日志消息时刷新，例如每次调用``RCLCPP_ERROR()``，以及每隔五秒钟定期刷新一次。</p>
+<p>以前，<a href="#id1"><span class="problematic" id="id2">``</span></a>spdlog``在配置除了创建用于记录到文件的sink之外的任何内容之前被使用。</p>
+<p>我们测试了这个更改，并没有发现CPU开销显著，即使在具有较慢磁盘（例如SD卡）的计算机上也是如此。但是，如果此更改给您带来问题，您可以通过设置``RCL_LOGGING_SPDLOG_EXPERIMENTAL_OLD_FLUSHING_BEHAVIOR=1``环境变量来获取旧的行为。</p>
+<p>稍后，我们希望支持完整的配置文件（请参见：<a class="reference external" href="https://github.com/ros2/rcl_logging/issues/92">https://github.com/ros2/rcl_logging/issues/92</a>），这将使您在日志记录方式上具有更多灵活性，但这只是当前计划的工作。</p>
 <blockquote>
-<div><p>Therefore, <strong>this environment variable should be considered experimental and subject to removal without deprecation in the future</strong>, when we add config file support for the <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> logging backend.</p>
+<div><p>因此，<strong>此环境变量应被视为实验性的，并可能在将来的版本中被删除而不进行弃用</strong>，当我们为``rcl_logging_spdlog``日志记录后端添加配置文件支持时。</p>
 </div></blockquote>
-<p>See this pull request for more details about the change: <a class="reference external" href="https://github.com/ros2/rcl_logging/pull/95">https://github.com/ros2/rcl_logging/pull/95</a></p>
+<p>有关此更改的更多详细信息，请参阅此拉取请求：<a class="reference external" href="https://github.com/ros2/rcl_logging/pull/95">https://github.com/ros2/rcl_logging/pull/95</a></p>
 </div>
 <div class="section" id="ament-cmake-auto">
 <h3><a class="toc-backref" href="#id46"><code class="docutils literal notranslate"><span class="pre">ament_cmake_auto</span></code></a><a class="headerlink" href="#ament-cmake-auto" title="永久链接至标题"></a></h3>
 <div class="section" id="include-dependencies-are-now-marked-as-system">
-<h4>Include dependencies are now marked as SYSTEM<a class="headerlink" href="#include-dependencies-are-now-marked-as-system" title="永久链接至标题"></a></h4>
-<p>When using <code class="docutils literal notranslate"><span class="pre">ament_auto_add_executable</span></code> or <code class="docutils literal notranslate"><span class="pre">ament_auto_add_library</span></code>, dependencies are now automatically added as <code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code>.
-This means that warnings in the header files of the dependencies will not be reported.</p>
+<h4>包含的依赖现在标记为``SYSTEM``<a class="headerlink" href="#include-dependencies-are-now-marked-as-system" title="永久链接至标题"></a></h4>
+<p>在使用``ament_auto_add_executable``或``ament_auto_add_library``时，依赖现在会自动添加为``SYSTEM``。这意味着依赖项的头文件中的警告不会被报告。</p>
 <p>See <a class="reference external" href="https://github.com/ament/ament_cmake/pull/385">https://github.com/ament/ament_cmake/pull/385</a> for more details.</p>
 </div>
 </div>
