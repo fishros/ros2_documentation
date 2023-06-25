@@ -36370,67 +36370,67 @@ msgstr "多线程执行器的默认线程数已更改"
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:593 ../../source/Releases/Release-Iron-Irwini.rst:618
 msgid "If the user doesn't specify otherwise, the default number of threads for the multi-threaded executor will be set to the number of CPUs on the machine. If the underlying OS doesn't support getting this information, it will be set to 2."
-msgstr "If the user doesn't specify otherwise, the default number of threads for the multi-threaded executor will be set to the number of CPUs on the machine. If the underlying OS doesn't support getting this information, it will be set to 2."
+msgstr "如果用户没有另外指定，多线程执行器的默认线程数将设置为机器上的 CPU 数量。如果底层操作系统不支持获取此信息，将设置为 2。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:596
 msgid "See https://github.com/ros2/rclcpp/pull/2032 for more information."
-msgstr "See https://github.com/ros2/rclcpp/pull/2032 for more information."
+msgstr "有关更多信息，请参阅 https://github.com/ros2/rclcpp/pull/2032。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:599 ../../source/Releases/Release-Iron-Irwini.rst:624
 msgid "A warning is now printed when QoS of KEEP_LAST is specified with a depth of 0"
-msgstr "A warning is now printed when QoS of KEEP_LAST is specified with a depth of 0"
+msgstr "在指定深度为 0 的 KEEP_LAST QoS 时会打印警告信息。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:601
 msgid "Specifying a QoS of KEEP_LAST with a depth of 0 is a nonsensical arrangement, since the entity wouldn't be able to send or receive any data. ``rclcpp`` will now print a warning if this combination is specified, but will still continue on and let the underlying middleware choose a sane value (generally a depth of 1)."
-msgstr "Specifying a QoS of KEEP_LAST with a depth of 0 is a nonsensical arrangement, since the entity wouldn't be able to send or receive any data. ``rclcpp`` will now print a warning if this combination is specified, but will still continue on and let the underlying middleware choose a sane value (generally a depth of 1)."
+msgstr "指定 KEEP_LAST QoS 为深度为 0 是一种无意义的设置，因为实体将无法发送或接收任何数据。现在，如果指定了这种组合，``rclcpp`` 将打印警告信息，但仍将继续运行，并让底层中间件选择一个合理的值（通常为深度为 1）。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:604
 msgid "See https://github.com/ros2/rclcpp/pull/2048 for more information."
-msgstr "See https://github.com/ros2/rclcpp/pull/2048 for more information."
+msgstr "有关更多信息，请参阅 https://github.com/ros2/rclcpp/pull/2048。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:607
 msgid "Deprecated ``RCLCPP_SCOPE_EXIT`` macro was removed"
-msgstr "Deprecated ``RCLCPP_SCOPE_EXIT`` macro was removed"
+msgstr "已删除弃用的 ``RCLCPP_SCOPE_EXIT`` 宏。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:609
 msgid "In Humble, the macro ``RCLCPP_SCOPE_EXIT`` was deprecated in favor of ``RCPPUTILS_SCOPE_EXIT``. In Iron, the ``RCLCPP_SCOPE_EXIT`` macro has been completely removed."
-msgstr "In Humble, the macro ``RCLCPP_SCOPE_EXIT`` was deprecated in favor of ``RCPPUTILS_SCOPE_EXIT``. In Iron, the ``RCLCPP_SCOPE_EXIT`` macro has been completely removed."
+msgstr "在Humble版本中，宏``RCLCPP_SCOPE_EXIT``已被弃用，建议使用``RCPPUTILS_SCOPE_EXIT``。在Iron版本中，``RCLCPP_SCOPE_EXIT``宏已完全移除。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:621
 msgid "See https://github.com/ros2/rclpy/pull/1031 for more information."
-msgstr "See https://github.com/ros2/rclpy/pull/1031 for more information."
+msgstr "更多信息请参见https://github.com/ros2/rclpy/pull/1031。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:626
 msgid "Specifying a QoS of KEEP_LAST with a depth of 0 is a nonsensical arrangement, since the entity wouldn't be able to send or receive any data. ``rclpy`` will now print a warning if this combination is specified, but will still continue on and let the underlying middleware choose a sane value (generally a depth of 1)."
-msgstr "Specifying a QoS of KEEP_LAST with a depth of 0 is a nonsensical arrangement, since the entity wouldn't be able to send or receive any data. ``rclpy`` will now print a warning if this combination is specified, but will still continue on and let the underlying middleware choose a sane value (generally a depth of 1)."
+msgstr "使用``KEEP_LAST``的QoS并将深度设为0是一种无意义的设置，因为实体将无法发送或接收任何数据。如果指定了这种组合，``rclpy``现在会打印警告，但仍然会继续运行，并让底层中间件选择一个合理的值（通常是深度为1）。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:629
 msgid "See https://github.com/ros2/rclpy/pull/1048 for more information."
-msgstr "See https://github.com/ros2/rclpy/pull/1048 for more information."
+msgstr "更多信息请参见https://github.com/ros2/rclpy/pull/1048。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:632
 msgid "Time and Duration no longer raise exception when compared to another type"
-msgstr "Time and Duration no longer raise exception when compared to another type"
+msgstr "在与其他类型进行比较时，``Time``和``Duration``不再抛出异常。现在可以将``rclpy.time.Time``和``rclpy.duration.Duration``与其他类型进行比较而不会引发异常。如果这些类型不可比较，比较结果将返回``False``。请注意，这与之前版本的行为不同。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:634
 msgid "It is now possible to compare ``rclpy.time.Time`` and ``rclpy.duration.Duration`` to other types without getting exceptions. If the types are not comparable, the comparison returns ``False``. Note that this is a behavior change from previous releases."
-msgstr "It is now possible to compare ``rclpy.time.Time`` and ``rclpy.duration.Duration`` to other types without getting exceptions. If the types are not comparable, the comparison returns ``False``. Note that this is a behavior change from previous releases."
+msgstr "现在可以将 ``rclpy.time.Time`` 和 ``rclpy.duration.Duration`` 与其他类型进行比较而不会引发异常。如果类型不可比较，比较结果将返回 ``False``。请注意，这是与之前版本不同的行为变更。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:642
 msgid "See https://github.com/ros2/rclpy/pull/1007 for more information."
-msgstr "See https://github.com/ros2/rclpy/pull/1007 for more information."
+msgstr "更多信息请参阅 https://github.com/ros2/rclpy/pull/1007。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:645
@@ -36440,22 +36440,22 @@ msgstr "``rcutils``"
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:648
 msgid "Improve the performance of message logging"
-msgstr "Improve the performance of message logging"
+msgstr "提高消息记录的性能"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:650
 msgid "The code used to output a log message when ``RCUTILS_LOG_*`` or ``RCLCPP_*`` was optimized to reduce overhead. These log messages should now be more efficient, though they should still not be called at high rates. See https://github.com/ros2/rcutils/pull/381, https://github.com/ros2/rcutils/pull/372, https://github.com/ros2/rcutils/pull/369, and https://github.com/ros2/rcutils/pull/367 for more information."
-msgstr "The code used to output a log message when ``RCUTILS_LOG_*`` or ``RCLCPP_*`` was optimized to reduce overhead. These log messages should now be more efficient, though they should still not be called at high rates. See https://github.com/ros2/rcutils/pull/381, https://github.com/ros2/rcutils/pull/372, https://github.com/ros2/rcutils/pull/369, and https://github.com/ros2/rcutils/pull/367 for more information."
+msgstr "当优化 ``RCUTILS_LOG_*`` 或 ``RCLCPP_*`` 时，用于输出日志消息的代码已经减少了开销。这些日志消息现在应该更高效，尽管不应该高频率调用它们。有关更多信息，请参阅 https://github.com/ros2/rcutils/pull/381、https://github.com/ros2/rcutils/pull/372、https://github.com/ros2/rcutils/pull/369 和 https://github.com/ros2/rcutils/pull/367。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:655
 msgid "Deprecated ``rcutils/get_env.h`` header was removed"
-msgstr "Deprecated ``rcutils/get_env.h`` header was removed"
+msgstr "移除了废弃的 ``rcutils/get_env.h`` 头文件。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:657
 msgid "In Humble, the header ``rcutils/get_env.h`` was deprecated in favor of ``rcutils/env.h``. In Iron, the ``rcutils/get_env.h`` header been completely removed."
-msgstr "In Humble, the header ``rcutils/get_env.h`` was deprecated in favor of ``rcutils/env.h``. In Iron, the ``rcutils/get_env.h`` header been completely removed."
+msgstr "在Humble版本中，头文件``rcutils/get_env.h``已被弃用，推荐使用``rcutils/env.h``。在Iron版本中，完全移除了``rcutils/get_env.h``头文件。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:661
@@ -36465,17 +36465,17 @@ msgstr "``rmw``"
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:664 ../../source/Releases/Release-Iron-Irwini.rst:677
 msgid "Change the GID storage to 16 bytes"
-msgstr "Change the GID storage to 16 bytes"
+msgstr "将GID存储更改为16字节"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:666
 msgid "The GID in the RMW layer is meant to be a globally unique identifier for writers in the ROS graph. Previously, this was erroneously set to 24 bytes based on a bug in an old RMW implementation. But the ``rmw`` package should define this, and all of the implementations should conform to that. Thus, this release defines it as 16 bytes (the DDS standard), and changes all implementations to use that definition."
-msgstr "The GID in the RMW layer is meant to be a globally unique identifier for writers in the ROS graph. Previously, this was erroneously set to 24 bytes based on a bug in an old RMW implementation. But the ``rmw`` package should define this, and all of the implementations should conform to that. Thus, this release defines it as 16 bytes (the DDS standard), and changes all implementations to use that definition."
+msgstr "RMW层中的GID用于作为ROS图中写入者的全局唯一标识符。先前由于旧版RMW实现中的错误，它被错误地设置为24字节。但是``rmw``软件包应该定义它，并且所有的实现都应该遵守该定义。因此，此版本将其定义为16字节（DDS标准），并更改所有实现以使用该定义。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:671
 msgid "See https://github.com/ros2/rmw/pull/345 and the (closed, but relevant) https://github.com/ros2/rmw/pull/328 for more information."
-msgstr "See https://github.com/ros2/rmw/pull/345 and the (closed, but relevant) https://github.com/ros2/rmw/pull/328 for more information."
+msgstr "有关更多信息，请参阅https://github.com/ros2/rmw/pull/345和（已关闭但相关的）https://github.com/ros2/rmw/pull/328。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:674
