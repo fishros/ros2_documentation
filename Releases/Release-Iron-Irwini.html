@@ -426,7 +426,7 @@
 </li>
 <li><p><a class="reference internal" href="#known-issues" id="id66">已知问题</a></p></li>
 <li><p><a class="reference internal" href="#release-timeline" id="id67">发布时间线</a></p></li>
-<li><p><a class="reference internal" href="#development-progress" id="id68">Development progress</a></p></li>
+<li><p><a class="reference internal" href="#development-progress" id="id68">开发进展</a></p></li>
 </ul>
 </div>
 <p><em>Iron Irwini</em> 是 ROS 2 的第九个版本。以下是自上一个版本以来 Iron Irwini 的重要变更和功能亮点。有关自 Humble 版本以来的所有更改，请参阅 <a class="reference internal" href="Iron-Irwini-Complete-Changelog.html"><span class="doc">完整的变更日志</span></a>。</p>
@@ -981,39 +981,32 @@
 <div class="section" id="known-issues">
 <h2><a class="toc-backref" href="#id66">已知问题</a><a class="headerlink" href="#known-issues" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> does not work with Windows Binary release packages.
-RTI is not longer distributing <code class="docutils literal notranslate"><span class="pre">RTI</span> <span class="pre">ConnextDDS</span> <span class="pre">6.0.1</span></code> which was used by the packaging jobs to create the binaries for Windows.
-Instead they now distribute <code class="docutils literal notranslate"><span class="pre">RTI</span> <span class="pre">ConnextDDS</span> <span class="pre">6.1.0</span></code> which is ABI incompatible with the generated binaries.
-The solution is to rely on source builds of ROS 2 and <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> on Windows.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sros2</span></code> on Windows requires users to downgrade the <code class="docutils literal notranslate"><span class="pre">cryptography</span></code> python module to <code class="docutils literal notranslate"><span class="pre">cryptography==38.0.4</span></code> as discussed <a class="reference external" href="https://github.com/ros2/sros2/issues/285">here</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> does not work with ROS Noetic packages from <a class="reference external" href="https://packages.ubuntu.com/jammy/ros-core-dev">upstream Ubuntu</a>.  The suggested workaround is to build ROS Noetic from sources, then build the <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> using that.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 不适用于 Windows 二进制发行包。RTI 不再分发用于创建 Windows 二进制文件的 <code class="docutils literal notranslate"><span class="pre">RTI</span> <span class="pre">ConnextDDS</span> <span class="pre">6.0.1</span></code>，而是现在分发不兼容生成的二进制文件的 <code class="docutils literal notranslate"><span class="pre">RTI</span> <span class="pre">ConnextDDS</span> <span class="pre">6.1.0</span></code>。解决方案是在 Windows 上依赖于 ROS 2 和 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 的源代码构建。</p></li>
+<li><p>在 Windows 上使用 <code class="docutils literal notranslate"><span class="pre">sros2</span></code> 需要将 <code class="docutils literal notranslate"><span class="pre">cryptography</span></code> Python 模块降级为 <code class="docutils literal notranslate"><span class="pre">cryptography==38.0.4</span></code>，如此 <a class="reference external" href="https://github.com/ros2/sros2/issues/285">这里</a> 所讨论的。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> 无法与来自 <a class="reference external" href="https://packages.ubuntu.com/jammy/ros-core-dev">上游 Ubuntu</a> 的 ROS Noetic 包配合使用。建议的解决方法是从源代码构建 ROS Noetic，然后使用它来构建 <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code>。</p></li>
 </ul>
 </div>
 <div class="section" id="release-timeline">
 <h2><a class="toc-backref" href="#id67">发布时间线</a><a class="headerlink" href="#release-timeline" title="永久链接至标题"></a></h2>
 <blockquote>
 <div><dl class="simple">
-<dt>November, 2022 - Platform decisions</dt><dd><p>REP 2000 is updated with the target platforms and major dependency versions.</p>
+<dt>2022 年 11 月 - 平台决策</dt><dd><p>REP 2000 已更新，包含目标平台和主要依赖版本。</p>
 </dd>
-<dt>By January, 2023 - Rolling platform shift</dt><dd><p>Build farm is updated with the new platform versions and dependency versions for Iron Irwini (if necessary).</p>
+<dt>2023 年 1 月 - 滚动平台转换</dt><dd><p>构建农场已更新至新的平台版本和Iron Irwini的依赖版本（如有必要）。</p>
 </dd>
-<dt>Mon. April 10, 2023 - Alpha + RMW freeze</dt><dd><p>对ROS基础包进行初步测试和稳定，并对RMW提供者包的API和功能进行冻结。</p>
+<dt>2023年4月10日，星期一 - Alpha + RMW冻结</dt><dd><p>对ROS基础包进行初步测试和稳定，并对RMW提供者包的API和功能进行冻结。</p>
 </dd>
-<dt>Mon. April 17, 2023 - Freeze</dt><dd><p>对Rolling Ridley中的ROS基础包进行API和功能冻结。此后只能发布错误修复版本。新包可以独立发布。</p>
+<dt>2023年4月17日，星期一 - 冻结</dt><dd><p>对Rolling Ridley中的ROS基础包进行API和功能冻结。此后只能发布错误修复版本。新包可以独立发布。</p>
 </dd>
-<dt>Mon. April 24, 2023 - Branch</dt><dd><p>Branch from Rolling Ridley.
-<code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> is reopened for Rolling PRs for ROS Base <a class="footnote-reference brackets" href="#id24" id="id21">1</a> packages.
-Iron development shifts from <code class="docutils literal notranslate"><span class="pre">ros-rolling-*</span></code> packages to <code class="docutils literal notranslate"><span class="pre">ros-iron-*</span></code> packages.</p>
+<dt>2023年4月24日，星期一 - 分支</dt><dd><p>从Rolling Ridley分支出。<a href="#id1"><span class="problematic" id="id2">``</span></a>rosdistro``为ROS Base [1]_软件包的Rolling PR重新开放。Iron开发从``ros-rolling-<a href="#id3"><span class="problematic" id="id4">*</span></a><a href="#id5"><span class="problematic" id="id6">``</span></a>软件包转为``ros-iron-<a href="#id7"><span class="problematic" id="id8">*</span></a><a href="#id9"><span class="problematic" id="id10">``</span></a>软件包。</p>
 </dd>
-<dt>Mon. May 1, 2023 - Beta</dt><dd><p>可用的ROS Desktop [2]_软件包的更新版本。请求进行常规测试。</p>
+<dt>2023年5月1日，星期一 - Beta</dt><dd><p>可用的ROS Desktop [2]_软件包的更新版本。请求进行常规测试。</p>
 </dd>
-<dt>Mon. May 15, 2023 - Release Candidate</dt><dd><p>构建了正式候选版本软件包。可获取更新的ROS Desktop [2]_软件包版本。</p>
+<dt>周一，2023年5月15日 - 发布候选版本</dt><dd><p>构建了正式候选版本软件包。可获取更新的ROS Desktop [2]_软件包版本。</p>
 </dd>
-<dt>Thu. May 18, 2023 - Distro Freeze</dt><dd><p>Freeze rosdistro.
-No PRs for Iron on the <code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> repo will be merged (reopens after the release announcement).</p>
+<dt>周四，2023年5月18日 - 发布候选版本冻结</dt><dd><p>冻结rosdistro。在``rosdistro``存储库上的PR将不会合并（在发布公告后重新开放）。</p>
 </dd>
-<dt>Tue. May 23, 2023 - General Availability</dt><dd><p>Release announcement.
-<code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> is reopened for Iron PRs.</p>
+<dt>周二，2023年5月23日 - 正式发布</dt><dd><p>发布公告。<code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> 对于Iron的PR重新开放。</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -1027,7 +1020,7 @@ No PRs for Iron on the <code class="docutils literal notranslate"><span class="p
 </dl>
 </div>
 <div class="section" id="development-progress">
-<h2><a class="toc-backref" href="#id68">Development progress</a><a class="headerlink" href="#development-progress" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id68">开发进展</a><a class="headerlink" href="#development-progress" title="永久链接至标题"></a></h2>
 <p>For progress on the development and release of Iron Irwini, see <a class="reference external" href="https://github.com/ros2/ros2/issues/1298">the tracking GitHub issue</a>.</p>
 <p>For the broad process followed by Iron Irwini, see the <a class="reference internal" href="Release-Process.html"><span class="doc">process description page</span></a>.</p>
 </div>
