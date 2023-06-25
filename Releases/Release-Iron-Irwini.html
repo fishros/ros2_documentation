@@ -890,63 +890,42 @@
 <h3><a class="toc-backref" href="#id60"><code class="docutils literal notranslate"><span class="pre">rmw_dds_common</span></code></a><a class="headerlink" href="#rmw-dds-common" title="永久链接至标题"></a></h3>
 <div class="section" id="id7">
 <h4>将GID存储更改为16字节<a class="headerlink" href="#id7" title="永久链接至标题"></a></h4>
-<p>Along with the change in the <code class="docutils literal notranslate"><span class="pre">rmw</span></code> layer, change the message that sends out GID information to 16 bytes.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rmw_dds_common/pull/68">https://github.com/ros2/rmw_dds_common/pull/68</a> for more information.</p>
+<p>随着``rmw``层的变化，将发送GID信息的消息更改为16个字节。</p>
+<p>更多信息请参见https://github.com/ros2/rmw_dds_common/pull/68。</p>
 </div>
 </div>
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id61"><code class="docutils literal notranslate"><span class="pre">ros2topic</span></code></a><a class="headerlink" href="#id8" title="永久链接至标题"></a></h3>
 <div class="section" id="ros2-topic-hz-bw-pub-now-respect-use-sim-time">
-<h4><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">hz/bw/pub</span></code> now respect <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code><a class="headerlink" href="#ros2-topic-hz-bw-pub-now-respect-use-sim-time" title="永久链接至标题"></a></h4>
-<p>When running under simulation, the ROS 2 ecosystem generally gets its time from a <code class="docutils literal notranslate"><span class="pre">/clock</span></code> topic published by the simulator (rather than using the system clock).
-ROS 2 nodes are typically informed of this change by setting the <code class="docutils literal notranslate"><span class="pre">use_sim_time</span></code> parameter on the node.
-The node created by the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span></code> commands <code class="docutils literal notranslate"><span class="pre">hz</span></code>, <code class="docutils literal notranslate"><span class="pre">bw</span></code>, and <code class="docutils literal notranslate"><span class="pre">pub</span></code> now respect that parameter and will use simulation time as appropriate.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/ros2cli/pull/754">https://github.com/ros2/ros2cli/pull/754</a> for more information.</p>
+<h4><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">hz/bw/pub``现在会尊重``use_sim_time</span></code>。<a class="headerlink" href="#ros2-topic-hz-bw-pub-now-respect-use-sim-time" title="永久链接至标题"></a></h4>
+<p>在仿真环境下运行时，ROS 2生态系统通常从仿真器发布的``/clock``主题获取时间（而不是使用系统时钟）。通常通过在节点上设置``use_sim_time``参数来通知ROS 2节点进行这种更改。<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic``命令``hz</span></code>，<a href="#id1"><span class="problematic" id="id2">``</span></a>bw``和``pub``创建的节点现在会尊重该参数，并在适当的时候使用仿真时间。</p>
+<p>更多信息请参见https://github.com/ros2/ros2cli/pull/754。</p>
 </div>
 </div>
 <div class="section" id="rosbag2">
 <h3><a class="toc-backref" href="#id62"><code class="docutils literal notranslate"><span class="pre">rosbag2</span></code></a><a class="headerlink" href="#rosbag2" title="永久链接至标题"></a></h3>
 <div class="section" id="change-default-bag-file-type-to-mcap">
-<h4>Change default bag file type to <code class="docutils literal notranslate"><span class="pre">mcap</span></code><a class="headerlink" href="#change-default-bag-file-type-to-mcap" title="永久链接至标题"></a></h4>
-<p>Prior to this release, by default rosbag2 would record data into sqlite3 databases.
-During testing, it was found that in many cases this was not performant enough and lacked certain features desirable for offline processing.</p>
-<p>To meet these needs, a new bag format (influenced by the original ROS 1 bag file format) called <code class="docutils literal notranslate"><span class="pre">mcap</span></code> was developed.
-This bag file format has many of the missing features from the sqlite3 file format, and should also be more performant.</p>
-<p>This release switches to using <code class="docutils literal notranslate"><span class="pre">mcap</span></code> as the default file format for writing new bags.
-The old <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> file format is still available and can be selected by the user for writing if desired.
-This release also allows playing back data from either the <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> file format or the <code class="docutils literal notranslate"><span class="pre">mcap</span></code> file format.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1160">https://github.com/ros2/rosbag2/pull/1160</a> for more information.</p>
+<h4>将默认的包文件类型更改为``mcap``<a class="headerlink" href="#change-default-bag-file-type-to-mcap" title="永久链接至标题"></a></h4>
+<p>在此版本之前，默认情况下，rosbag2会将数据记录到sqlite3数据库中。在测试过程中发现，在许多情况下，这种方式的性能不够好，并且缺乏离线处理所需的某些功能。</p>
+<p>为了满足这些需求，开发了一种新的包文件格式（受到ROS 1原始包文件格式的影响），称为``mcap``。该包文件格式具有许多sqlite3文件格式缺失的功能，并且应该具有更好的性能。</p>
+<p>此版本将``mcap``作为编写新包的默认文件格式进行切换。旧的``sqlite3``文件格式仍然可用，并且可以由用户选择进行编写，如果需要的话。此版本还允许从``sqlite3``文件格式或``mcap``文件格式中回放数据。</p>
+<p>有关更多信息，请参阅https://github.com/ros2/rosbag2/pull/1160。</p>
 </div>
 <div class="section" id="store-message-definitions-in-bag-files-with-sqlite3-plugin">
-<h4>Store message definitions in bag files with SQLite3 plugin<a class="headerlink" href="#store-message-definitions-in-bag-files-with-sqlite3-plugin" title="永久链接至标题"></a></h4>
-<p>Now we support saving message definitions to the <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> database file in the same format
-as we are saving it to the <code class="docutils literal notranslate"><span class="pre">mcap</span></code> file.
-This opens an opportunity for third-party tools to have
-the ability to deserialize rosbag2 files without having the correct version of all the original
-.msg files on the machine that is decoding the bag file recorded with <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> plugin.</p>
-<p>See <a class="reference external" href="https://github.com/ros2/rosbag2/issues/782">https://github.com/ros2/rosbag2/issues/782</a> and <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1293">https://github.com/ros2/rosbag2/pull/1293</a> for
-more information.</p>
+<h4>使用SQLite3插件将消息定义存储在包文件中。<a class="headerlink" href="#store-message-definitions-in-bag-files-with-sqlite3-plugin" title="永久链接至标题"></a></h4>
+<p>现在我们支持将消息定义保存到``sqlite3``数据库文件中，保存格式与保存到``mcap``文件中的格式相同。这为第三方工具提供了在解码使用``sqlite3``插件记录的包文件时，无需具有所有原始``.msg``文件的正确版本的机器上进行反序列化的能力。</p>
+<p>有关更多信息，请参见 <a class="reference external" href="https://github.com/ros2/rosbag2/issues/782">https://github.com/ros2/rosbag2/issues/782</a> 和 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1293">https://github.com/ros2/rosbag2/pull/1293</a>。</p>
 </div>
 <div class="section" id="new-playback-and-recording-controls">
 <h4>新的回放和录制控制<a class="headerlink" href="#new-playback-and-recording-controls" title="永久链接至标题"></a></h4>
-<p>Several pull requests have been added to enhance the user's control over playback of bags.
-Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/960">960</a> adds the ability to play bag for
-a specified number of seconds.
-And pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1005">1005</a> allows to play bag until specified timestamp.
-Another pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1007">1007</a> adds the ability to
-stop playback remotely via service call.
-Stop will unpause player if it was in pause mode, stop playback and force exit from play() method if it was in progress.</p>
+<p>已添加多个拉取请求以增强用户对包的播放控制。拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/960">960</a> 添加了指定播放秒数的能力。而拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1005">1005</a> 允许播放到指定的时间戳。另一个拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1007">1007</a> 添加了通过服务调用远程停止播放的能力。如果播放器处于暂停模式，停止将取消暂停；如果播放正在进行，则停止播放并强制退出play()方法。</p>
 </div>
 <div class="section" id="managing-recording-via-service-calls">
-<h4>Managing recording via service calls<a class="headerlink" href="#managing-recording-via-service-calls" title="永久链接至标题"></a></h4>
-<p>There are new options to control the recording process from remote nodes.
-The pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1131">1131</a> adds the ability to pause and
-resume recording via service calls.
-Another pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1115">1115</a> adds the ability to split
-bags during recording by sending service call.</p>
+<h4>通过服务调用管理录制<a class="headerlink" href="#managing-recording-via-service-calls" title="永久链接至标题"></a></h4>
+<p>有了来自远程节点控制录制过程的新选项。拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1131">1131</a> 添加了通过服务调用暂停和恢复录制的能力。另一个拉取请求 <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1115">1115</a> 允许在录制过程中通过发送服务调用来分割包。</p>
 </div>
 <div class="section" id="filtering-topics-via-regular-expression-during-playback">
-<h4>Filtering topics via regular expression during playback<a class="headerlink" href="#filtering-topics-via-regular-expression-during-playback" title="永久链接至标题"></a></h4>
+<h4>在播放过程中通过正则表达式过滤话题<a class="headerlink" href="#filtering-topics-via-regular-expression-during-playback" title="永久链接至标题"></a></h4>
 <p>Users sometimes need to replay only a subset of topics from recorded bags and the following two pull request
 adds such capability.
 Pull request <a class="reference external" href="https://github.com/ros2/rosbag2/pull/1034">1034</a> adds a new option
