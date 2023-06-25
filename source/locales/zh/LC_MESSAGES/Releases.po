@@ -36485,27 +36485,27 @@ msgstr "``rmw_dds_common``"
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:679
 msgid "Along with the change in the ``rmw`` layer, change the message that sends out GID information to 16 bytes."
-msgstr "Along with the change in the ``rmw`` layer, change the message that sends out GID information to 16 bytes."
+msgstr "随着``rmw``层的变化，将发送GID信息的消息更改为16个字节。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:681
 msgid "See https://github.com/ros2/rmw_dds_common/pull/68 for more information."
-msgstr "See https://github.com/ros2/rmw_dds_common/pull/68 for more information."
+msgstr "更多信息请参见https://github.com/ros2/rmw_dds_common/pull/68。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:687
 msgid "``ros2 topic hz/bw/pub`` now respect ``use_sim_time``"
-msgstr "``ros2 topic hz/bw/pub`` now respect ``use_sim_time``"
+msgstr "``ros2 topic hz/bw/pub``现在会尊重``use_sim_time``。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:689
 msgid "When running under simulation, the ROS 2 ecosystem generally gets its time from a ``/clock`` topic published by the simulator (rather than using the system clock). ROS 2 nodes are typically informed of this change by setting the ``use_sim_time`` parameter on the node. The node created by the ``ros2 topic`` commands ``hz``, ``bw``, and ``pub`` now respect that parameter and will use simulation time as appropriate."
-msgstr "When running under simulation, the ROS 2 ecosystem generally gets its time from a ``/clock`` topic published by the simulator (rather than using the system clock). ROS 2 nodes are typically informed of this change by setting the ``use_sim_time`` parameter on the node. The node created by the ``ros2 topic`` commands ``hz``, ``bw``, and ``pub`` now respect that parameter and will use simulation time as appropriate."
+msgstr "在仿真环境下运行时，ROS 2生态系统通常从仿真器发布的``/clock``主题获取时间（而不是使用系统时钟）。通常通过在节点上设置``use_sim_time``参数来通知ROS 2节点进行这种更改。``ros2 topic``命令``hz``，``bw``和``pub``创建的节点现在会尊重该参数，并在适当的时候使用仿真时间。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:693
 msgid "See https://github.com/ros2/ros2cli/pull/754 for more information."
-msgstr "See https://github.com/ros2/ros2cli/pull/754 for more information."
+msgstr "更多信息请参见https://github.com/ros2/ros2cli/pull/754。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:696
@@ -36515,62 +36515,62 @@ msgstr "``rosbag2``"
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:699
 msgid "Change default bag file type to ``mcap``"
-msgstr "Change default bag file type to ``mcap``"
+msgstr "将默认的包文件类型更改为``mcap``"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:701
 msgid "Prior to this release, by default rosbag2 would record data into sqlite3 databases. During testing, it was found that in many cases this was not performant enough and lacked certain features desirable for offline processing."
-msgstr "Prior to this release, by default rosbag2 would record data into sqlite3 databases. During testing, it was found that in many cases this was not performant enough and lacked certain features desirable for offline processing."
+msgstr "在此版本之前，默认情况下，rosbag2会将数据记录到sqlite3数据库中。在测试过程中发现，在许多情况下，这种方式的性能不够好，并且缺乏离线处理所需的某些功能。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:704
 msgid "To meet these needs, a new bag format (influenced by the original ROS 1 bag file format) called ``mcap`` was developed. This bag file format has many of the missing features from the sqlite3 file format, and should also be more performant."
-msgstr "To meet these needs, a new bag format (influenced by the original ROS 1 bag file format) called ``mcap`` was developed. This bag file format has many of the missing features from the sqlite3 file format, and should also be more performant."
+msgstr "为了满足这些需求，开发了一种新的包文件格式（受到ROS 1原始包文件格式的影响），称为``mcap``。该包文件格式具有许多sqlite3文件格式缺失的功能，并且应该具有更好的性能。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:707
 msgid "This release switches to using ``mcap`` as the default file format for writing new bags. The old ``sqlite3`` file format is still available and can be selected by the user for writing if desired. This release also allows playing back data from either the ``sqlite3`` file format or the ``mcap`` file format."
-msgstr "This release switches to using ``mcap`` as the default file format for writing new bags. The old ``sqlite3`` file format is still available and can be selected by the user for writing if desired. This release also allows playing back data from either the ``sqlite3`` file format or the ``mcap`` file format."
+msgstr "此版本将``mcap``作为编写新包的默认文件格式进行切换。旧的``sqlite3``文件格式仍然可用，并且可以由用户选择进行编写，如果需要的话。此版本还允许从``sqlite3``文件格式或``mcap``文件格式中回放数据。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:711
 msgid "See https://github.com/ros2/rosbag2/pull/1160 for more information."
-msgstr "See https://github.com/ros2/rosbag2/pull/1160 for more information."
+msgstr "有关更多信息，请参阅https://github.com/ros2/rosbag2/pull/1160。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:714
 msgid "Store message definitions in bag files with SQLite3 plugin"
-msgstr "Store message definitions in bag files with SQLite3 plugin"
+msgstr "使用SQLite3插件将消息定义存储在包文件中。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:716
 msgid "Now we support saving message definitions to the ``sqlite3`` database file in the same format as we are saving it to the ``mcap`` file. This opens an opportunity for third-party tools to have the ability to deserialize rosbag2 files without having the correct version of all the original .msg files on the machine that is decoding the bag file recorded with ``sqlite3`` plugin."
-msgstr "Now we support saving message definitions to the ``sqlite3`` database file in the same format as we are saving it to the ``mcap`` file. This opens an opportunity for third-party tools to have the ability to deserialize rosbag2 files without having the correct version of all the original .msg files on the machine that is decoding the bag file recorded with ``sqlite3`` plugin."
+msgstr "现在我们支持将消息定义保存到``sqlite3``数据库文件中，保存格式与保存到``mcap``文件中的格式相同。这为第三方工具提供了在解码使用``sqlite3``插件记录的包文件时，无需具有所有原始``.msg``文件的正确版本的机器上进行反序列化的能力。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:722
 msgid "See https://github.com/ros2/rosbag2/issues/782 and https://github.com/ros2/rosbag2/pull/1293 for more information."
-msgstr "See https://github.com/ros2/rosbag2/issues/782 and https://github.com/ros2/rosbag2/pull/1293 for more information."
+msgstr "有关更多信息，请参见 https://github.com/ros2/rosbag2/issues/782 和 https://github.com/ros2/rosbag2/pull/1293。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:729
 msgid "Several pull requests have been added to enhance the user's control over playback of bags. Pull request `960 <https://github.com/ros2/rosbag2/pull/960>`_ adds the ability to play bag for a specified number of seconds. And pull request `1005 <https://github.com/ros2/rosbag2/pull/1005>`_ allows to play bag until specified timestamp. Another pull request `1007 <https://github.com/ros2/rosbag2/pull/1007>`_ adds the ability to stop playback remotely via service call. Stop will unpause player if it was in pause mode, stop playback and force exit from play() method if it was in progress."
-msgstr "Several pull requests have been added to enhance the user's control over playback of bags. Pull request `960 <https://github.com/ros2/rosbag2/pull/960>`_ adds the ability to play bag for a specified number of seconds. And pull request `1005 <https://github.com/ros2/rosbag2/pull/1005>`_ allows to play bag until specified timestamp. Another pull request `1007 <https://github.com/ros2/rosbag2/pull/1007>`_ adds the ability to stop playback remotely via service call. Stop will unpause player if it was in pause mode, stop playback and force exit from play() method if it was in progress."
+msgstr "已添加多个拉取请求以增强用户对包的播放控制。拉取请求 `960 <https://github.com/ros2/rosbag2/pull/960>`_ 添加了指定播放秒数的能力。而拉取请求 `1005 <https://github.com/ros2/rosbag2/pull/1005>`_ 允许播放到指定的时间戳。另一个拉取请求 `1007 <https://github.com/ros2/rosbag2/pull/1007>`_ 添加了通过服务调用远程停止播放的能力。如果播放器处于暂停模式，停止将取消暂停；如果播放正在进行，则停止播放并强制退出play()方法。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:738
 msgid "Managing recording via service calls"
-msgstr "Managing recording via service calls"
+msgstr "通过服务调用管理录制"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:740
 msgid "There are new options to control the recording process from remote nodes. The pull request `1131 <https://github.com/ros2/rosbag2/pull/1131>`_ adds the ability to pause and resume recording via service calls. Another pull request `1115 <https://github.com/ros2/rosbag2/pull/1115>`_ adds the ability to split bags during recording by sending service call."
-msgstr "There are new options to control the recording process from remote nodes. The pull request `1131 <https://github.com/ros2/rosbag2/pull/1131>`_ adds the ability to pause and resume recording via service calls. Another pull request `1115 <https://github.com/ros2/rosbag2/pull/1115>`_ adds the ability to split bags during recording by sending service call."
+msgstr "有了来自远程节点控制录制过程的新选项。拉取请求 `1131 <https://github.com/ros2/rosbag2/pull/1131>`_ 添加了通过服务调用暂停和恢复录制的能力。另一个拉取请求 `1115 <https://github.com/ros2/rosbag2/pull/1115>`_ 允许在录制过程中通过发送服务调用来分割包。"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:747
 msgid "Filtering topics via regular expression during playback"
-msgstr "Filtering topics via regular expression during playback"
+msgstr "在播放过程中通过正则表达式过滤话题"
 
 
 #: ../../source/Releases/Release-Iron-Irwini.rst:749
