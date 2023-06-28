@@ -46,7 +46,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../Installation.html">安装 [7525]</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Installation.html">安装</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
@@ -359,7 +359,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../Installation.html">安装 [7525]</a> &raquo;</li>
+          <li><a href="../Installation.html">安装</a> &raquo;</li>
       <li>使用预发布二进制文件进行测试 [7955]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Installation/Testing.rst" class="fa fa-github"> 在 GitHub 上修改</a>
@@ -374,14 +374,14 @@
 
   <div class="section" id="testing-with-pre-release-binaries">
 <h1>使用预发布二进制文件进行测试 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7955">[7955]</a><a class="headerlink" href="#testing-with-pre-release-binaries" title="永久链接至标题"></a></h1>
-<p>许多ROS软件包提供预编译的二进制文件。通常，在按照 <a class="reference internal" href="../Installation.html"><span class="doc">安装 [7525]</span></a> 的步骤进行操作时，您会得到已发布版本的二进制文件。还有预发布版本的二进制文件可供在正式发布之前进行测试。本文介绍了若要尝试ROS二进制文件的预发布版本的几种选项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7956">[7956]</a></p>
+<p>许多ROS软件包提供预编译的二进制文件。通常，在按照 <a class="reference internal" href="../Installation.html"><span class="doc">安装</span></a> 的步骤进行操作时，您会得到已发布版本的二进制文件。还有预发布版本的二进制文件可供在正式发布之前进行测试。本文介绍了若要尝试ROS二进制文件的预发布版本的几种选项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7956">[7956]</a></p>
 <div class="section" id="debian-testing-repository">
 <h2>Debian 测试仓库 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7957">[7957]</a><a class="headerlink" href="#debian-testing-repository" title="永久链接至标题"></a></h2>
 <p>当软件包通过 bloom 发布到 ROS 发行版时，构建工厂会将它们构建为 Debian 软件包，并临时存储在 <strong>building</strong> apt 仓库中。随着依赖软件包的重新构建，自动化进程会定期将 <strong>building</strong> 中的软件包同步到一个名为 <strong>ros-testing</strong> 的辅助仓库中。<strong>ros-testing</strong> 旨在作为开发人员和激进用户进行额外测试的区域，以便在将软件包手动同步到公共 ROS 仓库之前进行测试。一般用户从该仓库安装软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7958">[7958]</a></p>
 <p>大约每两周，rosdistro 的发布经理会手动将 <strong>ros-testing</strong> 的内容同步到 <strong>main</strong> ROS 仓库中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7959">[7959]</a></p>
 <p>对于基于 Debian 的操作系统，您可以从 <strong>ros-testing</strong> 仓库安装二进制软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7960">[7960]</a></p>
 <ol class="arabic">
-<li><p>请确保您已从 Debian 软件包中安装了可用的 ROS 2 版本（参见 <a class="reference internal" href="../Installation.html"><span class="doc">安装 [7525]</span></a>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7961">[7961]</a></p></li>
+<li><p>请确保您已从 Debian 软件包中安装了可用的 ROS 2 版本（参见 <a class="reference internal" href="../Installation.html"><span class="doc">安装</span></a>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7961">[7961]</a></p></li>
 <li><p>使用 sudo 编辑文件 <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ros2.list</span></code>，并将 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 更改为 <code class="docutils literal notranslate"><span class="pre">ros2-testing</span></code>。例如，在 Ubuntu Jammy 上，文件内容应如下所示： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7962">[7962]</a></p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># deb http://packages.ros.org/ros2/ubuntu jammy main</span>
 deb http://packages.ros.org/ros2-testing/ubuntu jammy main
