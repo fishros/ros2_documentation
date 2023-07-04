@@ -43,7 +43,13 @@ jobs:
 
       - name: Download conf.doc
         run: wget https://raw.githubusercontent.com/fishros/ros2_documentation/config/conf.py -O conf.py && sed -i 's/ROS_DISTRO/humble/g' conf.py 
-  
+
+      - name: Copy po to .temp
+        run: rm -rf .temp && mkdir .temp && cp source/locales/zh/LC_MESSAGES/*.po .temp/
+      
+      - name: Change to origin doc
+        run: python3 podeal.py -f doc -p source/locales/zh/LC_MESSAGES
+
       - name: Build the po doc
         run: sphinx-build -b html -c . -D language=zh source build/html/zh
 
@@ -53,6 +59,23 @@ jobs:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_dir: ./build/html/zh
           publish_branch: gh-pages-cn-humble
-          
+
       - name: Deploy to fishros.org
         run: echo `curl "http://fishros.org/deploy/github/action?url=git@github.com:fishros/ros2_documentation.git&branch=gh-pages-cn-humble&repository=ros2_documentation&directory=&prefix=doc/ros2/humble"`
+
+      - name: Change to dev doc
+        run: python3 podeal.py -f dev_doc -p source/locales/zh/LC_MESSAGES
+
+      - name: Build the dev doc
+        run: sphinx-build -b html -c . -D language=zh source build/html/zh
+
+      - name: Deploy dev po documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./build/html/zh
+          publish_branch: gh-pages-cn-humble-dev
+
+      - name: Deploy to fishros.org
+        run: echo `curl "http://fishros.org/deploy/github/action?url=git@github.com:fishros/ros2_documentation.git&branch=gh-pages-cn-humble-dev&repository=ros2_documentation&directory=&prefix=doc/ros2/humble/dev"`
+          
