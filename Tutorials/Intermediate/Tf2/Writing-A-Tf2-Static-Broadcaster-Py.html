@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>编写静态广播器（Python） [6102] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="编写静态广播器（C++） [6065]" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html" />
+    <link rel="prev" title="介绍``tf2`` [5813]" href="Introduction-To-Tf2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../../../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../Tutorials.html">教程 [3059]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../Intermediate.html">中级 [5283]</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Launch/Launch-Main.html">启动 [5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-Event-Handlers.html">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Advanced.html">高级 [3065]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Miscellaneous.html">杂项 [6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Contributing.html">贡献 [1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/ROSCon-Content.html">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../Tutorials.html">教程 [3059]</a> &raquo;</li>
+          <li><a href="../../Intermediate.html">中级 [5283]</a> &raquo;</li>
+          <li><a href="Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a> &raquo;</li>
+      <li>编写静态广播器（Python） [6102]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="writing-a-static-broadcaster-python">
+<span id="writingatf2staticbroadcasterpy"></span><h1>编写静态广播器（Python） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6102">[6102]</a><a class="headerlink" href="#writing-a-static-broadcaster-python" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何向 tf2 广播静态坐标框架。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6066">[6066]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5286">[5286]</a></p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3507">[3507]</a></p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3277">[3277]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#background" id="id1">背景 [3072]</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [3124]</a></p></li>
+<li><p><a class="reference internal" href="#tasks" id="id3">任务 [3282]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-a-package" id="id4">1 创建一个包 [3283]</a></p></li>
+<li><p><a class="reference internal" href="#write-the-static-broadcaster-node" id="id5">2 编写静态广播节点 [6074]</a></p></li>
+<li><p><a class="reference internal" href="#build" id="id6">3 构建 [6020]</a></p></li>
+<li><p><a class="reference internal" href="#run" id="id7">4 运行 [6021]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-proper-way-to-publish-static-transforms" id="id8">发布静态变换的正确方法。 [6095]</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id9">总结 [3353]</a></p></li>
+</ul>
+</div>
+<div class="section" id="background">
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3072">[3072]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<p>发布静态转换对于定义机器人底盘与其传感器或静止部件之间的关系非常有用。例如，对于在激光扫描仪中心的坐标框架中的激光扫描测量，最容易进行推理。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6067">[6067]</a></p>
+<p>这是一个独立的教程，介绍了静态变换的基础知识，由两部分组成。在第一部分中，我们将编写代码将静态变换发布到tf2。在第二部分中，我们将解释如何使用命令行中的 <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 可执行工具，该工具位于 <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> 中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6068">[6068]</a></p>
+<p>在接下来的两个教程中，我们将编写代码以重现 <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2</span></a> 教程中的演示。之后，下面的教程将侧重于使用更高级的tf2功能扩展演示。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6069">[6069]</a></p>
+</div>
+<div class="section" id="prerequisites">
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3124">[3124]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<p>在之前的教程中，您学习了如何 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">创建工作空间</span></a> 和 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建包</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6070">[6070]</a></p>
+</div>
+<div class="section" id="tasks">
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3282">[3282]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<div class="section" id="create-a-package">
+<h3>1 创建一个包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3283">[3283]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
+<p>首先，我们将创建一个用于本教程和接下来的教程的软件包。该软件包名为 <code class="docutils literal notranslate"><span class="pre">learning_tf2_py</span></code>，它将依赖于 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code>、<code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code>、<code class="docutils literal notranslate"><span class="pre">rclpy</span></code>、<code class="docutils literal notranslate"><span class="pre">tf2_ros_py</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>。本教程的代码存储在 <a class="reference external" href="https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py">这里</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6103">[6103]</a></p>
+<p>打开一个新的终端，并 <a class="reference internal" href="../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source ROS 2 安装目录</span></a>，以使 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令可用。导航到工作空间的 <code class="docutils literal notranslate"><span class="pre">src</span></code> 文件夹并创建一个新的包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6072">[6072]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_python learning_tf2_py</span>
+</pre></div>
+</div>
+<p>您的终端将返回一条消息，验证您的软件包``learning_tf2_py``及其所有必要的文件和文件夹的创建。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6104">[6104]</a></p>
+</div>
+<div class="section" id="write-the-static-broadcaster-node">
+<h3>2 编写静态广播节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6074">[6074]</a><a class="headerlink" href="#write-the-static-broadcaster-node" title="永久链接至标题"></a></h3>
+<p>首先让我们创建源文件。在``src/learning_tf2_py/learning_tf2_py``目录中，通过输入以下命令下载示例静态广播器代码： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6105">[6105]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>在 Windows 命令行提示符中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4843">[4843]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -sk https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py -o static_turtle_tf2_broadcaster.py</span>
+</pre></div>
+</div>
+<p>或者在powershell中执行： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4844">[4844]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_py/turtle_tf2_py/static_turtle_tf2_broadcaster.py -o static_turtle_tf2_broadcaster.py</span>
+</pre></div>
+</div>
+</div></div>
+<p>使用您偏爱的文本编辑器打开该文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4933">[4933]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+
+<span class="kn">from</span> <span class="nn">tf2_ros.static_transform_broadcaster</span> <span class="kn">import</span> <span class="n">StaticTransformBroadcaster</span>
+
+
+<span class="k">def</span> <span class="nf">quaternion_from_euler</span><span class="p">(</span><span class="n">ai</span><span class="p">,</span> <span class="n">aj</span><span class="p">,</span> <span class="n">ak</span><span class="p">):</span>
+    <span class="n">ai</span> <span class="o">/=</span> <span class="mf">2.0</span>
+    <span class="n">aj</span> <span class="o">/=</span> <span class="mf">2.0</span>
+    <span class="n">ak</span> <span class="o">/=</span> <span class="mf">2.0</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ai</span><span class="p">)</span>
+    <span class="n">si</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ai</span><span class="p">)</span>
+    <span class="n">cj</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">aj</span><span class="p">)</span>
+    <span class="n">sj</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">aj</span><span class="p">)</span>
+    <span class="n">ck</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ak</span><span class="p">)</span>
+    <span class="n">sk</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ak</span><span class="p">)</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">ci</span><span class="o">*</span><span class="n">ck</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">ci</span><span class="o">*</span><span class="n">sk</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">si</span><span class="o">*</span><span class="n">ck</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="n">si</span><span class="o">*</span><span class="n">sk</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="p">))</span>
+    <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cj</span><span class="o">*</span><span class="n">sc</span> <span class="o">-</span> <span class="n">sj</span><span class="o">*</span><span class="n">cs</span>
+    <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cj</span><span class="o">*</span><span class="n">ss</span> <span class="o">+</span> <span class="n">sj</span><span class="o">*</span><span class="n">cc</span>
+    <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cj</span><span class="o">*</span><span class="n">cs</span> <span class="o">-</span> <span class="n">sj</span><span class="o">*</span><span class="n">sc</span>
+    <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">cj</span><span class="o">*</span><span class="n">cc</span> <span class="o">+</span> <span class="n">sj</span><span class="o">*</span><span class="n">ss</span>
+
+    <span class="k">return</span> <span class="n">q</span>
+
+
+<span class="k">class</span> <span class="nc">StaticFramePublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Broadcast transforms that never change.</span>
+
+<span class="sd">    This example publishes transforms from `world` to a static turtle frame.</span>
+<span class="sd">    The transforms are only published once at startup, and are constant for all</span>
+<span class="sd">    time.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformation</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;static_turtle_tf2_broadcaster&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tf_static_broadcaster</span> <span class="o">=</span> <span class="n">StaticTransformBroadcaster</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Publish static transforms once at startup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_transforms</span><span class="p">(</span><span class="n">transformation</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">make_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformation</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
+
+        <span class="n">t</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">child_frame_id</span> <span class="o">=</span> <span class="n">transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+        <span class="n">quat</span> <span class="o">=</span> <span class="n">quaternion_from_euler</span><span class="p">(</span>
+            <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">7</span><span class="p">]))</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tf_static_broadcaster</span><span class="o">.</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">)</span>
+
+    <span class="c1"># obtain parameters from command line arguments</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Invalid number of parameters. Usage: </span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="s1">&#39;$ ros2 run learning_tf2_py static_turtle_tf2_broadcaster&#39;</span>
+                    <span class="s1">&#39;child_frame_name x y z roll pitch yaw&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;world&#39;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Your static turtle name cannot be &quot;world&quot;&#39;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># pass parameters and initialize node</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">StaticFramePublisher</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="examine-the-code">
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3291">[3291]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<p>现在让我们来看一下与将静态海龟姿势发布到tf2有关的代码。首先导入所需的软件包。首先从``geometry_msgs``中导入``TransformStamped``，它为我们提供了一个要发布到变换树的消息模板。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6106">[6106]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">TransformStamped</span>
+</pre></div>
+</div>
+<p>然后导入``rclpy``，以便可以使用其``Node``类。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6107">[6107]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tf2_ros``软件包提供了一个``StaticTransformBroadcaster</span></code>，用于简化发布静态变换。要使用``StaticTransformBroadcaster``，我们需要从``tf2_ros``模块中导入它。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6108">[6108]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tf2_ros.static_transform_broadcaster</span> <span class="kn">import</span> <span class="n">StaticTransformBroadcaster</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">StaticFramePublisher``类的构造函数使用名称``static_turtle_tf2_broadcaster``初始化节点。然后创建``StaticTransformBroadcaster</span></code>，它将在启动时发送一个静态变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6079">[6079]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">tf_static_broadcaster</span> <span class="o">=</span> <span class="n">StaticTransformBroadcaster</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">make_transforms</span><span class="p">(</span><span class="n">transformation</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>在这里，我们创建了一个``TransformStamped``对象，这将是我们在填充后发送的消息。在传递实际的变换值之前，我们需要为其提供适当的元数据。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6080">[6080]</a></p>
+<ol class="arabic simple">
+<li><p>我们需要给正在发布的变换添加一个时间戳，我们将使用当前时间进行标记，<code class="docutils literal notranslate"><span class="pre">self.get_clock().now()</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6109">[6109]</a></p></li>
+<li><p>然后，我们需要设置链接的父框架的名称，这里是``world``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6082">[6082]</a></p></li>
+<li><p>最后，我们需要设置链接的子框架的名称。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6083">[6083]</a></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+<span class="n">t</span><span class="o">.</span><span class="n">child_frame_id</span> <span class="o">=</span> <span class="n">transformation</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>在这里，我们填充了海龟的6D姿态（平移和旋转）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6084">[6084]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">quat</span> <span class="o">=</span> <span class="n">quaternion_from_euler</span><span class="p">(</span>
+    <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">6</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">transformation</span><span class="p">[</span><span class="mi">7</span><span class="p">]))</span>
+<span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">quat</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>最后，我们使用``sendTransform()``函数广播静态变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6085">[6085]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">tf_static_broadcaster</span><span class="o">.</span><span class="n">sendTransform</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-dependencies">
+<h4>2.2 添加依赖项 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4853">[4853]</a><a class="headerlink" href="#add-dependencies" title="永久链接至标题"></a></h4>
+<p>导航到``src/learning_tf2_py``目录的上一级，其中已为您创建了``setup.py``、<a href="#id1"><span class="problematic" id="id2">``</span></a>setup.cfg``和``package.xml``文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6110">[6110]</a></p>
+<p>用文本编辑器打开``package.xml``文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4855">[4855]</a></p>
+<p>如在:doc:<code class="xref any docutils literal notranslate"><span class="pre">创建包教程</span> <span class="pre">&lt;../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package&gt;`中所述，请确保填写``&lt;description&gt;`</span></code>, <a href="#id1"><span class="problematic" id="id2">``</span></a>&lt;maintainer&gt;``和``&lt;license&gt;``标签： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6087">[6087]</a></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>Learning tf2 with rclpy<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
+<span class="nt">&lt;license&gt;</span>Apache License 2.0<span class="nt">&lt;/license&gt;</span>
+</pre></div>
+</div>
+<p>在上述行之后，添加与您节点的导入语句对应的以下依赖项： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6111">[6111]</a></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;exec_depend&gt;</span>geometry_msgs<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>python3-numpy<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>tf2_ros_py<span class="nt">&lt;/exec_depend&gt;</span>
+<span class="nt">&lt;exec_depend&gt;</span>turtlesim<span class="nt">&lt;/exec_depend&gt;</span>
+</pre></div>
+</div>
+<p>当执行节点的代码时，这将声明所需的``geometry_msgs``、<code class="docutils literal notranslate"><span class="pre">python3-numpy</span></code>、<code class="docutils literal notranslate"><span class="pre">rclpy</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>tf2_ros_py``和``turtlesim``依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6112">[6112]</a></p>
+<p>确保保存文件. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4859">[4859]</a></p>
+</div>
+<div class="section" id="add-an-entry-point">
+<h4>2.3 添加入口点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4947">[4947]</a><a class="headerlink" href="#add-an-entry-point" title="永久链接至标题"></a></h4>
+<p>为了让 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 命令能够运行你的节点，你必须在 <code class="docutils literal notranslate"><span class="pre">setup.py``（位于</span> <span class="pre">``src/learning_tf2_py</span></code> 目录中）中添加入口点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5767">[5767]</a></p>
+<p>在``'console_scripts':<a href="#id1"><span class="problematic" id="id2">``</span></a>括号之间添加以下行： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4977">[4977]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;static_turtle_tf2_broadcaster = learning_tf2_py.static_turtle_tf2_broadcaster:main&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="build">
+<h3>3 构建 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6020">[6020]</a><a class="headerlink" href="#build" title="永久链接至标题"></a></h3>
+<p>在工作区根目录中运行``rosdep``以检查构建前是否缺少依赖项是一个好习惯： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6089">[6089]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro humble -y</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5739">[5739]</a></p>
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> 只能在 Linux 上运行，所以你需要自己安装 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5739">[5739]</a></p>
+</div></div>
+<p>在工作区根目录中构建您的新包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6090">[6090]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_py</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select learning_tf2_py</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --merge-install --packages-select learning_tf2_py</span>
+</pre></div>
+</div>
+</div></div>
+<p>打开一个新终端，进入你的工作空间的根目录，并源化设置文件： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5741">[5741]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">. install/setup.bash</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">. install/setup.bash</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>CMD
+<span class="go">call install\setup.bat</span>
+
+<span class="gp"># </span>Powershell
+<span class="go">.\install\setup.ps1</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="run">
+<h3>4 运行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6021">[6021]</a><a class="headerlink" href="#run" title="永久链接至标题"></a></h3>
+<p>现在运行``static_turtle_tf2_broadcaster``节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6091">[6091]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run learning_tf2_py static_turtle_tf2_broadcaster mystaticturtle 0 0 1 0 0 0</span>
+</pre></div>
+</div>
+<p>这将为``mystaticturtle``设置一个海龟姿态广播，使其浮在地面上方1米处。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6092">[6092]</a></p>
+<p>现在我们可以通过回显``tf_static``话题来检查静态变换是否已发布。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6093">[6093]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 topic echo /tf_static</span>
+</pre></div>
+</div>
+<p>如果一切正常，你应该看到一个单独的静态变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6094">[6094]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">transforms:</span>
+<span class="go">- header:</span>
+<span class="go">   stamp:</span>
+<span class="go">      sec: 1622908754</span>
+<span class="go">      nanosec: 208515730</span>
+<span class="go">   frame_id: world</span>
+<span class="go">child_frame_id: mystaticturtle</span>
+<span class="go">transform:</span>
+<span class="go">   translation:</span>
+<span class="go">      x: 0.0</span>
+<span class="go">      y: 0.0</span>
+<span class="go">      z: 1.0</span>
+<span class="go">   rotation:</span>
+<span class="go">      x: 0.0</span>
+<span class="go">      y: 0.0</span>
+<span class="go">      z: 0.0</span>
+<span class="go">      w: 1.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-proper-way-to-publish-static-transforms">
+<h2>发布静态变换的正确方法。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6095">[6095]</a><a class="headerlink" href="#the-proper-way-to-publish-static-transforms" title="永久链接至标题"></a></h2>
+<p>本教程旨在展示如何使用``StaticTransformBroadcaster``发布静态变换。在实际开发过程中，你不应该自己编写这段代码，而应该使用专用的``tf2_ros``工具来完成。<a href="#id1"><span class="problematic" id="id2">``</span></a>tf2_ros``提供了一个名为``static_transform_publisher``的可执行文件，可以作为命令行工具或作为你可以添加到启动文件中的节点来使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6096">[6096]</a></p>
+<p>使用以米为单位的x/y/z偏移量和以弧度为单位的roll/pitch/yaw来将静态坐标变换发布到tf2。在我们的例子中，roll/pitch/yaw分别指的是绕x/y/z轴的旋转。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6097">[6097]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run tf2_ros static_transform_publisher --x x --y y --z z --yaw yaw --pitch pitch --roll roll --frame-id frame_id --child-frame-id child_frame_id</span>
+</pre></div>
+</div>
+<p>使用米为单位的 x/y/z 偏移量和四元数在 tf2 中发布一个静态坐标变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6098">[6098]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run tf2_ros static_transform_publisher --x x --y y --z z --qx qx --qy qy --qz qz --qw qw --frame-id frame_id --child-frame-id child_frame_id</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 既可以作为命令行工具进行手动使用，也可以在 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 文件中用于设置静态变换。例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6099">[6099]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">from launch import LaunchDescription</span>
+<span class="go">from launch_ros.actions import Node</span>
+
+<span class="go">def generate_launch_description():</span>
+<span class="go">    return LaunchDescription([</span>
+<span class="go">        Node(</span>
+<span class="go">            package=&#39;tf2_ros&#39;,</span>
+<span class="go">            executable=&#39;static_transform_publisher&#39;,</span>
+<span class="go">            arguments = [&#39;--x&#39;, &#39;0&#39;, &#39;--y&#39;, &#39;0&#39;, &#39;--z&#39;, &#39;1&#39;, &#39;--yaw&#39;, &#39;0&#39;, &#39;--pitch&#39;, &#39;0&#39;, &#39;--roll&#39;, &#39;0&#39;, &#39;--frame-id&#39;, &#39;world&#39;, &#39;--child-frame-id&#39;, &#39;mystaticturtle&#39;]</span>
+<span class="go">        ),</span>
+<span class="go">    ])</span>
+</pre></div>
+</div>
+<p>请注意，除了 <code class="docutils literal notranslate"><span class="pre">--frame-id</span></code> 和 <code class="docutils literal notranslate"><span class="pre">--child-frame-id</span></code> 之外的所有参数都是可选的；如果没有指定特定的选项，将假设为恒等变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6100">[6100]</a></p>
+</div>
+<div class="section" id="summary">
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3353">[3353]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<p>在本教程中，您学习了静态变换如何有助于定义帧之间的静态关系，例如相对于 <code class="docutils literal notranslate"><span class="pre">world</span></code> 帧的 <code class="docutils literal notranslate"><span class="pre">mystaticturtle</span></code>。此外，您还学习了静态变换如何有助于理解传感器数据，例如激光扫描仪的数据，通过将数据与公共坐标帧关联起来。最后，您编写了自己的节点以将静态变换发布到 tf2，并学习了如何使用 <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 可执行文件和 launch 文件来发布所需的静态变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6101">[6101]</a></p>
+</div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Introduction-To-Tf2.html" class="btn btn-neutral float-left" title="介绍``tf2`` [5813]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Writing-A-Tf2-Static-Broadcaster-Cpp.html" class="btn btn-neutral float-right" title="编写静态广播器（C++） [6065]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安装（macOS） [3661] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="设置机器人仿真（基础） [3801]" href="Setting-Up-Simulation-Webots-Basic.html" />
+    <link rel="prev" title="安装（Windows） [3733]" href="Installation-Windows.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../../../../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../Tutorials.html">教程 [3059]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Intermediate.html">中级 [5283]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Launch/Launch-Main.html">启动 [5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Launch/Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Launch/Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Launch/Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Launch/Using-Event-Handlers.html">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Intermediate/URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../Advanced.html">高级 [3065]</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../Simulation-Main.html">模拟器 [3658]</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="Simulation-Webots.html">Webots [3886]</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Miscellaneous.html">杂项 [6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing.html">贡献 [1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/ROSCon-Content.html">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../The-ROS2-Project/Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../../Tutorials.html">教程 [3059]</a> &raquo;</li>
+          <li><a href="../../../Advanced.html">高级 [3065]</a> &raquo;</li>
+          <li><a href="../Simulation-Main.html">模拟器 [3658]</a> &raquo;</li>
+          <li><a href="Simulation-Webots.html">Webots [3886]</a> &raquo;</li>
+      <li>安装（macOS） [3661]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Advanced/Simulators/Webots/Installation-MacOS.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="installation-macos">
+<h1>安装（macOS） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3661">[3661]</a><a class="headerlink" href="#installation-macos" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>在macOS上安装``webots_ros2``包并运行仿真示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3662">[3662]</a></p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>教程级别：<a href="#id3"><span class="problematic" id="id4">**</span></a>高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3068">[3068]</a></p>
+<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3663">[3663]</a></p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3277">[3277]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#background" id="id1">背景 [3072]</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [3124]</a></p></li>
+<li><p><a class="reference internal" href="#tasks" id="id3">任务 [3282]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-the-vm-image" id="id4">1 创建虚拟机镜像 [3669]</a></p></li>
+<li><p><a class="reference internal" href="#configure-the-vm" id="id5">2 配置虚拟机 [3681]</a></p></li>
+<li><p><a class="reference internal" href="#install-webots-ros2" id="id6">3 安装``webots_ros2`` [3690]</a></p></li>
+<li><p><a class="reference internal" href="#launch-the-webots-ros2-universal-robot-example" id="id7">4 启动``webots_ros2_universal_robot``示例。 [3702]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pre-configured-images" id="id8">预配置的图像 [3711]</a></p></li>
+</ul>
+</div>
+<div class="section" id="background">
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3072">[3072]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">webots_ros2``软件包提供了ROS</span> <span class="pre">2和Webots之间的接口。它包括多个子软件包，其中包括``webots_ros2_driver</span></code>，它允许您启动Webots并与其通信。其他子软件包主要是示例，展示了使用该接口的多种可能实现。在本教程中，您将安装该软件包并学习如何运行其中的一个示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3664">[3664]</a></p>
+</div>
+<div class="section" id="prerequisites">
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3124">[3124]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<p>建议您先了解入门级ROS原理，详情请参阅初学者 <a class="reference internal" href="../../../../Tutorials.html"><span class="doc">教程 [3059]</span></a>。特别是 <a class="reference internal" href="../../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">创建一个工作空间 [4428]</span></a> 和 <a class="reference internal" href="../../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建软件包 [4496]</span></a> 是有用的先决条件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3665">[3665]</a></p>
+<p>为了在虚拟机中使用``webots_ros2``软件包，您需要在Mac上原生安装Webots，具体步骤如下所述。您可以按照`安装过程 &lt;<a class="reference external" href="https://cyberbotics.com/doc/guide/installation-procedure">https://cyberbotics.com/doc/guide/installation-procedure</a>&gt;`_ 进行操作，或者从源代码构建Webots &lt;<a class="reference external" href="https://github.com/cyberbotics/webots/wiki/macOS-installation/">https://github.com/cyberbotics/webots/wiki/macOS-installation/</a>&gt;。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3666">[3666]</a></p>
+</div>
+<div class="section" id="tasks">
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3282">[3282]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<p>在macOS上，基于UTM虚拟机的解决方案可以提供比原生macOS安装更好的ROS 2用户体验，因为它在Linux环境中运行ROS。但是，Webots应该在macOS上进行原生安装，并且能够与运行在虚拟机中的ROS节点进行通信。该解决方案允许Webots进行本机的3D硬件加速。虚拟机运行所有ROS部分（包括RViz），通过TCP连接到主机以启动Webots。共享文件夹允许脚本将世界文件和其他资源文件从虚拟机传输到运行Webots的macOS上。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3667">[3667]</a></p>
+<p>下面的步骤说明了如何使用安装了 <code class="docutils literal notranslate"><span class="pre">webots_ros2</span></code> 发布软件包的方式创建虚拟机镜像。您也可以从源代码进行安装。在 <a class="reference internal" href="#preconfigured-images"><span class="std std-ref">预配置的图像 [3711]</span></a> 部分，您可以找到已经配置好的Webots每个版本（从R2023a开始）的镜像下载。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3668">[3668]</a></p>
+<div class="section" id="create-the-vm-image">
+<h3>1 创建虚拟机镜像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3669">[3669]</a><a class="headerlink" href="#create-the-vm-image" title="永久链接至标题"></a></h3>
+<p>在您的 macOS 机器上安装 UTM。链接可以在 <a class="reference external" href="https://mac.getutm.app/">official UTM website</a> 上找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3670">[3670]</a></p>
+<p>下载 <a class="reference external" href="https://cdimage.ubuntu.com/jammy/daily-live/current/">Ubuntu 22.04</a> 的 .iso 镜像文件，用于 Humble 和 Rolling 版本，或者下载 <a class="reference external" href="https://cdimage.ubuntu.com/focal/daily-live/pending/">Ubuntu 20.04</a> 的镜像文件，用于 Foxy 版本。请确保下载与您的 CPU 架构相对应的镜像文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3671">[3671]</a></p>
+<p>在UTM软件中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3672">[3672]</a></p>
+<ul class="simple">
+<li><p>创建一个新的镜像，并选择“虚拟化”选项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3673">[3673]</a></p></li>
+<li><p>在“启动ISO镜像”字段中选择你已下载的ISO镜像。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3674">[3674]</a></p></li>
+<li><p>将所有硬件设置保持默认（包括禁用硬件加速）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3675">[3675]</a></p></li>
+<li><p>在``Shared Directory``窗口中，选择一个文件夹，用于``webots_ros2``将所有Webots资源传输到主机。在此示例中，选择的文件夹为``/Users/username/shared``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3676">[3676]</a></p></li>
+<li><p>将所有其余参数保持默认。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3677">[3677]</a></p></li>
+<li><p>启动虚拟机。请注意，每次启动虚拟机时，都可以选择另一个共享文件夹。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3678">[3678]</a></p></li>
+<li><p>在首次启动虚拟机时，安装Ubuntu并选择一个帐户的用户名。在此示例中，用户名为``ubuntu``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3679">[3679]</a></p></li>
+<li><p>安装完Ubuntu后，关闭虚拟机，将iso镜像从CD/DVD字段中移除，并重新启动虚拟机。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3680">[3680]</a></p></li>
+</ul>
+</div>
+<div class="section" id="configure-the-vm">
+<h3>2 配置虚拟机 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3681">[3681]</a><a class="headerlink" href="#configure-the-vm" title="永久链接至标题"></a></h3>
+<p>在本节中，将在虚拟机中安装ROS 2，并配置共享文件夹。以下指令和命令都在虚拟机内运行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3682">[3682]</a></p>
+<ul>
+<li><p>在启动的虚拟机中打开终端，并按照 <a class="reference internal" href="../../../../Installation/Ubuntu-Install-Debians.html"><span class="doc">Ubuntu（Debian） [7981]</span></a> 中的说明安装所需的ROS 2版本。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3683">[3683]</a></p></li>
+<li><p>在虚拟机中创建一个文件夹，用作共享文件夹。在本示例中，虚拟机中的共享文件夹为``/home/ubuntu/shared``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3684">[3684]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir /home/ubuntu/shared</span>
+</pre></div>
+</div>
+</li>
+<li><p>要将此文件夹挂载到主机上，请执行以下命令。如果在您的情况下共享文件夹的路径不同，请不要忘记进行修改。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3685">[3685]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo mount -t 9p -o trans=virtio share /home/ubuntu/shared -oversion=9p2000.L</span>
+</pre></div>
+</div>
+</li>
+<li><p>要在启动虚拟机时自动将此文件夹挂载到主机上，请将以下行添加到``/etc/fstab``中。如果在您的情况下共享文件夹的路径不同，请不要忘记进行修改。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3686">[3686]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">share     /home/ubuntu/shared     9p      trans=virtio,version=9p2000.L,rw,_netdev,nofail 0       0</span>
+</pre></div>
+</div>
+</li>
+<li><p>环境变量``WEBOTS_SHARED_FOLDER``必须始终设置，以便使该包在虚拟机中正常工作。此变量指定用于在主机和虚拟机（VM）之间交换数据的共享文件夹的位置，以供``webots_ros2``包使用。此变量的值应采用``&lt;主机共享文件夹&gt;:&lt;VM共享文件夹&gt;``的格式，其中``&lt;主机共享文件夹&gt;``是主机上共享文件夹的路径，<a href="#id1"><span class="problematic" id="id2">``</span></a>&lt;VM共享文件夹&gt;``是虚拟机上相同共享文件夹的路径。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3687">[3687]</a></p>
+<p>在这个例子中: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3688">[3688]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export WEBOTS_SHARED_FOLDER=/Users/username/shared:/home/ubuntu/shared</span>
+</pre></div>
+</div>
+<p>你可以将这个命令行添加到``~/.bashrc``文件中，这样在启动新终端时会自动设置这个环境变量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3689">[3689]</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="install-webots-ros2">
+<h3>3 安装``webots_ros2`` <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3690">[3690]</a><a class="headerlink" href="#install-webots-ros2" title="永久链接至标题"></a></h3>
+<p>你可以选择从官方发布的包中安装``webots_ros2``，或者从最新的`Github &lt;<a class="reference external" href="https://github.com/cyberbotics/webots_ros2">https://github.com/cyberbotics/webots_ros2</a>&gt;`_源代码中安装。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3691">[3691]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZGlzdHJpYnV0ZWQgcGFja2FnZQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZGlzdHJpYnV0ZWQgcGFja2FnZQ==" name="SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZGlzdHJpYnV0ZWQgcGFja2FnZQ==" role="tab" tabindex="0">Install <code class="docutils literal notranslate"><span class="pre">webots_ros2</span></code> distributed package</button><button aria-controls="panel-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZnJvbSBzb3VyY2Vz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZnJvbSBzb3VyY2Vz" name="SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZnJvbSBzb3VyY2Vz" role="tab" tabindex="-1">Install <code class="docutils literal notranslate"><span class="pre">webots_ros2</span></code> from sources</button></div><div aria-labelledby="tab-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZGlzdHJpYnV0ZWQgcGFja2FnZQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZGlzdHJpYnV0ZWQgcGFja2FnZQ==" name="SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZGlzdHJpYnV0ZWQgcGFja2FnZQ==" role="tabpanel" tabindex="0"><p>在虚拟机终端中运行以下命令。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3693">[3693]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install ros-humble-webots-ros2</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZnJvbSBzb3VyY2Vz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZnJvbSBzb3VyY2Vz" name="SW5zdGFsbCBgYHdlYm90c19yb3MyYGAgZnJvbSBzb3VyY2Vz" role="tabpanel" tabindex="0"><p>安装 Git。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3695">[3695]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install git</span>
+</pre></div>
+</div>
+<p>创建一个带有``src``目录的ROS 2工作空间。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3696">[3696]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p ~/ros2_ws/src</span>
+</pre></div>
+</div>
+<p>源化ROS 2环境。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3697">[3697]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /opt/ros/humble/setup.bash</span>
+</pre></div>
+</div>
+<p>从Github获取源代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3698">[3698]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+<span class="go">git clone --recurse-submodules https://github.com/cyberbotics/webots_ros2.git src/webots_ros2</span>
+</pre></div>
+</div>
+<p>安装软件包依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3699">[3699]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install python3-pip python3-rosdep python3-colcon-common-extensions</span>
+<span class="go">sudo rosdep init &amp;&amp; rosdep update</span>
+<span class="go">rosdep install --from-paths src --ignore-src --rosdistro humble</span>
+</pre></div>
+</div>
+<p>使用``colcon``构建软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3700">[3700]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build</span>
+</pre></div>
+</div>
+<p>在此工作空间中进行源代码配置。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3701">[3701]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/local_setup.bash</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="launch-the-webots-ros2-universal-robot-example">
+<h3>4 启动``webots_ros2_universal_robot``示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3702">[3702]</a><a class="headerlink" href="#launch-the-webots-ros2-universal-robot-example" title="永久链接至标题"></a></h3>
+<p>如前面的部分所述，该软件包使用共享文件夹从虚拟机与主机之间进行Webots通信。为了能够从虚拟机的ROS软件包启动主机上的Webots，必须运行本地TCP仿真服务器。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3703">[3703]</a></p>
+<p>服务器可以从这里下载：<a class="reference external" href="https://github.com/cyberbotics/webots-server/blob/main/local_simulation_server.py">local_simulation_server.py</a>。在``WEBOTS_HOME``环境变量中指定Webots安装文件夹（例如``/Applications/Webots.app``），然后在主机上的新终端中使用以下命令运行服务器（不要在虚拟机中运行）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3704">[3704]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export WEBOTS_HOME=/Applications/Webots.app</span>
+<span class="go">python3 local_simulation_server.py</span>
+</pre></div>
+</div>
+<p>在虚拟机中打开终端并执行以下命令启动软件包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3705">[3705]</a></p>
+<p>如果尚未完成，请先启动ROS 2环境。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3706">[3706]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source /opt/ros/humble/setup.bash</span>
+</pre></div>
+</div>
+<p>如果是从源代码安装的，请先启动ROS 2工作区。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3707">[3707]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ros2_ws</span>
+<span class="go">source install/local_setup.bash</span>
+</pre></div>
+</div>
+<p>如果尚未在``~/.bashrc``中设置，请设置``WEBOTS_SHARED_FOLDER``（有关详细信息，请参见前面的部分）。请确保根据您各自目录的位置更改路径。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3708">[3708]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export WEBOTS_SHARED_FOLDER=/Users/username/shared:/home/ubuntu/shared</span>
+</pre></div>
+</div>
+<p>使用ROS 2启动命令来启动演示包（例如``webots_ros2_universal_robot``）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3709">[3709]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch webots_ros2_universal_robot multirobot_launch.py</span>
+</pre></div>
+</div>
+<p>如果Webots关闭或ROS 2进程中断，本地服务器将自动等待新的包启动，并清理共享文件夹以供下一次运行使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3710">[3710]</a></p>
+</div>
+</div>
+<div class="section" id="pre-configured-images">
+<span id="preconfigured-images"></span><h2>预配置的图像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3711">[3711]</a><a class="headerlink" href="#pre-configured-images" title="永久链接至标题"></a></h2>
+<p>如果您不想从头开始设置虚拟机，以下链接提供了预配置的UTM镜像，适用于每个版本的Webots。<a href="#id1"><span class="problematic" id="id2">``</span></a>webots_ros2``版本是从官方仓库安装的（而不是从源代码），通常是与相应的Webots版本兼容的第一个版本。您可以下载镜像并升级软件包，或者根据需要从源代码安装。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3712">[3712]</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cyberbotics.com/files/ros2/webots_ros2_2023_0_2.utm.zip">Webots R2023a的2023.0.2版本</a> [6.6 GB] <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3713">[3713]</a></p></li>
+</ul>
+<p>在将下载的镜像添加到UTM软件时，在启动虚拟机之前，您还应该在下拉菜单中选择主机共享文件夹的路径（例如``/Users/username/shared``）。一旦虚拟机启动，必须始终设置``WEBOTS_SHARED_FOLDER``环境变量，以使软件包在虚拟机中正常工作。此变量指定给``webots_ros2``软件包用于在主机机器和虚拟机之间交换数据的共享文件夹的位置。此变量的值应为``&lt;主机共享文件夹&gt;:&lt;虚拟机共享文件夹&gt;``的格式，其中``&lt;主机共享文件夹&gt;``是主机机器上共享文件夹的路径，而``&lt;虚拟机共享文件夹&gt;``是虚拟机上相同共享文件夹的路径。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3714">[3714]</a></p>
+<p>在预配置的镜像中，<a href="#id1"><span class="problematic" id="id2">``</span></a>WEBOTS_SHARED_FOLDER``已在``~/.bashrc``中设置。您需要更新它以使用正确的主机文件夹路径： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3715">[3715]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export WEBOTS_SHARED_FOLDER=/Users/username/shared:/home/ubuntu/shared</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Installation-Windows.html" class="btn btn-neutral float-left" title="安装（Windows） [3733]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Setting-Up-Simulation-Webots-Basic.html" class="btn btn-neutral float-right" title="设置机器人仿真（基础） [3801]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

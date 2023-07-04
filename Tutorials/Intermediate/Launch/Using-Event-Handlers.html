@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>使用事件处理程序 [5467] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Using-Event-Handlers.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="管理大型项目 [5501]" href="Using-ROS2-Launch-For-Large-Projects.html" />
+    <link rel="prev" title="使用替代项 [5563]" href="Using-Substitutions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../../../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../Tutorials.html">教程 [3059]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../Intermediate.html">中级 [5283]</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Launch-Main.html">启动 [5426]</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Advanced.html">高级 [3065]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Advanced/Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Advanced/Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Advanced/Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Miscellaneous.html">杂项 [6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Contributing.html">贡献 [1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/ROSCon-Content.html">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../The-ROS2-Project/Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../Tutorials.html">教程 [3059]</a> &raquo;</li>
+          <li><a href="../../Intermediate.html">中级 [5283]</a> &raquo;</li>
+          <li><a href="Launch-Main.html">启动 [5426]</a> &raquo;</li>
+      <li>使用事件处理程序 [5467]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Intermediate/Launch/Using-Event-Handlers.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="using-event-handlers">
+<h1>使用事件处理程序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5467">[5467]</a><a class="headerlink" href="#using-event-handlers" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>了解ROS 2启动文件中的事件处理程序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5468">[5468]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5286">[5286]</a></p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>15分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3507">[3507]</a></p>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3070">[]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#background" id="id2">背景 [3072]</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites" id="id3">先决条件 [3124]</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id4">使用事件处理程序 [5467]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#event-handlers-example-launch-file" id="id5">1 事件处理程序示例启动文件 [5473]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#build-the-package" id="id6">构建软件包 [5481]</a></p></li>
+<li><p><a class="reference internal" href="#launching-example" id="id7">启动示例 [5484]</a></p></li>
+<li><p><a class="reference internal" href="#documentation" id="id8">文档 [5464]</a></p></li>
+<li><p><a class="reference internal" href="#summary" id="id9">总结 [3353]</a></p></li>
+</ul>
+</div>
+<div class="section" id="background">
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3072">[3072]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<p>在ROS 2中，启动是执行和管理用户定义的进程的系统。它负责监视其启动的进程的状态，以及报告和响应这些进程状态的变化。这些变化称为事件，并可以通过向启动系统注册事件处理程序来处理。事件处理程序可以注册为特定事件，并且对于监视进程的状态非常有用。此外，它们可以用于定义一组复杂的规则，用于动态修改启动文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5469">[5469]</a></p>
+<p>本教程展示了ROS 2启动文件中事件处理程序的使用示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5470">[5470]</a></p>
+</div>
+<div class="section" id="prerequisites">
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3124">[3124]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<p>本教程使用 <a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">turtlesim</span></a> 包。本教程还假设您已经 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建了一个名为“launch_tutorial”的新包</span></a>，其构建类型为``ament_python``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5471">[5471]</a></p>
+<p>本教程扩展了 <a class="reference internal" href="Using-Substitutions.html"><span class="doc">在启动文件中使用替换</span></a> 教程中展示的代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5472">[5472]</a></p>
+</div>
+<div class="section" id="id1">
+<h2>使用事件处理程序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5467">[5467]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h2>
+<div class="section" id="event-handlers-example-launch-file">
+<h3>1 事件处理程序示例启动文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5473">[5473]</a><a class="headerlink" href="#event-handlers-example-launch-file" title="永久链接至标题"></a></h3>
+<p>在“launch_tutorial”包的“launch”文件夹中创建一个名为“example_event_handlers.launch.py”的新文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5474">[5474]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
+
+<span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="p">(</span><span class="n">DeclareLaunchArgument</span><span class="p">,</span> <span class="n">EmitEvent</span><span class="p">,</span> <span class="n">ExecuteProcess</span><span class="p">,</span>
+                            <span class="n">LogInfo</span><span class="p">,</span> <span class="n">RegisterEventHandler</span><span class="p">,</span> <span class="n">TimerAction</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">launch.conditions</span> <span class="kn">import</span> <span class="n">IfCondition</span>
+<span class="kn">from</span> <span class="nn">launch.event_handlers</span> <span class="kn">import</span> <span class="p">(</span><span class="n">OnExecutionComplete</span><span class="p">,</span> <span class="n">OnProcessExit</span><span class="p">,</span>
+                                <span class="n">OnProcessIO</span><span class="p">,</span> <span class="n">OnProcessStart</span><span class="p">,</span> <span class="n">OnShutdown</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">launch.events</span> <span class="kn">import</span> <span class="n">Shutdown</span>
+<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="p">(</span><span class="n">EnvironmentVariable</span><span class="p">,</span> <span class="n">FindExecutable</span><span class="p">,</span>
+                                <span class="n">LaunchConfiguration</span><span class="p">,</span> <span class="n">LocalSubstitution</span><span class="p">,</span>
+                                <span class="n">PythonExpression</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="n">turtlesim_ns</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;turtlesim_ns&#39;</span><span class="p">)</span>
+    <span class="n">use_provided_red</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;use_provided_red&#39;</span><span class="p">)</span>
+    <span class="n">new_background_r</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;new_background_r&#39;</span><span class="p">)</span>
+
+    <span class="n">turtlesim_ns_launch_arg</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s1">&#39;turtlesim_ns&#39;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;turtlesim1&#39;</span>
+    <span class="p">)</span>
+    <span class="n">use_provided_red_launch_arg</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s1">&#39;use_provided_red&#39;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;False&#39;</span>
+    <span class="p">)</span>
+    <span class="n">new_background_r_launch_arg</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s1">&#39;new_background_r&#39;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;200&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">turtlesim_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;turtlesim&#39;</span><span class="p">,</span>
+        <span class="n">namespace</span><span class="o">=</span><span class="n">turtlesim_ns</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;turtlesim_node&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sim&#39;</span>
+    <span class="p">)</span>
+    <span class="n">spawn_turtle</span> <span class="o">=</span> <span class="n">ExecuteProcess</span><span class="p">(</span>
+        <span class="n">cmd</span><span class="o">=</span><span class="p">[[</span>
+            <span class="n">FindExecutable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ros2&#39;</span><span class="p">),</span>
+            <span class="s1">&#39; service call &#39;</span><span class="p">,</span>
+            <span class="n">turtlesim_ns</span><span class="p">,</span>
+            <span class="s1">&#39;/spawn &#39;</span><span class="p">,</span>
+            <span class="s1">&#39;turtlesim/srv/Spawn &#39;</span><span class="p">,</span>
+            <span class="s1">&#39;&quot;{x: 2, y: 2, theta: 0.2}&quot;&#39;</span>
+        <span class="p">]],</span>
+        <span class="n">shell</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">change_background_r</span> <span class="o">=</span> <span class="n">ExecuteProcess</span><span class="p">(</span>
+        <span class="n">cmd</span><span class="o">=</span><span class="p">[[</span>
+            <span class="n">FindExecutable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ros2&#39;</span><span class="p">),</span>
+            <span class="s1">&#39; param set &#39;</span><span class="p">,</span>
+            <span class="n">turtlesim_ns</span><span class="p">,</span>
+            <span class="s1">&#39;/sim background_r &#39;</span><span class="p">,</span>
+            <span class="s1">&#39;120&#39;</span>
+        <span class="p">]],</span>
+        <span class="n">shell</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">change_background_r_conditioned</span> <span class="o">=</span> <span class="n">ExecuteProcess</span><span class="p">(</span>
+        <span class="n">condition</span><span class="o">=</span><span class="n">IfCondition</span><span class="p">(</span>
+            <span class="n">PythonExpression</span><span class="p">([</span>
+                <span class="n">new_background_r</span><span class="p">,</span>
+                <span class="s1">&#39; == 200&#39;</span><span class="p">,</span>
+                <span class="s1">&#39; and &#39;</span><span class="p">,</span>
+                <span class="n">use_provided_red</span>
+            <span class="p">])</span>
+        <span class="p">),</span>
+        <span class="n">cmd</span><span class="o">=</span><span class="p">[[</span>
+            <span class="n">FindExecutable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ros2&#39;</span><span class="p">),</span>
+            <span class="s1">&#39; param set &#39;</span><span class="p">,</span>
+            <span class="n">turtlesim_ns</span><span class="p">,</span>
+            <span class="s1">&#39;/sim background_r &#39;</span><span class="p">,</span>
+            <span class="n">new_background_r</span>
+        <span class="p">]],</span>
+        <span class="n">shell</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+        <span class="n">turtlesim_ns_launch_arg</span><span class="p">,</span>
+        <span class="n">use_provided_red_launch_arg</span><span class="p">,</span>
+        <span class="n">new_background_r_launch_arg</span><span class="p">,</span>
+        <span class="n">turtlesim_node</span><span class="p">,</span>
+        <span class="n">RegisterEventHandler</span><span class="p">(</span>
+            <span class="n">OnProcessStart</span><span class="p">(</span>
+                <span class="n">target_action</span><span class="o">=</span><span class="n">turtlesim_node</span><span class="p">,</span>
+                <span class="n">on_start</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">LogInfo</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Turtlesim started, spawning turtle&#39;</span><span class="p">),</span>
+                    <span class="n">spawn_turtle</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">RegisterEventHandler</span><span class="p">(</span>
+            <span class="n">OnProcessIO</span><span class="p">(</span>
+                <span class="n">target_action</span><span class="o">=</span><span class="n">spawn_turtle</span><span class="p">,</span>
+                <span class="n">on_stdout</span><span class="o">=</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">LogInfo</span><span class="p">(</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Spawn request says &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">event</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">RegisterEventHandler</span><span class="p">(</span>
+            <span class="n">OnExecutionComplete</span><span class="p">(</span>
+                <span class="n">target_action</span><span class="o">=</span><span class="n">spawn_turtle</span><span class="p">,</span>
+                <span class="n">on_completion</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">LogInfo</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Spawn finished&#39;</span><span class="p">),</span>
+                    <span class="n">change_background_r</span><span class="p">,</span>
+                    <span class="n">TimerAction</span><span class="p">(</span>
+                        <span class="n">period</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+                        <span class="n">actions</span><span class="o">=</span><span class="p">[</span><span class="n">change_background_r_conditioned</span><span class="p">],</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">RegisterEventHandler</span><span class="p">(</span>
+            <span class="n">OnProcessExit</span><span class="p">(</span>
+                <span class="n">target_action</span><span class="o">=</span><span class="n">turtlesim_node</span><span class="p">,</span>
+                <span class="n">on_exit</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">LogInfo</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="p">(</span><span class="n">EnvironmentVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;USER&#39;</span><span class="p">),</span>
+                            <span class="s1">&#39; closed the turtlesim window&#39;</span><span class="p">)),</span>
+                    <span class="n">EmitEvent</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">Shutdown</span><span class="p">(</span>
+                        <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;Window closed&#39;</span><span class="p">))</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">RegisterEventHandler</span><span class="p">(</span>
+            <span class="n">OnShutdown</span><span class="p">(</span>
+                <span class="n">on_shutdown</span><span class="o">=</span><span class="p">[</span><span class="n">LogInfo</span><span class="p">(</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Launch was asked to shutdown: &#39;</span><span class="p">,</span>
+                        <span class="n">LocalSubstitution</span><span class="p">(</span><span class="s1">&#39;event.reason&#39;</span><span class="p">)]</span>
+                <span class="p">)]</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+<p>在启动描述中定义了“OnProcessStart”、“OnProcessIO”、“OnExecutionComplete”、“OnProcessExit”和“OnShutdown”事件的“RegisterEventHandler”操作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5475">[5475]</a></p>
+<p>“OnProcessStart”事件处理程序用于注册在turtlesim节点启动时执行的回调函数。它在turtlesim节点启动时向控制台记录一条消息，并执行“spawn_turtle”操作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5476">[5476]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RegisterEventHandler</span><span class="p">(</span>
+    <span class="n">OnProcessStart</span><span class="p">(</span>
+        <span class="n">target_action</span><span class="o">=</span><span class="n">turtlesim_node</span><span class="p">,</span>
+        <span class="n">on_start</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">LogInfo</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Turtlesim started, spawning turtle&#39;</span><span class="p">),</span>
+            <span class="n">spawn_turtle</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>“OnProcessIO”事件处理程序用于注册在“spawn_turtle”操作写入其标准输出时执行的回调函数。它记录生成请求的结果。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5477">[5477]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RegisterEventHandler</span><span class="p">(</span>
+    <span class="n">OnProcessIO</span><span class="p">(</span>
+        <span class="n">target_action</span><span class="o">=</span><span class="n">spawn_turtle</span><span class="p">,</span>
+        <span class="n">on_stdout</span><span class="o">=</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">LogInfo</span><span class="p">(</span>
+            <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Spawn request says &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">event</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>“OnExecutionComplete”事件处理程序用于注册在“spawn_turtle”操作完成时执行的回调函数。它在生成操作完成时向控制台记录一条消息，并执行“change_background_r”和“change_background_r_conditioned”操作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5478">[5478]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RegisterEventHandler</span><span class="p">(</span>
+    <span class="n">OnExecutionComplete</span><span class="p">(</span>
+        <span class="n">target_action</span><span class="o">=</span><span class="n">spawn_turtle</span><span class="p">,</span>
+        <span class="n">on_completion</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">LogInfo</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Spawn finished&#39;</span><span class="p">),</span>
+            <span class="n">change_background_r</span><span class="p">,</span>
+            <span class="n">TimerAction</span><span class="p">(</span>
+                <span class="n">period</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+                <span class="n">actions</span><span class="o">=</span><span class="p">[</span><span class="n">change_background_r_conditioned</span><span class="p">],</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">OnProcessExit</span></code> 事件处理程序用于注册一个回调函数，当 turtlesim 节点退出时执行该函数。它将一条消息记录到控制台，并执行 <code class="docutils literal notranslate"><span class="pre">EmitEvent</span></code> 操作以在 turtlesim 节点退出时触发一个 <code class="docutils literal notranslate"><span class="pre">Shutdown</span></code> 事件。这意味着当 turtlesim 窗口关闭时，启动过程将会关闭。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5479">[5479]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RegisterEventHandler</span><span class="p">(</span>
+    <span class="n">OnProcessExit</span><span class="p">(</span>
+        <span class="n">target_action</span><span class="o">=</span><span class="n">turtlesim_node</span><span class="p">,</span>
+        <span class="n">on_exit</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">LogInfo</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="p">(</span><span class="n">EnvironmentVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;USER&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39; closed the turtlesim window&#39;</span><span class="p">)),</span>
+            <span class="n">EmitEvent</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">Shutdown</span><span class="p">(</span>
+                <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;Window closed&#39;</span><span class="p">))</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>最后，<code class="docutils literal notranslate"><span class="pre">OnShutdown</span></code> 事件处理程序用于注册一个回调函数，在要求关闭启动文件时执行该函数。它将一条消息记录到控制台，说明为什么要求关闭启动文件。它将消息记录为关闭的原因，例如 turtlesim 窗口的关闭或用户发出的 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ctrl</kbd>-<kbd class="kbd docutils literal notranslate">c</kbd></kbd> 信号。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5480">[5480]</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RegisterEventHandler</span><span class="p">(</span>
+    <span class="n">OnShutdown</span><span class="p">(</span>
+        <span class="n">on_shutdown</span><span class="o">=</span><span class="p">[</span><span class="n">LogInfo</span><span class="p">(</span>
+            <span class="n">msg</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Launch was asked to shutdown: &#39;</span><span class="p">,</span>
+                <span class="n">LocalSubstitution</span><span class="p">(</span><span class="s1">&#39;event.reason&#39;</span><span class="p">)]</span>
+        <span class="p">)]</span>
+    <span class="p">)</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="build-the-package">
+<h2>构建软件包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5481">[5481]</a><a class="headerlink" href="#build-the-package" title="永久链接至标题"></a></h2>
+<p>转到工作空间的根目录，并构建软件包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5482">[5482]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build</span>
+</pre></div>
+</div>
+<p>构建完成后，请记得设置工作空间环境。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5483">[5483]</a></p>
+</div>
+<div class="section" id="launching-example">
+<h2>启动示例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5484">[5484]</a><a class="headerlink" href="#launching-example" title="永久链接至标题"></a></h2>
+<p>现在你可以使用``ros2 launch``命令来启动``example_event_handlers.launch.py``文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5485">[5485]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 launch launch_tutorial example_event_handlers.launch.py turtlesim_ns:=&#39;turtlesim3&#39; use_provided_red:=&#39;True&#39; new_background_r:=200</span>
+</pre></div>
+</div>
+<p>这将执行以下操作： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5486">[5486]</a></p>
+<ol class="arabic simple">
+<li><p>启动一个带有蓝色背景的turtlesim节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5487">[5487]</a></p></li>
+<li><p>生成第二只乌龟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5488">[5488]</a></p></li>
+<li><p>如果提供的``background_r``参数为``200``且``use_provided_red``参数为``True``，则将颜色更改为紫色 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5489">[5489]</a></p></li>
+<li><p>如果提供的``background_r``参数为``200``且``use_provided_red``参数为``True``，则在两秒后将颜色更改为粉色 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5490">[5490]</a></p></li>
+<li><p>当turtlesim窗口关闭时关闭启动文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5491">[5491]</a></p></li>
+</ol>
+<p>此外，当以下情况发生时，它将在控制台上记录消息： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5492">[5492]</a></p>
+<ol class="arabic simple">
+<li><p>turtlesim节点启动 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5493">[5493]</a></p></li>
+<li><p>执行spawn动作 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5494">[5494]</a></p></li>
+<li><p>执行``change_background_r``动作 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5495">[5495]</a></p></li>
+<li><p>执行``change_background_r_conditioned``动作 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5496">[5496]</a></p></li>
+<li><p>turtlesim节点退出 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5497">[5497]</a></p></li>
+<li><p>要求终止启动进程。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5498">[5498]</a></p></li>
+</ol>
+</div>
+<div class="section" id="documentation">
+<h2>文档 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5464">[5464]</a><a class="headerlink" href="#documentation" title="永久链接至标题"></a></h2>
+<p><a class="reference external" href="https://github.com/ros2/launch/blob/humble/launch/doc/source/architecture.rst">启动文档</a> 提供了关于可用事件处理程序的详细信息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5499">[5499]</a></p>
+</div>
+<div class="section" id="summary">
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3353">[3353]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<p>在本教程中，您学习了如何在启动文件中使用事件处理程序。您了解了它们的语法和使用示例，以定义一组复杂的规则，以动态修改启动文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5500">[5500]</a></p>
+</div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Using-Substitutions.html" class="btn btn-neutral float-left" title="使用替代项 [5563]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Using-ROS2-Launch-For-Large-Projects.html" class="btn btn-neutral float-right" title="管理大型项目 [5501]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

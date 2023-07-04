@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROSCon 演讲 [2784] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/The-ROS2-Project/ROSCon-Content.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="项目治理 [2505]" href="Governance.html" />
+    <link rel="prev" title="路线图 [2993]" href="Roadmap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorials.html">教程 [3059]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorials/Intermediate.html">中级 [5283]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Launch/Launch-Main.html">启动 [5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Launch/Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Launch/Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Launch/Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Launch/Using-Event-Handlers.html">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorials/Advanced.html">高级 [3065]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorials/Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorials/Miscellaneous.html">杂项 [6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Contributing.html">贡献 [1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../The-ROS2-Project.html">ROS 2 项目 [1326]</a> &raquo;</li>
+      <li>ROSCon 演讲 [2784]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/The-ROS2-Project/ROSCon-Content.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="roscon-talks">
+<span id="roscon"></span><h1>ROSCon 演讲 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2784">[2784]</a><a class="headerlink" href="#roscon-talks" title="永久链接至标题"></a></h1>
+<p>下面的 <a class="reference external" href="https://roscon.ros.org">ROSCon</a> 演讲涉及 ROS 2，并提供关于 ROS 2 的工作原理和各种演示的信息： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2785">[2785]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-MjAyMg==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-MjAyMg==" name="MjAyMg==" role="tab" tabindex="0">2022</button><button aria-controls="panel-0-MjAyMQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAyMQ==" name="MjAyMQ==" role="tab" tabindex="-1">2021</button><button aria-controls="panel-0-MjAyMA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAyMA==" name="MjAyMA==" role="tab" tabindex="-1">2020</button><button aria-controls="panel-0-MjAxOQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAxOQ==" name="MjAxOQ==" role="tab" tabindex="-1">2019</button><button aria-controls="panel-0-MjAxOA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAxOA==" name="MjAxOA==" role="tab" tabindex="-1">2018</button><button aria-controls="panel-0-MjAxNw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAxNw==" name="MjAxNw==" role="tab" tabindex="-1">2017</button><button aria-controls="panel-0-MjAxNg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAxNg==" name="MjAxNg==" role="tab" tabindex="-1">2016</button><button aria-controls="panel-0-MjAxNQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAxNQ==" name="MjAxNQ==" role="tab" tabindex="-1">2015</button><button aria-controls="panel-0-MjAxNA==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-MjAxNA==" name="MjAxNA==" role="tab" tabindex="-1">2014</button></div><div aria-labelledby="tab-0-MjAyMg==" class="sphinx-tabs-panel group-tab" id="panel-0-MjAyMg==" name="MjAyMg==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>面板：ROS 2开发者体验 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2789">[2789]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767155188">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2790">[2790]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>可穿戴式ROS：使用ROS 2开发可穿戴式机器人系统 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2791">[2791]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140298">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2792">[2792]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>使用C++构建支持ROS 2的Android应用程序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2793">[2793]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767161955">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2794">[2794]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>使用虚幻引擎的分布式机器人模拟器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2795">[2795]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767139975">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2796">[2796]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>提高ROS 2可认证性的工具和流程 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2797">[2797]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767150613">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2798">[2798]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>故障转移ROS框架: 基于共识的节点冗余 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2799">[2799]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767156308">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2800">[2800]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2和Gazebo集成最佳实践 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2801">[2801]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767127300">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2802">[2802]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>链路感知的ROS评估工具（CARET） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2803">[2803]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767150288">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2804">[2804]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2网络监控 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2805">[2805]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140681">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2806">[2806]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>如何在Open-RMF中定义、分配和执行自定义任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2807">[2807]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767157210">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2808">[2808]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2控制器从业者指南 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2809">[2809]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767139648">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2810">[2810]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Zenoh：如何使ROS 2在任何规模上运行并与任何东西集成 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2811">[2811]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/769972405">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2812">[2812]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>使用MoveIt2和ros2_control的光学制造案例研究 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2813">[2813]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140351">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2814">[2814]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>20/20 机器人视觉 - 如何在ROS 1和ROS 2中使用camera_aravis设置相机 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2815">[2815]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140329">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2816">[2816]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>筛选您的ROS 2内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2817">[2817]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/767166447">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2818">[2818]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>随着时间的推移不断演化的消息类型和其他接口 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2819">[2819]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140015">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2820">[2820]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>从ROS1迁移到ROS 2 - 选择正确的桥接方式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2821">[2821]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140113">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2822">[2822]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>关于使用Nav2 Smac规划器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2823">[2823]</a></p></td>
+<td><p>视频 &lt;<a class="reference external" href="https://vimeo.com/showcase/9954564/video/767157646">https://vimeo.com/showcase/9954564/video/767157646</a>&gt; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2824">[2824]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Bazel和ROS 2 – 构建大规模安全应用程序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2825">[2825]</a></p></td>
+<td><p>视频 &lt;<a class="reference external" href="https://vimeo.com/showcase/9954564/video/767139879">https://vimeo.com/showcase/9954564/video/767139879</a>&gt; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2826">[2826]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS 2 的原生 Rust 组件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2827">[2827]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140150">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2828">[2828]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 构建农场与您：您发布的 ROS 包如何变成二进制包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2829">[2829]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767169376">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2830">[2830]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>mROS 2：又一个嵌入式设备上的运行时环境 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2831">[2831]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767150435">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2832">[2832]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2 和 Edge Impulse：机器人应用中的嵌入式人工智能 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2833">[2833]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140724">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2834">[2834]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>micro-ROS进军汽车行业：支持基于AUTOSAR的微控制器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2835">[2835]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/769963507">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2836">[2836]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2中用于硬件加速的开放式架构 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2837">[2837]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/769967795">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2838">[2838]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS 2 和 Crazyflie: 用一架微型飞行机器人进行空中群体和自主飞行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2839">[2839]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767140197">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2840">[2840]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>具有 ROS 2 + RT 的 Raspberry Pi 镜像和可自定义的镜像构建工具 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2841">[2841]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/9954564/video/767139709">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2842">[2842]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAyMQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAyMQ==" name="MjAyMQ==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMACC2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2844">[2844]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649655394/f9b25be7f9">video</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2845">[2845]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>rospy2: 通过仅更改一行代码将 ROS1 节点转换为 ROS2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2846">[2846]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649655340/127d801385">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2847">[2847]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Hello Robot: 用ROS实现移动操作的民主化 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2848">[2848]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649649087/b1a3a67369">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2849">[2849]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS2在自主农业应用中的挑战 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2850">[2850]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649646777">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2851">[2851]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>在云端运行的具有导航2 ROS 2的ESP32微控制器机器人 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2852">[2852]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649648283">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2853">[2853]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>通过EtherCAT协议连接ROS/ROS2的中间件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2854">[2854]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649651918">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2855">[2855]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>使用AWS IoT Greengrass 2.0构建和管理云增强型ROS机器人 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2856">[2856]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649647971/0f36010e6e">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2857">[2857]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>通过ROS2和PX4驱动移动机器人的自主性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2858">[2858]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649648867/c524ae57fd">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2859">[2859]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>将ROS 2与现有的DDS网络集成 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2860">[2860]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649649793/31032f6fba">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2861">[2861]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>VIPER: 极地探索漫游车的挥发物研究 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2862">[2862]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649657650/ce9245dc22">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2863">[2863]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>缓存和容器化Nav2的CI编译过程的记录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2864">[2864]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649647161/5b0c278e6c">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2865">[2865]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>与PointCloud2消息交互的新方式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2866">[2866]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649643457/7ba0e85107">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2867">[2867]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2 Grasp Library – 3D物体位姿检测的加速 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2868">[2868]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649654728/25bef7e247">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2869">[2869]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ros2_control: ros_control的未来 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2870">[2870]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649654948">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2871">[2871]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2 Rolling Ridley <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2872">[2872]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649650919">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2873">[2873]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>混合规划 - 使用MoveIt 2实现反应式操控 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2874">[2874]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649649286/17fb9b9f4d">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2875">[2875]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Apex.OS认证：将ROS 2从原型推进到生产 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2876">[2876]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649645295/67e0a6569f">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2877">[2877]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>让机器人使用ROS 2 - 使用UR机械臂的案例研究 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2878">[2878]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649651707/46a3be27ed">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2879">[2879]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS2中的在线轨迹生成和许可控制 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2880">[2880]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649652452/682bd92e95">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2881">[2881]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>VSCode、Docker和ROS2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2882">[2882]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649658020/9ef0b5ec32">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2883">[2883]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2 内容过滤主题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2884">[2884]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649654533/c8104829db">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2885">[2885]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rosbag2 高级用户 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2886">[2886]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649655219/75630c8cff">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2887">[2887]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>我们点火了：Gazebo模拟的下一代 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2888">[2888]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649658182">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2889">[2889]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>使用NVIDIA Isaac Sim进行合成数据生成和ROS开发 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2890">[2890]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649656932/3d8d5abb53">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2891">[2891]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>增强现实与机器人技术 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2892">[2892]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649645502/9be46e9ff8">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2893">[2893]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>在Unity中模拟ROS应用程序的传感器建模 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2894">[2894]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649652075/295c92d323">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2895">[2895]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>面板：ROS的仿真工具 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2896">[2896]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/649653566/9d02eac6cb">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2897">[2897]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAyMA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAyMA==" name="MjAyMA==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>加速ROS在医疗保健领域的创新 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2899">[2899]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480611811">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2900">[2900]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>专题讨论：机器人领域的软件质量 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2901">[2901]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480586443">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2902">[2902]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>面板：ROS农业 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2903">[2903]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480592013">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2904">[2904]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>在语义分割中实现普适性和鲁棒性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2905">[2905]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480600107">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2906">[2906]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Navigation2：下一代导航系统 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2907">[2907]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480604621">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2908">[2908]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAMP 四足控制 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2909">[2909]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480603868">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2910">[2910]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Kiwibot：原子交付行业中的ROS2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2911">[2911]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480601709">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2912">[2912]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MoveItWorld <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2913">[2913]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480482977">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2914">[2914]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>OpenCV <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2915">[2915]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480465027">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2916">[2916]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROBOTIS TurtleBot3 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2917">[2917]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480460365">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2918">[2918]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Autoware <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2919">[2919]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480450941">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2920">[2920]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dronecode <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2921">[2921]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480477960">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2922">[2922]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>FIWARE <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2923">[2923]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480473016">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2924">[2924]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>闪电演讲和赞助商视频1 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2925">[2925]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480530126">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2926">[2926]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>闪电演讲和赞助商视频 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2927">[2927]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480435216">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2928">[2928]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>闪电演讲和赞助商视频 3 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2929">[2929]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/480436954">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2930">[2930]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>闪电演讲和赞助商视频 4 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2931">[2931]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/showcase/7812155/video/490004991">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2932">[2932]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAxOQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAxOQ==" name="MjAxOQ==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>将庞大的ROS 1代码库迁移到ROS 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2934">[2934]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_migrating_a_large_ros_1_codebase_to_ros_2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378682692">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2935">[2935]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS 2下Gazebo包装器的新架构 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2936">[2936]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_gazebo_ros2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378683414">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2937">[2937]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>从Rover Robotics迁移到ROS 2的建议 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2938">[2938]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_migrating_to_ros_2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378682068">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2939">[2939]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS 2在VxWorks上 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2940">[2940]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_ros2onvxworks.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378682144">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2941">[2941]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Navigation2概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2942">[2942]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_navigation2_overview_final.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378682188">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2943">[2943]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>启动测试 - 用于ROS 2的启动描述和集成测试 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2944">[2944]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_launch_testing_presentation.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378683186">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2945">[2945]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2用于消费机器人：iRobot案例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2946">[2946]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_irobot_usecase.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378916114">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2947">[2947]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS2中的可组合节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2948">[2948]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_composablenodes.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378916125">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2949">[2949]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 1和ROS 2中的并发性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2950">[2950]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_concurrency.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/379127709">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2951">[2951]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS2的真正零拷贝RMW实现 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2952">[2952]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_truezerocopy.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/379127778">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2953">[2953]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS2实时行为：静态内存分配 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2954">[2954]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/379127767">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2955">[2955]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PackML2：基于状态机的ROS2系统编程、监控和控制 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2956">[2956]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_packml2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/378683073">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2957">[2957]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS2通信的服务质量策略 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2958">[2958]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_qos.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/379127762">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2959">[2959]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Micro-ROS: 微控制器上的ROS2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2960">[2960]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_microros.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/379127756">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2961">[2961]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS2在大规模系统上的应用: 发现服务器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2962">[2962]</a></p></td>
+<td><p><a class="reference external" href="https://vimeo.com/379127745">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2963">[2963]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>从ROS 1过渡到ROS 2的桥梁 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2964">[2964]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_bridging_ros1_to_ros2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/379127737">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2965">[2965]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS 2启动的标记扩展 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2966">[2966]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2019/talks/roscon2019_markupextensionsforros2launch.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/379127678">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2967">[2967]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAxOA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAxOA==" name="MjAxOA==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROS 2实践：步骤演示 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2969">[2969]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2018/presentations/ROSCon2018_ROS2HandsOn.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/292693129">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2970">[2970]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROS 2启动 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2971">[2971]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2018/presentations/ROSCon2018_launch.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/292699162">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2972">[2972]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAxNw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAxNw==" name="MjAxNw==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROS 2对推进未来机器人开发的愿景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2974">[2974]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2017/presentations/ROSCon%202017%20ROS2%20Vision.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/236161417">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2975">[2975]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAxNg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAxNg==" name="MjAxNg==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROS 2 更新 - alpha 版本概述，架构概览 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2977">[2977]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2016/presentations/ROSCon%202016%20-%20ROS%202%20Update.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/187696091">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2978">[2978]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>评估 ROS2 通信层的弹性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2979">[2979]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2016/presentations/rafal.kozik-ros2evaluation.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/187705229">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2980">[2980]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAxNQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAxNQ==" name="MjAxNQ==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROS 2 状态 - 演示和技术背后的原理 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2982">[2982]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2015/presentations/state-of-ros2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/142151734">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2983">[2983]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>在“小型”嵌入式系统上的ROS 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2984">[2984]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2015/presentations/ros2_on_small_embedded_systems.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/142150576">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2985">[2985]</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ROS和ROS 2中的实时控制 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2986">[2986]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2015/presentations/RealtimeROS2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/142621778">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2987">[2987]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-MjAxNA==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-MjAxNA==" name="MjAxNA==" role="tabpanel" tabindex="0"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>标题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2787">[2787]</a></p></th>
+<th class="head"><p>链接 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2788">[2788]</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>为什么要使用ROS 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2989">[2989]</a></p></td>
+<td><p><a class="reference external" href="https://www.osrfoundation.org/wordpress2/wp-content/uploads/2015/04/ROSCON-2014-Why-you-want-to-use-ROS-2.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/107531013">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2990">[2990]</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>下一代ROS：基于DDS构建 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2991">[2991]</a></p></td>
+<td><p><a class="reference external" href="https://roscon.ros.org/2014/wp-content/uploads/2014/07/ROSCON-2014-Next-Generation-of-ROS-on-top-of-DDS.pdf">幻灯片</a> / <a class="reference external" href="https://vimeo.com/106992622">视频</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2992">[2992]</a></p></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Roadmap.html" class="btn btn-neutral float-left" title="路线图 [2993]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Governance.html" class="btn btn-neutral float-right" title="项目治理 [2505]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

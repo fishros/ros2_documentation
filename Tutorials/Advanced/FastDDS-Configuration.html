@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>发挥Fast DDS中间件的潜力 [社区贡献] [3198] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/Tutorials/Advanced/FastDDS-Configuration.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/tabs.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="从节点（C++）录制一个包 [3275]" href="Recording-A-Bag-From-Your-Own-Node-CPP.html" />
+    <link rel="prev" title="实现自定义内存分配器 [3066]" href="Allocator-Template-Tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">教程 [3059]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Intermediate.html">中级 [5283]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Launch/Launch-Main.html">启动 [5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Event-Handlers.html">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Advanced.html">高级 [3065]</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous.html">杂项 [6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Contributing.html">贡献 [1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/ROSCon-Content.html">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../Tutorials.html">教程 [3059]</a> &raquo;</li>
+          <li><a href="../Advanced.html">高级 [3065]</a> &raquo;</li>
+      <li>发挥Fast DDS中间件的潜力 [社区贡献] [3198]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Advanced/FastDDS-Configuration.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="unlocking-the-potential-of-fast-dds-middleware-community-contributed">
+<h1>发挥Fast DDS中间件的潜力 [社区贡献] <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3198">[3198]</a><a class="headerlink" href="#unlocking-the-potential-of-fast-dds-middleware-community-contributed" title="永久链接至标题"></a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>本教程将展示如何在ROS 2中使用Fast DDS的扩展配置功能。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3199">[3199]</a></p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>教程级别：<a href="#id3"><span class="problematic" id="id4">**</span></a>高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3068">[3068]</a></p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3070">[]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#background" id="id1">背景 [3072]</a></p></li>
+<li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [3124]</a></p></li>
+<li><p><a class="reference internal" href="#mixing-synchronous-and-asynchronous-publications-in-the-same-node" id="id3">在同一节点中混合同步和异步发布 [3204]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-the-node-with-the-publishers" id="id4">使用发布者创建节点 [3208]</a></p></li>
+<li><p><a class="reference internal" href="#create-the-xml-file-with-the-profile-configuration" id="id5">创建具有配置文件的 XML 文件。 [3218]</a></p></li>
+<li><p><a class="reference internal" href="#execute-the-publisher-node" id="id6">执行发布者节点 [3221]</a></p></li>
+<li><p><a class="reference internal" href="#create-a-node-with-the-subscribers" id="id7">创建一个带有订阅者的节点。 [3226]</a></p></li>
+<li><p><a class="reference internal" href="#execute-the-subscriber-node" id="id8">执行订阅者节点 [3229]</a></p></li>
+<li><p><a class="reference internal" href="#analysis-of-the-example" id="id9">示例的分析 [3232]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-other-fastdds-capabilities-with-xml" id="id10">使用XML配置其他FastDDS功能 [3242]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#limiting-the-number-of-matching-subscribers" id="id11">限制匹配订阅者的数量 [3244]</a></p></li>
+<li><p><a class="reference internal" href="#using-partitions-within-the-topic" id="id12">在主题中使用分区 [3248]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#configuring-a-service-and-a-client" id="id13">配置服务和客户端 [3253]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#create-the-nodes-with-the-service-and-client" id="id14">使用服务和客户端创建节点。 [3260]</a></p></li>
+<li><p><a class="reference internal" href="#create-the-xml-profiles-for-the-service-and-client" id="id15">为服务和客户端创建XML配置文件 [3265]</a></p></li>
+<li><p><a class="reference internal" href="#execute-the-nodes" id="id16">执行节点操作 [3268]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="background">
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3072">[3072]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<p>ROS 2栈与Fast DDS之间的接口由ROS 2中间件实现`rmw_fastrtps &lt;<a class="reference external" href="https://github.com/ros2/rmw_fastrtps">https://github.com/ros2/rmw_fastrtps</a>&gt;`_提供。此实现在所有ROS 2发行版中都可用，包括二进制和源代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3200">[3200]</a></p>
+<p>ROS 2 RMW只允许配置特定中间件的QoS（参见:doc:<a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html"><span class="doc">ROS 2 QoS策略</span></a>）。然而，<a href="#id1"><span class="problematic" id="id2">``</span></a>rmw_fastrtps``提供了扩展配置功能，以充分利用Fast DDS的功能。本教程将通过一系列示例指导您如何使用XML文件来解锁此扩展配置。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3201">[3201]</a></p>
+<p>为了获取有关在ROS 2上使用*Fast DDS*的更多信息，请查看以下文档 &lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2.html</a>&gt;`__。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3202">[3202]</a></p>
+</div>
+<div class="section" id="prerequisites">
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3124">[3124]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<p>本教程假设您知道如何 <a class="reference internal" href="../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建一个包</span></a>。它还假设您知道如何编写一个 <a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html"><span class="doc">简单的发布者和订阅者</span></a> 和一个 <a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html"><span class="doc">简单的服务和客户端</span></a>。尽管示例是用C++实现的，但相同的概念也适用于Python包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3203">[3203]</a></p>
+</div>
+<div class="section" id="mixing-synchronous-and-asynchronous-publications-in-the-same-node">
+<h2>在同一节点中混合同步和异步发布 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3204">[3204]</a><a class="headerlink" href="#mixing-synchronous-and-asynchronous-publications-in-the-same-node" title="永久链接至标题"></a></h2>
+<p>在这个第一个示例中，将创建一个具有两个发布者的节点，其中一个使用同步发布模式，另一个使用异步发布模式。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3205">[3205]</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> 默认使用异步发布模式。当发布者调用写操作时，数据会被复制到一个队列中，然后通知后台线程（异步线程）有数据添加到队列中，并在实际发送数据之前将线程控制返回给用户。后台线程负责消费队列并将数据发送给每个匹配的读取器。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3206">[3206]</a></p>
+<p>另一方面，同步发布模式下，数据直接在用户线程的上下文中发送。这意味着在写操作期间发生的任何阻塞调用都会阻塞用户线程，从而阻止应用程序继续运行。然而，这种模式通常具有更高的吞吐量和更低的延迟，因为线程之间没有通知或上下文切换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3207">[3207]</a></p>
+<div class="section" id="create-the-node-with-the-publishers">
+<h3>使用发布者创建节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3208">[3208]</a><a class="headerlink" href="#create-the-node-with-the-publishers" title="永久链接至标题"></a></h3>
+<p>首先，在新的工作空间上创建一个名为``sync_async_node_example_cpp``的新软件包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3209">[3209]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p ~/ros2_ws/src</span>
+<span class="go">cd ~/ros2_ws/src</span>
+<span class="go">ros2 pkg create --build-type ament_cmake --dependencies rclcpp std_msgs -- sync_async_node_example_cpp</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p ~/ros2_ws/src</span>
+<span class="go">cd ~/ros2_ws/src</span>
+<span class="go">ros2 pkg create --build-type ament_cmake --dependencies rclcpp std_msgs -- sync_async_node_example_cpp</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">md \ros2_ws\src</span>
+<span class="go">cd \ros2_ws\src</span>
+<span class="go">ros2 pkg create --build-type ament_cmake --dependencies rclcpp std_msgs -- sync_async_node_example_cpp</span>
+</pre></div>
+</div>
+</div></div>
+<p>然后，在包中添加一个名为``src/sync_async_writer.cpp``的文件，其内容如下。请注意，同步发布者将在主题``sync_topic``上发布，而异步发布者将在主题``async_topic``上发布。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3213">[3213]</a></p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SyncAsyncPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">SyncAsyncPublisher</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;sync_async_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Create the synchronous publisher on topic &#39;sync_topic&#39;</span>
+<span class="w">        </span><span class="n">sync_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;sync_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Create the asynchronous publisher on topic &#39;async_topic&#39;</span>
+<span class="w">        </span><span class="n">async_publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;async_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// This timer will trigger the publication of new data every half a second</span>
+<span class="w">        </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Actions to run every time the timer expires</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Create a new message to be sent</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">sync_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">sync_message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SYNC: Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Log the message to the console to show progress</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Synchronously publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sync_message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Publish the message using the synchronous publisher</span>
+<span class="w">        </span><span class="n">sync_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">sync_message</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Create a new message to be sent</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">async_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">async_message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ASYNC: Hello, world! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Log the message to the console to show progress</span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Asynchronously publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">async_message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Publish the message using the asynchronous publisher</span>
+<span class="w">        </span><span class="n">async_publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">async_message</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Prepare the count for the next message</span>
+<span class="w">        </span><span class="n">count_</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// This timer will trigger the publication of new data every half a second</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// A publisher that publishes asynchronously</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">async_publisher_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// A publisher that publishes synchronously</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sync_publisher_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Number of messages sent so far</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SyncAsyncPublisher</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>现在打开``CMakeLists.txt``文件，添加一个新的可执行文件并命名为``SyncAsyncWriter``，这样你就可以使用``ros2 run``运行你的节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3214">[3214]</a></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">SyncAsyncWriter</span><span class="w"> </span><span class="s">src/sync_async_writer.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">SyncAsyncWriter</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">std_msgs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>最后，添加``install(TARGETS...)``部分，以便``ros2 run``可以找到你的可执行文件： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3215">[3215]</a></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span>
+<span class="w">    </span><span class="s">SyncAsyncWriter</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以通过删除一些不必要的部分和注释来简化你的``CMakeLists.txt``，使其看起来像这样： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3216">[3216]</a></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.8</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">sync_async_node_example_cpp</span><span class="p">)</span>
+
+<span class="c"># Default to C++14</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">CMAKE_CXX_STANDARD</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">14</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_COMPILER_IS_GNUCXX</span><span class="w"> </span><span class="s">OR</span><span class="w"> </span><span class="s">CMAKE_CXX_COMPILER_ID</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">&quot;Clang&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wall</span><span class="w"> </span><span class="s">-Wextra</span><span class="w"> </span><span class="s">-Wpedantic</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">rclcpp</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">std_msgs</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">SyncAsyncWriter</span><span class="w"> </span><span class="s">src/sync_async_writer.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">SyncAsyncWriter</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">std_msgs</span><span class="p">)</span>
+
+<span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span>
+<span class="w">    </span><span class="s">SyncAsyncWriter</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+
+<span class="nb">ament_package</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>如果此节点现在构建并运行，两个发布者将表现相同，在两个主题中都进行异步发布，因为这是默认的发布模式。默认的发布模式配置可以在节点启动期间通过使用 XML 文件进行更改。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3217">[3217]</a></p>
+</div>
+<div class="section" id="create-the-xml-file-with-the-profile-configuration">
+<h3>创建具有配置文件的 XML 文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3218">[3218]</a><a class="headerlink" href="#create-the-xml-file-with-the-profile-configuration" title="永久链接至标题"></a></h3>
+<p>创建名为“SyncAsync.xml”的文件，并包含以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3219">[3219]</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;profiles</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles&quot;</span><span class="nt">&gt;</span>
+
+    <span class="cm">&lt;!-- default publisher profile --&gt;</span>
+    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;default_publisher&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;/publisher&gt;</span>
+
+    <span class="cm">&lt;!-- default subscriber profile --&gt;</span>
+    <span class="nt">&lt;subscriber</span> <span class="na">profile_name=</span><span class="s">&quot;default_subscriber&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;/subscriber&gt;</span>
+
+    <span class="cm">&lt;!-- publisher profile for topic sync_topic --&gt;</span>
+    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+        <span class="nt">&lt;qos&gt;</span>
+            <span class="nt">&lt;publishMode&gt;</span>
+                <span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+            <span class="nt">&lt;/publishMode&gt;</span>
+        <span class="nt">&lt;/qos&gt;</span>
+    <span class="nt">&lt;/publisher&gt;</span>
+
+    <span class="cm">&lt;!-- publisher profile for topic async_topic --&gt;</span>
+    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/async_topic&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+        <span class="nt">&lt;qos&gt;</span>
+            <span class="nt">&lt;publishMode&gt;</span>
+                <span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+            <span class="nt">&lt;/publishMode&gt;</span>
+        <span class="nt">&lt;/qos&gt;</span>
+    <span class="nt">&lt;/publisher&gt;</span>
+
+ <span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+<p>请注意，定义了多个发布者和订阅者的配置文件。有两个默认配置文件，将“is_default_profile”设置为“true”，还有两个与先前定义的主题名称相匹配的配置文件：“sync_topic”和“async_topic”。这两个配置文件将发布模式分别设置为“同步”或“异步”。还请注意，所有配置文件都指定了“historyMemoryPolicy”值，这对于示例的运行是必需的，稍后在本教程中将进行解释。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3220">[3220]</a></p>
+</div>
+<div class="section" id="execute-the-publisher-node">
+<h3>执行发布者节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3221">[3221]</a><a class="headerlink" href="#execute-the-publisher-node" title="永久链接至标题"></a></h3>
+<p>您需要导出以下环境变量以加载XML文件: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3222">[3222]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">export RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">export RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SET RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">SET RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">SET FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml</span>
+</pre></div>
+</div>
+</div></div>
+<p>最后，确保您已经加载了设置文件并运行了节点: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3223">[3223]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/setup.bash</span>
+<span class="go">ros2 run sync_async_node_example_cpp SyncAsyncWriter</span>
+</pre></div>
+</div>
+<p>您应该看到发布者从发布节点发送数据，如下所示: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3224">[3224]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1612972049.994630332] [sync_async_publisher]: Synchronously publishing: &#39;SYNC: Hello, world! 0&#39;</span>
+<span class="go">[INFO] [1612972049.995097767] [sync_async_publisher]: Asynchronously publishing: &#39;ASYNC: Hello, world! 0&#39;</span>
+<span class="go">[INFO] [1612972050.494478706] [sync_async_publisher]: Synchronously publishing: &#39;SYNC: Hello, world! 1&#39;</span>
+<span class="go">[INFO] [1612972050.494664334] [sync_async_publisher]: Asynchronously publishing: &#39;ASYNC: Hello, world! 1&#39;</span>
+<span class="go">[INFO] [1612972050.994368474] [sync_async_publisher]: Synchronously publishing: &#39;SYNC: Hello, world! 2&#39;</span>
+<span class="go">[INFO] [1612972050.994549851] [sync_async_publisher]: Asynchronously publishing: &#39;ASYNC: Hello, world! 2&#39;</span>
+</pre></div>
+</div>
+<p>现在你有一个同步发布者和一个异步发布者在同一个节点中运行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3225">[3225]</a></p>
+</div>
+<div class="section" id="create-a-node-with-the-subscribers">
+<h3>创建一个带有订阅者的节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3226">[3226]</a><a class="headerlink" href="#create-a-node-with-the-subscribers" title="永久链接至标题"></a></h3>
+<p>接下来，将创建一个新的节点，并添加订阅者，这些订阅者将监听 <code class="docutils literal notranslate"><span class="pre">sync_topic</span></code> 和 <code class="docutils literal notranslate"><span class="pre">async_topic</span></code> 的发布。在一个名为 <code class="docutils literal notranslate"><span class="pre">src/sync_async_reader.cpp</span></code> 的新源文件中写入以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3227">[3227]</a></p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SyncAsyncSubscriber</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">SyncAsyncSubscriber</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;sync_async_subscriber&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Create the synchronous subscriber on topic &#39;sync_topic&#39;</span>
+<span class="w">        </span><span class="c1">// and tie it to the topic_callback</span>
+<span class="w">        </span><span class="n">sync_subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="s">&quot;sync_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Create the asynchronous subscriber on topic &#39;async_topic&#39;</span>
+<span class="w">        </span><span class="c1">// and tie it to the topic_callback</span>
+<span class="w">        </span><span class="n">async_subscription_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="s">&quot;async_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SyncAsyncSubscriber</span><span class="o">::</span><span class="n">topic_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Actions to run every time a new message is received</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">topic_callback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;I heard: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// A subscriber that listens to topic &#39;sync_topic&#39;</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sync_subscription_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// A subscriber that listens to topic &#39;async_topic&#39;</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">async_subscription_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">SyncAsyncSubscriber</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>打开 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 文件，并添加一个新的可执行文件，命名为 <code class="docutils literal notranslate"><span class="pre">SyncAsyncReader</span></code>，位于之前的 <code class="docutils literal notranslate"><span class="pre">SyncAsyncWriter</span></code> 下面： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3228">[3228]</a></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">SyncAsyncReader</span><span class="w"> </span><span class="s">src/sync_async_reader.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">SyncAsyncReader</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">std_msgs</span><span class="p">)</span>
+
+<span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span>
+<span class="w">    </span><span class="s">SyncAsyncReader</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execute-the-subscriber-node">
+<h3>执行订阅者节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3229">[3229]</a><a class="headerlink" href="#execute-the-subscriber-node" title="永久链接至标题"></a></h3>
+<p>在一个终端中运行发布者节点后，打开另一个终端并导出所需的环境变量以加载XML文件： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3230">[3230]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-2-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">export RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">export RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SET RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">SET RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">SET FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml</span>
+</pre></div>
+</div>
+</div></div>
+<p>最后，确保您已经加载了设置文件并运行了节点: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3223">[3223]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/setup.bash</span>
+<span class="go">ros2 run sync_async_node_example_cpp SyncAsyncReader</span>
+</pre></div>
+</div>
+<p>您应该看到订阅者节点接收来自发布者节点的数据，如下所示： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3231">[3231]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1612972054.495429090] [sync_async_subscriber]: I heard: &#39;SYNC: Hello, world! 10&#39;</span>
+<span class="go">[INFO] [1612972054.995410057] [sync_async_subscriber]: I heard: &#39;ASYNC: Hello, world! 10&#39;</span>
+<span class="go">[INFO] [1612972055.495453494] [sync_async_subscriber]: I heard: &#39;SYNC: Hello, world! 11&#39;</span>
+<span class="go">[INFO] [1612972055.995396561] [sync_async_subscriber]: I heard: &#39;ASYNC: Hello, world! 11&#39;</span>
+<span class="go">[INFO] [1612972056.495534818] [sync_async_subscriber]: I heard: &#39;SYNC: Hello, world! 12&#39;</span>
+<span class="go">[INFO] [1612972056.995473953] [sync_async_subscriber]: I heard: &#39;ASYNC: Hello, world! 12&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="analysis-of-the-example">
+<h3>示例的分析 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3232">[3232]</a><a class="headerlink" href="#analysis-of-the-example" title="永久链接至标题"></a></h3>
+<div class="section" id="configuration-profiles-xml">
+<h4>配置文件XML <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3233">[3233]</a><a class="headerlink" href="#configuration-profiles-xml" title="永久链接至标题"></a></h4>
+<p>XML文件定义了发布者和订阅者的多个配置。您可以有一个默认的发布者配置文件和多个特定主题的发布者配置文件。唯一的要求是所有的发布者配置文件必须具有不同的名称，并且只能有一个默认配置文件。订阅者也是如此。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3234">[3234]</a></p>
+<p>为了为特定的主题定义配置，只需将配置文件命名为ROS 2主题名称（例如示例中的``/sync_topic``和``/async_topic``），<a href="#id1"><span class="problematic" id="id2">``</span></a>rmw_fastrtps``将为该主题的所有发布者和订阅者应用该配置文件。默认配置文件由属性``is_default_profile``设置为``true``来标识，并且在没有其他与主题名称匹配的配置文件时充当回退配置文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3235">[3235]</a></p>
+<p>环境变量``FASTRTPS_DEFAULT_PROFILES_FILE``用于通知*Fast DDS*加载配置文件的XML文件路径。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3236">[3236]</a></p>
+</div>
+<div class="section" id="rmw-fastrtps-use-qos-from-xml">
+<h4>RMW_FASTRTPS_USE_QOS_FROM_XML <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3237">[3237]</a><a class="headerlink" href="#rmw-fastrtps-use-qos-from-xml" title="永久链接至标题"></a></h4>
+<p>在所有可配置属性中，<code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> 对待 <code class="docutils literal notranslate"><span class="pre">publishMode</span></code> 和 <code class="docutils literal notranslate"><span class="pre">historyMemoryPolicy</span></code> 有所不同。默认情况下，这些值在 <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> 实现中被设置为 <code class="docutils literal notranslate"><span class="pre">ASYNCHRONOUS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PREALLOCATED_WITH_REALLOC</span></code>，并且忽略了 XML 文件中设置的值。要使用 XML 文件中的值，必须将环境变量 <code class="docutils literal notranslate"><span class="pre">RMW_FASTRTPS_USE_QOS_FROM_XML</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">1</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3238">[3238]</a></p>
+<p>然而，这带来了**另一个注意事项**：如果设置了 <code class="docutils literal notranslate"><span class="pre">RMW_FASTRTPS_USE_QOS_FROM_XML</span></code>，但 XML 文件没有定义 <code class="docutils literal notranslate"><span class="pre">publishMode</span></code> 或 <code class="docutils literal notranslate"><span class="pre">historyMemoryPolicy</span></code>，这些属性会取代 <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> 的默认值而使用 <em>Fast DDS</em> 的默认值。这一点非常重要，特别是对于 <code class="docutils literal notranslate"><span class="pre">historyMemoryPolicy</span></code>，因为 <em>Fast DDS</em> 的默认值是 <code class="docutils literal notranslate"><span class="pre">PREALLOCATED</span></code>，而这与 ROS2 主题数据类型不兼容。因此，在示例中，明确设置了此策略的有效值（<code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3239">[3239]</a></p>
+</div>
+<div class="section" id="prioritization-of-rmw-qos-profile-t">
+<h4>rmw_qos_profile_t 的优先级排序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3240">[3240]</a><a class="headerlink" href="#prioritization-of-rmw-qos-profile-t" title="永久链接至标题"></a></h4>
+<p>除非设置为``*_SYSTEM_DEFAULT``，否则始终会遵守包含在`rmw_qos_profile_t &lt;<a class="reference external" href="http://docs.ros2.org/latest/api/rmw/structrmw__qos__profile__t.html">http://docs.ros2.org/latest/api/rmw/structrmw__qos__profile__t.html</a>&gt;`_中的ROS 2 QoS。在这种情况下，将应用XML值（或在没有XML值的情况下使用*Fast DDS*的默认值）。这意味着如果``rmw_qos_profile_t``中的任何QoS设置为与``*_SYSTEM_DEFAULT``不同的其他值，则会忽略XML中的相应值。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3241">[3241]</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="using-other-fastdds-capabilities-with-xml">
+<h2>使用XML配置其他FastDDS功能 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3242">[3242]</a><a class="headerlink" href="#using-other-fastdds-capabilities-with-xml" title="永久链接至标题"></a></h2>
+<p>尽管我们已经创建了一个具有不同配置的节点的两个发布者，但很难检查它们是否表现不同。现在已经介绍了XML配置文件的基础知识，让我们使用它们来配置对节点具有一些可视效果的内容。具体来说，将设置一个发布者的最大匹配订阅者数量，并在另一个发布者上设置一个分区定义。请注意，这些只是在``rmw_fastrtps``上可以通过XML文件调整的所有配置属性中的非常简单的示例。请参考`*Fast DDS*文档&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/xml_configuration.html#xml-profiles">https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/xml_configuration.html#xml-profiles</a>&gt;`__以查看可以通过XML文件配置的属性的完整列表。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3243">[3243]</a></p>
+<div class="section" id="limiting-the-number-of-matching-subscribers">
+<h3>限制匹配订阅者的数量 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3244">[3244]</a><a class="headerlink" href="#limiting-the-number-of-matching-subscribers" title="永久链接至标题"></a></h3>
+<p>在``/async_topic``发布者配置文件中添加最大匹配订阅者数。它应该是这样的： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3245">[3245]</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- publisher profile for topic async_topic --&gt;</span>
+<span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/async_topic&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;qos&gt;</span>
+        <span class="nt">&lt;publishMode&gt;</span>
+            <span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+        <span class="nt">&lt;/publishMode&gt;</span>
+    <span class="nt">&lt;/qos&gt;</span>
+    <span class="nt">&lt;matchedSubscribersAllocation&gt;</span>
+        <span class="nt">&lt;initial&gt;</span>0<span class="nt">&lt;/initial&gt;</span>
+        <span class="nt">&lt;maximum&gt;</span>1<span class="nt">&lt;/maximum&gt;</span>
+        <span class="nt">&lt;increment&gt;</span>1<span class="nt">&lt;/increment&gt;</span>
+    <span class="nt">&lt;/matchedSubscribersAllocation&gt;</span>
+<span class="nt">&lt;/publisher&gt;</span>
+</pre></div>
+</div>
+<p>匹配的订阅者数量被限制为一个。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3246">[3246]</a></p>
+<p>现在打开三个终端，并且不要忘记加载设置文件和设置所需的环境变量。在第一个终端中运行发布者节点，在其他两个终端中运行订阅者节点。你会发现只有第一个订阅者节点从两个主题接收到消息。第二个订阅者节点无法在``/async_topic``中完成匹配过程，因为发布者已经阻止了它，由于已经达到了最大匹配订阅者数。因此，这第三个终端只会接收到``/sync_topic``的消息： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3247">[3247]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1613127657.088860890] [sync_async_subscriber]: I heard: &#39;SYNC: Hello, world! 18&#39;</span>
+<span class="go">[INFO] [1613127657.588896594] [sync_async_subscriber]: I heard: &#39;SYNC: Hello, world! 19&#39;</span>
+<span class="go">[INFO] [1613127658.088849401] [sync_async_subscriber]: I heard: &#39;SYNC: Hello, world! 20&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-partitions-within-the-topic">
+<h3>在主题中使用分区 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3248">[3248]</a><a class="headerlink" href="#using-partitions-within-the-topic" title="永久链接至标题"></a></h3>
+<p>分区功能可以用于控制在同一主题下发布者和订阅者之间的信息交换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3249">[3249]</a></p>
+<p>分区引入了一个逻辑实体隔离级别的概念，它在由域ID引起的物理隔离内部。要使发布者与订阅者进行通信，它们必须至少属于一个公共分区。分区代表了在域和主题之外进一步分离发布者和订阅者的另一级别。与域和主题不同，一个端点可以同时属于多个分区。为了将某些数据共享到不同的域或主题，每个域或主题必须有一个不同的发布者，共享其自己的更改历史。然而，一个单独的发布者可以使用单个主题数据更改将相同的数据样本共享到不同的分区，从而减少网络负载。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3250">[3250]</a></p>
+<p>让我们将``/sync_topic``发布者更改为分区``part1``，并创建一个使用分区``part2``的新``/sync_topic``订阅者。它们的配置文件现在应该如下所示： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3251">[3251]</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- publisher profile for topic sync_topic --&gt;</span>
+<span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;qos&gt;</span>
+        <span class="nt">&lt;publishMode&gt;</span>
+            <span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+        <span class="nt">&lt;/publishMode&gt;</span>
+        <span class="nt">&lt;partition&gt;</span>
+            <span class="nt">&lt;names&gt;</span>
+                <span class="nt">&lt;name&gt;</span>part1<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;/names&gt;</span>
+        <span class="nt">&lt;/partition&gt;</span>
+    <span class="nt">&lt;/qos&gt;</span>
+<span class="nt">&lt;/publisher&gt;</span>
+
+<span class="cm">&lt;!-- subscriber profile for topic sync_topic --&gt;</span>
+<span class="nt">&lt;subscriber</span> <span class="na">profile_name=</span><span class="s">&quot;/sync_topic&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;qos&gt;</span>
+        <span class="nt">&lt;partition&gt;</span>
+            <span class="nt">&lt;names&gt;</span>
+                <span class="nt">&lt;name&gt;</span>part2<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;/names&gt;</span>
+        <span class="nt">&lt;/partition&gt;</span>
+    <span class="nt">&lt;/qos&gt;</span>
+<span class="nt">&lt;/subscriber&gt;</span>
+</pre></div>
+</div>
+<p>打开两个终端。不要忘记源化设置文件并设置所需的环境变量。在第一个终端上运行发布者节点，在另一个终端上运行订阅者节点。您应该注意到只有``/async_topic``的消息到达订阅者。由于``/sync_topic``的发布者与其所在的分区不同，因此``/sync_topic``订阅者无法接收到数据。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3252">[3252]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1612972054.995410057] [sync_async_subscriber]: I heard: &#39;ASYNC: Hello, world! 10&#39;</span>
+<span class="go">[INFO] [1612972055.995396561] [sync_async_subscriber]: I heard: &#39;ASYNC: Hello, world! 11&#39;</span>
+<span class="go">[INFO] [1612972056.995473953] [sync_async_subscriber]: I heard: &#39;ASYNC: Hello, world! 12&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-a-service-and-a-client">
+<h2>配置服务和客户端 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3253">[3253]</a><a class="headerlink" href="#configuring-a-service-and-a-client" title="永久链接至标题"></a></h2>
+<p>服务和客户端各自具有一个发布者和一个订阅者，它们通过两个不同的主题进行通信。例如，对于一个名为``ping``的服务，有以下情况： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3254">[3254]</a></p>
+<ul class="simple">
+<li><p>一个服务的订阅者监听来自``/rq/ping``的请求。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3255">[3255]</a></p></li>
+<li><p>一个服务的发布者在``/rr/ping``上发送响应。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3256">[3256]</a></p></li>
+<li><p>一个客户端发布者在``/rq/ping``上发送请求。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3257">[3257]</a></p></li>
+<li><p>一个客户端订阅者监听``/rr/ping``上的响应。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3258">[3258]</a></p></li>
+</ul>
+<p>虽然您可以使用这些主题名称在XML上设置配置文件，但有时您可能希望将同一配置文件应用于节点上的所有服务或客户端。您可以只创建一个名为``service``的发布者和订阅者配置文件对，而不是为所有服务生成所有主题名称的相同配置文件。对于客户端，也可以创建一个名为``client``的配对。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3259">[3259]</a></p>
+<div class="section" id="create-the-nodes-with-the-service-and-client">
+<h3>使用服务和客户端创建节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3260">[3260]</a><a class="headerlink" href="#create-the-nodes-with-the-service-and-client" title="永久链接至标题"></a></h3>
+<p>开始创建带有服务的节点。在您的软件包中添加一个名为``src/ping_service.cpp``的新源文件，并使用以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3261">[3261]</a></p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example_interfaces/srv/trigger.hpp&quot;</span><span class="cp"></span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Service action: responds with success=true and prints the request on the console</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ping</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The request data is unused</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="n">request</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Build the response</span>
+<span class="w">    </span><span class="n">response</span><span class="o">-&gt;</span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Log to the console</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Incoming request&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Sending back response&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Create the node and the service</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">make_shared</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Service</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_service</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ping</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Log that the service is ready</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_server&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Ready to serve.&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// run the node</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>创建一个名为``src/ping_client.cpp``的文件，其中包含以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3262">[3262]</a></p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example_interfaces/srv/trigger.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Create the node and the client</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">make_shared</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Client</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">create_client</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ping&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Create a request</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">example_interfaces</span><span class="o">::</span><span class="n">srv</span><span class="o">::</span><span class="n">Trigger</span><span class="o">::</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Wait for the service to be available</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">client</span><span class="o">-&gt;</span><span class="n">wait_for_service</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Interrupted while waiting for the service. Exiting.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Service not available, waiting again...&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Now that the service is available, send the request</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Sending request&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="o">-&gt;</span><span class="n">async_send_request</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Wait for the result and log it to the console</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"></span>
+<span class="w">        </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">FutureReturnCode</span><span class="o">::</span><span class="n">SUCCESS</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Response received&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">RCLCPP_ERROR</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">get_logger</span><span class="p">(</span><span class="s">&quot;ping_client&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Failed to call service ping&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>打开``CMakeLists.txt``文件，并添加两个新的可执行文件``ping_service``和``ping_client``： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3263">[3263]</a></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">example_interfaces</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">ping_service</span><span class="w"> </span><span class="s">src/ping_service.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">ping_service</span><span class="w"> </span><span class="s">example_interfaces</span><span class="w"> </span><span class="s">rclcpp</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">ping_client</span><span class="w"> </span><span class="s">src/ping_client.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">ping_client</span><span class="w"> </span><span class="s">example_interfaces</span><span class="w"> </span><span class="s">rclcpp</span><span class="p">)</span>
+
+<span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span>
+<span class="w">    </span><span class="s">ping_service</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+
+<span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span>
+<span class="w">    </span><span class="s">ping_client</span>
+<span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>最后，构建软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3264">[3264]</a></p>
+</div>
+<div class="section" id="create-the-xml-profiles-for-the-service-and-client">
+<h3>为服务和客户端创建XML配置文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3265">[3265]</a><a class="headerlink" href="#create-the-xml-profiles-for-the-service-and-client" title="永久链接至标题"></a></h3>
+<p>创建一个名为 <code class="xref any docutils literal notranslate"><span class="pre">ping.xml</span></code> 的文件，并使用以下内容填充： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3266">[3266]</a></p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;profiles</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles&quot;</span><span class="nt">&gt;</span>
+
+    <span class="cm">&lt;!-- default publisher profile --&gt;</span>
+    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;default_publisher&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;/publisher&gt;</span>
+
+    <span class="cm">&lt;!-- default subscriber profile --&gt;</span>
+    <span class="nt">&lt;subscriber</span> <span class="na">profile_name=</span><span class="s">&quot;default_subscriber&quot;</span> <span class="na">is_default_profile=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+    <span class="nt">&lt;/subscriber&gt;</span>
+
+    <span class="cm">&lt;!-- service publisher is SYNC --&gt;</span>
+    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;service&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+        <span class="nt">&lt;qos&gt;</span>
+            <span class="nt">&lt;publishMode&gt;</span>
+                <span class="nt">&lt;kind&gt;</span>SYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+            <span class="nt">&lt;/publishMode&gt;</span>
+        <span class="nt">&lt;/qos&gt;</span>
+    <span class="nt">&lt;/publisher&gt;</span>
+
+    <span class="cm">&lt;!-- client publisher is ASYNC --&gt;</span>
+    <span class="nt">&lt;publisher</span> <span class="na">profile_name=</span><span class="s">&quot;client&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;historyMemoryPolicy&gt;</span>DYNAMIC<span class="nt">&lt;/historyMemoryPolicy&gt;</span>
+        <span class="nt">&lt;qos&gt;</span>
+            <span class="nt">&lt;publishMode&gt;</span>
+                <span class="nt">&lt;kind&gt;</span>ASYNCHRONOUS<span class="nt">&lt;/kind&gt;</span>
+            <span class="nt">&lt;/publishMode&gt;</span>
+        <span class="nt">&lt;/qos&gt;</span>
+    <span class="nt">&lt;/publisher&gt;</span>
+
+<span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+<p>此配置文件将服务端的发布模式设置为 <code class="xref any docutils literal notranslate"><span class="pre">SYNCHRONOUS</span></code>，客户端的发布模式设置为 <code class="xref any docutils literal notranslate"><span class="pre">ASYNCHRONOUS</span></code>。请注意，我们仅定义了服务和客户端的发布者配置文件，但也可以提供订阅者配置文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3267">[3267]</a></p>
+</div>
+<div class="section" id="execute-the-nodes">
+<h3>执行节点操作 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3268">[3268]</a><a class="headerlink" href="#execute-the-nodes" title="永久链接至标题"></a></h3>
+<p>打开两个终端并在每个终端上加载设置文件。然后设置所需的环境变量以加载 XML： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3269">[3269]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-3-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">export RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/ping.xml</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">export RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/ping.xml</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">SET RMW_IMPLEMENTATION=rmw_fastrtps_cpp</span>
+<span class="go">SET RMW_FASTRTPS_USE_QOS_FROM_XML=1</span>
+<span class="go">SET FASTRTPS_DEFAULT_PROFILES_FILE=path/to/ping.xml</span>
+</pre></div>
+</div>
+</div></div>
+<p>在第一个终端上运行服务节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3270">[3270]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run sync_async_node_example_cpp ping_service</span>
+</pre></div>
+</div>
+<p>您应该看到服务正在等待请求： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3271">[3271]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1612977403.805799037] [ping_server]: Ready to serve</span>
+</pre></div>
+</div>
+<p>在第二个终端上运行客户端节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3272">[3272]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run sync_async_node_example_cpp ping_client</span>
+</pre></div>
+</div>
+<p>您应该看到客户端发送请求并接收响应： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3273">[3273]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1612977404.805799037] [ping_client]: Sending request</span>
+<span class="go">[INFO] [1612977404.825473835] [ping_client]: Response received</span>
+</pre></div>
+</div>
+<p>同时，服务器控制台中的输出已被更新： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3274">[3274]</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[INFO] [1612977403.805799037] [ping_server]: Ready to serve</span>
+<span class="go">[INFO] [1612977404.807314904] [ping_server]: Incoming request</span>
+<span class="go">[INFO] [1612977404.836405125] [ping_server]: Sending back response</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Allocator-Template-Tutorial.html" class="btn btn-neutral float-left" title="实现自定义内存分配器 [3066]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Recording-A-Bag-From-Your-Own-Node-CPP.html" class="btn btn-neutral float-right" title="从节点（C++）录制一个包 [3275]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

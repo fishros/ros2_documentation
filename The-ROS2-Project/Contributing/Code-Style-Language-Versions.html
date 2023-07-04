@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>代码风格和语言版本 [1415] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/The-ROS2-Project/Contributing/Code-Style-Language-Versions.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="质量指南：确保代码质量 [2231]" href="Quality-Guide.html" />
+    <link rel="prev" title="ROS 2开发者指南 [1644]" href="Developer-Guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorials.html">教程 [3059]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Intermediate.html">中级 [5283]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Launch/Launch-Main.html">启动 [5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Launch/Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Launch/Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Launch/Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Launch/Using-Event-Handlers.html">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Advanced.html">高级 [3065]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Webots/Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tutorials/Advanced/Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Advanced/Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tutorials/Advanced/Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Miscellaneous.html">杂项 [6439]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Contributing.html">贡献 [1328]</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ROSCon-Content.html">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../The-ROS2-Project.html">ROS 2 项目 [1326]</a> &raquo;</li>
+          <li><a href="../Contributing.html">贡献 [1328]</a> &raquo;</li>
+      <li>代码风格和语言版本 [1415]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/The-ROS2-Project/Contributing/Code-Style-Language-Versions.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="code-style-and-language-versions">
+<span id="codestyle"></span><h1>代码风格和语言版本 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1415">[1415]</a><a class="headerlink" href="#code-style-and-language-versions" title="永久链接至标题"></a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1329">[]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#c" id="id8">C [1419]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#standard" id="id9">标准 [1420]</a></p></li>
+<li><p><a class="reference internal" href="#style" id="id10">样式 [1422]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id1" id="id11">C++ [1436]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id12">标准 [1420]</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id13">样式 [1422]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#python" id="id14">Python [1522]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#version" id="id15">版本 [1523]</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id16">样式 [1422]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#cmake" id="id17">CMake [1537]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id18">版本 [1523]</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id19">样式 [1422]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#markdown-restructured-text-docblocks" id="id20">Markdown / reStructured Text / docblocks [1548]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id21">样式 [1422]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>为了实现外观一致的产品，我们将遵循各语言的外部（如果可能）定义的样式指南。对于包布局或文档布局等其他事项，我们将需要制定自己的指南，借鉴当前流行的样式。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1416">[1416]</a></p>
+<p>此外，开发人员应尽可能使用集成工具来检查编辑器中是否遵循了这些指南。例如，每个人都应该在其编辑器中内置一个 PEP8 检查器，以减少与样式相关的审查迭代。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1417">[1417]</a></p>
+<p>此外，尽可能地，软件包应在其单元测试中检查样式，以帮助自动检测样式问题（参见 <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_lint_auto/doc/index.rst">ament_lint_auto</a>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1418">[1418]</a></p>
+<div class="section" id="c">
+<h2>C <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1419">[1419]</a><a class="headerlink" href="#c" title="永久链接至标题"></a></h2>
+<div class="section" id="standard">
+<h3>标准 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1420">[1420]</a><a class="headerlink" href="#standard" title="永久链接至标题"></a></h3>
+<p>我们将以C99为目标。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1421">[1421]</a></p>
+</div>
+<div class="section" id="style">
+<h3>样式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1422">[1422]</a><a class="headerlink" href="#style" title="永久链接至标题"></a></h3>
+<p>我们将使用 <a class="reference external" href="https://www.python.org/dev/peps/pep-0007/">Python的PEP7</a> 作为我们的C代码风格指南，并进行一些修改和添加： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1423">[1423]</a></p>
+<ul class="simple">
+<li><p>我们将以C99为目标，因为我们不需要支持C89（如PEP7建议） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1424">[1424]</a></p>
+<ul>
+<li><p>理由：除其他外，它允许我们同时使用 <code class="docutils literal notranslate"><span class="pre">//</span></code> 和 <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">*/</span></code> 样式的注释 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1425">[1425]</a></p></li>
+<li><p>解释：C99现在几乎无处不在 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1426">[1426]</a></p></li>
+</ul>
+</li>
+<li><p>允许使用C++风格的``//<a href="#id1"><span class="problematic" id="id2">``</span></a>注释 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1427">[1427]</a></p></li>
+<li><p>(可选) 总是将文字直接量放在比较操作符的左边，例如使用``0 == ret``而不是``ret == 0`` <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1428">[1428]</a></p>
+<ul>
+<li><p>解释：<code class="docutils literal notranslate"><span class="pre">ret</span> <span class="pre">==</span> <span class="pre">0``容易出错为``ret</span> <span class="pre">=</span> <span class="pre">0</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1429">[1429]</a></p></li>
+<li><p>可选的，因为当使用``-Wall``（或等效选项）时，现代编译器会在发生此情况时给出警告 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1430">[1430]</a></p></li>
+</ul>
+</li>
+</ul>
+<p>以下所有修改仅适用于非编写Python模块的情况： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1431">[1431]</a></p>
+<ul class="simple">
+<li><p>不要将``Py_``作为所有内容的前缀 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1432">[1432]</a></p>
+<ul>
+<li><p>而是使用包名的驼峰命名法或其他适当的前缀 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1433">[1433]</a></p></li>
+</ul>
+</li>
+<li><p>关于文档字符串的内容不适用 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1434">[1434]</a></p></li>
+</ul>
+<p>我们可以使用 <a class="reference external" href="https://github.com/mike-perdide/pep7">pep7</a> Python 模块进行风格检查。编辑器集成似乎很简单，我们可能需要更详细地研究C语言的自动检查。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1435">[1435]</a></p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>C++ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1436">[1436]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h2>
+<div class="section" id="id2">
+<h3>标准 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1420">[1420]</a><a class="headerlink" href="#id2" title="永久链接至标题"></a></h3>
+<p>Humble 以 C++17 为目标。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1437">[1437]</a></p>
+</div>
+<div class="section" id="id3">
+<h3>样式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1422">[1422]</a><a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<p>我们将使用 <a class="reference external" href="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</a>，并进行一些修改： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1438">[1438]</a></p>
+<div class="section" id="line-length">
+<h4>行长度 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1439">[1439]</a><a class="headerlink" href="#line-length" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>我们的最大行长度为 100 个字符。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1440">[1440]</a></p></li>
+</ul>
+</div>
+<div class="section" id="file-extensions">
+<h4>文件扩展名 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1441">[1441]</a><a class="headerlink" href="#file-extensions" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>头文件应使用 .hpp 扩展名。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1442">[1442]</a></p>
+<ul>
+<li><p>理由：允许工具确定文件的内容，无论是 C++ 还是 C。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1443">[1443]</a></p></li>
+</ul>
+</li>
+<li><p>实现文件应使用 .cpp 扩展名。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1444">[1444]</a></p>
+<ul>
+<li><p>理由：允许工具确定文件的内容，无论是 C++ 还是 C。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1443">[1443]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="variable-naming">
+<h4>变量命名 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1445">[1445]</a><a class="headerlink" href="#variable-naming" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>对于全局变量，请使用小写字母和下划线，并在前面加上一个空格``g_`` <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1446">[1446]</a></p>
+<ul>
+<li><p>原因：在整个项目中保持变量命名大小写一致 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1447">[1447]</a></p></li>
+<li><p>原因：一目了然地确定变量的作用域 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1448">[1448]</a></p></li>
+<li><p>跨语言保持一致性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1449">[1449]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="function-and-method-naming">
+<h4>函数和方法命名 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1450">[1450]</a><a class="headerlink" href="#function-and-method-naming" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>谷歌样式指南要求使用``CamelCase``，但C++标准库的样式``snake_case``也是允许的 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1451">[1451]</a></p>
+<ul>
+<li><p>理由：ROS 2核心包目前使用``snake_case`` <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1452">[1452]</a></p>
+<ul>
+<li><p>原因：可能是历史遗漏或未经linter检查的个人偏好 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1453">[1453]</a></p></li>
+<li><p>不更改的原因：追溯性更改会造成过大的干扰 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1454">[1454]</a></p></li>
+</ul>
+</li>
+<li><p>其他考虑因素： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1455">[1455]</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpplint.py</span></code> 不检查此情况（除非通过审查进行强制执行，否则很难实施） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1456">[1456]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">snake_case</span></code> 可以实现跨语言更一致的结果 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1457">[1457]</a></p></li>
+</ul>
+</li>
+<li><p>具体指导： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1458">[1458]</a></p>
+<ul>
+<li><p>对于现有项目，请优先采用现有的风格 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1459">[1459]</a></p></li>
+<li><p>对于新项目，两种风格都可以接受，但建议优先选择与相关现有项目相匹配的风格 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1460">[1460]</a></p></li>
+<li><p>最终决策由开发人员自行决定 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1461">[1461]</a></p>
+<ul>
+<li><p>特殊情况，如函数指针、可调用类型等，可能需要打破规则 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1462">[1462]</a></p></li>
+</ul>
+</li>
+<li><p>注意，类应该仍然默认使用“CamelCase” <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1463">[1463]</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="access-control">
+<h4>访问控制 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1464">[1464]</a><a class="headerlink" href="#access-control" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>放宽对所有类成员必须私有的要求，从而需要访问器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1465">[1465]</a></p>
+<ul>
+<li><p>解释：这对用户API设计来说过于限制性。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1466">[1466]</a></p></li>
+<li><p>解释：我们应该更倾向于私有成员，只有在需要时才将它们设置为公开。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1467">[1467]</a></p></li>
+<li><p>解释：在选择允许直接成员访问之前，我们应该考虑使用访问器。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1468">[1468]</a></p></li>
+<li><p>解释：除了对我们方便之外，我们应该有一个充分的理由来允许直接成员访问。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1469">[1469]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="exceptions">
+<h4>异常 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1470">[1470]</a><a class="headerlink" href="#exceptions" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>允许使用异常 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1471">[1471]</a></p>
+<ul>
+<li><p>解释：这是一个全新的代码库，所以我们不适用于传统的论点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1472">[1472]</a></p></li>
+<li><p>解释：对于面向用户的 API，使用异常更符合 C++ 的习惯用法 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1473">[1473]</a></p></li>
+<li><p>析构函数中应明确避免异常 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1474">[1474]</a></p></li>
+</ul>
+</li>
+<li><p>如果我们打算在C中包装所得到的API，则应考虑避免异常 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1475">[1475]</a></p>
+<ul>
+<li><p>理由：这将使在C中进行包装更容易 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1476">[1476]</a></p></li>
+<li><p>理由：我们打算在C中包装的代码大多数不会使用异常 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1477">[1477]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="function-like-objects">
+<h4>类似函数的对象 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1478">[1478]</a><a class="headerlink" href="#function-like-objects" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>对Lambda、<a href="#id1"><span class="problematic" id="id2">``</span></a>std::function``或``std::bind``没有限制 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1479">[1479]</a></p></li>
+</ul>
+</div>
+<div class="section" id="boost">
+<h4>Boost <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1480">[1480]</a><a class="headerlink" href="#boost" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>除非绝对必要，应避免使用Boost。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1481">[1481]</a></p></li>
+</ul>
+</div>
+<div class="section" id="comments-and-doc-comments">
+<h4>评论和文档注释 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1482">[1482]</a><a class="headerlink" href="#comments-and-doc-comments" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">///</span></code> 和 <code class="docutils literal notranslate"><span class="pre">/**</span> <span class="pre">*/</span></code> 注释来进行*文档*编写，使用 <code class="docutils literal notranslate"><span class="pre">//</span></code> 样式的注释来进行备注和一般性评论 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1483">[1483]</a></p>
+<ul>
+<li><p>类和函数的注释应该使用 <code class="docutils literal notranslate"><span class="pre">///</span></code> 和 <code class="docutils literal notranslate"><span class="pre">/**</span> <span class="pre">*/</span></code> 样式的注释 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1484">[1484]</a></p></li>
+<li><p>原因：这些注释样式在 C/C++ 中推荐用于 Doxygen 和 Sphinx <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1485">[1485]</a></p></li>
+<li><p>理由: 使用``/* <a href="#id1"><span class="problematic" id="id2">*</span></a>/<code class="docutils literal notranslate"><span class="pre">和</span></code>//<a href="#id3"><span class="problematic" id="id4">``</span></a>混合注释对于注释掉包含注释的代码块很方便。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1486">[1486]</a></p></li>
+<li><p>代码运行方式的描述或类和函数内部的注释应该使用``//<a href="#id1"><span class="problematic" id="id2">``</span></a>风格的注释。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1487">[1487]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pointer-syntax-alignment">
+<h4>指针语法对齐 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1488">[1488]</a><a class="headerlink" href="#pointer-syntax-alignment" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>在这种情况下，使用``char * c;``而不是``char* c;``或``char <em>c;``，因为``char</em> c, <a href="#id1"><span class="problematic" id="id2">*</span></a>d, <a href="#id3"><span class="problematic" id="id4">*</span></a>e;``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1489">[1489]</a></p></li>
+</ul>
+</div>
+<div class="section" id="class-privacy-keywords">
+<h4>类隐私关键字 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1490">[1490]</a><a class="headerlink" href="#class-privacy-keywords" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>在``public:<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">``private:</span></code>, 或 <a href="#id1"><span class="problematic" id="id2">``</span></a>protected:<a href="#id3"><span class="problematic" id="id4">``</span></a>之前不要加1个空格，所有缩进都应为2的倍数，以保持一致性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1491">[1491]</a></p>
+<ul>
+<li><p>理由：大多数编辑器不喜欢缩进不是(软)制表符大小的倍数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1492">[1492]</a></p></li>
+<li><p>在``public:<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">``private:</span></code>, 或 <a href="#id1"><span class="problematic" id="id2">``</span></a>protected:<a href="#id3"><span class="problematic" id="id4">``</span></a>之前使用零个空格或2个空格 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1493">[1493]</a></p></li>
+<li><p>如果您在之前使用了2个空格，则将其他类语句缩进2个额外的空格 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1494">[1494]</a></p></li>
+<li><p>建议在与类相同的列中使用零个空格，即``public:<code class="docutils literal notranslate"><span class="pre">、``private:``或``protected:</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1495">[1495]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="nested-templates">
+<h4>嵌套模板 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1496">[1496]</a><a class="headerlink" href="#nested-templates" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>永远不要在嵌套模板中添加空格 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1497">[1497]</a></p>
+<ul>
+<li><p>更喜欢使用``set&lt;list&lt;string&gt;&gt;``（C++11特性），而不是``set&lt;list&lt;string&gt; &gt;``或``set&lt; list&lt;string&gt; &gt;`` <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1498">[1498]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="always-use-braces">
+<h4>始终使用花括号 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1499">[1499]</a><a class="headerlink" href="#always-use-braces" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>在``if``、<code class="docutils literal notranslate"><span class="pre">else</span></code>、<code class="docutils literal notranslate"><span class="pre">do</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>while``和``for``后始终使用花括号，即使主体只有一行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1500">[1500]</a></p>
+<ul>
+<li><p>理由：减少视觉歧义的机会，避免由于主体中使用宏而导致的复杂情况。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1501">[1501]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="open-versus-cuddled-braces">
+<h4>花括号的风格选择 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1502">[1502]</a><a class="headerlink" href="#open-versus-cuddled-braces" title="永久链接至标题"></a></h4>
+<ul class="simple">
+<li><p>对于 <code class="docutils literal notranslate"><span class="pre">function</span></code>、<code class="docutils literal notranslate"><span class="pre">class</span></code>、<code class="docutils literal notranslate"><span class="pre">enum</span></code> 和 <code class="docutils literal notranslate"><span class="pre">struct</span></code> 的定义，使用空格后的开放花括号，但是对于 <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">else</span></code>、<code class="docutils literal notranslate"><span class="pre">while</span></code>、<code class="docutils literal notranslate"><span class="pre">for</span></code> 等语句使用相邻的花括号... <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1503">[1503]</a></p>
+<ul>
+<li><p>例外情况：当 <code class="docutils literal notranslate"><span class="pre">if``（或</span> <span class="pre">``while</span></code> 等）条件太长需要换行时，使用开放花括号（即不相邻的形式）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1504">[1504]</a></p></li>
+</ul>
+</li>
+<li><p>当函数调用不能在一行内容纳时，在开放的括号处换行（不在参数之间），并在下一行以2个空格缩进开始。对于更多的参数，继续使用2个空格缩进的格式进行下一行。注意，这一点在 <a class="reference external" href="https://google.github.io/styleguide/cppguide.html#Function_Calls">Google 风格指南</a> 上有内部矛盾。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1505">[1505]</a></p>
+<ul>
+<li><p>对于太长无法放在一行的``if``（以及``while``等）条件同样适用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1506">[1506]</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h4>示例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1507">[1507]</a><a class="headerlink" href="#examples" title="永久链接至标题"></a></h4>
+<p>这是可以的： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1508">[1508]</a></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Long condition; open brace</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">that</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Short function call</span>
+<span class="n">call_func</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Long function call; wrap at the open parenthesis</span>
+<span class="n">call_func</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Very long function argument; separate it for readability</span>
+<span class="n">call_func</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">bang</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">fooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">bat</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>这是**不**可以的： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1509">[1509]</a></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">    </span><span class="n">that</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">    </span><span class="n">both</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>使用大括号而不是过多的缩进，例如用于区分构造函数中的代码和构造函数初始化列表 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1510">[1510]</a></p>
+<p>这是可以的： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1508">[1508]</a></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 2 space indent</span>
+<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name3</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w">  </span><span class="c1">// 2 space indent</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">var</span><span class="p">)</span><span class="w"></span>
+<span class="o">:</span><span class="w"> </span><span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>这是 <strong>不正确的</strong>，甚至很奇怪（Google 的方式？）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1511">[1511]</a></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="nf">LongClassName::ReallyReallyReallyLongFunctionName</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name1</span><span class="p">,</span><span class="w">  </span><span class="c1">// 4 space indent</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">par_name3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w">  </span><span class="c1">// 2 space indent</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">MyClass</span><span class="o">::</span><span class="n">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">var</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">some_var_</span><span class="p">(</span><span class="n">var</span><span class="p">),</span><span class="w">             </span><span class="c1">// 4 space indent</span>
+<span class="w">      </span><span class="n">some_other_var_</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// lined up</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">DoSomething</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linters">
+<h4>代码检查工具 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1512">[1512]</a><a class="headerlink" href="#linters" title="永久链接至标题"></a></h4>
+<p>我们使用 Google 的 <a class="reference external" href="https://github.com/google/styleguide">cpplint.py</a> 和 <a class="reference external" href="https://github.com/uncrustify/uncrustify">uncrustify</a> 的组合来检查这些风格。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1513">[1513]</a></p>
+<p>我们提供带有自定义配置的命令行工具： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1514">[1514]</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_clang_format/doc/index.rst">ament_clang_format</a>：<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_clang_format/ament_clang_format/configuration/.clang-format">configuration</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1515">[1515]</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_cpplint/doc/index.rst">ament_cpplint</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1516">[1516]</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_uncrustify/doc/index.rst">ament_uncrustify</a>：<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_uncrustify/ament_uncrustify/configuration/ament_code_style.cfg">configuration</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1517">[1517]</a></p></li>
+</ul>
+<p>一些格式化工具，例如ament_uncrustify和ament_clang_format，支持“--reformat”选项以直接应用更改。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1518">[1518]</a></p>
+<p>我们还运行其他工具来尽可能检测和消除警告。以下是我们在所有软件包上尝试做的一些额外工作的非详尽列表： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1519">[1519]</a></p>
+<ul class="simple">
+<li><p>使用编译器标志，如“-Wall -Wextra -Wpedantic”。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1520">[1520]</a></p></li>
+<li><p>运行静态代码分析工具，例如cppcheck，我们已将其集成到`ament_cppcheck &lt;<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_cppcheck/doc/index.rst">https://github.com/ament/ament_lint/blob/humble/ament_cppcheck/doc/index.rst</a>&gt;`__中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1521">[1521]</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="python">
+<h2>Python <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1522">[1522]</a><a class="headerlink" href="#python" title="永久链接至标题"></a></h2>
+<div class="section" id="version">
+<h3>版本 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1523">[1523]</a><a class="headerlink" href="#version" title="永久链接至标题"></a></h3>
+<p>我们将以Python 3为我们的开发目标。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1524">[1524]</a></p>
+</div>
+<div class="section" id="id4">
+<h3>样式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1422">[1422]</a><a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
+<p>我们将使用 <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8指南</a> 来进行代码格式化。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1525">[1525]</a></p>
+<p>我们选择了以下更精确的规则，PEP 8在某些方面有些自由： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1526">[1526]</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/#maximum-line-length">我们允许每行最多100个字符（第五段）</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1527">[1527]</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/#string-quotes">只要不需要转义，我们更喜欢使用单引号而不是双引号</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1528">[1528]</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/#indentation">我们更喜欢使用悬挂缩进来表示续行</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1529">[1529]</a></p></li>
+</ul>
+<p>在单元测试和/或编辑器集成中应使用类似 <code class="docutils literal notranslate"><span class="pre">(ament_)pycodestyle</span></code> 的工具来检查 Python 代码风格。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1530">[1530]</a></p>
+<p>代码检查工具中使用的 pycodestyle 配置文件位于 <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_pycodestyle/ament_pycodestyle/configuration/ament_pycodestyle.ini">此处</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1531">[1531]</a></p>
+<p>编辑器集成: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1532">[1532]</a></p>
+<ul class="simple">
+<li><p>atom: <a class="reference external" href="https://atom.io/packages/linter-pycodestyle">https://atom.io/packages/linter-pycodestyle</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1533">[1533]</a></p></li>
+<li><p>emacs: <a class="reference external" href="https://www.emacswiki.org/emacs/PythonProgrammingInEmacs">https://www.emacswiki.org/emacs/PythonProgrammingInEmacs</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1534">[1534]</a></p></li>
+<li><p>Sublime Text: <a class="reference external" href="https://sublime.wbond.net/packages/SublimeLinter-flake8">https://sublime.wbond.net/packages/SublimeLinter-flake8</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1535">[1535]</a></p></li>
+<li><p>vim：<a class="reference external" href="https://github.com/nvie/vim-flake8">https://github.com/nvie/vim-flake8</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1536">[1536]</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cmake">
+<h2>CMake <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1537">[1537]</a><a class="headerlink" href="#cmake" title="永久链接至标题"></a></h2>
+<div class="section" id="id5">
+<h3>版本 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1523">[1523]</a><a class="headerlink" href="#id5" title="永久链接至标题"></a></h3>
+<p>我们将以CMake 3.8为目标。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1538">[1538]</a></p>
+</div>
+<div class="section" id="id6">
+<h3>样式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1422">[1422]</a><a class="headerlink" href="#id6" title="永久链接至标题"></a></h3>
+<p>由于没有现有的CMake样式指南，我们将定义自己的： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1539">[1539]</a></p>
+<ul class="simple">
+<li><p>使用小写命令名称（<code class="xref any docutils literal notranslate"><span class="pre">find_package</span></code>，而不是`FIND_PACKAGE`）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1540">[1540]</a></p></li>
+<li><p>使用`snake_case`标识符（变量，函数，宏）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1541">[1541]</a></p></li>
+<li><p>使用空的`else()`和`end...()`命令。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1542">[1542]</a></p></li>
+<li><p>在`(<a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1543">之前不要有空格。 `[1543]</a></p></li>
+<li><p>使用两个空格缩进，不要使用制表符。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1544">[1544]</a></p></li>
+<li><p>不要对多行宏调用的参数使用对齐缩进。仅使用两个空格。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1545">[1545]</a></p></li>
+<li><p>优先使用带有 <code class="docutils literal notranslate"><span class="pre">set(PARENT_SCOPE)</span></code> 的函数，而不是宏。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1546">[1546]</a></p></li>
+<li><p>在使用宏时，将局部变量前缀命名为 <code class="docutils literal notranslate"><span class="pre">_</span></code> 或一个合理的前缀。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1547">[1547]</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="markdown-restructured-text-docblocks">
+<h2>Markdown / reStructured Text / docblocks <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1548">[1548]</a><a class="headerlink" href="#markdown-restructured-text-docblocks" title="永久链接至标题"></a></h2>
+<div class="section" id="id7">
+<h3>样式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1422">[1422]</a><a class="headerlink" href="#id7" title="永久链接至标题"></a></h3>
+<p>以下用于格式化文本的规则旨在提高可读性和版本控制。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1549">[1549]</a></p>
+<ul class="simple">
+<li><p><em>[.md, .rst only]</em> 每个章节标题前应有一个空行，后面也应有一个空行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1550">[1550]</a></p>
+<ul>
+<li><p>原因：这有助于在浏览文档时快速获取结构概览。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1551">[1551]</a></p></li>
+</ul>
+</li>
+<li><p><em>[.rst only]</em> 在 reStructured Text 中，标题应遵循 <a class="reference external" href="https://documentation-style-guide-sphinx.readthedocs.io/en/latest/style-guide.html#headings">Sphinx 风格指南</a> 中描述的层次结构： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1552">[1552]</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> 上方加线（仅一次，用于文档标题） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1553">[1553]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> 上方加线 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1554">[1554]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1555">[1555]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1556">[1556]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1557">[1557]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1558">[1558]</a></p></li>
+<li><p>解释：保持一致的层次结构有助于在查看文档时快速了解嵌套层级。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1559">[1559]</a></p></li>
+</ul>
+</li>
+<li><p><em>[仅限.md格式]</em> 在Markdown中，标题应遵循`Markdown语法文档&lt;<a class="reference external" href="https://daringfireball.net/projects/markdown/syntax#header">https://daringfireball.net/projects/markdown/syntax#header</a>&gt;`__中描述的ATX样式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1560">[1560]</a></p>
+<ul>
+<li><p>ATX样式的标题使用1-6个井号字符（<code class="docutils literal notranslate"><span class="pre">#</span></code>）在行首表示标题级别1-6 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1561">[1561]</a></p></li>
+<li><p>应在井号和标题之间使用一个空格（例如 <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">标题1</span></code>）以便更容易进行视觉分隔 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1562">[1562]</a></p></li>
+<li><p>ATX样式的偏好来自于`Google Markdown样式指南&lt;<a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#atx-style-headings">https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#atx-style-headings</a>&gt;`__ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1563">[1563]</a></p></li>
+<li><p>原理: ATX 样式的标题更容易搜索和维护，并且使得前两个标题级别与其他级别保持一致。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1564">[1564]</a></p></li>
+</ul>
+</li>
+<li><p><em>[任意]</em> 每个句子必须从新的一行开始。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1565">[1565]</a></p>
+<ul>
+<li><p>原理: 对于较长的段落，一开始的单个更改会导致差异难以阅读，因为它会一直延续到整个段落。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1566">[1566]</a></p></li>
+</ul>
+</li>
+<li><p><em>[任意]</em> 每个句子可以选择性地换行，以保持每行短小。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1567">[1567]</a></p></li>
+<li><p><em>[任意]</em> 行末不应有任何空白。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1568">[1568]</a></p></li>
+<li><p><em>[仅限 .md、.rst]</em> 代码块前后必须有空行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1569">[1569]</a></p>
+<ul>
+<li><p>原因：只有在有围栏代码块的直接前后空格才有意义。遵循这些指示将确保高亮显示正常且一致。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1570">[1570]</a></p></li>
+</ul>
+</li>
+<li><p><em>[仅限 .md、.rst]</em> 代码块应指定语法（例如 <code class="docutils literal notranslate"><span class="pre">bash</span></code>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=1571">[1571]</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Developer-Guide.html" class="btn btn-neutral float-left" title="ROS 2开发者指南 [1644]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Quality-Guide.html" class="btn btn-neutral float-right" title="质量指南：确保代码质量 [2231]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

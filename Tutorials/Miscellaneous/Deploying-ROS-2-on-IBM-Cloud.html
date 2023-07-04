@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488] &mdash; ROS 2 Documentation: Humble  文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://docs.ros.org/en/humble/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="使用 rviz2 的 Eclipse Oxygen [社区贡献] [6575]" href="Eclipse-Oxygen-with-ROS-2-and-rviz2.html" />
+    <link rel="prev" title="杂项 [6439]" href="../Miscellaneous.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> ROS 2 Documentation: Humble
+            <img src="../../_static/humble-small.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">安装 []</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码） [7667]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码） [7571]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制） [7616]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码） [7770]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码） [7557]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码） [7561]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。 [7917]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Testing.html">使用预发布二进制文件进行测试 [7955]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/DDS-Implementations.html">DDS 实现 [7799]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件 [7849]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS [7863]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS [7875]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS [7891]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-eProsima-Fast-DDS.html">eProsima Fast DDS [7910]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Releases.html">分发版本 [8072]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>) [15157]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志 [12530]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>) [14937]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Development.html">开发分发版 [8317]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>） [14739]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>） [14204]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>) [14163]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>) [8298]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>） [8267]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>） [8233]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Alpha-Overview.html">阿尔法版本 [8153]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Process.html">发布的开发流程 [15431]</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">教程 [3059]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Beginner-CLI-Tools.html">初学者：CLI 工具 [3948]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境 [3949]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用``turtlesim``、<code class="docutils literal notranslate"><span class="pre">ros2``和``rqt</span></code> [3981]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点 [4164]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题 [4278]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务 [4238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数 [4200]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为 [4113]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志 [4337]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点 [4043]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据 [4064]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Beginner-Client-Libraries.html">初学者：客户端库 []</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 [4368]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间 [4428]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包 [4496]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++） [4832]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python） [4925]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++） [4887]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python） [4964]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。 [4559]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口 [4703]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++） [4771]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python） [4812]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题 [4615]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++） [4655]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Intermediate.html">中级 [5283]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Composition.html">在单个进程中组合多个节点 [5284]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++） [5593]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Launch/Launch-Main.html">启动 [5426]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Creating-Launch-Files.html">创建一个启动文件 [5388]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Launch-system.html">将启动文件集成到ROS 2包中 [5439]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Substitutions.html">使用替代项 [5563]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Event-Handlers.html">使用事件处理程序 [5467]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目 [5501]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code> [5897]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Introduction-To-Tf2.html">介绍``tf2`` [5813]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python） [6102]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++） [6065]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python） [6028]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++） [5997]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python） [6059]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++） [6038]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Py.html">添加一个帧（Python） [5762]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++） [5719]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python） [5860]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++） [5840]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python） [5949]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++） [5924]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Debugging-Tf2-Problems.html">调试 [5775]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Quaternion-Fundamentals.html">四元数基础知识 [5874]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter`` [5957]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Testing/Testing-Main.html">测试 [5701]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/CLI.html">从命令行中运行 ROS 2 中的测试 [5667]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试 [5675]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Python.html">使用Python编写基本测试 [5687]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/URDF/URDF-Main.html">URDF [6231]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型 [6182]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。 [6160]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性 [6113]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码 [6259]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher`` [6233]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Advanced.html">高级 [3065]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++） [3888]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献] [3111]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Allocator-Template-Tutorial.html">实现自定义内存分配器 [3066]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-Windows.html">安装（Windows） [3733]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。 [3628]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Security/Security-Main.html">安全性 [3554]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Introducing-ros2-security.html">设置安全性 [3505]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/The-Keystore.html">理解安全密钥库 [3571]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Security-on-Two.html">确保跨机器的安全性 [3555]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Examine-Traffic.html">检查网络流量 [3470]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Access-Controls.html">设置访问控制 [3383]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Deployment-Guidelines.html">部署指南 [3406]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Demos.html">演示 [4992]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Quality-of-Service.html">在不稳定网络中使用服务质量设置 [5147]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Managed-Nodes.html">使用受控生命周期管理节点 [5145]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Intra-Process-Communication.html">设置高效的进程内通信 [5035]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据 [5238]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Real-Time-Programming.html">理解实时编程 [5175]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/dummy-robot-demo.html">尝试使用虚拟机器人进行实验 [5265]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Logging-and-logger-configuration.html">记录日志 [5084]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Demos/Content-Filtering-Subscription.html">创建内容过滤订阅 [5001]</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Miscellaneous.html">杂项 [6439]</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献] [6575]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献] [6468]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包 [6440]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../How-To-Guides.html">如何指南 [1]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除 [371]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略 [627]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现 [1227]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Cross-compilation.html">交叉编译 [207]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包 [928]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/First-Time-Release.html">首次发布 [792]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布 [938]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库 [866]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Track.html">发布跟踪 [887]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包 [1027]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows [717]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献] [946]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据 [1163]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南 [639]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包 [196]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2 [175]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作 [1013]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Variants.html">使用变体 [1047]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具 [1139]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS [1122]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息 [361]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2 [444]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html">使用回调组 [1062]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献] [959]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt [738]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt [763]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt [771]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">概念 [6621]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact.html">联系 [7468]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../The-ROS2-Project.html">ROS 2 项目 [1326]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Contributing.html">贡献 [1328]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Features.html">功能状态 [2446]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Feature-Ideas.html">功能点子 [2360]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Roadmap.html">路线图 [2993]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/ROSCon-Content.html">ROSCon 演讲 [2784]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Marketing.html">营销 [2768]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API-Docs.html">API文档 [7517]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Related-Projects.html">相关项目 [8016]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目 [8029]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目 [8047]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Glossary.html">术语表 [3043]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">引用 [6616]</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ROS 2 Documentation: Humble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../Tutorials.html">教程 [3059]</a> &raquo;</li>
+          <li><a href="../Miscellaneous.html">杂项 [6439]</a> &raquo;</li>
+      <li>在 IBM Cloud Kubernetes 上部署 [社区贡献] [6488]</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.rst" class="fa fa-github"> 在 GitHub 上修改</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+
+  <div class="section" id="deploying-on-ibm-cloud-kubernetes-community-contributed">
+<h1>在 IBM Cloud Kubernetes 上部署 [社区贡献] <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6488">[6488]</a><a class="headerlink" href="#deploying-on-ibm-cloud-kubernetes-community-contributed" title="永久链接至标题"></a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3070">[]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#about" id="id1">关于 [6489]</a></p></li>
+<li><p><a class="reference internal" href="#ros2-on-ibm-cloud" id="id2">在IBM Cloud上运行ROS2 [6491]</a></p></li>
+<li><p><a class="reference internal" href="#step-1-setting-up-your-system" id="id3">步骤1：设置您的系统 [6495]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#a-docker-files" id="id4">a) Docker文件？ [6497]</a></p></li>
+<li><p><a class="reference internal" href="#b-ros2-image" id="id5">b) ROS2 Image [6501]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-2-running-the-image-on-ibm-cloud" id="id6">步骤2：在 IBM Cloud 上运行图像 [6514]</a></p></li>
+<li><p><a class="reference internal" href="#step-3-using-custom-ros2-packages" id="id7">步骤3：使用自定义的ROS2软件包 [6524]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#extra-deleting-docker-images" id="id8">附加信息：删除Docker镜像 [6537]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-4-kubernetes" id="id9">第四步：Kubernetes [6541]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#a-creating-the-cluster" id="id10">a) 创建集群 [6542]</a></p></li>
+<li><p><a class="reference internal" href="#b-deploying-your-docker-image-finally" id="id11">b) 部署您的Docker镜像 <em>最后！</em> [6561]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-5-using-cli-for-your-docker-image" id="id12">步骤 5：使用 CLI 操作你的 Docker 镜像 [6566]</a></p></li>
+<li><p><a class="reference internal" href="#final-remarks" id="id13">最后的备注 [6573]</a></p></li>
+</ul>
+</div>
+<div class="section" id="about">
+<h2>关于 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6489">[6489]</a><a class="headerlink" href="#about" title="永久链接至标题"></a></h2>
+<p>本文介绍如何使用Docker文件在IBM Cloud上运行ROS2。首先简要概述了Docker镜像及其在本地环境中的工作原理，然后探讨了IBM Cloud以及用户如何在其中部署其容器。之后，提供了有关用户如何在IBM Cloud上使用其自定义的ROS2软件包（来自GitHub）的简短描述。提供了有关如何创建集群并在IBM Cloud上利用Kubernetes的步骤，最后将Docker镜像部署到该集群上。本文最初发布于`这里 &lt;<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud">https://github.com/mm-nasr/ros2_ibmcloud</a>&gt;`__ 和 <a class="reference external" href="https://medium.com/&#64;mahmoud-nasr/running-ros2-on-ibm-cloud-1b1284cbd487">这里</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6490">[6490]</a></p>
+</div>
+<div class="section" id="ros2-on-ibm-cloud">
+<h2>在IBM Cloud上运行ROS2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6491">[6491]</a><a class="headerlink" href="#ros2-on-ibm-cloud" title="永久链接至标题"></a></h2>
+<p>在本教程中，我们将展示如何轻松地将ROS2与自定义软件包集成并在IBM Cloud上运行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6492">[6492]</a></p>
+<p>ROS2是ROS的新一代版本，它在多机器人形成方面提供了更多控制能力。随着云计算的发展，云机器人在当今时代变得越来越重要。在本教程中，我们将简要介绍如何在IBM Cloud上运行ROS2。通过本教程的学习，您将能够在ROS2中创建自己的软件包，并使用Docker文件将其部署到云端。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6493">[6493]</a></p>
+<p>以下说明假定您使用的是Linux系统，并已经在Ubuntu 18.04（Bionic Beaver）上进行了测试。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6494">[6494]</a></p>
+</div>
+<div class="section" id="step-1-setting-up-your-system">
+<h2>步骤1：设置您的系统 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6495">[6495]</a><a class="headerlink" href="#step-1-setting-up-your-system" title="永久链接至标题"></a></h2>
+<p>在我们详细介绍具体过程之前，让我们先确保所有所需软件已正确安装。我们将指引您到适当的来源以设置您的系统，并仅强调与我们使用场景相关的细节。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6496">[6496]</a></p>
+<div class="section" id="a-docker-files">
+<h3>a) Docker文件？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6497">[6497]</a><a class="headerlink" href="#a-docker-files" title="永久链接至标题"></a></h3>
+<p>Docker文件是一种容器形式，可以独立于您的系统运行。这样，您可以设置可能有数百个不同项目而彼此不受影响。您甚至可以在一台机器上设置不同版本的Linux，而无需使用虚拟机。Docker文件具有节省空间和仅在运行时利用您的系统资源的优势。此外，Docker具有灵活和可转移的特性。它们包含所有运行所需的预设条件，这意味着您可以轻松地为特定的系统或服务使用Docker文件，而无需进行任何复杂的步骤！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6498">[6498]</a></p>
+<p>感到兴奋了吗？让我们从按照以下 <a class="reference external" href="https://docs.docker.com/get-docker/">链接</a> 安装docker到您的系统开始吧。根据教程，您应该进行一些健全性检查以确保docker已正确设置。然而，为了保险起见，让我们再次运行以下命令，使用hello-world docker映像： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6499">[6499]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker run hello-world
+</pre></div>
+</div>
+<p>您应该得到以下输出： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6500">[6500]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ <span class="m">1</span>. The Docker client contacted the Docker daemon.
+ <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
+    <span class="o">(</span>amd64<span class="o">)</span>
+ <span class="m">3</span>. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ <span class="m">4</span>. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</pre></div>
+</div>
+</div>
+<div class="section" id="b-ros2-image">
+<h3>b) ROS2 Image <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6501">[6501]</a><a class="headerlink" href="#b-ros2-image" title="永久链接至标题"></a></h3>
+<p>ROS <a class="reference external" href="https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2">宣布</a> 2019年1月发布了几个ROS发行版的官方Docker镜像容器。有关使用ROS2 Docker镜像的详细说明，请参阅 <a class="reference external" href="https://hub.docker.com/_/ros/">此处</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6502">[6502]</a></p>
+<p>让我们直接跳过这些，立即开始创建本地ROS2 Docker。由于我们需要将其部署到IBM Cloud上，我们将创建自己的Dockerfile（而不是使用现成的镜像）。首先，创建一个新目录，用于保存我们的Dockerfile和稍后需要的任何其他文件，并进入该目录。使用您喜欢的$EDITOR，打开一个名为*Dockerfile*的新文件（确保文件名正确）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6503">[6503]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/ros2_docker
+
+$ <span class="nb">cd</span> ~/ros2_docker
+
+$ <span class="nv">$EDITOR</span> Dockerfile
+</pre></div>
+</div>
+<p>将以下内容插入*Dockerfile*中，并保存它（也可以在 <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/ros2_basic/Dockerfile">此处</a> 找到）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6504">[6504]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FROM ros:foxy
+
+<span class="c1"># install ros package</span>
+RUN apt-get update <span class="o">&amp;&amp;</span> apt-get install -y <span class="se">\</span>
+      ros-<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-demo-nodes-cpp <span class="se">\</span>
+      ros-<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>-demo-nodes-py <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    rm -rf /var/lib/apt/lists/* <span class="o">&amp;&amp;</span> mkdir /ros2_home
+
+WORKDIR /ros2_home
+
+<span class="c1"># launch ros package</span>
+CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>FROM</strong>：使用ros:foxy Docker镜像创建一个层 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6505">[6505]</a></p></li>
+<li><p><strong>RUN</strong>：通过将vim安装到容器中并创建一个名为/ros2_home的目录来构建您的容器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6506">[6506]</a></p></li>
+<li><p><strong>WORKDIR</strong>：指定容器中的工作目录。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6507">[6507]</a></p></li>
+</ul>
+<p>当然，您可以自由更改ROS版本（这里使用的是*foxy*），或更改目录名称。上述Docker文件设置了ROS-foxy并安装了C++和Python的演示节点。然后，它启动一个文件，其中运行一个talker和一个listener节点。我们很快就会看到它的效果，但它们与在`ROS wiki &lt;<a class="reference external" href="https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29">https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29</a>&gt;`__中找到的发布者-订阅者示例非常相似。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6508">[6508]</a></p>
+<p>现在，我们准备构建用于在其中运行ROS2的Docker镜像（是的，就是这么简单！）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6509">[6509]</a></p>
+<p><strong>注意</strong>：如果出现权限不足或*权限被拒绝*的错误，请尝试使用*sudo*权限运行命令： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6510">[6510]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker build .
+
+<span class="c1"># You will see a bunch of lines that execute the docker file instructions followed by:</span>
+Successfully built 0dc6ce7cb487
+</pre></div>
+</div>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>0dc6ce7cb487*对您来说可能是不同的，所以请记下来并将其复制到某个地方以供参考。您始终可以返回并使用以下命令检查系统上的Docker镜像： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6511">[6511]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo docker ps -as
+</pre></div>
+</div>
+<p>现在，使用以下命令运行Docker文件： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6512">[6512]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it 0dc6ce7cb487
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: All log files can be found below /root/.ros/log/2020-10-28-02-41-45-177546-0b5d9ed123be-1
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>launch<span class="o">]</span>: Default logging verbosity is <span class="nb">set</span> to INFO
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>talker-1<span class="o">]</span>: process started with pid <span class="o">[</span><span class="m">28</span><span class="o">]</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>listener-2<span class="o">]</span>: process started with pid <span class="o">[</span><span class="m">30</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852907</span>.249886590<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 1&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852907</span>.250964490<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">1</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852908</span>.249786312<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 2&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852908</span>.250453386<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">2</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852909</span>.249882257<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 3&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852909</span>.250536089<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">3</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852910</span>.249845718<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 4&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852910</span>.250509355<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">4</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852911</span>.249506058<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 5&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852911</span>.250152324<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">5</span><span class="o">]</span>
+<span class="o">[</span>talker-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852912</span>.249556670<span class="o">]</span> <span class="o">[</span>talker<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello World: 6&#39;</span>
+<span class="o">[</span>listener-2<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1603852912</span>.250212678<span class="o">]</span> <span class="o">[</span>listener<span class="o">]</span>: I heard: <span class="o">[</span>Hello World: <span class="m">6</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>如果它正常工作，你应该看到类似于上面显示的内容。如图所示，有两个 ROS 节点（一个发布者和一个订阅者）正在运行，并且它们的输出通过 ROS INFO 提供给我们。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6513">[6513]</a></p>
+</div>
+</div>
+<div class="section" id="step-2-running-the-image-on-ibm-cloud">
+<h2>步骤2：在 IBM Cloud 上运行图像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6514">[6514]</a><a class="headerlink" href="#step-2-running-the-image-on-ibm-cloud" title="永久链接至标题"></a></h2>
+<p>以下步骤假设您拥有 IBM Cloud 帐户并已安装 ibmcloud CLI。如果没有，请首先查看此 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6515">链接 &lt;https://cloud.ib `[6515]</a></p>
+<p>我们还需要确保通过运行以下命令安装了 IBM Cloud Container Registry 的 CLI 插件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6516">[6516]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud plugin install container-registry
+</pre></div>
+</div>
+<p>随后，通过终端登录到您的 ibmcloud 帐户: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6517">[6517]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud login --sso
+</pre></div>
+</div>
+<p>从这里开始，让我们创建一个容器注册表命名空间。确保使用一个既独特又能描述其用途的名称。在这里，我使用了 <em>ros2nasr</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6518">[6518]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr namespace-add ros2nasr
+</pre></div>
+</div>
+<p>IBM Cloud 提供了许多快捷方式，可以帮助我们立即将容器部署到云端。下面的命令会构建容器，并将其标记为名称为 <strong>ros2foxy</strong>、版本为 <strong>1</strong>。确保使用您创建的正确注册表名称，并且可以根据需要自由更改容器名称。末尾的 <strong>.</strong> 表示 <em>Dockerfile</em> 在当前目录中（这一点很重要），如果不是，请将其更改为指向包含 Dockerfile 的目录。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6519">[6519]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr build --tag registry.bluemix.net/ros2nasr/ros2foxy:1 .
+</pre></div>
+</div>
+<p>您现在可以通过运行以下命令确保容器已推送到您创建的注册表中 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6520">[6520]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr image-list
+Listing images...
+
+REPOSITORY               TAG   DIGEST         NAMESPACE   CREATED         SIZE     SECURITY STATUS
+us.icr.io/ros2nasr/ros2foxy   <span class="m">1</span>     031be29301e6   ros2nasr    <span class="m">36</span> seconds ago   <span class="m">120</span> MB   No Issues
+
+OK
+</pre></div>
+</div>
+<p>接下来，重要的是登录到您的注册表以运行 Docker 镜像。同样，如果遇到 <em>permission denied</em> 错误，请使用 sudo 权限执行该命令。然后按照下面的示例运行您的 Dockerfile。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6521">[6521]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr login
+Logging <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
+Logged <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
+Logging <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>...
+Logged <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>.
+
+OK
+
+$ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:1
+</pre></div>
+</div>
+<p>其中*ros2nasr*是您创建的注册表的名称，而*ros2foxy:1*是Docker容器的标签和版本，如之前所述。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6522">[6522]</a></p>
+<p>现在，您应该看到Docker文件正在运行，并提供与在本地计算机上运行时所看到的类似的输出。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6523">[6523]</a></p>
+</div>
+<div class="section" id="step-3-using-custom-ros2-packages">
+<h2>步骤3：使用自定义的ROS2软件包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6524">[6524]</a><a class="headerlink" href="#step-3-using-custom-ros2-packages" title="永久链接至标题"></a></h2>
+<p>所以现在我们已经有了完整的流程，从创建Dockerfile，一直到部署它并在IBM Cloud上运行。但是，如果我们想要使用我们自己（或其他人）创建的自定义软件包，怎么办呢？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6525">[6525]</a></p>
+<p>那么这完全取决于您如何设置Dockerfile。让我们使用ROS2 <a class="reference external" href="https://hub.docker.com/_/ros/">这里提供的示例</a>。创建一个新目录，其中包含一个新的Dockerfile（或覆盖现有的Dockerfile），然后在其中添加以下内容（或从`这里下载文件 &lt;<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile">https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile</a>&gt;`__） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6526">[6526]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG <span class="nv">FROM_IMAGE</span><span class="o">=</span>ros:foxy
+ARG <span class="nv">OVERLAY_WS</span><span class="o">=</span>/opt/ros/overlay_ws
+
+<span class="c1"># multi-stage for caching</span>
+FROM <span class="nv">$FROM_IMAGE</span> AS cacher
+
+<span class="c1"># clone overlay source</span>
+ARG OVERLAY_WS
+WORKDIR <span class="nv">$OVERLAY_WS</span>/src
+RUN <span class="nb">echo</span> <span class="s2">&quot;\</span>
+<span class="s2">repositories: \n\</span>
+<span class="s2">  ros2/demos: \n\</span>
+<span class="s2">    type: git \n\</span>
+<span class="s2">    url: https://github.com/ros2/demos.git \n\</span>
+<span class="s2">    version: </span><span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span><span class="s2"> \n\</span>
+<span class="s2">&quot;</span> &gt; ../overlay.repos
+RUN vcs import ./ &lt; ../overlay.repos
+
+<span class="c1"># copy manifests for caching</span>
+WORKDIR /opt
+RUN mkdir -p /tmp/opt <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    find ./ -name <span class="s2">&quot;package.xml&quot;</span> <span class="p">|</span> <span class="se">\</span>
+      xargs cp --parents -t /tmp/opt <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    find ./ -name <span class="s2">&quot;COLCON_IGNORE&quot;</span> <span class="p">|</span> <span class="se">\</span>
+      xargs cp --parents -t /tmp/opt <span class="o">||</span> <span class="nb">true</span>
+
+<span class="c1"># multi-stage for building</span>
+FROM <span class="nv">$FROM_IMAGE</span> AS builder
+
+<span class="c1"># install overlay dependencies</span>
+ARG OVERLAY_WS
+WORKDIR <span class="nv">$OVERLAY_WS</span>
+COPY --from<span class="o">=</span>cacher /tmp/<span class="nv">$OVERLAY_WS</span>/src ./src
+RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apt-get update <span class="o">&amp;&amp;</span> rosdep install -y <span class="se">\</span>
+      --from-paths <span class="se">\</span>
+        src/ros2/demos/demo_nodes_cpp <span class="se">\</span>
+        src/ros2/demos/demo_nodes_py <span class="se">\</span>
+      --ignore-src <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
+
+<span class="c1"># build overlay source</span>
+COPY --from<span class="o">=</span>cacher <span class="nv">$OVERLAY_WS</span>/src ./src
+ARG <span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release&quot;</span>
+RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    colcon build <span class="se">\</span>
+      --packages-select <span class="se">\</span>
+        demo_nodes_cpp <span class="se">\</span>
+        demo_nodes_py <span class="se">\</span>
+      --mixin <span class="nv">$OVERLAY_MIXINS</span>
+
+<span class="c1"># source entrypoint setup</span>
+ENV OVERLAY_WS <span class="nv">$OVERLAY_WS</span>
+RUN sed --in-place --expression <span class="se">\</span>
+      <span class="s1">&#39;$isource &quot;$OVERLAY_WS/install/setup.bash&quot;&#39;</span> <span class="se">\</span>
+      /ros_entrypoint.sh
+
+<span class="c1"># run launch file</span>
+CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>通过查看所示的行，我们可以了解到如何通过4个步骤从GitHub添加自定义软件包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6527">[6527]</a></p>
+<ol class="arabic simple">
+<li><p>创建一个包含从 Github 克隆的自定义软件包的叠加层: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6528">[6528]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG OVERLAY_WS
+WORKDIR <span class="nv">$OVERLAY_WS</span>/src
+RUN <span class="nb">echo</span> <span class="s2">&quot;\</span>
+<span class="s2">repositories: \n\</span>
+<span class="s2">  ros2/demos: \n\</span>
+<span class="s2">    type: git \n\</span>
+<span class="s2">    url: https://github.com/ros2/demos.git \n\</span>
+<span class="s2">    version: </span><span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span><span class="s2"> \n\</span>
+<span class="s2">&quot;</span> &gt; ../overlay.repos
+RUN vcs import ./ &lt; ../overlay.repos
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>使用 rosdep 安装软件包依赖项 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6529">[6529]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install overlay dependencies</span>
+ARG OVERLAY_WS
+WORKDIR <span class="nv">$OVERLAY_WS</span>
+COPY --from<span class="o">=</span>cacher /tmp/<span class="nv">$OVERLAY_WS</span>/src ./src
+RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apt-get update <span class="o">&amp;&amp;</span> rosdep install -y <span class="se">\</span>
+      --from-paths <span class="se">\</span>
+        src/ros2/demos/demo_nodes_cpp <span class="se">\</span>
+        src/ros2/demos/demo_nodes_py <span class="se">\</span>
+      --ignore-src <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>构建您需要的软件包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6530">[6530]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># build overlay source</span>
+COPY --from<span class="o">=</span>cacher <span class="nv">$OVERLAY_WS</span>/src ./src
+ARG <span class="nv">OVERLAY_MIXINS</span><span class="o">=</span><span class="s2">&quot;release&quot;</span>
+RUN . /opt/ros/<span class="nv">$ROS_DISTRO</span>/setup.sh <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    colcon build <span class="se">\</span>
+      --packages-select <span class="se">\</span>
+        demo_nodes_cpp <span class="se">\</span>
+        demo_nodes_py <span class="se">\</span>
+      --mixin <span class="nv">$OVERLAY_MIXINS</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>运行启动文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6531">[6531]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># run launch file</span>
+CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span class="s2">&quot;launch&quot;</span>, <span class="s2">&quot;demo_nodes_cpp&quot;</span>, <span class="s2">&quot;talker_listener.launch.py&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>同样地，我们可以更改所使用的软件包，安装它们的依赖项，然后运行它们。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6532">[6532]</a></p>
+<p><strong>返回 IBM Cloud</strong> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6533">[6533]</a></p>
+<p>使用这个Dockerfile，我们可以按照之前的步骤在IBM Cloud上部署它。由于我们已经创建了注册表，并且我们已经登录到IBM Cloud，因此我们直接构建我们的新Dockerfile。请注意，我保持了标签不变，但更改了版本，这样我可以更新先前创建的Docker镜像。（如果您愿意，您可以完全创建一个新的） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6534">[6534]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr build --tag registry.bluemix.net/ros2nasr/ros2foxy:2 .
+</pre></div>
+</div>
+<p>然后，确保您已登录到注册表，并运行新的Docker镜像： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6535">[6535]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ibmcloud cr login
+Logging <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>...
+Logged <span class="k">in</span> to <span class="s1">&#39;registry.ng.bluemix.net&#39;</span>.
+Logging <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>...
+Logged <span class="k">in</span> to <span class="s1">&#39;us.icr.io&#39;</span>.
+
+OK
+
+$ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:2
+</pre></div>
+</div>
+<p>您应该再次看到相同的输出。然而，这次我们是通过来自GitHub的自定义包来完成的，这使我们能够在IBM Cloud上利用我们个人创建的ROS2包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6536">[6536]</a></p>
+<div class="section" id="extra-deleting-docker-images">
+<h3>附加信息：删除Docker镜像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6537">[6537]</a><a class="headerlink" href="#extra-deleting-docker-images" title="永久链接至标题"></a></h3>
+<p>如果您发现自己需要从IBM Cloud中删除特定的Docker镜像，以下是您应该执行的步骤！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6538">[6538]</a></p>
+<ol class="arabic simple">
+<li><p>列出您拥有的所有镜像，并找到所有与*registry.ng.bluemix.net/ros2nasr/ros2foxy:2*（在我的情况下）相对应的*IMAGE*名称的镜像。然后使用它们的*NAMES*进行删除。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6539">[6539]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker rm your_docker_NAMES
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>使用其*IMAGE*名称从IBM Cloud中删除Docker镜像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6540">[6540]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker rmi registry.ng.bluemix.net/ros2nasr/ros2foxy:2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-kubernetes">
+<h2>第四步：Kubernetes <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6541">[6541]</a><a class="headerlink" href="#step-4-kubernetes" title="永久链接至标题"></a></h2>
+<div class="section" id="a-creating-the-cluster">
+<h3>a) 创建集群 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6542">[6542]</a><a class="headerlink" href="#a-creating-the-cluster" title="永久链接至标题"></a></h3>
+<p>使用控制台创建集群。指令可以在`此处 &lt;<a class="reference external" href="https://cloud.ibm.com/docs/containers?topic=containers-clusters#clusters_ui">https://cloud.ibm.com/docs/containers?topic=containers-clusters#clusters_ui</a>&gt;`__找到。下面详细介绍了使用的设置。这些仅为建议，如果需要，可以进行更改。然而，请确保您理解所做选择的影响： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6543">[6543]</a></p>
+<ol class="arabic simple">
+<li><p>计划：<em>标准</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6544">[6544]</a></p></li>
+<li><p>编排服务：<em>Kubernetes v1.18.10</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6545">[6545]</a></p></li>
+<li><p>基础设施: <em>经典</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6546">[6546]</a></p></li>
+<li><p>位置: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6547">[6547]</a></p></li>
+</ol>
+<ul class="simple">
+<li><p>资源组: <em>默认</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6548">[6548]</a></p></li>
+<li><p>地理位置: <a href="#id1"><span class="problematic" id="id2">*</span></a>北美*（您可以更改此选项） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6549">[6549]</a></p></li>
+<li><p>可用性: <a href="#id1"><span class="problematic" id="id2">*</span></a>单一区域*（您可以更改此选项，但请确保通过查阅IBM Cloud文档了解您选择的影响。） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6550">[6550]</a></p></li>
+<li><p>工作区: <a href="#id1"><span class="problematic" id="id2">*</span></a>多伦多 01*（选择与您物理位置最近的位置） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6551">[6551]</a></p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>工作池:  <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6552">[6552]</a></p></li>
+</ol>
+<ul class="simple">
+<li><p>虚拟 - 共享，Ubuntu 18 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6553">[6553]</a></p></li>
+<li><p>内存: 16 GB <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6554">[6554]</a></p></li>
+<li><p>每个区域的工作节点: <em>1</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6555">[6555]</a></p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p>主服务端点: <em>私有和公共端点都可用</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6556">[6556]</a></p></li>
+<li><p>资源详情（完全灵活）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6557">[6557]</a></p></li>
+</ol>
+<ul class="simple">
+<li><p>集群名称: <em>mycluster-tor01-rosibm</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6558">[6558]</a></p></li>
+<li><p>标签: <em>version:1</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6559">[6559]</a></p></li>
+</ul>
+<p>创建集群后，您将被重定向到一个页面，该页面详细介绍了如何设置CLI工具和访问您的集群。请按照这些说明操作（或者在这里查看说明：&lt;<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/Kubernetes-Cluster-Set-up.md">https://github.com/mm-nasr/ros2_ibmcloud/blob/main/Kubernetes-Cluster-Set-up.md</a>&gt;），并等待进度条显示创建的工作节点已经准备就绪，集群名称旁边显示*Normal*。您也可以从IBM Cloud控制台内部的Kubernetes界面访问此屏幕。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6560">[6560]</a></p>
+</div>
+<div class="section" id="b-deploying-your-docker-image-finally">
+<h3>b) 部署您的Docker镜像 <em>最后！</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6561">[6561]</a><a class="headerlink" href="#b-deploying-your-docker-image-finally" title="永久链接至标题"></a></h3>
+<ol class="arabic simple">
+<li><p>使用您喜欢的$EDITOR创建一个名为*ros2-deployment.yaml*的部署配置yaml文件，并在其中插入以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6562">[6562]</a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &lt;deployment&gt;
+spec:
+  replicas: &lt;number_of_replicas&gt;
+  selector:
+    matchLabels:
+      app: &lt;app_name&gt;
+  template:
+    metadata:
+      labels:
+        app: &lt;app_name&gt;
+    spec:
+      containers:
+      - name: &lt;app_name&gt;
+        image: &lt;region&gt;.icr.io/&lt;namespace&gt;/&lt;image&gt;:&lt;tag&gt;
+</pre></div>
+</div>
+<p>您应该根据此处描述的方式替换*&quot;&lt;&quot; &quot;&gt;&quot;<a href="#id1"><span class="problematic" id="id2">*</span></a>之间显示的标签。在我的情况下，文件的内容将类似于以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6563">[6563]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ros2-deployment
+spec:
+  replicas: <span class="m">1</span>
+  selector:
+    matchLabels:
+      app: ros2-ibmcloud
+  template:
+    metadata:
+      labels:
+        app: ros2-ibmcloud
+    spec:
+      containers:
+      - name: ros2-ibmcloud
+        image: us.icr.io/ros2nasr/ros2foxy:2
+</pre></div>
+</div>
+<p>使用以下命令部署文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6564">[6564]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kubectl apply -f ros2-deployment.yaml
+deployment.apps/ros2-deployment created
+</pre></div>
+</div>
+<p>现在你的 Docker 镜像已完全部署在你的集群上！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6565">[6565]</a></p>
+</div>
+</div>
+<div class="section" id="step-5-using-cli-for-your-docker-image">
+<h2>步骤 5：使用 CLI 操作你的 Docker 镜像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6566">[6566]</a><a class="headerlink" href="#step-5-using-cli-for-your-docker-image" title="永久链接至标题"></a></h2>
+<ol class="arabic simple">
+<li><p>通过 IBM Cloud 控制台 Kubernetes 导航到你的集群。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6567">[6567]</a></p></li>
+<li><p>点击页面右上角的 <em>Kubernetes 仪表盘</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6568">[6568]</a></p></li>
+</ol>
+<p>现在你应该能够看到你的集群的所有不同参数以及其 CPU 和内存使用情况的完整列表。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6569">[6569]</a></p>
+<ol class="arabic simple" start="3">
+<li><p>转到 <em>Pods</em>，然后点击您的部署。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6570">[6570]</a></p></li>
+<li><p>在右上角，点击 <em>Exec into pod</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6571">[6571]</a></p></li>
+</ol>
+<p>现在您已经进入了您的 Docker 镜像！您可以为您的工作区设置环境变量（如果需要），然后运行 ROS2！例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6572">[6572]</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# . install/setup.sh
+root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# ros2 launch demo_nodes_cpp talker_listener.launch.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="final-remarks">
+<h2>最后的备注 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6573">[6573]</a><a class="headerlink" href="#final-remarks" title="永久链接至标题"></a></h2>
+<p>在此时，您可以使用来自 GitHub 上的 ROS2 软件包创建自己的 Docker 镜像。也可以进行少量修改，以利用本地的 ROS2 软件包。这可能是另一篇文章的主题。不过，建议您查看以下 <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/tree/main/dockers/local_pkgs_docker">Dockerfile</a>，该文件使用了演示存储库的本地副本。同样地，您也可以使用您自己的本地软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6574">[6574]</a></p>
+</div>
+</div>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Miscellaneous.html" class="btn btn-neutral float-left" title="杂项 [6439]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Eclipse-Oxygen-with-ROS-2-and-rviz2.html" class="btn btn-neutral float-right" title="使用 rviz2 的 Eclipse Oxygen [社区贡献] [6575]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVD5Z6G6NH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EVD5Z6G6NH', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
