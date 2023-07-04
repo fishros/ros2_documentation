@@ -126,6 +126,7 @@ def generate_dev_docs(out_path,popath=".temp"):
         for msg in messages:
             new_msg = extract_json_data(msg[2])
             new_msgzh = new_msg["msgzh"][:-3]+new_msg["calib_text"].replace("\n","")+'"'
+            print(new_msgzh)
             new_file_content += f'\n{msg[0]}{msg[1]}{new_msgzh}\n'
         with open(new_file_path,"w") as f:
             f.write(new_file_content)
