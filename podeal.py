@@ -109,6 +109,7 @@ def generate_original_docs(out_path,popath=".temp"):
         new_file_content = file['header']
         for msg in messages:
             new_msgzh = extract_json_data(msg[2])
+            print(new_msgzh)
             new_file_content += f'\n{msg[0]}{msg[1]}{new_msgzh["msgzh"]}\n'
         with open(new_file_path,"w") as f:
             f.write(new_file_content)
