@@ -1,0 +1,98 @@
+name: Build-Humble
+
+on:
+  push:
+    branches:
+      - humble
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies with pip
+        run: pip install --no-warn-script-location  --user -r requirements.txt -c constraints.txt
+
+      - name: Test doc8
+        run: make test
+
+  build:
+    needs: test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Install dependencies with pip
+        run: pip install --no-warn-script-location --user -r requirements.txt -c constraints.txt
+
+      - name: Download conf.doc
+        run: wget https://raw.githubusercontent.com/fishros/ros2_documentation/config/conf.py -O conf.py && sed -i 's/ROS_DISTRO/humble/g' conf.py
+
+      - name: Build the docs
+        run: make html
+
+      - name: Ls Files
+        run: ls 
+
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./build/html
+          publish_branch: gh-pages-humble  # 修改为您要将构建结果推送到的分支
+
+  build_po:
+    needs: test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Install dependencies with pip
+        run: pip install --no-warn-script-location --user -r requirements.txt -c constraints.txt
+
+      - name: Download conf.doc
+        run: wget https://raw.githubusercontent.com/fishros/ros2_documentation/config/conf.py -O conf.py && sed -i 's/ROS_DISTRO/humble/g' conf.py 
+
+      - name: Build the doctree doc
+        run: sphinx-build -b gettext source/ build/gettext  -c .
+
+      - name: Build the po doc
+        run: sphinx-intl update -p build/gettext -l zh -w 10000 && mv locales source/
+
+      - name: Create Version Code
+        run: echo "{\"repository\":\"ros2_documentation\",\"branch\":\"humble\",\"url\":\"https://github.com/fishros/ros2_documentation.git\"}"  > .verson.yml
+
+      - name: Deploy Po documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./
+          publish_branch: po-en-humble  
+
+      - name: Request to update
+        run: echo `curl "http://fishros.org:2023/calib_server/update_version?branch=humble&url=git@github.com:fishros/ros2_documentation.git&repository=ros2_documentation&popath=source/locales/zh/LC_MESSAGES"`
