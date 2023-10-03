@@ -40,35 +40,35 @@ msgid "ament_cmake user documentation"
 msgstr ""
 
 #: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:9
-msgid "ament_cmake is the build system for CMake based packages in ROS 2 (in particular, it will be used for most if not all C/C++ projects). It is a set of scripts enhancing CMake and adding convenience functionality for package authors. Knowing the basics of `CMake <https://cmake.org/cmake/help/v3.5/>`__ will be very helpful, an official tutorial can be found `here <https://cmake.org/cmake/help/latest/guide/tutorial/index.html>`__."
+msgid "``ament_cmake`` is the build system for CMake based packages in ROS 2 (in particular, it will be used for most C/C++ projects). It is a set of scripts enhancing CMake and adding convenience functionality for package authors. Before using ``ament_cmake``, it is very helpful to know the basics of `CMake <https://cmake.org/cmake/help/v3.8/>`__. An official tutorial can be found `here <https://cmake.org/cmake/help/latest/guide/tutorial/index.html>`__."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:15 ../../source/How-To-Guides/Ament-CMake-Python-Documentation.rst:20 ../../source/How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.rst:6 ../../source/How-To-Guides/Building-a-Custom-Debian-Package.rst:12 ../../source/How-To-Guides/Cross-compilation.rst:11 ../../source/How-To-Guides/Developing-a-ROS-2-Package.rst:12 ../../source/How-To-Guides/Launch-file-different-formats.rst:10 ../../source/How-To-Guides/Launch-files-migration-guide.rst:13 ../../source/How-To-Guides/Launching-composable-nodes.rst:6 ../../source/How-To-Guides/Node-arguments.rst:13 ../../source/How-To-Guides/Package-maintainer-guide.rst:12 ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:12 ../../source/How-To-Guides/Releasing/First-Time-Release.rst:9 ../../source/How-To-Guides/Releasing/Release-Team-Repository.rst:6 ../../source/How-To-Guides/Releasing/Release-Track.rst:6 ../../source/How-To-Guides/Releasing/Subsequent-Releases.rst:8 ../../source/How-To-Guides/Using-callback-groups.rst:11 ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:6 ../../source/How-To-Guides/Using-ros2-param.rst:6 ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:12
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:16 ../../source/How-To-Guides/Ament-CMake-Python-Documentation.rst:20 ../../source/How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.rst:6 ../../source/How-To-Guides/Building-a-Custom-Debian-Package.rst:12 ../../source/How-To-Guides/Cross-compilation.rst:11 ../../source/How-To-Guides/Developing-a-ROS-2-Package.rst:12 ../../source/How-To-Guides/Launch-file-different-formats.rst:10 ../../source/How-To-Guides/Launching-composable-nodes.rst:6 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:12 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:6 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:14 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:6 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:12 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:11 ../../source/How-To-Guides/Node-arguments.rst:13 ../../source/How-To-Guides/Package-maintainer-guide.rst:12 ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:12 ../../source/How-To-Guides/Releasing/First-Time-Release.rst:9 ../../source/How-To-Guides/Releasing/Release-Team-Repository.rst:6 ../../source/How-To-Guides/Releasing/Release-Track.rst:6 ../../source/How-To-Guides/Releasing/Subsequent-Releases.rst:8 ../../source/How-To-Guides/Using-callback-groups.rst:11 ../../source/How-To-Guides/Using-ros1_bridge-Jammy-upstream.rst:6 ../../source/How-To-Guides/Using-ros2-param.rst:6 ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:12
 msgid "Table of Contents"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:18 ../../source/How-To-Guides/Ament-CMake-Python-Documentation.rst:23
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:19 ../../source/How-To-Guides/Ament-CMake-Python-Documentation.rst:23
 msgid "Basics"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:20
-msgid "A basic CMake outline can be produced using ``ros2 pkg create <package_name>`` on the command line. The basic build information is then gathered in two files: the ``package.xml`` and the ``CMakeLists.txt``. The ``package.xml`` must contain all dependencies and a bit of metadata to allow colcon to find the correct build order for your packages, to install the required dependencies in CI as well as provide the information for a release with ``bloom``. The ``CMakeLists.txt`` contains the commands to build and package executables and libraries and will be the main focus of this document."
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:21
+msgid "A basic CMake outline can be produced using ``ros2 pkg create <package_name>`` on the command line. The build information is then gathered in two files: the ``package.xml`` and the ``CMakeLists.txt``, which must be in the same directory. The ``package.xml`` must contain all dependencies and a bit of metadata to allow colcon to find the correct build order for your packages, to install the required dependencies in CI, and to provide the information for a release with ``bloom``. The ``CMakeLists.txt`` contains the commands to build and package executables and libraries and will be the main focus of this document."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:26 ../../source/How-To-Guides/Ament-CMake-Python-Documentation.rst:26
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:27 ../../source/How-To-Guides/Ament-CMake-Python-Documentation.rst:26
 msgid "Basic project outline"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:28
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:29
 msgid "The basic outline of the ``CMakeLists.txt`` of an ament package contains:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:37
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:38
 msgid "The argument to ``project`` will be the package name and must be identical to the package name in the ``package.xml``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:39
-msgid "The project setup is done by ``ament_package()`` and this call must occur exactly once per package. ``ament_package()`` installs the ``package.xml``, registers the package with the ament index, and installs config (and possibly target) files for CMake so that it can be found by other packages using ``find_package``. Since ``ament_package()`` gathers a lot of information from the ``CMakeLists.txt`` it should be the last call in your ``CMakeLists.txt``. Although it is possible to follow calls to ``ament_package()`` by calls to ``install`` functions copying files and directories, it is simpler to just keep ``ament_package()`` the last call."
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:40
+msgid "The project setup is done by ``ament_package()`` and this call must occur exactly once per package. ``ament_package()`` installs the ``package.xml``, registers the package with the ament index, and installs configuration (and possibly target) files for CMake so that it can be found by other packages using ``find_package``. Since ``ament_package()`` gathers a lot of information from the ``CMakeLists.txt`` it should be the last call in your ``CMakeLists.txt``."
 msgstr ""
 
 #: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:44
@@ -76,7 +76,7 @@ msgid "``ament_package`` can be given additional arguments:"
 msgstr ""
 
 #: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:46
-msgid "``CONFIG_EXTRAS``: a list of CMake files (``.cmake`` or ``.cmake.in`` templates expanded by ``configure_file()``) which should be available to clients of the package. For an example of when to use these arguments, see the discussion in `Adding resources`_. For more information on how to use template files, see `the official documentation <https://cmake.org/cmake/help/v3.5/command/configure_file.html>`__."
+msgid "``CONFIG_EXTRAS``: a list of CMake files (``.cmake`` or ``.cmake.in`` templates expanded by ``configure_file()``) which should be available to clients of the package. For an example of when to use these arguments, see the discussion in `Adding resources`_. For more information on how to use template files, see `the official documentation <https://cmake.org/cmake/help/v3.8/command/configure_file.html>`__."
 msgstr ""
 
 #: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:50
@@ -104,546 +104,566 @@ msgid "files added by ``CONFIG_EXTRAS_POST``"
 msgstr ""
 
 #: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:65
-msgid "Adding files and headers"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:67
-msgid "There are two main targets to build: libraries and executables which are built by ``add_library`` and ``add_executable`` respectively."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:69
-msgid "With the separation of header files and implementation in C/C++, it is not always necessary to add both files as argument to ``add_library``/ ``add_executable``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:71
-msgid "The following best practice is proposed:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:73
-msgid "if you are building a library, put all headers which should be usable by clients and therefore must be installed into a subdirectory of the ``include`` folder named like the package, while all other files (``.c/.cpp`` and header files which should not be exported) are inside the ``src`` folder."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:75
-msgid "only cpp files are explicitly referenced in the call to ``add_library`` or ``add_executable``"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:77
-msgid "allow to find headers via"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:86
-msgid "This adds all files in the folder ``${CMAKE_CURRENT_SOURCE_DIR}/include`` to the public interface during build time and all files in the include folder (relative to ``${CMAKE_INSTALL_DIR}``) when being installed."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:88
-msgid "In principle, using generator expressions here is not necessary if both folders are called ``include`` and top-level with respect to ``${CMAKE_CURRENT_SOURCE_DIR}`` and ``${CMAKE_INSTALL_DIR}``, but it is very common."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:91
-msgid "Adding Dependencies"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:93
-msgid "There are two ways to link your packages against a new dependency."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:95
-msgid "The first and recommended way is to use the ament macro ``ament_target_dependencies``. As an example, suppose we want to link ``my_target`` against the linear algebra library Eigen3."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:103
-msgid "It includes the necessary headers and libraries and their dependencies to be correctly found by the project. It will also ensure that the include directories of all dependencies are ordered correctly when using overlay workspaces."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:106
-msgid "The second way is to use ``target_link_libraries``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:108
-msgid "The recommended way in modern CMake is to only use targets, exporting and linking against them. CMake targets are namespaced, similar to C++. For instance, ``Eigen3`` defines the target ``Eigen3::Eigen``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:112
-msgid "At least until ``Crystal Clemmys`` target names are not supported in the ``ament_target_dependencies`` macro. Sometimes it will be necessary to call the ``target_link_libaries`` CMake function. In the example of Eigen3, the call should then look like"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:121
-msgid "This will also include necessary headers, libraries and their dependencies, but in contrast to ``ament_target_dependencies`` it might not correctly order the dependencies when using overlay workspaces."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:125
-msgid "It should never be necessary to ``find_package`` a library that is not explicitly needed but is a dependency of another dependency that is explicitly needed. If that is the case, file a bug against the corresponding package."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:129
-msgid "Building a Library"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:131
-msgid "When building a reusable library, some information needs to be exported for downstream packages to easily use it."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:153
-msgid "Here, we assume that the folder ``include`` contains the headers which need to be exported. Note that it is not necessary to put all headers into a separate folder, only those that should be included by clients."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:156
-msgid "Here is what's happening in the snippet above:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:158
-msgid "The ``ament_export_targets`` macro exports the targets for CMake. This is necessary to allow your library's clients to use the ``target_link_libraries(client my_library::my_library)`` syntax. ``ament_export_targets`` can take an arbitrary list of targets named as ``EXPORT`` in an install call and an additional option ``HAS_LIBRARY_TARGET``, which adds potential libraries to environment variables."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:162
-msgid "The ``ament_export_dependencies`` exports dependencies to downstream packages. This is necessary so that the user of the library does not have to call ``find_package`` for those dependencies, too."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:165
-msgid "The first ``install`` commands installs the header files which should be available to clients."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:169
-msgid "Calling ``ament_export_targets``, ``ament_export_dependencies``, or other ament commands from a CMake subdirectory will not work as expected. This is because the CMake subdirectory has no way of setting necessary variables in the parent scope where ``ament_package`` is called."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:172
-msgid "The last large install command installs the library. Archive and library files will be exported to the lib folder, runtime binaries will be installed to the bin folder and the path to installed headers is ``include``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:177
-msgid "Windows DLLs are treated as runtime artifacts and installed into the ``RUNTIME DESTINATION`` folder. It is therefore advised to not leave out the ``RUNTIME`` install even when developing libraries on Unix based systems."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:180
-msgid "Regarding the ``include directory``, the install command only adds information to CMake, it does not actually install the includes folder. This is done by copying the headers via ``install(DIRECTORY <dir> DESTINATION <dest>)`` as described above."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:183
-msgid "The ``EXPORT`` notation of the install call requires additional attention: It installs the CMake files for the ``my_library`` target. It is named exactly like the argument in ``ament_export_targets`` and could be named like the library. However, this will then prohibit using the ``ament_target_dependencies`` way of including your library. To allow for full flexibility, it is advised to prepend the export target with something like ``<target>Targets``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:189
-msgid "All install paths are relative to ``CMAKE_INSTALL_PREFIX``, which is already set correctly by colcon/ament"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:191
-msgid "There are two additional functions which can be used but are superfluous for target based installs:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:198
-msgid "The first macro marks the directory of the exported include directories (this is achieved by ``INCLUDES DESTINATION`` in the target ``install`` call). The second macro marks the location of the installed library (this is done by the ``HAS_LIBRARY_TARGET`` argument in the call to ``ament_export_targets``)."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:201
-msgid "Some of the macros can take different types of arguments for non-target exports, but since the recommended way for modern Make is to use targets, we will not cover them here. Documentation of these options can be found in the source code itself."
-msgstr ""
-
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:205
 msgid "Compiler and linker options"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:207
-msgid "ROS 2 targets compilers which comply with the C++14 and C99 standard until at least ``Crystal Clemmys``. Newer versions might be targeted in the future and are referenced `here <https://www.ros.org/reps/rep-2000.html>`__. Therefore it is customary to set the corresponding CMake flags:"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:67
+msgid "ROS 2 targets compilers which comply with the C++17 and C99 standard. Newer versions might be targeted in the future and are referenced `here <https://www.ros.org/reps/rep-2000.html>`__. Therefore it is customary to set the corresponding CMake flags:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:220
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:80
 msgid "To keep the code clean, compilers should throw warnings for questionable code and these warnings should be fixed."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:222
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:82
 msgid "It is recommended to at least cover the following warning levels:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:224
-msgid "For Visual Studio, the default ``W1`` warnings are kept"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:84
+msgid "For Visual Studio: the default ``W1`` warnings"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:226
-msgid "For GCC and Clang: ``-Wall -Wextra -Wpedantic`` are required and ``-Wshadow -Werror`` are advisable (the latter makes warnings errors)."
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:86
+msgid "For GCC and Clang: ``-Wall -Wextra -Wpedantic`` are highly recommended and ``-Wshadow`` is advisable"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:228
-msgid "Although modern CMake advises to add compiler flags on a target basis, i.e. call"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:88
+msgid "It is currently recommended to use ``add_compile_options`` to add these options for all targets. This avoids cluttering the code with target-based compile options for all executables, libraries, and tests:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:234
-msgid "it is at the moment recommended to use the directory level function ``add_compile_options(-Wall)`` to not clutter the code with target-based compile options for all executables and tests."
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:98
+msgid "Finding dependencies"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:237
-msgid "Building libraries on Windows"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:100
+msgid "Most ``ament_cmake`` projects will have dependencies on other packages. In CMake, this is accomplished by calling ``find_package``. For instance, if your package depends on ``rclcpp``, then the ``CMakeLists.txt`` file should contain:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:239
-msgid "Since Linux, Mac and Windows are all officially supported platforms, to have maximum impact any package should also build on Windows. The Windows library format enforces symbol visibility: Every symbol which should be used from a client has to be explicitly exported by the library (and data symbols need to be implicitly imported)."
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:110
+msgid "It should never be necessary to ``find_package`` a library that is not explicitly needed but is a dependency of another dependency that is explicitly needed. If that is the case, file a bug against the corresponding package."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:243
-msgid "To keep this compatible with Clang and GCC builds, it is advised to use the logic in `the GCC wiki <https://gcc.gnu.org/wiki/Visibility>`__. To use it for a package called ``my_library``:"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:114
+msgid "Adding targets"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:246
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:116
+msgid "In CMake nomenclature, ``targets`` are the artifacts that this project will create. Either libraries or executables can be created, and a single project can contain zero or many of each of them."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:121 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:213
+msgid "Libraries"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:123
+msgid "These are created with a call to ``add_library``, which should contain both the name of the target and the source files that should be compiled to create the library."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:125
+msgid "With the separation of header files and implementation in C/C++, it is not usually necessary to add header files as arguments to ``add_library``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:127
+msgid "The following best practice is proposed:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:129
+msgid "Put all headers which should be usable by clients of this library (and therefore must be installed) into a subdirectory of the ``include`` folder named like the package, while all other files (``.c/.cpp`` and header files which should not be exported) are inside the ``src`` folder"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:131
+msgid "Only ``.c/.cpp`` files are explicitly referenced in the call to ``add_library``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:133
+msgid "Find headers to your library ``my_library`` via"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:142
+msgid "This adds all files in the folder ``${CMAKE_CURRENT_SOURCE_DIR}/include`` to the public interface during build time and all files in the include folder (relative to ``${CMAKE_INSTALL_DIR}``) when being installed."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:144
+msgid "``ros2 pkg create`` creates a package layout that follows these rules."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:148
+msgid "Since Windows is one of the officially supported platforms, to have maximum impact, any package should also build on Windows. The Windows library format enforces symbol visibility; that is, every symbol which should be used from a client has to be explicitly exported by the library (and symbols need to be implicitly imported)."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:151
+msgid "Since GCC and Clang builds do not generally do this, it is advised to use the logic in `the GCC wiki <https://gcc.gnu.org/wiki/Visibility>`__. To use it for a package called ``my_library``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:154
 msgid "Copy the logic in the link into a header file called ``visibility_control.hpp``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:248
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:156
 msgid "Replace ``DLL`` by ``MY_LIBRARY`` (for an example, see visibility control of `rviz_rendering <https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp>`__)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:250
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:158
 msgid "Use the macros \"MY_LIBRARY_PUBLIC\" for all symbols you need to export (i.e. classes or functions)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:252
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:160
 msgid "In the project ``CMakeLists.txt`` use:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:258
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:166
 msgid "For more details, see :ref:`Windows Symbol Visibility in the Windows Tips and Tricks document <Windows_Symbol_Visibility>`."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:261
-msgid "Testing and Linting"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:168 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:283
+msgid "Executables"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:263
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:170
+msgid "These should be created with a call to ``add_executable``, which should contain both the name of the target and the source files that should be compiled to create the executable. The executable may also have to be linked with any libraries created in this package by using ``target_link_libraries``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:173
+msgid "Since executables aren't generally used by clients as a library, no header files need to be put in the ``include`` directory."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:175 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:292
+msgid "In the case that a package has both libraries and executables, make sure to combine the advice from both \"Libraries\" and \"Executables\" above."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:178
+msgid "Linking to dependencies"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:180
+msgid "There are two ways to link your targets against a dependency."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:182
+msgid "The first and recommended way is to use the ament macro ``ament_target_dependencies``. As an example, suppose we want to link ``my_library`` against the linear algebra library Eigen3."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:190
+msgid "It includes the necessary headers and libraries and their dependencies to be correctly found by the project."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:192
+msgid "The second way is to use ``target_link_libraries``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:194
+msgid "Modern CMake prefers to use only targets, exporting and linking against them. CMake targets may be namespaced, similar to C++. Prefer to use the namespaced targets if they are available. For instance, ``Eigen3`` defines the target ``Eigen3::Eigen``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:199
+msgid "In the example of Eigen3, the call should then look like"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:205
+msgid "This will also include necessary headers, libraries and their dependencies. Note that this dependency must have been previously discovered via a call to ``find_package``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:209
+msgid "Installing"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:215
+msgid "When building a reusable library, some information needs to be exported for downstream packages to easily use it."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:217
+msgid "First, install the headers files which should be available to clients. The include directory is custom to support overlays in ``colcon``; see https://colcon.readthedocs.io/en/released/user/overriding-packages.html#install-headers-to-a-unique-include-directory for more information."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:227
+msgid "Next, install the targets and create the export target (``export_${PROJECT_NAME}``) that other code will use to find this package. Note that you can use a single ``install`` call to install all of the libraries in the project."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:243
+msgid "Here is what's happening in the snippet above:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:245
+msgid "The ``ament_export_targets`` macro exports the targets for CMake. This is necessary to allow your library's clients to use the ``target_link_libraries(client PRIVATE my_library::my_library)`` syntax. If the export set includes a library, add the option ``HAS_LIBRARY_TARGET`` to ``ament_export_targets``, which adds potential libraries to environment variables."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:249
+msgid "The ``ament_export_dependencies`` exports dependencies to downstream packages. This is necessary so that the user of the library does not have to call ``find_package`` for those dependencies, too."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:254
+msgid "Calling ``ament_export_targets``, ``ament_export_dependencies``, or other ament commands from a CMake subdirectory will not work as expected. This is because the CMake subdirectory has no way of setting necessary variables in the parent scope where ``ament_package`` is called."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:259
+msgid "Windows DLLs are treated as runtime artifacts and installed into the ``RUNTIME DESTINATION`` folder. It is therefore advised to keep the ``RUNTIME`` install even when developing libraries on Unix based systems."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:262
+msgid "The ``EXPORT`` notation of the install call requires additional attention: It installs the CMake files for the ``my_library`` target. It must be named exactly the same as the argument in ``ament_export_targets``. To ensure that it can be used via ``ament_target_dependencies``, it should not be named exactly the same as the library name, but instead should have a prefix like ``export_`` (as shown above)."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:267
+msgid "All install paths are relative to ``CMAKE_INSTALL_PREFIX``, which is already set correctly by colcon/ament."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:269
+msgid "There are two additional functions which are available, but are superfluous for target based installs:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:276
+msgid "The first macro marks the directory of the exported include directories. The second macro marks the location of the installed library (this is done by the ``HAS_LIBRARY_TARGET`` argument in the call to ``ament_export_targets``). These should only be used if the downstream projects can't or don't want to use CMake target based dependencies."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:280
+msgid "Some of the macros can take different types of arguments for non-target exports, but since the recommended way for modern Make is to use targets, we will not cover them here. Documentation of these options can be found in the source code itself."
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:285
+msgid "When installing an executable, the following stanza *must be followed exactly* for the rest of the ROS tooling to find it:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:295
+msgid "Linting and Testing"
+msgstr ""
+
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:297
 msgid "In order to separate testing from building the library with colcon, wrap all calls to linters and tests in a conditional:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:273
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:307
 msgid "Linting"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:275
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:309
 msgid "It's advised to use the combined call from `ament_lint_auto <https://github.com/ament/ament_lint/blob/humble/ament_lint_auto/doc/index.rst#ament_lint_auto>`_:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:282
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:316
 msgid "This will run linters as defined in the ``package.xml``. It is recommended to use the set of linters defined by the package ``ament_lint_common``. The individual linters included there, as well as their functions, can be seen in the `ament_lint_common docs <https://github.com/ament/ament_lint/blob/humble/ament_lint_common/doc/index.rst>`_."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:286
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:320
 msgid "Linters provided by ament can also be added separately, instead of running ``ament_lint_auto``. One example of how to do so can be found in the `ament_cmake_lint_cmake documentation <https://github.com/ament/ament_lint/blob/humble/ament_cmake_lint_cmake/doc/index.rst>`_."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:290
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:324
 msgid "Testing"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:292
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:326
 msgid "Ament contains CMake macros to simplify setting up GTests. Call:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:299
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:333
 msgid "to add a GTest. This is then a regular target which can be linked against other libraries (such as the project library). The macros have additional parameters:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:303
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:337
 msgid "``APPEND_ENV``: append environment variables. For instance you can add to the ament prefix path by calling:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:312
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:346
 msgid "``APPEND_LIBRARY_DIRS``: append libraries so that they can be found by the linker at runtime. This can be achieved by setting environment variables like ``PATH`` on Windows and ``LD_LIBRARY_PATH`` on Linux, but this makes the call platform specific."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:315
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:349
 msgid "``ENV``: set environment variables (same syntax as ``APPEND_ENV``)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:317
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:351
 msgid "``TIMEOUT``: set a test timeout in second. The default for GTests is 60 seconds.  For example:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:323
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:357
 msgid "``SKIP_TEST``: skip this test (will be shown as \"passed\" in the console output)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:325
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:359
 msgid "``SKIP_LINKING_MAIN_LIBRARIES``: Don't link against GTest."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:327
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:361
 msgid "``WORKING_DIRECTORY``: set the working directory for the test."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:329
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:363
 msgid "The default working directory otherwise is the ``CMAKE_CURRENT_BINARY_DIR``, which is described in the `CMake documentation <https://cmake.org/cmake/help/latest/variable/CMAKE_CURRENT_BINARY_DIR.html>`_."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:331
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:365
 msgid "Similarly, there is a CMake macro to set up GTest including GMock:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:338
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:372
 msgid "It has the same additional parameters as ``ament_add_gtest``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:341
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:375
 msgid "Extending ament"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:343
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:377
 msgid "It is possible to register additional macros/functions with ``ament_cmake`` and extend it in several ways."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:346
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:380
 msgid "Adding a function/macro to ament"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:348
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:382
 msgid "Extending ament will often times mean that you want to have some functions available to other packages. The best way to provide the macro to client packages is to register it with ament."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:351
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:385
 msgid "This can be done by appending the ``${PROJECT_NAME}_CONFIG_EXTRAS`` variable, which is used by ``ament_package()`` via"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:360
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:394
 msgid "Alternatively, you can directly add the files to the ``ament_package()`` call:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:370
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:404
 msgid "Adding to extension points"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:372
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:406
 msgid "In addition to simple files with functions that can be used in other packages, you can also add extensions to ament. Those extensions are scripts which are executed with the function which defines the extension point. The most common use-case for ament extensions is probably registering rosidl message generators: When writing a generator, you normally want to generate all messages and services with your generator also without modifying the code for the message/service definition packages. This is possible by registering the generator as an extension to ``rosidl_generate_interfaces``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:378
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:412
 msgid "As an example, see"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:387
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:421
 msgid "which registers the macro ``rosidl_generator_cpp_generate_interfaces.cmake`` for the package ``rosidl_generator_cpp`` to the extension point ``rosidl_generate_interfaces``. When the extension point gets executed, this will trigger the execution of the script ``rosidl_generator_cpp_generate_interfaces.cmake`` here. In particular, this will call the generator whenever the function ``rosidl_generate_interfaces`` gets executed."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:391
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:425
 msgid "The most important extension point for generators, aside from ``rosidl_generate_interfaces``, is ``ament_package``, which will simply execute scripts with the ``ament_package()`` call. This extension point is useful when registering resources (see below)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:394
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:428
 msgid "``ament_register_extension`` is a function which takes exactly three arguments:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:396
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:430
 msgid "``extension_point``: The name of the extension point (most of the time this will be one of ``ament_package`` or ``rosidl_generate_interfaces``)"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:398
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:432
 msgid "``package_name``: The name of the package containing the CMake file (i.e. the project name of the project where the file is written to)"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:400
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:434
 msgid "``cmake_filename``: The CMake file executed when the extension point is run"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:404
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:438
 msgid "It is possible to define custom extension points in a similar manner to ``ament_package`` and ``rosidl_generate_interfaces``, but this should hardly be necessary."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:407
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:441
 msgid "Adding extension points"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:409
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:443
 msgid "Very rarely, it might be interesting to define a new extension point to ament."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:411
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:445
 msgid "Extension points can be registered within a macro so that all extensions will be executed when the corresponding macro is called. To do so:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:414
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:448
 msgid "Define and document a name for your extension (e.g. ``my_extension_point``), which is the name passed to the ``ament_register_extension`` macro when using the extension point."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:416
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:450
 msgid "In the macro/function which should execute the extensions call:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:422
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:456
 msgid "Ament extensions work by defining a variable containing the name of the extension point and filling it with the macros to be executed. Upon calling ``ament_execute_extensions``, the scripts defined in the variable are then executed one after another."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:426
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:460
 msgid "Adding resources"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:428
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:462
 msgid "Especially when developing plugins or packages which allow plugins it is often essential to add resources to one ROS package from another (e.g. a plugin). Examples can be plugins for tools using the pluginlib."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:431
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:465
 msgid "This can be achieved using the ament index (also called \"resource index\")."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:434
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:468
 msgid "The ament index explained"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:436
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:470
 msgid "For details on the design and intentions, see `here <https://github.com/ament/ament_cmake/blob/humble/ament_cmake_core/doc/resource_index.md>`__"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:438
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:472
 msgid "In principle, the ament index is contained in a folder within the install/share folder of your package. It contains shallow subfolders named after different types of resources. Within the subfolder, each package providing said resource is referenced by name with a \"marker file\". The file may contain whatever content necessary to obtain the resources, e.g. relative paths to the installation directories of the resource, it may also be simply empty."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:443
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:477
 msgid "To give an example, consider providing display plugins for RViz: When providing RViz plugins in a project named ``my_rviz_displays`` which will be read by the pluginlib, you will provide a ``plugin_description.xml`` file, which will be installed and used by the pluginlib to load the plugins. To achieve this, the plugin_description.xml is registered as a resource in the resource_index via"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:451
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:485
 msgid "When running ``colcon build``, this installs a file ``my_rviz_displays`` into a subfolder ``rviz_common__pluginlib__plugin`` into the resource_index. Pluginlib factories within rviz_common will know to gather information from all folders named ``rviz_common__pluginlib__plugin`` for packages that export plugins. The marker file for pluginlib factories contains an install-folder relative path to the ``plugins_description.xml`` file (and the name of the library as marker file name). With this information, the pluginlib can load the library and know which plugins to load from the ``plugin_description.xml`` file."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:456
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:490
 msgid "As a second example, consider the possibility to let your own RViz plugins use your own custom meshes. Meshes get loaded at startup time so that the plugin owner does not have to deal with it, but this implies RViz has to know about the meshes. To achieve this, RViz provides a function:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:464
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:498
 msgid "This registers the directories as an ogre_media resource in the ament index. In short, it installs a file named after the project which calls the function into a subfolder called ``rviz_ogre_media_exports``. The file contains the install folder relative paths to the directories listed in the macros. On startup time, RViz can now search for all folders called ``rviz_ogre_media_exports`` and load resources in all folders provided. These searches are done using ``ament_index_cpp`` (or ``ament_index_py`` for Python packages)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:470
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:504
 msgid "In the following sections we will explore how to add your own resources to the ament index and provide best practices for doing so."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:473
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:507
 msgid "Querying the ament index"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:475
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:509
 msgid "If necessary, it is possible to query the ament index for resources via CMake. To do so, there are three functions:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:478
-msgid "``ament_index_has_resource``: obtain a prefix path to the resource if it exists with the following parameters:"
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:512
+msgid "``ament_index_has_resource``: Obtain a prefix path to the resource if it exists with the following parameters:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:480
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:514
 msgid "``var``: the output parameter: fill this variable with FALSE if the resource does not exist or the prefix path to the resource otherwise"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:482 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:490 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:502
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:516 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:524 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:536
 msgid "``resource_type``: The type of the resource (e.g. ``rviz_common__pluginlib__plugin``)"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:484 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:492
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:518 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:526
 msgid "``resource_name``: The name of the resource which usually amounts to the name of the package having added the resource of type resource_type (e.g. ``rviz_default_plugins``)"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:486
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:520
 msgid "``ament_index_get_resource``: Obtain the content of a specific resource, i.e. the contents of the marker file in the ament index."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:488
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:522
 msgid "``var``: the output parameter: filled with the content of the resource marker file if it exists."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:494 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:504
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:528 ../../source/How-To-Guides/Ament-CMake-Documentation.rst:538
 msgid "``PREFIX_PATH``: The prefix path to search for (usually, the default ``ament_index_get_prefix_path()`` will be enough)."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:496
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:530
 msgid "Note that ``ament_index_get_resource`` will throw an error if the resource does not exist, so it might be necessary to check using ``ament_index_has_resource``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:498
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:532
 msgid "``ament_index_get_resources``: Get all packages which registered resources of a specific type from the index"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:500
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:534
 msgid "``var``: Output parameter: filled with a list of names of all packages which registered a resource of resource_type"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:507
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:541
 msgid "Adding to the ament index"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:509
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:543
 msgid "Defining a resource requires two bits of information:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:511
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:545
 msgid "a name for the resource which must be unique,"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:513
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:547
 msgid "a layout of the marker file, which can be anything and could also be empty (this is true for instance for the \"package\" resource marking a ROS 2 package)"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:515
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:549
 msgid "For the RViz mesh resource, the corresponding choices were:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:517
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:551
 msgid "``rviz_ogre_media_exports`` as name of the resource,"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:519
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:553
 msgid "install path relative paths to all folders containing resources. This will already enable you to write the logic for using the corresponding resource in your package."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:521
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:555
 msgid "To allow users to easily register resources for your package, you should furthermore provide macros or functions such as the pluginlib function or ``rviz_ogre_media_exports`` function."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:523
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:557
 msgid "To register a resource, use the ament function ``ament_index_register_resource``. This will create and install the marker files in the resource_index. As an example, the corresponding call for ``rviz_ogre_media_exports`` is the following:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:531
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:565
 msgid "This installs a file named like ``${PROJECT_NAME}`` into a folder ``rviz_ogre_media_exports`` into the resource_index with content given by variable ``${OGRE_MEDIA_RESOURCE_FILE}``. The macro has a number of parameters that can be useful:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:534
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:568
 msgid "the first (unnamed) parameter is the name of the resource, which amounts to the name of the folder in the resource_index"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:536
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:570
 msgid "``CONTENT``: The content of the marker file as string. This could be a list of relative paths, etc. ``CONTENT`` cannot be used together with ``CONTENT_FILE``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:538
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:572
 msgid "``CONTENT_FILE``: The path to a file which will be use to create the marker file. The file can be a plain file or a template file expanded with ``configure_file()``. ``CONTENT_FILE`` cannot be used together with ``CONTENT``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:541
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:575
 msgid "``PACKAGE_NAME``: The name of the package/library exporting the resource, which amounts to the name of the marker file. Defaults to ``${PROJECT_NAME}``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:543
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:577
 msgid "``AMENT_INDEX_BINARY_DIR``: The base path of the generated ament index. Unless really necessary, always use the default ``${CMAKE_BINARY_DIR}/ament_cmake_index``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:545
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:579
 msgid "``SKIP_INSTALL``: Skip installing the marker file."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:547
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:581
 msgid "Since only one marker file exists per package, it is usually a problem if the CMake function/macro gets called twice by the same project. However, for large projects it might be best to split up calls registering resources."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:550
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:584
 msgid "Therefore, it is best practice to let a macro registering a resource such as ``register_rviz_ogre_media_exports.cmake`` only fill some variables. The real call to ``ament_index_register_resource`` can then be added within an ament extension to ``ament_package``. Since there must only ever be one call to ``ament_package`` per project, there will always only be one place where the resource gets registered. In the case of ``rviz_ogre_media_exports`` this amounts to the following strategy:"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:555
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:589
 msgid "The macro ``register_rviz_ogre_media_exports`` takes a list of folders and appends them to a variable called ``OGRE_MEDIA_RESOURCE_FILE``."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:557
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:591
 msgid "Another macro called ``register_rviz_ogre_media_exports_hook`` calls ``ament_index_register_resource`` if ``${OGRE_MEDIA_RESOURCE_FILE}`` is non-empty."
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:559
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:593
 msgid "The ``register_rviz_ogre_media_exports_hook.cmake`` file is registered as an ament extension in a third file ``register_rviz_ogre_media_exports_hook-extras.cmake`` via calling"
 msgstr ""
 
-#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:566
+#: ../../source/How-To-Guides/Ament-CMake-Documentation.rst:600
 msgid "The files ``register_rviz_ogre_media_exports.cmake`` and ``register_rviz_ogre_media_exports_hook-extra.cmake`` are registered as ``CONFIG_EXTRA`` with ``ament_package()``."
 msgstr ""
 
@@ -731,7 +751,7 @@ msgstr ""
 msgid "This guide only applies to Linux systems and assumes that Ubuntu is used."
 msgstr ""
 
-#: ../../source/How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.rst:20 ../../source/How-To-Guides/Building-a-Custom-Debian-Package.rst:15 ../../source/How-To-Guides/Developing-a-ROS-2-Package.rst:18 ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:17
+#: ../../source/How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.rst:20 ../../source/How-To-Guides/Building-a-Custom-Debian-Package.rst:15 ../../source/How-To-Guides/Developing-a-ROS-2-Package.rst:18 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:16 ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:17
 msgid "Prerequisites"
 msgstr ""
 
@@ -848,7 +868,7 @@ msgid "Cross-compilation"
 msgstr ""
 
 #: ../../source/How-To-Guides/Cross-compilation.rst:13
-msgid "For background information on cross-compilation, see the :doc:`conceptual article <../Concepts/About-Cross-Compilation>`."
+msgid "For background information on cross-compilation, see the :doc:`conceptual article <../Concepts/Intermediate/About-Cross-Compilation>`."
 msgstr ""
 
 #: ../../source/How-To-Guides/Cross-compilation.rst:15
@@ -1780,14 +1800,26 @@ msgid "Fast RTPS requires ``msvcr20.dll``, which is part of the ``Visual C++ Red
 msgstr ""
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:326
-msgid "Binary installation specific"
+msgid "Failed to create process"
 msgstr ""
 
 #: ../../source/How-To-Guides/Installation-Troubleshooting.rst:328
+msgid "If running a ROS binary gives the error:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Installation-Troubleshooting.rst:334
+msgid "It is likely the Python interpreter was not found. For each executable, the shebang (first line) of the accompanying script is used, so make sure Python is available under the expected path (default: ``C:\\Python38\\``)."
+msgstr ""
+
+#: ../../source/How-To-Guides/Installation-Troubleshooting.rst:338
+msgid "Binary installation specific"
+msgstr ""
+
+#: ../../source/How-To-Guides/Installation-Troubleshooting.rst:340
 msgid "If your example does not start because of missing DLLs, please verify that all libraries from external dependencies such as OpenCV are located inside your ``PATH`` variable."
 msgstr ""
 
-#: ../../source/How-To-Guides/Installation-Troubleshooting.rst:329
+#: ../../source/How-To-Guides/Installation-Troubleshooting.rst:341
 msgid "If you forget to call the ``local_setup.bat`` file from your terminal, the demo programs will most likely crash immediately."
 msgstr ""
 
@@ -1960,7 +1992,7 @@ msgid "Python, XML, or YAML: Which should I use?"
 msgstr ""
 
 #: ../../source/How-To-Guides/Launch-file-different-formats.rst:293
-msgid "Launch files in ROS 1 were written in XML, so XML may be the most familiar to people coming from ROS 1. To see what's changed, you can visit :doc:`Launch-files-migration-guide`."
+msgid "Launch files in ROS 1 were written in XML, so XML may be the most familiar to people coming from ROS 1. To see what's changed, you can visit :doc:`Migrating-from-ROS1/Migrating-Launch-Files`."
 msgstr ""
 
 #: ../../source/How-To-Guides/Launch-file-different-formats.rst:296
@@ -1977,390 +2009,6 @@ msgstr ""
 
 #: ../../source/How-To-Guides/Launch-file-different-formats.rst:303
 msgid "That being said, a launch file written in Python may be more complex and verbose than one in XML or YAML."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:9
-msgid "Migrating launch files from ROS 1 to ROS 2"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:15
-msgid "This guide describes how to write XML launch files for an easy migration from ROS 1."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:18 ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:19
-msgid "Background"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:20
-msgid "A description of the ROS 2 launch system and its Python API can be found in :doc:`Launch System tutorial <../Tutorials/Intermediate/Launch/Launch-system>`."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:24
-msgid "Migrating tags from ROS 1 to ROS 2"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:27
-msgid "launch"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:29
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/launch>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:30
-msgid "``launch`` is the root element of any ROS 2 launch XML file."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:33
-msgid "node"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:35
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/node>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:36
-msgid "Launches a new node."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:37 ../../source/How-To-Guides/Launch-files-migration-guide.rst:176 ../../source/How-To-Guides/Launch-files-migration-guide.rst:198 ../../source/How-To-Guides/Launch-files-migration-guide.rst:271
-msgid "Differences from ROS 1:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:39
-msgid "``type`` attribute is now ``exec``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:40
-msgid "``ns`` attribute is now ``namespace``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:41
-msgid "The following attributes aren't available: ``machine``, ``respawn_delay``, ``clear_params``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:44 ../../source/How-To-Guides/Launch-files-migration-guide.rst:63 ../../source/How-To-Guides/Launch-files-migration-guide.rst:142 ../../source/How-To-Guides/Launch-files-migration-guide.rst:158 ../../source/How-To-Guides/Launch-files-migration-guide.rst:206 ../../source/How-To-Guides/Launch-files-migration-guide.rst:247 ../../source/How-To-Guides/Launch-files-migration-guide.rst:281 ../../source/How-To-Guides/Launch-files-migration-guide.rst:354 ../../source/How-To-Guides/Node-arguments.rst:40 ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:68
-msgid "Example"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:54
-msgid "param"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:56
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/param>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:57
-msgid "Used for passing a parameter to a node."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:58
-msgid "There's no global parameter concept in ROS 2. For that reason, it can only be used nested in a ``node`` tag. Some attributes aren't supported in ROS 2: ``type``, ``textfile``, ``binfile``, ``executable``, ``command``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:74 ../../source/How-To-Guides/Launch-files-migration-guide.rst:406
-msgid "Type inference rules"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:76
-msgid "Here are some examples of how to write parameters:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:104
-msgid "Parameter grouping"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:106
-msgid "In ROS 2, ``param`` tags are allowed to be nested. For example:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:120
-msgid "That will create two parameters:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:122
-msgid "A ``group1.group2.my_param`` of value ``1``, hosted by node ``/an_absolute_ns/my_node``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:123
-msgid "A ``group1.another_param`` of value ``2`` hosted by node ``/an_absolute_ns/my_node``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:125
-msgid "It's also possible to use full parameter names:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:135
-msgid "rosparam"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:137
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/rosparam>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:138
-msgid "Loads parameters from a yaml file."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:139
-msgid "It has been replaced with a ``from`` attribute in ``param`` tags."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:151
-msgid "remap"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:153
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/remap>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:154
-msgid "Used to pass remapping rules to a node."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:155
-msgid "It can only be used within ``node`` tags."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:172
-msgid "include"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:174
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/include>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:175
-msgid "Allows including another launch file."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:178
-msgid "Available in ROS 1, included content was scoped. In ROS 2, it's not. Nest includes in ``group`` tags to scope them."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:181
-msgid "``ns`` attribute is not supported. See example of ``push_ros_namespace`` tag for a workaround."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:183
-msgid "``arg`` tags nested in an ``include`` tag don't support conditionals (``if`` or ``unless``)."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:184
-msgid "There is no support for nested ``env`` tags. ``set_env`` and ``unset_env`` can be used instead."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:186
-msgid "Both ``clear_params`` and ``pass_all_args`` attributes aren't supported."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:189 ../../source/How-To-Guides/Using-callback-groups.rst:183
-msgid "Examples"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:191
-msgid "See `Replacing an include tag`_."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:194
-msgid "arg"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:196
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/arg>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:197
-msgid "``arg`` is used for declaring a launch argument, or to pass an argument when using ``include`` tags."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:200
-msgid "``value`` attribute is not allowed. Use ``let`` tag for this."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:202
-msgid "``doc`` is now ``description``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:203
-msgid "When nested within an ``include`` tag, ``if`` and ``unless`` attributes aren't allowed."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:221
-msgid "Passing an argument to the launch file"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:223
-msgid "In the XML launch file above, the ``topic_name`` defaults to the name ``chatter``, but can be configured on the command-line. Assuming the above launch configuration is in a file named ``mylaunch.xml``, a different topic name can be used by launching it with the following:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:230
-msgid "There is some additional information about passing command-line arguments in :doc:`Using Substitutions <../Tutorials/Intermediate/Launch/Using-Substitutions>`."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:233
-msgid "env"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:235
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/env>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:236
-msgid "Sets an environment variable."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:237
-msgid "It has been replaced with ``env``, ``set_env`` and ``unset_env``:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:239
-msgid "``env`` can only be used nested in a ``node`` or ``executable`` tag. ``if`` and ``unless`` tags aren't supported."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:241
-msgid "``set_env`` can be nested within the root tag ``launch`` or in ``group`` tags. It accepts the same attributes as ``env``, and also ``if`` and ``unless`` tags."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:243
-msgid "``unset_env`` unsets an environment variable. It accepts a ``name`` attribute and conditionals."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:266
-msgid "group"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:268
-msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/group>`__."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:269
-msgid "Allows limiting the scope of launch configurations. Usually used together with ``let``, ``include`` and ``push_ros_namespace`` tags."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:273
-msgid "There is no ``ns`` attribute. See the new ``push_ros_namespace`` tag as a workaround."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:275
-msgid "``clear_params`` attribute isn't available."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:276
-msgid "It doesn't accept ``remap`` nor ``param`` tags as children."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:283
-msgid "``launch-prefix`` configuration affects both ``executable`` and ``node`` tags' actions. This example will use ``time`` as a prefix if ``use_time_prefix_in_talker`` argument is ``1``, only for the talker."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:298
-msgid "machine"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:300 ../../source/How-To-Guides/Launch-files-migration-guide.rst:305
-msgid "It is not supported at the moment."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:303
-msgid "test"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:308
-msgid "New tags in ROS 2"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:311
-msgid "set_env and unset_env"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:313
-msgid "See `env`_ tag decription."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:316
-msgid "push_ros_namespace"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:318
-msgid "``include`` and ``group`` tags don't accept an ``ns`` attribute. This action can be used as a workaround:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:340
-msgid "let"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:342
-msgid "It's a replacement of ``arg`` tag with a value attribute."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:349
-msgid "executable"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:351
-msgid "It allows running any executable."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:363
-msgid "Replacing an include tag"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:365
-msgid "In order to include a launch file under a **namespace** as in ROS 1 then the ``include`` tags must be nested in a ``group`` tag."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:373
-msgid "Then, instead of using the ``ns`` attribute, add the ``push_ros_namespace`` action tag to specify the namespace:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:382
-msgid "Nesting ``include`` tags under a ``group`` tag is only required when specifying a namespace"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:385
-msgid "Substitutions"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:387
-msgid "Documentation about ROS 1's substitutions can be found in `roslaunch XML wiki <https://wiki.ros.org/roslaunch/XML>`__. Substitutions syntax hasn't changed, i.e. it still follows the ``$(substitution-name arg1 arg2 ...)`` pattern. There are, however, some changes w.r.t. ROS 1:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:391
-msgid "``env`` and ``optenv`` tags have been replaced by the ``env`` tag. ``$(env <NAME>)`` will fail if the environment variable doesn't exist. ``$(env <NAME> '')`` does the same as ROS 1's ``$(optenv <NAME>)``. ``$(env <NAME> <DEFAULT>)`` does the same as ROS 1's ``$(env <NAME> <DEFAULT>)`` or ``$(optenv <NAME> <DEFAULT>)``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:395
-msgid "``find`` has been replaced with ``find-pkg-share`` (substituting the share directory of an installed package). Alternatively ``find-pkg-prefix`` will return the root of an installed package."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:397
-msgid "There is a new ``exec-in-pkg`` substitution. e.g.: ``$(exec-in-pkg <package_name> <exec_name>)``."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:399
-msgid "There is a new ``find-exec`` substitution."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:400
-msgid "``arg`` has been replaced with ``var``. It looks at configurations defined either with ``arg`` or ``let`` tag."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:402
-msgid "``eval`` and ``dirname`` substitutions haven't changed."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:403
-msgid "``anon`` substitution is not supported."
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:408
-msgid "The rules that were shown in ``Type inference rules`` subsection of ``param`` tag applies to any attribute. For example:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Launch-files-migration-guide.rst:426
-msgid "Some attributes accept more than a single type, for example ``value`` attribute of ``param`` tag. It's usual that parameters that are of type ``int`` (or ``float``) also accept an ``str``, that will be later substituted and tried to convert to an ``int`` (or ``float``) by the action."
 msgstr ""
 
 #: ../../source/How-To-Guides/Launching-composable-nodes.rst:2
@@ -2427,6 +2075,1482 @@ msgstr ""
 msgid "See the discussion in :doc:`Launch-file-different-formats` for more information."
 msgstr ""
 
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:2
+msgid "Migrating from ROS 1 to ROS 2"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:4
+msgid "These guides show how to convert existing ROS 1 packages to ROS 2. If you are new to porting between ROS 1 and ROS 2, it is recommended to read through the guides in order."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:19
+msgid "Automatic tools"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:21
+msgid "There are also some automatic conversion tools that exist, though they are not exhaustive:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:23
+msgid "`Magical ROS 2 Conversion Tool <https://github.com/DLu/roscompile/tree/main/magical_ros2_conversion_tool>`_"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:24
+msgid "Launch File migrator that converts a ROS 1 XML launch file to a ROS 2 Python launch file: https://github.com/aws-robotics/ros2-launch-file-migrator"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:25
+msgid "Amazon has made their tools for porting from ROS 1 to ROS 2 available at: https://github.com/awslabs/ros2-migration-tools/tree/master/porting\\_tools"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1.rst:26
+msgid "`rospy2 <https://github.com/dheera/rospy2>`_ Python project to automatically convert rospy calls to rclpy calls"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:8
+msgid "Migrating C++ Packages"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:15 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:14
+msgid "Build tool"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:17 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:16
+msgid "Instead of using ``catkin_make``, ``catkin_make_isolated`` or ``catkin build`` ROS 2 uses the command line tool `colcon <https://design.ros2.org/articles/build_tool.html>`__ to build and install a set of packages. See the :doc:`beginner tutorial <../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial>` to get started with ``colcon``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:21 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:20
+msgid "Build system"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:23
+msgid "The build system in ROS 2 is called `ament <https://design.ros2.org/articles/ament.html>`__. Ament is built on CMake: ``ament_cmake`` provides CMake functions to make writing ``CMakeLists.txt`` files easier."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:27
+msgid "Update the *CMakeLists.txt* to use *ament_cmake*"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:29
+msgid "Apply the following changes to use ``ament_cmake`` instead of ``catkin``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:33
+msgid "Set the build type in the ``package.xml`` file export section:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:42
+msgid "Replace the ``find_package`` invocation with ``catkin`` and the ``COMPONENTS`` with:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:52
+msgid "Move and update the ``catkin_package`` invocation with:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:56
+msgid "Invoke ``ament_package`` instead but **after** all targets have been registered."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:59
+msgid "The only valid argument for `ament_package <https://github.com/ament/ament_cmake/blob/humble/ament_cmake_core/cmake/core/ament_package.cmake>`__ is ``CONFIG_EXTRAS``. All other arguments are covered by separate functions which all need to be invoked *before* ``ament_package``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:62
+msgid "Instead of passing ``CATKIN_DEPENDS ...`` call ``ament_export_dependencies(...)`` before."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:63
+msgid "Instead of passing ``INCLUDE_DIRS ...`` call ``ament_export_include_directories(...)`` before."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:64
+msgid "Instead of passing ``LIBRARIES ...`` call ``ament_export_libraries(...)`` before."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:67
+msgid "Replace the invocation of ``add_message_files``, ``add_service_files`` and ``generate_messages`` with `rosidl_generate_interfaces <https://github.com/ros2/rosidl/blob/humble/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:71
+msgid "The first argument is the ``target_name``. If you're building just one library it's ``${PROJECT_NAME}``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:75
+msgid "Followed by the list of message filenames, relative to the package root."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:78
+msgid "If you will be using the list of filenames multiple times, it is recommended to compose a list of message files and pass the list to the function for clarity."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:81
+msgid "The final multi-value-keyword argument fpr ``generate_messages`` is ``DEPENDENCIES`` which requires the list of dependent message packages."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:91
+msgid "Remove any occurrences of the *devel space*. Related CMake variables like ``CATKIN_DEVEL_PREFIX`` do not exist anymore."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:95
+msgid "The ``CATKIN_DEPENDS`` and ``DEPENDS`` arguments are passed to the new function `ament_export_dependencies <https://github.com/ament/ament_cmake/blob/humble/ament_cmake_export_dependencies/cmake/ament_export_dependencies.cmake>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:96
+msgid "``CATKIN_GLOBAL_BIN_DESTINATION``: ``bin``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:97
+msgid "``CATKIN_GLOBAL_INCLUDE_DESTINATION``: ``include``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:98
+msgid "``CATKIN_GLOBAL_LIB_DESTINATION``: ``lib``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:99
+msgid "``CATKIN_GLOBAL_LIBEXEC_DESTINATION``: ``lib``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:100
+msgid "``CATKIN_GLOBAL_SHARE_DESTINATION``: ``share``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:101
+msgid "``CATKIN_PACKAGE_BIN_DESTINATION``: ``lib/${PROJECT_NAME}``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:102
+msgid "``CATKIN_PACKAGE_INCLUDE_DESTINATION``: ``include/${PROJECT_NAME}``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:103
+msgid "``CATKIN_PACKAGE_LIB_DESTINATION``: ``lib``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:104
+msgid "``CATKIN_PACKAGE_SHARE_DESTINATION``: ``share/${PROJECT_NAME}``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:107
+msgid "Unit tests"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:109
+msgid "If you are using gtest:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:111
+msgid "Replace ``CATKIN_ENABLE_TESTING`` with ``BUILD_TESTING``. Replace ``catkin_add_gtest`` with ``ament_add_gtest``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:135
+msgid "Add ``<test_depend>ament_cmake_gtest</test_depend>`` to your ``package.xml``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:143
+msgid "Linters"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:145
+msgid "In ROS 2 we are working to maintain clean code using linters. The styles for different languages are defined in our :doc:`Developer Guide <../../The-ROS2-Project/Contributing/Developer-Guide>`."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:148
+msgid "If you are starting a project from scratch it is recommended to follow the style guide and turn on the automatic linter unit tests by adding these lines just below ``if(BUILD_TESTING)``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:155
+msgid "You will also need to add the following dependencies to your ``package.xml``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:163 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:48
+msgid "Update source code"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:166
+msgid "Messages, services, and actions"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:168
+msgid "The namespace of ROS 2 messages, services, and actions use a subnamespace (``msg``, ``srv``, or ``action``, respectively) after the package name. Therefore an include looks like: ``#include <my_interfaces/msg/my_message.hpp>``. The C++ type is then named: ``my_interfaces::msg::MyMessage``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:172
+msgid "Shared pointer types are provided as typedefs within the message structs: ``my_interfaces::msg::MyMessage::SharedPtr`` as well as ``my_interfaces::msg::MyMessage::ConstSharedPtr``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:174
+msgid "For more details please see the article about the `generated C++ interfaces <https://design.ros2.org/articles/generated_interfaces_cpp.html>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:176
+msgid "The migration requires includes to change by:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:179
+msgid "inserting the subfolder ``msg`` between the package name and message datatype"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:180
+msgid "changing the included filename from CamelCase to underscore separation"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:181
+msgid "changing from ``*.h`` to ``*.hpp``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:192
+msgid "The migration requires code to insert the ``msg`` namespace into all instances."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:195
+msgid "Use of service objects"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:197
+msgid "Service callbacks in ROS 2 do not have boolean return values. Instead of returning false on failures, throwing exceptions is recommended."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:218
+msgid "Usages of ros::Time"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:220
+msgid "For usages of ``ros::Time``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:222
+msgid "Replace all instances of ``ros::Time`` with ``rclcpp::Time``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:224
+msgid "If your messages or code makes use of std_msgs::Time:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:226
+msgid "Convert all instances of std_msgs::Time to builtin_interfaces::msg::Time"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:228
+msgid "Convert all ``#include \"std_msgs/time.h`` to ``#include \"builtin_interfaces/msg/time.hpp\"``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:230
+msgid "Convert all instances using the std_msgs::Time field ``nsec`` to the builtin_interfaces::msg::Time field ``nanosec``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:233
+msgid "Usages of ros::Rate"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:235
+msgid "There is an equivalent type ``rclcpp::Rate`` object which is basically a drop in replacement for ``ros::Rate``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:239
+msgid "Boost"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:241
+msgid "Much of the functionality previously provided by Boost has been integrated into the C++ standard library. As such we would like to take advantage of the new core features and avoid the dependency on boost where possible."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:245
+msgid "Shared Pointers"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:247
+msgid "To switch shared pointers from boost to standard C++ replace instances of:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:250
+msgid "``#include <boost/shared_ptr.hpp>`` with ``#include <memory>``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:251
+msgid "``boost::shared_ptr`` with ``std::shared_ptr``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:253
+msgid "There may also be variants such as ``weak_ptr`` which you want to convert as well."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:255
+msgid "Also it is recommended practice to use ``using`` instead of ``typedef``. ``using`` has the ability to work better in templated logic. For details `see here <https://stackoverflow.com/questions/10747810/what-is-the-difference-between-typedef-and-using-in-c11>`__"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:260
+msgid "Thread/Mutexes"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:262
+msgid "Another common part of boost used in ROS codebases are mutexes in ``boost::thread``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:265
+msgid "Replace ``boost::mutex::scoped_lock`` with ``std::unique_lock<std::mutex>``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:266
+msgid "Replace ``boost::mutex`` with ``std::mutex``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:267
+msgid "Replace ``#include <boost/thread/mutex.hpp>`` with ``#include <mutex>``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:270
+msgid "Unordered Map"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:272 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:281
+msgid "Replace:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:275
+msgid "``#include <boost/unordered_map.hpp>`` with ``#include <unordered_map>``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:276
+msgid "``boost::unordered_map`` with ``std::unordered_map``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:279
+msgid "function"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:284
+msgid "``#include <boost/function.hpp>``  with ``#include <functional>``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:285
+msgid "``boost::function`` with ``std::function``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:288
+msgid "Example: Converting an existing ROS 1 package to ROS 2"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:290
+msgid "Let's say that we have simple ROS 1 package called ``talker`` that uses ``roscpp`` in one node, called ``talker``. This package is in a catkin workspace, located at ``~/ros1_talker``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:294
+msgid "The ROS 1 code"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:296
+msgid "Here's the directory layout of our catkin workspace:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:309
+msgid "Here is the content of those three files:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:311
+msgid "``src/talker/package.xml``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:328
+msgid "``src/talker/CMakeLists.txt``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:342
+msgid "``src/talker/talker.cpp``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:371
+msgid "Building the ROS 1 code"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:373
+msgid "We source an environment setup file (in this case for Noetic using bash), then we build our package using ``catkin_make install``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:383
+msgid "Running the ROS 1 node"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:385
+msgid "If there's not already one running, we start a ``roscore``, first sourcing the setup file from our ``catkin`` install tree (the system setup file at ``/opt/ros/noetic/setup.bash`` would also work here):"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:394
+msgid "In another shell, we run the node from the ``catkin`` install space using ``rosrun``, again sourcing the setup file first (in this case it must be the one from our workspace):"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:404
+msgid "Migrating to ROS 2"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:406
+msgid "Let's start by creating a new workspace in which to work:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:413
+msgid "We'll copy the source tree from our ROS 1 package into that workspace, where we can modify it:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:420
+msgid "Now we'll modify the C++ code in the node. The ROS 2 C++ library, called ``rclcpp``, provides a different API from that provided by ``roscpp``. The concepts are very similar between the two libraries, which makes the changes reasonably straightforward to make."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:427
+msgid "Included headers"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:429
+msgid "In place of ``ros/ros.h``, which gave us access to the ``roscpp`` library API, we need to include ``rclcpp/rclcpp.hpp``, which gives us access to the ``rclcpp`` library API:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:438
+msgid "To get the ``std_msgs/String`` message definition, in place of ``std_msgs/String.h``, we need to include ``std_msgs/msg/string.hpp``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:447
+msgid "Changing C++ library calls"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:449
+msgid "Instead of passing the node's name to the library initialization call, we do the initialization, then pass the node name to the creation of the node object:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:459
+msgid "The creation of the publisher and rate objects looks pretty similar, with some changes to the names of namespace and methods."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:470
+msgid "To further control how message delivery is handled, a quality of service (``QoS``) profile could be passed in. The default profile is ``rmw_qos_profile_default``. For more details, see the `design document <https://design.ros2.org/articles/qos.html>`__ and :doc:`concept overview <../../Concepts/Intermediate/About-Quality-of-Service-Settings>`."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:477
+msgid "The creation of the outgoing message is different in the namespace:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:484
+msgid "In place of ``ros::ok()``, we call ``rclcpp::ok()``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:491
+msgid "Inside the publishing loop, we access the ``data`` field as before:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:497
+msgid "To print a console message, instead of using ``ROS_INFO()``, we use ``RCLCPP_INFO()`` and its various cousins. The key difference is that ``RCLCPP_INFO()`` takes a Logger object as the first argument."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:507
+msgid "Publishing the message is the same as before:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:513
+msgid "Spinning (i.e., letting the communications system process any pending incoming/outgoing messages) is different in that the call now takes the node as an argument:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:522
+msgid "Sleeping using the rate object is unchanged."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:524
+msgid "Putting it all together, the new ``talker.cpp`` looks like this:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:563
+msgid "Changing the ``package.xml``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:565
+msgid "ROS 2 uses a newer version of ``catkin``, called ``ament_cmake``, which we specify in the ``buildtool_depend`` tag:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:573
+msgid "In our build dependencies, instead of ``roscpp`` we use ``rclcpp``, which provides the C++ API that we use."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:580
+msgid "We make the same addition in the run dependencies and also update from the ``run_depend`` tag to the ``exec_depend`` tag (part of the upgrade to version 2 of the package format):"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:590
+msgid "In ROS 1, we use ``<depend>`` to simplify specifying dependencies for both compile-time and runtime. We can do the same in ROS 2:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:599
+msgid "We also need to tell the build tool what *kind* of package we are, so that it knows how to build us. Because we're using ``ament`` and CMake, we add the following lines to declare our build type to be ``ament_cmake``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:610
+msgid "Putting it all together, our ``package.xml`` now looks like this:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:635
+msgid "Changing the CMake code"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:637
+msgid "ROS 2 relies on a higher version of CMake:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:644
+msgid "ROS 2 relies on the C++17 standard. Depending on what compiler you're using, support for C++17 might not be enabled by default. Enable C++17 support explicitly by adding this line near the top of the file:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:652
+msgid "The preferred way to work on all platforms is this:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:663
+msgid "Using ``catkin``, we specify the packages we want to build against by passing them as ``COMPONENTS`` arguments when initially finding ``catkin`` itself. With ``ament_cmake``, we find each package individually, starting with ``ament_cmake``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:674
+msgid "System dependencies can be found as before:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:680
+msgid "We call ``catkin_package()`` to auto-generate things like CMake configuration files for other packages that use our package. Whereas that call happens *before* specifying targets to build, we now call the analogous ``ament_package()`` *after* the targets:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:691
+msgid "The only directories that need to be manually included are local directories and dependencies that are not ament packages:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:699
+msgid "A better alternative is to specify include directories for each target individually, rather than including all the directories for all targets:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:706
+msgid "Similar to how we found each dependent package separately, we need to link each one to the build target. To link with dependent packages that are ament packages, instead of using ``target_link_libraries()``, ``ament_target_dependencies()`` is a more concise and more thorough way of handling build flags. It automatically handles both the include directories defined in ``_INCLUDE_DIRS`` and linking libraries defined in ``_LIBRARIES``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:721
+msgid "To link with packages that are not ament packages, such as system dependencies like ``Boost``, or a library being built in the same ``CMakeLists.txt``, use ``target_link_libraries()``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:729
+msgid "For installation, ``catkin`` defines variables like ``CATKIN_PACKAGE_BIN_DESTINATION``. With ``ament_cmake``, we just give a path relative to the installation root:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:739
+msgid "Optionally, we can install and export the included directories for downstream packages:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:747
+msgid "Optionally, we can export dependencies for downstream packages:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:753
+msgid "Putting it all together, the new ``CMakeLists.txt`` looks like this:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:789
+msgid "Building the ROS 2 code"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:791
+msgid "We source an environment setup file (in this case the one generated by following the ROS 2 installation tutorial, which builds in ``~/ros2_ws``, then we build our package using ``colcon build``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:802
+msgid "Running the ROS 2 node"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst:804
+msgid "Because we installed the ``talker`` executable into the correct directory, after sourcing the setup file, from our install tree, we can invoke it by running:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:2
+msgid "Migrating Interfaces"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:8
+msgid "Messages, services, and actions are collectively called ``interfaces`` in ROS 2."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:11
+msgid "Interface definitions"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:13
+msgid "Message files must end in ``.msg`` and must be located in the subfolder ``msg``. Service files must end in ``.srv`` and must be located in the subfolder ``srv``. Actions files must end in ``.action`` and must be located in the subfolder ``action``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:17
+msgid "These files might need to be updated to comply with the `ROS Interface definition <http://design.ros2.org/articles/legacy_interface_definition.html>`__. Some primitive types have been removed and the types ``duration`` and ``time`` which were builtin types in ROS 1 have been replaced with normal message definitions and must be used from the `builtin_interfaces <https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces>`__ package. Also some naming conventions are stricter than in ROS 1. There is additional information in the :doc:`conceptual article <../../Concepts/Basic/About-Interfaces>`."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:23
+msgid "Building interfaces"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:25
+msgid "The way in which interfaces are built in ROS 2 differs substantially from ROS 1. Interfaces can only be built from packages containing a ``CMakeLists.txt``. If you are developing a pure Python package, then the interfaces should be placed in a different package containing only the interfaces (which is best practice anyway). See the :doc:`custom interfaces tutorial<../../Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces>` for more information."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:31
+msgid "Migrating interface package to ROS 2"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:33
+msgid "In your ``package.xml``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:35
+msgid "Add ``<buildtool_depend>rosidl_default_generators</buildtool_depend>``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:36
+msgid "Add ``<exec_depend>rosidl_default_runtime</exec_depend>``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:37
+msgid "Add ``<member_of_group>rosidl_interface_packages</member_of_group>``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:38
+msgid "For each dependent message package, add ``<depend>message_package</depend>``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:40
+msgid "In your ``CMakeLists.txt``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:42
+msgid "Enable C++17"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:48
+msgid "Add ``find_package(rosidl_default_generators REQUIRED)``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:49
+msgid "For each dependent message package, add ``find_package(message_package REQUIRED)`` and replace the CMake function call to ``generate_messages`` with ``rosidl_generate_interfaces``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst:51
+msgid "This will replace ``add_message_files`` and ``add_service_files`` listing of all the message and service files, which can be removed."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:10
+msgid "Migrating Launch Files"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:16
+msgid "While launch files in ROS 1 are always specified using `.xml <https://wiki.ros.org/roslaunch/XML>`__ files, ROS 2 supports Python scripts to enable more flexibility (see `launch package <https://github.com/ros2/launch/tree/humble/launch>`__) as well as XML and YAML files."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:18
+msgid "This guide describes how to write ROS 2 XML launch files for an easy migration from ROS 1."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:21 ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:19
+msgid "Background"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:23
+msgid "A description of the ROS 2 launch system and its Python API can be found in :doc:`Launch System tutorial <../../../Tutorials/Intermediate/Launch/Launch-system>`."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:27
+msgid "Migrating tags"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:30
+msgid "launch"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:32
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/launch>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:33
+msgid "``launch`` is the root element of any ROS 2 launch XML file."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:36
+msgid "node"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:38
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/node>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:39
+msgid "Launches a new node."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:40 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:180 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:202 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:275
+msgid "Differences from ROS 1:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:42
+msgid "``type`` attribute is now ``exec``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:43
+msgid "``ns`` attribute is now ``namespace``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:44
+msgid "The following attributes aren't available: ``machine``, ``respawn_delay``, ``clear_params``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:47 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:67 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:146 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:162 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:210 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:251 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:285 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:358 ../../source/How-To-Guides/Node-arguments.rst:40 ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:68
+msgid "Example"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:57
+msgid "param"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:59
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/param>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:60
+msgid "Used for passing a parameter to a node."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:61
+msgid "There's no global parameter concept in ROS 2. For that reason, it can only be used nested in a ``node`` tag. Some attributes aren't supported in ROS 2: ``type``, ``textfile``, ``binfile``, ``executable``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:64
+msgid "The ``command`` attribute is now ``value=\"$(command '...' )\"``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:78 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:410
+msgid "Type inference rules"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:80
+msgid "Here are some examples of how to write parameters:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:108
+msgid "Parameter grouping"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:110
+msgid "In ROS 2, ``param`` tags are allowed to be nested. For example:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:124
+msgid "That will create two parameters:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:126
+msgid "A ``group1.group2.my_param`` of value ``1``, hosted by node ``/an_absolute_ns/my_node``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:127
+msgid "A ``group1.another_param`` of value ``2`` hosted by node ``/an_absolute_ns/my_node``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:129
+msgid "It's also possible to use full parameter names:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:139
+msgid "rosparam"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:141
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/rosparam>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:142
+msgid "Loads parameters from a yaml file."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:143
+msgid "It has been replaced with a ``from`` attribute in ``param`` tags."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:155
+msgid "remap"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:157
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/remap>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:158
+msgid "Used to pass remapping rules to a node."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:159
+msgid "It can only be used within ``node`` tags."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:176
+msgid "include"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:178
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/include>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:179
+msgid "Allows including another launch file."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:182
+msgid "Available in ROS 1, included content was scoped. In ROS 2, it's not. Nest includes in ``group`` tags to scope them."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:185
+msgid "``ns`` attribute is not supported. See example of ``push_ros_namespace`` tag for a workaround."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:187
+msgid "``arg`` tags nested in an ``include`` tag don't support conditionals (``if``, ``unless``) or the ``description`` attribute."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:188
+msgid "There is no support for nested ``env`` tags. ``set_env`` and ``unset_env`` can be used instead."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:190
+msgid "Both ``clear_params`` and ``pass_all_args`` attributes aren't supported."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:193 ../../source/How-To-Guides/Using-callback-groups.rst:183
+msgid "Examples"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:195
+msgid "See `Replacing an include tag`_."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:198
+msgid "arg"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:200
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/arg>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:201
+msgid "``arg`` is used for declaring a launch argument, or to pass an argument when using ``include`` tags."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:204
+msgid "``value`` attribute is not allowed. Use ``let`` tag for this."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:206
+msgid "``doc`` is now ``description``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:207
+msgid "When nested within an ``include`` tag, ``if``, ``unless``, and ``description`` attributes aren't allowed."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:225
+msgid "Passing an argument to the launch file"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:227
+msgid "In the XML launch file above, the ``topic_name`` defaults to the name ``chatter``, but can be configured on the command-line. Assuming the above launch configuration is in a file named ``mylaunch.xml``, a different topic name can be used by launching it with the following:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:234
+msgid "There is some additional information about passing command-line arguments in :doc:`Using Substitutions <../../../Tutorials/Intermediate/Launch/Using-Substitutions>`."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:237
+msgid "env"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:239
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/env>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:240
+msgid "Sets an environment variable."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:241
+msgid "It has been replaced with ``env``, ``set_env`` and ``unset_env``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:243
+msgid "``env`` can only be used nested in a ``node`` or ``executable`` tag. ``if`` and ``unless`` tags aren't supported."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:245
+msgid "``set_env`` can be nested within the root tag ``launch`` or in ``group`` tags. It accepts the same attributes as ``env``, and also ``if`` and ``unless`` tags."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:247
+msgid "``unset_env`` unsets an environment variable. It accepts a ``name`` attribute and conditionals."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:270
+msgid "group"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:272
+msgid "`Available in ROS 1 <https://wiki.ros.org/roslaunch/XML/group>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:273
+msgid "Allows limiting the scope of launch configurations. Usually used together with ``let``, ``include`` and ``push_ros_namespace`` tags."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:277
+msgid "There is no ``ns`` attribute. See the new ``push_ros_namespace`` tag as a workaround."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:279
+msgid "``clear_params`` attribute isn't available."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:280
+msgid "It doesn't accept ``remap`` nor ``param`` tags as children."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:287
+msgid "``launch-prefix`` configuration affects both ``executable`` and ``node`` tags' actions. This example will use ``time`` as a prefix if ``use_time_prefix_in_talker`` argument is ``1``, only for the talker."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:302
+msgid "machine"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:304 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:309
+msgid "It is not supported at the moment."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:307
+msgid "test"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:312
+msgid "New tags in ROS 2"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:315
+msgid "set_env and unset_env"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:317
+msgid "See `env`_ tag decription."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:320
+msgid "push_ros_namespace"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:322
+msgid "``include`` and ``group`` tags don't accept an ``ns`` attribute. This action can be used as a workaround:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:344
+msgid "let"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:346
+msgid "It's a replacement of ``arg`` tag with a value attribute."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:353
+msgid "executable"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:355
+msgid "It allows running any executable."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:367
+msgid "Replacing an include tag"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:369
+msgid "In order to include a launch file under a **namespace** as in ROS 1 then the ``include`` tags must be nested in a ``group`` tag."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:377
+msgid "Then, instead of using the ``ns`` attribute, add the ``push_ros_namespace`` action tag to specify the namespace:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:386
+msgid "Nesting ``include`` tags under a ``group`` tag is only required when specifying a namespace"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:389
+msgid "Substitutions"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:391
+msgid "Documentation about ROS 1's substitutions can be found in `roslaunch XML wiki <https://wiki.ros.org/roslaunch/XML>`__. Substitutions syntax hasn't changed, i.e. it still follows the ``$(substitution-name arg1 arg2 ...)`` pattern. There are, however, some changes w.r.t. ROS 1:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:395
+msgid "``env`` and ``optenv`` tags have been replaced by the ``env`` tag. ``$(env <NAME>)`` will fail if the environment variable doesn't exist. ``$(env <NAME> '')`` does the same as ROS 1's ``$(optenv <NAME>)``. ``$(env <NAME> <DEFAULT>)`` does the same as ROS 1's ``$(env <NAME> <DEFAULT>)`` or ``$(optenv <NAME> <DEFAULT>)``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:399
+msgid "``find`` has been replaced with ``find-pkg-share`` (substituting the share directory of an installed package). Alternatively ``find-pkg-prefix`` will return the root of an installed package."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:401
+msgid "There is a new ``exec-in-pkg`` substitution. e.g.: ``$(exec-in-pkg <package_name> <exec_name>)``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:403
+msgid "There is a new ``find-exec`` substitution."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:404
+msgid "``arg`` has been replaced with ``var``. It looks at configurations defined either with ``arg`` or ``let`` tag."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:406
+msgid "``eval`` and ``dirname`` substitutions require escape characters for string values, e.g. ``if=\"$(eval '\\'$(var variable)\\' == \\'val1\\'')\"``."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:407
+msgid "``anon`` substitution is not supported."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:412
+msgid "The rules that were shown in ``Type inference rules`` subsection of ``param`` tag applies to any attribute. For example:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst:430
+msgid "Some attributes accept more than a single type, for example ``value`` attribute of ``param`` tag. It's usual that parameters that are of type ``int`` (or ``float``) also accept an ``str``, that will be later substituted and tried to convert to an ``int`` (or ``float``) by the action."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:2
+msgid "Migrating Packages"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:8
+msgid "There are two different kinds of package migrations:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:10
+msgid "Migrating the source code of an existing package from ROS 1 to ROS 2 with the intent that a significant part of the source code will stay the same or at least similar. An example for this is `pluginlib <https://github.com/ros/pluginlib>`_ where the source code is maintained in different branches within the same repository and common patches can be ported between those branches when necessary."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:12
+msgid "Implementing the same or similar functionality of a ROS 1 package for ROS 2 but with the assumption that the source code will be significantly different. An example for this is `roscpp <https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp>`_ in ROS 1 and `rclcpp <https://github.com/ros2/rclcpp/tree/rolling/rclcpp>`_ in ROS 2 which are separate repositories and don't share any code."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:18
+msgid "Before being able to migrate a ROS 1 package to ROS 2 all of its dependencies must be available in ROS 2."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:21
+msgid "Package format version"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:23
+msgid "ROS 2 doesn't support format 1 of the package specification but only newer format versions (2 and higher). Therefore the ``package.xml`` file must be updated to at least format 2 if it uses format 1. Since ROS 1 supports all formats it is safe to perform that conversion in the ROS 1 package."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:28
+msgid "Migrating from package format 1 to 2+"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:30
+msgid "The differences between format 1 and format 2 only affect the package.xml with its dependencies. `REP-0140 <https://www.ros.org/reps/rep-0140.html>`__ defines these differences and provides their rationale."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:33
+msgid "See :doc:`the rosdep documentation <../../Tutorials/Intermediate/Rosdep>` for more information about the various tags."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:36
+msgid "**<package>**"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:38
+msgid "The <package> tag determines which format to use, change it like this:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:45
+msgid "**<depend>**"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:47
+msgid "This is a new tag, intended to reduce unnecessary repetition. If your format 1 package contained:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:55
+msgid "It should be replaced with:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:61
+msgid "In format 2, that is equivalent to:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:71
+msgid "**<run_depend>**"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:73
+msgid "This tag is no longer allowed. Wherever found, it must be replaced:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:80
+msgid "In format 2, that is equivalent to these two new tags:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:87
+msgid "If the dependency is only used at run-time, only the ``<exec_depend>`` is needed. If it is only exported to satisfy the build dependencies of other packages, use ``<build_export_depend>``. If both are needed, this may be a better choice:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:97
+msgid "**<test_depend>**"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:99
+msgid "In format 2, this tag can satisfy build dependencies, not just those needed for executing your tests. Unlike format 1, ``<test_depend>`` may now refer to a package also declared as some other type of dependency."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:102
+msgid "Some test-only dependencies that formerly required a ``<build_depend>``, should now be expressed using ``<test_depend>``. For example:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:109
+msgid "becomes:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:115
+msgid "In your CMakeLists.txt make sure your test dependencies are only referenced within the conditional test block:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:125
+msgid "**<doc_depend>**"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:127
+msgid "This tag defines dependencies needed for building your documentation:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:134
+msgid "This does not create binary package dependencies, unless they were also declared using some other dependency tag."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:137
+msgid "Dependency names"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:139
+msgid "Dependency names that come from :doc:`rosdep <../../Tutorials/Intermediate/Rosdep>` should not need to change, as those are shared across ROS 1 and ROS 2."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:141
+msgid "Some packages released into ROS might have different names in ROS 2 so the dependencies might need to be updated accordingly."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:144
+msgid "Metapackages"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:146
+msgid "ROS 2 doesn't have a special package type for metapackages. Metapackages can still exist as regular packages that only contain runtime dependencies. When migrating metapackages from ROS 1, simply remove the ``<metapackage />`` tag in your package manifest. See :doc:`Using variants <../Using-Variants>` for more information on metapackages/variants."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:152
+msgid "Licensing"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:154
+msgid "In ROS 1 our recommended license was the `3-Clause BSD License <https://opensource.org/licenses/BSD-3-Clause>`__. In ROS 2 our recommended license is the `Apache 2.0 License <https://www.apache.org/licenses/LICENSE-2.0>`__."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:157
+msgid "For any new project we recommend using the Apache 2.0 License, whether ROS 1 or ROS 2."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:159
+msgid "However, when migrating code from ROS 1 to ROS 2 we cannot simply change the license. The existing license must be preserved for any preexisting contributions."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:162
+msgid "To that end if a package is being migrated we recommend keeping the existing license and continuing to contribute to that package under the existing OSI license, which we expect to be the BSD license for core elements."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:164
+msgid "This will keep things clear and easy to understand."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:167
+msgid "Changing the License"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst:169
+msgid "It is possible to change the license, however you will need to contact all the contributors and get permission. For most packages this is likely to be a significant effort and not worth considering. If the package has a small set of contributors then this may be feasible."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:8
+msgid "Migrating Parameters"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:14
+msgid "In ROS 1, parameters are associated with a central server that allowed retrieving parameters at runtime through the use of the network APIs. In ROS 2, parameters are associated per node and are configurable at runtime with ROS services."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:17
+msgid "See `ROS 2 Parameter design document <https://design.ros2.org/articles/ros_parameters.html>`_ for more details about the system model."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:19
+msgid "See :doc:`ROS 2 CLI usage <../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters>` for a better understanding of how the CLI tools work and its differences with ROS 1 tooling."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:22
+msgid "Migrating YAML Parameter Files"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:24
+msgid "This guide describes how to adapt ROS 1 parameters files for ROS 2."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:27
+msgid "YAML file example"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:29
+msgid "YAML is used to write parameters files in both ROS 1 and ROS 2. The main difference in ROS 2 is that node names must be used to address parameters. In addition to the fully qualified node name, we use the key \"ros__parameters\" to signal the start of parameters for the node."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:34
+msgid "For example, here is a parameters file in ROS 1:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:43
+msgid "Let's assume that the first two parameters are for a node named ``/lidar_ns/lidar_node_name``, the next parameter is for a node named ``/imu``, and the last parameter we want to set on both nodes."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:45
+msgid "We would construct our ROS 2 parameters file as follows:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:61
+msgid "Note the use of wildcards (``/**``) to indicate that the parameter ``debug`` should be set on any node in any namespace."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:64
+msgid "Feature parity"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:66
+msgid "Some features of ROS 1 parameters files do not exist in ROS 2:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:68
+msgid "Mixed types in a list is not supported yet (`related issue <https://github.com/ros2/rcl/issues/463>`_)"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst:69
+msgid "``deg`` and ``rad`` substitutions are not supported"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:7
+msgid "Migrating Python Packages"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:22
+msgid "For pure Python packages, ROS 2 uses the standard ``setup.py`` installation mechanism familiar to Python developers."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:25
+msgid "Update the files to use *setup.py*"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:27
+msgid "If the ROS 1 package uses CMake only to invoke the ``setup.py`` file and does not contain anything beside Python code (e.g. no messages, services, etc.) it should be converted into a pure Python package in ROS 2:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:30
+msgid "Update or add the build type in the ``package.xml`` file:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:39
+msgid "Remove the ``CMakeLists.txt`` file"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:42
+msgid "Update the ``setup.py`` file to be a standard Python setup script"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:44
+msgid "ROS 2 supports Python 3 only. While each package can choose to also support Python 2 it must invoke executables with Python 3 if it uses any API provided by other ROS 2 packages."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:51
+msgid "Node Initialization"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:53 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:73 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:100 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:119 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:138 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:153
+msgid "In ROS 1:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:61 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:85 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:108 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:127 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:144 ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:161
+msgid "In ROS 2:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:71
+msgid "ROS Parameters"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:98
+msgid "Creating a Publisher"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:117
+msgid "Creating a Subscriber"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:136
+msgid "Creating a Service"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst:151
+msgid "Creating a Service Client"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:2
+msgid "Migrating Scripts"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:5
+msgid "ROS CLI"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:7
+msgid "In ROS 1 there were individual commands for performing various actions, like ``rosrun``, ``rosparam``, etc."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:9
+msgid "In ROS 2, there is a single top-level commands called ``ros2``, and all of the actions are sub-commands of that, like ``ros2 run``, ``ros2 param``, etc."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:12
+msgid "ROS CLI arguments"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:14
+msgid "In ROS 1, arguments to nodes were provided directly on the command-line."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:16
+msgid "ROS 2 arguments should be scoped with ``--ros-args`` and a trailing ``--`` (the trailing double dash may be elided if no arguments follow it)."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:18
+msgid "Remapping names is similar to ROS 1, taking on the form ``from:=to``, except that it must be preceded by a ``--remap`` (or ``-r``) flag. For example:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:25
+msgid "We use a similar syntax for parameters, using the ``--param`` (or ``-p``) flag:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:31
+msgid "Note, this is different than using a leading underscore in ROS 1."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:33
+msgid "To change a node name use ``__node`` (the ROS 1 equivalent is ``__name``):"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:39
+msgid "Note the use of the ``-r`` flag. The same remap flag is needed for changing the namespace ``__ns``:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:46
+msgid "There is no equivalent in ROS 2 for the following ROS 1 keys:"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:48
+msgid "``__log`` (but ``--log-config-file`` can be used to provide a logger configuration file)"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:49
+msgid "``__ip``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:50
+msgid "``__hostname``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:51
+msgid "``__master``"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:53
+msgid "For more information, see the `design document <https://design.ros2.org/articles/ros_command_line_arguments.html>`_."
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:56
+msgid "Quick reference"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:59
+msgid "Feature"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:59
+msgid "ROS 1"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:59
+msgid "ROS 2"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:61
+msgid "remapping"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:61
+msgid "foo:=bar"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:61
+msgid "-r foo:=bar"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:63
+msgid "parameters"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:63
+msgid "_foo:=bar"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:63
+msgid "-p foo:=bar"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:65
+msgid "node name"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:65
+msgid "__name:=foo"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:65
+msgid "-r __node:=foo"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:67
+msgid "namespace"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:67
+msgid "__ns:=foo"
+msgstr ""
+
+#: ../../source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst:67
+msgid "-r __ns:=foo"
+msgstr ""
+
 #: ../../source/How-To-Guides/Node-arguments.rst:8
 msgid "Passing ROS arguments to nodes via the command-line"
 msgstr ""
@@ -2464,7 +3588,7 @@ msgid "Passing remapping arguments to specific nodes"
 msgstr ""
 
 #: ../../source/How-To-Guides/Node-arguments.rst:52
-msgid "If multiple nodes are being run within a single process (e.g. using :doc:`Composition <../Concepts/About-Composition>`), remapping arguments can be passed to a specific node using its name as a prefix. For example, the following will pass the remapping arguments to the specified nodes:"
+msgid "If multiple nodes are being run within a single process (e.g. using :doc:`Composition <../Concepts/Intermediate/About-Composition>`), remapping arguments can be passed to a specific node using its name as a prefix. For example, the following will pass the remapping arguments to the specified nodes:"
 msgstr ""
 
 #: ../../source/How-To-Guides/Node-arguments.rst:60
@@ -2532,7 +3656,7 @@ msgid "**Goal:** Override Ros2Bag QoS profile settings for recording and playbac
 msgstr ""
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:21
-msgid "With the introduction of DDS in ROS 2, Quality of Service (QoS) compatibility for publisher/subscriber nodes needs to be considered when recording and playing back data. More detail on how QoS works can be found :doc:`here <../Concepts/About-Quality-of-Service-Settings>`. For the purposes of this guide, it is sufficient to know that only the reliability and durability policies affect whether publishers/subscribers are compatible and can receive data from one other."
+msgid "With the introduction of DDS in ROS 2, Quality of Service (QoS) compatibility for publisher/subscriber nodes needs to be considered when recording and playing back data. More detail on how QoS works can be found :doc:`here <../Concepts/Intermediate/About-Quality-of-Service-Settings>`. For the purposes of this guide, it is sufficient to know that only the reliability and durability policies affect whether publishers/subscribers are compatible and can receive data from one other."
 msgstr ""
 
 #: ../../source/How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.rst:25
@@ -2800,7 +3924,7 @@ msgid "Package maintainers should also look at incoming issues on the repository
 msgstr ""
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:165
-msgid "For issues that look like questions, the issue should be closed and the user redirected to https://answers.ros.org."
+msgid "For issues that look like questions, the issue should be closed and the user redirected to `Robotics Stack Exchange <https://robotics.stackexchange.com/>`__ ."
 msgstr ""
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:167
@@ -2833,54 +3957,6 @@ msgstr ""
 
 #: ../../source/How-To-Guides/Package-maintainer-guide.rst:183
 msgid "For questions on individual issues, please tag the ROS 2 GitHub team (@ros/team), and someone on the team will take a look."
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:9
-msgid "Migrating YAML parameter files from ROS 1 to ROS 2"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:11
-msgid "This guide describes how to adapt ROS 1 parameters files for ROS 2."
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:14
-msgid "YAML file example"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:16
-msgid "YAML is used to write parameters files in both ROS 1 and ROS 2. The main difference in ROS 2 is that node names must be used to address parameters. In addition to the fully qualified node name, we use the key \"ros__parameters\" to signal the start of parameters for the node."
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:21
-msgid "For example, here is a parameters file in ROS 1:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:30
-msgid "Let's assume that the first two parameters are for a node named ``/lidar_ns/lidar_node_name``, the next parameter is for a node named ``/imu``, and the last parameter we want to set on both nodes."
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:32
-msgid "We would construct our ROS 2 parameters file as follows:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:48
-msgid "Note the use of wildcards (``/**``) to indicate that the parameter ``debug`` should be set on any node in any namespace."
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:51
-msgid "Feature parity"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:53
-msgid "Some features of ROS 1 parameters files do not exist in ROS 2:"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:55
-msgid "Mixed types in a list is not supported yet (`related issue <https://github.com/ros2/rcl/issues/463>`_)"
-msgstr ""
-
-#: ../../source/How-To-Guides/Parameters-YAML-files-migration-guide.rst:56
-msgid "``deg`` and ``rad`` substitutions are not supported"
 msgstr ""
 
 #: ../../source/How-To-Guides/RQt-Port-Plugin-Windows.rst:8
@@ -3064,7 +4140,7 @@ msgid "Using RQt"
 msgstr ""
 
 #: ../../source/How-To-Guides/RQt-Source-Install.rst:110
-msgid "See :doc:`Overview of RQt <../Concepts/About-RQt>`."
+msgid "See :doc:`Overview of RQt <../Concepts/Intermediate/About-RQt>`."
 msgstr ""
 
 #: ../../source/How-To-Guides/RQt-Source-Install-MacOS.rst:7
@@ -4072,7 +5148,7 @@ msgid "Topics vs Services vs Actions"
 msgstr ""
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:10
-msgid "When designing a system there are three primary styles of interfaces. The specifications for the content is in the :doc:`Interfaces Overview <../Concepts/About-ROS-Interfaces>`. This is written to provide the reader with guidelines about when to use each type of interface."
+msgid "When designing a system there are three primary styles of interfaces. The specifications for the content is in the :doc:`Interfaces Overview <../Concepts/Basic/About-Interfaces>`. This is written to provide the reader with guidelines about when to use each type of interface."
 msgstr ""
 
 #: ../../source/How-To-Guides/Topics-Services-Actions.rst:15
@@ -4268,7 +5344,7 @@ msgid "Using Callback Groups"
 msgstr ""
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:4
-msgid "When running a node in a Multi-Threaded Executor, ROS 2 offers callback groups as a tool for controlling the execution of different callbacks. This page is meant as a guide on how to use callback groups efficiently. It is assumed that the reader has a basic understanding about the concept of :doc:`executors <../Concepts/About-Executors>`."
+msgid "When running a node in a Multi-Threaded Executor, ROS 2 offers callback groups as a tool for controlling the execution of different callbacks. This page is meant as a guide on how to use callback groups efficiently. It is assumed that the reader has a basic understanding about the concept of :doc:`executors <../Concepts/Intermediate/About-Executors>`."
 msgstr ""
 
 #: ../../source/How-To-Guides/Using-callback-groups.rst:14
@@ -4576,7 +5652,7 @@ msgid "Using the ``ros2 param`` command-line tool"
 msgstr ""
 
 #: ../../source/How-To-Guides/Using-ros2-param.rst:8
-msgid "Parameters in ROS 2 can be get, set, listed, and described through a set of services as described in :doc:`the concept document <../Concepts/About-ROS-2-Parameters>`. The ``ros2 param`` command-line tool is a wrapper around these service calls that makes it easy to manipulate parameters from the command-line."
+msgid "Parameters in ROS 2 can be get, set, listed, and described through a set of services as described in :doc:`the concept document <../Concepts/Basic/About-Parameters>`. The ``ros2 param`` command-line tool is a wrapper around these service calls that makes it easy to manipulate parameters from the command-line."
 msgstr ""
 
 #: ../../source/How-To-Guides/Using-ros2-param.rst:12
@@ -4640,7 +5716,7 @@ msgid "``ros2 param delete``"
 msgstr ""
 
 #: ../../source/How-To-Guides/Using-ros2-param.rst:83
-msgid "This command will remove a parameter from a particular node. However, note that this can only remove dynamic parameters (not declared parameters). See :doc:`the concept document <../Concepts/About-ROS-2-Parameters>` for more information."
+msgid "This command will remove a parameter from a particular node. However, note that this can only remove dynamic parameters (not declared parameters). See :doc:`the concept document <../Concepts/Basic/About-Parameters>` for more information."
 msgstr ""
 
 #: ../../source/How-To-Guides/Using-ros2-param.rst:92
@@ -4924,7 +6000,7 @@ msgid "This page explains the default RMW implementation and how to specify an a
 msgstr ""
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:19
-msgid "You should have already read the :doc:`DDS and ROS middleware implementations page <../Concepts/About-Different-Middleware-Vendors>`."
+msgid "You should have already read the :doc:`DDS and ROS middleware implementations page <../Concepts/Intermediate/About-Different-Middleware-Vendors>`."
 msgstr ""
 
 #: ../../source/How-To-Guides/Working-with-multiple-RMW-implementations.rst:22
