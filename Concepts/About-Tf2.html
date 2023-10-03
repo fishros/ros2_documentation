@@ -2,14 +2,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-            <link rel="canonical" href="https://docs.ros.org/en/humble/Intermediate/About-Tf2.html" />
-            <meta http-equiv="refresh" content="0; url=Intermediate/About-Tf2.html" />
-            <script>
-                window.location.href = 'Intermediate/About-Tf2.html';
-            </script>
-        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About-Tf2 &mdash; ROS 2 Documentation: Humble  documentation</title>
+  <title>About tf2 &mdash; ROS 2 Documentation: Humble  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -27,10 +21,11 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About the build system" href="About-Build-System.html" />
+    <link rel="prev" title="About ROS 2 Security" href="About-Security.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +44,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (binary)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">Alternatives</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu (source)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu (binary)</a></li>
@@ -86,9 +81,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill changelog</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">Development Distribution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (codename ‘jazzy’; May, 2024)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">End-of-Life Distributions</a><ul>
@@ -96,7 +92,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone changelog</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor (<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata (<code class="docutils literal notranslate"><span class="pre">dashing</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>)</a></li>
@@ -198,7 +193,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">Unlocking the potential of Fast DDS middleware [community-contributed]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">Recording a bag from a node (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">Recording a bag from a node (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">Simulators</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">Installation (Ubuntu)</a></li>
@@ -206,8 +200,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">Installation (macOS)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">Setting up a robot simulation (Basic)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">Setting up a robot simulation (Advanced)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo</a><ul>
@@ -252,18 +244,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">Developing a ROS 2 package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake user documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python user documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">Using Python, XML, and YAML for ROS 2 Launch Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">Using ROS 2 launch to launch composable nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">Passing ROS arguments to nodes via the command-line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">Synchronous vs. asynchronous service clients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS tuning information</a></li>
@@ -299,40 +283,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">Discovery</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">Topics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">Services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">Actions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">Introspection with command line tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">Launch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">The ROS_DOMAIN_ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">Executors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">Overview and usage of RQt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">Cross-compilation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">Concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">The ROS_DOMAIN_ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">About different ROS 2 DDS/RTPS vendors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Logging.html">About logging and logger configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">About Quality of Service settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">Executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">Introspection with command line tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">Overview and usage of RQt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">About Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">On the mixing of ament and catkin (catment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">About Cross-compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Security.html">About ROS 2 Security</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">About tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">About the build system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">About internal ROS 2 interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">Contact</a></li>
@@ -341,6 +312,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2 developer guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">Code style and language versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">Quality guide: ensuring code quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">Migration guide from ROS 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">Python migration guide from ROS 1</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS Build Farms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows Tips and Tricks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">Contributing to ROS 2 Documentation</a></li>
@@ -353,7 +328,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">Project Governance</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 Technical Steering Committee Charter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC applicant intake process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">How to Start a Community Working Group</a></li>
 </ul>
 </li>
@@ -384,8 +358,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>About-Tf2</li>
+          <li><a href="../Concepts.html">Concepts</a> &raquo;</li>
+      <li>About tf2</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Tf2.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -393,9 +369,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
+
+
+  <div class="section" id="about-tf2">
+<span id="abouttf2"></span><h1>About tf2<a class="headerlink" href="#about-tf2" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#properties-of-tf2" id="id2">Properties of tf2</a></p></li>
+<li><p><a class="reference internal" href="#tutorials" id="id3">Tutorials</a></p></li>
+<li><p><a class="reference internal" href="#paper" id="id4">Paper</a></p></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>tf2 is the transform library, which lets the user keep track of multiple coordinate frames over time.
+tf2 maintains the relationship between coordinate frames in a tree structure buffered in time and lets the user transform points, vectors, etc. between any two coordinate frames at any desired point in time.</p>
+<img alt="../_images/ros2_tf2_frames.png" src="../_images/ros2_tf2_frames.png" />
+</div>
+<div class="section" id="properties-of-tf2">
+<h2><a class="toc-backref" href="#id2">Properties of tf2</a><a class="headerlink" href="#properties-of-tf2" title="Permalink to this headline"></a></h2>
+<p>A robotic system typically has many 3D coordinate frames that change over time, such as a world frame, base frame, gripper frame, head frame, etc.
+tf2 keeps track of all these frames over time, and allows you to ask questions like:</p>
+<ul class="simple">
+<li><p>Where was the head frame relative to the world frame 5 seconds ago?</p></li>
+<li><p>What is the pose of the object in my gripper relative to my base?</p></li>
+<li><p>What is the current pose of the base frame in the map frame?</p></li>
+</ul>
+<p>tf2 can operate in a distributed system.
+This means all the information about the coordinate frames of a robot is available to all ROS 2 components on any computer in the system.
+tf2 can have every component in your distributed system build its own transform information database or have a central node that gathers and stores all transform information.</p>
+</div>
+<div class="section" id="tutorials">
+<h2><a class="toc-backref" href="#id3">Tutorials</a><a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h2>
+<p>We created a set of <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Tf2-Main.html"><span class="doc">tutorials</span></a> that walks you through using tf2, step by step.
+You can get started on the <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html"><span class="doc">introduction to tf2</span></a> tutorial.
+For a complete list of all tf2 and tf2-related tutorials check out the <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Tf2-Main.html"><span class="doc">tutorials</span></a> page.</p>
+<p>There are essentially two main tasks that any user would use tf2 for, listening for transforms and broadcasting transforms.</p>
+<p>If you want to use tf2 to transform between coordinate frames, your nodes will need to listen for transforms.
+What you will do is receive and buffer all coordinate frames that are broadcasted in the system, and query for specific transforms between frames.
+Check out the “Writing a listener” tutorial <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html"><span class="doc">(Python)</span></a> <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html"><span class="doc">(C++)</span></a> to learn more.</p>
+<p>To extend the capabilities of a robot, you will need to start broadcasting transforms.
+Broadcasting transforms means to send out the relative pose of coordinate frames to the rest of the system.
+A system can have many broadcasters that each provide information about a different part of the robot.
+Check out the “Writing a broadcaster” tutorial <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html"><span class="doc">(Python)</span></a> <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html"><span class="doc">(C++)</span></a> to learn more.</p>
+<p>In addition to that, tf2 can broadcast static transforms that do not change over time.
+This mainly saves storage and lookup time, but also reduces the publishing overhead.
+You should note that static transforms are published once and assumed to not change, so no history is stored.
+If you want to define static transforms in your tf2 tree, take a look at the “Writing a static broadcaster” <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html"><span class="doc">(Python)</span></a> <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html"><span class="doc">(C++)</span></a> tutorial.</p>
+<p>You can also learn how to add fixed and dynamic frames to your tf2 tree in the “Adding a frame” <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.html"><span class="doc">(Python)</span></a> <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.html"><span class="doc">(C++)</span></a> tutorial.</p>
+<p>Once you are finished with the basic tutorials, you can move on to learn about tf2 and time.
+The tf2 and time tutorial <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html"><span class="doc">(Python)</span></a> <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html"><span class="doc">(C++)</span></a> teaches the basic principles of tf2 and time.
+The advanced tutorial about tf2 and time <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.html"><span class="doc">(Python)</span></a> <a class="reference internal" href="../Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html"><span class="doc">(C++)</span></a> teaches the principles of time traveling with tf2.</p>
+</div>
+<div class="section" id="paper">
+<h2><a class="toc-backref" href="#id4">Paper</a><a class="headerlink" href="#paper" title="Permalink to this headline"></a></h2>
+<p>There is a paper on tf2 presented at TePRA 2013: <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/6556373">tf: The transform library</a>.</p>
+</div>
+</div>
+
+
+
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="About-Security.html" class="btn btn-neutral float-left" title="About ROS 2 Security" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="About-Build-System.html" class="btn btn-neutral float-right" title="About the build system" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
