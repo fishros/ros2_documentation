@@ -155,12 +155,12 @@ Check that variables like ``ROS_DISTRO`` and ``ROS_VERSION`` are set.
   ROS_DISTRO={DISTRO}
 
 If the environment variables are not set correctly, return to the ROS 2 package installation section of the installation guide you followed.
-If you need more specific help (because environment setup files can come from different places), you can `get answers <https://robotics.stackexchange.com/>`__ from the community.
+If you need more specific help (because environment setup files can come from different places), you can `get answers <https://answers.ros.org>`__ from the community.
 
 3.1 The ``ROS_DOMAIN_ID`` variable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See the `domain ID <../../Concepts/Intermediate/About-Domain-ID>` article for details on ROS domain IDs.
+See the `domain ID <../../Concepts/About-Domain-ID>` article for details on ROS domain IDs.
 
 Once you have determined a unique integer for your group of ROS 2 nodes, you can set the environment variable with the following command:
 

@@ -41,6 +41,7 @@ The current members of the ROS 2 TSC are (23 as of 2022-02-01):
 .. |robotis| image:: Governance/images/robotis.png
 .. |ros2| image:: Governance/images/ros2_logo.png
 .. |rosindustrial| image:: Governance/images/ros-industrial.png
+.. |samsung| image:: Governance/images/samsung.svg
 .. |sony| image:: Governance/images/sony.png
 .. |tri| image:: Governance/images/tri_logo_landscape-web.svg
 .. |windriver| image:: Governance/images/windriver.png
@@ -110,7 +111,7 @@ The current members of the ROS 2 TSC are (23 as of 2022-02-01):
         </tr>
         <tr class="tscclass">
           <td class="tscclass" align="center"><p><a class="reference internal" href="https://ubuntu.com"><img alt="Ubuntu logo" src="../_images/ubuntu.svg" style="height: 35px;" /></a></p></td>
-          <td class="tscclass" align="center"><p>Canonical: Mirko Ferrati</p></td>
+          <td class="tscclass" align="center"><p>Canonical: Jeremie Deray</p></td>
         </tr>
         <tr class="tscclass">
           <td class="tscclass" align="center"><p><a class="reference internal" href="https://eprosima.com"><img alt="eProsima logo" src="../_images/eprosima.svg" style="height: 35px;" /></a></p></td>
@@ -151,6 +152,10 @@ The current members of the ROS 2 TSC are (23 as of 2022-02-01):
         <tr class="tscclass">
           <td class="tscclass" align="center"><p><a class="reference internal" href="https://rosindustrial.org/about/description/"><img alt="ROS Industriallogo" src="../_images/ros-industrial.png" style="height: 35px;" /></a></p></td>
           <td class="tscclass" align="center"><p>ROS-Industrial: Matt Robinson</p></td>
+        </tr>
+        <tr class="tscclass">
+          <td class="tscclass" align="center"><p><a class="reference internal" href="https://www.samsung.com"><img alt="Samsung logo" src="../_images/samsung.svg" style="height: 25px;" /></a></p></td>
+          <td class="tscclass" align="center"><p>Samsung: TBD</p></td>
         </tr>
         <tr class="tscclass">
           <td class="tscclass" align="center"><p><a class="reference internal" href="https://www.sony.com"><img alt="Sony logo" src="../_images/sony.png" style="height: 60px;" /></a></p></td>
@@ -195,14 +200,130 @@ If you are interested in joining the ROS 2 TSC, please inquire via info@openrobo
 
    Governance/ROS2-TSC-Charter
    Governance/ROS2-TSC-Intake-process
-   Governance/Working-Groups
    Governance/How-To-Start-A-Community-Working-Group
 
 Working Groups (WGs)
 --------------------
 
 As described in its :doc:`charter <Governance/ROS2-TSC-Charter>`, the TSC establishes working groups (WGs) to discuss and make progress on specific topics.
-More information about working groups, along with a list of active ROS 2 working groups :doc:`can be found here <Governance/Working-Groups>`.
+
+The current WGs are (12 as of 2021-01-12):
+
+Client Libraries
+^^^^^^^^^^^^^^^^
+
+* Lead(s): Geoffrey Biggs, Alberto Soragna
+* Note: **This working group is currently on hiatus. Meetings will resume at some point in the future TBD.**
+* Resources:
+
+ * Meeting invite group: `ros-client-libraries-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-client-libraries-working-group-invites>`_
+ * `Meeting minutes and agendas <https://docs.google.com/document/d/1MAMQisfbITOR4eDyCBhTEaFJ3QBNW38S7Z7RpBBSSvg/edit>`_
+ * Working group charter: https://github.com/ros2-client-libraries-wg/community
+ * Discourse tag: `wg-client-libraries <https://discourse.ros.org/tags/wg-client-libraries>`_
+
+Control
+^^^^^^^
+
+* Lead(s): Bence Magyar
+* Resources:
+
+ * Webite link: https://control.ros.org
+ * Meeting invite group `ros-control-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-control-working-group-invites>`_
+ * Discourse tag: `wg-ros2-control <https://discourse.ros.org/tags/wg-ros2-control>`_
+
+Embedded Systems
+^^^^^^^^^^^^^^^^
+
+* Lead(s): Lara Moreno, Pablo Garrido
+* Resources:
+
+ * `2019-07-29 meeting notes <https://discourse.ros.org/uploads/short-url/z1caIm7m5IVP4cPJUwg3Chq36wO.pdf>`__
+ * `2019-01-15 meeting notes <https://discourse.ros.org/t/ros2-embedded-sig-meeting-2/7243/5>`__
+ * Meeting invite group `ros-embedded-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-embedded-working-group-invites>`_
+ * Discourse tag: `wg-embedded <https://discourse.ros.org/tag/wg-embedded>`_
+
+Middleware
+^^^^^^^^^^
+
+* Lead(s): William Woodall
+* Resources:
+
+ * Meeting invite group `ros-middleware-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-middleware-working-group-invites>`_
+ * Discourse tag: `wg-middleware <https://discourse.ros.org/tag/wg-middleware>`_
+
+Navigation
+^^^^^^^^^^
+
+* Lead(s): Steve Macenski
+* Resources:
+
+ * `2019-03-17 meeting notes <https://discourse.ros.org/t/ros2-navigation-wg-thursday-3-00-pm-pacific-gmt-7-00/7586/9>`__
+
+ * Meeting invite group `ros-navigation-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-navigation-working-group-invites>`_
+ * Discourse tag: `wg-navigation <https://discourse.ros.org/tag/wg-navigation>`_
+ * Discourse Channel: `Navigation Stack <https://discourse.ros.org/c/navigation/44>`_
+ * Slack Group: `Nav2 Slack <https://join.slack.com/t/navigation2/shared_invite/zt-uj428p0x-jKx8U7OzK1IOWp5TnDS2rA>`_
+
+Manipulation
+^^^^^^^^^^^^
+
+* Lead(s): Henning Kayser
+* Resources:
+
+ * `About our working group meetings <https://discourse.ros.org/t/moveit-maintainer-meeting-all-invited-july-25th/9899>`__
+
+ * Meeting invite group `ros-manipulation-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-manipulation-working-group-invites>`_
+ * Discourse tag: `wg-moveit <https://discourse.ros.org/tag/moveit2>`_
+ * Discourse Channel: `MoveIt <https://discourse.ros.org/c/moveit>`_
+
+Real-time
+^^^^^^^^^
+
+* Lead(s): Andrei Kholodnyi, Carlos San Vicente
+* Resources:
+
+ * `Working group website <https://real-time-working-group.readthedocs.io/>`__
+ * `Working Group Community <https://github.com/ros-realtime/community>`__
+ * Meeting invite group `ros-real-time-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-real-time-working-group-invites>`_
+ * Discourse tag: `wg-real-time <https://discourse.ros.org/tag/wg-real-time>`_
+ * Matrix chat `+ros-realtime:matrix.org <https://matrix.to/#/+ros-realtime:matrix.org>`_
+
+.. _Security Working Group:
+
+Security
+^^^^^^^^
+
+* Lead(s): Jeremie Deray
+* Resources:
+
+ * `ROS 2 Security Working Group Community <https://github.com/ros-security/community>`__
+ * Meeting invite group `ros-security-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-security-working-group-invites>`_
+ * Discourse tag: `wg-security <https://discourse.ros.org/tag/wg-security>`_
+ * Matrix chat `+rosorg-security:matrix.org <https://matrix.to/#/+rosorg-security:matrix.org>`_
+
+Rosbag2 and Tooling
+^^^^^^^^^^^^^^^^^^^
+
+* Lead(s): Michael Orlov
+* Resources:
+
+ * `Charter <https://github.com/ros-tooling/community>`__
+ * `Meeting Notes <https://docs.google.com/document/d/1Dsg_9XZQPhihpKQGQWMYTz2doGH4P2cAaNqr60cuNgw/edit>`__
+ * Meeting invite group `ros-tooling-working-group-invites@googlegroups.com <https://groups.google.com/forum/#!forum/ros-tooling-working-group-invites>`_
+ * Discourse tag: `wg-tooling <https://discourse.ros.org/tag/wg-tooling>`_
+ * Matrix chat `+ros-tooling:matrix.org <https://matrix.to/#/+ros-tooling:matrix.org>`_
+
+
+If you'd like to join an existing ROS 2 WG, please contact the appropriate group lead(s) directly.
+If you'd like to create a new WG, please inquire via info@openrobotics.org.
+
+
+Working Group Policies
+----------------------
+
+ * Meetings should be posted to the Google calendar as well as announced on Discourse.
+ * Meetings should have notes and be posted to Discourse using appropriate working group tag.
+ * For attending the groups meetings please join the associated google group to get invites automatically.
 
 Upcoming ROS Events
 -------------------
@@ -212,37 +333,8 @@ It can be accessed via `iCal <https://calendar.google.com/calendar/ical/agf3kaji
 
 .. raw:: html
 
-    <!--
-    The below code comes from https://www.mpking.com/2021/04/making-google-calendar-embeddable.html.
-    The basic idea is that if we are on a desktop device (defined as anything that has more than 767 pixels),
-    then we show the monthly version of the calendar. If we are on a device with 767 or less, show the agenda
-    version, which is much narrower.
-    -->
-    <style>
-      .responsiveCal {
-        position: relative; padding-bottom: 75%; height: 0; overflow: hidden;
-      }
+    <iframe src="https://calendar.google.com/calendar/embed?src=agf3kajirket8khktupm9go748%40group.calendar.google.com" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
-      .responsiveCal iframe {
-        position: absolute; top:0; left: 0; width: 100%; height: 100%;
-      }
 
-      @media all and (min-width: 768px) {
-        .deskContent {display:block;}
-        .phoneContent {display:none;}
-      }
-
-      @media all and (max-width: 767px) {
-        .deskContent {display:none;}
-        .phoneContent {display:block;}
-      }
-    </style>
-    <div class="responsiveCal">
-      <div class="deskContent">
-        <iframe src="https://calendar.google.com/calendar/embed?src=agf3kajirket8khktupm9go748%40group.calendar.google.com" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-      </div>
-      <div class="phoneContent"><iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=400&amp;wkst=1&amp;src=agf3kajirket8khktupm9go748%40group.calendar.google.com" style="border: 0" width="280" height="500" frameborder="0" scrolling="no"></iframe>
-      </div>
-    </div>
 
 If you have an individual event or series of events that you'd like to post please contact info@openrobotics.org
