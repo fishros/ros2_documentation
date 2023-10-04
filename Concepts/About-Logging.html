@@ -2,14 +2,8 @@
 <html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8" />
-            <link rel="canonical" href="https://docs.ros.org/en/humble/Intermediate/About-Logging.html" />
-            <meta http-equiv="refresh" content="0; url=Intermediate/About-Logging.html" />
-            <script>
-                window.location.href = 'Intermediate/About-Logging.html';
-            </script>
-        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About-Logging &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于日志记录和日志记录器配置 [7008] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -30,7 +24,9 @@
         <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" /> 
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="关于服务质量设置 [7116]" href="About-Quality-of-Service-Settings.html" />
+    <link rel="prev" title="关于不同的ROS 2 DDS/RTPS供应商 [6837]" href="About-Different-Middleware-Vendors.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +45,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装 []</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages) [校准]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages) [校准]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案 [7555]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
@@ -86,9 +82,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版 [8317]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>) [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
@@ -96,7 +93,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
@@ -142,7 +138,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Tutorials/Intermediate.html">中级 [5283]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
@@ -198,7 +194,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++) [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
@@ -206,8 +201,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node [校准]</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
@@ -252,18 +245,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2 [校准]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
@@ -299,40 +284,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念 [校准]</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts [校准]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">节点 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">发现 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">主题 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">服务 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">动作 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">参数 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">使用命令行工具进行内省 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">启动 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries [校准]</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts [校准]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">执行器 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">交叉编译 [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2 [校准]</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts [校准]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations [校准]</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念 [6621]</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于日志记录和日志记录器配置 [7008]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器 [6909]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合 [6800]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Security.html">关于ROS 2安全性 [7411]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">关于tf2 [7431]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统 [6657]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系 [7468]</a></li>
@@ -341,6 +313,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
@@ -353,7 +329,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
 </ul>
 </li>
@@ -384,8 +359,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>About-Logging</li>
+          <li><a href="../Concepts.html">概念 [6621]</a> &raquo;</li>
+      <li>关于日志记录和日志记录器配置 [7008]</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Logging.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
   </ul>
   <hr/>
@@ -393,22 +370,202 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
+
+
+  <div class="section" id="about-logging-and-logger-configuration">
+<h1>关于日志记录和日志记录器配置 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7008">[7008]</a><a class="headerlink" href="#about-logging-and-logger-configuration" title="永久链接至标题"></a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6709">[]</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">概述 [6823]</a></p></li>
+<li><p><a class="reference internal" href="#severity-level" id="id2">严重程度级别 [7015]</a></p></li>
+<li><p><a class="reference internal" href="#apis" id="id3">API [7020]</a></p></li>
+<li><p><a class="reference internal" href="#configuration" id="id4">配置 [7045]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#environment-variables" id="id5">环境变量 [7047]</a></p></li>
+<li><p><a class="reference internal" href="#node-creation" id="id6">节点创建 [7064]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#logging-subsystem-design" id="id7">日志子系统设计 [7071]</a></p>
+<ul>
+<li><p><a class="reference internal" href="#rcutils" id="id8">rcutils [7074]</a></p></li>
+<li><p><a class="reference internal" href="#rcl-logging-spdlog" id="id9">rcl_logging_spdlog [7077]</a></p></li>
+<li><p><a class="reference internal" href="#rcl" id="id10">rcl [7079]</a></p></li>
+<li><p><a class="reference internal" href="#rclcpp" id="id11">rclcpp [7084]</a></p></li>
+<li><p><a class="reference internal" href="#rclpy" id="id12">rclpy [7086]</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#logging-usage" id="id13">记录用法 [7088]</a></p></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6823">[6823]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<p>ROS 2 中的日志记录子系统旨在将日志消息传递到各种目标，包括： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7009">[7009]</a></p>
+<ul class="simple">
+<li><p>输出到控制台（如果有连接的话） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7010">[7010]</a></p></li>
+<li><p>输出到磁盘上的日志文件（如果有本地存储可用） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7011">[7011]</a></p></li>
+<li><p>输出到ROS 2网络上的``/rosout``主题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7012">[7012]</a></p></li>
+</ul>
+<p>默认情况下，ROS 2节点中的日志消息将输出到控制台（stderr）、输出到磁盘上的日志文件以及输出到ROS 2网络上的``/rosout``主题。所有这些目标都可以在每个节点上独立启用或禁用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7013">[7013]</a></p>
+<p>本文档的其余部分将介绍日志子系统背后的一些概念。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7014">[7014]</a></p>
+</div>
+<div class="section" id="severity-level">
+<h2>严重程度级别 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7015">[7015]</a><a class="headerlink" href="#severity-level" title="永久链接至标题"></a></h2>
+<p>日志消息与严重级别关联：<a href="#id1"><span class="problematic" id="id2">``</span></a>DEBUG``（调试）、<a href="#id3"><span class="problematic" id="id4">``</span></a>INFO``（信息）、<a href="#id5"><span class="problematic" id="id6">``</span></a>WARN``（警告）、<a href="#id7"><span class="problematic" id="id8">``</span></a>ERROR``（错误）或 <a href="#id9"><span class="problematic" id="id10">``</span></a>FATAL``（致命），按升序排列。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7016">[7016]</a></p>
+<p>记录器仅处理具有不低于记录器指定级别的严重级别的日志消息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7017">[7017]</a></p>
+<p>每个节点都有一个与之关联的记录器，自动包含节点的名称和命名空间。如果节点的名称在外部重映射为源代码中定义的其他内容，则会反映在记录器名称中。还可以创建使用特定名称的非节点记录器。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7018">[7018]</a></p>
+<p>记录器名称表示层次结构。如果名称为“abc.def”的记录器的级别未设置，它将推迟到其父级名称为“abc”的级别，如果该级别也未设置，则使用默认记录器级别。更改记录器“abc”的级别时，除非明确设置了它们的级别，否则会影响其所有后代（例如“abc.def”、“abc.ghi.jkl”）的级别。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7019">[7019]</a></p>
+</div>
+<div class="section" id="apis">
+<h2>API <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7020">[7020]</a><a class="headerlink" href="#apis" title="永久链接至标题"></a></h2>
+<p>这些是ROS 2日志记录基础设施的终端用户应使用的API，按客户端库进行划分。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7021">[7021]</a></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}</span></code> - 每次执行到这行时输出给定的 printf 样式的消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7022">[7022]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_ONCE</span></code> - 仅在第一次执行到这行时输出给定的 printf 样式的消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7023">[7023]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_EXPRESSION</span></code> - 仅在给定表达式为真时输出给定的 printf 样式的消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7024">[7024]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_FUNCTION</span></code> - 仅在给定函数返回 true 时输出给定的 printf 样式的消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7025">[7025]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_SKIPFIRST</span></code> - 第一次执行到这行时除外，输出给定的 printf 样式的消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7026">[7026]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_THROTTLE</span></code> - 以整数毫秒为单位，输出不超过给定速率的 printf 样式的消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7027">[7027]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_SKIPFIRST_THROTTLE</span></code> - 按照给定的整数毫秒速率输出printf风格的消息，但跳过第一次 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7028">[7028]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM</span></code> - 每次执行到此行时，输出给定的C++流式消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7029">[7029]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_ONCE</span></code> - 仅在第一次执行到此行时，输出给定的C++流式消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7030">[7030]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_EXPRESSION</span></code> - 仅在给定表达式为真时，输出给定的C++流式消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7031">[7031]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_FUNCTION</span></code> - 仅在给定函数返回真时，输出给定的C++流式消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7032">[7032]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_SKIPFIRST</span></code> - 第一次执行到此行时以外的其他时间，输出给定的C++流式消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7033">[7033]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_THROTTLE</span></code> - 以整数毫秒的速率输出给定的C++流式消息，不超过指定的速率 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7034">[7034]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCLCPP_{DEBUG,INFO,WARN,ERROR,FATAL}_STREAM_SKIPFIRST_THROTTLE</span></code> - 以整数毫秒的速率输出给定的C++流式消息，不超过指定的速率，但跳过第一个消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7035">[7035]</a></p></li>
+</ul>
+<p>上述每个API的第一个参数都需要传递一个``rclcpp::Logger``对象。可以通过调用``node-&gt;get_logger()``（推荐）从节点API中获取该对象，或者构建一个独立的``rclcpp::Logger``对象。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7036">[7036]</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_logging_set_logger_level</span></code> - 将特定记录器名称的日志级别设置为给定的严重级别 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7037">[7037]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rcutils_logging_get_logger_effective_level</span></code> - 给定记录器名称，返回记录器的级别（可能未设置） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7038">[7038]</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">logger.{debug,info,warning,error,fatal}</span></code> - 将给定的Python字符串输出到日志记录基础设施。这些调用接受以下关键字参数来控制行为： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7039">[7039]</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">throttle_duration_sec</span></code> - 如果不是 None，则为浮点数秒数的节流间隔持续时间 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7040">[7040]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skip_first</span></code> - 如果为 True，则在第一次命中此行之外的所有时间输出消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7041">[7041]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">once</span></code> - 如果为 True，则仅在第一次命中此行时输出消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7042">[7042]</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rclpy.logging.set_logger_level</span></code> - 将特定日志记录器名称的日志记录级别设置为给定的严重级别 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7043">[7043]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rclpy.logging.get_logger_effective_level</span></code> - 给定日志记录器名称，返回日志记录级别（可能未设置） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7044">[7044]</a></p></li>
+</ul>
+</div></div>
+</div>
+<div class="section" id="configuration">
+<h2>配置 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7045">[7045]</a><a class="headerlink" href="#configuration" title="永久链接至标题"></a></h2>
+<p>由于``rclcpp``和``rclpy``使用相同的底层日志记录基础设施，配置选项是相同的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7046">[7046]</a></p>
+<div class="section" id="environment-variables">
+<h3>环境变量 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7047">[7047]</a><a class="headerlink" href="#environment-variables" title="永久链接至标题"></a></h3>
+<p>以下环境变量控制ROS 2日志记录器的某些方面。对于每个环境设置，请注意这是一个进程级的设置，因此适用于该进程中的所有节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7048">[7048]</a></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROS_LOG_DIR</span></code> - 控制用于将日志消息写入磁盘的日志目录（如果启用）。如果非空，则使用此变量中指定的确切目录。如果为空，则使用``ROS_HOME``环境变量的内容构建路径，形式为``$ROS_HOME/.log``。在所有情况下，<a href="#id1"><span class="problematic" id="id2">``</span></a>~``字符会扩展为用户的主目录。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7049">[7049]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROS_HOME</span></code> - 控制用于各种ROS文件（包括日志和配置文件）的主目录。在日志记录的上下文中，此变量用于构建用于日志文件的目录路径。如果非空，则使用此变量的内容作为ROS_HOME路径。在所有情况下，<a href="#id1"><span class="problematic" id="id2">``</span></a>~``字符会扩展为用户的主目录。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7050">[7050]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_USE_STDOUT</span></code> - 控制输出消息流的目标。如果未设置或为0，则使用stderr。如果为1，则使用stdout。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7051">[7051]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_BUFFERED_STREAM</span></code> - 控制日志流（如在 <code class="docutils literal notranslate"><span class="pre">RCUTILS_LOGGING_USE_STDOUT</span></code> 中配置）是否应该是行缓冲或无缓冲的。如果未设置此项，则使用流的默认设置（通常为标准输出的行缓冲，标准错误输出的无缓冲）。如果设置为 0，则强制将流设置为无缓冲。如果设置为 1，则强制将流设置为行缓冲。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7052">[7052]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_COLORIZED_OUTPUT</span></code> - 控制是否在输出消息时使用颜色。如果未设置此项，则根据平台和控制台是否为 TTY 自动确定。如果设置为 0，则强制禁用输出时使用颜色。如果设置为 1，则强制启用输出时使用颜色。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7053">[7053]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RCUTILS_CONSOLE_OUTPUT_FORMAT</span></code> - 控制每条日志消息输出的字段。可用字段有： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7054">[7054]</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{severity}</span></code> - 严重级别。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7055">[7055]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{name}</span></code> - 日志记录器的名称（可能为空）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7056">[7056]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{message}</span></code> - 日志消息（可能为空）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7057">[7057]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{function_name}</span></code> - 调用此函数的函数名称（可能为空）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7058">[7058]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{file_name}</span></code> - 调用此函数的文件名（可能为空）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7059">[7059]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{time}</span></code> - 自纪元以来的秒数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7060">[7060]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{time_as_nanoseconds}</span></code> - 自纪元以来的纳秒数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7061">[7061]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{line_number}</span></code> - 调用此函数的行号（可能为空）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7062">[7062]</a></p></li>
+</ul>
+<p>如果未提供格式，则使用默认格式 <code class="docutils literal notranslate"><span class="pre">[{severity}]</span> <span class="pre">[{time}]</span> <span class="pre">[{name}]:</span> <span class="pre">{message}</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7063">[7063]</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="node-creation">
+<h3>节点创建 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7064">[7064]</a><a class="headerlink" href="#node-creation" title="永久链接至标题"></a></h3>
+<p>当初始化ROS 2节点时，可以通过节点选项来控制一些行为方面的细节。由于这些是每个节点的选项，即使将节点组合到单个进程中，也可以为不同的节点设置不同的选项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7065">[7065]</a></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">log_levels</span></code> - 在此特定节点内使用的组件的日志级别。可以使用以下命令设置：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--log-level</span> <span class="pre">talker:=DEBUG</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7066">[7066]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">external_log_config_file</span></code> - 用于配置后端日志记录器的外部文件。如果为NULL，则将使用默认配置。请注意，此文件的格式是特定于后端的（当前未实现默认后端记录器spdlog的配置）。可以使用以下命令设置：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--log-config-file</span> <span class="pre">log-config.txt</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7067">[7067]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_stdout_disabled</span></code> - 是否禁止将日志消息写入控制台。可以使用以下命令执行：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-stdout-logs</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7068">[7068]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_rosout_disabled</span></code> - 是否禁止将日志消息写入``/rosout``。这可以大大节省网络带宽，但外部观察者将无法监视日志记录。可以使用以下命令执行：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-rosout-logs</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7069">[7069]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_ext_lib_disabled</span></code> - 是否完全禁用外部日志记录器的使用。在某些情况下，这可能更快，但意味着日志不会写入磁盘。可以使用以下命令来实现：<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">demo_nodes_cpp</span> <span class="pre">talker</span> <span class="pre">--ros-args</span> <span class="pre">--disable-external-lib-logs</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7070">[7070]</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="logging-subsystem-design">
+<h2>日志子系统设计 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7071">[7071]</a><a class="headerlink" href="#logging-subsystem-design" title="永久链接至标题"></a></h2>
+<p>下图显示了日志子系统的五个主要组件及其交互方式。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7072">[7072]</a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/ros2_logging_architecture.png"><img alt="ROS 2 日志架构 `[7073] &lt;http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7073&gt;`_ " src="../_images/ros2_logging_architecture.png" style="width: 550px;" /></a>
+</div>
+<div class="section" id="rcutils">
+<h3>rcutils <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7074">[7074]</a><a class="headerlink" href="#rcutils" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">rcutils``具有一个日志实现，可以根据特定格式（参见上面的``配置</span></code>）格式化日志消息，并将这些日志消息输出到控制台。<a href="#id1"><span class="problematic" id="id2">``</span></a>rcutils``实现了一个完整的日志解决方案，但允许较高级别的组件以依赖注入模型插入到日志基础设施中。当我们谈到下面的``rcl``层时，这将变得更加明显。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7075">[7075]</a></p>
+<p>请注意，这是一种*每个进程*的日志记录实现，因此在此级别配置的任何内容都将影响整个进程，而不仅仅是单个节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7076">[7076]</a></p>
+</div>
+<div class="section" id="rcl-logging-spdlog">
+<h3>rcl_logging_spdlog <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7077">[7077]</a><a class="headerlink" href="#rcl-logging-spdlog" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> 实现了 <code class="docutils literal notranslate"><span class="pre">rcl_logging_interface</span></code> API，因此为 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> 层提供外部日志记录服务。特别是，<code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> 实现接受格式化的日志消息，并使用 <code class="docutils literal notranslate"><span class="pre">spdlog</span></code> 库将它们写入磁盘上的日志文件，通常位于 <code class="docutils literal notranslate"><span class="pre">~/.ros/log``（尽管此处可配置；请参阅上述</span> <span class="pre">``Configuration</span></code>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7078">[7078]</a></p>
+</div>
+<div class="section" id="rcl">
+<h3>rcl <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7079">[7079]</a><a class="headerlink" href="#rcl" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">rcl</span></code> 中的日志记录子系统使用 <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rcl_logging_spdlog</span></code> 来提供大部分 ROS 2 日志记录服务。当日志消息到达时，<code class="docutils literal notranslate"><span class="pre">rcl</span></code> 决定将其发送到何处。有三个主要位置可以传送日志消息；单个节点可以启用其中任意组合： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7080">[7080]</a></p>
+<ul class="simple">
+<li><p>通过 <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> 层发送到控制台 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7081">[7081]</a></p></li>
+<li><p>通过``rcl_logging_spdlog``层将日志写入磁盘 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7082">[7082]</a></p></li>
+<li><p>通过RMW层将日志发送到ROS 2网络上的``/rosout``主题 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7083">[7083]</a></p></li>
+</ul>
+</div>
+<div class="section" id="rclcpp">
+<h3>rclcpp <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7084">[7084]</a><a class="headerlink" href="#rclcpp" title="永久链接至标题"></a></h3>
+<p>这是主要的ROS 2 C++ API，位于``rcl`` API之上。在日志记录的上下文中，<a href="#id1"><span class="problematic" id="id2">``</span></a>rclcpp``提供了``RCLCPP_``日志宏；请参阅上面的``APIs``获取完整列表。当运行其中一个``RCLCPP_``宏时，它会将节点的当前严重级别与宏的严重级别进行比较。如果宏的严重级别大于或等于节点的严重级别，则会对消息进行格式化，并输出到当前配置的所有位置。请注意，<a href="#id3"><span class="problematic" id="id4">``</span></a>rclcpp``在日志调用中使用全局互斥锁，因此同一进程内的所有日志调用最终都是单线程的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7085">[7085]</a></p>
+</div>
+<div class="section" id="rclpy">
+<h3>rclpy <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7086">[7086]</a><a class="headerlink" href="#rclpy" title="永久链接至标题"></a></h3>
+<p>这是主要的ROS 2 Python API，位于``rcl`` API之上。在日志记录的上下文中，<a href="#id1"><span class="problematic" id="id2">``</span></a>rclpy``提供了``logger.debug``风格的函数；请参阅上面的``APIs``获取完整列表。当运行其中一个``logger.debug``函数时，它会将节点的当前严重级别与宏的严重级别进行比较。如果宏的严重级别大于或等于节点的严重级别，则会对消息进行格式化，并输出到当前配置的所有位置。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7087">[7087]</a></p>
+</div>
+</div>
+<div class="section" id="logging-usage">
+<h2>记录用法 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7088">[7088]</a><a class="headerlink" href="#logging-usage" title="永久链接至标题"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-1-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>查看 <a class="reference external" href="https://github.com/ros2/demos/tree/humble/logging_demo">rclcpp日志演示</a> 获取一些简单的示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7089">[7089]</a></p></li>
+<li><p>查看 <a class="reference internal" href="../Tutorials/Demos/Logging-and-logger-configuration.html"><span class="doc">日志演示</span></a> 获取示例用法。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7090">[7090]</a></p></li>
+<li><p>查看 <a class="reference external" href="https://docs.ros2.org/latest/api/rclcpp/logging_8hpp.html">rclcpp文档</a> 获取详细功能列表。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7091">[7091]</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-1-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><ul class="simple">
+<li><p>查看 <a class="reference external" href="https://github.com/ros2/examples/blob/humble/rclpy/services/minimal_client/examples_rclpy_minimal_client/client.py">rclpy示例</a> 以查看节点日志记录器的示例用法。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7092">[7092]</a></p></li>
+<li><p>查看 <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/test/test_logging.py">rclpy测试</a> 以查看关键字参数的示例用法（例如``skip_first``，<code class="docutils literal notranslate"><span class="pre">once</span></code>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7093">[7093]</a></p></li>
+</ul>
+</div></div>
+</div>
+</div>
+
+
+
            </div>
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; 版权所有 2023, Open Robotics.</p>
-  </div>
-
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-   
-
-</footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+          <a href="About-Different-Middleware-Vendors.html" class="btn btn-neutral float-left" title="关于不同的ROS 2 DDS/RTPS供应商 [6837]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+          <a href="About-Quality-of-Service-Settings.html" class="btn btn-neutral float-right" title="关于服务质量设置 [7116]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      </div>
+  
+    <hr/>
+  
+    <div role="contentinfo">
+      <p><a href="https://fishros.org.cn/forum/topic/160">点我加入鱼香ROS社区及交流群</a></p>
+    <p>如果你觉得翻译有误，可通过<a href="http://fishros.org/doc/ros2/humble/dev">校准版文档</a>帮助改进。</p>
+      <p>&#169; 版权所有 2023, Open Robotics.</p>
+    </div>
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+      <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+      由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+     
+  
+  </footer>
+  
         </div>
       </div>
     </section>

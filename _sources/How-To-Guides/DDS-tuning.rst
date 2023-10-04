@@ -129,7 +129,7 @@ Next, to set the minimum socket receive buffer size that Cyclone requests, write
   https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
       <Domain id="any">
           <Internal>
-              <SocketReceiveBufferSize min="10MB"/>
+              <MinimumSocketReceiveBufferSize>10MB</MinimumSocketReceiveBufferSize>
           </Internal>
       </Domain>
   </CycloneDDS>
