@@ -248,10 +248,10 @@
 <li class="toctree-l2"><a class="reference internal" href="Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ament_cmake 用户文档 [5]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2 [校准]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Migrating-from-ROS1.html">从ROS 1迁移到ROS 2 [15656]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-CPP-Packages.html">迁移 C++ 包 [15664]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
@@ -409,7 +409,7 @@
 <li><p><a class="reference internal" href="#installing" id="id7">安装 [15546]</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#linting-and-testing" id="id8">Linting and Testing [校准]</a></p>
+<li><p><a class="reference internal" href="#linting-and-testing" id="id8">代码检查和测试 [15561]</a></p>
 <ul>
 <li><p><a class="reference internal" href="#linting" id="id9">代码检查 [15563]</a></p></li>
 <li><p><a class="reference internal" href="#testing" id="id10">测试 [15567]</a></p></li>
@@ -609,7 +609,7 @@
 </div>
 </div>
 <div class="section" id="linting-and-testing">
-<h2>Linting and Testing <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15561">[校准]</a><a class="headerlink" href="#linting-and-testing" title="永久链接至标题"></a></h2>
+<h2>代码检查和测试 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15561">[15561]</a><a class="headerlink" href="#linting-and-testing" title="永久链接至标题"></a></h2>
 <p>为了将测试与使用 colcon 构建库分开，将所有对代码检查和测试的调用都包装在条件语句中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15562">[15562]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake_gtest</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
@@ -746,7 +746,7 @@
 <div class="section" id="querying-the-ament-index">
 <h3>查询ament索引 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15613">[15613]</a><a class="headerlink" href="#querying-the-ament-index" title="永久链接至标题"></a></h3>
 <p>如有必要，可以通过CMake查询ament索引中的资源。为此，有三个函数： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15614">[15614]</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">ament_index_has_resource</span></code>: Obtain a prefix path to the resource if it exists with the following parameters: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15615">[校准]</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">ament_index_has_resource</span></code>：如果以下参数存在资源，则获取资源的前缀路径： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15615">[15615]</a></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">var</span></code>：输出参数：如果资源不存在，请将此变量填充为FALSE，否则填充为资源的前缀路径 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15616">[15616]</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">resource_type</span></code>：资源的类型（例如``rviz_common__pluginlib__plugin``） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15617">[15617]</a></p></li>
