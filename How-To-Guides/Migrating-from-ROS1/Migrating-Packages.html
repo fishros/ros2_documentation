@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Packages &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移包 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -248,7 +248,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Packages</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages</a></li>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a> &raquo;</li>
-      <li>Migrating Packages</li>
+      <li>迁移包</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Packages.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,14 +394,14 @@
 
 
   <div class="section" id="migrating-packages">
-<h1>Migrating Packages<a class="headerlink" href="#migrating-packages" title="永久链接至标题"></a></h1>
+<h1>迁移包<a class="headerlink" href="#migrating-packages" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#prerequisites" id="id1">先决条件</a></p></li>
-<li><p><a class="reference internal" href="#package-format-version" id="id2">Package format version</a></p>
+<li><p><a class="reference internal" href="#package-format-version" id="id2">包格式版本</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-from-package-format-1-to-2" id="id3">Migrating from package format 1 to 2+</a></p></li>
+<li><p><a class="reference internal" href="#migrating-from-package-format-1-to-2" id="id3">从包格式1迁移到2+</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#dependency-names" id="id4">Dependency names</a></p></li>
@@ -415,43 +415,39 @@
 </div>
 <p>有两种不同类型的包迁移：</p>
 <ul class="simple">
-<li><p>Migrating the source code of an existing package from ROS 1 to ROS 2 with the intent that a significant part of the source code will stay the same or at least similar.
-An example for this is <a class="reference external" href="https://github.com/ros/pluginlib">pluginlib</a> where the source code is maintained in different branches within the same repository and common patches can be ported between those branches when necessary.</p></li>
-<li><p>Implementing the same or similar functionality of a ROS 1 package for ROS 2 but with the assumption that the source code will be significantly different.
-An example for this is <a class="reference external" href="https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp">roscpp</a> in ROS 1 and <a class="reference external" href="https://github.com/ros2/rclcpp/tree/rolling/rclcpp">rclcpp</a> in ROS 2 which are separate repositories and don't share any code.</p></li>
+<li><p>将现有包的源代码从ROS 1迁移到ROS 2，意味着源代码的重要部分将保持相同或至少相似。一个示例是 <a class="reference external" href="https://github.com/ros/pluginlib">pluginlib</a>，其中源代码在同一个存储库的不同分支中维护，通用补丁可以在必要时在这些分支之间进行移植。</p></li>
+<li><p>在ROS 2中实现与ROS 1包相同或类似的功能，但假设源代码将会有明显的不同。一个示例是ROS 1中的 <a class="reference external" href="https://github.com/ros/ros_comm/tree/melodic-devel/clients/roscpp">roscpp</a> 和ROS 2中的 <a class="reference external" href="https://github.com/ros2/rclcpp/tree/rolling/rclcpp">rclcpp</a>，它们是分开的存储库，没有共享任何代码。</p></li>
 </ul>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id1">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>在将ROS 1软件包迁移到ROS 2之前，必须在ROS 2中提供所有依赖项。</p>
 </div>
 <div class="section" id="package-format-version">
-<h2><a class="toc-backref" href="#id2">Package format version</a><a class="headerlink" href="#package-format-version" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id2">包格式版本</a><a class="headerlink" href="#package-format-version" title="永久链接至标题"></a></h2>
 <p>ROS 2不支持软件包规范的格式1，而仅支持更新的格式版本（2及更高）。因此，如果软件包使用格式1，则必须将``package.xml``文件更新至至少格式2。由于ROS 1支持所有格式，因此在ROS 1软件包中执行此转换是安全的。</p>
 <div class="section" id="migrating-from-package-format-1-to-2">
-<h3><a class="toc-backref" href="#id3">Migrating from package format 1 to 2+</a><a class="headerlink" href="#migrating-from-package-format-1-to-2" title="永久链接至标题"></a></h3>
-<p>The differences between format 1 and format 2 only affect the package.xml with its dependencies.
-<a class="reference external" href="https://www.ros.org/reps/rep-0140.html">REP-0140</a> defines these differences and provides their rationale.</p>
-<p>See <a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html"><span class="doc">the rosdep documentation</span></a> for more information about the various tags.</p>
+<h3><a class="toc-backref" href="#id3">从包格式1迁移到2+</a><a class="headerlink" href="#migrating-from-package-format-1-to-2" title="永久链接至标题"></a></h3>
+<p>格式1和格式2之间的区别仅影响 package.xml 及其依赖关系。<a class="reference external" href="https://www.ros.org/reps/rep-0140.html">REP-0140</a> 定义了这些差异并提供了它们的基本原理。</p>
+<p>有关各种标签的更多信息，请参阅 <a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html"><span class="doc">rosdep 文档</span></a>。</p>
 <div class="section" id="package">
 <h4><strong>&lt;package&gt;</strong><a class="headerlink" href="#package" title="永久链接至标题"></a></h4>
-<p>The &lt;package&gt; tag determines which format to use, change it like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span></code> 标签确定要使用的格式，可按以下方式更改它：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;package</span> <span class="na">format=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="depend">
 <h4><strong>&lt;depend&gt;</strong><a class="headerlink" href="#depend" title="永久链接至标题"></a></h4>
-<p>This is a new tag, intended to reduce unnecessary repetition.
-If your format 1 package contained:</p>
+<p>这是一个新标签，旨在减少不必要的重复。如果您的格式1包含以下内容：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build_depend&gt;</span>foo<span class="nt">&lt;/build_depend&gt;</span>
 <span class="nt">&lt;run_depend&gt;</span>foo<span class="nt">&lt;/run_depend&gt;</span>
 </pre></div>
 </div>
-<p>It should be replaced with:</p>
+<p>应该替换为：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>foo<span class="nt">&lt;/depend&gt;</span>
 </pre></div>
 </div>
-<p>In format 2, that is equivalent to:</p>
+<p>在格式2中，这相当于：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build_depend&gt;</span>foo<span class="nt">&lt;/build_depend&gt;</span>
 <span class="nt">&lt;build_export_depend&gt;</span>foo<span class="nt">&lt;/build_export_depend&gt;</span>
 <span class="nt">&lt;exec_depend&gt;</span>foo<span class="nt">&lt;/exec_depend&gt;</span>
@@ -460,12 +456,11 @@ If your format 1 package contained:</p>
 </div>
 <div class="section" id="run-depend">
 <h4><strong>&lt;run_depend&gt;</strong><a class="headerlink" href="#run-depend" title="永久链接至标题"></a></h4>
-<p>This tag is no longer allowed.
-Wherever found, it must be replaced:</p>
+<p>不再允许使用此标签。无论在何处找到，都必须替换为：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;run_depend&gt;</span>foo<span class="nt">&lt;/run_depend&gt;</span>
 </pre></div>
 </div>
-<p>In format 2, that is equivalent to these two new tags:</p>
+<p>在格式2中，这相当于这两个新标签：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build_export_depend&gt;</span>foo<span class="nt">&lt;/build_export_depend&gt;</span>
 <span class="nt">&lt;exec_depend&gt;</span>foo<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>

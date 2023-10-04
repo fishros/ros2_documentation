@@ -248,7 +248,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">Migrating Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">迁移包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages</a></li>
@@ -452,7 +452,7 @@
 <li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/param">在 ROS 1 中可用</a>.</p></li>
 <li><p>用于将参数传递给节点。</p></li>
 <li><p>在ROS 2中没有全局参数的概念。因此，它只能在 <code class="docutils literal notranslate"><span class="pre">node</span></code> 标签中嵌套使用。在ROS 2中不支持某些属性：<code class="docutils literal notranslate"><span class="pre">type</span></code>、<code class="docutils literal notranslate"><span class="pre">textfile</span></code>、<code class="docutils literal notranslate"><span class="pre">binfile</span></code>、<code class="docutils literal notranslate"><span class="pre">executable</span></code>。</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">command</span></code> attribute is now <code class="docutils literal notranslate"><span class="pre">value=&quot;$(command</span> <span class="pre">'...'</span> <span class="pre">)&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">command</span></code> 属性现在应为 <code class="docutils literal notranslate"><span class="pre">value=&quot;$(command</span> <span class="pre">'...'</span> <span class="pre">)&quot;</span></code>。</p></li>
 </ul>
 <div class="section" id="id1">
 <h4>示例<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
@@ -566,7 +566,7 @@
 <div><ul class="simple">
 <li><p>在ROS 1中可用，所包含的内容是有作用域的。在ROS 2中，它没有作用域。使用``group``标签来嵌套包含文件以进行作用域控制。</p></li>
 <li><p>不支持``ns``属性。参考``push_ros_namespace``标签的示例以获取解决方法。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> tags nested in an <code class="docutils literal notranslate"><span class="pre">include</span></code> tag don't support conditionals (<code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">unless</span></code>) or the <code class="docutils literal notranslate"><span class="pre">description</span></code> attribute.</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">include</span></code> 标签中嵌套的 <code class="docutils literal notranslate"><span class="pre">arg</span></code> 标签不支持条件（<code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">unless</span></code>）或 <code class="docutils literal notranslate"><span class="pre">description</span></code> 属性。</p></li>
 <li><p>不支持嵌套``env``标签。可以使用``set_env``和``unset_env``代替。</p></li>
 <li><p>不支持``clear_params``和``pass_all_args``属性。</p></li>
 </ul>
@@ -588,7 +588,7 @@
 <div><ul class="simple">
 <li><p>不允许使用 <code class="docutils literal notranslate"><span class="pre">value</span></code> 属性。请使用 <code class="docutils literal notranslate"><span class="pre">let</span></code> 标签代替。</p></li>
 <li><p>现在，<code class="docutils literal notranslate"><span class="pre">doc</span></code> 变为 <code class="docutils literal notranslate"><span class="pre">description</span></code>。</p></li>
-<li><p>When nested within an <code class="docutils literal notranslate"><span class="pre">include</span></code> tag, <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">unless</span></code>, and <code class="docutils literal notranslate"><span class="pre">description</span></code> attributes aren't allowed.</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">include</span></code> 标签内嵌套时，不允许使用 <code class="docutils literal notranslate"><span class="pre">if</span></code>、<code class="docutils literal notranslate"><span class="pre">unless</span></code> 和 <code class="docutils literal notranslate"><span class="pre">description</span></code> 属性。</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -613,7 +613,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch mylaunch.xml topic_name:<span class="o">=</span>custom_topic_name
 </pre></div>
 </div>
-<p>There is some additional information about passing command-line arguments in <a class="reference internal" href="../../Tutorials/Intermediate/Launch/Using-Substitutions.html"><span class="doc">Using Substitutions</span></a>.</p>
+<p>有关如何传递命令行参数的其他信息，请参阅 <a class="reference internal" href="../../Tutorials/Intermediate/Launch/Using-Substitutions.html"><span class="doc">使用替换</span></a>。</p>
 </div>
 </div>
 <div class="section" id="env">
@@ -761,7 +761,7 @@
 <li><p>新增了一个 <code class="docutils literal notranslate"><span class="pre">exec-in-pkg</span></code> 替代。例如：<code class="docutils literal notranslate"><span class="pre">$(exec-in-pkg</span> <span class="pre">&lt;package_name&gt;</span> <span class="pre">&lt;exec_name&gt;)</span></code>。</p></li>
 <li><p>有一个新的 <code class="docutils literal notranslate"><span class="pre">find-exec</span></code> 替代方式。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">arg</span></code> 已被替换为 <code class="docutils literal notranslate"><span class="pre">var</span></code>。它查看使用 <code class="docutils literal notranslate"><span class="pre">arg</span></code> 或 <code class="docutils literal notranslate"><span class="pre">let</span></code> 标签定义的配置。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eval</span></code> and <code class="docutils literal notranslate"><span class="pre">dirname</span></code> substitutions require escape characters for string values, e.g. <code class="docutils literal notranslate"><span class="pre">if=&quot;$(eval</span> <span class="pre">'\'$(var</span> <span class="pre">variable)\'</span> <span class="pre">==</span> <span class="pre">\'val1\'')&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval</span></code> 和 <code class="docutils literal notranslate"><span class="pre">dirname</span></code> 替换需要为字符串值使用转义字符，例如 <code class="docutils literal notranslate"><span class="pre">if=&quot;$(eval</span> <span class="pre">'\'$(var</span> <span class="pre">variable)\'</span> <span class="pre">==</span> <span class="pre">\'val1\'')&quot;</span></code>。</p></li>
 <li><p>不支持 <code class="docutils literal notranslate"><span class="pre">anon</span></code> 替代方式。</p></li>
 </ul>
 </div>
