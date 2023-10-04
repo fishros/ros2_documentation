@@ -24,7 +24,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Logging and logger configuration [校准]" href="About-Logging.html" />
+    <link rel="next" title="日志记录和日志记录器配置 [17425]" href="About-Logging.html" />
     <link rel="prev" title="ROS_DOMAIN_ID [17352]" href="About-Domain-ID.html" /> 
 </head>
 
@@ -311,8 +311,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">中级概念 [17275]</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [17352]</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">不同的ROS 2中间件供应商 [17313]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Logging.html">Logging and logger configuration [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Logging.html">日志记录和日志记录器配置 [17425]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Quality-of-Service-Settings.html">质量 of 服务设置 [17510]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Executors.html">执行器 [17385]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Topic-Statistics.html">Topic statistics [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [17602]</a></li>
@@ -446,12 +446,12 @@
 </tr>
 </tbody>
 </table>
-<p>For practical information on working with multiple RMW implementations, see the <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">&quot;Working with multiple RMW implementations&quot;</span></a> tutorial. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17339">[校准]</a></p>
+<p>有关使用多个RMW实现的实际信息，请参阅 <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">&quot;使用多个RMW实现&quot;</span></a> 教程。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17339">[17339]</a></p>
 </div>
 <div class="section" id="multiple-rmw-implementations">
 <h2>多个RMW实现 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17340">[17340]</a><a class="headerlink" href="#multiple-rmw-implementations" title="永久链接至标题"></a></h2>
 <p>当前活跃的ROS 2二进制发布版本已经内置了对多个RMW实现的支持（Fast DDS、RTI Connext Pro、Eclipse Cyclone DDS、GurumNetworks GurumDDS）。默认使用的是Fast DDS，因为我们将其与二进制包一起分发，所以无需进行任何额外的安装步骤。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17341">[17341]</a></p>
-<p>Other RMWs like Cyclone DDS, Connext or GurumDDS can be enabled by <a class="reference internal" href="../../Installation/DDS-Implementations.html"><span class="doc">installing additional packages</span></a>, but without having to rebuild anything or replace any existing packages. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17342">[校准]</a></p>
+<p>其他像Cyclone DDS、Connext或GurumDDS等RMW可以通过 <a class="reference internal" href="../../Installation/DDS-Implementations.html"><span class="doc">安装附加软件包</span></a> 启用，但无需重新构建或替换任何现有软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17342">[17342]</a></p>
 <p>从源代码构建的ROS 2工作空间可以同时构建和安装多个RMW实现。在编译核心ROS 2代码时，如果发现了任何RMW实现，并且相关的DDS/RTPS实现已经正确安装并配置了相关的环境变量，那么这些RMW实现将会被构建。例如，如果工作空间中存在`RMW package for RTI Connext DDS &lt;<a class="reference external" href="https://github.com/ros2/rmw_connextdds">https://github.com/ros2/rmw_connextdds</a>&gt;`__的代码，那么如果还可以找到RTI的Connext Pro的安装，它也将被构建。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17343">[17343]</a></p>
 <p>在许多情况下，使用不同RMW实现的节点可以进行通信，但并非在所有情况下都成立。以下是不支持的跨厂商通信配置列表： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17344">[17344]</a></p>
 <ul class="simple">
@@ -474,7 +474,7 @@
 <div class="section" id="default-rmw-implementation">
 <h2>默认的RMW实现 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17349">[17349]</a><a class="headerlink" href="#default-rmw-implementation" title="永久链接至标题"></a></h2>
 <p>如果一个ROS 2工作空间有多个RMW实现，如果可用的话会选择Fast DDS作为默认的RMW实现。如果未安装Fast DDS的RMW实现，将使用按字母顺序排列的第一个RMW实现标识符的RMW实现。实现标识符是提供RMW实现的ROS软件包的名称，例如 <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code>。例如，如果安装了 <code class="docutils literal notranslate"><span class="pre">rmw_cyclonedds_cpp</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 两个ROS软件包，<code class="docutils literal notranslate"><span class="pre">rmw_connextdds</span></code> 将成为默认的。如果以后安装了 <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps_cpp</span></code>，它将成为默认的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17350">[17350]</a></p>
-<p>See the <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">guide</span></a> for how to specify which RMW implementation is to be used when running the ROS 2 examples. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17351">[校准]</a></p>
+<p>查看 <a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html"><span class="doc">指南</span></a> 以了解在运行ROS 2示例时如何指定要使用的RMW实现。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17351">[17351]</a></p>
 </div>
 </div>
 
@@ -484,7 +484,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="About-Domain-ID.html" class="btn btn-neutral float-left" title="ROS_DOMAIN_ID [17352]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="About-Logging.html" class="btn btn-neutral float-right" title="Logging and logger configuration [校准]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="About-Logging.html" class="btn btn-neutral float-right" title="日志记录和日志记录器配置 [17425]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

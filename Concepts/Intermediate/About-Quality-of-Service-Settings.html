@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quality of Service settings [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>质量 of 服务设置 [17510] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="执行器 [17385]" href="About-Executors.html" />
-    <link rel="prev" title="Logging and logger configuration [校准]" href="About-Logging.html" /> 
+    <link rel="prev" title="日志记录和日志记录器配置 [17425]" href="About-Logging.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -311,8 +311,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">中级概念 [17275]</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [17352]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Different-Middleware-Vendors.html">不同的ROS 2中间件供应商 [17313]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Logging.html">Logging and logger configuration [校准]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Quality of Service settings [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Logging.html">日志记录和日志记录器配置 [17425]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">质量 of 服务设置 [17510]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Executors.html">执行器 [17385]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Topic-Statistics.html">Topic statistics [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [17602]</a></li>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Concepts.html">概念 [16856]</a> &raquo;</li>
           <li><a href="../Intermediate.html">中级概念 [17275]</a> &raquo;</li>
-      <li>Quality of Service settings [校准]</li>
+      <li>质量 of 服务设置 [17510]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,7 +394,7 @@
 
 
   <div class="section" id="quality-of-service-settings">
-<h1>Quality of Service settings <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17510">[校准]</a><a class="headerlink" href="#quality-of-service-settings" title="永久链接至标题"></a></h1>
+<h1>质量 of 服务设置 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17510">[17510]</a><a class="headerlink" href="#quality-of-service-settings" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[]</a></p>
 <ul class="simple">
@@ -415,8 +415,8 @@
 </div>
 <div class="section" id="overview">
 <h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17016">[17016]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>ROS 2 offers a rich variety of Quality of Service (QoS) policies that allow you to tune communication between nodes. With the right set of Quality of Service policies, ROS 2 can be as reliable as TCP or as best-effort as UDP, with many, many possible states in between. Unlike ROS 1, which primarily only supported TCP, ROS 2 benefits from the flexibility of the underlying DDS transport in environments with lossy wireless networks where a &quot;best effort&quot; policy would be more suitable, or in real-time computing systems where the right Quality of Service profile is needed to meet deadlines. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17511">[校准]</a></p>
-<p>A set of QoS &quot;policies&quot; combine to form a QoS &quot;profile&quot;. Given the complexity of choosing the correct QoS policies for a given scenario, ROS 2 provides a set of predefined QoS profiles for common use cases (e.g. sensor data). At the same time, developers are given the flexibility to control specific policies of the QoS profiles. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17512">[校准]</a></p>
+<p>ROS 2提供了丰富多样的质量 of 服务（QoS）策略，允许您调整节点之间的通信。通过正确的一组质量 of 服务策略，ROS 2可以像TCP一样可靠，也可以像UDP一样尽力而为，中间还有许多可能的状态。与主要仅支持TCP的ROS 1不同，ROS 2受益于底层DDS传输的灵活性，在存在丢包无线网络的环境中，&quot;尽力而为&quot;策略更适合，或者在实时计算系统中，需要正确的质量 of 服务配置文件以满足截止日期。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17511">[17511]</a></p>
+<p>一组QoS &quot;策略&quot; 组合在一起形成QoS &quot;配置文件&quot;。考虑到选择给定场景的正确QoS策略的复杂性，ROS 2为常见用例（例如传感器数据）提供了一组预定义的QoS配置文件。同时，开发人员可以灵活控制QoS配置文件的具体策略。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17512">[17512]</a></p>
 <p>可以为发布者、订阅者、服务服务器和客户端指定QoS配置文件。一个QoS配置文件可以独立应用于上述实体的每个实例，但如果使用不同的配置文件，可能会导致不兼容，从而阻止消息的传递。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17513">[17513]</a></p>
 </div>
 <div class="section" id="qos-policies">
@@ -431,7 +431,7 @@
 </li>
 <li><p>深度 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17519">[17519]</a></p>
 <ul>
-<li><p><em>Queue size</em>: only honored if the &quot;history&quot; policy was set to &quot;keep last&quot;. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17520">[校准]</a></p></li>
+<li><p><em>队列大小</em>：仅在&quot;历史&quot;策略设置为&quot;保留最后&quot;时受到尊重。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17520">[17520]</a></p></li>
 </ul>
 </li>
 <li><p>可靠性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17521">[17521]</a></p>
@@ -442,7 +442,7 @@
 </li>
 <li><p>耐久性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17524">[17524]</a></p>
 <ul>
-<li><p><em>Transient local</em>: the publisher becomes responsible for persisting samples for &quot;late-joining&quot; subscriptions. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17525">[校准]</a></p></li>
+<li><p><em>瞬态本地</em>：发布者负责为&quot;晚加入&quot;的订阅者持久化样本。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17525">[17525]</a></p></li>
 <li><p><em>易失性</em>：不尝试持久化样本。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17526">[17526]</a></p></li>
 </ul>
 </li>
@@ -458,8 +458,8 @@
 </li>
 <li><p>活跃性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17531">[17531]</a></p>
 <ul>
-<li><p><em>Automatic</em>: the system will consider all of the node’s publishers to be alive for another &quot;lease duration&quot; when any one of its publishers has published a message. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17532">[校准]</a></p></li>
-<li><p><em>Manual by topic</em>: the system will consider the publisher to be alive for another &quot;lease duration&quot; if it manually asserts that it is still alive (via a call to the publisher API). <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17533">[校准]</a></p></li>
+<li><p><em>自动</em>：当任何一个发布者发布消息时，系统将考虑所有节点的发布者在另一个&quot;租约持续时间&quot;内仍然活跃。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17532">[17532]</a></p></li>
+<li><p><em>手动按主题</em>：如果发布者通过调用发布者API手动声明自己仍然活跃，系统将考虑发布者在另一个&quot;租约持续时间&quot;内仍然活跃。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17533">[17533]</a></p></li>
 </ul>
 </li>
 <li><p>租约期 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17534">[17534]</a></p>
@@ -468,12 +468,12 @@
 </ul>
 </li>
 </ul>
-<p>For each of the policies that is not a duration, there is also the option of &quot;system default&quot;, which uses the default of the underlying middleware. For each of the policies that is a duration, there also exists a &quot;default&quot; option that means the duration is unspecified, which the underlying middleware will usually interpret as an infinitely long duration. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17536">[校准]</a></p>
+<p>对于不是持续时间的每个策略，还有&quot;系统默认&quot;选项，它使用底层中间件的默认值。对于持续时间的每个策略，还存在一个&quot;默认&quot;选项，表示持续时间未指定，底层中间件通常会将其解释为无限长的持续时间。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17536">[17536]</a></p>
 <div class="section" id="comparison-to-ros-1">
 <h3>与ROS 1的比较 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17057">[17057]</a><a class="headerlink" href="#comparison-to-ros-1" title="永久链接至标题"></a></h3>
-<p>The &quot;history&quot; and &quot;depth&quot; policies in ROS 2 combine to provide functionality akin to the queue size in ROS 1. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17537">[校准]</a></p>
-<p>The &quot;reliability&quot; policy in ROS 2 is akin to the use of either UDPROS (only in <code class="docutils literal notranslate"><span class="pre">roscpp</span></code>) for &quot;best effort&quot;, or TCPROS (ROS 1 default) for &quot;reliable&quot;. Note however that even the reliable policy in ROS 2 is implemented using UDP, which allows for multicasting if appropriate. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17538">[校准]</a></p>
-<p>The &quot;durability&quot; policy &quot;transient local&quot;, combined with any depth, provides functionality similar to that of &quot;latching&quot; publishers. The remaining policies in ROS 2 are not akin to anything that is available in ROS 1, meaning that ROS 2 is more featureful than ROS 1 in this respect. It is possible that in the future, even more QoS policies will be available in ROS 2. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17539">[校准]</a></p>
+<p>ROS 2中的&quot;历史&quot;和&quot;深度&quot;策略组合在一起，提供类似于ROS 1中队列大小的功能。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17537">[17537]</a></p>
+<p>ROS 2中的&quot;可靠性&quot;策略类似于使用UDPROS（仅在``roscpp``中）进行&quot;尽力而为&quot;或使用TCPROS（ROS 1默认）进行&quot;可靠&quot;的情况。但请注意，即使在ROS 2中，即使在ROS 2中，可靠性策略也是使用UDP实现的，如果适用，可以进行多播。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17538">[17538]</a></p>
+<p>ROS 2中的&quot;持久性&quot;策略&quot;瞬态本地&quot;，与任何深度结合使用，提供了类似于&quot;latching&quot;发布者的功能。ROS 2中的其余策略与ROS 1中可用的任何内容都不相似，这意味着在这方面，ROS 2比ROS 1更具功能性。未来可能会在ROS 2中提供更多的QoS策略。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17539">[17539]</a></p>
 </div>
 </div>
 <div class="section" id="qos-profiles">
@@ -482,7 +482,7 @@
 <p>当前定义的QoS配置文件如下： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17542">[17542]</a></p>
 <ul>
 <li><p>发布者和订阅者的默认QoS设置 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17543">[17543]</a></p>
-<p>In order to make the transition from ROS 1 to ROS 2 easier, exercising a similar network behavior is desirable. By default, publishers and subscriptions in ROS 2 have &quot;keep last&quot; for history with a queue size of 10, &quot;reliable&quot; for reliability, &quot;volatile&quot; for durability, and &quot;system default&quot; for liveliness. Deadline, lifespan, and lease durations are also all set to &quot;default&quot;. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17544">[校准]</a></p>
+<p>为了使从ROS 1到ROS 2的过渡更加容易，希望实现类似的网络行为。默认情况下，ROS 2中的发布者和订阅者的&quot;历史&quot;采用&quot;保留最后&quot;，队列大小为10，&quot;可靠性&quot;采用&quot;可靠&quot;，&quot;持久性&quot;采用&quot;volatile&quot;，&quot;活跃性&quot;采用&quot;系统默认&quot;。截止日期、寿命和租约持续时间也都设置为&quot;默认&quot;。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17544">[17544]</a></p>
 </li>
 <li><p>服务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17192">[17192]</a></p>
 <p>与发布者和订阅者类似，服务也具有可靠性。对于服务来说，使用“volatile”持久性尤为重要，否则重新启动的服务服务器可能会收到过时的请求。虽然客户端受到多个响应的保护，但服务器却没有受到接收过时请求的副作用的保护。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17545">[17545]</a></p>
@@ -736,7 +736,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="About-Logging.html" class="btn btn-neutral float-left" title="Logging and logger configuration [校准]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="About-Logging.html" class="btn btn-neutral float-left" title="日志记录和日志记录器配置 [17425]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="About-Executors.html" class="btn btn-neutral float-right" title="执行器 [17385]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

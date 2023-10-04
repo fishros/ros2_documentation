@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="Topic statistics [校准]" href="About-Topic-Statistics.html" />
-    <link rel="prev" title="Quality of Service settings [校准]" href="About-Quality-of-Service-Settings.html" /> 
+    <link rel="prev" title="质量 of 服务设置 [17510]" href="About-Quality-of-Service-Settings.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -312,8 +312,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">中级概念 [17275]</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [17352]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Different-Middleware-Vendors.html">不同的ROS 2中间件供应商 [17313]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Logging.html">Logging and logger configuration [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Logging.html">日志记录和日志记录器配置 [17425]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Quality-of-Service-Settings.html">质量 of 服务设置 [17510]</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">执行器 [17385]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Topic-Statistics.html">Topic statistics [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [17602]</a></li>
@@ -410,7 +410,7 @@
 </div>
 <div class="section" id="overview">
 <h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17016">[17016]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>Execution management in ROS 2 is handled by Executors. An Executor uses one or more threads of the underlying operating system to invoke the callbacks of subscriptions, timers, service servers, action servers, etc. on incoming messages and events. The explicit Executor class (in <a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/executor.hpp">executor.hpp</a> in rclcpp, in <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/rclpy/executors.py">executors.py</a> in rclpy, or in <a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">executor.h</a> in rclc) provides more control over execution management than the spin mechanism in ROS 1, although the basic API is very similar. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17386">[校准]</a></p>
+<p>ROS 2中的执行管理由执行器处理。执行器使用底层操作系统的一个或多个线程来调用订阅、定时器、服务服务器、动作服务器等的回调，以响应传入的消息和事件。明确的执行器类（在rclcpp的 <a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/executor.hpp">executor.hpp</a> 中，rclpy的 <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/rclpy/executors.py">executors.py</a> 中，或者rclc的 <a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">executor.h</a> 中）提供了比ROS 1中的spin机制更多的执行管理控制，尽管基本API非常相似。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17386">[17386]</a></p>
 <p>接下来，我们将重点介绍 C++ 客户端库 <em>rclcpp</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17387">[17387]</a></p>
 </div>
 <div class="section" id="basic-use">
@@ -501,7 +501,7 @@ Therefore, the Static Single-Threaded Executor should be used only with nodes th
 <li><p><em>互斥（Mutually exclusive）：</em> 该组的回调不能并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17404">[17404]</a></p></li>
 <li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>可重入（Reentrant）：<a href="#id3"><span class="problematic" id="id4">*</span></a>该组的回调可以并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17405">[17405]</a></p></li>
 </ul>
-<p>Callbacks of different callback groups may always be executed in parallel. The Multi-Threaded Executor uses its threads as a pool to process as many callbacks as possible in parallel according to these conditions. For tips on how to use callback groups efficiently, see <a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html"><span class="doc">Using Callback Groups</span></a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17406">[校准]</a></p>
+<p>不同回调组的回调可以并行执行。多线程执行器使用其线程作为池，根据这些条件尽可能并行处理尽可能多的回调。有关如何有效使用回调组的提示，请参阅 <a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html"><span class="doc">使用回调组</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17406">[17406]</a></p>
 <p>在rclcpp中，Executor基类还具有函数``add_callback_group(..)``，可以将回调组分配给不同的执行器。通过使用操作系统调度器配置底层线程，可以使特定的回调优先于其他回调。例如，可以将控制循环的订阅和定时器优先于节点的所有其他订阅和标准服务。<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor">examples_rclcpp_cbg_executor package</a> 提供了该机制的演示。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17407">[17407]</a></p>
 </div>
 <div class="section" id="scheduling-semantics">
@@ -541,7 +541,7 @@ Therefore, the Static Single-Threaded Executor should be used only with nodes th
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="About-Quality-of-Service-Settings.html" class="btn btn-neutral float-left" title="Quality of Service settings [校准]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="About-Quality-of-Service-Settings.html" class="btn btn-neutral float-left" title="质量 of 服务设置 [17510]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="About-Topic-Statistics.html" class="btn btn-neutral float-right" title="Topic statistics [校准]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
