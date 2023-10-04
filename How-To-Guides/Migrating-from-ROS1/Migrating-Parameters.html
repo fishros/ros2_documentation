@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Parameters [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移参数 [15959] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Migrating Scripts [校准]" href="Migrating-Scripts.html" />
+    <link rel="next" title="迁移脚本 [15991]" href="Migrating-Scripts.html" />
     <link rel="prev" title="迁移启动文件 [15820]" href="Migrating-Launch-Files.html" /> 
 </head>
 
@@ -251,10 +251,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">迁移包 [15918]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口 [15802]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包 [15664]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">迁移Python包 [15975]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">迁移启动文件 [15820]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Parameters [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移参数 [15959]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">迁移脚本 [15991]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南 [1]</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2 [15656]</a> &raquo;</li>
-      <li>Migrating Parameters [校准]</li>
+      <li>迁移参数 [15959]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,11 +394,11 @@
 
 
   <div class="section" id="migrating-parameters">
-<h1>Migrating Parameters <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15959">[校准]</a><a class="headerlink" href="#migrating-parameters" title="永久链接至标题"></a></h1>
+<h1>迁移参数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15959">[15959]</a><a class="headerlink" href="#migrating-parameters" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15498">[]</a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#migrating-yaml-parameter-files" id="id1">Migrating YAML Parameter Files [校准]</a></p>
+<li><p><a class="reference internal" href="#migrating-yaml-parameter-files" id="id1">迁移YAML参数文件 [15963]</a></p>
 <ul>
 <li><p><a class="reference internal" href="#yaml-file-example" id="id2">YAML文件示例 [15965]</a></p></li>
 <li><p><a class="reference internal" href="#feature-parity" id="id3">功能对等 [15971]</a></p></li>
@@ -412,7 +412,7 @@
 <li><p>请参阅 <a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">ROS 2 CLI用法</span></a> 以更好地理解CLI工具的工作原理及其与ROS 1工具的区别。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15962">[15962]</a></p></li>
 </ul>
 <div class="section" id="migrating-yaml-parameter-files">
-<h2>Migrating YAML Parameter Files <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15963">[校准]</a><a class="headerlink" href="#migrating-yaml-parameter-files" title="永久链接至标题"></a></h2>
+<h2>迁移YAML参数文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15963">[15963]</a><a class="headerlink" href="#migrating-yaml-parameter-files" title="永久链接至标题"></a></h2>
 <p>本指南介绍如何调整ROS 1参数文件以适应ROS 2。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15964">[15964]</a></p>
 <div class="section" id="yaml-file-example">
 <h3>YAML文件示例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15965">[15965]</a><a class="headerlink" href="#yaml-file-example" title="永久链接至标题"></a></h3>
@@ -458,7 +458,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Migrating-Launch-Files.html" class="btn btn-neutral float-left" title="迁移启动文件 [15820]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Migrating-Scripts.html" class="btn btn-neutral float-right" title="Migrating Scripts [校准]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Migrating-Scripts.html" class="btn btn-neutral float-right" title="迁移脚本 [15991]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

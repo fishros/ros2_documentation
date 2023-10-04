@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Python Packages [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移Python包 [15975] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -251,10 +251,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">迁移包 [15918]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口 [15802]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包 [15664]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Python Packages [校准]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移Python包 [15975]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">迁移启动文件 [15820]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">迁移参数 [15959]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">迁移脚本 [15991]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南 [1]</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2 [15656]</a> &raquo;</li>
-      <li>Migrating Python Packages [校准]</li>
+      <li>迁移Python包 [15975]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,14 +394,14 @@
 
 
   <div class="section" id="migrating-python-packages">
-<h1>Migrating Python Packages <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15975">[校准]</a><a class="headerlink" href="#migrating-python-packages" title="永久链接至标题"></a></h1>
+<h1>迁移Python包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15975">[15975]</a><a class="headerlink" href="#migrating-python-packages" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15498">[]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#build-tool" id="id1">构建工具 [15665]</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id2">构建系统 [15667]</a></p>
 <ul>
-<li><p><a class="reference internal" href="#update-the-files-to-use-setup-py" id="id3">Update the files to use <em>setup.py</em> [校准]</a></p></li>
+<li><p><a class="reference internal" href="#update-the-files-to-use-setup-py" id="id3">更新文件以使用 <em>setup.py</em> [15977]</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#update-source-code" id="id4">更新源代码 [15703]</a></p>
@@ -422,10 +422,10 @@
 </div>
 <div class="section" id="build-system">
 <h2>构建系统 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15667">[15667]</a><a class="headerlink" href="#build-system" title="永久链接至标题"></a></h2>
-<p>For pure Python packages, ROS 2 uses the standard <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> installation mechanism familiar to Python developers. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15976">[校准]</a></p>
+<p>对于纯Python包，ROS 2使用标准的 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 安装机制，这对Python开发人员来说是熟悉的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15976">[15976]</a></p>
 <div class="section" id="update-the-files-to-use-setup-py">
-<h3>Update the files to use <em>setup.py</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15977">[校准]</a><a class="headerlink" href="#update-the-files-to-use-setup-py" title="永久链接至标题"></a></h3>
-<p>If the ROS 1 package uses CMake only to invoke the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file and does not contain anything beside Python code (e.g. no messages, services, etc.) it should be converted into a pure Python package in ROS 2: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15978">[校准]</a></p>
+<h3>更新文件以使用 <em>setup.py</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15977">[15977]</a><a class="headerlink" href="#update-the-files-to-use-setup-py" title="永久链接至标题"></a></h3>
+<p>如果ROS 1包仅使用CMake来调用 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 文件，且除了Python代码外没有其他内容（例如没有消息、服务等），则应将其转换为ROS 2中的纯Python包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15978">[15978]</a></p>
 <ul>
 <li><p>更新或在``package.xml``文件中添加构建类型： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15979">[15979]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>

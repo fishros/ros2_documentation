@@ -251,10 +251,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Packages.html">迁移包 [15918]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Interfaces.html">迁移接口 [15802]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-CPP-Packages.html">迁移 C++ 包 [15664]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Python-Packages.html">迁移Python包 [15975]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Launch-Files.html">迁移启动文件 [15820]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Parameters.html">迁移参数 [15959]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-from-ROS1/Migrating-Scripts.html">迁移脚本 [15991]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
@@ -405,7 +405,7 @@
 </div>
 <div class="section" id="background">
 <h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15823">[15823]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>With the introduction of DDS in ROS 2, Quality of Service (QoS) compatibility for publisher/subscriber nodes needs to be considered when recording and playing back data. More detail on how QoS works can be found <a class="reference internal" href="../Concepts/Intermediate/About-Quality-of-Service-Settings.html"><span class="doc">here</span></a>. For the purposes of this guide, it is sufficient to know that only the reliability and durability policies affect whether publishers/subscribers are compatible and can receive data from one other. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16026">[校准]</a></p>
+<p>随着DDS在ROS 2中的引入，在记录和回放数据时需要考虑发布者/订阅者节点的服务质量（QoS）兼容性。有关QoS的详细信息可以在 <a class="reference internal" href="../Concepts/Intermediate/About-Quality-of-Service-Settings.html"><span class="doc">这里</span></a> 找到。对于本指南而言，只需知道可靠性和持久性策略是否会影响发布者/订阅者是否兼容以及它们是否能够接收彼此的数据。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16026">[16026]</a></p>
 <p>Ros2Bag在记录/播放主题数据时会根据需要调整其请求/提供的QoS配置文件，以防止丢失消息。在回放过程中，Ros2bag还会尝试保持主题最初提供的策略。在某些情况下，可能需要指定显式的QoS配置文件设置，以便Ros2Bag能够记录/播放主题。可以通过使用``--qos-profile-overrides-path``标志在CLI中指定这些QoS配置文件覆盖。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=630">[630]</a></p>
 </div>
 <div class="section" id="using-qos-overrides">
