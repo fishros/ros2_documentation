@@ -2,14 +2,8 @@
 <html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8" />
-            <link rel="canonical" href="https://docs.ros.org/en/humble/Intermediate/About-Domain-ID.html" />
-            <meta http-equiv="refresh" content="0; url=Intermediate/About-Domain-ID.html" />
-            <script>
-                window.location.href = 'Intermediate/About-Domain-ID.html';
-            </script>
-        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About-Domain-ID &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>ROS_DOMAIN_ID &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -30,7 +24,9 @@
         <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" /> 
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="关于不同的ROS 2 DDS/RTPS供应商" href="About-Different-Middleware-Vendors.html" />
+    <link rel="prev" title="概念" href="../Concepts.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +45,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL（RPM）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制）</a></li>
@@ -86,9 +82,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月）</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版</a><ul>
@@ -96,7 +93,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>)</a></li>
@@ -198,7 +194,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu）</a></li>
@@ -206,8 +201,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级）</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo</a><ul>
@@ -252,18 +245,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息</a></li>
@@ -299,40 +284,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">节点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">发现</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">主题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">服务</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">动作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">启动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">执行器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">RQt 的概述和使用方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">交叉编译</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ROS_DOMAIN_ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Logging.html">关于日志记录和日志记录器配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">关于服务质量设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">关于 ROS 2 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">关于 ROS 2 中的参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">关于主题统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Security.html">关于ROS 2安全性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">关于tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">关于ROS 2中间件实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系</a></li>
@@ -341,6 +313,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献</a></li>
@@ -353,7 +329,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">项目治理</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组</a></li>
 </ul>
 </li>
@@ -384,8 +359,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>About-Domain-ID</li>
+          <li><a href="../Concepts.html">概念</a> &raquo;</li>
+      <li>ROS_DOMAIN_ID</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Domain-ID.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
   </ul>
   <hr/>
@@ -393,22 +370,143 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
+
+
+  <div class="section" id="the-ros-domain-id">
+<h1>ROS_DOMAIN_ID<a class="headerlink" href="#the-ros-domain-id" title="永久链接至标题"></a></h1>
+<div class="section" id="overview">
+<h2>概述<a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<p>如其他地方所解释的，ROS 2用于通信的默认中间件是DDS。在DDS中，不同逻辑网络共享物理网络的主要机制被称为Domain ID。同一域中的ROS 2节点可以自由地发现和相互发送消息，而不同域中的ROS 2节点则不能。所有ROS 2节点默认使用域ID 0。为了避免在同一网络上运行ROS 2的不同计算机组之间的干扰，应为每个组设置不同的域ID。</p>
+</div>
+<div class="section" id="choosing-a-domain-id-short-version">
+<h2>选择域ID（简短版本）<a class="headerlink" href="#choosing-a-domain-id-short-version" title="永久链接至标题"></a></h2>
+<p>下面的文本解释了应在ROS 2中使用的域ID范围的推导过程。如果想跳过这些背景知识，只需选择一个安全的数字，简单地选择一个介于0和101之间（包括0和101）的域ID即可。</p>
+</div>
+<div class="section" id="choosing-a-domain-id-long-version">
+<h2>选择域ID（详细版本）<a class="headerlink" href="#choosing-a-domain-id-long-version" title="永久链接至标题"></a></h2>
+<p>域ID由DDS用于计算用于发现和通信的UDP端口。有关端口计算的详细信息，请参阅`此文章 &lt;<a class="reference external" href="https://community.rti.com/content/forum-topic/statically-configure-firewall-let-omg-dds-traffic-through">https://community.rti.com/content/forum-topic/statically-configure-firewall-let-omg-dds-traffic-through</a>&gt;`__。根据我们的基本网络知识，UDP端口是一个`无符号16位整数 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/User_Datagram_Protocol#Ports">https://en.wikipedia.org/wiki/User_Datagram_Protocol#Ports</a>&gt;`__。因此，最高可以分配的端口号是65535。通过使用上述文章中的公式进行一些计算，可以得知可能分配的最高域ID是232，而最低域ID是0。</p>
+<div class="section" id="platform-specific-constraints">
+<h3>平台特定约束<a class="headerlink" href="#platform-specific-constraints" title="永久链接至标题"></a></h3>
+<p>为了最大兼容性，在选择域ID时应遵循一些额外的平台特定约束。特别是，在操作系统的`临时端口范围 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Ephemeral_port">https://en.wikipedia.org/wiki/Ephemeral_port</a>&gt;`__中最好避免分配域ID。这样可以避免ROS 2节点和计算机上其他网络服务之间可能的端口冲突。</p>
+<p>以下是有关临时端口的特定平台注意事项。</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>默认情况下，Linux内核使用32768-60999的端口作为临时端口。这意味着域ID为0-101和215-232的端口可以安全使用，不会与临时端口冲突。在Linux中，可以通过在``/proc/sys/net/ipv4/ip_local_port_range``中设置自定义值来配置临时端口范围。如果使用自定义临时端口范围，则可能需要相应地调整上述数字。</p>
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>默认情况下，macOS的临时端口范围是49152-65535。这意味着域ID为0-166的端口可以安全使用，不会与临时端口冲突。在macOS中，可以通过设置``net.inet.ip.portrange.first``和``net.inet.ip.portrange.last``的自定义sysctl值来配置临时端口范围。如果使用自定义临时端口范围，则可能需要相应地调整上述数字。</p>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>默认情况下，Windows 上的临时端口范围是49152-65535。这意味着可以安全地使用域ID 0-166，而不会与临时端口冲突。在 Windows 中，可以通过`使用 netsh &lt;<a class="reference external" href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang">https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang</a>&gt;`__ 来配置临时端口范围。如果使用了自定义的临时端口范围，上述数字可能需要相应地进行调整。</p>
+</div></div>
+</div>
+<div class="section" id="participant-constraints">
+<h3>参与者限制<a class="headerlink" href="#participant-constraints" title="永久链接至标题"></a></h3>
+<p>在计算机上运行的每个 ROS 2 进程都会创建一个 DDS“参与者”。由于每个 DDS 参与者占用计算机上的两个端口，如果在一台计算机上运行超过120个 ROS 2 进程，则可能会溢出到其他域ID或临时端口。</p>
+<p>为了理解原因，请考虑域ID 1和2。</p>
+<ul class="simple">
+<li><p>域ID 1使用端口7650和7651进行组播。</p></li>
+<li><p>域ID 2使用端口7900和7901进行组播。</p></li>
+<li><p>在创建域ID为1的第一个进程（第零个参与者）时，使用端口7660和7661进行单播。</p></li>
+<li><p>在创建域ID为1的第120个进程（第119个参与者）时，使用端口7898和7899进行单播。</p></li>
+<li><p>在创建域ID为1的第121个进程（第120个参与者）时，使用端口7900和7901进行单播，并与域ID为2重叠。</p></li>
+</ul>
+<p>如果已知计算机一次只会处于一个域ID上，并且域ID足够低，则可以安全地创建超过此数量的ROS 2进程。</p>
+<p>当选择接近平台特定域ID范围顶部的域ID时，应考虑一个额外的约束条件。</p>
+<p>例如，假设具有域ID为101的Linux计算机：</p>
+<ul class="simple">
+<li><p>计算机上的第零个ROS 2进程将连接到端口32650、32651、32660和32661。</p></li>
+<li><p>计算机上的第一个ROS 2进程将连接到端口32650、32651、32662和32663。</p></li>
+<li><p>计算机上的第53个ROS 2进程将连接到端口32650、32651、32766和32767。</p></li>
+<li><p>计算机上的第54个ROS 2进程将连接到端口32650、32651、32768和32769，并进入临时端口范围。</p></li>
+</ul>
+<p>因此，在Linux上使用域ID 101时，应创建的最大进程数为54。同样，在Linux上使用域ID 232时，应创建的最大进程数为63，因为最大端口号为65535。</p>
+<p>在macOS和Windows上的情况类似，但数字不同。在macOS和Windows上，选择域ID为166（范围顶部）时，计算机上在进入临时端口范围之前可以创建的最大ROS 2进程数为120。</p>
+</div>
+<div class="section" id="domain-id-to-udp-port-calculator">
+<h3>域 ID 到 UDP 端口计算器<a class="headerlink" href="#domain-id-to-udp-port-calculator" title="永久链接至标题"></a></h3>
+<table>
+  <tr>
+    <td style="text-align: right; vertical-align: middle;"><label>Domain ID:</label></td>
+    <td><input type="number" min="0" max="232" size="3" class="display" value="0" id="domainID" onChange="calculate(this.value)"/></td>
+  </tr>
+  <tr>
+    <td style="text-align: right; vertical-align: middle;"><label>Participant ID:</label></td>
+    <td><input type="number" min="0" size="3" class="display" value="0" id="participantID" onChange="calculate(this.value)"/></td>
+  </tr>
+</table>
+<hr/>
+<table>
+  <tr>
+    <td style="text-align: right; vertical-align: middle;"><label>Discovery Multicast Port:</label></td>
+    <td><input type="text" size="5" class="discoveryMulticastPort" disabled/></td>
+  </tr>
+  <tr>
+    <td style="text-align: right; vertical-align: middle;"><label>User Multicast Port:</label></td>
+    <td><input type="text" size="5" class="userMulticastPort" disabled/></td>
+  </tr>
+  <tr>
+    <td style="text-align: right; vertical-align: middle;"><label>Discovery Unicast Port:</label></td>
+    <td><input type="text" size="5" class="discoveryUnicastPort" disabled/></td>
+  </tr>
+  <tr>
+    <td style="text-align: right; vertical-align: middle;"><label>User Unicast Port:</label></td>
+    <td><input type="text" size="5" class="userUnicastPort" disabled/></td>
+  </tr>
+</table>
+<br/>
+<br/>
+
+<script type="text/javascript">
+  window.addEventListener('load', (event) => {
+     calculate(event);
+  });
+  const discoveryMcastPort = document.querySelector('.discoveryMulticastPort');
+  const userMcastPort = document.querySelector('.userMulticastPort');
+  const discoveryUnicastPort = document.querySelector('.discoveryUnicastPort');
+  const userUnicastPort = document.querySelector('.userUnicastPort');
+
+  const domainID = document.getElementById('domainID');
+  const participantID = document.getElementById('participantID');
+
+  // calculate function
+  function calculate(event) {
+    const d0 = 0;
+    const d2 = 1;
+    const d1 = 10;
+    const d3 = 11;
+    const PB = 7400;
+    const DG = 250;
+    const PG = 2;
+
+    discoveryMcastPort.value = PB + (DG * domainID.value) + d0;
+    userMcastPort.value = PB + (DG * domainID.value) + d2;
+    discoveryUnicastPort.value = PB + (DG * domainID.value) + d1 + (PG * participantID.value);
+    userUnicastPort.value = PB + (DG * domainID.value) + d3 + (PG * participantID.value);
+  }
+</script></div>
+</div>
+</div>
+
+
+
            </div>
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; 版权所有 2023, Open Robotics.</p>
-  </div>
-
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-   
-
-</footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+          <a href="../Concepts.html" class="btn btn-neutral float-left" title="概念" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+          <a href="About-Different-Middleware-Vendors.html" class="btn btn-neutral float-right" title="关于不同的ROS 2 DDS/RTPS供应商" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      </div>
+  
+    <hr/>
+  
+    <div role="contentinfo">
+      <p><a href="https://fishros.org.cn/forum/topic/160">点我加入鱼香ROS社区及交流群</a></p>
+    <p>如果你觉得翻译有误，可通过<a href="http://fishros.org/doc/ros2/humble/dev">校准版文档</a>帮助改进。</p>
+      <p>&#169; 版权所有 2023, Open Robotics.</p>
+    </div>
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+      <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+      由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+     
+  
+  </footer>
+  
         </div>
       </div>
     </section>

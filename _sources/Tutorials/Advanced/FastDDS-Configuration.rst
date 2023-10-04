@@ -23,7 +23,7 @@ The interface between the ROS 2 stack and *Fast DDS* is provided by the ROS 2 mi
 This implementation is available in all ROS 2 distributions, both from binaries and from sources.
 
 ROS 2 RMW only allows for the configuration of certain middleware QoS
-(see :doc:`ROS 2 QoS policies <../../Concepts/Intermediate/About-Quality-of-Service-Settings>`).
+(see :doc:`ROS 2 QoS policies <../../Concepts/About-Quality-of-Service-Settings>`).
 However, ``rmw_fastrtps`` offers extended configuration capabilities to take full advantage of the features in *Fast DDS*.
 This tutorial will guide you through a series of examples explaining how to use XML files to unlock this extended configuration.
 
@@ -43,15 +43,15 @@ Mixing synchronous and asynchronous publications in the same node
 
 In this first example, a node with two publishers, one of them with synchronous publication mode and the other one with asynchronous publication mode, will be created.
 
-``rmw_fastrtps`` uses synchronous publication mode by default.
+``rmw_fastrtps`` uses asynchronous publication mode by default.
+When the publisher invokes the write operation, the data is copied into a queue,
+a background thread (asynchronous thread) is notified about the addition to the queue, and control of the thread is returned to the user before the data is actually sent.
+The background thread is in charge of consuming the queue and sending the data to every matched reader.
 
-With synchronous publication mode the data is sent directly within the context of the user thread.
+On the other hand, with synchronous publication mode the data is sent directly within the context of the user thread.
 This entails that any blocking call occurring during the write operation would block the user thread, thus preventing the application from continuing its operation.
 However, this mode typically yields higher throughput rates at lower latencies, since there is no notification nor context switching between threads.
 
-On the other hand, with asynchronous publication mode, each time the publisher invokes the write operation, the data is copied into a queue,
-a background thread (asynchronous thread) is notified about the addition to the queue, and control of the thread is returned to the user before the data is actually sent.
-The background thread is in charge of consuming the queue and sending the data to every matched reader.
 
 Create the node with the publishers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

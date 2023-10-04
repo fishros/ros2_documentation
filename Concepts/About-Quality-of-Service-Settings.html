@@ -2,14 +2,8 @@
 <html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8" />
-            <link rel="canonical" href="https://docs.ros.org/en/humble/Intermediate/About-Quality-of-Service-Settings.html" />
-            <meta http-equiv="refresh" content="0; url=Intermediate/About-Quality-of-Service-Settings.html" />
-            <script>
-                window.location.href = 'Intermediate/About-Quality-of-Service-Settings.html';
-            </script>
-        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About-Quality-of-Service-Settings &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>关于服务质量设置 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -27,10 +21,11 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" /> 
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="关于ROS 2客户端库" href="About-ROS-2-Client-Libraries.html" />
+    <link rel="prev" title="关于日志记录和日志记录器配置" href="About-Logging.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,11 +44,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL（RPM）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制）</a></li>
@@ -86,9 +81,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月）</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版</a><ul>
@@ -96,7 +92,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>)</a></li>
@@ -198,7 +193,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu）</a></li>
@@ -206,8 +200,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级）</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo</a><ul>
@@ -252,18 +244,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息</a></li>
@@ -299,40 +283,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">节点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">发现</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">主题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">服务</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">动作</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">启动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">执行器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">RQt 的概述和使用方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">交叉编译</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Logging.html">关于日志记录和日志记录器配置</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">关于服务质量设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">关于 ROS 2 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">关于 ROS 2 中的参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">关于主题统计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Security.html">关于ROS 2安全性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">关于tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">关于ROS 2中间件实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系</a></li>
@@ -341,6 +312,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献</a></li>
@@ -353,7 +328,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">项目治理</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组</a></li>
 </ul>
 </li>
@@ -384,8 +358,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>About-Quality-of-Service-Settings</li>
+          <li><a href="../Concepts.html">概念</a> &raquo;</li>
+      <li>关于服务质量设置</li>
       <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Quality-of-Service-Settings.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
   </ul>
   <hr/>
@@ -393,22 +369,345 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
+
+
+  <div class="section" id="about-quality-of-service-settings">
+<h1>关于服务质量设置<a class="headerlink" href="#about-quality-of-service-settings" title="永久链接至标题"></a></h1>
+<div class="section" id="overview">
+<h2>概述<a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<p>ROS 2 提供了丰富多样的服务质量 (Quality of Service，QoS) 策略，使您能够调整节点之间的通信。通过适当的服务质量策略集合，ROS 2 可以像 TCP 一样可靠，也可以像 UDP 一样尽力而为，在中间还有许多可能的状态。与主要仅支持 TCP 的 ROS 1 不同，ROS 2 在具有有损无线网络的环境中从底层 DDS 传输的灵活性中受益，那里“尽力而为”策略更为合适，或者在实时计算系统中需要正确的服务质量配置文件以满足截止日期。</p>
+<p>一组QoS“策略”组合形成一个QoS“配置文件”。考虑到为特定场景选择正确的QoS策略的复杂性，ROS 2为常见用例（例如传感器数据）提供了一组预定义的QoS配置文件。与此同时，开发人员可以灵活控制QoS配置文件的特定策略。</p>
+<p>可以为发布者、订阅者、服务服务器和客户端指定QoS配置文件。一个QoS配置文件可以独立应用于上述实体的每个实例，但如果使用不同的配置文件，可能会导致不兼容，从而阻止消息的传递。</p>
+</div>
+<div class="section" id="qos-policies">
+<h2>QoS策略<a class="headerlink" href="#qos-policies" title="永久链接至标题"></a></h2>
+<p>基本QoS配置文件当前包括以下策略的设置：</p>
+<ul class="simple">
+<li><p>历史记录</p>
+<ul>
+<li><p>保留最近：仅存储最多N个样本，可通过队列深度选项进行配置。</p></li>
+<li><p><em>全部保留</em>: 将所有样本存储，受基础中间件配置的资源限制约束。</p></li>
+</ul>
+</li>
+<li><p>深度</p>
+<ul>
+<li><p><em>队列大小</em>: 仅在“历史”策略设置为“保留最新”时受到尊重。</p></li>
+</ul>
+</li>
+<li><p>可靠性</p>
+<ul>
+<li><p><em>尽力而为</em>: 尝试传递样本，但如果网络不稳定，可能会丢失它们。</p></li>
+<li><p><em>可靠传递</em>: 保证样本被传递，可能会进行多次重试。</p></li>
+</ul>
+</li>
+<li><p>耐久性</p>
+<ul>
+<li><p><em>瞬态本地</em>：发布者负责为“后加入”的订阅持久化样本。</p></li>
+<li><p><em>易失性</em>：不尝试持久化样本。</p></li>
+</ul>
+</li>
+<li><p>截止日期</p>
+<ul>
+<li><p><em>持续时间</em>：期望的发布到主题的连续消息之间的最大时间间隔。</p></li>
+</ul>
+</li>
+<li><p>寿命</p>
+<ul>
+<li><p><em>持续时间</em>：在发布消息和接收消息之间的最大时间间隔，超过此时间则将认为消息已过期或失效（已过期的消息将被静默丢弃，实际上永远不会被接收）。</p></li>
+</ul>
+</li>
+<li><p>活跃性</p>
+<ul>
+<li><p><em>自动</em>：当任何一个发布者发布消息时，系统将认为该节点的所有发布者都仍然存活，持续时间为“租约期”。</p></li>
+<li><p><em>按主题手动</em>：如果发布者通过调用发布者API手动断言自己仍然存活，则系统将认为该发布者在“租约期”内仍然存活。</p></li>
+</ul>
+</li>
+<li><p>租约期</p>
+<ul>
+<li><p><em>持续时间</em>：在系统认为发布者失去活跃性之前，发布者有的最长时间来表明自己仍然存活（失去活跃性可能表明出现故障）。</p></li>
+</ul>
+</li>
+</ul>
+<p>对于不是时间间隔的每个策略，还可以选择“系统默认”选项，该选项使用底层中间件的默认值。对于每个时间间隔的策略，也存在一个“默认”选项，表示未指定持续时间，底层中间件通常将其解释为无限长的持续时间。</p>
+<div class="section" id="comparison-to-ros-1">
+<h3>与ROS 1的比较<a class="headerlink" href="#comparison-to-ros-1" title="永久链接至标题"></a></h3>
+<p>ROS 2中的“history”和“depth”策略结合在一起，提供了类似于ROS 1中队列大小的功能。</p>
+<p>ROS 2中的“reliability”策略类似于仅在``roscpp``中使用的UDPROS（用于“尽力而为”），或者类似于ROS 1中默认使用的TCPROS（“可靠”）。但是请注意，即使在ROS 2中，可靠性策略也是使用UDP实现的，如果适用，可以进行组播。</p>
+<p>“durability”策略中的“瞬态本地”结合任意深度，提供了类似于“latching”发布者的功能。ROS 2中的其余策略与ROS 1中的任何可用内容都不相似，这意味着在这方面，ROS 2比ROS 1更具特色。未来可能会在ROS 2中提供更多的QoS策略。</p>
+</div>
+</div>
+<div class="section" id="qos-profiles">
+<h2>QoS配置文件<a class="headerlink" href="#qos-profiles" title="永久链接至标题"></a></h2>
+<p>配置文件允许开发人员专注于应用程序，而不必担心可能的每个QoS设置。QoS配置文件定义了一组预期在特定用例中很好配合的策略。</p>
+<p>当前定义的QoS配置文件如下：</p>
+<ul>
+<li><p>发布者和订阅者的默认QoS设置</p>
+<p>为了使从ROS 1过渡到ROS 2更加容易，希望实现类似的网络行为。在ROS 2中，默认情况下，发布者和订阅者的历史记录使用“keep last”方式，队列大小为10，“reliable”可靠性，&quot;volatile&quot;持久性和“system default”活跃性。截止日期、生命周期和租约持续时间也都设置为“默认值”。</p>
+</li>
+<li><p>服务</p>
+<p>与发布者和订阅者类似，服务也具有可靠性。对于服务来说，使用“volatile”持久性尤为重要，否则重新启动的服务服务器可能会收到过时的请求。虽然客户端受到多个响应的保护，但服务器却没有受到接收过时请求的副作用的保护。</p>
+</li>
+<li><p>传感器数据</p>
+<p>对于传感器数据来说，大多数情况下，及时接收读数比确保所有数据到达更为重要。也就是说，开发者希望尽快获取最新的采样数据，即使可能会丢失一些数据。因此，传感器数据配置文件使用尽力而为的可靠性和较小的队列大小。</p>
+</li>
+<li><p>参数</p>
+<p>ROS 2 中的参数基于服务，因此具有类似的配置文件。不同之处在于参数使用更大的队列深度，这样当参数客户端无法连接参数服务服务器时，请求不会丢失。</p>
+</li>
+<li><p>系统默认值</p>
+<p>这使用RMW实现的默认值来设置所有策略。不同的RMW实现可能具有不同的默认值。</p>
+</li>
+</ul>
+<p><a class="reference external" href="https://github.com/ros2/rmw/blob/humble/rmw/include/rmw/qos_profiles.h">点击此处</a> 获取上述配置中使用的具体策略。这些配置文件中的设置可能会根据社区的反馈进行进一步调整。</p>
+</div>
+<div class="section" id="qos-compatibilities">
+<h2>QoS 兼容性<a class="headerlink" href="#qos-compatibilities" title="永久链接至标题"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>注意：<a href="#id3"><span class="problematic" id="id4">**</span></a>本部分内容适用于发布者和订阅者，同样适用于服务端和客户端。</p>
+<p>可以独立为发布者和订阅者配置 QoS 配置文件。仅当发布者和订阅者具有兼容的 QoS 配置文件时，才会建立发布者和订阅者之间的连接。</p>
+<p>QoS 配置文件的兼容性是基于“请求与提供”模型确定的。订阅者*请求*一个“最低质量”的 QoS 配置文件，表示它愿意接受的最低质量，而发布者*提供*一个“最高质量”的 QoS 配置文件，表示它能够提供的最高质量。只有当请求的 QoS 配置文件的每个策略都不比提供的 QoS 配置文件的策略更严格时，才会建立连接。即使请求的 QoS 配置文件不同，多个订阅者也可以同时连接到单个发布者。发布者和订阅者之间的兼容性不受其他发布者和订阅者的影响。</p>
+<p>以下表格显示了不同策略设置的兼容性及其结果：</p>
+<p><em>可靠性QoS策略的兼容性:</em></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>尽力而为</p></td>
+<td><p>尽力而为</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>尽力而为</p></td>
+<td><p>可靠</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>可靠</p></td>
+<td><p>尽力而为</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>可靠</p></td>
+<td><p>可靠</p></td>
+<td><p>是</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>持久性 QoS 策略的兼容性：</em></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>易失性</p></td>
+<td><p>易失性</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>易失性</p></td>
+<td><p>瞬态本地</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>瞬态本地</p></td>
+<td><p>易失性</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>瞬态本地</p></td>
+<td><p>瞬态本地</p></td>
+<td><p>是</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>截止期限 QoS 策略的兼容性：</em></p>
+<blockquote>
+<div><p>假设 <em>x</em> 和 <em>y</em> 是任意有效的持续时间值。</p>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>默认</p></td>
+<td><p>默认</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>默认</p></td>
+<td><p><em>x</em></p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x</em></p></td>
+<td><p>默认</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>x</em></p></td>
+<td><p><em>x</em></p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x</em></p></td>
+<td><p><em>y*（其中 *y</em> &gt; <em>x</em>）</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>x</em></p></td>
+<td><p><em>y*（其中 *y</em> &lt; <em>x</em>）</p></td>
+<td><p>否</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>活跃性 QoS 策略的兼容性:</em></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>自动</p></td>
+<td><p>自动</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>自动</p></td>
+<td><p>按主题手动</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>按主题手动</p></td>
+<td><p>自动</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>按主题手动</p></td>
+<td><p>按主题手动</p></td>
+<td><p>是</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>租约持续时间QoS策略的兼容性:</em></p>
+<blockquote>
+<div><p>假设 <em>x</em> 和 <em>y</em> 是任意有效的持续时间值。</p>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>发布者</p></th>
+<th class="head"><p>订阅者</p></th>
+<th class="head"><p>兼容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>默认</p></td>
+<td><p>默认</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>默认</p></td>
+<td><p><em>x</em></p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x</em></p></td>
+<td><p>默认</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>x</em></p></td>
+<td><p><em>x</em></p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p><em>x</em></p></td>
+<td><p><em>y*（其中 *y</em> &gt; <em>x</em>）</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>x</em></p></td>
+<td><p><em>y*（其中 *y</em> &lt; <em>x</em>）</p></td>
+<td><p>否</p></td>
+</tr>
+</tbody>
+</table>
+<p>为了建立连接，必须使所有影响兼容性的策略相互兼容。例如，即使请求和提供的QoS配置文件对可靠性QoS策略是兼容的，但如果它们的持久性QoS策略不兼容，仍然无法建立连接。</p>
+<p>当无法建立连接时，发布者和订阅者之间将不会传递任何消息。有机制可以检测到这种情况，将在后面的章节中介绍。</p>
+<div class="section" id="id1">
+<h3>与ROS 1的比较<a class="headerlink" href="#id1" title="永久链接至标题"></a></h3>
+<p>在ROS 1中，具有相同消息类型和相同主题的任何发布者和订阅者都将建立连接。在使用ROS 2时，需要注意可能存在不兼容的请求和提供的QoS配置文件的情况。</p>
+</div>
+</div>
+<div class="section" id="qos-events">
+<h2>QoS 事件<a class="headerlink" href="#qos-events" title="永久链接至标题"></a></h2>
+<p>一些QoS策略与可能的事件相关联。开发人员可以为每个发布者和订阅者提供与这些QoS事件相关的回调函数，并以他们认为合适的方式处理这些事件，类似于处理在主题上接收到的消息的方式。</p>
+<p>开发人员可以订阅与发布者相关联的以下QoS事件：</p>
+<ul>
+<li><p>提供的截止期限未达成</p>
+<p>发布者在截止期限QoS策略规定的预期持续时间内未发布消息。</p>
+</li>
+<li><p>活跃性丧失</p>
+<p>发布者未在租约期限内指示其活跃性。</p>
+</li>
+<li><p>提供的QoS不兼容</p>
+<p>发布者遇到了在相同主题上订阅的请求一个无法满足提供的QoS配置文件的QoS配置文件，导致发布者与该订阅之间没有连接。</p>
+</li>
+</ul>
+<p>开发者可以订阅与订阅相关的以下QoS事件：</p>
+<ul>
+<li><p>请求的截止时间已过</p>
+<p>该订阅在预期的持续时间内未收到消息，该持续时间由截止时间的QoS策略设置。</p>
+</li>
+<li><p>可用性发生变化</p>
+<p>订阅发现，某个或多个发布者在订阅的主题上在租约期内未能表明其存活状态。</p>
+</li>
+<li><p>请求的QoS不兼容。</p>
+<p>订阅遇到了同一主题上提供不符合请求的QoS配置文件的发布者，导致订阅与该发布者之间没有连接。</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+
            </div>
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; 版权所有 2023, Open Robotics.</p>
-  </div>
-
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-   
-
-</footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+          <a href="About-Logging.html" class="btn btn-neutral float-left" title="关于日志记录和日志记录器配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+          <a href="About-ROS-2-Client-Libraries.html" class="btn btn-neutral float-right" title="关于ROS 2客户端库" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      </div>
+  
+    <hr/>
+  
+    <div role="contentinfo">
+      <p><a href="https://fishros.org.cn/forum/topic/160">点我加入鱼香ROS社区及交流群</a></p>
+    <p>如果你觉得翻译有误，可通过<a href="http://fishros.org/doc/ros2/humble/dev">校准版文档</a>帮助改进。</p>
+      <p>&#169; 版权所有 2023, Open Robotics.</p>
+    </div>
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+      <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+      由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+     
+  
+  </footer>
+  
         </div>
       </div>
     </section>
