@@ -409,9 +409,9 @@
 <li><p><a class="reference internal" href="#installing" id="id7">安装 [15546]</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#linting-and-testing" id="id8">Linting and Testing [校准]</a></p>
+<li><p><a class="reference internal" href="#linting-and-testing" id="id8">静态检查和测试 [15561]</a></p>
 <ul>
-<li><p><a class="reference internal" href="#linting" id="id9">代码检查 [校准]</a></p></li>
+<li><p><a class="reference internal" href="#linting" id="id9">静态检查 [15563]</a></p></li>
 <li><p><a class="reference internal" href="#testing" id="id10">测试 [校准]</a></p></li>
 </ul>
 </li>
@@ -599,7 +599,7 @@
 </div>
 <p>第一个宏标记了导出包含目录的目录。第二个宏标记了已安装库的位置（这是在调用``ament_export_targets``时通过``HAS_LIBRARY_TARGET``参数完成的）。只有在下游项目无法或不希望使用基于CMake目标的依赖项时才应使用这些函数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15558">[15558]</a></p>
 <p>一些宏可以接受不同类型的参数以进行非目标导出，但由于现代Make的推荐方式是使用目标，我们将不在此处介绍它们。这些选项的文档可以在源代码本身中找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15559">[15559]</a></p>
-</div><div aria-labelledby="tab-1-RXhlY3V0YWJsZXM=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RXhlY3V0YWJsZXM=" name="RXhlY3V0YWJsZXM=" role="tabpanel" tabindex="0"><p>When installing an executable, the following stanza <em>must be followed exactly</em> for the rest of the ROS tooling to find it: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15560">[校准]</a></p>
+</div><div aria-labelledby="tab-1-RXhlY3V0YWJsZXM=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RXhlY3V0YWJsZXM=" name="RXhlY3V0YWJsZXM=" role="tabpanel" tabindex="0"><p>在安装可执行文件时，必须*严格按照以下规定操作*，以便 ROS 工具能够找到它： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15560">[15560]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span><span class="w"> </span><span class="s">my_exe</span>
 <span class="w">    </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
 </pre></div>
@@ -609,8 +609,8 @@
 </div>
 </div>
 <div class="section" id="linting-and-testing">
-<h2>Linting and Testing <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15561">[校准]</a><a class="headerlink" href="#linting-and-testing" title="永久链接至标题"></a></h2>
-<p>为了将测试与使用 colcon 构建库分开，将所有对代码检查和测试的调用都包装在条件语句中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15562">[校准]</a></p>
+<h2>静态检查和测试 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15561">[15561]</a><a class="headerlink" href="#linting-and-testing" title="永久链接至标题"></a></h2>
+<p>为了将测试与使用 colcon 构建库分开，将所有与检查器和测试相关的调用都包装在条件语句中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15562">[15562]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span><span class="p">(</span><span class="s">BUILD_TESTING</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake_gtest</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">ament_add_gtest</span><span class="p">(</span><span class="s">&lt;tests&gt;</span><span class="p">)</span>
@@ -618,14 +618,14 @@
 </pre></div>
 </div>
 <div class="section" id="linting">
-<h3>代码检查 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15563">[校准]</a><a class="headerlink" href="#linting" title="永久链接至标题"></a></h3>
-<p>建议使用`ament_lint_auto &lt;<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_lint_auto/doc/index.rst#ament_lint_auto">https://github.com/ament/ament_lint/blob/humble/ament_lint_auto/doc/index.rst#ament_lint_auto</a>&gt;`_中的组合调用： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15564">[校准]</a></p>
+<h3>静态检查 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15563">[15563]</a><a class="headerlink" href="#linting" title="永久链接至标题"></a></h3>
+<p>建议使用 <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_lint_auto/doc/index.rst#ament_lint_auto">ament_lint_auto</a> 中的组合调用： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15564">[15564]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_lint_auto</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">ament_lint_auto_find_test_dependencies</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>这将按照``package.xml``中定义的方式运行代码检查工具。建议使用由``ament_lint_common``软件包定义的代码检查工具集。其中包含的各个代码检查工具及其功能可以在`ament_lint_common文档 &lt;<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_lint_common/doc/index.rst">https://github.com/ament/ament_lint/blob/humble/ament_lint_common/doc/index.rst</a>&gt;`_中查看。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15565">[校准]</a></p>
-<p>ament提供的代码检查工具也可以单独添加，而不是运行``ament_lint_auto``。如何添加的一个示例可以在`ament_cmake_lint_cmake文档 &lt;<a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_cmake_lint_cmake/doc/index.rst">https://github.com/ament/ament_lint/blob/humble/ament_cmake_lint_cmake/doc/index.rst</a>&gt;`_中找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15566">[校准]</a></p>
+<p>这将按照 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中定义的检查器来运行。建议使用由包 <code class="docutils literal notranslate"><span class="pre">ament_lint_common</span></code> 定义的一组检查器。可以在 <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_lint_common/doc/index.rst">ament_lint_common 文档</a> 中查看包括的各个检查器及其功能。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15565">[15565]</a></p>
+<p>也可以单独添加 ament 提供的检查器，而不运行 <code class="docutils literal notranslate"><span class="pre">ament_lint_auto</span></code>。有关如何执行此操作的示例，请参阅 <a class="reference external" href="https://github.com/ament/ament_lint/blob/humble/ament_cmake_lint_cmake/doc/index.rst">ament_cmake_lint_cmake 文档</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15566">[15566]</a></p>
 </div>
 <div class="section" id="testing">
 <h3>测试 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15567">[校准]</a><a class="headerlink" href="#testing" title="永久链接至标题"></a></h3>
