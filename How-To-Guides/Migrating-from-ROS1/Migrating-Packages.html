@@ -404,7 +404,7 @@
 <li><p><a class="reference internal" href="#migrating-from-package-format-1-to-2" id="id3">从包格式1迁移到2+ [15925]</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#dependency-names" id="id4">Dependency names [校准]</a></p></li>
+<li><p><a class="reference internal" href="#dependency-names" id="id4">依赖项名称 [15946]</a></p></li>
 <li><p><a class="reference internal" href="#metapackages" id="id5">元软件包 [15949]</a></p></li>
 <li><p><a class="reference internal" href="#licensing" id="id6">许可 [15951]</a></p>
 <ul>
@@ -465,23 +465,23 @@
 <span class="nt">&lt;exec_depend&gt;</span>foo<span class="nt">&lt;/exec_depend&gt;</span>
 </pre></div>
 </div>
-<p>If the dependency is only used at run-time, only the <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;</span></code> is needed. If it is only exported to satisfy the build dependencies of other packages, use <code class="docutils literal notranslate"><span class="pre">&lt;build_export_depend&gt;</span></code>. If both are needed, this may be a better choice: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15937">[校准]</a></p>
+<p>如果依赖项仅在运行时使用，只需使用 <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;</span></code>。如果它仅用于导出以满足其他软件包的构建依赖关系，请使用 <code class="docutils literal notranslate"><span class="pre">&lt;build_export_depend&gt;</span></code>。如果两者都需要，这可能是更好的选择： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15937">[15937]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>foo<span class="nt">&lt;/depend&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="test-depend">
-<h4><strong>&lt;test_depend&gt;</strong> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15938">[校准]</a><a class="headerlink" href="#test-depend" title="永久链接至标题"></a></h4>
-<p>In format 2, this tag can satisfy build dependencies, not just those needed for executing your tests. Unlike format 1, <code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;</span></code> may now refer to a package also declared as some other type of dependency. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15939">[校准]</a></p>
-<p>Some test-only dependencies that formerly required a <code class="docutils literal notranslate"><span class="pre">&lt;build_depend&gt;</span></code>, should now be expressed using <code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;</span></code>. For example: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15940">[校准]</a></p>
+<h4><strong>&lt;test_depend&gt;</strong> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15938">[15938]</a><a class="headerlink" href="#test-depend" title="永久链接至标题"></a></h4>
+<p>在格式2中，此标签可以满足构建依赖关系，不仅仅是执行测试所需的依赖关系。与格式1不同，<code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;</span></code> 现在可以指代一个同时声明为其他类型依赖项的包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15939">[15939]</a></p>
+<p>以前需要 <code class="docutils literal notranslate"><span class="pre">&lt;build_depend&gt;</span></code> 的某些仅测试依赖项，现在应使用 <code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;</span></code> 表示。例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15940">[15940]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;build_depend&gt;</span>testfoo<span class="nt">&lt;/build_depend&gt;</span>
 </pre></div>
 </div>
-<p>becomes: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15941">[校准]</a></p>
+<p>变成了： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15941">[15941]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;test_depend&gt;</span>testfoo<span class="nt">&lt;/test_depend&gt;</span>
 </pre></div>
 </div>
-<p>In your CMakeLists.txt make sure your test dependencies are only referenced within the conditional test block: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15942">[校准]</a></p>
+<p>在您的 CMakeLists.txt 中，请确保您的测试依赖项只在条件测试块内引用： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15942">[15942]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span> <span class="p">(</span><span class="s">BUILD_TESTING</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">find_package</span><span class="p">(</span><span class="s">testfoo</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">endif</span><span class="p">()</span>
@@ -489,28 +489,28 @@
 </div>
 </div>
 <div class="section" id="doc-depend">
-<h4><strong>&lt;doc_depend&gt;</strong> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15943">[校准]</a><a class="headerlink" href="#doc-depend" title="永久链接至标题"></a></h4>
-<p>This tag defines dependencies needed for building your documentation: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15944">[校准]</a></p>
+<h4><strong>&lt;doc_depend&gt;</strong> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15943">[15943]</a><a class="headerlink" href="#doc-depend" title="永久链接至标题"></a></h4>
+<p>此标签定义了构建文档所需的依赖项： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15944">[15944]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;doc_depend&gt;</span>doxygen<span class="nt">&lt;/doc_depend&gt;</span>
 <span class="nt">&lt;doc_depend&gt;</span>python3-sphinx<span class="nt">&lt;/doc_depend&gt;</span>
 </pre></div>
 </div>
-<p>This does not create binary package dependencies, unless they were also declared using some other dependency tag. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15945">[校准]</a></p>
+<p>这不会创建二进制包依赖关系，除非它们还使用其他依赖标签声明。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15945">[15945]</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="dependency-names">
-<h2>Dependency names <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15946">[校准]</a><a class="headerlink" href="#dependency-names" title="永久链接至标题"></a></h2>
-<p>Dependency names that come from <a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html"><span class="doc">rosdep</span></a> should not need to change, as those are shared across ROS 1 and ROS 2. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15947">[校准]</a></p>
-<p>Some packages released into ROS might have different names in ROS 2 so the dependencies might need to be updated accordingly. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15948">[校准]</a></p>
+<h2>依赖项名称 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15946">[15946]</a><a class="headerlink" href="#dependency-names" title="永久链接至标题"></a></h2>
+<p>来自 <a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html"><span class="doc">rosdep</span></a> 的依赖项名称不应该需要更改，因为它们在ROS 1和ROS 2之间是共享的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15947">[15947]</a></p>
+<p>在ROS 2中，一些发布到ROS的软件包可能在ROS 2中具有不同的名称，因此依赖关系可能需要相应更新。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15948">[15948]</a></p>
 </div>
 <div class="section" id="metapackages">
 <h2>元软件包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15949">[15949]</a><a class="headerlink" href="#metapackages" title="永久链接至标题"></a></h2>
-<p>ROS 2 doesn't have a special package type for metapackages. Metapackages can still exist as regular packages that only contain runtime dependencies. When migrating metapackages from ROS 1, simply remove the <code class="docutils literal notranslate"><span class="pre">&lt;metapackage</span> <span class="pre">/&gt;</span></code> tag in your package manifest. See <a class="reference internal" href="../Using-Variants.html"><span class="doc">Using variants</span></a> for more information on metapackages/variants. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15950">[校准]</a></p>
+<p>ROS 2没有用于元包的特殊包类型。元包仍然可以存在为仅包含运行时依赖项的常规包。从ROS 1迁移元包时，只需在包清单中删除 <code class="docutils literal notranslate"><span class="pre">&lt;metapackage</span> <span class="pre">/&gt;</span></code> 标签。有关元包/变体的更多信息，请参阅 <a class="reference internal" href="../Using-Variants.html"><span class="doc">使用变体</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15950">[15950]</a></p>
 </div>
 <div class="section" id="licensing">
 <h2>许可 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15951">[15951]</a><a class="headerlink" href="#licensing" title="永久链接至标题"></a></h2>
-<p>In ROS 1 our recommended license was the <a class="reference external" href="https://opensource.org/licenses/BSD-3-Clause">3-Clause BSD License</a>. In ROS 2 our recommended license is the <a class="reference external" href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15952">[校准]</a></p>
+<p>在ROS 1中，我们推荐的许可证是 <a class="reference external" href="https://opensource.org/licenses/BSD-3-Clause">3-Clause BSD 许可证</a>。在ROS 2中，我们推荐的许可证是 <a class="reference external" href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 许可证</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15952">[15952]</a></p>
 <p>对于任何新项目，我们建议无论是ROS 1还是ROS 2都使用Apache 2.0 License。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15953">[15953]</a></p>
 <p>然而，当将代码从ROS 1迁移到ROS 2时，我们不能简单地更改许可证。必须保留现有许可证以供任何已有贡献使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15954">[15954]</a></p>
 <p>为此，如果正在迁移某个软件包，我们建议保留现有许可证，并继续在现有的OSI许可证下为该软件包做出贡献，我们预计核心元素的许可证将是BSD许可证。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15955">[15955]</a></p>
