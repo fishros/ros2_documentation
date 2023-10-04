@@ -194,7 +194,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">发挥Fast DDS中间件的潜力 [社区贡献]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reading-From-A-Bag-File-CPP.html">从 bag 文件中读取数据（C++）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Simulators/Simulation-Main.html">模拟器</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Simulators/Webots/Simulation-Webots.html">Webots</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu）</a></li>
@@ -432,10 +432,7 @@
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>ROS 2栈与Fast DDS之间的接口由ROS 2中间件实现`rmw_fastrtps &lt;<a class="reference external" href="https://github.com/ros2/rmw_fastrtps">https://github.com/ros2/rmw_fastrtps</a>&gt;`_提供。此实现在所有ROS 2发行版中都可用，包括二进制和源代码。</p>
-<p>ROS 2 RMW only allows for the configuration of certain middleware QoS
-(see <a class="reference internal" href="../../Concepts/Intermediate/About-Quality-of-Service-Settings.html"><span class="doc">ROS 2 QoS policies</span></a>).
-However, <code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> offers extended configuration capabilities to take full advantage of the features in <em>Fast DDS</em>.
-This tutorial will guide you through a series of examples explaining how to use XML files to unlock this extended configuration.</p>
+<p>ROS 2 RMW 仅允许配置某些中间件的 QoS（参见 <a class="reference internal" href="../../Concepts/Intermediate/About-Quality-of-Service-Settings.html"><span class="doc">ROS 2 QoS 策略</span></a>）。但是，<code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> 提供了扩展的配置功能，以充分利用 <em>Fast DDS</em> 中的功能。本教程将通过一系列示例向您解释如何使用 XML 文件来解锁此扩展配置。</p>
 <p>为了获取有关在ROS 2上使用*Fast DDS*的更多信息，请查看以下文档 &lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2.html</a>&gt;`__。</p>
 </div>
 <div class="section" id="prerequisites">
@@ -445,13 +442,9 @@ This tutorial will guide you through a series of examples explaining how to use 
 <div class="section" id="mixing-synchronous-and-asynchronous-publications-in-the-same-node">
 <h2><a class="toc-backref" href="#id3">在同一节点中混合同步和异步发布</a><a class="headerlink" href="#mixing-synchronous-and-asynchronous-publications-in-the-same-node" title="永久链接至标题"></a></h2>
 <p>在这个第一个示例中，将创建一个具有两个发布者的节点，其中一个使用同步发布模式，另一个使用异步发布模式。</p>
-<p><code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> uses synchronous publication mode by default.</p>
-<p>With synchronous publication mode the data is sent directly within the context of the user thread.
-This entails that any blocking call occurring during the write operation would block the user thread, thus preventing the application from continuing its operation.
-However, this mode typically yields higher throughput rates at lower latencies, since there is no notification nor context switching between threads.</p>
-<p>On the other hand, with asynchronous publication mode, each time the publisher invokes the write operation, the data is copied into a queue,
-a background thread (asynchronous thread) is notified about the addition to the queue, and control of the thread is returned to the user before the data is actually sent.
-The background thread is in charge of consuming the queue and sending the data to every matched reader.</p>
+<p>默认情况下，<code class="docutils literal notranslate"><span class="pre">rmw_fastrtps</span></code> 使用同步发布模式。</p>
+<p>使用同步发布模式时，数据直接在用户线程的上下文中发送。这意味着在写操作期间发生的任何阻塞调用都会阻塞用户线程，从而阻止应用程序继续运行。然而，该模式通常在较低的延迟下产生更高的吞吐量，因为没有线程之间的通知或上下文切换。</p>
+<p>另一方面，使用异步发布模式时，每次发布者调用写操作时，数据都会复制到队列中，然后会通知后台线程（异步线程）有数据添加到队列中，并在实际发送数据之前将线程的控制返回给用户。后台线程负责消耗队列并将数据发送给每个匹配的读者。</p>
 <div class="section" id="create-the-node-with-the-publishers">
 <h3><a class="toc-backref" href="#id4">使用发布者创建节点</a><a class="headerlink" href="#create-the-node-with-the-publishers" title="永久链接至标题"></a></h3>
 <p>首先，在新的工作空间上创建一个名为``sync_async_node_example_cpp``的新软件包：</p>
