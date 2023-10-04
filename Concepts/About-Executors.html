@@ -2,8 +2,14 @@
 <html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8" />
+            <link rel="canonical" href="https://docs.ros.org/en/humble/Intermediate/About-Executors.html" />
+            <meta http-equiv="refresh" content="0; url=Intermediate/About-Executors.html" />
+            <script>
+                window.location.href = 'Intermediate/About-Executors.html';
+            </script>
+        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>执行器 [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>About-Executors &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -24,9 +30,7 @@
         <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="About topic statistics" href="About-Topic-Statistics.html" />
-    <link rel="prev" title="About parameters in ROS 2" href="About-ROS-2-Parameters.html" /> 
+    <link rel="search" title="搜索" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,11 +49,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装 []</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages) [校准]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages) [校准]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案 [7555]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
@@ -82,10 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版 [8317]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (codename 'jazzy'; May, 2024)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>) [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
@@ -93,6 +96,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
@@ -194,6 +198,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++) [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
@@ -201,6 +206,8 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node [校准]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
@@ -245,10 +252,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2 [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
@@ -284,27 +299,40 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念 [校准]</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">About different ROS 2 DDS/RTPS vendors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Logging.html">About logging and logger configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">About Quality of Service settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">执行器 [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省 [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">About Composition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">On the mixing of ament and catkin (catment)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">About Cross-compilation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Security.html">About ROS 2 Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">About the build system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">About internal ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念 [校准]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">节点 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">发现 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">主题 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">服务 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">动作 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">参数 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">使用命令行工具进行内省 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">启动 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries [校准]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">执行器 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">交叉编译 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2 [校准]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations [校准]</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系 [7468]</a></li>
@@ -313,10 +341,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">Migration guide from ROS 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">Python migration guide from ROS 1</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
@@ -329,6 +353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
 </ul>
 </li>
@@ -359,10 +384,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../Concepts.html">概念 [校准]</a> &raquo;</li>
-      <li>执行器 [校准]</li>
+      <li>About-Executors</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Executors.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
   </ul>
   <hr/>
@@ -370,178 +393,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-
-  <div class="section" id="executors">
-<span id="id1"></span><h1>执行器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17385">[校准]</a><a class="headerlink" href="#executors" title="永久链接至标题"></a></h1>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[16866]</a></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#overview" id="id2">概述 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#basic-use" id="id3">基本用法 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#types-of-executors" id="id4">执行器的类型 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#callback-groups" id="id5">回调组 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#scheduling-semantics" id="id6">调度语义 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#outlook" id="id7">展望 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#further-information" id="id8">更多信息&quot; [校准]</a></p></li>
-</ul>
-</div>
-<div class="section" id="overview">
-<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17016">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>Execution management in ROS 2 is explicated by the concept of Executors.
-An Executor uses one or more threads of the underlying operating system to invoke the callbacks of subscriptions, timers, service servers, action servers, etc. on incoming messages and events.
-The explicit Executor class (in <a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/executor.hpp">executor.hpp</a> in rclcpp, in <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/rclpy/executors.py">executors.py</a> in rclpy, or in <a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">executor.h</a> in rclc) provides more control over execution management than the spin mechanism in ROS 1, although the basic API is very similar.</p>
-<p>接下来，我们将重点介绍 C++ 客户端库 <em>rclcpp</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17387">[校准]</a></p>
-</div>
-<div class="section" id="basic-use">
-<h2>基本用法 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17388">[校准]</a><a class="headerlink" href="#basic-use" title="永久链接至标题"></a></h2>
-<p>在最简单的情况下，可以通过调用 <code class="docutils literal notranslate"><span class="pre">rclcpp::spin(..)</span></code> 来使用主线程处理节点的传入消息和事件，示例如下： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17389">[校准]</a></p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="c1">// Some initialization.</span>
-<span class="w">   </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="p">...</span><span class="w"></span>
-
-<span class="w">   </span><span class="c1">// Instantiate a node.</span>
-<span class="w">   </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
-
-<span class="w">   </span><span class="c1">// Run the executor.</span>
-<span class="w">   </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">   </span><span class="c1">// Shutdown and exit.</span>
-<span class="w">   </span><span class="p">...</span><span class="w"></span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-<p>对 <code class="docutils literal notranslate"><span class="pre">spin(node)</span></code> 的调用基本上扩展为单线程执行器的实例化和调用，这是最简单的执行器： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17390">[校准]</a></p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">executors</span><span class="o">::</span><span class="n">SingleThreadedExecutor</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
-<span class="n">executor</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
-<span class="n">executor</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"></span>
-</pre></div>
-</div>
-<p>通过调用执行器实例的 <code class="docutils literal notranslate"><span class="pre">spin()</span></code>，当前线程开始查询 rcl 和中间件层的传入消息和其他事件，并调用相应的回调函数，直到节点关闭。为了不影响中间件的 QoS 设置，在客户端库层不会将传入消息存储在队列中，而是在中间件中保持，直到由回调函数进行处理。（这是与 ROS 1 的一个重要区别。）一个 <em>等待集</em> 用于通知执行器中间件层上可用的消息，每个队列对应一个二进制标志。<em>等待集</em> 还用于检测计时器到期的情况。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17391">[校准]</a></p>
-<img alt="../_images/executors_basic_principle.png" src="../_images/executors_basic_principle.png" />
-<p>单线程执行器还被容器进程用于 <a class="reference internal" href="About-Composition.html"><span class="doc">组件</span></a>，即在所有没有显式主函数的情况下创建和执行节点的情况下。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17392">[校准]</a></p>
-</div>
-<div class="section" id="types-of-executors">
-<h2>执行器的类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17393">[校准]</a><a class="headerlink" href="#types-of-executors" title="永久链接至标题"></a></h2>
-<p>目前，rclcpp 提供了三种执行器类型，它们派生自一个共享的父类： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17394">[校准]</a></p>
-<div class="graphviz"><img src="../_images/graphviz-c1160194dae16051e00be2abef23d0fce5e7c347.png" alt="digraph Flatland {
-
-   Executor -&gt; SingleThreadedExecutor [dir = back, arrowtail = empty];
-   Executor -&gt; MultiThreadedExecutor [dir = back, arrowtail = empty];
-   Executor -&gt; StaticSingleThreadedExecutor [dir = back, arrowtail = empty];
-   Executor  [shape=polygon,sides=4];
-   SingleThreadedExecutor  [shape=polygon,sides=4];
-   MultiThreadedExecutor  [shape=polygon,sides=4];
-   StaticSingleThreadedExecutor  [shape=polygon,sides=4];
-
-   }" class="graphviz" /></div>
-<p>The <em>Multi-Threaded Executor</em> creates a configurable number of threads to allow for processing multiple messages or events in parallel.
-The <em>Static Single-Threaded Executor</em> optimizes the runtime costs for scanning the structure of a node in terms of subscriptions, timers, service servers, action servers, etc.
-It performs this scan only once when the node is added, while the other two executors regularly scan for such changes.
-Therefore, the Static Single-Threaded Executor should be used only with nodes that create all subscriptions, timers, etc. during initialization.</p>
-<p>通过为每个节点调用``add_node（..）``，可以使用所有三个执行者与多个节点一起使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17396">[校准]</a></p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
-
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">executors</span><span class="o">::</span><span class="n">StaticSingleThreadedExecutor</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
-<span class="n">executor</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node1</span><span class="p">);</span><span class="w"></span>
-<span class="n">executor</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node2</span><span class="p">);</span><span class="w"></span>
-<span class="n">executor</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node3</span><span class="p">);</span><span class="w"></span>
-<span class="n">executor</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"></span>
-</pre></div>
-</div>
-<p>在上面的示例中，使用一个静态单线程执行者的一个线程来同时服务三个节点。在多线程执行者的情况下，实际并行性取决于回调组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17397">[校准]</a></p>
-</div>
-<div class="section" id="callback-groups">
-<h2>回调组 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17398">[校准]</a><a class="headerlink" href="#callback-groups" title="永久链接至标题"></a></h2>
-<p>ROS 2允许将节点的回调组织成组。在rclcpp中，可以通过Node类的``create_callback_group``函数创建这样一个*回调组*。在rclpy中，可以通过调用特定回调组类型的构造函数来完成相同的操作。回调组必须在节点的执行过程中保留（例如，作为类成员），否则执行者将无法触发回调。然后，在创建订阅、定时器等时可以指定此回调组-例如，通过订阅选项： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17399">[校准]</a></p>
-<div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">my_callback_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
-
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">SubscriptionOptions</span><span class="w"> </span><span class="n">options</span><span class="p">;</span><span class="w"></span>
-<span class="n">options</span><span class="p">.</span><span class="n">callback_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_callback_group</span><span class="p">;</span><span class="w"></span>
-
-<span class="n">my_subscription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">Int32</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;/topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">SensorDataQoS</span><span class="p">(),</span><span class="w"></span>
-<span class="w">                                             </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">);</span><span class="w"></span>
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_callback_group</span> <span class="o">=</span> <span class="n">MutuallyExclusiveCallbackGroup</span><span class="p">()</span>
-<span class="n">my_subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">Int32</span><span class="p">,</span> <span class="s2">&quot;/topic&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="n">qos_profile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                           <span class="n">callback_group</span><span class="o">=</span><span class="n">my_callback_group</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></div>
-<p>所有没有指定回调组的订阅、定时器等都被分配到*默认回调组*。可以通过``NodeBaseInterface::get_default_callback_group()``（在rclcpp中）和``Node.default_callback_group``（在rclpy中）查询默认回调组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17402">[校准]</a></p>
-<p>有两种类型的回调组，类型必须在实例化时指定： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17403">[校准]</a></p>
-<ul class="simple">
-<li><p><em>互斥（Mutually exclusive）：</em> 该组的回调不能并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17404">[校准]</a></p></li>
-<li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>可重入（Reentrant）：<a href="#id3"><span class="problematic" id="id4">*</span></a>该组的回调可以并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17405">[校准]</a></p></li>
-</ul>
-<p>Callbacks of different callback groups may always be executed in parallel.
-The Multi-Threaded Executor uses its threads as a pool to process as many callbacks as possible in parallel according to these conditions.
-For tips on how to use callback groups efficiently, see <a class="reference internal" href="../How-To-Guides/Using-callback-groups.html"><span class="doc">Using Callback Groups</span></a>.</p>
-<p>在rclcpp中，Executor基类还具有函数``add_callback_group(..)``，可以将回调组分配给不同的执行器。通过使用操作系统调度器配置底层线程，可以使特定的回调优先于其他回调。例如，可以将控制循环的订阅和定时器优先于节点的所有其他订阅和标准服务。<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor">examples_rclcpp_cbg_executor package</a> 提供了该机制的演示。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17407">[校准]</a></p>
-</div>
-<div class="section" id="scheduling-semantics">
-<h2>调度语义 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17408">[校准]</a><a class="headerlink" href="#scheduling-semantics" title="永久链接至标题"></a></h2>
-<p>如果回调函数的处理时间短于消息和事件发生的周期，执行器基本上按照先进先出（FIFO）的顺序处理它们。然而，如果某些回调函数的处理时间较长，消息和事件将在堆栈的较低层次上排队。等待集机制对这些队列向执行器仅报告了非常少的信息。具体而言，它只报告某个主题是否有任何消息。执行器使用这些信息以循环轮询的方式处理消息（包括服务和动作），而不是按照先进先出的顺序。下面的流程图可视化了这种调度语义。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17409">[校准]</a></p>
-<img alt="../_images/executors_scheduling_semantics.png" src="../_images/executors_scheduling_semantics.png" />
-<p>这种语义首次在2019年的ECRTS会议上由Casini等人在一篇论文中描述。 [链接](<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf</a>) （注意：该论文还解释了计时器事件优先于所有其他消息的优先级，这个优先级在 Eloquent 中被移除了。 [链接](<a class="reference external" href="https://github.com/ros2/rclcpp/pull/841">https://github.com/ros2/rclcpp/pull/841</a>) ） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17410">[校准]</a></p>
-</div>
-<div class="section" id="outlook">
-<h2>展望 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17411">[校准]</a><a class="headerlink" href="#outlook" title="永久链接至标题"></a></h2>
-<p>虽然rclcpp的三个执行器在大多数应用中运行良好，但存在一些问题，使它们不适用于实时应用程序，实时应用程序需要定义明确的执行时间、确定性和对执行顺序的自定义控制。以下是其中一些问题的摘要： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17412">[校准]</a></p>
-<ol class="arabic simple">
-<li><p>复杂和混合的调度语义。理想情况下，您希望有明确定义的调度语义以进行形式化的定时分析。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17413">[校准]</a></p></li>
-<li><p>回调函数可能会受到优先级反转的影响。较高优先级的回调函数可能会被较低优先级的回调函数阻塞。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17414">[校准]</a></p></li>
-<li><p>无法明确控制回调函数的执行顺序。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17415">[校准]</a></p></li>
-<li><p>没有内置的机制来触发特定主题的回调函数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17416">[校准]</a></p></li>
-</ol>
-<p>此外，执行器在CPU和内存使用方面的开销相当大。静态单线程执行器大大减少了这种开销，但对于某些应用程序可能还不够。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17417">[校准]</a></p>
-<p>这些问题已经部分得到以下改进的解决： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17418">[校准]</a></p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp">rclcpp WaitSet</a> ：rclcpp 的 <code class="docutils literal notranslate"><span class="pre">WaitSet</span></code> 类允许直接等待订阅、定时器、服务服务器、动作服务器等，而无需使用执行器。它可以用于实现确定性的、用户定义的处理序列，可能同时处理来自不同订阅的多个消息。 <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/wait_set">examples_rclcpp_wait_set package</a> 提供了使用此用户级等待集机制的多个示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17419">[校准]</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">rclc Executor</a>：这个来自C客户端库*rclc*的Executor是为micro-ROS开发的，它可以让用户对回调的执行顺序进行细粒度控制，并允许自定义触发条件来激活回调。此外，它实现了逻辑执行时间（LET）语义的概念。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17420">[校准]</a></p></li>
-</ul>
-</div>
-<div class="section" id="further-information">
-<h2>更多信息&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17421">[校准]</a><a class="headerlink" href="#further-information" title="永久链接至标题"></a></h2>
-<ul class="simple">
-<li><p>Michael Pöhnl等人：<a class="reference external" href="https://www.apex.ai/roscon-21">&quot;ROS 2 Executor: How to make it efficient, real-time and deterministic?&quot;</a>. ROS World 2021的研讨会。虚拟活动。2021年10月19日。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17422">[校准]</a></p></li>
-<li><p>Ralph Lange：<a class="reference external" href="https://www.youtube.com/watch?v=Sz-nllmtcc8&amp;t=109s">&quot;Advanced Execution Management with ROS 2&quot;</a>. ROS Industrial Conference。虚拟活动。2020年12月16日。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17423">[校准]</a></p></li>
-<li><p>Daniel Casini，Tobias Blass，Ingo Lütkebohle和Björn Brandenburg：<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling”</a>，第31届ECRTS 2019会议论文集，德国斯图加特，2019年7月。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17424">[校准]</a></p></li>
-</ul>
-</div>
-</div>
-
-
-
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-          <a href="About-ROS-2-Parameters.html" class="btn btn-neutral float-left" title="About parameters in ROS 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-          <a href="About-Topic-Statistics.html" class="btn btn-neutral float-right" title="About topic statistics" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-      </div>
-  
-    <hr/>
-  
-    <div role="contentinfo">
-      <p><a href="https://fishros.org.cn/forum/topic/160">点我加入鱼香ROS社区及交流群</a></p>
-    <p>如果你觉得翻译有误，可通过<a href="http://fishros.org/doc/ros2/humble/dev">校准版文档</a>帮助改进。</p>
-      <p>&#169; 版权所有 2023, Open Robotics.</p>
-    </div>
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-      <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-      由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-     
-  
-  </footer>
-  
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
         </div>
       </div>
     </section>

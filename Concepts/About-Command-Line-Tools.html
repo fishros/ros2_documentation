@@ -2,8 +2,14 @@
 <html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8" />
+            <link rel="canonical" href="https://docs.ros.org/en/humble/Basic/About-Command-Line-Tools.html" />
+            <meta http-equiv="refresh" content="0; url=Basic/About-Command-Line-Tools.html" />
+            <script>
+                window.location.href = 'Basic/About-Command-Line-Tools.html';
+            </script>
+        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>使用命令行工具进行内省 [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>About-Command-Line-Tools &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -21,11 +27,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="RQt 的概述和使用方法 [校准]" href="About-RQt.html" />
-    <link rel="prev" title="About topic statistics" href="About-Topic-Statistics.html" /> 
+    <link rel="search" title="搜索" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,11 +49,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装 []</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages) [校准]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages) [校准]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案 [7555]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
@@ -81,10 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版 [8317]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (codename 'jazzy'; May, 2024)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>) [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
@@ -92,6 +96,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
@@ -193,6 +198,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++) [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
@@ -200,6 +206,8 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node [校准]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
@@ -244,10 +252,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2 [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
@@ -283,27 +299,40 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念 [校准]</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">About different ROS 2 DDS/RTPS vendors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Logging.html">About logging and logger configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">About Quality of Service settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器 [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">About topic statistics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">使用命令行工具进行内省 [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">About Composition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">On the mixing of ament and catkin (catment)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">About Cross-compilation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Security.html">About ROS 2 Security</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">About tf2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">About the build system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">About internal ROS 2 interfaces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念 [校准]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">节点 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">发现 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">主题 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">服务 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">动作 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">参数 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">使用命令行工具进行内省 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">启动 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries [校准]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">执行器 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">交叉编译 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2 [校准]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations [校准]</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系 [7468]</a></li>
@@ -312,10 +341,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">Migration guide from ROS 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">Python migration guide from ROS 1</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
@@ -328,6 +353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
 </ul>
 </li>
@@ -358,10 +384,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../Concepts.html">概念 [校准]</a> &raquo;</li>
-      <li>使用命令行工具进行内省 [校准]</li>
+      <li>About-Command-Line-Tools</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-Command-Line-Tools.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
   </ul>
   <hr/>
@@ -369,105 +393,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-
-  <div class="section" id="introspection-with-command-line-tools">
-<h1>使用命令行工具进行内省 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17061">[校准]</a><a class="headerlink" href="#introspection-with-command-line-tools" title="永久链接至标题"></a></h1>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[16866]</a></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#usage" id="id1">用法 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#example" id="id2">示例 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#behind-the-scenes" id="id3">幕后 [校准]</a></p></li>
-<li><p><a class="reference internal" href="#implementation" id="id4">实现 [校准]</a></p></li>
-</ul>
-</div>
-<p>ROS 2 包含一套命令行工具，用于内省 ROS 2 系统。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17062">[校准]</a></p>
-<div class="section" id="usage">
-<h2>用法 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17063">[校准]</a><a class="headerlink" href="#usage" title="永久链接至标题"></a></h2>
-<p>工具的主要入口点是命令 <code class="docutils literal notranslate"><span class="pre">ros2</span></code>，它本身有各种子命令，用于内省和处理节点、主题、服务等。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17064">[校准]</a></p>
-<p>要查看所有可用的子命令，请运行： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17065">[校准]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 --help
-</pre></div>
-</div>
-<p>可用的子命令示例包括： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17066">[校准]</a></p>
-<ul class="simple">
-<li><p>action: Introspect/interact with ROS actions</p></li>
-<li><p>bag: Record/play a rosbag</p></li>
-<li><p>component: Manage component containers</p></li>
-<li><p>daemon: Introspect/configure the ROS 2 daemon</p></li>
-<li><p>doctor: Check ROS setup for potential issues</p></li>
-<li><p>interface: Show information about ROS interfaces</p></li>
-<li><p>launch: Run/introspect a launch file</p></li>
-<li><p>lifecycle: Introspect/manage nodes with managed lifecycles</p></li>
-<li><p>node: Introspect ROS nodes</p></li>
-<li><p>param: Introspect/configure parameters on a node</p></li>
-<li><p>pkg: Introspect ROS packages</p></li>
-<li><p>run: Run ROS nodes</p></li>
-<li><p>security: Configure security settings</p></li>
-<li><p>service: Introspect/call ROS services</p></li>
-<li><p>test: Run a ROS launch test</p></li>
-<li><p>topic: Introspect/publish ROS topics</p></li>
-<li><p>trace: Tracing tools to get information on ROS nodes execution (only available on Linux)</p></li>
-</ul>
-</div>
-<div class="section" id="example">
-<h2>示例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17086">[校准]</a><a class="headerlink" href="#example" title="永久链接至标题"></a></h2>
-<p>要使用命令行工具生成典型的发布者-订阅者示例，可以使用“topic”子命令在主题上发布和回显消息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17087">[校准]</a></p>
-<p>在一个终端中发布消息： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17088">[校准]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 topic pub /chatter std_msgs/msg/String <span class="s2">&quot;data: Hello world&quot;</span>
-publisher: beginning loop
-publishing <span class="c1">#1: std_msgs.msg.String(data=&#39;Hello world&#39;)</span>
-
-publishing <span class="c1">#2: std_msgs.msg.String(data=&#39;Hello world&#39;)</span>
-</pre></div>
-</div>
-<p>在另一个终端中回显接收到的消息： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17089">[校准]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 topic <span class="nb">echo</span> /chatter
-data: Hello world
-
-data: Hello world
-</pre></div>
-</div>
-</div>
-<div class="section" id="behind-the-scenes">
-<h2>幕后 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17090">[校准]</a><a class="headerlink" href="#behind-the-scenes" title="永久链接至标题"></a></h2>
-<p>ROS 2 uses a distributed discovery process for nodes to connect to each other.
-As this process purposefully does not use a centralized discovery mechanism (like the ROS Master in ROS 1), it can take time for ROS nodes to discover all other participants in the ROS graph.
-Because of this, there is a long-running daemon in the background that stores information about the ROS graph to provide faster responses to queries, e.g. the list of node names.</p>
-<p>当首次使用相关命令行工具时，守护程序将自动启动。您可以运行``ros2 daemon --help``获取与守护程序交互的更多选项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17092">[校准]</a></p>
-</div>
-<div class="section" id="implementation">
-<h2>实现 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17093">[校准]</a><a class="headerlink" href="#implementation" title="永久链接至标题"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>ros2``命令的源代码可在https://github.com/ros2/ros2cli上获得。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17094">[校准]</a></p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>ros2``工具已作为一个可通过插件进行扩展的框架实现。例如，如果安装了``sros2``包，则``ros2``工具会自动检测到`sros2 &lt;<a class="reference external" href="https://github.com/ros2/sros2">https://github.com/ros2/sros2</a>&gt;`__包提供的``security``子命令。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17095">[校准]</a></p>
-</div>
-</div>
-
-
-
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-          <a href="About-Topic-Statistics.html" class="btn btn-neutral float-left" title="About topic statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-          <a href="About-RQt.html" class="btn btn-neutral float-right" title="RQt 的概述和使用方法 [校准]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-      </div>
-  
-    <hr/>
-  
-    <div role="contentinfo">
-      <p><a href="https://fishros.org.cn/forum/topic/160">点我加入鱼香ROS社区及交流群</a></p>
-    <p>如果你觉得翻译有误，可通过<a href="http://fishros.org/doc/ros2/humble/dev">校准版文档</a>帮助改进。</p>
-      <p>&#169; 版权所有 2023, Open Robotics.</p>
-    </div>
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-      <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-      由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-     
-  
-  </footer>
-  
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
         </div>
       </div>
     </section>
