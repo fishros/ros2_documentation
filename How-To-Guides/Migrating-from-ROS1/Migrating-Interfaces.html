@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Interfaces [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移接口 [15802] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -249,10 +249,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2 [15656]</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">Migrating Packages [校准]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Interfaces [校准]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移接口 [15802]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包 [15664]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">Migrating Launch Files [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">迁移启动文件 [15820]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
 </ul>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南 [1]</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2 [15656]</a> &raquo;</li>
-      <li>Migrating Interfaces [校准]</li>
+      <li>迁移接口 [15802]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,39 +394,39 @@
 
 
   <div class="section" id="migrating-interfaces">
-<h1>Migrating Interfaces <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15802">[校准]</a><a class="headerlink" href="#migrating-interfaces" title="永久链接至标题"></a></h1>
+<h1>迁移接口 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15802">[15802]</a><a class="headerlink" href="#migrating-interfaces" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15498">[]</a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#interface-definitions" id="id1">Interface definitions [校准]</a></p></li>
-<li><p><a class="reference internal" href="#building-interfaces" id="id2">Building interfaces [校准]</a></p>
+<li><p><a class="reference internal" href="#interface-definitions" id="id1">接口定义 [15804]</a></p></li>
+<li><p><a class="reference internal" href="#building-interfaces" id="id2">构建接口 [15807]</a></p>
 <ul>
-<li><p><a class="reference internal" href="#migrating-interface-package-to-ros-2" id="id3">Migrating interface package to ROS 2 [校准]</a></p></li>
+<li><p><a class="reference internal" href="#migrating-interface-package-to-ros-2" id="id3">将接口包迁移到ROS 2 [15809]</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<p>Messages, services, and actions are collectively called <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> in ROS 2. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15803">[校准]</a></p>
+<p>在ROS 2中，消息、服务和动作统称为``接口（interfaces）``。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15803">[15803]</a></p>
 <div class="section" id="interface-definitions">
-<h2>Interface definitions <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15804">[校准]</a><a class="headerlink" href="#interface-definitions" title="永久链接至标题"></a></h2>
+<h2>接口定义 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15804">[15804]</a><a class="headerlink" href="#interface-definitions" title="永久链接至标题"></a></h2>
 <p>消息文件必须以``.msg``结尾，并且必须位于子文件夹``msg``中。服务文件必须以``.srv``结尾，并且必须位于子文件夹``srv``中。动作文件必须以``.action``结尾，并且必须位于子文件夹``action``中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15805">[15805]</a></p>
-<p>These files might need to be updated to comply with the <a class="reference external" href="http://design.ros2.org/articles/legacy_interface_definition.html">ROS Interface definition</a>. Some primitive types have been removed and the types <code class="docutils literal notranslate"><span class="pre">duration</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code> which were builtin types in ROS 1 have been replaced with normal message definitions and must be used from the <a class="reference external" href="https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces">builtin_interfaces</a> package. Also some naming conventions are stricter than in ROS 1. There is additional information in the <a class="reference internal" href="../../Concepts/Basic/About-Interfaces.html"><span class="doc">conceptual article</span></a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15806">[校准]</a></p>
+<p>这些文件可能需要更新，以符合 <a class="reference external" href="http://design.ros2.org/articles/legacy_interface_definition.html">ROS接口定义</a>。某些原始类型已被移除，而在ROS 1中作为内置类型的 <code class="docutils literal notranslate"><span class="pre">duration</span></code> 和 <code class="docutils literal notranslate"><span class="pre">time</span></code> 类型已被替换为普通消息定义，必须从 <a class="reference external" href="https://github.com/ros2/rcl_interfaces/tree/humble/builtin_interfaces">builtin_interfaces</a> 包中使用。此外，一些命名约定比在ROS 1中更为严格。在 <a class="reference internal" href="../../Concepts/Basic/About-Interfaces.html"><span class="doc">概念文章</span></a> 中有更多信息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15806">[15806]</a></p>
 </div>
 <div class="section" id="building-interfaces">
-<h2>Building interfaces <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15807">[校准]</a><a class="headerlink" href="#building-interfaces" title="永久链接至标题"></a></h2>
-<p>The way in which interfaces are built in ROS 2 differs substantially from ROS 1. Interfaces can only be built from packages containing a <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>. If you are developing a pure Python package, then the interfaces should be placed in a different package containing only the interfaces (which is best practice anyway). See the <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html"><span class="doc">custom interfaces tutorial</span></a> for more information. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15808">[校准]</a></p>
+<h2>构建接口 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15807">[15807]</a><a class="headerlink" href="#building-interfaces" title="永久链接至标题"></a></h2>
+<p>在ROS 2中，构建接口的方式与ROS 1有很大不同。接口只能从包含``CMakeLists.txt``的包中构建。如果您正在开发纯Python包，那么接口应该放在另一个仅包含接口的包中（这也是最佳实践）。有关更多信息，请参阅 <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html"><span class="doc">自定义接口教程</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15808">[15808]</a></p>
 <div class="section" id="migrating-interface-package-to-ros-2">
-<h3>Migrating interface package to ROS 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15809">[校准]</a><a class="headerlink" href="#migrating-interface-package-to-ros-2" title="永久链接至标题"></a></h3>
+<h3>将接口包迁移到ROS 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15809">[15809]</a><a class="headerlink" href="#migrating-interface-package-to-ros-2" title="永久链接至标题"></a></h3>
 <p>在你的 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 中: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15810">[15810]</a></p>
 <ul class="simple">
 <li><p>添加 <code class="docutils literal notranslate"><span class="pre">&lt;buildtool_depend&gt;rosidl_default_generators&lt;/buildtool_depend&gt;</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15811">[15811]</a></p></li>
 <li><p>添加 <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;rosidl_default_runtime&lt;/exec_depend&gt;</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15812">[15812]</a></p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">&lt;member_of_group&gt;rosidl_interface_packages&lt;/member_of_group&gt;</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15813">[校准]</a></p></li>
+<li><p>添加 <code class="docutils literal notranslate"><span class="pre">&lt;member_of_group&gt;rosidl_interface_packages&lt;/member_of_group&gt;</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15813">[15813]</a></p></li>
 <li><p>对于每个依赖的消息包，添加 <code class="docutils literal notranslate"><span class="pre">&lt;depend&gt;message_package&lt;/depend&gt;</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15814">[15814]</a></p></li>
 </ul>
 <p>在你的 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15815">[15815]</a></p>
 <ul class="simple">
-<li><p>Enable C++17 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15816">[校准]</a></p></li>
+<li><p>启用 C++17 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15816">[15816]</a></p></li>
 </ul>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">17</span><span class="p">)</span>
 </pre></div>
