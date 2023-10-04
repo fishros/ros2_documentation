@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../search.html" />
     <link rel="next" title="Gazebo" href="../Gazebo/Simulation-Gazebo.html" />
-    <link rel="prev" title="The Ros2Supervisor Node" href="Simulation-Supervisor.html" /> 
+    <link rel="prev" title="Ros2Supervisor 节点" href="Simulation-Supervisor.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -201,7 +201,7 @@
 <li class="toctree-l5"><a class="reference internal" href="Installation-MacOS.html">安装（macOS）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级）</a></li>
-<li class="toctree-l5"><a class="reference internal" href="Simulation-Supervisor.html">The Ros2Supervisor Node</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Simulation-Supervisor.html">Ros2Supervisor 节点</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">设置重置处理程序</a></li>
 </ul>
 </li>
@@ -406,8 +406,8 @@
 <li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件</a></p></li>
 <li><p><a class="reference internal" href="#reset-handler-for-simple-cases-controllers-only" id="id3">适用于简单情况的重置处理程序（仅限控制器）</a></p></li>
-<li><p><a class="reference internal" href="#reset-handler-for-multiple-nodes-no-shutdown-required" id="id4">Reset Handler for Multiple Nodes (No Shutdown Required)</a></p></li>
-<li><p><a class="reference internal" href="#reset-handler-requiring-node-shutdown" id="id5">Reset Handler Requiring Node Shutdown</a></p></li>
+<li><p><a class="reference internal" href="#reset-handler-for-multiple-nodes-no-shutdown-required" id="id4">多节点的重置处理程序（无需关闭节点）</a></p></li>
+<li><p><a class="reference internal" href="#reset-handler-requiring-node-shutdown" id="id5">需要节点关闭的重置处理程序</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id6">总结</a></p></li>
 </ul>
 </div>
@@ -450,8 +450,8 @@
 <p>在重置时，Webots 会关闭所有驱动节点。因此，要在重置后重新启动它们，您应将驱动节点的 <code class="docutils literal notranslate"><span class="pre">respawn</span></code> 属性设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。这将确保在重置后驱动节点正常运行。</p>
 </div>
 <div class="section" id="reset-handler-for-multiple-nodes-no-shutdown-required">
-<h2><a class="toc-backref" href="#id4">Reset Handler for Multiple Nodes (No Shutdown Required)</a><a class="headerlink" href="#reset-handler-for-multiple-nodes-no-shutdown-required" title="永久链接至标题"></a></h2>
-<p>If you have some other nodes that have to be started along with the driver node (e.g. <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> nodes), then you can use the <code class="docutils literal notranslate"><span class="pre">OnProcessExit</span></code> event handler:</p>
+<h2><a class="toc-backref" href="#id4">多节点的重置处理程序（无需关闭节点）</a><a class="headerlink" href="#reset-handler-for-multiple-nodes-no-shutdown-required" title="永久链接至标题"></a></h2>
+<p>如果还有其他必须与驱动节点一起启动的节点（例如 <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> 节点），则可以使用 <code class="docutils literal notranslate"><span class="pre">OnProcessExit</span></code> 事件处理程序：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_ros2_control_spawners</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="c1"># Declare here all nodes that must be restarted at simulation reset</span>
     <span class="n">ros_control_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
@@ -492,18 +492,12 @@
     <span class="p">]</span> <span class="o">+</span> <span class="n">get_ros2_control_spawners</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>It is not possible to use the <code class="docutils literal notranslate"><span class="pre">respawn</span></code> property on the <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> node, as the spawner exits during launch time and not when the simulation is reset.
-Instead we should declare a list of nodes in a function (e.g. <code class="docutils literal notranslate"><span class="pre">get_ros2_control_spawners</span></code>).
-The nodes of this list are started along other nodes when executing the launch file.
-With the <code class="docutils literal notranslate"><span class="pre">reset_handler</span></code>, the function is also declared as action to start when the <code class="docutils literal notranslate"><span class="pre">robot_driver</span></code> node exits, which corresponds to the moment when the simulation is reset in the Webots interface.
-The <code class="docutils literal notranslate"><span class="pre">robot_driver</span></code> node still has the <code class="docutils literal notranslate"><span class="pre">respawn</span></code> property set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, so that it gets restarted along with <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> nodes.</p>
+<p>不能在 <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> 节点上使用 <code class="docutils literal notranslate"><span class="pre">respawn</span></code> 属性，因为生成器在启动时退出，而不是在重置仿真时退出。相反，我们应该在一个函数中声明节点列表（例如 <code class="docutils literal notranslate"><span class="pre">get_ros2_control_spawners</span></code>）。此列表中的节点会在执行启动文件时与其他节点一起启动。通过 <code class="docutils literal notranslate"><span class="pre">reset_handler</span></code>，该函数还被声明为在 <code class="docutils literal notranslate"><span class="pre">robot_driver</span></code> 节点退出时启动的操作，这对应于在 Webots 界面中重置仿真的时刻。<code class="docutils literal notranslate"><span class="pre">robot_driver</span></code> 节点仍然将 <code class="docutils literal notranslate"><span class="pre">respawn</span></code> 属性设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，以便在 <code class="docutils literal notranslate"><span class="pre">ros2_control</span></code> 节点一起重新启动。</p>
 </div>
 <div class="section" id="reset-handler-requiring-node-shutdown">
-<h2><a class="toc-backref" href="#id5">Reset Handler Requiring Node Shutdown</a><a class="headerlink" href="#reset-handler-requiring-node-shutdown" title="永久链接至标题"></a></h2>
-<p>With the current ROS 2 launch API, there is no way to make the reset work in launch files where nodes need to be shutdown before the restart (e.g. <code class="docutils literal notranslate"><span class="pre">Nav2</span></code> or <code class="docutils literal notranslate"><span class="pre">RViz</span></code>).
-The reason is that currently, ROS 2 doesn't allow to shutdown specific nodes from a launch file.
-There is a solution, but it requires to manually restart nodes after pushing the reset button.</p>
-<p>Webots needs to be started in a specific launch file without other nodes.</p>
+<h2><a class="toc-backref" href="#id5">需要节点关闭的重置处理程序</a><a class="headerlink" href="#reset-handler-requiring-node-shutdown" title="永久链接至标题"></a></h2>
+<p>根据当前的 ROS 2 启动 API，在需要在重新启动之前关闭节点的启动文件中，无法使重置工作（例如 <code class="docutils literal notranslate"><span class="pre">Nav2</span></code> 或 <code class="docutils literal notranslate"><span class="pre">RViz</span></code>）。原因是目前，ROS 2 不允许从启动文件中关闭特定节点。有一个解决方案，但需要在按下重置按钮后手动重新启动节点。</p>
+<p>Webots 需要在一个特定的启动文件中启动，不包含其他节点。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="c1"># Starts Webots</span>
     <span class="n">webots</span> <span class="o">=</span> <span class="n">WebotsLauncher</span><span class="p">(</span><span class="n">world</span><span class="o">=</span><span class="n">PathJoinSubstitution</span><span class="p">([</span><span class="n">package_dir</span><span class="p">,</span> <span class="s1">&#39;worlds&#39;</span><span class="p">,</span> <span class="n">world</span><span class="p">]))</span>
@@ -513,8 +507,7 @@ There is a solution, but it requires to manually restart nodes after pushing the
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>A second launch file must be started from another process.
-This launch file contains all other nodes, including robot controllers/plugins, Navigation2 nodes, RViz, state publishers, etc.</p>
+<p>必须从另一个进程中启动第二个启动文件。该启动文件包含所有其他节点，包括机器人控制器/插件、Navigation2 节点、RViz、状态发布者等等。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="n">robot_driver</span> <span class="o">=</span> <span class="n">WebotsController</span><span class="p">(</span>
         <span class="n">robot_name</span><span class="o">=</span><span class="s1">&#39;my_robot&#39;</span><span class="p">,</span>
@@ -561,14 +554,11 @@ This launch file contains all other nodes, including robot controllers/plugins, 
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>The second launch file contains a handler that triggers a shutdown event when the driver node exits (which is the case when the simulation is reset).
-This second launch file must be manually restarted from the command line after pressing the reset button.</p>
+<p>第二个启动文件包含一个处理程序，当驱动节点退出时触发关闭事件（这是仿真重置时的情况）。必须在按下重置按钮后从命令行手动重新启动这个第二个启动文件。</p>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id6">总结</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you learned how to implement a reset handler in a robot simulation using Webots.
-The reset handler allows you to restart specific nodes or perform additional actions when the reset button in Webots is pressed.
-You explored different approaches based on the complexity of your simulation and the requirements of your nodes.</p>
+<p>在本教程中，您学习了如何在使用 Webots 的机器人仿真中实现重置处理程序。重置处理程序允许您在按下 Webots 中的重置按钮时重新启动特定节点或执行其他操作。根据仿真的复杂性和节点的要求，您探索了不同的方法。</p>
 </div>
 </div>
 
@@ -577,7 +567,7 @@ You explored different approaches based on the complexity of your simulation and
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Simulation-Supervisor.html" class="btn btn-neutral float-left" title="The Ros2Supervisor Node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Simulation-Supervisor.html" class="btn btn-neutral float-left" title="Ros2Supervisor 节点" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="../Gazebo/Simulation-Gazebo.html" class="btn btn-neutral float-right" title="Gazebo" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
