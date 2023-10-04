@@ -417,12 +417,12 @@
 </div>
 </div>
 <div class="section" id="debugging-tests-with-gdb">
-<h2>Debugging tests with GDB <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16837">[校准]</a><a class="headerlink" href="#debugging-tests-with-gdb" title="永久链接至标题"></a></h2>
-<p>If a C++ test is failing, gdb can be used directly on the test executable in the build directory. Ensure to build the code in debug mode. Since the previous build type may be cached by CMake, clean the cache and rebuild. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16838">[校准]</a></p>
+<h2>使用 GDB 调试测试 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16837">[16837]</a><a class="headerlink" href="#debugging-tests-with-gdb" title="永久链接至标题"></a></h2>
+<p>如果 C++ 测试失败，可以直接在构建目录中的测试可执行文件上使用 gdb 进行调试。确保以调试模式构建代码。由于之前的构建类型可能被 CMake 缓存，因此清除缓存并重新构建。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16838">[16838]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --cmake-clean-cache --mixin debug</span>
 </pre></div>
 </div>
-<p>Next, run the test directly through gdb. For example: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16839">[校准]</a></p>
+<p>接下来，通过 gdb 直接运行测试。例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16839">[16839]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">gdb -ex run ./build/rcl/test/test_logging</span>
 </pre></div>
 </div>

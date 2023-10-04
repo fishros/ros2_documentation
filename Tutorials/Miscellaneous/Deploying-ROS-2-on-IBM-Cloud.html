@@ -399,15 +399,15 @@
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#about" id="id1">关于 [6489]</a></p></li>
-<li><p><a class="reference internal" href="#ros-2-on-ibm-cloud" id="id2">ROS 2 on IBM Cloud [校准]</a></p></li>
+<li><p><a class="reference internal" href="#ros-2-on-ibm-cloud" id="id2">在IBM Cloud上的ROS 2 [16842]</a></p></li>
 <li><p><a class="reference internal" href="#step-1-setting-up-your-system" id="id3">步骤1：设置您的系统 [6495]</a></p>
 <ul>
 <li><p><a class="reference internal" href="#a-docker-files" id="id4">a) Docker文件？ [6497]</a></p></li>
-<li><p><a class="reference internal" href="#b-ros-2-image" id="id5">b) ROS 2 Image [校准]</a></p></li>
+<li><p><a class="reference internal" href="#b-ros-2-image" id="id5">b) ROS 2镜像 [16845]</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#step-2-running-the-image-on-ibm-cloud" id="id6">步骤2：在 IBM Cloud 上运行图像 [6514]</a></p></li>
-<li><p><a class="reference internal" href="#step-3-using-custom-ros-2-packages" id="id7">Step 3: Using Custom ROS 2 Packages [校准]</a></p>
+<li><p><a class="reference internal" href="#step-3-using-custom-ros-2-packages" id="id7">步骤3：使用自定义ROS 2软件包 [16849]</a></p>
 <ul>
 <li><p><a class="reference internal" href="#extra-deleting-docker-images" id="id8">附加信息：删除Docker镜像 [6537]</a></p></li>
 </ul>
@@ -424,12 +424,12 @@
 </div>
 <div class="section" id="about">
 <h2>关于 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6489">[6489]</a><a class="headerlink" href="#about" title="永久链接至标题"></a></h2>
-<p>This article describes how to get ROS 2 running on IBM Cloud using Docker files. It first gives a brief overview of docker images and how they work locally and then explores IBM Cloud and how the user can deploy their containers on it. Afterwards, a short description of how the user can use their own custom packages for ROS 2 from github on IBM Cloud is provided. A walkthrough of how to create a cluster and utilize Kubernetes on IBM Cloud is provided and finally the Docker image is deployed on the cluster. Originally published <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud">here</a> and <a class="reference external" href="https://medium.com/&#64;mahmoud-nasr/running-ros2-on-ibm-cloud-1b1284cbd487">here</a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16841">[校准]</a></p>
+<p>本文介绍了如何使用Docker文件在IBM Cloud上运行ROS 2。首先简要概述了Docker镜像及其在本地的工作原理，然后探讨了IBM Cloud以及用户如何在其中部署容器。接下来，提供了用户如何在IBM Cloud上使用自己的自定义ROS 2软件包的简要描述。然后，提供了有关如何创建集群并在IBM Cloud上使用Kubernetes的演示，最后将Docker镜像部署到集群上。最初发布在`这里 &lt;<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud">https://github.com/mm-nasr/ros2_ibmcloud</a>&gt;`__ 和`这里 &lt;<a class="reference external" href="https://medium.com/&#64;mahmoud-nasr/running-ros2-on-ibm-cloud-1b1284cbd487">https://medium.com/&#64;mahmoud-nasr/running-ros2-on-ibm-cloud-1b1284cbd487</a>&gt;`__。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16841">[16841]</a></p>
 </div>
 <div class="section" id="ros-2-on-ibm-cloud">
-<h2>ROS 2 on IBM Cloud <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16842">[校准]</a><a class="headerlink" href="#ros-2-on-ibm-cloud" title="永久链接至标题"></a></h2>
-<p>In this tutorial, we show how you can easily integrate and run ROS 2 on IBM Cloud with your custom packages. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16843">[校准]</a></p>
-<p>ROS 2 is the new generation of ROS which gives more control over multi-robot formations. With the advancements of cloud computing, cloud robotics are becoming more important in today's age. In this tutorial, we will go through a short introduction on running ROS 2 on IBM Cloud. By the end of the tutorial, you will be able to create your own packages in ROS 2 and deploy them to the cloud using docker files. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16844">[校准]</a></p>
+<h2>在IBM Cloud上的ROS 2 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16842">[16842]</a><a class="headerlink" href="#ros-2-on-ibm-cloud" title="永久链接至标题"></a></h2>
+<p>在本教程中，我们将展示如何轻松将ROS 2与自定义软件包集成并在IBM Cloud上运行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16843">[16843]</a></p>
+<p>ROS 2是ROS的新一代，可以更好地控制多机器人编队。随着云计算的发展，云机器人在当今的时代变得越来越重要。在本教程中，我们将简要介绍如何在IBM Cloud上运行ROS 2。通过本教程，您将能够在ROS 2中创建自己的软件包，并使用Docker文件将其部署到云中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16844">[16844]</a></p>
 <p>以下说明假定您使用的是Linux系统，并已经在Ubuntu 18.04（Bionic Beaver）上进行了测试。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6494">[6494]</a></p>
 </div>
 <div class="section" id="step-1-setting-up-your-system">
@@ -467,9 +467,9 @@ For more examples and ideas, visit:
 </div>
 </div>
 <div class="section" id="b-ros-2-image">
-<h3>b) ROS 2 Image <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16845">[校准]</a><a class="headerlink" href="#b-ros-2-image" title="永久链接至标题"></a></h3>
-<p>ROS <a class="reference external" href="https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2">announced</a> image containers for several ROS distributions in January 2019. More detailed instructions on the use of ROS 2 docker images can be found <a class="reference external" href="https://hub.docker.com/_/ros/">here</a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16846">[校准]</a></p>
-<p>Let's skip through that and get to real-deal right away; creating a local ROS 2 docker. We'll create our own Dockerfile (instead of using a ready Image) since we'll need this method for deployment on IBM Cloud. First, we create a new directory which will hold our Dockerfile and any other files we need later on and navigate to it. Using your favorite $EDITOR of choice, open a new file named <em>Dockerfile</em> (make sure the file naming is correct): <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16847">[校准]</a></p>
+<h3>b) ROS 2镜像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16845">[16845]</a><a class="headerlink" href="#b-ros-2-image" title="永久链接至标题"></a></h3>
+<p>ROS于2019年1月发布了`官方Docker镜像 &lt;<a class="reference external" href="https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2">https://discourse.ros.org/t/announcing-official-docker-images-for-ros2/7381/2</a>&gt;`__，包括几个ROS发行版的镜像容器。有关如何使用ROS 2 Docker镜像的更详细说明，请参阅`此处 &lt;<a class="reference external" href="https://hub.docker.com/_/ros/">https://hub.docker.com/_/ros/</a>&gt;`__。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16846">[16846]</a></p>
+<p>让我们跳过这些，直接开始真正的部分；立即创建一个本地ROS 2 Docker。我们将创建自己的Dockerfile（而不是使用现成的镜像），因为我们将需要此方法来在IBM Cloud上部署。首先，创建一个新目录，其中将包含我们的Dockerfile和稍后需要的任何其他文件，并导航到该目录。使用您选择的$EDITOR，打开一个名为*Dockerfile*的新文件（确保文件命名正确）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16847">[16847]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir ~/ros2_docker
 
 $ <span class="nb">cd</span> ~/ros2_docker
@@ -498,7 +498,7 @@ CMD <span class="o">[</span><span class="s2">&quot;ros2&quot;</span>, <span clas
 <li><p><strong>WORKDIR</strong>：指定容器中的工作目录。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6507">[6507]</a></p></li>
 </ul>
 <p>当然，您可以自由更改ROS版本（这里使用的是*foxy*），或更改目录名称。上述Docker文件设置了ROS-foxy并安装了C++和Python的演示节点。然后，它启动一个文件，其中运行一个talker和一个listener节点。我们很快就会看到它的效果，但它们与在`ROS wiki &lt;<a class="reference external" href="https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29">https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29</a>&gt;`__中找到的发布者-订阅者示例非常相似。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6508">[6508]</a></p>
-<p>Now, we are ready to build the docker image to run ROS 2 in it (yes, it is THAT easy!). <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16848">[校准]</a></p>
+<p>现在，我们准备构建docker镜像以在其中运行ROS 2（是的，它就是这么简单！）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16848">[16848]</a></p>
 <p><strong>注意</strong>：如果出现权限不足或*权限被拒绝*的错误，请尝试使用*sudo*权限运行命令： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6510">[6510]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker build .
 
@@ -578,9 +578,9 @@ $ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:1
 <p>现在，您应该看到Docker文件正在运行，并提供与在本地计算机上运行时所看到的类似的输出。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6523">[6523]</a></p>
 </div>
 <div class="section" id="step-3-using-custom-ros-2-packages">
-<h2>Step 3: Using Custom ROS 2 Packages <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16849">[校准]</a><a class="headerlink" href="#step-3-using-custom-ros-2-packages" title="永久链接至标题"></a></h2>
+<h2>步骤3：使用自定义ROS 2软件包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16849">[16849]</a><a class="headerlink" href="#step-3-using-custom-ros-2-packages" title="永久链接至标题"></a></h2>
 <p>所以现在我们已经有了完整的流程，从创建Dockerfile，一直到部署它并在IBM Cloud上运行。但是，如果我们想要使用我们自己（或其他人）创建的自定义软件包，怎么办呢？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6525">[6525]</a></p>
-<p>Well that all has to do with how you set-up your Dockerfile. Lets use the example provided by ROS 2 <a class="reference external" href="https://hub.docker.com/_/ros/">here</a>. Create a new directory with a new Dockerfile (or overwrite the existing one) and add the following in it (or download the file <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile">here</a>) <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16850">[校准]</a></p>
+<p>所有这些都与您如何设置Dockerfile有关。让我们使用ROS 2 <a class="reference external" href="https://hub.docker.com/_/ros/">提供的示例</a>。创建一个新目录并添加一个新的Dockerfile（或覆盖现有文件），然后在其中添加以下内容（或从`这里 &lt;<a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile">https://github.com/mm-nasr/ros2_ibmcloud/blob/main/dockers/git_pkgs_docker/Dockerfile</a>&gt;`__下载文件）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16850">[16850]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ARG <span class="nv">FROM_IMAGE</span><span class="o">=</span>ros:foxy
 ARG <span class="nv">OVERLAY_WS</span><span class="o">=</span>/opt/ros/overlay_ws
 
@@ -713,7 +713,7 @@ OK
 $ docker run -v -it registry.ng.bluemix.net/ros2nasr/ros2foxy:2
 </pre></div>
 </div>
-<p>You should see, again, the same output. However, this time we did it through custom packages from github, which allows us to utilize our personally created packages for ROS 2 on IBM Cloud. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16851">[校准]</a></p>
+<p>您应该再次看到相同的输出。但是，这次我们是通过来自GitHub的自定义软件包完成的，这使我们能够在IBM Cloud上使用我们个人创建的ROS 2软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16851">[16851]</a></p>
 <div class="section" id="extra-deleting-docker-images">
 <h3>附加信息：删除Docker镜像 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6537">[6537]</a><a class="headerlink" href="#extra-deleting-docker-images" title="永久链接至标题"></a></h3>
 <p>如果您发现自己需要从IBM Cloud中删除特定的Docker镜像，以下是您应该执行的步骤！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6538">[6538]</a></p>
@@ -829,7 +829,7 @@ deployment.apps/ros2-deployment created
 <li><p>转到 <em>Pods</em>，然后点击您的部署。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6570">[6570]</a></p></li>
 <li><p>在右上角，点击 <em>Exec into pod</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6571">[6571]</a></p></li>
 </ol>
-<p>Now you are inside your docker image! You can source your workspace (if needed) and run ROS 2! For example: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16852">[校准]</a></p>
+<p>现在您已经进入了docker镜像！您可以在其中设置您的工作区（如果需要），并运行ROS 2！例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16852">[16852]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# . install/setup.sh
 root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# ros2 launch demo_nodes_cpp talker_listener.launch.py
 </pre></div>
@@ -837,7 +837,7 @@ root@ros2-deployment-xxxxxxxx:/opt/ros/overlay_ws# ros2 launch demo_nodes_cpp ta
 </div>
 <div class="section" id="final-remarks">
 <h2>最后的备注 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6573">[6573]</a><a class="headerlink" href="#final-remarks" title="永久链接至标题"></a></h2>
-<p>At this point, you are capable of creating your own docker image using ROS 2 packages on github. It is also possible, with little changes to utilize local ROS 2 packages as well. This could be the topic of another article. However, you are encouraged to check out the following <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/tree/main/dockers/local_pkgs_docker">Dockerfile</a> which uses a local copy of the demos repository. Similarly, you can use your own local package. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16853">[校准]</a></p>
+<p>在这一点上，您已经可以使用GitHub上的ROS 2软件包创建自己的docker镜像。还可以稍作更改，以使用本地ROS 2软件包。这可以成为另一篇文章的主题。但是，建议您查看以下使用演示存储库的本地副本的 <a class="reference external" href="https://github.com/mm-nasr/ros2_ibmcloud/tree/main/dockers/local_pkgs_docker">Dockerfile</a>。同样，您也可以使用自己的本地软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16853">[16853]</a></p>
 </div>
 </div>
 
