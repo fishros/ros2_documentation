@@ -1891,12 +1891,12 @@ msgstr "参数回调@{"calib_text": " `[17227] <http://fishros.org/page/calib/#/
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:54
 msgid "A ROS 2 node can register two different types of callbacks to be informed when changes are happening to parameters. Both of the callbacks are optional."
-msgstr "A ROS 2 node can register two different types of callbacks to be informed when changes are happening to parameters. Both of the callbacks are optional.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17228>`_ "}@"
+msgstr "ROS 2节点可以注册两种不同类型的回调以在参数发生更改时得到通知。这两种回调都是可选的。@{"calib_text": " `[17228] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17228>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:57
 msgid "The first is known as a \"set parameter\" callback, and can be set by calling ``add_on_set_parameters_callback`` from the node API. The callback is passed a list of immutable ``Parameter`` objects, and returns an ``rcl_interfaces/msg/SetParametersResult``. The main purpose of this callback is to give the user the ability to inspect the upcoming change to the parameter and explicitly reject the change."
-msgstr "The first is known as a \"set parameter\" callback, and can be set by calling ``add_on_set_parameters_callback`` from the node API. The callback is passed a list of immutable ``Parameter`` objects, and returns an ``rcl_interfaces/msg/SetParametersResult``. The main purpose of this callback is to give the user the ability to inspect the upcoming change to the parameter and explicitly reject the change.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17229>`_ "}@"
+msgstr "第一种称为\"设置参数\"回调，可以通过从节点API中调用``add_on_set_parameters_callback``来设置。回调会传递一个不可变的``Parameter``对象列表，并返回一个``rcl_interfaces/msg/SetParametersResult``。这个回调的主要目的是让用户有能力检查即将发生的参数更改并明确拒绝更改。@{"calib_text": " `[17229] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17229>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:62
@@ -1906,7 +1906,7 @@ msgstr "“设置参数”回调必须没有副作用很重要。由于可以链
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:67
 msgid "The second type of callback is known as an \"on parameter event\" callback, and can be set by calling ``on_parameter_event`` from the parameter client APIs. The callback is passed an ``rcl_interfaces/msg/ParameterEvent`` object, and returns nothing. This callback will be called after all parameters in the input event have been declared, changed, or deleted. The main purpose of this callback is to give the user the ability to react to changes from parameters that have successfully been accepted."
-msgstr "The second type of callback is known as an \"on parameter event\" callback, and can be set by calling ``on_parameter_event`` from the parameter client APIs. The callback is passed an ``rcl_interfaces/msg/ParameterEvent`` object, and returns nothing. This callback will be called after all parameters in the input event have been declared, changed, or deleted. The main purpose of this callback is to give the user the ability to react to changes from parameters that have successfully been accepted.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17231>`_ "}@"
+msgstr "第二种类型的回调称为\"参数事件\"回调，可以通过从参数客户端API中调用``on_parameter_event``来设置。回调会传递一个``rcl_interfaces/msg/ParameterEvent``对象，并且不返回任何内容。此回调将在输入事件中的所有参数已被声明、更改或删除之后调用。这个回调的主要目的是让用户有能力对已成功接受的参数更改做出反应。@{"calib_text": " `[17231] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17231>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:73
@@ -1916,37 +1916,37 @@ msgstr "与参数交互@{"calib_text": " `[17232] <http://fishros.org/page/calib
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:75
 msgid "ROS 2 nodes can perform parameter operations through node APIs as described in :doc:`../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP` or :doc:`../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python`. External processes can perform parameter operations via parameter services that are created by default when a node is instantiated. The services that are created by default are:"
-msgstr "ROS 2 nodes can perform parameter operations through node APIs as described in :doc:`../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP` or :doc:`../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python`. External processes can perform parameter operations via parameter services that are created by default when a node is instantiated. The services that are created by default are:@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17233>`_ "}@"
+msgstr "ROS 2节点可以通过节点API执行参数操作，如 :doc:`../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP` 或 :doc:`../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python` 中所述。外部进程可以通过默认创建的参数服务执行参数操作，该服务在节点实例化时默认创建。默认创建的服务包括：@{"calib_text": " `[17233] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17233>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:79
 msgid "``/node_name/describe_parameters``: Uses a service type of ``rcl_interfaces/srv/DescribeParameters``. Given a list of parameter names, returns a list of descriptors associated with the parameters."
-msgstr "``/node_name/describe_parameters``: Uses a service type of ``rcl_interfaces/srv/DescribeParameters``. Given a list of parameter names, returns a list of descriptors associated with the parameters.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17234>`_ "}@"
+msgstr "``/node_name/describe_parameters``：使用服务类型``rcl_interfaces/srv/DescribeParameters``。给定一组参数名称，返回与这些参数相关联的描述符列表。@{"calib_text": " `[17234] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17234>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:81
 msgid "``/node_name/get_parameter_types``: Uses a service type of ``rcl_interfaces/srv/GetParameterTypes``. Given a list of parameter names, returns a list of parameter types associated with the parameters."
-msgstr "``/node_name/get_parameter_types``: Uses a service type of ``rcl_interfaces/srv/GetParameterTypes``. Given a list of parameter names, returns a list of parameter types associated with the parameters.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17235>`_ "}@"
+msgstr "``/node_name/get_parameter_types``：使用服务类型``rcl_interfaces/srv/GetParameterTypes``。给定一组参数名称，返回与这些参数相关联的参数类型列表。@{"calib_text": " `[17235] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17235>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:83
 msgid "``/node_name/get_parameters``: Uses a service type of ``rcl_interfaces/srv/GetParameters``. Given a list of parameter names, returns a list of parameter values associated with the parameters."
-msgstr "``/node_name/get_parameters``: Uses a service type of ``rcl_interfaces/srv/GetParameters``. Given a list of parameter names, returns a list of parameter values associated with the parameters.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17236>`_ "}@"
+msgstr "``/node_name/get_parameters``：使用服务类型``rcl_interfaces/srv/GetParameters``。给定一组参数名称，返回与这些参数相关联的参数值列表。@{"calib_text": " `[17236] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17236>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:85
 msgid "``/node_name/list_parameters``: Uses a service type of ``rcl_interfaces/srv/ListParameters``. Given an optional list of parameter prefixes, returns a list of the available parameters with that prefix.  If the prefixes are empty, returns all parameters."
-msgstr "``/node_name/list_parameters``: Uses a service type of ``rcl_interfaces/srv/ListParameters``. Given an optional list of parameter prefixes, returns a list of the available parameters with that prefix.  If the prefixes are empty, returns all parameters.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17237>`_ "}@"
+msgstr "``/node_name/list_parameters``：使用服务类型``rcl_interfaces/srv/ListParameters``。给定一个可选的参数前缀列表，返回具有该前缀的可用参数列表。如果前缀为空，则返回所有参数。@{"calib_text": " `[17237] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17237>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:87
 msgid "``/node_name/set_parameters``: Uses a service type of ``rcl_interfaces/srv/SetParameters``. Given a list of parameter names and values, attempts to set the parameters on the node.  Returns a list of results from trying to set each parameter; some of them may have succeeded and some may have failed."
-msgstr "``/node_name/set_parameters``: Uses a service type of ``rcl_interfaces/srv/SetParameters``. Given a list of parameter names and values, attempts to set the parameters on the node.  Returns a list of results from trying to set each parameter; some of them may have succeeded and some may have failed.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17238>`_ "}@"
+msgstr "``/node_name/set_parameters``：使用服务类型``rcl_interfaces/srv/SetParameters``。给定一组参数名称和值，尝试设置节点上的参数。返回尝试设置每个参数的结果列表；其中一些可能成功，一些可能失败。@{"calib_text": " `[17238] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17238>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:89
 msgid "``/node_name/set_parameters_atomically``: Uses a service type of ``rcl_interfaces/srv/SetParametersAtomically``. Given a list of parameter names and values, attempts to set the parameters on the node.  Returns a single result from trying to set all parameters, so if one failed, all of them failed."
-msgstr "``/node_name/set_parameters_atomically``: Uses a service type of ``rcl_interfaces/srv/SetParametersAtomically``. Given a list of parameter names and values, attempts to set the parameters on the node.  Returns a single result from trying to set all parameters, so if one failed, all of them failed.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17239>`_ "}@"
+msgstr "``/node_name/set_parameters_atomically``：使用服务类型``rcl_interfaces/srv/SetParametersAtomically``。给定一组参数名称和值，尝试原子方式设置节点上的参数。返回尝试设置所有参数的单个结果，因此如果其中一个失败，所有参数都失败。@{"calib_text": " `[17239] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17239>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:93
@@ -1966,7 +1966,7 @@ msgstr "启动节点时设置初始参数值@{"calib_text": " `[17242] <http://f
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:101
 msgid "Initial parameter values can also be set when running the node through the ROS 2 launch facility. See :doc:`this document <../../Tutorials/Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects>` for information on how to specify parameters via launch."
-msgstr "Initial parameter values can also be set when running the node through the ROS 2 launch facility. See :doc:`this document <../../Tutorials/Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects>` for information on how to specify parameters via launch.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17243>`_ "}@"
+msgstr "在通过ROS 2启动工具运行节点时，还可以设置初始参数值。请参阅 :doc:`此文档 <../../Tutorials/Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects>` 以获取有关如何通过启动指定参数的信息。@{"calib_text": " `[17243] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17243>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:105
@@ -1976,7 +1976,7 @@ msgstr "运行时操作参数值@{"calib_text": " `[17244] <http://fishros.org/p
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:107
 msgid "The ``ros2 param`` command is the general way to interact with parameters for nodes that are already running. ``ros2 param`` uses the parameter service API as described above to perform the various operations. See :doc:`this how-to guide <../../How-To-Guides/Using-ros2-param>` for details on how to use ``ros2 param``."
-msgstr "The ``ros2 param`` command is the general way to interact with parameters for nodes that are already running. ``ros2 param`` uses the parameter service API as described above to perform the various operations. See :doc:`this how-to guide <../../How-To-Guides/Using-ros2-param>` for details on how to use ``ros2 param``.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17245>`_ "}@"
+msgstr "``ros2 param``命令是与已经在运行的节点交互的通用方式。``ros2 param``使用如上所述的参数服务API执行各种操作。请参阅 :doc:`此操作指南 <../../How-To-Guides/Using-ros2-param>` 以了解如何使用``ros2 param``的详细信息。@{"calib_text": " `[17245] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17245>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:112
@@ -1986,12 +1986,12 @@ msgstr "从ROS 1迁移@{"calib_text": " `[17246] <http://fishros.org/page/calib/
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:114
 msgid "The :doc:`Launch file migration guide <../../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files>` explains how to migrate ``param`` and ``rosparam`` launch tags from ROS 1 to ROS 2."
-msgstr "The :doc:`Launch file migration guide <../../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files>` explains how to migrate ``param`` and ``rosparam`` launch tags from ROS 1 to ROS 2.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17247>`_ "}@"
+msgstr " :doc:`启动文件迁移指南 <../../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files>` 解释了如何从ROS 1迁移到ROS 2的``param``和``rosparam``启动标签。@{"calib_text": " `[17247] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17247>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:116
 msgid "The :doc:`YAML parameter file migration guide <../../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters>` explains how to migrate parameter files from ROS 1 to ROS 2."
-msgstr "The :doc:`YAML parameter file migration guide <../../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters>` explains how to migrate parameter files from ROS 1 to ROS 2.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17248>`_ "}@"
+msgstr " :doc:`YAML参数文件迁移指南 <../../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters>` 解释了如何从ROS 1迁移到ROS 2的参数文件。@{"calib_text": " `[17248] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17248>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Parameters.rst:118
@@ -2006,37 +2006,37 @@ msgstr "``parameter_blackboard`` 的代码在 `此处 <https://github.com/ros2/d
 
 #: ../../source/Concepts/Basic/About-Services.rst:7
 msgid "In ROS 2, a service refers to a remote procedure call. In other words, a node can make a remote procedure call to another node which will do a computation and return a result."
-msgstr "In ROS 2, a service refers to a remote procedure call. In other words, a node can make a remote procedure call to another node which will do a computation and return a result.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17251>`_ "}@"
+msgstr "在ROS 2中，服务是指远程过程调用。换句话说，一个节点可以对另一个节点进行远程过程调用，后者将进行计算并返回结果。@{"calib_text": " `[17251] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17251>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:10
 msgid "This structure is reflected in how a service message definition looks:"
-msgstr "This structure is reflected in how a service message definition looks:@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17252>`_ "}@"
+msgstr "这种结构反映在服务消息定义的外观上：@{"calib_text": " `[17252] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17252>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:18
 msgid "In ROS 2, services are expected to return quickly, as the client is generally waiting on the result. Services should never be used for longer running processes, in particular processes that might need to be preempted for exceptional situations. If you have a service that will be doing a long-running computation, consider using an :doc:`action <About-Actions>` instead."
-msgstr "In ROS 2, services are expected to return quickly, as the client is generally waiting on the result. Services should never be used for longer running processes, in particular processes that might need to be preempted for exceptional situations. If you have a service that will be doing a long-running computation, consider using an :doc:`action <About-Actions>` instead.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17253>`_ "}@"
+msgstr "在ROS 2中，服务应该快速返回，因为客户端通常在等待结果。服务不应该用于长时间运行的进程，特别是可能需要在异常情况下被抢占的进程。如果您有一个需要进行长时间计算的服务，请考虑使用 :doc:`动作 <About-Actions>`。@{"calib_text": " `[17253] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17253>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:22
 msgid "Services are identified by a service name, which looks much like a topic name (but is in a different namespace)."
-msgstr "Services are identified by a service name, which looks much like a topic name (but is in a different namespace).@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17254>`_ "}@"
+msgstr "服务由服务名称标识，其外观与主题名称相似（但位于不同的命名空间中）。@{"calib_text": " `[17254] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17254>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:24
 msgid "A service consists of two parts: the service server and the service client."
-msgstr "A service consists of two parts: the service server and the service client.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17255>`_ "}@"
+msgstr "一个服务由两个部分组成：服务服务器和服务客户端。@{"calib_text": " `[17255] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17255>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:27
 msgid "Service server"
-msgstr "Service server@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17256>`_ "}@"
+msgstr "服务服务器@{"calib_text": " `[17256] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17256>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:29
 msgid "A service server is the entity that will accept a remote procedure request, and perform some computation on it. For instance, suppose the ROS 2 message contains the following:"
-msgstr "A service server is the entity that will accept a remote procedure request, and perform some computation on it. For instance, suppose the ROS 2 message contains the following:@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17257>`_ "}@"
+msgstr "服务服务器是接受远程过程请求并对其进行计算的实体。例如，假设ROS 2消息包含以下内容：@{"calib_text": " `[17257] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=17257>`_ "}@"
 
 
 #: ../../source/Concepts/Basic/About-Services.rst:39
