@@ -298,7 +298,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../Basic.html">基本概念</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="About-Nodes.html">节点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Discovery.html">发现</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Interfaces.html">Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Interfaces.html">接口</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Topics.html">主题</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Services.html">服务</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Actions.html">动作</a></li>
@@ -428,11 +428,11 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pkg</span></code>：查看ROS包</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">run</span></code>：运行ROS节点</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">security</span></code>：配置安全设置</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">service</span></code>: Introspect/call ROS services</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>: Run a ROS launch test</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">topic</span></code>: Introspect/publish ROS topics</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">trace</span></code>: Tracing tools to get information on ROS nodes execution (only available on Linux)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wtf</span></code>: An alias for <code class="docutils literal notranslate"><span class="pre">doctor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service</span></code>：查看/调用ROS服务</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code>：运行ROS启动测试</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">topic</span></code>：查看/发布ROS主题</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trace</span></code>：跟踪工具，用于获取有关ROS节点执行的信息（仅在Linux上可用）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wtf</span></code>：<a href="#id1"><span class="problematic" id="id2">``</span></a>doctor``的别名</p></li>
 </ul>
 </div>
 <div class="section" id="example">
@@ -456,9 +456,7 @@ data: Hello world
 </div>
 <div class="section" id="behind-the-scenes">
 <h2><a class="toc-backref" href="#id3">幕后</a><a class="headerlink" href="#behind-the-scenes" title="永久链接至标题"></a></h2>
-<p>ROS 2 uses a distributed discovery process for nodes to connect to each other.
-As this process purposefully does not use a centralized discovery mechanism, it can take time for ROS nodes to discover all other participants in the ROS graph.
-Because of this, there is a long-running daemon in the background that stores information about the ROS graph to provide faster responses to queries, e.g. the list of node names.</p>
+<p>ROS 2使用分布式发现过程使节点能够相互连接。由于这个过程故意不使用集中式发现机制，因此ROS节点要发现ROS图中的所有其他参与者可能需要一些时间。因此，后台运行的长期守护程序存储有关ROS图的信息，以提供更快的查询响应，例如节点名称列表。</p>
 <p>当首次使用相关命令行工具时，守护程序将自动启动。您可以运行``ros2 daemon --help``获取与守护程序交互的更多选项。</p>
 </div>
 <div class="section" id="implementation">
