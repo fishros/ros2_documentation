@@ -396,7 +396,7 @@
 
   <div class="section" id="creating-and-using-plugins-c">
 <h1>创建和使用插件（C++）<a class="headerlink" href="#creating-and-using-plugins-c" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Learn to create and load a simple plugin using <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>.</p>
+<p><strong>目标:</strong> 学习使用 <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code> 创建和加载简单插件。</p>
 <p><strong>教程级别:</strong> 初学者</p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟</p>
 <div class="contents local topic" id="contents">
@@ -424,14 +424,11 @@
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>本教程源自 <a class="reference external" href="http://wiki.ros.org/pluginlib">http://wiki.ros.org/pluginlib</a> 和 <a class="reference external" href="http://wiki.ros.org/pluginlib/Tutorials/Writing%20and%20Using%20a%20Simple%20Plugin">编写和使用简单插件教程</a>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">pluginlib</span></code> is a C++ library for loading and unloading plugins from within a ROS package.
-Plugins are dynamically loadable classes that are loaded from a runtime library (i.e. shared object, dynamically linked library).
-With pluginlib, you do not have to explicitly link your application against the library containing the classes -- instead <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code> can open a library containing exported classes at any point without the application having any prior awareness of the library or the header file containing the class definition.
-Plugins are useful for extending/modifying application behavior without needing the application source code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pluginlib</span></code> 是一个用于从 ROS 包内部加载和卸载插件的 C++ 库。插件是可以动态加载的类，它们从运行时库（即共享对象、动态链接库）中加载。使用 <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>，您无需显式地将应用程序与包含这些类的库进行链接 -- 相反，<code class="docutils literal notranslate"><span class="pre">pluginlib</span></code> 可以在任何时刻打开包含导出类的库，而应用程序不需要提前了解该库或包含类定义的头文件。插件可用于扩展/修改应用程序的行为，而无需应用程序源代码。</p>
 </div>
 <div class="section" id="prerequisites">
 <h2><a class="toc-backref" href="#id2">先决条件</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>This tutorial assumes basic C++ knowledge and that you have successfully <a class="reference internal" href="../../Installation.html"><span class="doc">installed ROS 2</span></a>.</p>
+<p>本教程假定您具备基本的 C++ 知识，并且已经成功 <a class="reference internal" href="../../Installation.html"><span class="doc">安装了 ROS 2</span></a>。</p>
 </div>
 <div class="section" id="tasks">
 <h2><a class="toc-backref" href="#id3">任务</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
@@ -463,9 +460,7 @@ Plugins are useful for extending/modifying application behavior without needing 
 <span class="cp">#endif  </span><span class="c1">// POLYGON_BASE_REGULAR_POLYGON_HPP</span>
 </pre></div>
 </div>
-<p>The code above creates an abstract class called <code class="docutils literal notranslate"><span class="pre">RegularPolygon</span></code>.
-One thing to notice is the presence of the initialize method.
-With <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code>, a constructor without parameters is required, so if any parameters to the class are needed, we use the initialize method to pass them to the object.</p>
+<p>上述代码创建了一个名为 <code class="docutils literal notranslate"><span class="pre">RegularPolygon</span></code> 的抽象类。需要注意的一点是存在 initialize 方法。使用 <code class="docutils literal notranslate"><span class="pre">pluginlib</span></code> 时，需要一个没有参数的构造函数，因此如果需要类的任何参数，我们可以使用 initialize 方法将它们传递给对象。</p>
 <p>我们需要使这个头文件对其他类可用，所以打开``ros2_ws/src/polygon_base/CMakeLists.txt``进行编辑。在``ament_target_dependencies``命令之后添加以下行：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">install</span><span class="p">(</span>
 <span class="w">  </span><span class="s">DIRECTORY</span><span class="w"> </span><span class="s">include/</span>
@@ -541,9 +536,7 @@ With <code class="docutils literal notranslate"><span class="pre">pluginlib</spa
 <span class="n">PLUGINLIB_EXPORT_CLASS</span><span class="p">(</span><span class="n">polygon_plugins</span><span class="o">::</span><span class="n">Triangle</span><span class="p">,</span><span class="w"> </span><span class="n">polygon_base</span><span class="o">::</span><span class="n">RegularPolygon</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The implementation of the Square and Triangle classes is fairly straightforward: save the side length, and use it to calculate the area.
-The only piece that is pluginlib specific is the last three lines, which invokes some magical macros that register the classes as actual plugins.
-Let's go through the arguments to the <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> macro:</p>
+<p>Square 和 Triangle 类的实现相当简单：保存边长，并使用它来计算面积。唯一与 pluginlib 相关的部分是最后三行代码，它们调用了一些注册类为实际插件的神奇宏。让我们看一下 <code class="docutils literal notranslate"><span class="pre">PLUGINLIB_EXPORT_CLASS</span></code> 宏的参数：</p>
 <ol class="arabic simple">
 <li><p>插件类的完全限定类型，在这种情况下为``polygon_plugins::Square``。</p></li>
 <li><p>基类的完全限定类型，在这种情况下为``polygon_base::RegularPolygon``。</p></li>

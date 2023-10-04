@@ -492,23 +492,20 @@
 </div>
 <div class="section" id="record-animations">
 <h2><a class="toc-backref" href="#id8">记录动画</a><a class="headerlink" href="#record-animations" title="永久链接至标题"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">Ros2Supervisor</span></code> node also creates two additional services to record HTML5 animations.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">/Ros2Supervisor/animation_start_recording</span></code> service is of type <code class="docutils literal notranslate"><span class="pre">webots_ros2_msgs/srv/SetString</span></code> and allows to start the animation.
-The <code class="docutils literal notranslate"><span class="pre">SetString</span></code> type expects a <code class="docutils literal notranslate"><span class="pre">value</span></code> string as input and returns a <code class="docutils literal notranslate"><span class="pre">success</span></code> boolean.
-The input <code class="docutils literal notranslate"><span class="pre">value</span></code> represents the absolute path to the directory where the animations files should be saved.</p>
-<p>Here is an example on how to start an animation:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ros2Supervisor</span></code> 节点还创建了两个额外的服务来记录 HTML5 动画。</p>
+<p><code class="docutils literal notranslate"><span class="pre">/Ros2Supervisor/animation_start_recording</span></code> 服务的类型为 <code class="docutils literal notranslate"><span class="pre">webots_ros2_msgs/srv/SetString</span></code>，允许启动动画。<code class="docutils literal notranslate"><span class="pre">SetString</span></code> 类型期望一个 <code class="docutils literal notranslate"><span class="pre">value</span></code> 字符串作为输入，并返回一个 <code class="docutils literal notranslate"><span class="pre">success</span></code> 布尔值。输入的 <code class="docutils literal notranslate"><span class="pre">value</span></code> 表示动画文件应保存的目录的绝对路径。</p>
+<p>以下是如何启动动画的示例：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 service call /Ros2Supervisor/animation_start_recording webots_ros2_msgs/srv/SetString <span class="s2">&quot;{value: &quot;</span>&lt;ABSOLUTE_PATH&gt;/index.html<span class="s2">&quot;}&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">/Ros2Supervisor/animation_stop_recording</span></code> service is of type <code class="docutils literal notranslate"><span class="pre">webots_ros2_msgs/srv/GetBool</span></code> and allows to stop the animation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/Ros2Supervisor/animation_stop_recording</span></code> 服务的类型为 <code class="docutils literal notranslate"><span class="pre">webots_ros2_msgs/srv/GetBool</span></code>，允许停止动画。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 service call /Ros2Supervisor/animation_stop_recording webots_ros2_msgs/srv/GetBool <span class="s2">&quot;{ask: True}&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id9">总结</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you learned how to enable the <code class="docutils literal notranslate"><span class="pre">Ros2Supervisor</span></code> and how to extend the interface with the Webots simulation.
-The node creates multiple services and topics to interact with and modify the simulation.</p>
+<p>在本教程中，您学习了如何启用 <code class="docutils literal notranslate"><span class="pre">Ros2Supervisor</span></code> 以及如何扩展 Webots 模拟的接口。该节点创建了多个服务和主题，以与模拟进行交互和修改。</p>
 </div>
 </div>
 
