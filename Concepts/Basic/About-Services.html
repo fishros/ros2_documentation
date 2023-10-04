@@ -398,23 +398,23 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[]</a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#service-server" id="id1">Service server [校准]</a></p></li>
+<li><p><a class="reference internal" href="#service-server" id="id1">服务服务器 [17256]</a></p></li>
 <li><p><a class="reference internal" href="#service-client" id="id2">Service client [校准]</a></p></li>
 </ul>
 </div>
-<p>In ROS 2, a service refers to a remote procedure call. In other words, a node can make a remote procedure call to another node which will do a computation and return a result. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17251">[校准]</a></p>
-<p>This structure is reflected in how a service message definition looks: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17252">[校准]</a></p>
+<p>在ROS 2中，服务是指远程过程调用。换句话说，一个节点可以对另一个节点进行远程过程调用，后者将进行计算并返回结果。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17251">[17251]</a></p>
+<p>这种结构反映在服务消息定义的外观上： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17252">[17252]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32</span> <span class="n">request</span>
 <span class="o">---</span>
 <span class="n">uint32</span> <span class="n">response</span>
 </pre></div>
 </div>
-<p>In ROS 2, services are expected to return quickly, as the client is generally waiting on the result. Services should never be used for longer running processes, in particular processes that might need to be preempted for exceptional situations. If you have a service that will be doing a long-running computation, consider using an <a class="reference internal" href="About-Actions.html"><span class="doc">action</span></a> instead. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17253">[校准]</a></p>
-<p>Services are identified by a service name, which looks much like a topic name (but is in a different namespace). <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17254">[校准]</a></p>
-<p>A service consists of two parts: the service server and the service client. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17255">[校准]</a></p>
+<p>在ROS 2中，服务应该快速返回，因为客户端通常在等待结果。服务不应该用于长时间运行的进程，特别是可能需要在异常情况下被抢占的进程。如果您有一个需要进行长时间计算的服务，请考虑使用 <a class="reference internal" href="About-Actions.html"><span class="doc">动作</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17253">[17253]</a></p>
+<p>服务由服务名称标识，其外观与主题名称相似（但位于不同的命名空间中）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17254">[17254]</a></p>
+<p>一个服务由两个部分组成：服务服务器和服务客户端。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17255">[17255]</a></p>
 <div class="section" id="service-server">
-<h2>Service server <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17256">[校准]</a><a class="headerlink" href="#service-server" title="永久链接至标题"></a></h2>
-<p>A service server is the entity that will accept a remote procedure request, and perform some computation on it. For instance, suppose the ROS 2 message contains the following: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17257">[校准]</a></p>
+<h2>服务服务器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17256">[17256]</a><a class="headerlink" href="#service-server" title="永久链接至标题"></a></h2>
+<p>服务服务器是接受远程过程请求并对其进行计算的实体。例如，假设ROS 2消息包含以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17257">[17257]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32</span> <span class="n">a</span>
 <span class="n">uint32</span> <span class="n">b</span>
 <span class="o">---</span>
