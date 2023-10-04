@@ -1182,12 +1182,12 @@ msgstr "由于您在软件包创建过程中使用了 ``--dependencies`` 选项�
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:69
 msgid "2 Write the C++ Reader"
-msgstr "2 Write the C++ Reader@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16434>`_ "}@"
+msgstr "2 编写 C++ 读取器@{"calib_text": " `[16434] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16434>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:71
 msgid "Inside your package's ``src`` directory, create a new file called ``simple_bag_reader.cpp`` and paste the following code into it."
-msgstr "Inside your package's ``src`` directory, create a new file called ``simple_bag_reader.cpp`` and paste the following code into it.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16435>`_ "}@"
+msgstr "在包的 ``src`` 目录中，创建一个名为 ``simple_bag_reader.cpp`` 的新文件，并将以下代码粘贴到其中。@{"calib_text": " `[16435] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16435>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:145 ../../source/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.rst:124 ../../source/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.rst:143 ../../source/Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.rst:117 ../../source/Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.rst:109 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.rst:141 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:116 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:139 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:129 ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:122 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:437 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:405 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:438 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:276 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:287 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:170 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:194
@@ -1202,42 +1202,42 @@ msgstr "顶部的 ``#include`` 语句是包的依赖项。注意包含了来自 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:150
 msgid "The next line creates the node which will read from the bag file and play back the data."
-msgstr "The next line creates the node which will read from the bag file and play back the data.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16438>`_ "}@"
+msgstr "接下来的行创建了一个节点，该节点将从 bag 文件中读取数据并播放回来。@{"calib_text": " `[16438] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16438>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:156
 msgid "Now, we can create a timer callback which will run at 10 hz. Our goal is to replay one message to the ``/turtle1/pose`` topic each time the callback is run. Note the constructor takes a path to the bag file as a parameter."
-msgstr "Now, we can create a timer callback which will run at 10 hz. Our goal is to replay one message to the ``/turtle1/pose`` topic each time the callback is run. Note the constructor takes a path to the bag file as a parameter.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16439>`_ "}@"
+msgstr "现在，我们可以创建一个计时器回调，它将以 10 Hz 运行。我们的目标是在每次运行回调时向 ``/turtle1/pose`` 主题重放一条消息。请注意，构造函数接受 bag 文件的路径作为参数。@{"calib_text": " `[16439] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16439>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:170
 msgid "We also open the bag in the constructor."
-msgstr "We also open the bag in the constructor.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16440>`_ "}@"
+msgstr "我们还在构造函数中打开了 bag 文件。@{"calib_text": " `[16440] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16440>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:176
 msgid "Now, inside our timer callback, we loop through messages in the bag until we read a message recorded from our desired topic. Note that the serialized message has timestamp metadata in addition to the topic name."
-msgstr "Now, inside our timer callback, we loop through messages in the bag until we read a message recorded from our desired topic. Note that the serialized message has timestamp metadata in addition to the topic name.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16441>`_ "}@"
+msgstr "现在，在我们的计时器回调内部，我们循环遍历 bag 中的消息，直到读取到来自我们所需主题的消息为止。请注意，序列化消息除了主题名称之外还具有时间戳元数据。@{"calib_text": " `[16441] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16441>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:190
 msgid "We then construct an ``rclcpp::SerializedMessage`` object from the serialized data we just read. Additionally, we need to create a ROS 2 deserialized message which will hold the result of our deserialization. Then, we can pass both these objects to the ``rclcpp::Serialization::deserialize_message`` method."
-msgstr "We then construct an ``rclcpp::SerializedMessage`` object from the serialized data we just read. Additionally, we need to create a ROS 2 deserialized message which will hold the result of our deserialization. Then, we can pass both these objects to the ``rclcpp::Serialization::deserialize_message`` method.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16442>`_ "}@"
+msgstr "然后，我们从刚刚读取的序列化数据构造了一个 ``rclcpp::SerializedMessage`` 对象。此外，我们需要创建一个 ROS 2 反序列化消息，它将保存我们反序列化的结果。然后，我们可以将这两个对象传递给 ``rclcpp::Serialization::deserialize_message`` 方法。@{"calib_text": " `[16442] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16442>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:201
 msgid "Finally, we publish the deserialized message and print out the xy coordinate to the terminal. We also break out of the loop so that we publish the next message during the next timer calback."
-msgstr "Finally, we publish the deserialized message and print out the xy coordinate to the terminal. We also break out of the loop so that we publish the next message during the next timer calback.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16443>`_ "}@"
+msgstr "最后，我们发布反序列化后的消息并将 xy 坐标打印到终端上。我们还跳出循环，以便在下一个计时器回调期间发布下一条消息。@{"calib_text": " `[16443] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16443>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:212
 msgid "We must also declare the private variables used throughout the node."
-msgstr "We must also declare the private variables used throughout the node.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16444>`_ "}@"
+msgstr "我们还必须声明在整个节点中使用的私有变量。@{"calib_text": " `[16444] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16444>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:223
 msgid "Lastly, we create the main function which will check that the user passes an argument for the bag file path and spins our node."
-msgstr "Lastly, we create the main function which will check that the user passes an argument for the bag file path and spins our node.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16445>`_ "}@"
+msgstr "最后，我们创建了主函数，该函数将检查用户是否传递了 bag 文件路径的参数，并启动我们的节点。@{"calib_text": " `[16445] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16445>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:242 ../../source/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.rst:207 ../../source/Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.rst:206 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:167 ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:172
@@ -1262,22 +1262,22 @@ msgstr "3. 构建和运行@{"calib_text": " `[16449] <http://fishros.org/page/ca
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:261
 msgid "Navigate back to the root of your workspace and build your new package."
-msgstr "Navigate back to the root of your workspace and build your new package.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16450>`_ "}@"
+msgstr "返回到工作空间的根目录并构建您的新包。@{"calib_text": " `[16450] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16450>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:283
 msgid "Next, source the setup files."
-msgstr "Next, source the setup files.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16451>`_ "}@"
+msgstr "接下来，使用 ``source`` 命令执行设置文件。@{"calib_text": " `[16451] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16451>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:305
 msgid "Now, run the script. Make sure to replace ``/path/to/setup`` with the path to your ``setup`` bag."
-msgstr "Now, run the script. Make sure to replace ``/path/to/setup`` with the path to your ``setup`` bag.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16452>`_ "}@"
+msgstr "现在，运行脚本。确保将 ``/path/to/setup`` 替换为您的 ``setup`` bag 的路径。@{"calib_text": " `[16452] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16452>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:312
 msgid "You should see the (x, y) coordinates of the turtle printed to the console."
-msgstr "You should see the (x, y) coordinates of the turtle printed to the console.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16453>`_ "}@"
+msgstr "您应该会在控制台上看到乌龟的 (x, y) 坐标被打印出来。@{"calib_text": " `[16453] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16453>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:315 ../../source/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.rst:661 ../../source/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.rst:659 ../../source/Tutorials/Advanced/Simulators/Gazebo/Gazebo.rst:237 ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.rst:218 ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.rst:515 ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:189 ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:141 ../../source/Tutorials/Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.rst:324 ../../source/Tutorials/Beginner-CLI-Tools/Configuring-ROS2-Environment.rst:254 ../../source/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.rst:265 ../../source/Tutorials/Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.rst:105 ../../source/Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.rst:253 ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.rst:347 ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.rst:184 ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.rst:241 ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.rst:260 ../../source/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.rst:323 ../../source/Tutorials/Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.rst:126 ../../source/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.rst:389 ../../source/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.rst:524 ../../source/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.rst:822 ../../source/Tutorials/Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.rst:187 ../../source/Tutorials/Beginner-Client-Libraries/Pluginlib.rst:314 ../../source/Tutorials/Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.rst:487 ../../source/Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.rst:429 ../../source/Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.rst:430 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.rst:536 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.rst:410 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.rst:517 ../../source/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.rst:338 ../../source/Tutorials/Intermediate/Creating-an-Action.rst:183 ../../source/Tutorials/Intermediate/Launch/Creating-Launch-Files.rst:351 ../../source/Tutorials/Intermediate/Launch/Using-Event-Handlers.rst:310 ../../source/Tutorials/Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.rst:534 ../../source/Tutorials/Intermediate/Launch/Using-Substitutions.rst:396 ../../source/Tutorials/Intermediate/Monitoring-For-Parameter-Changes-CPP.rst:346 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Cpp.rst:592 ../../source/Tutorials/Intermediate/Tf2/Adding-A-Frame-Py.rst:547 ../../source/Tutorials/Intermediate/Tf2/Debugging-Tf2-Problems.rst:310 ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.rst:119 ../../source/Tutorials/Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.rst:97 ../../source/Tutorials/Intermediate/Tf2/Quaternion-Fundamentals.rst:230 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.rst:115 ../../source/Tutorials/Intermediate/Tf2/Time-Travel-With-Tf2-Py.rst:114 ../../source/Tutorials/Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.rst:739 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.rst:450 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.rst:471 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.rst:415 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Listener-Py.rst:368 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.rst:431 ../../source/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.rst:450 ../../source/Tutorials/Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.rst:273 ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.rst:385 ../../source/Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.rst:352
@@ -1287,7 +1287,7 @@ msgstr "总结@{"calib_text": " `[16454] <http://fishros.org/page/calib/#/home?a
 
 #: ../../source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst:317
 msgid "You created a C++ executable that reads data from a bag. You then compiled and ran the executable which printed some information from the bag to the console."
-msgstr "You created a C++ executable that reads data from a bag. You then compiled and ran the executable which printed some information from the bag to the console.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16455>`_ "}@"
+msgstr "您创建了一个 C++ 可执行文件，用于从 bag 中读取数据。然后，您编译并运行了该可执行文件，它会将 bag 中的一些信息打印到控制台上。@{"calib_text": " `[16455] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16455>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.rst:8
@@ -2387,7 +2387,7 @@ msgstr "**时间：** 15分钟@{"calib_text": " `[3507] <http://fishros.org/page
 
 #: ../../source/Tutorials/Advanced/Security/Introducing-ros2-security.rst:25
 msgid "The ``sros2`` package provides the tools and instructions to use ROS 2 on top of DDS-Security. The security features have been tested across platforms (Linux, macOS, and Windows) as well as across different languages (C++ and Python). The SROS2 has been designed to work with any secure middleware, although not all middleware is open source and support varies depending on the ROS distribution in use. Please reach out to the :ref:`ROS 2 Security Working Group <Security Working Group>` if you encounter any support issues."
-msgstr "The ``sros2`` package provides the tools and instructions to use ROS 2 on top of DDS-Security. The security features have been tested across platforms (Linux, macOS, and Windows) as well as across different languages (C++ and Python). The SROS2 has been designed to work with any secure middleware, although not all middleware is open source and support varies depending on the ROS distribution in use. Please reach out to the :ref:`ROS 2 Security Working Group <Security Working Group>` if you encounter any support issues.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16457>`_ "}@"
+msgstr "``sros2`` 包提供了在 DDS-Security 之上使用 ROS 2 的工具和说明。安全功能已在不同平台（Linux、macOS 和 Windows）以及不同语言（C++ 和 Python）上进行了测试。SROS2 已设计成可与任何安全中间件一起使用，尽管并非所有中间件都是开源的，支持程度取决于正在使用的 ROS 版本。如果遇到任何支持问题，请联系 :ref:`ROS 2 安全工作组 <Security Working Group>`。@{"calib_text": " `[16457] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16457>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Security/Introducing-ros2-security.rst:32
@@ -2442,7 +2442,7 @@ msgstr "如果您选择不使用默认的中间件实现，请务必在继续之
 
 #: ../../source/Tutorials/Advanced/Security/Introducing-ros2-security.rst:83
 msgid "ROS 2 allows you to change the DDS implementation at runtime. See `how to work with mulitple RMW implementations <../../../How-To-Guides/Working-with-multiple-RMW-implementations>` to explore different middleware implementations."
-msgstr "ROS 2 allows you to change the DDS implementation at runtime. See `how to work with mulitple RMW implementations <../../../How-To-Guides/Working-with-multiple-RMW-implementations>` to explore different middleware implementations.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16458>`_ "}@"
+msgstr "ROS 2 允许您在运行时更改 DDS 实现。请参阅 `如何使用多个 RMW 实现 <../../../How-To-Guides/Working-with-multiple-RMW-implementations>`_ 以探索不同的中间件实现。@{"calib_text": " `[16458] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16458>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Security/Introducing-ros2-security.rst:86
@@ -3412,7 +3412,7 @@ msgstr "`Webots R2023a的2023.0.2版本 <https://cyberbotics.com/files/ros2/webo
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Installation-MacOS.rst:221
 msgid "`Version 2023.1.1 for Webots R2023b <https://cyberbotics.com/files/ros2/webots_ros2_2023_1_1.utm.zip>`_ [8.0 GB]"
-msgstr "`Version 2023.1.1 for Webots R2023b <https://cyberbotics.com/files/ros2/webots_ros2_2023_1_1.utm.zip>`_ [8.0 GB]@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16460>`_ "}@"
+msgstr "`Version 2023.1.1 for Webots R2023b <https://cyberbotics.com/files/ros2/webots_ros2_2023_1_1.utm.zip>`_ [8.0 GB]@{"calib_text": " `[16460] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16460>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Installation-MacOS.rst:223
@@ -3687,7 +3687,7 @@ msgstr "这是教程的第一部分的延续：:doc:`./Setting-Up-Simulation-Web
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.rst:27 ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.rst:52
 msgid "This tutorial is compatible with version 2023.1.0 of ``webots_ros2`` and Webots R2023b, as well as upcoming versions."
-msgstr "This tutorial is compatible with version 2023.1.0 of ``webots_ros2`` and Webots R2023b, as well as upcoming versions.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16463>`_ "}@"
+msgstr "本教程与 ``webots_ros2`` 的版本 2023.1.0 和 Webots R2023b 以及即将发布的版本兼容。@{"calib_text": " `[16463] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16463>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.rst:33
@@ -3842,12 +3842,12 @@ msgstr "下一步@{"calib_text": " `[16493] <http://fishros.org/page/calib/#/hom
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.rst:225
 msgid "You might want to improve the plugin or create new nodes to change the behavior of the robot. You can also implement a reset handler to automatically restart your ROS nodes when the simulation is reset from the Webots interface:"
-msgstr "You might want to improve the plugin or create new nodes to change the behavior of the robot. You can also implement a reset handler to automatically restart your ROS nodes when the simulation is reset from the Webots interface:@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16494>`_ "}@"
+msgstr "您可能希望改进插件或创建新节点以更改机器人的行为。您还可以实现重置处理程序，以在从 Webots 界面重置仿真时自动重新启动 ROS 节点：@{"calib_text": " `[16494] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16494>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.rst:228
 msgid ":doc:`./Simulation-Reset-Handler`."
-msgstr ":doc:`./Simulation-Reset-Handler`.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16495>`_ "}@"
+msgstr ":doc:`./Simulation-Reset-Handler`。@{"calib_text": " `[16495] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16495>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.rst:7
