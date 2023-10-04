@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setting up efficient intra-process communication &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>设置高效的进程内通信 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Recording and playing back data with rosbag using the ROS 1 bridge" href="Rosbag-with-ROS1-Bridge.html" />
-    <link rel="prev" title="Managing nodes with managed lifecycles" href="Managed-Nodes.html" /> 
+    <link rel="next" title="使用ROS 1桥接在`rosbag`中记录和回放数据" href="Rosbag-with-ROS1-Bridge.html" />
+    <link rel="prev" title="使用受控生命周期管理节点" href="Managed-Nodes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,25 +45,25 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">Installation</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">安装</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/Windows-Install-Binary.html">Windows (binary)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Windows-Install-Binary.html">Windows (二进制)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/Alternatives.html">Alternatives</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu (binary)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Windows-Development-Setup.html">Windows (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL (binary)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/macOS-Development-Setup.html">macOS (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora (source)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Latest-Development-Setup.html">Latest development (source)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Alternatives.html">替代方案</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Windows-Development-Setup.html">Windows（源代码）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Development-Setup.html">RHEL（源代码）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/RHEL-Install-Binary.html">RHEL（二进制）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/macOS-Development-Setup.html">macOS（源码）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Fedora-Development-Setup.html">Fedora（源代码）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Latest-Development-Setup.html">最新的开发版本（源码）</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/Maintaining-a-Source-Checkout.html">Maintain source checkout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/Testing.html">Testing with pre-release binaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/DDS-Implementations.html">DDS implementations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext security plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Maintaining-a-Source-Checkout.html">维护源代码检出。</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Testing.html">使用预发布二进制文件进行测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/DDS-Implementations.html">DDS 实现</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-Security-Plugins.html">Connext安全插件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Install-Connext-University-Eval.html">RTI Connext DDS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-Eclipse-CycloneDDS.html">Eclipse Cyclone DDS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Installation/DDS-Implementations/Working-with-GurumNetworks-GurumDDS.html">GurumNetworks GurumDDS</a></li>
@@ -72,181 +72,181 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Releases.html">Distributions</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Releases.html">分发版本</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Iron-Irwini.html">Iron Irwini (<code class="docutils literal notranslate"><span class="pre">iron</span></code>)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini Changelog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Iron-Irwini-Complete-Changelog.html">Iron Irwini 更新日志</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Humble-Hawksbill.html">Humble Hawksbill (<code class="docutils literal notranslate"><span class="pre">humble</span></code>)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill changelog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Releases/Development.html">Development Distribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Development.html">开发分发版</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../Releases/End-of-Life.html">End-of-Life Distributions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone (<code class="docutils literal notranslate"><span class="pre">galactic</span></code>)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/End-of-Life.html">终止生命周期的发行版</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Galactic-Geochelone.html">Galactic Geochelone（<code class="docutils literal notranslate"><span class="pre">galactic</span></code>）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor (<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Dashing-Diademata.html">Dashing Diademata (<code class="docutils literal notranslate"><span class="pre">dashing</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson (<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Bouncy-Bolson.html">Bouncy Bolson（<code class="docutils literal notranslate"><span class="pre">bouncy</span></code>）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Ardent-Apalone.html">Ardent Apalone (<code class="docutils literal notranslate"><span class="pre">ardent</span></code>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta3-Overview.html">Beta 3 (<code class="docutils literal notranslate"><span class="pre">r2b3</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta2-Overview.html">Beta 2 (<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta1-Overview.html">Beta 1 (<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Alpha-Overview.html">Alphas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta2-Overview.html">Beta 2（<code class="docutils literal notranslate"><span class="pre">r2b2</span></code>）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Beta1-Overview.html">Beta 1（<code class="docutils literal notranslate"><span class="pre">Asphalt</span></code>）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Alpha-Overview.html">阿尔法版本</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Process.html">Development process for a release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Process.html">发布的开发流程</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Beginner-CLI-Tools.html">Beginner: CLI tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">Configuring environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">Using <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>, <code class="docutils literal notranslate"><span class="pre">ros2</span></code>, and <code class="docutils literal notranslate"><span class="pre">rqt</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">Understanding nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">Understanding topics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">Understanding services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">Understanding parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">Understanding actions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">Using <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> to view logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">Launching nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">Recording and playing back data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">教程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Beginner-CLI-Tools.html">初学者：CLI 工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html">配置环境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html">使用 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 、 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rqt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html">理解节点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html">理解话题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html">了解服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html">理解参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">理解行为</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Using-Rqt-Console/Using-Rqt-Console.html">使用 <code class="docutils literal notranslate"><span class="pre">rqt_console</span></code> 查看日志</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Launching-Multiple-Nodes/Launching-Multiple-Nodes.html">启动节点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html">录制和回放数据</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Beginner-Client-Libraries.html">Beginner: Client libraries</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Colcon-Tutorial.html">Using <code class="docutils literal notranslate"><span class="pre">colcon</span></code> to build packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">Creating a workspace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">Creating a package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">Writing a simple publisher and subscriber (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">Writing a simple service and client (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">Writing a simple service and client (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">Creating custom msg and srv files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">Implementing custom interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">Using parameters in a class (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">Using parameters in a class (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">Using <code class="docutils literal notranslate"><span class="pre">ros2doctor</span></code> to identify issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Pluginlib.html">Creating and using plugins (C++)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Beginner-Client-Libraries.html">初学者：客户端库</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Colcon-Tutorial.html">使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">创建一个工作空间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">创建软件包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（C++）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html">编写一个简单的发布者和订阅者（Python）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html">编写一个简单的服务和客户端（C++）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Py-Service-And-Client.html">编写一个简单的服务和客户端（Python）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Custom-ROS2-Interfaces.html">创建自定义的 msg 和 srv 文件。</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Single-Package-Define-And-Use-Interface.html">实现自定义接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html">在类中使用参数（C++）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html">在类中使用参数（Python）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Getting-Started-With-Ros2doctor.html">使用``ros2doctor``来识别问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Beginner-Client-Libraries/Pluginlib.html">创建和使用插件（C++）</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Intermediate.html">Intermediate</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Rosdep.html">Managing Dependencies with rosdep</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Creating-an-Action.html">Creating an action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Cpp.html">Writing an action server and client (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Py.html">Writing an action server and client (Python)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Composition.html">Composing multiple nodes in a single process</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Monitoring-For-Parameter-Changes-CPP.html">Monitoring for parameter changes (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Launch/Launch-Main.html">Launch</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Creating-Launch-Files.html">Creating a launch file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Launch-system.html">Integrating launch files into ROS 2 packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Substitutions.html">Using substitutions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Event-Handlers.html">Using event handlers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">Managing large projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Intermediate.html">中级</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Rosdep.html">使用rosdep管理依赖关系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Creating-an-Action.html">创建一个动作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Composition.html">在单个进程中组合多个节点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Monitoring-For-Parameter-Changes-CPP.html">监视参数变化（C++）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Launch/Launch-Main.html">启动</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Creating-Launch-Files.html">创建一个启动文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Launch-system.html">将启动文件集成到ROS 2包中</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Substitutions.html">使用替代项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-Event-Handlers.html">使用事件处理程序</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Launch/Using-ROS2-Launch-For-Large-Projects.html">管理大型项目</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/Tf2/Tf2-Main.html"><code class="docutils literal notranslate"><span class="pre">tf2</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Introduction-To-Tf2.html">Introducing <code class="docutils literal notranslate"><span class="pre">tf2</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">Writing a static broadcaster (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">Writing a static broadcaster (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">Writing a broadcaster (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">Writing a broadcaster (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">Writing a listener (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">Writing a listener (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Py.html">Adding a frame (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Cpp.html">Adding a frame (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">Using time (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">Using time (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">Traveling in time (Python)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">Traveling in time (C++)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Debugging-Tf2-Problems.html">Debugging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Quaternion-Fundamentals.html">Quaternion fundamentals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">Using stamped datatypes with <code class="docutils literal notranslate"><span class="pre">tf2_ros::MessageFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Introduction-To-Tf2.html">介绍``tf2``</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html">编写静态广播器（Python）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Cpp.html">编写静态广播器（C++）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Py.html">编写广播器（Python）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Broadcaster-Cpp.html">编写广播器（C++）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Py.html">编写监听器（Python）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Writing-A-Tf2-Listener-Cpp.html">编写监听器（C++）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Py.html">添加一个帧（Python）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Adding-A-Frame-Cpp.html">添加一个框架（C++）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Py.html">使用时间（Python）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Learning-About-Tf2-And-Time-Cpp.html">使用时间（C++）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Py.html">时间旅行（Python）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Time-Travel-With-Tf2-Cpp.html">时间旅行（C++）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Debugging-Tf2-Problems.html">调试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Quaternion-Fundamentals.html">四元数基础知识</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Tf2/Using-Stamped-Datatypes-With-Tf2-Ros-MessageFilter.html">使用带时间戳的数据类型与``tf2_ros::MessageFilter``</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Testing/Testing-Main.html">Testing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/CLI.html">Running Tests in ROS 2 from the Command Line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Cpp.html">Writing Basic Tests with C++ with GTest</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Python.html">Writing Basic Tests with Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/Testing/Testing-Main.html">测试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/CLI.html">从命令行中运行 ROS 2 中的测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Cpp.html">使用 GTest 编写基本的 C++ 测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/Testing/Python.html">使用Python编写基本测试</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/URDF/URDF-Main.html">URDF</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">Building a visual robot model from scratch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">Building a movable robot model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">Adding physical and collision properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">Using Xacro to clean up your code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">Using URDF with <code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Visual-Robot-Model-with-URDF-from-Scratch.html">从头开始构建一个可视化的机器人模型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Building-a-Movable-Robot-Model-with-URDF.html">构建一个可移动的机器人模型。</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.html">添加物理和碰撞属性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html">使用 Xacro 清理您的代码</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Intermediate/URDF/Using-URDF-with-Robot-State-Publisher.html">使用URDF和``robot_state_publisher``</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Advanced.html">Advanced</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">Enabling topic statistics (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Discovery-Server/Discovery-Server.html">Using Fast DDS Discovery Server as discovery protocol [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Allocator-Template-Tutorial.html">Implementing a custom memory allocator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/FastDDS-Configuration.html">Unlocking the potential of Fast DDS middleware [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">Recording a bag from a node (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">Recording a bag from a node (Python)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Advanced.html">高级</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Topic-Statistics-Tutorial/Topic-Statistics-Tutorial.html">启用主题统计信息（C++）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Discovery-Server/Discovery-Server.html">使用Fast DDS Discovery Server作为发现协议[社区贡献]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Allocator-Template-Tutorial.html">实现自定义内存分配器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Simulators/Simulation-Main.html">Simulators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Simulators/Simulation-Main.html">模拟器</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Advanced/Simulators/Webots/Simulation-Webots.html">Webots</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-Ubuntu.html">Installation (Ubuntu)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-Windows.html">Installation (Windows)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-MacOS.html">Installation (macOS)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">Setting up a robot simulation (Basic)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">Setting up a robot simulation (Advanced)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-Windows.html">安装（Windows）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础）</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级）</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Gazebo/Gazebo.html">Setting up a robot simulation (Gazebo)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Advanced/Simulators/Gazebo/Gazebo.html">设置机器人仿真（Gazebo）。</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/Security/Security-Main.html">Security</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Introducing-ros2-security.html">Setting up security</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/The-Keystore.html">Understanding the security keystore</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Security-on-Two.html">Ensuring security across machines</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Examine-Traffic.html">Examining network traffic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Access-Controls.html">Setting access controls</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Deployment-Guidelines.html">Deployment Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/Security/Security-Main.html">安全性</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Introducing-ros2-security.html">设置安全性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/The-Keystore.html">理解安全密钥库</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Security-on-Two.html">确保跨机器的安全性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Examine-Traffic.html">检查网络流量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Access-Controls.html">设置访问控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Advanced/Security/Deployment-Guidelines.html">部署指南</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../Demos.html">Demos</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Quality-of-Service.html">Using quality-of-service settings for lossy networks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Managed-Nodes.html">Managing nodes with managed lifecycles</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Setting up efficient intra-process communication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Rosbag-with-ROS1-Bridge.html">Recording and playing back data with <code class="docutils literal notranslate"><span class="pre">rosbag</span></code> using the ROS 1 bridge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">Understanding real-time programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">Experimenting with a dummy robot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Logging-and-logger-configuration.html">Logging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Content-Filtering-Subscription.html">Creating a content filtering subscription</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Demos.html">演示</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Quality-of-Service.html">在不稳定网络中使用服务质量设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Managed-Nodes.html">使用受控生命周期管理节点</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">设置高效的进程内通信</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Rosbag-with-ROS1-Bridge.html">使用ROS 1桥接在`rosbag`中记录和回放数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Real-Time-Programming.html">理解实时编程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dummy-robot-demo.html">尝试使用虚拟机器人进行实验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Logging-and-logger-configuration.html">记录日志</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Content-Filtering-Subscription.html">创建内容过滤订阅</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">Deploying on IBM Cloud Kubernetes [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">Using Eclipse Oxygen with <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">Building a real-time Linux kernel [community-contributed]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">Building a package with Eclipse 2021-06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Miscellaneous.html">杂项</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Deploying-ROS-2-on-IBM-Cloud.html">在 IBM Cloud Kubernetes 上部署 [社区贡献]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Eclipse-Oxygen-with-ROS-2-and-rviz2.html">使用 <code class="docutils literal notranslate"><span class="pre">rviz2</span></code> 的 Eclipse Oxygen [社区贡献]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Building-Realtime-rt_preempt-kernel-for-ROS-2.html">构建实时Linux内核[社区贡献]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Miscellaneous/Building-ROS2-Package-with-eclipse-2021-06.html">使用Eclipse 2021-06构建软件包</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../How-To-Guides.html">How-to Guides</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html">Installation troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Developing-a-ROS-2-Package.html">Developing a ROS 2 package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake user documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python user documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../How-To-Guides.html">如何指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installation-Troubleshooting.html">安装故障排除</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces</a></li>
@@ -257,67 +257,67 @@
 <li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-file-different-formats.html">Using Python, XML, and YAML for ROS 2 Launch Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launching-composable-nodes.html">Using ROS 2 launch to launch composable nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Node-arguments.html">Passing ROS arguments to nodes via the command-line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Sync-Vs-Async.html">Synchronous vs. asynchronous service clients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/DDS-tuning.html">DDS tuning information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2: Overriding QoS Policies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html">Working with multiple ROS 2 middleware implementations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Cross-compilation.html">Cross-compilation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Releasing/Releasing-a-Package.html">Releasing a Package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/First-Time-Release.html">First Time Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Subsequent-Releases.html">Subsequent Releases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Team-Repository.html">Release Team / Repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Track.html">Release Track</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/DDS-tuning.html">DDS调优信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Overriding-QoS-Policies-For-Recording-And-Playback.html">rosbag2：覆盖 QoS 策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Working-with-multiple-RMW-implementations.html">使用多个ROS 2中间件实现</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Cross-compilation.html">交叉编译</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Releasing/Releasing-a-Package.html">发布软件包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/First-Time-Release.html">首次发布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Subsequent-Releases.html">后续发布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Team-Repository.html">发布团队/仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/Releasing/Release-Track.html">发布跟踪</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Python-Packages.html">Using Python Packages with ROS 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Port-Plugin-Windows.html">Porting RQt plugins to Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">Running ROS 2 nodes in Docker [community-contributed]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">Visualizing ROS 2 data with Foxglove Studio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Package-maintainer-guide.html">ROS 2 Package Maintainer Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-a-Custom-Debian-Package.html">Building a custom Debian package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">Building ROS 2 with tracing instrumentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Topics-Services-Actions.html">Topics vs Services vs Actions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Variants.html">Using variants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros2-param.html">Using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> command-line tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">Using <code class="docutils literal notranslate"><span class="pre">ros1_bridge</span></code> with upstream ROS on Ubuntu 22.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">Disabling Zero Copy Loaned Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installing-on-Raspberry-Pi.html">ROS 2 on Raspberry Pi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html">Using Callback Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">Setup ROS 2 with VSCode and Docker [community-contributed]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install.html">Building RQt from source</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-MacOS.html">Building RQt from source on macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-Windows10.html">Building RQt from source on Windows 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Python-Packages.html">在ROS 2中使用Python包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Port-Plugin-Windows.html">将RQt插件移植到Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Run-2-nodes-in-single-or-separate-docker-containers.html">在 Docker 中运行 ROS 2 节点[社区贡献]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Visualizing-ROS-2-Data-With-Foxglove-Studio.html">使用Foxglove Studio可视化ROS 2数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Package-maintainer-guide.html">ROS 2软件包维护人员指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-a-Custom-Debian-Package.html">构建自定义的Debian软件包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Building-ROS-2-with-Tracing-Instrumentation.html">使用跟踪工具构建ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Topics-Services-Actions.html">主题 vs 服务 vs 动作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-Variants.html">使用变体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros2-param.html">使用``ros2 param``命令行工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-ros1_bridge-Jammy-upstream.html">在Ubuntu 22.04上使用``ros1_bridge``和上游ROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Disabling-ZeroCopy-loaned-messages.html">禁用零拷贝借用消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Installing-on-Raspberry-Pi.html">在 Raspberry Pi 上的 ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Using-callback-groups.html">使用回调组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Setup-ROS-2-with-VSCode-and-Docker-Container.html">使用VSCode和Docker设置ROS 2 [社区贡献]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install.html">从源代码构建 RQt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-MacOS.html">在 macOS 上从源代码构建 RQt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../How-To-Guides/RQt-Source-Install-Windows10.html">在 Windows 10 上从源代码构建 RQt</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">Concepts</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">概念</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Concepts/Basic.html">Basic Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Nodes.html">Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Discovery.html">Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Nodes.html">节点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Discovery.html">发现</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Interfaces.html">Interfaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Topics.html">Topics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Services.html">Services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Actions.html">Actions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Parameters.html">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Command-Line-Tools.html">Introspection with command line tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Launch.html">Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Topics.html">主题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Services.html">服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Actions.html">动作</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Parameters.html">参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Command-Line-Tools.html">使用命令行工具进行内省</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Launch.html">启动</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Basic/About-Client-Libraries.html">Client libraries</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../Concepts/Intermediate.html">Intermediate Concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Domain-ID.html">The ROS_DOMAIN_ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Logging.html">Logging and logger configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Executors.html">Executors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Executors.html">执行器</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Topic-Statistics.html">Topic statistics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-RQt.html">Overview and usage of RQt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-RQt.html">RQt 的概述和使用方法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Composition.html">Composition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Cross-Compilation.html">Cross-compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Cross-Compilation.html">交叉编译</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Security.html">ROS 2 Security</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Concepts/Intermediate/About-Tf2.html">Tf2</a></li>
 </ul>
@@ -330,39 +330,39 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Contact.html">Contact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../The-ROS2-Project.html">The ROS 2 Project</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Contributing.html">Contributing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2 developer guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">Code style and language versions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Quality-Guide.html">Quality guide: ensuring code quality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Build-Farms.html">ROS Build Farms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows Tips and Tricks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">Contributing to ROS 2 Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Contact.html">联系</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../The-ROS2-Project.html">ROS 2 项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Contributing.html">贡献</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Features.html">Features Status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Feature-Ideas.html">Feature Ideas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Roadmap.html">Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/ROSCon-Content.html">ROSCon Talks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Governance.html">Project Governance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 Technical Steering Committee Charter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC applicant intake process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Features.html">功能状态</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Feature-Ideas.html">功能点子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Roadmap.html">路线图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/ROSCon-Content.html">ROSCon 演讲</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Governance.html">项目治理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">How to Start a Community Working Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Marketing.html">Marketing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../The-ROS2-Project/Marketing.html">营销</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../API-Docs.html">API Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Related-Projects.html">Related Projects</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2 Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API-Docs.html">API文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Related-Projects.html">相关项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Intel-ROS2-Projects.html">Intel ROS 2 项目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Related-Projects/Nvidia-ROS2-Projects.html">NVIDIA ROS 2项目</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Glossary.html">术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Citations.html">引用</a></li>
 </ul>
 
         </div>
@@ -379,9 +379,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../Tutorials.html">Tutorials</a> &raquo;</li>
-          <li><a href="../Demos.html">Demos</a> &raquo;</li>
-      <li>Setting up efficient intra-process communication</li>
+          <li><a href="../../Tutorials.html">教程</a> &raquo;</li>
+          <li><a href="../Demos.html">演示</a> &raquo;</li>
+      <li>设置高效的进程内通信</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Demos/Intra-Process-Communication.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,36 +394,32 @@
 
 
   <div class="section" id="setting-up-efficient-intra-process-communication">
-<h1>Setting up efficient intra-process communication<a class="headerlink" href="#setting-up-efficient-intra-process-communication" title="永久链接至标题"></a></h1>
+<h1>设置高效的进程内通信<a class="headerlink" href="#setting-up-efficient-intra-process-communication" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">Table of Contents</p>
+<p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#background" id="id1">Background</a></p></li>
-<li><p><a class="reference internal" href="#installing-the-demos" id="id2">Installing the demos</a></p></li>
-<li><p><a class="reference internal" href="#running-and-understanding-the-demos" id="id3">Running and understanding the demos</a></p></li>
+<li><p><a class="reference internal" href="#background" id="id1">背景</a></p></li>
+<li><p><a class="reference internal" href="#installing-the-demos" id="id2">安装演示</a></p></li>
+<li><p><a class="reference internal" href="#running-and-understanding-the-demos" id="id3">运行和理解演示</a></p></li>
 </ul>
 </div>
 <div class="section" id="background">
-<h2><a class="toc-backref" href="#id1">Background</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>ROS applications typically consist of a composition of individual &quot;nodes&quot; which perform narrow tasks and are decoupled from other parts of the system.
-This promotes fault isolation, faster development, modularity, and code reuse, but it often comes at the cost of performance.
-After ROS 1 was initially developed, the need for efficient composition of nodes became obvious and Nodelets were developed.
-In ROS 2 we aim to improve on the design of Nodelets by addressing some fundamental problems that required restructuring of nodes.</p>
-<p>In this demo we'll be highlighting how nodes can be composed manually, by defining the nodes separately but combining them in different process layouts without changing the node's code or limiting its abilities.</p>
+<h2><a class="toc-backref" href="#id1">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<p>ROS应用程序通常由一系列独立的“节点”组成，每个节点执行特定的任务，并与系统的其他部分解耦。这促进了故障隔离、更快的开发、模块化和代码重用，但通常会以性能为代价。在最初开发ROS 1后，人们意识到需要有效地组合节点，并因此开发了Nodelets。在ROS 2中，我们旨在改进Nodelets的设计，解决一些需要对节点进行重组的根本性问题。</p>
+<p>在这个演示中，我们将重点介绍如何手动组合节点，通过分别定义节点，但在不更改节点的代码或限制其功能的情况下，将它们组合在不同的进程布局中。</p>
 </div>
 <div class="section" id="installing-the-demos">
-<h2><a class="toc-backref" href="#id2">Installing the demos</a><a class="headerlink" href="#installing-the-demos" title="永久链接至标题"></a></h2>
-<p>See the <a class="reference internal" href="../../Installation.html"><span class="doc">installation instructions</span></a> for details on installing ROS 2.</p>
-<p>If you've installed ROS 2 from packages, ensure that you have <code class="docutils literal notranslate"><span class="pre">ros-humble-intra-process-demo</span></code> installed.
-If you downloaded the archive or built ROS 2 from source, it will already be part of the installation.</p>
+<h2><a class="toc-backref" href="#id2">安装演示</a><a class="headerlink" href="#installing-the-demos" title="永久链接至标题"></a></h2>
+<p>详细了解安装ROS 2的方法，请参阅:doc:<a class="reference internal" href="../../Installation.html"><span class="doc">安装说明</span></a>。</p>
+<p>如果你是通过包安装ROS 2，请确保已安装``ros-humble-intra-process-demo``。如果你从存档文件下载或从源代码构建ROS 2，它已经包含在安装中。</p>
 </div>
 <div class="section" id="running-and-understanding-the-demos">
-<h2><a class="toc-backref" href="#id3">Running and understanding the demos</a><a class="headerlink" href="#running-and-understanding-the-demos" title="永久链接至标题"></a></h2>
-<p>There are a few different demos: some are toy problems designed to highlight features of the intra process communications functionality and some are end to end examples which use OpenCV and demonstrate the ability to recombine nodes into different configurations.</p>
+<h2><a class="toc-backref" href="#id3">运行和理解演示</a><a class="headerlink" href="#running-and-understanding-the-demos" title="永久链接至标题"></a></h2>
+<p>有几个不同的演示：其中一些是玩具问题，旨在突出显示进程内通信功能的特点，另一些是端到端示例，使用OpenCV，并演示了将节点重新组合成不同配置的能力。</p>
 <div class="section" id="the-two-node-pipeline-demo">
-<h3>The two node pipeline demo<a class="headerlink" href="#the-two-node-pipeline-demo" title="永久链接至标题"></a></h3>
-<p>This demo is designed to show that the intra process publish/subscribe connection can result in zero-copy transport of messages when publishing and subscribing with <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code>s.</p>
-<p>First let's take a look at the source:</p>
+<h3>两个节点管道演示<a class="headerlink" href="#the-two-node-pipeline-demo" title="永久链接至标题"></a></h3>
+<p>此演示旨在展示进程内发布/订阅连接在使用``std::unique_ptr``进行发布和订阅时可以实现零拷贝传输。</p>
+<p>首先，让我们来看一下源代码:</p>
 <p><a class="reference external" href="https://github.com/ros2/demos/blob/humble/intra_process_demo/src/two_node_pipeline/two_node_pipeline.cpp">https://github.com/ros2/demos/blob/humble/intra_process_demo/src/two_node_pipeline/two_node_pipeline.cpp</a></p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cinttypes&gt;</span><span class="cp"></span>
@@ -506,12 +502,11 @@ If you downloaded the archive or built ROS 2 from source, it will already be par
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>As you can see by looking at the <code class="docutils literal notranslate"><span class="pre">main</span></code> function, we have a producer and a consumer node, we add them to a single threaded executor, and then call spin.</p>
-<p>If you look at the &quot;producer&quot; node's implementation in the <code class="docutils literal notranslate"><span class="pre">Producer</span></code> struct, you can see that we have created a publisher which publishes on the &quot;number&quot; topic and a timer which periodically creates a new message, prints out its address in memory and its content's value and then publishes it.</p>
-<p>The &quot;consumer&quot; node is a bit simpler, you can see its implementation in the <code class="docutils literal notranslate"><span class="pre">Consumer</span></code> struct, as it only subscribes to the &quot;number&quot; topic and prints the address and value of the message it receives.</p>
-<p>The expectation is that the producer will print out an address and value and the consumer will print out a matching address and value.
-This demonstrates that intra process communication is indeed working and unnecessary copies are avoided, at least for simple graphs.</p>
-<p>Let's run the demo by executing <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">intra_process_demo</span> <span class="pre">two_node_pipeline</span></code> executable (don't forget to source the setup file first):</p>
+<p>通过查看 <code class="docutils literal notranslate"><span class="pre">main</span></code> 函数，您可以看到我们有一个生产者节点和一个消费者节点，我们将它们添加到一个单线程执行器中，然后调用 spin 函数。</p>
+<p>如果您查看 <code class="docutils literal notranslate"><span class="pre">Producer</span></code> 结构体中的“生产者”节点实现，您会发现我们创建了一个在“number”主题上发布消息的发布者和一个定时器，该定时器周期性地创建一个新的消息，打印出它在内存中的地址和其内容的值，然后将其发布出去。</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>consumer``节点相对简单，可以在``Consumer``结构体中看到其实现，它只订阅&quot;number&quot;主题，并打印出接收到的消息的地址和值。</p>
+<p>预期结果是生产者将打印出地址和值，而消费者将打印出匹配的地址和值。这证明了进程内通信确实起作用，并且至少对于简单的图形，避免了不必要的复制。</p>
+<p>让我们通过执行``ros2 run intra_process_demo two_node_pipeline``可执行文件来运行演示（不要忘记先执行设置文件）：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 run intra_process_demo two_node_pipeline
 Published message with value: <span class="m">0</span>, and address: 0x7fb02303faf0
 Published message with value: <span class="m">1</span>, and address: 0x7fb020cf0520
@@ -527,22 +522,13 @@ Published message with value: <span class="m">5</span>, and address: 0x7fb02303c
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
-<p>One thing you'll notice is that the messages tick along at about one per second.
-This is because we told the timer to fire at about once per second.</p>
-<p>Also you may have noticed that the first message (with value <code class="docutils literal notranslate"><span class="pre">0</span></code>) does not have a corresponding &quot;Received message ...&quot; line.
-This is because publish/subscribe is &quot;best effort&quot; and we do not have any &quot;latching&quot; like behavior enabled.
-This means that if the publisher publishes a message before the subscription has been established, the subscription will not receive that message.
-This race condition can result in the first few messages being lost.
-In this case, since they only come once per second, usually only the first message is lost.</p>
-<p>Finally, you can see that &quot;Published message...&quot; and &quot;Received message ...&quot; lines with the same value also have the same address.
-This shows that the address of the message being received is the same as the one that was published and that it is not a copy.
-This is because we're publishing and subscribing with <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code>s which allow ownership of a message to be moved around the system safely.
-You can also publish and subscribe with <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code>, but zero-copy will not occur in that case.</p>
+<p>你会注意到一件事，消息大约每秒钟传递一次。这是因为我们告诉定时器大约每秒触发一次。</p>
+<p>你可能已经注意到第一条消息（值为``0``）没有对应的&quot;Received message ...&quot;行。这是因为发布/订阅是&quot;尽力而为&quot;的，我们没有启用任何&quot;锁存&quot;行为。这意味着如果发布者在建立订阅之前发布一条消息，订阅将不会接收到该消息。这种竞争条件可能导致前几条消息丢失。在这种情况下，由于它们每秒只出现一次，通常只会丢失第一条消息。</p>
+<p>最后，你可以看到具有相同值的&quot;Published message...&quot;和&quot;Received message ...&quot;行也具有相同的地址。这表明接收到的消息的地址与发布的消息相同，并且它不是一个副本。这是因为我们使用``std::unique_ptr``进行发布和订阅，它允许消息的所有权在系统中安全地移动。你也可以使用``const &amp;``和``std::shared_ptr``进行发布和订阅，但在这种情况下不会进行零拷贝。</p>
 </div>
 <div class="section" id="the-cyclic-pipeline-demo">
-<h3>The cyclic pipeline demo<a class="headerlink" href="#the-cyclic-pipeline-demo" title="永久链接至标题"></a></h3>
-<p>This demo is similar to the previous one, but instead of the producer creating a new message for each iteration, this demo only ever uses one message instance.
-This is achieved by creating a cycle in the graph and &quot;kicking off&quot; communication by externally making one of the nodes publish before spinning the executor:</p>
+<h3>循环管道示例<a class="headerlink" href="#the-cyclic-pipeline-demo" title="永久链接至标题"></a></h3>
+<p>这个示例与之前的示例类似，但是不同的是，生产者在每次迭代中不会创建新的消息，而是始终使用同一个消息实例。通过在图中创建一个循环，并在旋转执行器之前通过外部方式使其中一个节点发布消息，可以实现这一点：</p>
 <p><a class="reference external" href="https://github.com/ros2/demos/blob/humble/intra_process_demo/src/cyclic_pipeline/cyclic_pipeline.cpp">https://github.com/ros2/demos/blob/humble/intra_process_demo/src/cyclic_pipeline/cyclic_pipeline.cpp</a></p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cinttypes&gt;</span><span class="cp"></span>
@@ -623,12 +609,10 @@ This is achieved by creating a cycle in the graph and &quot;kicking off&quot; co
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Unlike the previous demo, this demo uses only one Node, instantiated twice with different names and configurations.
-The graph ends up being <code class="docutils literal notranslate"><span class="pre">pipe1</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">pipe2</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">pipe1</span></code> ... in a loop.</p>
-<p>The line <code class="docutils literal notranslate"><span class="pre">pipe1-&gt;pub-&gt;publish(msg);</span></code> kicks the process off, but from then on the messages are passed back and forth between the nodes by each one calling publish within its own subscription callback.</p>
-<p>The expectation here is that the nodes pass the message back and forth, once a second, incrementing the value of the message each time.
-Because the message is being published and subscribed to as a <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> the same message created at the beginning is continuously used.</p>
-<p>To test those expectations, let's run it:</p>
+<p>与之前的演示不同，此演示只使用一个节点，使用不同的名称和配置实例化两次。图的结构为“pipe1” -&gt; “pipe2” -&gt; “pipe1”... 形成循环。</p>
+<p>代码行“pipe1-&gt;pub-&gt;publish(msg);”启动了该过程，但之后消息通过每个节点在自己的订阅回调中调用publish来来回传递。</p>
+<p>这里的期望是节点之间每秒传递消息一次，每次递增消息的值。由于消息作为“unique_ptr”发布和订阅，开始时创建的同一消息会不断使用。</p>
+<p>为了测试这些期望，让我们运行它：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ros2 run intra_process_demo cyclic_pipeline
 Published first message with value:  <span class="m">42</span>, and address: 0x7fd2ce0a2bc0
 Received message with value:         <span class="m">42</span>, and address: 0x7fd2ce0a2bc0
@@ -656,66 +640,59 @@ Received message with value:         <span class="m">47</span>, and address: 0x7
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
-<p>You should see ever increasing numbers on each iteration, starting with 42... because 42, and the whole time it reuses the same message, as demonstrated by the pointer addresses which do not change, which avoids unnecessary copies.</p>
+<p>你应该在每次迭代中看到不断增加的数字，从42开始...因为42，而且整个时间它重复使用相同的消息，如指针地址所示，它们不会改变，这避免了不必要的拷贝。</p>
 </div>
 <div class="section" id="the-image-pipeline-demo">
-<h3>The image pipeline demo<a class="headerlink" href="#the-image-pipeline-demo" title="永久链接至标题"></a></h3>
-<p>In this demo we'll use OpenCV to capture, annotate, and then view images.</p>
+<h3>图像处理演示<a class="headerlink" href="#the-image-pipeline-demo" title="永久链接至标题"></a></h3>
+<p>在这个演示中，我们将使用OpenCV来捕获、注释和查看图像。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>If you are on macOS and these examples do not work or you receive an error like <code class="docutils literal notranslate"><span class="pre">ddsi_conn_write</span> <span class="pre">failed</span> <span class="pre">-1</span></code>, then you'll need to increase your system wide UDP packet size:</p>
+<p>如果您使用的是 macOS，而这些示例不起作用，或者您收到类似 <code class="docutils literal notranslate"><span class="pre">ddsi_conn_write</span> <span class="pre">failed</span> <span class="pre">-1</span></code> 的错误，那么您需要增加系统范围内的 UDP 数据包大小：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo sysctl -w net.inet.udp.recvspace<span class="o">=</span><span class="m">209715</span>
 $ sudo sysctl -w net.inet.udp.maxdgram<span class="o">=</span><span class="m">65500</span>
 </pre></div>
 </div>
-<p>These changes will not persist after a reboot.</p>
+<p>这些更改在重启后将不会保留。</p>
 </div>
 <div class="section" id="simple-pipeline">
-<h4>Simple pipeline<a class="headerlink" href="#simple-pipeline" title="永久链接至标题"></a></h4>
-<p>First we'll have a pipeline of three nodes, arranged as such: <code class="docutils literal notranslate"><span class="pre">camera_node</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">image_view_node</span></code></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">camera_node</span></code> reads from camera device <code class="docutils literal notranslate"><span class="pre">0</span></code> on your computer, writes some information on the image and publishes it.
-The <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> subscribes to the output of the <code class="docutils literal notranslate"><span class="pre">camera_node</span></code> and adds more text before publishing it too.
-Finally, the <code class="docutils literal notranslate"><span class="pre">image_view_node</span></code> subscribes to the output of the <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code>, writes more text to the image and then visualizes it with <code class="docutils literal notranslate"><span class="pre">cv::imshow</span></code>.</p>
-<p>In each node the address of the message which is being sent, or which has been received, or both, is written to the image.
-The watermark and image view nodes are designed to modify the image without copying it and so the addresses imprinted on the image should all be the same as long as the nodes are in the same process and the graph remains organized in a pipeline as sketched above.</p>
+<h4>简单的流水线<a class="headerlink" href="#simple-pipeline" title="永久链接至标题"></a></h4>
+<p>首先，我们将有一个由三个节点组成的流水线，安排如下：<code class="docutils literal notranslate"><span class="pre">camera_node</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">image_view_node</span></code></p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>camera_node``从计算机上的相机设备``0``读取数据，并在图像上写入一些信息后进行发布。<a href="#id3"><span class="problematic" id="id4">``</span></a>watermark_node``订阅``camera_node``的输出，并在发布之前添加更多的文本。最后，<a href="#id5"><span class="problematic" id="id6">``</span></a>image_view_node``订阅``watermark_node``的输出，向图像中添加更多的文本，并使用``cv::imshow``进行可视化。</p>
+<p>在每个节点中，发送或接收到的消息的地址都写入图像中。水印节点和图像查看节点设计为在不复制图像的情况下修改图像，因此只要节点在同一进程中，并且图形以上述流水线的方式保持组织，图像上印刻的地址应该都是相同的。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>On some systems (we've seen it happen on Linux), the address printed to the screen might not change.
-This is because the same unique pointer is being reused. In this situation, the pipeline is still running.</p>
+<p>在某些系统上（我们在Linux上遇到过这种情况），打印到屏幕上的地址可能不会改变。这是因为正在重复使用相同的唯一指针。在这种情况下，流水线仍在运行。</p>
 </div>
-<p>Let's run the demo by executing the following executable:</p>
+<p>通过执行以下可执行文件来运行演示：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run intra_process_demo image_pipeline_all_in_one
 </pre></div>
 </div>
-<p>You should see something like this:</p>
+<p>你应该看到类似这样的内容：</p>
 <img alt="../../_images/intra-process-demo-pipeline-single-window.png" src="../../_images/intra-process-demo-pipeline-single-window.png" />
-<p>You can pause the rendering of the image by pressing the spacebar and you can resume by pressing the spacebar again.
-You can also press <code class="docutils literal notranslate"><span class="pre">q</span></code> or <code class="docutils literal notranslate"><span class="pre">ESC</span></code> to exit.</p>
-<p>If you pause the image viewer, you should be able to compare the addresses written on the image and see that they are the same.</p>
+<p>你可以通过按下空格键暂停图像的渲染，再次按下空格键可以恢复。你还可以按下 <code class="docutils literal notranslate"><span class="pre">q</span></code> 或 <code class="docutils literal notranslate"><span class="pre">ESC</span></code> 键退出。</p>
+<p>如果你暂停了图像查看器，你应该能够比较图像上的地址，并看到它们是相同的。</p>
 </div>
 <div class="section" id="pipeline-with-two-image-viewers">
-<h4>Pipeline with two image viewers<a class="headerlink" href="#pipeline-with-two-image-viewers" title="永久链接至标题"></a></h4>
-<p>Now let's look at an example just like the one above, except it has two image view nodes.
-All the nodes are still in the same process, but now two image view windows should show up. (Note for macOS users: your image view windows might be on top of each other).
-Let's run it with the command:</p>
+<h4>带有两个图像查看器的流水线<a class="headerlink" href="#pipeline-with-two-image-viewers" title="永久链接至标题"></a></h4>
+<p>现在让我们看一个与上面相似的示例，只是这次有两个图像视图节点。所有节点仍然在同一个进程中，但现在应该会出现两个图像视图窗口。（注意 macOS 用户：你的图像视图窗口可能会重叠在一起）。让我们用以下命令运行它：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run intra_process_demo image_pipeline_with_two_image_view
 </pre></div>
 </div>
 <img alt="../../_images/intra-process-demo-pipeline-two-windows-copy.png" src="../../_images/intra-process-demo-pipeline-two-windows-copy.png" />
-<p>Just like the last example, you can pause the rendering with the spacebar and continue by pressing the spacebar a second time. You can stop the updating to inspect the pointers written to the screen.</p>
-<p>As you can see in the example image above, we have one image with all of the pointers the same and then another image with the same pointers as the first image for the first two entries, but the last pointer on the second image is different. To understand why this is happening consider the graph's topology:</p>
+<p>与上一个示例一样，你可以使用空格键暂停渲染，再次按下空格键继续。你可以停止更新以检查写入屏幕的指针。</p>
+<p>如上面的示例图所示，我们有一个图像，其中所有指针都相同，然后另一个图像的前两个条目与第一个图像的指针相同，但第二个图像的最后一个指针不同。要理解为什么会发生这种情况，请考虑图的拓扑结构：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>camera_node -&gt; watermark_node -&gt; image_view_node
                               -&gt; image_view_node2
 </pre></div>
 </div>
-<p>The link between the <code class="docutils literal notranslate"><span class="pre">camera_node</span></code> and the <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> can use the same pointer without copying because there is only one intra process subscription to which the message should be delivered. But for the link between the <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> and the two image view nodes the relationship is one to many, so if the image view nodes were using <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> callbacks then it would be impossible to deliver the ownership of the same pointer to both. It can be, however, delivered to one of them. Which one would get the original pointer is not defined, but instead is simply the last to be delivered.</p>
-<p>Note that the image view nodes are not subscribed with <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> callbacks. Instead they are subscribed with <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">shared_ptr</span></code>s. This means the system deliveres the same <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code> to both callbacks. When the first intraprocess subscription is handled, the internally stored <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> is promoted to a <code class="docutils literal notranslate"><span class="pre">shared_ptr</span></code>. Each of the callbacks will receive shared ownership of the same message.</p>
+<p><code class="docutils literal notranslate"><span class="pre">camera_node</span></code> 和 <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> 之间的链接可以使用相同的指针而不进行复制，因为只有一个进程内的订阅应将消息传递给该指针。但是，对于 <code class="docutils literal notranslate"><span class="pre">watermark_node</span></code> 和两个图像视图节点之间的链接，关系是一对多的，因此，如果图像视图节点使用 <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> 回调，那么将不可能将同一指针的所有权分别传递给它们。然而，它可以被传递给其中一个。哪个节点会获得原始指针并没有定义，而是简单地取决于最后被传递的节点。</p>
+<p>注意，图像视图节点没有使用``unique_ptr``回调函数进行订阅，而是使用``const shared_ptr``进行订阅。这意味着系统将向两个回调函数提供相同的``shared_ptr``。在处理第一个进程内订阅时，内部存储的``unique_ptr``将被提升为``shared_ptr``。每个回调函数将共享同一消息的所有权。</p>
 </div>
 <div class="section" id="pipeline-with-interprocess-viewer">
-<h4>Pipeline with interprocess viewer<a class="headerlink" href="#pipeline-with-interprocess-viewer" title="永久链接至标题"></a></h4>
-<p>One other important thing to get right is to avoid interruption of the intra process zero-copy behavior when interprocess subscriptions are made. To test this we can run the first image pipeline demo, <code class="docutils literal notranslate"><span class="pre">image_pipeline_all_in_one</span></code>, and then run an instance of the stand alone <code class="docutils literal notranslate"><span class="pre">image_view_node</span></code> (don't forget to prefix them with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">intra_process_demo</span></code> in the terminal). This will look something like this:</p>
+<h4>具有进程间查看器的流水线<a class="headerlink" href="#pipeline-with-interprocess-viewer" title="永久链接至标题"></a></h4>
+<p>还有一件重要的事情需要注意，即在进行进程间订阅时，避免中断进程内的零拷贝行为。为了测试这一点，我们可以运行第一个图像流水线演示程序``image_pipeline_all_in_one``，然后运行一个独立的``image_view_node``实例（不要忘记在终端中加上``ros2 run intra_process_demo``前缀）。大致如下所示：</p>
 <img alt="../../_images/intra-process-demo-pipeline-inter-process.png" src="../../_images/intra-process-demo-pipeline-inter-process.png" />
-<p>It's hard to pause both images at the same time so the images may not line up, but the important thing to notice is that the <code class="docutils literal notranslate"><span class="pre">image_pipeline_all_in_one</span></code> image view shows the same address for each step. This means that the intra process zero-copy is preserved even when an external view is subscribed as well. You can also see that the interprocess image view has different process IDs for the first two lines of text and the process ID of the standalone image viewer in the third line of text.</p>
+<p>很难同时暂停两个图像，因此图像可能不会对齐，但需要注意的重要事项是，<a href="#id1"><span class="problematic" id="id2">``</span></a>image_pipeline_all_in_one``图像视图显示了每个步骤的相同地址。这意味着即使订阅了外部视图，进程内的零拷贝仍然得到保留。您还可以看到进程间图像视图在文本的前两行具有不同的进程 ID，并且独立图像查看器的进程 ID 在第三行文本中。</p>
 </div>
 </div>
 </div>
@@ -726,8 +703,8 @@ Let's run it with the command:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Managed-Nodes.html" class="btn btn-neutral float-left" title="Managing nodes with managed lifecycles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="Rosbag-with-ROS1-Bridge.html" class="btn btn-neutral float-right" title="Recording and playing back data with rosbag using the ROS 1 bridge" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Managed-Nodes.html" class="btn btn-neutral float-left" title="使用受控生命周期管理节点" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Rosbag-with-ROS1-Bridge.html" class="btn btn-neutral float-right" title="使用ROS 1桥接在`rosbag`中记录和回放数据" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
