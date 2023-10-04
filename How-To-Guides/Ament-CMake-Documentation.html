@@ -403,8 +403,8 @@
 <ul>
 <li><p><a class="reference internal" href="#basic-project-outline" id="id2">基本项目概述</a></p></li>
 <li><p><a class="reference internal" href="#compiler-and-linker-options" id="id3">编译器和链接器选项</a></p></li>
-<li><p><a class="reference internal" href="#finding-dependencies" id="id4">Finding dependencies</a></p></li>
-<li><p><a class="reference internal" href="#adding-targets" id="id5">Adding targets</a></p></li>
+<li><p><a class="reference internal" href="#finding-dependencies" id="id4">查找依赖项</a></p></li>
+<li><p><a class="reference internal" href="#adding-targets" id="id5">添加目标</a></p></li>
 <li><p><a class="reference internal" href="#linking-to-dependencies" id="id6">Linking to dependencies</a></p></li>
 <li><p><a class="reference internal" href="#installing" id="id7">Installing</a></p></li>
 </ul>
@@ -472,11 +472,10 @@
 <p>为了保持代码的清洁，编译器应该对可疑的代码发出警告，并且这些警告应该被修复。</p>
 <p>建议至少包括以下警告级别：</p>
 <ul class="simple">
-<li><p>For Visual Studio: the default <code class="docutils literal notranslate"><span class="pre">W1</span></code> warnings</p></li>
-<li><p>For GCC and Clang: <code class="docutils literal notranslate"><span class="pre">-Wall</span> <span class="pre">-Wextra</span> <span class="pre">-Wpedantic</span></code> are highly recommended and <code class="docutils literal notranslate"><span class="pre">-Wshadow</span></code> is advisable</p></li>
+<li><p>对于Visual Studio：默认的 <code class="docutils literal notranslate"><span class="pre">W1</span></code> 警告级别</p></li>
+<li><p>对于GCC和Clang：强烈建议使用 <code class="docutils literal notranslate"><span class="pre">-Wall</span> <span class="pre">-Wextra</span> <span class="pre">-Wpedantic</span></code>，并建议使用 <code class="docutils literal notranslate"><span class="pre">-Wshadow</span></code>&quot;</p></li>
 </ul>
-<p>It is currently recommended to use <code class="docutils literal notranslate"><span class="pre">add_compile_options</span></code> to add these options for all targets.
-This avoids cluttering the code with target-based compile options for all executables, libraries, and tests:</p>
+<p>目前建议使用 <code class="docutils literal notranslate"><span class="pre">add_compile_options</span></code> 来为所有目标添加这些选项。这样可以避免在所有可执行文件、库和测试的目标编译选项中引入杂乱的代码：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_COMPILER_IS_GNUCXX</span><span class="w"> </span><span class="s">OR</span><span class="w"> </span><span class="s">CMAKE_CXX_COMPILER_ID</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">&quot;Clang&quot;</span><span class="p">)</span>
 <span class="w">  </span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wall</span><span class="w"> </span><span class="s">-Wextra</span><span class="w"> </span><span class="s">-Wpedantic</span><span class="p">)</span>
 <span class="nb">endif</span><span class="p">()</span>
@@ -484,10 +483,8 @@ This avoids cluttering the code with target-based compile options for all execut
 </div>
 </div>
 <div class="section" id="finding-dependencies">
-<h3><a class="toc-backref" href="#id4">Finding dependencies</a><a class="headerlink" href="#finding-dependencies" title="永久链接至标题"></a></h3>
-<p>Most <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> projects will have dependencies on other packages.
-In CMake, this is accomplished by calling <code class="docutils literal notranslate"><span class="pre">find_package</span></code>.
-For instance, if your package depends on <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>, then the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file should contain:</p>
+<h3><a class="toc-backref" href="#id4">查找依赖项</a><a class="headerlink" href="#finding-dependencies" title="永久链接至标题"></a></h3>
+<p>大多数 <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> 项目会依赖其他软件包。在CMake中，可以通过调用 <code class="docutils literal notranslate"><span class="pre">find_package</span></code> 来实现这一点。例如，如果您的软件包依赖于 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>，则 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 文件应包含以下内容：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">rclcpp</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -497,17 +494,16 @@ For instance, if your package depends on <code class="docutils literal notransla
 </div>
 </div>
 <div class="section" id="adding-targets">
-<h3><a class="toc-backref" href="#id5">Adding targets</a><a class="headerlink" href="#adding-targets" title="永久链接至标题"></a></h3>
-<p>In CMake nomenclature, <code class="docutils literal notranslate"><span class="pre">targets</span></code> are the artifacts that this project will create.
-Either libraries or executables can be created, and a single project can contain zero or many of each of them.</p>
+<h3><a class="toc-backref" href="#id5">添加目标</a><a class="headerlink" href="#adding-targets" title="永久链接至标题"></a></h3>
+<p>在CMake术语中，<code class="docutils literal notranslate"><span class="pre">目标</span></code> 是此项目将创建的工件。可以创建库或可执行文件，一个项目可以包含零个或多个这些工件。</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGlicmFyaWVz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGlicmFyaWVz" name="TGlicmFyaWVz" role="tab" tabindex="0">Libraries</button><button aria-controls="panel-0-RXhlY3V0YWJsZXM=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RXhlY3V0YWJsZXM=" name="RXhlY3V0YWJsZXM=" role="tab" tabindex="-1">Executables</button></div><div aria-labelledby="tab-0-TGlicmFyaWVz" class="sphinx-tabs-panel group-tab" id="panel-0-TGlicmFyaWVz" name="TGlicmFyaWVz" role="tabpanel" tabindex="0"><p>These are created with a call to <code class="docutils literal notranslate"><span class="pre">add_library</span></code>, which should contain both the name of the target and the source files that should be compiled to create the library.</p>
-<p>With the separation of header files and implementation in C/C++, it is not usually necessary to add header files as arguments to <code class="docutils literal notranslate"><span class="pre">add_library</span></code>.</p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGlicmFyaWVz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGlicmFyaWVz" name="TGlicmFyaWVz" role="tab" tabindex="0">Libraries</button><button aria-controls="panel-0-RXhlY3V0YWJsZXM=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RXhlY3V0YWJsZXM=" name="RXhlY3V0YWJsZXM=" role="tab" tabindex="-1">Executables</button></div><div aria-labelledby="tab-0-TGlicmFyaWVz" class="sphinx-tabs-panel group-tab" id="panel-0-TGlicmFyaWVz" name="TGlicmFyaWVz" role="tabpanel" tabindex="0"><p>使用 <code class="docutils literal notranslate"><span class="pre">add_library</span></code> 调用创建这些库，该调用应包含目标名称和应编译以创建库的源文件。</p>
+<p>在C/C++中，由于头文件和实现分离，通常不需要将头文件作为 <code class="docutils literal notranslate"><span class="pre">add_library</span></code> 的参数。</p>
 <p>建议采用以下最佳实践：</p>
 <ul class="simple">
-<li><p>Put all headers which should be usable by clients of this library (and therefore must be installed) into a subdirectory of the <code class="docutils literal notranslate"><span class="pre">include</span></code> folder named like the package, while all other files (<code class="docutils literal notranslate"><span class="pre">.c/.cpp</span></code> and header files which should not be exported) are inside the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder</p></li>
-<li><p>Only <code class="docutils literal notranslate"><span class="pre">.c/.cpp</span></code> files are explicitly referenced in the call to <code class="docutils literal notranslate"><span class="pre">add_library</span></code></p></li>
-<li><p>Find headers to your library <code class="docutils literal notranslate"><span class="pre">my_library</span></code> via</p></li>
+<li><p>将所有应该供库的客户端使用的头文件（因此必须安装）放入名为软件包名称的 <code class="docutils literal notranslate"><span class="pre">include</span></code> 文件夹的子文件夹中，而其他所有文件（<code class="docutils literal notranslate"><span class="pre">.c/.cpp</span></code> 和不应导出的头文件）都在 <code class="docutils literal notranslate"><span class="pre">src</span></code> 文件夹中。</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">add_library</span></code> 的调用中，仅显式引用了 <code class="docutils literal notranslate"><span class="pre">.c/.cpp</span></code> 文件。</p></li>
+<li><p>通过以下方式查找库 <code class="docutils literal notranslate"><span class="pre">my_library</span></code> 的头文件</p></li>
 </ul>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_include_directories</span><span class="p">(</span><span class="s">my_library</span>
 <span class="w">  </span><span class="s">PUBLIC</span>
@@ -516,13 +512,11 @@ Either libraries or executables can be created, and a single project can contain
 </pre></div>
 </div>
 <p>这将在构建时将``${CMAKE_CURRENT_SOURCE_DIR}/include``文件夹中的所有文件添加到公共接口中，并在安装时将所有文件添加到include文件夹中（相对于``${CMAKE_INSTALL_DIR}``）。</p>
-<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">pkg</span> <span class="pre">create</span></code> creates a package layout that follows these rules.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">pkg</span> <span class="pre">create</span></code> 创建的软件包布局遵循这些规则。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>Since Windows is one of the officially supported platforms, to have maximum impact, any package should also build on Windows.
-The Windows library format enforces symbol visibility; that is, every symbol which should be used from a client has to be explicitly exported by the library (and symbols need to be implicitly imported).</p>
-<p>Since GCC and Clang builds do not generally do this, it is advised to use the logic in <a class="reference external" href="https://gcc.gnu.org/wiki/Visibility">the GCC wiki</a>.
-To use it for a package called <code class="docutils literal notranslate"><span class="pre">my_library</span></code>:</p>
+<p>由于Windows是官方支持的平台之一，为了最大程度地影响，任何软件包都应在Windows上构建。Windows库格式强制执行符号可见性，即从客户端使用的每个符号都必须由库明确导出（并且需要隐式导入符号）。</p>
+<p>由于通常情况下，GCC和Clang构建不会执行这一操作，因此建议使用 <a class="reference external" href="https://gcc.gnu.org/wiki/Visibility">GCC维基</a> 中的逻辑。要在名为 <code class="docutils literal notranslate"><span class="pre">my_library</span></code> 的软件包中使用它：</p>
 <ul>
 <li><p>将链接中的逻辑复制到名为``visibility_control.hpp``的头文件中。</p></li>
 <li><p>将``DLL``替换为``MY_LIBRARY``（例如，查看`rviz_rendering的可见性控制 &lt;<a class="reference external" href="https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp">https://github.com/ros2/rviz/blob/ros2/rviz_rendering/include/rviz_rendering/visibility_control.hpp</a>&gt;`__）。</p></li>
