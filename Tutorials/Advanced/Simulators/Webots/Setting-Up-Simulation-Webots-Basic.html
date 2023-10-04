@@ -203,7 +203,7 @@
 <li class="toctree-l5 current"><a class="current reference internal" href="#">设置机器人仿真（基础） [3801]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="Simulation-Supervisor.html">The Ros2Supervisor Node [校准]</a></li>
-<li class="toctree-l5"><a class="reference internal" href="Simulation-Reset-Handler.html">Setting up a Reset Handler [校准]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Simulation-Reset-Handler.html">设置重置处理程序 [16572]</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
@@ -609,7 +609,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">__right_motor</span><span class="o">.</span><span class="n">setVelocity</span><span class="p">(</span><span class="n">command_motor_right</span><span class="p">)</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>Open <code class="docutils literal notranslate"><span class="pre">my_package/include/my_package/MyRobotDriver.hpp</span></code> in your favorite editor and replace its contents with the following: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16519">[校准]</a></p>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>打开您喜欢的编辑器，然后打开 <code class="docutils literal notranslate"><span class="pre">my_package/include/my_package/MyRobotDriver.hpp</span></code> 文件，并用以下内容替换其内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16519">[16519]</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef WEBOTS_ROS2_PLUGIN_EXAMPLE_HPP</span>
 <span class="cp">#define WEBOTS_ROS2_PLUGIN_EXAMPLE_HPP</span>
 
@@ -852,13 +852,13 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Then, the ROS node interacting with the simulated robot is created. This node, named <code class="docutils literal notranslate"><span class="pre">WebotsController</span></code>, is located in the <code class="docutils literal notranslate"><span class="pre">webots_ros2_driver</span></code> package. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16541">[校准]</a></p>
+<p>然后，创建与模拟机器人交互的 ROS 节点。此节点名为 <code class="docutils literal notranslate"><span class="pre">WebotsController</span></code>，位于 <code class="docutils literal notranslate"><span class="pre">webots_ros2_driver</span></code> 包中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16541">[16541]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-5-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button><button aria-controls="panel-5-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button></div><div aria-labelledby="tab-5-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-5-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>该节点将能够使用基于IPC和共享内存的自定义协议与模拟机器人通信。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16542">[16542]</a></p>
 </div><div aria-labelledby="tab-5-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>在WSL中的节点将能够通过TCP连接与在本机Windows上的Webots模拟机器人进行通信。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16543">[16543]</a></p>
 </div><div aria-labelledby="tab-5-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>在Docker容器中的节点将能够通过TCP连接与在本机macOS上的Webots模拟机器人进行通信。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16544">[16544]</a></p>
 </div></div>
-<p>In your case, you need to run a single instance of this node, because you have a single robot in the simulation. But if you had more robots in the simulation, you would have to run one instance of this node per robot. The <code class="docutils literal notranslate"><span class="pre">robot_name</span></code> parameter is used to define the name of the robot the driver should connect to. The <code class="docutils literal notranslate"><span class="pre">robot_description</span></code> parameter holds the path to the URDF file which refers to the <code class="docutils literal notranslate"><span class="pre">MyRobotDriver</span></code> plugin. You can see the <code class="docutils literal notranslate"><span class="pre">WebotsController</span></code> node as the interface that connects your controller plugin to the target robot. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16545">[校准]</a></p>
+<p>在您的情况下，您需要运行此节点的单个实例，因为仿真中只有一个机器人。但是，如果您的仿真中有多个机器人，您需要为每个机器人运行一个此节点的实例。<code class="docutils literal notranslate"><span class="pre">robot_name</span></code> 参数用于定义驱动程序应连接到的机器人的名称。<code class="docutils literal notranslate"><span class="pre">robot_description</span></code> 参数包含指向 <code class="docutils literal notranslate"><span class="pre">MyRobotDriver</span></code> 插件的 URDF 文件的路径。您可以将 <code class="docutils literal notranslate"><span class="pre">WebotsController</span></code> 节点视为连接控制器插件与目标机器人的接口。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16545">[16545]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_robot_driver</span> <span class="o">=</span> <span class="n">WebotsController</span><span class="p">(</span>
     <span class="n">robot_name</span><span class="o">=</span><span class="s1">&#39;my_robot&#39;</span><span class="p">,</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span>
@@ -884,7 +884,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>More details on <code class="docutils literal notranslate"><span class="pre">WebotsController</span></code> and <code class="docutils literal notranslate"><span class="pre">WebotsLauncher</span></code> arguments can be found <a class="reference external" href="https://github.com/cyberbotics/webots_ros2/wiki/References-Nodes">on the nodes reference page</a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16548">[校准]</a></p>
+<p>有关 <code class="docutils literal notranslate"><span class="pre">WebotsController</span></code> 和 <code class="docutils literal notranslate"><span class="pre">WebotsLauncher</span></code> 参数的详细信息可以在 <a class="reference external" href="https://github.com/cyberbotics/webots_ros2/wiki/References-Nodes">节点参考页面上找到</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16548">[16548]</a></p>
 </div>
 </div>
 <div class="section" id="edit-additional-files">

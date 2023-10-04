@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setting up a Reset Handler [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>设置重置处理程序 [16572] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -202,7 +202,7 @@
 <li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="Simulation-Supervisor.html">The Ros2Supervisor Node [校准]</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">Setting up a Reset Handler [校准]</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">设置重置处理程序 [16572]</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
@@ -383,7 +383,7 @@
           <li><a href="../../../Advanced.html">高级 [3065]</a> &raquo;</li>
           <li><a href="../Simulation-Main.html">模拟器 [3658]</a> &raquo;</li>
           <li><a href="Simulation-Webots.html">Webots [3886]</a> &raquo;</li>
-      <li>Setting up a Reset Handler [校准]</li>
+      <li>设置重置处理程序 [16572]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -396,8 +396,8 @@
 
 
   <div class="section" id="setting-up-a-reset-handler">
-<h1>Setting up a Reset Handler <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16572">[校准]</a><a class="headerlink" href="#setting-up-a-reset-handler" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Extend a robot simulation with a reset handler to restart nodes when the reset button of Webots is pressed. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16573">[校准]</a></p>
+<h1>设置重置处理程序 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16572">[16572]</a><a class="headerlink" href="#setting-up-a-reset-handler" title="永久链接至标题"></a></h1>
+<p><strong>目标：</strong> 在按下 Webots 的重置按钮时，在机器人仿真中扩展一个重置处理程序，以重新启动节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16573">[16573]</a></p>
 <p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[16408]</a></p>
 <p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16421">[16421]</a></p>
 <div class="contents local topic" id="contents">
@@ -405,7 +405,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [16410]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [16411]</a></p></li>
-<li><p><a class="reference internal" href="#reset-handler-for-simple-cases-controllers-only" id="id3">Reset Handler for Simple Cases (Controllers Only) [校准]</a></p></li>
+<li><p><a class="reference internal" href="#reset-handler-for-simple-cases-controllers-only" id="id3">适用于简单情况的重置处理程序（仅限控制器） [16579]</a></p></li>
 <li><p><a class="reference internal" href="#reset-handler-for-multiple-nodes-no-shutdown-required" id="id4">Reset Handler for Multiple Nodes (No Shutdown Required) [校准]</a></p></li>
 <li><p><a class="reference internal" href="#reset-handler-requiring-node-shutdown" id="id5">Reset Handler Requiring Node Shutdown [校准]</a></p></li>
 <li><p><a class="reference internal" href="#summary" id="id6">总结 [16454]</a></p></li>
@@ -413,20 +413,20 @@
 </div>
 <div class="section" id="background">
 <h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[16410]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>In this tutorial, you will learn how to implement a reset handler in a robot simulation using Webots. The Webots reset button reverts the world to the initial state and restarts controllers. It is convenient as it quickly resets the simulation, but in the context of ROS 2, robot controllers are not started again making the simulation stop. The reset handler allows you to restart specific nodes or perform additional actions when the reset button in Webots is pressed. This can be useful for scenarios where you need to reset the state of your simulation or restart specific components without completely restarting the complete ROS system. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16574">[校准]</a></p>
+<p>在本教程中，您将学习如何在 Webots 中的机器人仿真中实现重置处理程序。Webots 的重置按钮会将世界恢复到初始状态并重新启动控制器。这很方便，因为它可以快速重置仿真，但在 ROS 2 的上下文中，机器人控制器不会重新启动，导致仿真停止。重置处理程序允许您在按下 Webots 中的重置按钮时重新启动特定的节点或执行其他操作。这在需要重置仿真状态或重新启动特定组件而无需完全重新启动完整的 ROS 系统的情况下非常有用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16574">[16574]</a></p>
 </div>
 <div class="section" id="prerequisites">
 <h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[16411]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>Before proceeding with this tutorial, make sure you have completed the following: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16575">[校准]</a></p>
+<p>在继续本教程之前，请确保您已完成以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16575">[16575]</a></p>
 <ul class="simple">
-<li><p>Understanding of ROS 2 nodes and topics covered in the beginner <a class="reference internal" href="../../../../Tutorials.html"><span class="doc">教程 [3059]</span></a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16576">[校准]</a></p></li>
-<li><p>Knowledge of Webots and ROS 2 and its interface package. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16577">[校准]</a></p></li>
-<li><p>Familiarity with <a class="reference internal" href="Setting-Up-Simulation-Webots-Basic.html"><span class="doc">设置机器人仿真（基础） [3801]</span></a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16578">[校准]</a></p></li>
+<li><p>理解了初学者教程中涵盖的 ROS 2 节点和主题内容 <a class="reference internal" href="../../../../Tutorials.html"><span class="doc">教程 [3059]</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16576">[16576]</a></p></li>
+<li><p>了解 Webots、ROS 2 及其接口包的知识。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16577">[16577]</a></p></li>
+<li><p>熟悉 <a class="reference internal" href="Setting-Up-Simulation-Webots-Basic.html"><span class="doc">设置机器人仿真（基础） [3801]</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16578">[16578]</a></p></li>
 </ul>
 </div>
 <div class="section" id="reset-handler-for-simple-cases-controllers-only">
-<h2>Reset Handler for Simple Cases (Controllers Only) <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16579">[校准]</a><a class="headerlink" href="#reset-handler-for-simple-cases-controllers-only" title="永久链接至标题"></a></h2>
-<p>In the launch file of your package, add the <code class="docutils literal notranslate"><span class="pre">respawn</span></code> parameter. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16580">[校准]</a></p>
+<h2>适用于简单情况的重置处理程序（仅限控制器） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16579">[16579]</a><a class="headerlink" href="#reset-handler-for-simple-cases-controllers-only" title="永久链接至标题"></a></h2>
+<p>在您的包的启动文件中，添加 <code class="docutils literal notranslate"><span class="pre">respawn</span></code> 参数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16580">[16580]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="n">robot_driver</span> <span class="o">=</span> <span class="n">WebotsController</span><span class="p">(</span>
         <span class="n">robot_name</span><span class="o">=</span><span class="s1">&#39;my_robot&#39;</span><span class="p">,</span>
@@ -447,7 +447,7 @@
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>On reset, Webots kills all driver nodes. Therefore, to start them again after reset, you should set the <code class="docutils literal notranslate"><span class="pre">respawn</span></code> property of the driver node to <code class="docutils literal notranslate"><span class="pre">True</span></code>. It will ensure driver nodes are up and running after the reset. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16581">[校准]</a></p>
+<p>在重置时，Webots 会关闭所有驱动节点。因此，要在重置后重新启动它们，您应将驱动节点的 <code class="docutils literal notranslate"><span class="pre">respawn</span></code> 属性设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。这将确保在重置后驱动节点正常运行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16581">[16581]</a></p>
 </div>
 <div class="section" id="reset-handler-for-multiple-nodes-no-shutdown-required">
 <h2>Reset Handler for Multiple Nodes (No Shutdown Required) <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16582">[校准]</a><a class="headerlink" href="#reset-handler-for-multiple-nodes-no-shutdown-required" title="永久链接至标题"></a></h2>
