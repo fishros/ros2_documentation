@@ -407,7 +407,7 @@
 <li><p><a class="reference internal" href="#tasks" id="id3">任务</a></p>
 <ul>
 <li><p><a class="reference internal" href="#create-a-package" id="id4">1 创建一个包</a></p></li>
-<li><p><a class="reference internal" href="#write-the-c-reader" id="id5">2 Write the C++ Reader</a></p></li>
+<li><p><a class="reference internal" href="#write-the-c-reader" id="id5">2 编写 C++ 读取器</a></p></li>
 <li><p><a class="reference internal" href="#build-and-run" id="id6">3. 构建和运行</a></p></li>
 </ul>
 </li>
@@ -448,8 +448,8 @@
 </div>
 </div>
 <div class="section" id="write-the-c-reader">
-<h3><a class="toc-backref" href="#id5">2 Write the C++ Reader</a><a class="headerlink" href="#write-the-c-reader" title="永久链接至标题"></a></h3>
-<p>Inside your package's <code class="docutils literal notranslate"><span class="pre">src</span></code> directory, create a new file called <code class="docutils literal notranslate"><span class="pre">simple_bag_reader.cpp</span></code> and paste the following code into it.</p>
+<h3><a class="toc-backref" href="#id5">2 编写 C++ 读取器</a><a class="headerlink" href="#write-the-c-reader" title="永久链接至标题"></a></h3>
+<p>在包的 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录中，创建一个名为 <code class="docutils literal notranslate"><span class="pre">simple_bag_reader.cpp</span></code> 的新文件，并将以下代码粘贴到其中。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -523,13 +523,11 @@
 <div class="section" id="examine-the-code">
 <h4>2.1 检查代码<a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>顶部的 <code class="docutils literal notranslate"><span class="pre">#include</span></code> 语句是包的依赖项。注意包含了来自 <code class="docutils literal notranslate"><span class="pre">rosbag2_cpp</span></code> 包的头文件，用于处理袋文件所需的函数和结构。</p>
-<p>The next line creates the node which will read from the bag file and play back the data.</p>
+<p>接下来的行创建了一个节点，该节点将从 bag 文件中读取数据并播放回来。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PlaybackNode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Now, we can create a timer callback which will run at 10 hz.
-Our goal is to replay one message to the <code class="docutils literal notranslate"><span class="pre">/turtle1/pose</span></code> topic each time the callback is run.
-Note the constructor takes a path to the bag file as a parameter.</p>
+<p>现在，我们可以创建一个计时器回调，它将以 10 Hz 运行。我们的目标是在每次运行回调时向 <code class="docutils literal notranslate"><span class="pre">/turtle1/pose</span></code> 主题重放一条消息。请注意，构造函数接受 bag 文件的路径作为参数。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">PlaybackNode</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">bag_filename</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;playback_node&quot;</span><span class="p">)</span><span class="w"></span>
@@ -539,12 +537,11 @@ Note the constructor takes a path to the bag file as a parameter.</p>
 <span class="w">        </span><span class="mi">100</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PlaybackNode</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
-<p>We also open the bag in the constructor.</p>
+<p>我们还在构造函数中打开了 bag 文件。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">reader_</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">bag_filename</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Now, inside our timer callback, we loop through messages in the bag until we read a message recorded from our desired topic.
-Note that the serialized message has timestamp metadata in addition to the topic name.</p>
+<p>现在，在我们的计时器回调内部，我们循环遍历 bag 中的消息，直到读取到来自我们所需主题的消息为止。请注意，序列化消息除了主题名称之外还具有时间戳元数据。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">timer_callback</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">reader_</span><span class="p">.</span><span class="n">has_next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -555,17 +552,14 @@ Note that the serialized message has timestamp metadata in addition to the topic
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>We then construct an <code class="docutils literal notranslate"><span class="pre">rclcpp::SerializedMessage</span></code> object from the serialized data we just read.
-Additionally, we need to create a ROS 2 deserialized message which will hold the result of our deserialization.
-Then, we can pass both these objects to the <code class="docutils literal notranslate"><span class="pre">rclcpp::Serialization::deserialize_message</span></code> method.</p>
+<p>然后，我们从刚刚读取的序列化数据构造了一个 <code class="docutils literal notranslate"><span class="pre">rclcpp::SerializedMessage</span></code> 对象。此外，我们需要创建一个 ROS 2 反序列化消息，它将保存我们反序列化的结果。然后，我们可以将这两个对象传递给 <code class="docutils literal notranslate"><span class="pre">rclcpp::Serialization::deserialize_message</span></code> 方法。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">SerializedMessage</span><span class="w"> </span><span class="nf">serialized_msg</span><span class="p">(</span><span class="o">*</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">serialized_data</span><span class="p">);</span><span class="w"></span>
 <span class="n">turtlesim</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">ros_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
 
 <span class="n">serialization_</span><span class="p">.</span><span class="n">deserialize_message</span><span class="p">(</span><span class="o">&amp;</span><span class="n">serialized_msg</span><span class="p">,</span><span class="w"> </span><span class="n">ros_msg</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Finally, we publish the deserialized message and print out the xy coordinate to the terminal.
-We also break out of the loop so that we publish the next message during the next timer calback.</p>
+<p>最后，我们发布反序列化后的消息并将 xy 坐标打印到终端上。我们还跳出循环，以便在下一个计时器回调期间发布下一条消息。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="o">*</span><span class="n">ros_msg</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;(&#39;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ros_msg</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ros_msg</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
@@ -573,7 +567,7 @@ We also break out of the loop so that we publish the next message during the nex
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>We must also declare the private variables used throughout the node.</p>
+<p>我们还必须声明在整个节点中使用的私有变量。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">turtlesim</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span><span class="w"></span>
 
@@ -582,7 +576,7 @@ We also break out of the loop so that we publish the next message during the nex
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Lastly, we create the main function which will check that the user passes an argument for the bag file path and spins our node.</p>
+<p>最后，我们创建了主函数，该函数将检查用户是否传递了 bag 文件路径的参数，并启动我们的节点。</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -616,7 +610,7 @@ We also break out of the loop so that we publish the next message during the nex
 </div>
 <div class="section" id="build-and-run">
 <h3><a class="toc-backref" href="#id6">3. 构建和运行</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
-<p>Navigate back to the root of your workspace and build your new package.</p>
+<p>返回到工作空间的根目录并构建您的新包。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select bag_reading_cpp</span>
 </pre></div>
@@ -628,7 +622,7 @@ We also break out of the loop so that we publish the next message during the nex
 </pre></div>
 </div>
 </div></div>
-<p>Next, source the setup files.</p>
+<p>接下来，使用 <code class="docutils literal notranslate"><span class="pre">source</span></code> 命令执行设置文件。</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-1-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source install/setup.bash</span>
 </pre></div>
@@ -640,18 +634,16 @@ We also break out of the loop so that we publish the next message during the nex
 </pre></div>
 </div>
 </div></div>
-<p>Now, run the script.
-Make sure to replace <code class="docutils literal notranslate"><span class="pre">/path/to/setup</span></code> with the path to your <code class="docutils literal notranslate"><span class="pre">setup</span></code> bag.</p>
+<p>现在，运行脚本。确保将 <code class="docutils literal notranslate"><span class="pre">/path/to/setup</span></code> 替换为您的 <code class="docutils literal notranslate"><span class="pre">setup</span></code> bag 的路径。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run bag_reading_cpp simple_bag_reader /path/to/setup</span>
 </pre></div>
 </div>
-<p>You should see the (x, y) coordinates of the turtle printed to the console.</p>
+<p>您应该会在控制台上看到乌龟的 (x, y) 坐标被打印出来。</p>
 </div>
 </div>
 <div class="section" id="summary">
 <h2><a class="toc-backref" href="#id7">总结</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
-<p>You created a C++ executable that reads data from a bag.
-You then compiled and ran the executable which printed some information from the bag to the console.</p>
+<p>您创建了一个 C++ 可执行文件，用于从 bag 中读取数据。然后，您编译并运行了该可执行文件，它会将 bag 中的一些信息打印到控制台上。</p>
 </div>
 </div>
 
