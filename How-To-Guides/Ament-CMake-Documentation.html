@@ -385,7 +385,7 @@ Knowing the basics of <a class="reference external" href="https://cmake.org/cmak
 <li><p><a class="reference internal" href="#adding-files-and-headers" id="id3">Adding files and headers</a></p></li>
 <li><p><a class="reference internal" href="#adding-dependencies" id="id4">Adding Dependencies</a></p></li>
 <li><p><a class="reference internal" href="#building-a-library" id="id5">Building a Library</a></p></li>
-<li><p><a class="reference internal" href="#compiler-and-linker-options" id="id6">编译器和链接器选项 [校准]</a></p></li>
+<li><p><a class="reference internal" href="#compiler-and-linker-options" id="id6">编译器和链接器选项 [15506]</a></p></li>
 <li><p><a class="reference internal" href="#building-libraries-on-windows" id="id7">Building libraries on Windows</a></p></li>
 </ul>
 </li>
@@ -490,7 +490,7 @@ In the example of Eigen3, the call should then look like</p>
 <p>This will also include necessary headers, libraries and their dependencies, but in contrast to <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code> it might not correctly order the dependencies when using overlay workspaces.</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>通常情况下不需要对不明确需要但是另一个明确需要的依赖项的依赖项进行 <code class="docutils literal notranslate"><span class="pre">find_package</span></code>。如果出现这种情况，请向相应的软件包提交错误报告。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15515">[校准]</a></p>
+<p>不应该必须``find_package``一个不是显式需要但是是另一个显式需要的依赖项的依赖库。如果是这种情况，请针对相应的软件包提交错误报告。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15515">[15515]</a></p>
 </div>
 </div>
 <div class="section" id="building-a-library">
@@ -557,7 +557,7 @@ The second macro marks the location of the installed library (this is done by th
 <p>一些宏可以接受不同类型的参数用于非目标导出，但由于现代Make的推荐方式是使用目标，我们将不在此处介绍它们。这些选项的文档可以在源代码本身中找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15559">[校准]</a></p>
 </div>
 <div class="section" id="compiler-and-linker-options">
-<h3>编译器和链接器选项 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15506">[校准]</a><a class="headerlink" href="#compiler-and-linker-options" title="永久链接至标题"></a></h3>
+<h3>编译器和链接器选项 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15506">[15506]</a><a class="headerlink" href="#compiler-and-linker-options" title="永久链接至标题"></a></h3>
 <p>ROS 2 targets compilers which comply with the C++14 and C99 standard until at least <code class="docutils literal notranslate"><span class="pre">Crystal</span> <span class="pre">Clemmys</span></code>.
 Newer versions might be targeted in the future and are referenced <a class="reference external" href="https://www.ros.org/reps/rep-2000.html">here</a>.
 Therefore it is customary to set the corresponding CMake flags:</p>
@@ -569,8 +569,8 @@ Therefore it is customary to set the corresponding CMake flags:</p>
 <span class="nb">endif</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>为了保持代码的清洁，编译器应该对可疑的代码发出警告，并且这些警告应该被修复。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15508">[校准]</a></p>
-<p>建议至少包括以下警告级别： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15509">[校准]</a></p>
+<p>为了保持代码的清晰，编译器应该对可疑的代码引发警告，并应该修复这些警告。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15508">[15508]</a></p>
+<p>建议至少包括以下警告级别： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15509">[15509]</a></p>
 <ul class="simple">
 <li><p>For Visual Studio, the default <code class="docutils literal notranslate"><span class="pre">W1</span></code> warnings are kept</p></li>
 <li><p>For GCC and Clang: <code class="docutils literal notranslate"><span class="pre">-Wall</span> <span class="pre">-Wextra</span> <span class="pre">-Wpedantic</span></code> are required and <code class="docutils literal notranslate"><span class="pre">-Wshadow</span> <span class="pre">-Werror</span></code> are advisable (the latter makes warnings errors).</p></li>
