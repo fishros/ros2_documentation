@@ -374,31 +374,31 @@
   <div class="section" id="about-cross-compilation">
 <h1>About Cross-compilation<a class="headerlink" href="#about-cross-compilation" title="永久链接至标题"></a></h1>
 <div class="section" id="overview">
-<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17178">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17016">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
 <dl class="simple">
-<dt>Open Robotics为多个平台提供预构建的ROS 2软件包，但一些开发者仍然出于不同的原因依赖于`交叉编译 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">https://en.wikipedia.org/wiki/Cross_compiler</a>&gt;`__，例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17462">[校准]</a></dt><dd><ul class="simple">
-<li><p>开发机器与目标系统不匹配。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17463">[校准]</a></p></li>
-<li><p>调整构建以适应特定的核心架构（例如，在为树莓派3构建时设置 -mcpu=cortex-a53 -mfpu=neon-fp-armv8）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17464">[校准]</a></p></li>
-<li><p>针对Open Robotics发布的预构建映像不支持的文件系统进行定制。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17465">[校准]</a></p></li>
+<dt>Open Robotics为多个平台提供预构建的ROS 2软件包，但一些开发者仍然出于不同的原因依赖于`交叉编译 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">https://en.wikipedia.org/wiki/Cross_compiler</a>&gt;`__，例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17300">[校准]</a></dt><dd><ul class="simple">
+<li><p>开发机器与目标系统不匹配。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17301">[校准]</a></p></li>
+<li><p>调整构建以适应特定的核心架构（例如，在为树莓派3构建时设置 -mcpu=cortex-a53 -mfpu=neon-fp-armv8）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17302">[校准]</a></p></li>
+<li><p>针对Open Robotics发布的预构建映像不支持的文件系统进行定制。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17303">[校准]</a></p></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="how-does-it-work">
-<h2>它是如何工作的？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17466">[校准]</a><a class="headerlink" href="#how-does-it-work" title="永久链接至标题"></a></h2>
-<p>交叉编译简单的软件（例如，没有依赖于外部库）相对简单，只需要使用交叉编译工具链代替本机工具链。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17467">[校准]</a></p>
+<h2>它是如何工作的？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17304">[校准]</a><a class="headerlink" href="#how-does-it-work" title="永久链接至标题"></a></h2>
+<p>交叉编译简单的软件（例如，没有依赖于外部库）相对简单，只需要使用交叉编译工具链代替本机工具链。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17305">[校准]</a></p>
 <dl class="simple">
-<dt>有一些因素使这个过程更加复杂： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17468">[校准]</a></dt><dd><ul class="simple">
-<li><p>正在构建的软件必须支持目标架构。根据目标架构，在构建过程中必须正确隔离和启用特定于架构的代码。例如，包括汇编代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17469">[校准]</a></p></li>
-<li><p>所有依赖项（例如库）在目标软件进行交叉编译之前必须存在，可以是预构建的或交叉编译的软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17470">[校准]</a></p></li>
-<li><p>在使用构建工具（例如colcon）构建软件堆栈（而不是独立软件）时，预计构建工具提供一种机制，允许开发人员在堆栈中每个软件所使用的底层构建系统上启用交叉编译。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17471">[校准]</a></p></li>
+<dt>有一些因素使这个过程更加复杂： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17306">[校准]</a></dt><dd><ul class="simple">
+<li><p>正在构建的软件必须支持目标架构。根据目标架构，在构建过程中必须正确隔离和启用特定于架构的代码。例如，包括汇编代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17307">[校准]</a></p></li>
+<li><p>所有依赖项（例如库）在目标软件进行交叉编译之前必须存在，可以是预构建的或交叉编译的软件包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17308">[校准]</a></p></li>
+<li><p>在使用构建工具（例如colcon）构建软件堆栈（而不是独立软件）时，预计构建工具提供一种机制，允许开发人员在堆栈中每个软件所使用的底层构建系统上启用交叉编译。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17309">[校准]</a></p></li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="cross-compiling-ros-2">
-<h2>ROS 2交叉编译 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17472">[校准]</a><a class="headerlink" href="#cross-compiling-ros-2" title="永久链接至标题"></a></h2>
-<p>ROS 2交叉编译工具由Open Robotics和ROS Tooling工作组共同拥有。它是一个Python脚本，使用docker容器中的模拟器为支持的目标架构编译ROS 2源文件。有关该工具的详细设计，请参阅`ROS 2设计文档&lt;<a class="reference external" href="https://design.ros2.org/articles/cc_build_tools.html">https://design.ros2.org/articles/cc_build_tools.html</a>&gt;`__。使用该工具的说明在`cross_compile package &lt;<a class="reference external" href="https://github.com/ros-tooling/cross_compile">https://github.com/ros-tooling/cross_compile</a>&gt;`__中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17473">[校准]</a></p>
+<h2>ROS 2交叉编译 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17310">[校准]</a><a class="headerlink" href="#cross-compiling-ros-2" title="永久链接至标题"></a></h2>
+<p>ROS 2交叉编译工具由Open Robotics和ROS Tooling工作组共同拥有。它是一个Python脚本，使用docker容器中的模拟器为支持的目标架构编译ROS 2源文件。有关该工具的详细设计，请参阅`ROS 2设计文档&lt;<a class="reference external" href="https://design.ros2.org/articles/cc_build_tools.html">https://design.ros2.org/articles/cc_build_tools.html</a>&gt;`__。使用该工具的说明在`cross_compile package &lt;<a class="reference external" href="https://github.com/ros-tooling/cross_compile">https://github.com/ros-tooling/cross_compile</a>&gt;`__中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17311">[校准]</a></p>
 <p>If you are using an older version, please follow the <a class="reference internal" href="../How-To-Guides/Cross-compilation.html"><span class="doc">cross-compilation guide</span></a>.</p>
 </div>
 </div>

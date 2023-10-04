@@ -377,10 +377,10 @@
   <div class="section" id="using-stamped-datatypes-with-tf2-ros-messagefilter">
 <span id="usingstampeddatatypeswithtf2rosmessagefilter"></span><h1>使用带时间戳的数据类型与``tf2_ros::MessageFilter`` <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5957">[5957]</a><a class="headerlink" href="#using-stamped-datatypes-with-tf2-ros-messagefilter" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>了解如何使用``tf2_ros::MessageFilter``处理带时间戳的数据类型。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5958">[5958]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
-<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16380">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
+<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16421">[校准]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id3">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id4">任务 [校准]</a></p>
@@ -408,7 +408,7 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>本教程解释了如何在tf2中使用传感器数据。一些传感器数据的真实世界示例包括： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5959">[5959]</a></p>
 <blockquote>
 <div><ul class="simple">
@@ -421,7 +421,7 @@
 <p>为了实现这一点，“turtle1”必须订阅发布“turtle3”姿态的主题，等待直到可以将其转换为所需坐标系，然后执行相应操作。为了简化此过程，“tf2_ros::MessageFilter”非常有用。“tf2_ros::MessageFilter”将订阅具有头信息的任何ROS 2消息，并将其缓存，直到可以将其转换为目标坐标系。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5964">[5964]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-broadcaster-node-of-pointstamped-messages">
 <h3>1、编写发布PointStamped消息的广播节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5965">[5965]</a><a class="headerlink" href="#write-the-broadcaster-node-of-pointstamped-messages" title="永久链接至标题"></a></h3>
 <p>在本教程中，我们将设置一个演示应用程序，其中包含一个用Python编写的节点，用于广播“turtle3”的“PointStamped”位置消息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5966">[5966]</a></p>
@@ -530,7 +530,7 @@
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
-<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16592">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16633">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>现在让我们来看一下代码。首先，在“on_timer”回调函数中，我们通过异步调用“turtlesim”的“Spawn”服务来生成“turtle3”，并在准备好龟生成服务时将其位置初始化为（4，2，0）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5969">[5969]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize request with turtle name and coordinates</span>
 <span class="c1"># Note that x, y and theta are defined as floats in turtlesim/srv/Spawn</span>
@@ -746,7 +746,7 @@
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16395">[校准]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16436">[校准]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
 <p>首先，您必须包含``tf2_ros``包中的``tf2_ros::MessageFilter``头文件，以及先前使用过的``tf2``和``ros2``相关头文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5979">[5979]</a></p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/point_stamped.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;message_filters/subscriber.h&quot;</span><span class="cp"></span>
@@ -978,7 +978,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，您学习了如何在tf2中使用传感器数据/消息。具体来说，您学习了如何在一个话题上发布“PointStamped”消息，以及如何监听该话题并使用“tf2_ros::MessageFilter”转换“PointStamped”消息的帧。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5996">[5996]</a></p>
 </div>
 </div>

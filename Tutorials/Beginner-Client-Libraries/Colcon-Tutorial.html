@@ -376,7 +376,7 @@
   <div class="section" id="using-colcon-to-build-packages">
 <span id="colcon"></span><h1>使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> 构建软件包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4368">[4368]</a><a class="headerlink" href="#using-colcon-to-build-packages" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16368">[16368]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[16409]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p>
@@ -385,7 +385,7 @@
 <li><p><a class="reference internal" href="#install-ros-2" id="id4">安装 ROS 2 [4374]</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#basics" id="id5">基础知识 []</a></p>
+<li><p><a class="reference internal" href="#basics" id="id5">基础知识 [4378]</a></p>
 <ul>
 <li><p><a class="reference internal" href="#create-a-workspace" id="id6">创建一个工作空间 [4385]</a></p></li>
 <li><p><a class="reference internal" href="#add-some-sources" id="id7">添加一些源文件 [4388]</a></p></li>
@@ -407,12 +407,12 @@
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
 <p>这是一个简要教程，介绍如何使用``colcon``创建和构建ROS 2工作空间。它是一个实用教程，不旨在取代核心文档。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4370">[4370]</a></p>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">colcon``是对ROS构建工具``catkin_make</span></code>、<code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code>、<a href="#id1"><span class="problematic" id="id2">``</span></a>catkin_tools``和``ament_tools``的改进。有关colcon设计的更多信息，请参阅`此文档 &lt;<a class="reference external" href="https://design.ros2.org/articles/build_tool.html">https://design.ros2.org/articles/build_tool.html</a>&gt;`__。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4371">[4371]</a></p>
 <p>源代码可以在`colcon GitHub组织 &lt;<a class="reference external" href="https://github.com/colcon">https://github.com/colcon</a>&gt;`__中找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4372">[4372]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <div class="section" id="install-colcon">
 <h3>安装 colcon <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4373">[4373]</a><a class="headerlink" href="#install-colcon" title="永久链接至标题"></a></h3>
 <div class="sphinx-tabs docutils container">
@@ -438,7 +438,7 @@
 </div>
 </div>
 <div class="section" id="basics">
-<h2>基础知识 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4378">[]</a><a class="headerlink" href="#basics" title="永久链接至标题"></a></h2>
+<h2>基础知识 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4378">[4378]</a><a class="headerlink" href="#basics" title="永久链接至标题"></a></h2>
 <p>ROS工作空间是一个具有特定结构的目录。通常有一个 <code class="docutils literal notranslate"><span class="pre">src</span></code> 子目录。在该子目录下是ROS软件包的源代码所在位置。通常该目录开始时为空。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4379">[4379]</a></p>
 <p>colcon进行外部构建。默认情况下，它会创建以下目录作为 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录的同级目录： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4380">[4380]</a></p>
 <ul class="simple">

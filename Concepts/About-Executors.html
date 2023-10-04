@@ -373,9 +373,9 @@
 
 
   <div class="section" id="executors">
-<span id="id1"></span><h1>执行器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17547">[校准]</a><a class="headerlink" href="#executors" title="永久链接至标题"></a></h1>
+<span id="id1"></span><h1>执行器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17385">[校准]</a><a class="headerlink" href="#executors" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17028">[17028]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[16866]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id2">概述 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#basic-use" id="id3">基本用法 [校准]</a></p></li>
@@ -387,15 +387,15 @@
 </ul>
 </div>
 <div class="section" id="overview">
-<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17178">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17016">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
 <p>Execution management in ROS 2 is explicated by the concept of Executors.
 An Executor uses one or more threads of the underlying operating system to invoke the callbacks of subscriptions, timers, service servers, action servers, etc. on incoming messages and events.
 The explicit Executor class (in <a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/executor.hpp">executor.hpp</a> in rclcpp, in <a class="reference external" href="https://github.com/ros2/rclpy/blob/humble/rclpy/rclpy/executors.py">executors.py</a> in rclpy, or in <a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">executor.h</a> in rclc) provides more control over execution management than the spin mechanism in ROS 1, although the basic API is very similar.</p>
-<p>接下来，我们将重点介绍 C++ 客户端库 <em>rclcpp</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17549">[校准]</a></p>
+<p>接下来，我们将重点介绍 C++ 客户端库 <em>rclcpp</em>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17387">[校准]</a></p>
 </div>
 <div class="section" id="basic-use">
-<h2>基本用法 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17550">[校准]</a><a class="headerlink" href="#basic-use" title="永久链接至标题"></a></h2>
-<p>在最简单的情况下，可以通过调用 <code class="docutils literal notranslate"><span class="pre">rclcpp::spin(..)</span></code> 来使用主线程处理节点的传入消息和事件，示例如下： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17551">[校准]</a></p>
+<h2>基本用法 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17388">[校准]</a><a class="headerlink" href="#basic-use" title="永久链接至标题"></a></h2>
+<p>在最简单的情况下，可以通过调用 <code class="docutils literal notranslate"><span class="pre">rclcpp::spin(..)</span></code> 来使用主线程处理节点的传入消息和事件，示例如下： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17389">[校准]</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="c1">// Some initialization.</span>
@@ -414,19 +414,19 @@ The explicit Executor class (in <a class="reference external" href="https://gith
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>对 <code class="docutils literal notranslate"><span class="pre">spin(node)</span></code> 的调用基本上扩展为单线程执行器的实例化和调用，这是最简单的执行器： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17552">[校准]</a></p>
+<p>对 <code class="docutils literal notranslate"><span class="pre">spin(node)</span></code> 的调用基本上扩展为单线程执行器的实例化和调用，这是最简单的执行器： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17390">[校准]</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">executors</span><span class="o">::</span><span class="n">SingleThreadedExecutor</span><span class="w"> </span><span class="n">executor</span><span class="p">;</span><span class="w"></span>
 <span class="n">executor</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
 <span class="n">executor</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>通过调用执行器实例的 <code class="docutils literal notranslate"><span class="pre">spin()</span></code>，当前线程开始查询 rcl 和中间件层的传入消息和其他事件，并调用相应的回调函数，直到节点关闭。为了不影响中间件的 QoS 设置，在客户端库层不会将传入消息存储在队列中，而是在中间件中保持，直到由回调函数进行处理。（这是与 ROS 1 的一个重要区别。）一个 <em>等待集</em> 用于通知执行器中间件层上可用的消息，每个队列对应一个二进制标志。<em>等待集</em> 还用于检测计时器到期的情况。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17553">[校准]</a></p>
+<p>通过调用执行器实例的 <code class="docutils literal notranslate"><span class="pre">spin()</span></code>，当前线程开始查询 rcl 和中间件层的传入消息和其他事件，并调用相应的回调函数，直到节点关闭。为了不影响中间件的 QoS 设置，在客户端库层不会将传入消息存储在队列中，而是在中间件中保持，直到由回调函数进行处理。（这是与 ROS 1 的一个重要区别。）一个 <em>等待集</em> 用于通知执行器中间件层上可用的消息，每个队列对应一个二进制标志。<em>等待集</em> 还用于检测计时器到期的情况。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17391">[校准]</a></p>
 <img alt="../_images/executors_basic_principle.png" src="../_images/executors_basic_principle.png" />
-<p>单线程执行器还被容器进程用于 <a class="reference internal" href="About-Composition.html"><span class="doc">组件</span></a>，即在所有没有显式主函数的情况下创建和执行节点的情况下。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17554">[校准]</a></p>
+<p>单线程执行器还被容器进程用于 <a class="reference internal" href="About-Composition.html"><span class="doc">组件</span></a>，即在所有没有显式主函数的情况下创建和执行节点的情况下。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17392">[校准]</a></p>
 </div>
 <div class="section" id="types-of-executors">
-<h2>执行器的类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17555">[校准]</a><a class="headerlink" href="#types-of-executors" title="永久链接至标题"></a></h2>
-<p>目前，rclcpp 提供了三种执行器类型，它们派生自一个共享的父类： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17556">[校准]</a></p>
+<h2>执行器的类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17393">[校准]</a><a class="headerlink" href="#types-of-executors" title="永久链接至标题"></a></h2>
+<p>目前，rclcpp 提供了三种执行器类型，它们派生自一个共享的父类： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17394">[校准]</a></p>
 <div class="graphviz"><img src="../_images/graphviz-c1160194dae16051e00be2abef23d0fce5e7c347.png" alt="digraph Flatland {
 
    Executor -&gt; SingleThreadedExecutor [dir = back, arrowtail = empty];
@@ -442,7 +442,7 @@ The explicit Executor class (in <a class="reference external" href="https://gith
 The <em>Static Single-Threaded Executor</em> optimizes the runtime costs for scanning the structure of a node in terms of subscriptions, timers, service servers, action servers, etc.
 It performs this scan only once when the node is added, while the other two executors regularly scan for such changes.
 Therefore, the Static Single-Threaded Executor should be used only with nodes that create all subscriptions, timers, etc. during initialization.</p>
-<p>通过为每个节点调用``add_node（..）``，可以使用所有三个执行者与多个节点一起使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17558">[校准]</a></p>
+<p>通过为每个节点调用``add_node（..）``，可以使用所有三个执行者与多个节点一起使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17396">[校准]</a></p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 <span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 <span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">node3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
@@ -454,11 +454,11 @@ Therefore, the Static Single-Threaded Executor should be used only with nodes th
 <span class="n">executor</span><span class="p">.</span><span class="n">spin</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>在上面的示例中，使用一个静态单线程执行者的一个线程来同时服务三个节点。在多线程执行者的情况下，实际并行性取决于回调组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17559">[校准]</a></p>
+<p>在上面的示例中，使用一个静态单线程执行者的一个线程来同时服务三个节点。在多线程执行者的情况下，实际并行性取决于回调组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17397">[校准]</a></p>
 </div>
 <div class="section" id="callback-groups">
-<h2>回调组 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17560">[校准]</a><a class="headerlink" href="#callback-groups" title="永久链接至标题"></a></h2>
-<p>ROS 2允许将节点的回调组织成组。在rclcpp中，可以通过Node类的``create_callback_group``函数创建这样一个*回调组*。在rclpy中，可以通过调用特定回调组类型的构造函数来完成相同的操作。回调组必须在节点的执行过程中保留（例如，作为类成员），否则执行者将无法触发回调。然后，在创建订阅、定时器等时可以指定此回调组-例如，通过订阅选项： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17561">[校准]</a></p>
+<h2>回调组 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17398">[校准]</a><a class="headerlink" href="#callback-groups" title="永久链接至标题"></a></h2>
+<p>ROS 2允许将节点的回调组织成组。在rclcpp中，可以通过Node类的``create_callback_group``函数创建这样一个*回调组*。在rclpy中，可以通过调用特定回调组类型的构造函数来完成相同的操作。回调组必须在节点的执行过程中保留（例如，作为类成员），否则执行者将无法触发回调。然后，在创建订阅、定时器等时可以指定此回调组-例如，通过订阅选项： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17399">[校准]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">my_callback_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_callback_group</span><span class="p">(</span><span class="n">rclcpp</span><span class="o">::</span><span class="n">CallbackGroupType</span><span class="o">::</span><span class="n">MutuallyExclusive</span><span class="p">);</span><span class="w"></span>
 
@@ -475,45 +475,45 @@ Therefore, the Static Single-Threaded Executor should be used only with nodes th
 </pre></div>
 </div>
 </div></div>
-<p>所有没有指定回调组的订阅、定时器等都被分配到*默认回调组*。可以通过``NodeBaseInterface::get_default_callback_group()``（在rclcpp中）和``Node.default_callback_group``（在rclpy中）查询默认回调组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17564">[校准]</a></p>
-<p>有两种类型的回调组，类型必须在实例化时指定： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17565">[校准]</a></p>
+<p>所有没有指定回调组的订阅、定时器等都被分配到*默认回调组*。可以通过``NodeBaseInterface::get_default_callback_group()``（在rclcpp中）和``Node.default_callback_group``（在rclpy中）查询默认回调组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17402">[校准]</a></p>
+<p>有两种类型的回调组，类型必须在实例化时指定： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17403">[校准]</a></p>
 <ul class="simple">
-<li><p><em>互斥（Mutually exclusive）：</em> 该组的回调不能并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17566">[校准]</a></p></li>
-<li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>可重入（Reentrant）：<a href="#id3"><span class="problematic" id="id4">*</span></a>该组的回调可以并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17567">[校准]</a></p></li>
+<li><p><em>互斥（Mutually exclusive）：</em> 该组的回调不能并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17404">[校准]</a></p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>可重入（Reentrant）：<a href="#id3"><span class="problematic" id="id4">*</span></a>该组的回调可以并行执行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17405">[校准]</a></p></li>
 </ul>
 <p>Callbacks of different callback groups may always be executed in parallel.
 The Multi-Threaded Executor uses its threads as a pool to process as many callbacks as possible in parallel according to these conditions.
 For tips on how to use callback groups efficiently, see <a class="reference internal" href="../How-To-Guides/Using-callback-groups.html"><span class="doc">Using Callback Groups</span></a>.</p>
-<p>在rclcpp中，Executor基类还具有函数``add_callback_group(..)``，可以将回调组分配给不同的执行器。通过使用操作系统调度器配置底层线程，可以使特定的回调优先于其他回调。例如，可以将控制循环的订阅和定时器优先于节点的所有其他订阅和标准服务。<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor">examples_rclcpp_cbg_executor package</a> 提供了该机制的演示。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17569">[校准]</a></p>
+<p>在rclcpp中，Executor基类还具有函数``add_callback_group(..)``，可以将回调组分配给不同的执行器。通过使用操作系统调度器配置底层线程，可以使特定的回调优先于其他回调。例如，可以将控制循环的订阅和定时器优先于节点的所有其他订阅和标准服务。<a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/executors/cbg_executor">examples_rclcpp_cbg_executor package</a> 提供了该机制的演示。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17407">[校准]</a></p>
 </div>
 <div class="section" id="scheduling-semantics">
-<h2>调度语义 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17570">[校准]</a><a class="headerlink" href="#scheduling-semantics" title="永久链接至标题"></a></h2>
-<p>如果回调函数的处理时间短于消息和事件发生的周期，执行器基本上按照先进先出（FIFO）的顺序处理它们。然而，如果某些回调函数的处理时间较长，消息和事件将在堆栈的较低层次上排队。等待集机制对这些队列向执行器仅报告了非常少的信息。具体而言，它只报告某个主题是否有任何消息。执行器使用这些信息以循环轮询的方式处理消息（包括服务和动作），而不是按照先进先出的顺序。下面的流程图可视化了这种调度语义。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17571">[校准]</a></p>
+<h2>调度语义 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17408">[校准]</a><a class="headerlink" href="#scheduling-semantics" title="永久链接至标题"></a></h2>
+<p>如果回调函数的处理时间短于消息和事件发生的周期，执行器基本上按照先进先出（FIFO）的顺序处理它们。然而，如果某些回调函数的处理时间较长，消息和事件将在堆栈的较低层次上排队。等待集机制对这些队列向执行器仅报告了非常少的信息。具体而言，它只报告某个主题是否有任何消息。执行器使用这些信息以循环轮询的方式处理消息（包括服务和动作），而不是按照先进先出的顺序。下面的流程图可视化了这种调度语义。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17409">[校准]</a></p>
 <img alt="../_images/executors_scheduling_semantics.png" src="../_images/executors_scheduling_semantics.png" />
-<p>这种语义首次在2019年的ECRTS会议上由Casini等人在一篇论文中描述。 [链接](<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf</a>) （注意：该论文还解释了计时器事件优先于所有其他消息的优先级，这个优先级在 Eloquent 中被移除了。 [链接](<a class="reference external" href="https://github.com/ros2/rclcpp/pull/841">https://github.com/ros2/rclcpp/pull/841</a>) ） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17572">[校准]</a></p>
+<p>这种语义首次在2019年的ECRTS会议上由Casini等人在一篇论文中描述。 [链接](<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf</a>) （注意：该论文还解释了计时器事件优先于所有其他消息的优先级，这个优先级在 Eloquent 中被移除了。 [链接](<a class="reference external" href="https://github.com/ros2/rclcpp/pull/841">https://github.com/ros2/rclcpp/pull/841</a>) ） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17410">[校准]</a></p>
 </div>
 <div class="section" id="outlook">
-<h2>展望 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17573">[校准]</a><a class="headerlink" href="#outlook" title="永久链接至标题"></a></h2>
-<p>虽然rclcpp的三个执行器在大多数应用中运行良好，但存在一些问题，使它们不适用于实时应用程序，实时应用程序需要定义明确的执行时间、确定性和对执行顺序的自定义控制。以下是其中一些问题的摘要： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17574">[校准]</a></p>
+<h2>展望 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17411">[校准]</a><a class="headerlink" href="#outlook" title="永久链接至标题"></a></h2>
+<p>虽然rclcpp的三个执行器在大多数应用中运行良好，但存在一些问题，使它们不适用于实时应用程序，实时应用程序需要定义明确的执行时间、确定性和对执行顺序的自定义控制。以下是其中一些问题的摘要： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17412">[校准]</a></p>
 <ol class="arabic simple">
-<li><p>复杂和混合的调度语义。理想情况下，您希望有明确定义的调度语义以进行形式化的定时分析。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17575">[校准]</a></p></li>
-<li><p>回调函数可能会受到优先级反转的影响。较高优先级的回调函数可能会被较低优先级的回调函数阻塞。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17576">[校准]</a></p></li>
-<li><p>无法明确控制回调函数的执行顺序。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17577">[校准]</a></p></li>
-<li><p>没有内置的机制来触发特定主题的回调函数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17578">[校准]</a></p></li>
+<li><p>复杂和混合的调度语义。理想情况下，您希望有明确定义的调度语义以进行形式化的定时分析。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17413">[校准]</a></p></li>
+<li><p>回调函数可能会受到优先级反转的影响。较高优先级的回调函数可能会被较低优先级的回调函数阻塞。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17414">[校准]</a></p></li>
+<li><p>无法明确控制回调函数的执行顺序。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17415">[校准]</a></p></li>
+<li><p>没有内置的机制来触发特定主题的回调函数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17416">[校准]</a></p></li>
 </ol>
-<p>此外，执行器在CPU和内存使用方面的开销相当大。静态单线程执行器大大减少了这种开销，但对于某些应用程序可能还不够。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17579">[校准]</a></p>
-<p>这些问题已经部分得到以下改进的解决： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17580">[校准]</a></p>
+<p>此外，执行器在CPU和内存使用方面的开销相当大。静态单线程执行器大大减少了这种开销，但对于某些应用程序可能还不够。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17417">[校准]</a></p>
+<p>这些问题已经部分得到以下改进的解决： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17418">[校准]</a></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp">rclcpp WaitSet</a> ：rclcpp 的 <code class="docutils literal notranslate"><span class="pre">WaitSet</span></code> 类允许直接等待订阅、定时器、服务服务器、动作服务器等，而无需使用执行器。它可以用于实现确定性的、用户定义的处理序列，可能同时处理来自不同订阅的多个消息。 <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/wait_set">examples_rclcpp_wait_set package</a> 提供了使用此用户级等待集机制的多个示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17581">[校准]</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">rclc Executor</a>：这个来自C客户端库*rclc*的Executor是为micro-ROS开发的，它可以让用户对回调的执行顺序进行细粒度控制，并允许自定义触发条件来激活回调。此外，它实现了逻辑执行时间（LET）语义的概念。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17582">[校准]</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclcpp/blob/humble/rclcpp/include/rclcpp/wait_set.hpp">rclcpp WaitSet</a> ：rclcpp 的 <code class="docutils literal notranslate"><span class="pre">WaitSet</span></code> 类允许直接等待订阅、定时器、服务服务器、动作服务器等，而无需使用执行器。它可以用于实现确定性的、用户定义的处理序列，可能同时处理来自不同订阅的多个消息。 <a class="reference external" href="https://github.com/ros2/examples/tree/humble/rclcpp/wait_set">examples_rclcpp_wait_set package</a> 提供了使用此用户级等待集机制的多个示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17419">[校准]</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ros2/rclc/blob/master/rclc/include/rclc/executor.h">rclc Executor</a>：这个来自C客户端库*rclc*的Executor是为micro-ROS开发的，它可以让用户对回调的执行顺序进行细粒度控制，并允许自定义触发条件来激活回调。此外，它实现了逻辑执行时间（LET）语义的概念。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17420">[校准]</a></p></li>
 </ul>
 </div>
 <div class="section" id="further-information">
-<h2>更多信息&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17583">[校准]</a><a class="headerlink" href="#further-information" title="永久链接至标题"></a></h2>
+<h2>更多信息&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17421">[校准]</a><a class="headerlink" href="#further-information" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>Michael Pöhnl等人：<a class="reference external" href="https://www.apex.ai/roscon-21">&quot;ROS 2 Executor: How to make it efficient, real-time and deterministic?&quot;</a>. ROS World 2021的研讨会。虚拟活动。2021年10月19日。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17584">[校准]</a></p></li>
-<li><p>Ralph Lange：<a class="reference external" href="https://www.youtube.com/watch?v=Sz-nllmtcc8&amp;t=109s">&quot;Advanced Execution Management with ROS 2&quot;</a>. ROS Industrial Conference。虚拟活动。2020年12月16日。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17585">[校准]</a></p></li>
-<li><p>Daniel Casini，Tobias Blass，Ingo Lütkebohle和Björn Brandenburg：<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling”</a>，第31届ECRTS 2019会议论文集，德国斯图加特，2019年7月。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17586">[校准]</a></p></li>
+<li><p>Michael Pöhnl等人：<a class="reference external" href="https://www.apex.ai/roscon-21">&quot;ROS 2 Executor: How to make it efficient, real-time and deterministic?&quot;</a>. ROS World 2021的研讨会。虚拟活动。2021年10月19日。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17422">[校准]</a></p></li>
+<li><p>Ralph Lange：<a class="reference external" href="https://www.youtube.com/watch?v=Sz-nllmtcc8&amp;t=109s">&quot;Advanced Execution Management with ROS 2&quot;</a>. ROS Industrial Conference。虚拟活动。2020年12月16日。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17423">[校准]</a></p></li>
+<li><p>Daniel Casini，Tobias Blass，Ingo Lütkebohle和Björn Brandenburg：<a class="reference external" href="https://drops.dagstuhl.de/opus/volltexte/2019/10743/pdf/LIPIcs-ECRTS-2019-6.pdf">“Response-Time Analysis of ROS 2 Processing Chains under Reservation-Based Scheduling”</a>，第31届ECRTS 2019会议论文集，德国斯图加特，2019年7月。&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17424">[校准]</a></p></li>
 </ul>
 </div>
 </div>

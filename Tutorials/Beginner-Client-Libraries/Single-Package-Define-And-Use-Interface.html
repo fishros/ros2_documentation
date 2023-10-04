@@ -379,7 +379,7 @@
 <p><strong>教程级别:</strong> 初学者 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3951">[3951]</a></p>
 <p><strong>时间：</strong> 15分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3507">[3507]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -398,20 +398,20 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>在之前的教程中，你学习了如何创建自定义的msg和srv接口。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4705">[4705]</a></p>
 <p>虽然最佳实践是在专用接口包中声明接口，但有时候在一个包中声明、创建和使用接口会更加方便。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4706">[4706]</a></p>
 <p>请注意，目前只能在CMake包中定义接口。然而，可以在CMake包中使用Python库和节点（使用`ament_cmake_python &lt;<a class="reference external" href="https://github.com/ament/ament_cmake/tree/humble/ament_cmake_python">https://github.com/ament/ament_cmake/tree/humble/ament_cmake_python</a>&gt;`_），因此你可以在一个包中同时定义接口和Python节点。为了简单起见，我们在这里使用一个CMake包和C++节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4707">[4707]</a></p>
 <p>本教程将重点介绍msg接口类型，但这里的步骤适用于所有接口类型。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4708">[4708]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>我们假设您在完成本教程之前已经阅读了 <a class="reference internal" href="Custom-ROS2-Interfaces.html"><span class="doc">创建自定义的 msg 和 srv 文件。 [4559]</span></a> 教程的基础知识。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4709">[4709]</a></p>
 <p>您应该已经安装了 <a class="reference internal" href="../../Installation.html"><span class="doc">ROS 2</span></a>，创建了一个 <a class="reference internal" href="Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">工作空间</span></a>，并且了解了 <a class="reference internal" href="Creating-Your-First-ROS2-Package.html"><span class="doc">如何创建包</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4710">[4710]</a></p>
 <p>一如既往，请不要忘记在每个新打开的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">source ROS 2</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4711">[4711]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="create-a-package">
 <h3>1 创建一个包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3283">[3283]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
 <p>在您的工作空间 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录下，创建一个名为 <code class="docutils literal notranslate"><span class="pre">more_interfaces</span></code> 的包，并在其中创建一个用于存放消息文件的目录： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4712">[4712]</a></p>
@@ -755,16 +755,16 @@ See <a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，你尝试了不同的字段类型来定义接口，然后在使用接口的同一软件包中构建了一个接口。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4767">[4767]</a></p>
 <p>您还学习了如何将另一个接口用作字段类型，以及使用``package.xml``、<a href="#id1"><span class="problematic" id="id2">``</span></a>CMakeLists.txt``和``#include``语句来利用该功能所必需的内容。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4768">[4768]</a></p>
 </div>
 <div class="section" id="next-steps">
-<h2>下一步 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16452">[校准]</a><a class="headerlink" href="#next-steps" title="永久链接至标题"></a></h2>
+<h2>下一步 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16493">[校准]</a><a class="headerlink" href="#next-steps" title="永久链接至标题"></a></h2>
 <p>接下来，您将创建一个简单的ROS 2软件包，其中包含一个自定义参数，您将学习如何从启动文件中设置该参数。同样，您可以选择使用 <a class="reference internal" href="Using-Parameters-In-A-Class-CPP.html"><span class="doc">C++</span></a> 或 <a class="reference internal" href="Using-Parameters-In-A-Class-Python.html"><span class="doc">Python</span></a> 来编写它。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4769">[4769]</a></p>
 </div>
 <div class="section" id="related-content">
-<h2>相关内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16637">[校准]</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
+<h2>相关内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16678">[校准]</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
 <p>有关ROS 2接口和IDL（接口定义语言）的 <a class="reference external" href="https://design.ros2.org/#interfaces">几篇设计文章</a> 可供参考。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4770">[4770]</a></p>
 </div>
 </div>

@@ -375,7 +375,7 @@
   <div class="section" id="understanding-real-time-programming">
 <h1>理解实时编程 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5175">[5175]</a><a class="headerlink" href="#understanding-real-time-programming" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16368">[16368]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[16409]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#install-and-run-the-demo" id="id2">安装并运行演示 [5181]</a></p>
@@ -392,7 +392,7 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>实时计算是许多机器人系统的关键特性，特别是对于自动驾驶汽车、航天器和工业制造等安全和任务关键型应用。我们设计和原型化ROS 2时考虑了实时性能限制，因为在ROS 1的早期阶段并没有考虑这一要求，现在对ROS 1进行重构以实现实时友好性已经变得困难。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5176">[5176]</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">document</span> <span class="pre">&lt;https://design.ros2.org/articles/realtime_background.html&gt;</span></code> 详细介绍了实时计算的要求和软件工程师的最佳实践。简而言之： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5177">[5177]</a></p>
 <p>要创建一个实时计算机系统，我们的实时循环必须周期性地更新以满足截止时间。我们只能容忍这些截止时间上的小误差（最大允许的抖动）。为了做到这一点，我们必须避免执行路径中的非确定性操作，比如：页错误事件、动态内存分配/释放和无限期阻塞的同步原语。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5178">[5178]</a></p>

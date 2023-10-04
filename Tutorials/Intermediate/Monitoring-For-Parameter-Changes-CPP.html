@@ -376,11 +376,11 @@
   <div class="section" id="monitoring-for-parameter-changes-c">
 <h1>监视参数变化（C++） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5593">[5593]</a><a class="headerlink" href="#monitoring-for-parameter-changes-c" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习使用ParameterEventHandler类监视并响应参数变化。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5594">[5594]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>最低平台要求：<a href="#id3"><span class="problematic" id="id4">**</span></a>Galactic <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5595">[5595]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -396,11 +396,11 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>通常节点需要对自己的参数或其他节点的参数变化做出响应。ParameterEventHandler类使得监听参数变化并响应变得容易。本教程将展示如何使用C++版本的ParameterEventHandler类来监视节点自身参数的变化以及其他节点的参数变化。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5596">[5596]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>在开始本教程之前，您应该先完成以下教程： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5597">[5597]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">理解参数 [4200]</span></a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5598">[5598]</a></p></li>
@@ -409,7 +409,7 @@
 <p>另外，您必须使用 ROS 2 的 Galactic 版本。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5600">[5600]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <p>在本教程中，您将创建一个新的包以包含一些示例代码，编写一些 C++ 代码来使用 ParameterEventHandler 类，并测试生成的代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5601">[5601]</a></p>
 <div class="section" id="create-a-package">
 <h3>1 创建一个包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3283">[3283]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
@@ -422,7 +422,7 @@
 <p>您的终端将返回一个消息，验证您的包 <code class="docutils literal notranslate"><span class="pre">cpp_parameter_event_handler</span></code> 及其所有必要的文件和文件夹的创建。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5604">[5604]</a></p>
 <p>“--dependencies”参数将自动添加必要的依赖项行到“package.xml”和“CMakeLists.txt”中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4778">[4778]</a></p>
 <div class="section" id="update-package-xml">
-<h4>1.1 更新 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16391">[校准]</a><a class="headerlink" href="#update-package-xml" title="永久链接至标题"></a></h4>
+<h4>1.1 更新 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16432">[校准]</a><a class="headerlink" href="#update-package-xml" title="永久链接至标题"></a></h4>
 <p>因为您在创建软件包时使用了``--dependencies``选项，所以您不需要手动将依赖项添加到``package.xml``或``CMakeLists.txt``中。不过，您仍需确保将描述、维护者电子邮件和姓名以及许可信息添加到``package.xml``中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5605">[5605]</a></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;description&gt;</span>C++ parameter events client tutorial<span class="nt">&lt;/description&gt;</span>
 <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>Your Name<span class="nt">&lt;/maintainer&gt;</span>
@@ -477,7 +477,7 @@
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
-<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16395">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16436">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>第一条语句``#include &lt;memory&gt;``是为了让代码可以利用std::make_shared模板。接下来的``#include &quot;rclcpp/rclcpp.hpp&quot;<a href="#id1"><span class="problematic" id="id2">``</span></a>是为了让代码可以引用rclcpp接口提供的各种功能，包括ParameterEventHandler类。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5607">[5607]</a></p>
 <p>在类声明之后，代码定义了一个名为``SampleNodeWithParameters``的类。该类的构造函数声明了一个整型参数``an_int_param``，默认值为0。接下来，代码创建了一个将用于监视参数变化的``ParameterEventHandler``。最后，代码创建了一个lambda函数，并将其设置为在``an_int_param``更新时调用的回调函数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5608">[5608]</a></p>
 <div class="admonition note">
@@ -518,7 +518,7 @@
 </div>
 </div>
 <div class="section" id="add-executable">
-<h4>2.2 添加可执行文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16405">[校准]</a><a class="headerlink" href="#add-executable" title="永久链接至标题"></a></h4>
+<h4>2.2 添加可执行文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16446">[校准]</a><a class="headerlink" href="#add-executable" title="永久链接至标题"></a></h4>
 <p>要构建此代码，首先打开``CMakeLists.txt``文件，并在依赖项``find_package(rclcpp REQUIRED)``下添加以下代码行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5611">[5611]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">add_executable(parameter_event_handler src/parameter_event_handler.cpp)</span>
 <span class="go">ament_target_dependencies(parameter_event_handler rclcpp)</span>
@@ -532,7 +532,7 @@
 </div>
 </div>
 <div class="section" id="build-and-run">
-<h3>3. 构建和运行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[校准]</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
+<h3>3. 构建和运行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16449">[校准]</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
 <p>在构建之前，最好在工作空间的根目录（<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>）中运行``rosdep``来检查是否缺少依赖项： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4791">[4791]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rosdep install -i --from-path src --rosdistro $ROS_DISTRO -y</span>
@@ -557,7 +557,7 @@
 </pre></div>
 </div>
 </div></div>
-<p>现在运行节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16415">[校准]</a></p>
+<p>现在运行节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16456">[校准]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run cpp_parameter_event_handler parameter_event_handler</span>
 </pre></div>
 </div>
@@ -632,11 +632,11 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>你创建了一个带有参数的节点，并使用ParameterEventHandler类设置了一个回调函数来监控该参数的变化。你还使用相同的类监控了远程节点的变化。ParameterEventHandler是一种方便的方法，用于监控参数的变化，以便你可以对更新的值做出响应。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5625">[5625]</a></p>
 </div>
 <div class="section" id="related-content">
-<h2>相关内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16637">[校准]</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
+<h2>相关内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16678">[校准]</a><a class="headerlink" href="#related-content" title="永久链接至标题"></a></h2>
 <p>To learn how to adapt ROS 1 parameter files for ROS 2, see the <a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html"><span class="doc">Migrating YAML parameter files from ROS 1 to ROS2</span></a> tutorial.</p>
 </div>
 </div>

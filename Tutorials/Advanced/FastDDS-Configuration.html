@@ -376,10 +376,10 @@
   <div class="section" id="unlocking-the-potential-of-fast-dds-middleware-community-contributed">
 <h1>发挥Fast DDS中间件的潜力 [社区贡献] <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3198">[3198]</a><a class="headerlink" href="#unlocking-the-potential-of-fast-dds-middleware-community-contributed" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>本教程将展示如何在ROS 2中使用Fast DDS的扩展配置功能。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3199">[3199]</a></p>
-<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16367">[校准]</a></p>
+<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[校准]</a></p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16368">[16368]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[16409]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -409,7 +409,7 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>ROS 2栈与Fast DDS之间的接口由ROS 2中间件实现`rmw_fastrtps &lt;<a class="reference external" href="https://github.com/ros2/rmw_fastrtps">https://github.com/ros2/rmw_fastrtps</a>&gt;`_提供。此实现在所有ROS 2发行版中都可用，包括二进制和源代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3200">[3200]</a></p>
 <p>ROS 2 RMW only allows for the configuration of certain middleware QoS
 (see <a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html"><span class="doc">ROS 2 QoS policies</span></a>).
@@ -418,7 +418,7 @@ This tutorial will guide you through a series of examples explaining how to use 
 <p>为了获取有关在ROS 2上使用*Fast DDS*的更多信息，请查看以下文档 &lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2.html">https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/ros2.html</a>&gt;`__。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3202">[3202]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>本教程假设您知道如何 <a class="reference internal" href="../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建一个包</span></a>。它还假设您知道如何编写一个 <a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html"><span class="doc">简单的发布者和订阅者</span></a> 和一个 <a class="reference internal" href="../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html"><span class="doc">简单的服务和客户端</span></a>。尽管示例是用C++实现的，但相同的概念也适用于Python包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3203">[3203]</a></p>
 </div>
 <div class="section" id="mixing-synchronous-and-asynchronous-publications-in-the-same-node">

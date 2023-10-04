@@ -376,7 +376,7 @@
   <div class="section" id="using-quality-of-service-settings-for-lossy-networks">
 <h1>在不稳定网络中使用服务质量设置 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5147">[5147]</a><a class="headerlink" href="#using-quality-of-service-settings-for-lossy-networks" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16368">[16368]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[16409]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -389,12 +389,12 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>Please read the documentation page <a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html"><span class="doc">about QoS settings</span></a> for background information on available support in ROS 2.</p>
 <p>在此演示中，我们将生成一个发布相机图像的节点，另一个节点订阅该图像并在屏幕上显示。然后我们将模拟它们之间的有丢包的网络连接，并展示不同的服务质量设置如何处理这个不良连接。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5149">[5149]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>本教程假设您已经安装了一个 <a class="reference internal" href="../../Installation.html"><span class="doc">工作正常的 ROS 2 系统</span></a> 和 OpenCV。请参阅 <a class="reference external" href="http://docs.opencv.org/doc/tutorials/introduction/table_of_content_introduction/table_of_content_introduction.html#table-of-content-introduction">OpenCV 文档</a> 以获取安装说明。您还需要 ROS 包 <code class="docutils literal notranslate"><span class="pre">image_tools</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5150">[5150]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXggQmluYXJpZXM=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXggQmluYXJpZXM=" name="TGludXggQmluYXJpZXM=" role="tab" tabindex="0">Linux Binaries</button><button aria-controls="panel-0-RnJvbSBTb3VyY2U=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RnJvbSBTb3VyY2U=" name="RnJvbSBTb3VyY2U=" role="tab" tabindex="-1">From Source</button></div><div aria-labelledby="tab-0-TGludXggQmluYXJpZXM=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXggQmluYXJpZXM=" name="TGludXggQmluYXJpZXM=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ros-humble-image-tools
@@ -421,7 +421,7 @@ git clone https://github.com/ros2/demos.git -b humble
 </pre></div>
 </div>
 </div></div>
-<p>然后运行： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16727">[校准]</a></p>
+<p>然后运行： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16768">[校准]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run image_tools showimage
 </pre></div>
 </div>

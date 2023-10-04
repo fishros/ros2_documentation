@@ -376,10 +376,10 @@
   <div class="section" id="quaternion-fundamentals">
 <span id="quaternionfundamentals"></span><h1>四元数基础知识 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5874">[5874]</a><a class="headerlink" href="#quaternion-fundamentals" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习 ROS 2 中四元数的基本用法。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5875">[5875]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
-<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16380">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
+<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16421">[校准]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -397,13 +397,13 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>四元数是表示方向的四元组表示法，比旋转矩阵更简洁。四元数在涉及三维旋转的情况下非常高效。四元数广泛应用于机器人技术、量子力学、计算机视觉和3D动画。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5876">[5876]</a></p>
 <p>您可以在 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%85%83%E6%95%B0">维基百科</a> 上了解更多有关底层数学概念的内容。您还可以观看 <a class="reference external" href="https://www.youtube.com/3blue1brown">3blue1brown</a> 制作的可视化四元数视频系列 <a class="reference external" href="https://eater.net/quaternions">Visualizing quaternions</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5877">[5877]</a></p>
 <p>在本教程中，您将学习ROS 2中四元数和转换方法的工作原理。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5878">[5878]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>然而，这不是硬性要求，您可以选择最适合您的任何其他几何变换库。您可以查看像 <a class="reference external" href="https://github.com/matthew-brett/transforms3d">transforms3d</a>、<a class="reference external" href="https://github.com/scipy/scipy/tree/master/scipy/spatial/transform">scipy.spatial.transform</a>、<a class="reference external" href="https://github.com/rock-learning/pytransform3d">pytransform3d</a>、<a class="reference external" href="https://github.com/moble/quaternion">numpy-quaternion</a> 或 <a class="reference external" href="https://docs.blender.org/api/master/mathutils.html">blender.mathutils</a> 这样的库。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5879">[5879]</a></p>
 </div>
 <div class="section" id="components-of-a-quaternion">
@@ -428,7 +428,7 @@
 <div class="section" id="quaternion-types-in-ros-2">
 <h2>ROS 2中的四元数类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5883">[5883]</a><a class="headerlink" href="#quaternion-types-in-ros-2" title="永久链接至标题"></a></h2>
 <p>ROS 2使用两种四元数数据类型：<code class="docutils literal notranslate"><span class="pre">tf2::Quaternion``和它的等效类型``geometry_msgs::msg::Quaternion</span></code>。在C++中进行类型转换，可以使用``tf2_geometry_msgs``中的方法。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5884">[5884]</a></p>
-<p>C++ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a></p>
+<p>C++ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16468">[校准]</a></p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_geometry_msgs/tf2_geometry_msgs.hpp&gt;</span><span class="cp"></span>
 <span class="p">...</span><span class="w"></span>
 
@@ -443,7 +443,7 @@
 <span class="n">tf2</span><span class="o">::</span><span class="n">fromMsg</span><span class="p">(</span><span class="n">msg_quat</span><span class="p">,</span><span class="w"> </span><span class="n">tf2_quat_from_msg</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Python <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16426">[校准]</a></p>
+<p>Python <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16467">[校准]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Quaternion</span>
 <span class="o">...</span>
 
@@ -470,7 +470,7 @@
 <div class="section" id="applying-a-quaternion-rotation">
 <h3>2 应用四元数旋转 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5888">[5888]</a><a class="headerlink" href="#applying-a-quaternion-rotation" title="永久链接至标题"></a></h3>
 <p>要将一个四元数的旋转应用于姿势，只需将姿势的先前四元数乘以表示所需旋转的四元数。此乘法的顺序很重要。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5889">[5889]</a></p>
-<p>C++ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a></p>
+<p>C++ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16468">[校准]</a></p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf2_geometry_msgs/tf2_geometry_msgs.hpp&gt;</span><span class="cp"></span>
 <span class="p">...</span><span class="w"></span>
 
@@ -483,7 +483,7 @@
 <span class="n">q_new</span><span class="p">.</span><span class="n">normalize</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Python <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16426">[校准]</a></p>
+<p>Python <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16467">[校准]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q_orig</span> <span class="o">=</span> <span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="c1"># Rotate the previous pose by 180* about X</span>
 <span class="n">q_rot</span> <span class="o">=</span> <span class="n">quaternion_from_euler</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -561,7 +561,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，你学习了四元数的基本概念及其相关的数学运算，如求逆和旋转。你还学习了ROS 2中的使用示例以及两个独立四元数类之间的转换方法。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5896">[5896]</a></p>
 </div>
 </div>

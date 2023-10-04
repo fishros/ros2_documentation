@@ -377,10 +377,10 @@
   <div class="section" id="writing-a-broadcaster-python">
 <span id="writingatf2broadcasterpy"></span><h1>编写广播器（Python） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6028">[6028]</a><a class="headerlink" href="#writing-a-broadcaster-python" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何将机器人的状态广播到tf2。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5998">[5998]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
 <p><strong>时间：</strong> 15分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3507">[3507]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id2">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id3">先决条件 [校准]</a></p></li>
@@ -396,15 +396,15 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>在接下来的两个教程中，我们将编写代码来重现 <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2</span></a> 教程中的演示。之后，后续教程将重点介绍如何使用更高级的tf2功能扩展演示，包括在转换查找中使用超时和时间旅行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5999">[5999]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>本教程假设你具有ROS 2的基本知识，并且已经完成了：<code class="docutils literal notranslate"><span class="pre">Introduction</span> <span class="pre">to</span> <span class="pre">tf2</span> <span class="pre">tutorial</span></code>。在之前的教程中，你学会了如何创建工作空间和软件包。你还创建了``learning_tf2_py``包，我们将从这里继续工作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6029">[6029]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-broadcaster-node">
 <h3>1. 编写广播器节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6001">[6001]</a><a class="headerlink" href="#write-the-broadcaster-node" title="永久链接至标题"></a></h3>
 <p>首先，让我们创建源代码文件。进入之前创建的``learning_tf2_py``软件包。在``src/learning_tf2_py/learning_tf2_py``目录中，通过输入以下命令下载示例广播器代码： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6030">[6030]</a></p>
@@ -524,7 +524,7 @@
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
-<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16592">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16633">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>现在，让我们来看一下与将海龟位姿发布到 tf2 相关的代码。首先，我们定义并获取一个参数 <code class="docutils literal notranslate"><span class="pre">turtlename</span></code>，它指定了一个海龟的名称，例如 <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6003">[6003]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">turtlename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span>
   <span class="s1">&#39;turtlename&#39;</span><span class="p">,</span> <span class="s1">&#39;turtle&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">()</span><span class="o">.</span><span class="n">string_value</span>
@@ -616,7 +616,7 @@
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16395">[校准]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16436">[校准]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
 <p>首先我们从 <code class="docutils literal notranslate"><span class="pre">launch</span></code> 和 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> 包中导入所需的模块。需要注意的是，<code class="docutils literal notranslate"><span class="pre">launch</span></code> 是一个通用的启动框架（不特定于ROS 2），而 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code> 则有ROS 2特定的功能，例如在这里我们导入的节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6014">[6014]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
@@ -741,7 +741,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，您学习了如何将机器人的姿态（乌龟的位置和方向）广播到tf2，以及如何使用``tf2_echo``工具。要实际使用广播到tf2的变换，请继续下一个有关创建:doc:<a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6037">tf2监听器 &lt;./Writing-A-Tf2-Listener-Py&gt;`的教程。 `[6037]</a></p>
 </div>
 </div>

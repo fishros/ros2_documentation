@@ -375,10 +375,10 @@
   <div class="section" id="implementing-a-custom-memory-allocator">
 <h1>实现自定义内存分配器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3066">[3066]</a><a class="headerlink" href="#implementing-a-custom-memory-allocator" title="永久链接至标题"></a></h1>
 <p><strong>目标：</strong> 本教程将展示如何在编写 ROS 2 C++ 代码时使用自定义内存分配器。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3067">[3067]</a></p>
-<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16367">[校准]</a></p>
+<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[校准]</a></p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16368">[16368]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[16409]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#writing-an-allocator" id="id2">编写一个分配器 [3076]</a></p></li>
@@ -390,7 +390,7 @@
 </div>
 <p>本教程将教你如何为发布者和订阅者集成自定义分配器，以便在你的ROS节点执行时永远不会调用默认的堆分配器。该教程的代码可在`此处&lt;<a class="reference external" href="https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/topics/allocator_tutorial.cpp">https://github.com/ros2/demos/blob/humble/demo_nodes_cpp/src/topics/allocator_tutorial.cpp</a>&gt;`__获取。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3071">[3071]</a></p>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>假设您想编写实时安全的代码，并且听说在实时关键部分调用&quot;new&quot;存在许多危险，因为大多数平台上的默认堆分配器是不确定的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3073">[3073]</a></p>
 <p>默认情况下，许多C++标准库的结构在增长时会隐式分配内存，比如``std::vector``。然而，这些数据结构还接受一个&quot;Allocator&quot;模板参数。如果您为这些数据结构指定了自定义分配器，它将使用该分配器来代替系统分配器来增长或缩小数据结构。您的自定义分配器可以在堆栈上预分配一块内存池，这可能更适合实时应用程序。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3074">[3074]</a></p>
 <p>在ROS 2的C++客户端库（rclcpp）中，我们遵循与C++标准库类似的理念。发布者、订阅者和执行器（Executor）接受一个Allocator模板参数，用于控制实体在执行期间进行的分配。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3075">[3075]</a></p>

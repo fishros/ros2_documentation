@@ -376,10 +376,10 @@
   <div class="section" id="recording-a-bag-from-a-node-python">
 <span id="ros2bagownnodepython"></span><h1>从节点录制包（Python） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3355">[3355]</a><a class="headerlink" href="#recording-a-bag-from-a-node-python" title="永久链接至标题"></a></h1>
 <p><strong>目标：</strong> 将自己的 Python 节点数据录制到一个包中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3356">[3356]</a></p>
-<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16367">[校准]</a></p>
+<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[校准]</a></p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id6">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id7">先决条件 [校准]</a></p></li>
@@ -396,23 +396,23 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 不仅提供了 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> 命令行工具，还提供了一个 Python API，用于从你自己的源代码中读取和写入包。这使得你可以订阅一个话题并将接收到的数据同时保存到一个包中，同时对数据进行任何其他处理。例如，你可以保存话题的数据和处理结果，而无需将处理后的数据发送到另一个话题只为了记录它。由于任何数据都可以记录在包中，因此也可以保存由话题以外的其他源生成的数据，例如用于训练集的合成数据。这对于快速生成包含大量样本且播放时间较长的包非常有用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3357">[3357]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
-<p>你应该在常规的 ROS 2 配置中安装了 <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16383">[校准]</a></p>
-<p>如果你是通过在 Linux 上安装 Debian 包进行安装的，它可能是默认安装的。如果没有安装，可以使用以下命令安装： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16384">[校准]</a></p>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<p>你应该在常规的 ROS 2 配置中安装了 <code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16424">[校准]</a></p>
+<p>如果你是通过在 Linux 上安装 Debian 包进行安装的，它可能是默认安装的。如果没有安装，可以使用以下命令安装： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16425">[校准]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install ros-humble-rosbag2</span>
 </pre></div>
 </div>
 <p>本教程讨论了如何使用 ROS 2 bags，包括在终端上的使用。你应该已经完成了 <a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html"><span class="doc">基本 ROS 2 bag 教程</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3281">[3281]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="create-a-package">
 <h3>1 创建一个包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3283">[3283]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
-<p>在一个新的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">源化你的 ROS 2 安装</span></a>，这样 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令才能正常工作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16388">[校准]</a></p>
+<p>在一个新的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">源化你的 ROS 2 安装</span></a>，这样 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令才能正常工作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16429">[校准]</a></p>
 <p>按照:ref:<a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#new-directory"><span class="std std-ref">这些指示</span></a> 创建名为``ros2_ws``的新工作空间。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3358">[3358]</a></p>
 <p>进入``ros2_ws/src``目录并创建一个新包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3359">[3359]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_python bag_recorder_nodes_py --dependencies rclpy rosbag2_py example_interfaces std_msgs</span>
@@ -489,7 +489,7 @@
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
-<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16395">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16436">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>顶部的``import``语句是包的依赖项。注意导入``rosbag2_py``包，用于处理bag文件所需的函数和结构。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3366">[3366]</a></p>
 <p>在类构造函数中，我们首先创建一个写入器对象，用于将数据写入bag文件。我们创建了一个``SequentialWriter``，它按照接收到的顺序将消息写入bag文件。<a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3367">rosbag2 &lt;https://github.com/ros2/rosbag2/tree/humble/rosbag2_cpp/include/rosbag2_cpp/writers&gt;`__中可能还提供了其他具有不同行为的写入器。 `[3367]</a></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">rosbag2_py</span><span class="o">.</span><span class="n">SequentialWriter</span><span class="p">()</span>
@@ -550,7 +550,7 @@
 </div>
 </div>
 <div class="section" id="build-and-run">
-<h3>3. 构建和运行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[校准]</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
+<h3>3. 构建和运行 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16449">[校准]</a><a class="headerlink" href="#build-and-run" title="永久链接至标题"></a></h3>
 <p>返回到你的工作空间的根目录，<code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>，并构建你的新包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3310">[3310]</a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TGludXg=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="0">Linux</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colcon build --packages-select bag_recorder_nodes_py</span>
@@ -575,7 +575,7 @@
 </pre></div>
 </div>
 </div></div>
-<p>现在运行节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16415">[校准]</a></p>
+<p>现在运行节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16456">[校准]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run bag_recorder_nodes_py simple_bag_recorder</span>
 </pre></div>
 </div>
@@ -717,7 +717,7 @@
 </div>
 </div></div>
 <p>如果 <code class="docutils literal notranslate"><span class="pre">timed_synthetic_bag</span></code> 目录已经存在，在运行节点之前必须先删除它。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3378">[3378]</a></p>
-<p>现在运行节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16415">[校准]</a></p>
+<p>现在运行节点： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16456">[校准]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 run bag_recorder_nodes_py data_generator_node</span>
 </pre></div>
 </div>
@@ -850,7 +850,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>您创建了一个节点，用于将其接收到的数据记录到一个包中。您通过使用该节点进行包记录测试，并通过回放包来验证数据已记录。这种方法可用于记录包含比通过主题接收到的数据更多的附加数据，例如通过处理接收到的数据获得的结果。然后，您继续创建了一个节点和一个可执行文件，用于生成合成数据并将其存储在包中。后一种方法特别适用于生成可用作训练集的合成数据。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3382">[3382]</a></p>
 </div>
 </div>

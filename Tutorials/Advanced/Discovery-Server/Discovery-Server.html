@@ -375,10 +375,10 @@
   <div class="section" id="using-fast-dds-discovery-server-as-discovery-protocol-community-contributed">
 <h1>使用Fast DDS Discovery Server作为发现协议[社区贡献] <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3111">[3111]</a><a class="headerlink" href="#using-fast-dds-discovery-server-as-discovery-protocol-community-contributed" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>本教程将展示如何使用**Fast DDS Discovery Server**发现协议来启动ROS 2节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3112">[3112]</a></p>
-<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16367">[校准]</a></p>
+<p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[校准]</a></p>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>时间：<a href="#id3"><span class="problematic" id="id4">**</span></a>20分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3069">[3069]</a></p>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16368">[16368]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16409">[16409]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id3">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#fast-dds-discovery-server-v2" id="id4">Fast DDS Discovery Server v2 [3120]</a></p></li>
@@ -409,7 +409,7 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>从ROS 2 Eloquent Elusor开始，<a href="#id1"><span class="problematic" id="id2">**</span></a>Fast DDS Discovery Server**协议是一种提供集中式动态发现机制的功能，与DDS默认使用的分布式机制相对。本教程将说明如何使用Fast DDS Discovery Server功能作为发现通信运行一些ROS 2示例。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3113">[3113]</a></p>
 <p>为了获取有关可用发现配置的更多信息，请查看`以下文档&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery.html">https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery.html</a>&gt;`_或阅读`Fast DDS Discovery Server特定文档&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery_server.html#discovery-server">https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery_server.html#discovery-server</a>&gt;`__。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3114">[3114]</a></p>
 <p><a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3115">简单发现协议&lt;https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/simple.html&gt;`__是DDS标准中定义的标准协议。然而，在某些场景中，它具有已知的缺点。 `[3115]</a></p>
@@ -427,7 +427,7 @@
 <img alt="../../../_images/discovery_server_v2_performance.svg" class="align-center" src="../../../_images/discovery_server_v2_performance.svg" /><p>为了使用这个功能，可以使用“XML配置参与者”（&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery_server.html#discovery-server">https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery_server.html#discovery-server</a>&gt;）来配置发现服务器。还可以使用“fastdds”工具（&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/v2.1.0/fastddscli/cli/cli.html#discovery">https://fast-dds.docs.eprosima.com/en/v2.1.0/fastddscli/cli/cli.html#discovery</a>&gt;）和一个环境变量（&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/env_vars/env_vars.html">https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/env_vars/env_vars.html</a>&gt;）来配置发现服务器，在本教程中采用了这种方法。有关配置发现服务器的更详细说明，请访问“Fast DDS Discovery Server文档”（&lt;<a class="reference external" href="https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery_server.html#discovery-server">https://fast-dds.docs.eprosima.com/en/v2.1.0/fastdds/discovery/discovery_server.html#discovery-server</a>&gt;）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3123">[3123]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>本教程假设您已经安装 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3125">[3125]</a></p>
 </div>
 <div class="section" id="run-this-tutorial">

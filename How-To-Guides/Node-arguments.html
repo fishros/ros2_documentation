@@ -374,7 +374,7 @@
   <div class="section" id="passing-ros-arguments-to-nodes-via-the-command-line">
 <h1>通过命令行向节点传递ROS参数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=603">[603]</a><a class="headerlink" href="#passing-ros-arguments-to-nodes-via-the-command-line" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15831">[15831]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15498">[15498]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#name-remapping" id="id1">名称重映射 [606]</a></p></li>
 <li><p><a class="reference internal" href="#logger-configuration" id="id2">日志记录器配置 [614]</a></p></li>
@@ -392,7 +392,7 @@
 <p>请注意，这些重映射是&quot;静态&quot;重映射，即它们在节点的生命周期内生效。目前尚不支持在节点启动后动态重映射名称。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=608">[608]</a></p>
 <p>请参考 <a class="reference external" href="https://design.ros2.org/articles/static_remapping.html">此设计文档</a>，了解有关重新映射参数的详细信息（并非所有功能都可用） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=609">[609]</a></p>
 <div class="section" id="example">
-<h3>示例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16169">[校准]</a><a class="headerlink" href="#example" title="永久链接至标题"></a></h3>
+<h3>示例 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15836">[校准]</a><a class="headerlink" href="#example" title="永久链接至标题"></a></h3>
 <p>以下调用将使``talker``节点以节点名称``my_talker``启动，发布到名为``my_topic``的主题，而不是默认的``chatter``。命名空间必须以正斜杠开头，设置为``/demo``，这意味着主题在该命名空间中创建（<code class="docutils literal notranslate"><span class="pre">/demo/my_topic</span></code>），而不是全局（<code class="docutils literal notranslate"><span class="pre">/my_topic</span></code>） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=610">[610]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run demo_nodes_cpp talker --ros-args -r __ns:<span class="o">=</span>/demo -r __node:<span class="o">=</span>my_talker -r chatter:<span class="o">=</span>my_topic
 </pre></div>

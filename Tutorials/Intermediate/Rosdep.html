@@ -373,12 +373,12 @@
 
 
   <div class="section" id="managing-dependencies-with-rosdep">
-<span id="rosdep"></span><h1>使用rosdep管理依赖关系 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16741">[校准]</a><a class="headerlink" href="#managing-dependencies-with-rosdep" title="永久链接至标题"></a></h1>
-<p><strong>目标：</strong> 使用``rosdep``管理外部依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16742">[校准]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
-<p><strong>时间：</strong> 5分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16418">[校准]</a></p>
+<span id="rosdep"></span><h1>使用rosdep管理依赖关系 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16782">[校准]</a><a class="headerlink" href="#managing-dependencies-with-rosdep" title="永久链接至标题"></a></h1>
+<p><strong>目标：</strong> 使用``rosdep``管理外部依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16783">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
+<p><strong>时间：</strong> 5分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16459">[校准]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#what-is-rosdep" id="id1">什么是rosdep？ [校准]</a></p></li>
 <li><p><a class="reference internal" href="#a-little-about-package-xml-files" id="id2">关于 package.xml 文件的一点说明 [校准]</a></p></li>
@@ -389,9 +389,9 @@
 </ul>
 </div>
 <p>Author: Steve Macenski</p>
-<p>本教程将解释如何使用``rosdep``管理外部依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16743">[校准]</a></p>
+<p>本教程将解释如何使用``rosdep``管理外部依赖项。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16784">[校准]</a></p>
 <div class="section" id="what-is-rosdep">
-<h2>什么是rosdep？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16745">[校准]</a><a class="headerlink" href="#what-is-rosdep" title="永久链接至标题"></a></h2>
+<h2>什么是rosdep？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16786">[校准]</a><a class="headerlink" href="#what-is-rosdep" title="永久链接至标题"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">rosdep</span></code> is ROS's dependency management utility that can work with ROS packages and external libraries.
 <code class="docutils literal notranslate"><span class="pre">rosdep</span></code> is a command-line utility for identifying and installing dependencies to build or install a package.
 It can be or is invoked when:</p>
@@ -403,7 +403,7 @@ It can be or is invoked when:</p>
 <p>它具有在单个软件包或软件包目录（例如工作空间）上工作的能力。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5636">[5636]</a></p>
 </div>
 <div class="section" id="a-little-about-package-xml-files">
-<h2>关于 package.xml 文件的一点说明 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16749">[校准]</a><a class="headerlink" href="#a-little-about-package-xml-files" title="永久链接至标题"></a></h2>
+<h2>关于 package.xml 文件的一点说明 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16790">[校准]</a><a class="headerlink" href="#a-little-about-package-xml-files" title="永久链接至标题"></a></h2>
 <p>A package's <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file contains a set of dependencies.
 The dependencies in this file are generally referred to as &quot;rosdep keys&quot;.
 These are represented in the tags <code class="docutils literal notranslate"><span class="pre">&lt;depend&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;test_depend&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;exec_depend&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;build_depend&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;build_export_depend&gt;</span></code>.
@@ -418,14 +418,14 @@ They specify in what situation each of the dependencies are required in.</p>
 <p>These dependencies are manually populated in the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file by the package's creators and should be an exhaustive list of any non-builtin libraries and packages it requires.</p>
 </div>
 <div class="section" id="how-does-rosdep-work">
-<h2><a href="#id1"><span class="problematic" id="id2">``</span></a>rosdep``是如何工作的？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16765">[校准]</a><a class="headerlink" href="#how-does-rosdep-work" title="永久链接至标题"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rosdep``将在其路径或特定软件包中检查``package.xml``文件，并查找其中存储的rosdep键。然后，这些键将与中央索引进行交叉引用，以在各种软件包管理器中找到适当的ROS软件包或软件库。最后，一旦找到这些软件包，它们将被安装并准备就绪！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16766">[校准]</a></p>
+<h2><a href="#id1"><span class="problematic" id="id2">``</span></a>rosdep``是如何工作的？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16806">[校准]</a><a class="headerlink" href="#how-does-rosdep-work" title="永久链接至标题"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rosdep``将在其路径或特定软件包中检查``package.xml``文件，并查找其中存储的rosdep键。然后，这些键将与中央索引进行交叉引用，以在各种软件包管理器中找到适当的ROS软件包或软件库。最后，一旦找到这些软件包，它们将被安装并准备就绪！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16807">[校准]</a></p>
 <p>The central index is known as <code class="docutils literal notranslate"><span class="pre">rosdistro</span></code>, which <a class="reference external" href="https://github.com/ros/rosdistro">may be found here</a>.
 We'll explore that more in the next section.</p>
 </div>
 <div class="section" id="how-do-i-know-what-keys-to-put-in-my-package-xml">
-<h2>我怎么知道要在我的``package.xml``文件中放入哪些键呢？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16769">[校准]</a><a class="headerlink" href="#how-do-i-know-what-keys-to-put-in-my-package-xml" title="永久链接至标题"></a></h2>
-<p>很好的问题，我很高兴你问了！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
+<h2>我怎么知道要在我的``package.xml``文件中放入哪些键呢？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16810">[校准]</a><a class="headerlink" href="#how-do-i-know-what-keys-to-put-in-my-package-xml" title="永久链接至标题"></a></h2>
+<p>很好的问题，我很高兴你问了！ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16811">[校准]</a></p>
 <p>For ROS packages (e.g. <code class="docutils literal notranslate"><span class="pre">nav2_bt_navigator</span></code>), you may simply place the name of the package.
 You can find a list of all released ROS packages in <code class="docutils literal notranslate"><span class="pre">rosdistro</span></code> at <code class="docutils literal notranslate"><span class="pre">&lt;distro&gt;/distribution.yaml</span></code> for your given ROS distribution.</p>
 <p>For non-ROS package system dependencies, we will need to find the keys for a particular library.
@@ -450,30 +450,30 @@ We would search <code class="docutils literal notranslate"><span class="pre">bas
 <span class="w">  </span><span class="nt">ubuntu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">doxygen</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
-<p>这意味着我们的rosdep键是``doxygen``，在不同操作系统的软件包管理器中，它会解析为不同的名称进行安装。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16777">[校准]</a></p>
+<p>这意味着我们的rosdep键是``doxygen``，在不同操作系统的软件包管理器中，它会解析为不同的名称进行安装。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16818">[校准]</a></p>
 </div>
 <div class="section" id="what-if-my-library-isn-t-in-rosdistro">
-<h2>如果我的库不在rosdistro中怎么办？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16778">[校准]</a><a class="headerlink" href="#what-if-my-library-isn-t-in-rosdistro" title="永久链接至标题"></a></h2>
-<p>如果你的库不在``rosdistro``中，你可以体验开源软件开发的伟大之处：你可以自己添加！通常，针对rosdistro的拉取请求在一周内就会合并。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16779">[校准]</a></p>
-<p>关于如何贡献新的rosdep键，可以在此处找到详细说明：&lt;<a class="reference external" href="https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions">https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions</a>&gt;。如果由于某些原因无法公开贡献，也可以fork rosdistro并维护一个备用索引供使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16780">[校准]</a></p>
+<h2>如果我的库不在rosdistro中怎么办？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16819">[校准]</a><a class="headerlink" href="#what-if-my-library-isn-t-in-rosdistro" title="永久链接至标题"></a></h2>
+<p>如果你的库不在``rosdistro``中，你可以体验开源软件开发的伟大之处：你可以自己添加！通常，针对rosdistro的拉取请求在一周内就会合并。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16820">[校准]</a></p>
+<p>关于如何贡献新的rosdep键，可以在此处找到详细说明：&lt;<a class="reference external" href="https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions">https://github.com/ros/rosdistro/blob/master/CONTRIBUTING.md#rosdep-rules-contributions</a>&gt;。如果由于某些原因无法公开贡献，也可以fork rosdistro并维护一个备用索引供使用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16821">[校准]</a></p>
 </div>
 <div class="section" id="how-do-i-use-the-rosdep-tool">
-<h2>如何使用rosdep工具？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16781">[校准]</a><a class="headerlink" href="#how-do-i-use-the-rosdep-tool" title="永久链接至标题"></a></h2>
-<p>现在我们对``rosdep``、<code class="docutils literal notranslate"><span class="pre">package.xml``和``rosdistro``有了一些了解，我们准备好使用这个工具了！首先，如果这是第一次使用``rosdep</span></code>，必须通过以下命令进行初始化： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16787">[校准]</a></p>
+<h2>如何使用rosdep工具？ <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16822">[校准]</a><a class="headerlink" href="#how-do-i-use-the-rosdep-tool" title="永久链接至标题"></a></h2>
+<p>现在我们对``rosdep``、<code class="docutils literal notranslate"><span class="pre">package.xml``和``rosdistro``有了一些了解，我们准备好使用这个工具了！首先，如果这是第一次使用``rosdep</span></code>，必须通过以下命令进行初始化： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16828">[校准]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rosdep init
 rosdep update
 </pre></div>
 </div>
-<p>这将初始化``rosdep``，<a href="#id1"><span class="problematic" id="id2">``</span></a>update``将更新本地缓存的``rosdistro``索引。定期执行``update``命令以获取最新的索引是一个好主意。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16788">[校准]</a></p>
-<p>最后，我们可以运行``rosdep install``来安装依赖项。通常，我们会在一个工作空间上运行此命令，通过单个调用安装所有依赖项。如果在包含源代码的``src``目录下的工作空间根目录运行该命令，命令如下所示： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16789">[校准]</a></p>
+<p>这将初始化``rosdep``，<a href="#id1"><span class="problematic" id="id2">``</span></a>update``将更新本地缓存的``rosdistro``索引。定期执行``update``命令以获取最新的索引是一个好主意。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16829">[校准]</a></p>
+<p>最后，我们可以运行``rosdep install``来安装依赖项。通常，我们会在一个工作空间上运行此命令，通过单个调用安装所有依赖项。如果在包含源代码的``src``目录下的工作空间根目录运行该命令，命令如下所示： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16830">[校准]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep install --from-paths src -y --ignore-src
 </pre></div>
 </div>
-<p>对此进行解释： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16790">[校准]</a></p>
+<p>对此进行解释： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16831">[校准]</a></p>
 <ul class="simple">
-<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>--from-paths src``指定要检查以解析键的``package.xml``文件的路径 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16791">[校准]</a></p></li>
-<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>-y``表示在包管理器的提示中默认全部回答为“是”，无需提示即可安装 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16792">[校准]</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--ignore-src</span></code> 表示忽略安装依赖项，即使存在 rosdep 键，也会忽略，如果包本身也在工作空间中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16793">[校准]</a></p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>--from-paths src``指定要检查以解析键的``package.xml``文件的路径 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16832">[校准]</a></p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>-y``表示在包管理器的提示中默认全部回答为“是”，无需提示即可安装 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16833">[校准]</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ignore-src</span></code> 表示忽略安装依赖项，即使存在 rosdep 键，也会忽略，如果包本身也在工作空间中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16834">[校准]</a></p></li>
 </ul>
 <p>There are additional arguments and options available.
 Use <code class="docutils literal notranslate"><span class="pre">rosdep</span> <span class="pre">-h</span></code> to see them.</p>

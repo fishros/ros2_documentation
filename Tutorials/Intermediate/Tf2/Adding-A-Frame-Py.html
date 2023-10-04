@@ -377,10 +377,10 @@
   <div class="section" id="adding-a-frame-python">
 <span id="addingaframepy"></span><h1>添加一个帧（Python） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5762">[5762]</a><a class="headerlink" href="#adding-a-frame-python" title="永久链接至标题"></a></h1>
 <p><strong>目标:</strong> 学习如何在tf2中添加额外的帧。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5720">[5720]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
 <p><strong>时间：</strong> 15分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3507">[3507]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id6">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#tf2-tree" id="id7">tf2树 [5723]</a></p></li>
@@ -410,7 +410,7 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>在之前的教程中，我们通过编写 <a class="reference internal" href="Writing-A-Tf2-Broadcaster-Py.html"><span class="doc">tf2 广播器</span></a> 和 <a class="reference internal" href="Writing-A-Tf2-Listener-Py.html"><span class="doc">tf2 监听器</span></a> 重新创建了乌龟演示。本教程将教你如何向转换树中添加额外的固定帧和动态帧。实际上，向 tf2 中添加帧非常类似于创建 tf2 广播器，但是这个示例将展示 tf2 的一些附加功能。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5763">[5763]</a></p>
 <p>对于与变换相关的许多任务，以本地帧为基础更容易思考。例如，在激光扫描测量中，最容易理解的是以激光扫描仪中心的帧为基准。tf2允许你为系统中的每个传感器、链接或关节定义一个本地帧。在从一个帧转换到另一个帧时，tf2将处理引入的所有隐藏中间帧变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5722">[5722]</a></p>
 </div>
@@ -420,7 +420,7 @@
 <img alt="../../../_images/turtlesim_frames.png" src="../../../_images/turtlesim_frames.png" />
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-fixed-frame-broadcaster">
 <h3>1. 编写固定帧广播器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5725">[5725]</a><a class="headerlink" href="#write-the-fixed-frame-broadcaster" title="永久链接至标题"></a></h3>
 <p>在我们的乌龟示例中，我们将添加一个名为“carrot1”的新框架，它将是“turtle1”的子框架。这个框架将作为第二只乌龟的目标。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5726">[5726]</a></p>
@@ -487,7 +487,7 @@
 </div>
 <p>这段代码与tf2广播器教程示例非常相似，唯一的区别是这里的变换不随时间改变。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5729">[5729]</a></p>
 <div class="section" id="examine-the-code">
-<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16592">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16633">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>让我们看一下这段代码中的关键部分。在这里，我们创建了一个新的变换，从父框架“turtle1”到新的子框架“carrot1”。相对于“turtle1”框架，框架“carrot1”在y轴上偏移了2米。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5730">[5730]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
 
@@ -681,7 +681,7 @@
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16395">[校准]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16436">[校准]</a><a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
 <p>我们不再使用固定的x和y偏移量定义，而是使用``sin()``和``cos()``函数来根据当前时间不断改变``carrot1``的偏移量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5752">[5752]</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seconds</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">seconds_nanoseconds</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">seconds</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
@@ -783,7 +783,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，你学习了tf2变换树的结构和特性。你还学会了在一个本地框架内进行思考，并学会为该本地框架添加额外的固定和动态框架。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5761">[5761]</a></p>
 </div>
 </div>

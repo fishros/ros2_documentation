@@ -377,10 +377,10 @@
   <div class="section" id="creating-a-launch-file">
 <h1>创建一个启动文件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5388">[5388]</a><a class="headerlink" href="#creating-a-launch-file" title="永久链接至标题"></a></h1>
 <p><strong>目标：</strong> 创建一个用于运行复杂ROS 2系统的启动文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5389">[5389]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
-<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16380">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
+<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16421">[校准]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#prerequisites" id="id1">先决条件 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#background" id="id2">背景 [校准]</a></p></li>
@@ -396,19 +396,19 @@
 </ul>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>本教程使用 <a class="reference internal" href="../../Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html"><span class="doc">rqt_graph 和 turtlesim</span></a> 包。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5390">[5390]</a></p>
 <p>您还需要使用您喜欢的文本编辑器。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5391">[5391]</a></p>
 <p>如往常一样，在每次打开新的终端时不要忘记在 :doc`每个新终端中启用ROS 2环境 &lt;../../Beginner-CLI-Tools/Configuring-ROS2-Environment&gt;`。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5392">[5392]</a></p>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>ROS 2中的启动系统负责帮助用户描述其系统的配置，然后按照描述的方式执行它。系统的配置包括要运行的程序，运行它们的位置，要传递给它们的参数以及ROS特定的约定，使得通过为每个组件提供不同的配置，可以在整个系统中轻松地重用组件。它还负责监视启动的进程的状态，并报告和/或响应这些进程状态的变化。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5393">[5393]</a></p>
 <p>使用Python、XML或YAML编写的启动文件可以启动和停止不同的节点，并触发和执行各种事件。有关不同格式的描述，请参阅 <a class="reference internal" href="../../../How-To-Guides/Launch-file-different-formats.html"><span class="doc">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</span></a>。提供该框架的包是 <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code>，它在ROS特定的``launch``框架下运行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5394">[5394]</a></p>
 <p>ROS 2的启动系统的 <a class="reference external" href="https://design.ros2.org/articles/roslaunch.html">设计文档</a> 详细介绍了其设计目标（目前未提供所有功能）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5395">[5395]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="setup">
 <h3>1 设置 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=4071">[4071]</a><a class="headerlink" href="#setup" title="永久链接至标题"></a></h3>
 <p>创建一个新目录来存储你的启动文件： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5396">[5396]</a></p>
@@ -637,7 +637,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>启动文件可以简化运行具有许多节点和特定配置细节的复杂系统。您可以使用Python、XML或YAML创建启动文件，并使用``ros2 launch``命令运行它们。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5425">[5425]</a></p>
 </div>
 </div>

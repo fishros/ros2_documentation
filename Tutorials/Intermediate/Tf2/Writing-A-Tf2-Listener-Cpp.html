@@ -377,10 +377,10 @@
   <div class="section" id="writing-a-listener-c">
 <span id="writingatf2listenercpp"></span><h1>编写监听器（C++） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6038">[6038]</a><a class="headerlink" href="#writing-a-listener-c" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何使用tf2来获取帧变换的访问权限。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6039">[6039]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
-<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16380">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
+<p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16421">[校准]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -396,16 +396,16 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>在之前的教程中，我们创建了一个tf2广播器，将乌龟的姿态发布到tf2中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6040">[6040]</a></p>
 <p>在本教程中，我们将创建一个tf2监听器，开始使用tf2。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6041">[6041]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>本教程假设您已经完成了：doc:<code class="xref any docutils literal notranslate"><span class="pre">tf2静态广播器教程（C++）</span></code>。在之前的教程中，我们创建了一个``learning_tf2_cpp``软件包，我们将从这里继续工作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6042">[6042]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="write-the-listener-node">
 <h3>1 编写监听器节点 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6043">[6043]</a><a class="headerlink" href="#write-the-listener-node" title="永久链接至标题"></a></h3>
 <p>首先，我们需要创建源文件。转到我们在上一个教程中创建的“learning_tf2_cpp”包。在“src”目录中，通过输入以下命令来下载示例监听器代码： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6044">[6044]</a></p>
@@ -564,7 +564,7 @@
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
-<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16592">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>1.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16633">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>要了解生成海龟背后的服务是如何工作的，请参考:doc:<a class="reference internal" href="../../Beginner-Client-Libraries/Writing-A-Simple-Cpp-Service-And-Client.html"><span class="doc">编写一个简单的服务和客户端（C++）</span></a> 教程。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6045">[6045]</a></p>
 <p>现在，让我们看一下与获取帧变换相关的代码。<a href="#id1"><span class="problematic" id="id2">``</span></a>tf2_ros``包含了一个``TransformListener``头文件的实现，使得接收变换的任务更加容易。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6046">[6046]</a></p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf2_ros/transform_listener.h&quot;</span><span class="cp"></span>
@@ -589,7 +589,7 @@
 </div>
 </div>
 <div class="section" id="cmakelists-txt">
-<h4>1.2 CMakeLists.txt <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16604">[校准]</a><a class="headerlink" href="#cmakelists-txt" title="永久链接至标题"></a></h4>
+<h4>1.2 CMakeLists.txt <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16645">[校准]</a><a class="headerlink" href="#cmakelists-txt" title="永久链接至标题"></a></h4>
 <p>导航到“learning_tf2_cpp”目录的上一级，其中包含“CMakeLists.txt”和“package.xml”文件。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=5731">[5731]</a></p>
 <p>现在打开 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>，添加可执行文件并将其命名为 <code class="docutils literal notranslate"><span class="pre">turtle_tf2_listener</span></code>，稍后您将在 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code> 中使用它。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6051">[6051]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">add_executable(turtle_tf2_listener src/turtle_tf2_listener.cpp)</span>
@@ -714,7 +714,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，你学会了如何使用tf2获取帧变换的访问权限。你还完成了自己编写的乌龟模拟器演示，该演示首次在 <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">tf2介绍教程</span></a> 中尝试。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6058">[6058]</a></p>
 </div>
 </div>

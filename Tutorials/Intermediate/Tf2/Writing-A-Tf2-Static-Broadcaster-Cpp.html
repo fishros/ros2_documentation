@@ -377,10 +377,10 @@
   <div class="section" id="writing-a-static-broadcaster-c">
 <span id="writingatf2staticbroadcastercpp"></span><h1>编写静态广播器（C++） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6065">[6065]</a><a class="headerlink" href="#writing-a-static-broadcaster-c" title="永久链接至标题"></a></h1>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>目标：<a href="#id3"><span class="problematic" id="id4">**</span></a>学习如何向 tf2 广播静态坐标框架。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6066">[6066]</a></p>
-<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16729">[校准]</a></p>
+<p><strong>教程级别：</strong> 中级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16770">[校准]</a></p>
 <p><strong>时间：</strong> 15分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3507">[3507]</a></p>
 <div class="contents local topic" id="contents">
-<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16381">[校准]</a></p>
+<p class="topic-title">内容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16422">[校准]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id1">背景 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [校准]</a></p></li>
@@ -397,17 +397,17 @@
 </ul>
 </div>
 <div class="section" id="background">
-<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16369">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
+<h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[校准]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
 <p>发布静态转换对于定义机器人底盘与其传感器或静止部件之间的关系非常有用。例如，对于在激光扫描仪中心的坐标框架中的激光扫描测量，最容易进行推理。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6067">[6067]</a></p>
 <p>这是一个独立的教程，介绍了静态变换的基础知识，由两部分组成。在第一部分中，我们将编写代码将静态变换发布到tf2。在第二部分中，我们将解释如何使用命令行中的 <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 可执行工具，该工具位于 <code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> 中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6068">[6068]</a></p>
 <p>在接下来的两个教程中，我们将编写代码以重现 <a class="reference internal" href="Introduction-To-Tf2.html"><span class="doc">Introduction to tf2</span></a> 教程中的演示。之后，下面的教程将侧重于使用更高级的tf2功能扩展演示。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6069">[6069]</a></p>
 </div>
 <div class="section" id="prerequisites">
-<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16370">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
+<h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[校准]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
 <p>在之前的教程中，您学习了如何 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html"><span class="doc">创建工作空间</span></a> 和 <a class="reference internal" href="../../Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html"><span class="doc">创建包</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6070">[6070]</a></p>
 </div>
 <div class="section" id="tasks">
-<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16386">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
+<h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[校准]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="create-a-package">
 <h3>1 创建一个包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=3283">[3283]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
 <p>首先，我们将创建一个用于本教程和后续教程的包。该包名为 <code class="docutils literal notranslate"><span class="pre">learning_tf2_cpp</span></code>，它将依赖于 <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code>、<code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>、<code class="docutils literal notranslate"><span class="pre">tf2</span></code>、<code class="docutils literal notranslate"><span class="pre">tf2_ros</span></code> 和 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>。本教程的代码存储在 <a class="reference external" href="https://raw.githubusercontent.com/ros/geometry_tutorials/ros2/turtle_tf2_cpp/src/static_turtle_tf2_broadcaster.cpp">此处</a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6071">[6071]</a></p>
@@ -513,7 +513,7 @@
 </pre></div>
 </div>
 <div class="section" id="examine-the-code">
-<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16395">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
+<h4>2.1 检查代码 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16436">[校准]</a><a class="headerlink" href="#examine-the-code" title="永久链接至标题"></a></h4>
 <p>现在我们来看一下与发布静态海龟姿态到tf2有关的代码。首先包含所需的头文件。首先我们包含``geometry_msgs/msg/transform_stamped.hpp``以访问``TransformStamped``消息类型，我们将把它发布到变换树中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6076">[6076]</a></p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/msg/transform_stamped.hpp&quot;</span><span class="cp"></span>
 </pre></div>
@@ -699,7 +699,7 @@
 <p>请注意，除了 <code class="docutils literal notranslate"><span class="pre">--frame-id</span></code> 和 <code class="docutils literal notranslate"><span class="pre">--child-frame-id</span></code> 之外的所有参数都是可选的；如果没有指定特定的选项，将假设为恒等变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6100">[6100]</a></p>
 </div>
 <div class="section" id="summary">
-<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16413">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
+<h2>总结 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16454">[校准]</a><a class="headerlink" href="#summary" title="永久链接至标题"></a></h2>
 <p>在本教程中，您学习了静态变换如何有助于定义帧之间的静态关系，例如相对于 <code class="docutils literal notranslate"><span class="pre">world</span></code> 帧的 <code class="docutils literal notranslate"><span class="pre">mystaticturtle</span></code>。此外，您还学习了静态变换如何有助于理解传感器数据，例如激光扫描仪的数据，通过将数据与公共坐标帧关联起来。最后，您编写了自己的节点以将静态变换发布到 tf2，并学习了如何使用 <code class="docutils literal notranslate"><span class="pre">static_transform_publisher</span></code> 可执行文件和 launch 文件来发布所需的静态变换。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6101">[6101]</a></p>
 </div>
 </div>

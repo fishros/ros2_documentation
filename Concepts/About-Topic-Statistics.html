@@ -374,7 +374,7 @@
   <div class="section" id="about-topic-statistics">
 <span id="abouttopicstats"></span><h1>About topic statistics<a class="headerlink" href="#about-topic-statistics" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17028">[17028]</a></p>
+<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[16866]</a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id1">概述 [校准]</a></p></li>
 <li><p><a class="reference internal" href="#how-statistics-are-calculated" id="id2">统计数据的计算方式 [校准]</a></p></li>
@@ -385,45 +385,45 @@
 </ul>
 </div>
 <div class="section" id="overview">
-<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17178">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>ROS 2 提供了对任何订阅接收的消息进行统计的集成测量。允许用户收集订阅统计数据，以便他们能够评估系统的性能或帮助诊断任何现有问题。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17832">[校准]</a></p>
-<p>提供的测量数据是接收到的消息的年龄和周期。对于每个测量值，提供的统计数据包括平均值、最大值、最小值、标准差和样本数量。这些统计数据是在一个滑动窗口中计算的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17833">[校准]</a></p>
+<h2>概述 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17016">[校准]</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
+<p>ROS 2 提供了对任何订阅接收的消息进行统计的集成测量。允许用户收集订阅统计数据，以便他们能够评估系统的性能或帮助诊断任何现有问题。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17670">[校准]</a></p>
+<p>提供的测量数据是接收到的消息的年龄和周期。对于每个测量值，提供的统计数据包括平均值、最大值、最小值、标准差和样本数量。这些统计数据是在一个滑动窗口中计算的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17671">[校准]</a></p>
 </div>
 <div class="section" id="how-statistics-are-calculated">
-<h2>统计数据的计算方式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17834">[校准]</a><a class="headerlink" href="#how-statistics-are-calculated" title="永久链接至标题"></a></h2>
-<p>每个统计数据集都是通过使用`libstatistics_collector &lt;<a class="reference external" href="https://github.com/ros-tooling/libstatistics_collector">https://github.com/ros-tooling/libstatistics_collector</a>&gt;`__包中实现的工具在固定的时间和固定的内存中计算得出的。当订阅接收到新消息时，这是当前测量窗口中的一个新样本，所以所得到的平均值只是一个`移动平均值 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average">https://en.wikipedia.org/wiki/Moving_average</a>&gt;`__。最大值、最小值和样本数量会在接收到每个新样本时进行更新，而标准差则是使用`Welford的在线算法 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm</a>&gt;`__计算得出的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17835">[校准]</a></p>
+<h2>统计数据的计算方式 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17672">[校准]</a><a class="headerlink" href="#how-statistics-are-calculated" title="永久链接至标题"></a></h2>
+<p>每个统计数据集都是通过使用`libstatistics_collector &lt;<a class="reference external" href="https://github.com/ros-tooling/libstatistics_collector">https://github.com/ros-tooling/libstatistics_collector</a>&gt;`__包中实现的工具在固定的时间和固定的内存中计算得出的。当订阅接收到新消息时，这是当前测量窗口中的一个新样本，所以所得到的平均值只是一个`移动平均值 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average">https://en.wikipedia.org/wiki/Moving_average</a>&gt;`__。最大值、最小值和样本数量会在接收到每个新样本时进行更新，而标准差则是使用`Welford的在线算法 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm">https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm</a>&gt;`__计算得出的。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17673">[校准]</a></p>
 </div>
 <div class="section" id="types-of-statistics-calculated">
-<h2>计算的统计数据类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17836">[校准]</a><a class="headerlink" href="#types-of-statistics-calculated" title="永久链接至标题"></a></h2>
+<h2>计算的统计数据类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17674">[校准]</a><a class="headerlink" href="#types-of-statistics-calculated" title="永久链接至标题"></a></h2>
 <ul class="simple">
-<li><p>接收消息周期 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17837">[校准]</a></p>
+<li><p>接收消息周期 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17675">[校准]</a></p>
 <ul>
-<li><p>单位: 毫秒 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17838">[校准]</a></p></li>
-<li><p>使用系统时钟来测量接收到的消息之间的时间间隔 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17839">[校准]</a></p></li>
+<li><p>单位: 毫秒 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17676">[校准]</a></p></li>
+<li><p>使用系统时钟来测量接收到的消息之间的时间间隔 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17677">[校准]</a></p></li>
 </ul>
 </li>
-<li><p>接收消息的年龄 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17840">[校准]</a></p>
+<li><p>接收消息的年龄 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17678">[校准]</a></p>
 <ul>
-<li><p>单位: 毫秒 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17838">[校准]</a></p></li>
-<li><p>要计算消息从发布者发送时的年龄，需要在消息头字段中填充时间戳 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17841">[校准]</a></p></li>
+<li><p>单位: 毫秒 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17676">[校准]</a></p></li>
+<li><p>要计算消息从发布者发送时的年龄，需要在消息头字段中填充时间戳 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17679">[校准]</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="behavior">
-<h2>行为 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17842">[校准]</a><a class="headerlink" href="#behavior" title="永久链接至标题"></a></h2>
-<p>默认情况下，主题统计测量是未启用的。通过订阅配置选项为特定节点启用此功能后，对于该特定订阅，将同时启用接收消息的年龄和时间间隔测量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17843">[校准]</a></p>
-<p>数据以可配置周期（默认为1秒）发布为`statistics_msg/msg/MetricsMessage &lt;<a class="reference external" href="https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg">https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg</a>&gt;`__到可配置主题（默认为``/statistics``）。请注意，发布周期也作为样本收集窗口期。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17844">[校准]</a></p>
-<p>由于接收到的消息周期需要在头部字段中包含消息时间戳，因此会发布空数据。也就是说，如果没有找到时间戳，所有统计值都为NaN。不发布任何值而是发布NaN值，避免了信号缺失的问题，并明确表示无法进行测量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17845">[校准]</a></p>
-<p>接收消息周期统计的每个窗口的第一个样本不会产生测量。这是因为计算此统计值需要知道前一条消息到达的时间，因此窗口中的后续样本会产生测量结果。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17846">[校准]</a></p>
+<h2>行为 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17680">[校准]</a><a class="headerlink" href="#behavior" title="永久链接至标题"></a></h2>
+<p>默认情况下，主题统计测量是未启用的。通过订阅配置选项为特定节点启用此功能后，对于该特定订阅，将同时启用接收消息的年龄和时间间隔测量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17681">[校准]</a></p>
+<p>数据以可配置周期（默认为1秒）发布为`statistics_msg/msg/MetricsMessage &lt;<a class="reference external" href="https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg">https://github.com/ros2/rcl_interfaces/blob/humble/statistics_msgs/msg/MetricsMessage.msg</a>&gt;`__到可配置主题（默认为``/statistics``）。请注意，发布周期也作为样本收集窗口期。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17682">[校准]</a></p>
+<p>由于接收到的消息周期需要在头部字段中包含消息时间戳，因此会发布空数据。也就是说，如果没有找到时间戳，所有统计值都为NaN。不发布任何值而是发布NaN值，避免了信号缺失的问题，并明确表示无法进行测量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17683">[校准]</a></p>
+<p>接收消息周期统计的每个窗口的第一个样本不会产生测量。这是因为计算此统计值需要知道前一条消息到达的时间，因此窗口中的后续样本会产生测量结果。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17684">[校准]</a></p>
 </div>
 <div class="section" id="comparison-to-ros-1">
-<h2>与ROS 1的比较 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17219">[校准]</a><a class="headerlink" href="#comparison-to-ros-1" title="永久链接至标题"></a></h2>
-<p>与ROS 1的`Topic Statistics &lt;<a class="reference external" href="https://wiki.ros.org/Topics#Topic_statistics">https://wiki.ros.org/Topics#Topic_statistics</a>&gt;`__类似，消息的年龄和周期也会被计算，尽管是从订阅端计算的。其他ROS 1的指标，如丢失的消息数量或流量大小，目前尚未提供。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17847">[校准]</a></p>
+<h2>与ROS 1的比较 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17057">[校准]</a><a class="headerlink" href="#comparison-to-ros-1" title="永久链接至标题"></a></h2>
+<p>与ROS 1的`Topic Statistics &lt;<a class="reference external" href="https://wiki.ros.org/Topics#Topic_statistics">https://wiki.ros.org/Topics#Topic_statistics</a>&gt;`__类似，消息的年龄和周期也会被计算，尽管是从订阅端计算的。其他ROS 1的指标，如丢失的消息数量或流量大小，目前尚未提供。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17685">[校准]</a></p>
 </div>
 <div class="section" id="support">
-<h2>支持 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17848">[校准]</a><a class="headerlink" href="#support" title="永久链接至标题"></a></h2>
-<p>当前仅支持ROS 2 Foxy的C++（rclcpp）。未来的工作和改进，例如Python支持，可以在`这里 &lt;<a class="reference external" href="https://github.com/ros2/ros2/issues/917">https://github.com/ros2/ros2/issues/917</a>&gt;`__找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17849">[校准]</a></p>
+<h2>支持 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17686">[校准]</a><a class="headerlink" href="#support" title="永久链接至标题"></a></h2>
+<p>当前仅支持ROS 2 Foxy的C++（rclcpp）。未来的工作和改进，例如Python支持，可以在`这里 &lt;<a class="reference external" href="https://github.com/ros2/ros2/issues/917">https://github.com/ros2/ros2/issues/917</a>&gt;`__找到。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17687">[校准]</a></p>
 </div>
 </div>
 
