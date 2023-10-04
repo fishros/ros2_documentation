@@ -401,12 +401,12 @@
 <li><p><a class="reference internal" href="#overview" id="id1">概述</a></p></li>
 <li><p><a class="reference internal" href="#supported-client-libraries" id="id2">支持的客户端库</a></p>
 <ul>
-<li><p><a class="reference internal" href="#the-rclcpp-package" id="id3">The <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> package</a></p></li>
-<li><p><a class="reference internal" href="#the-rclpy-package" id="id4">The <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> package</a></p></li>
+<li><p><a class="reference internal" href="#the-rclcpp-package" id="id3">``rclcpp``包</a></p></li>
+<li><p><a class="reference internal" href="#the-rclpy-package" id="id4">``rclpy``包</a></p></li>
 <li><p><a class="reference internal" href="#community-maintained" id="id5">社区维护</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#common-functionality-rcl" id="id6">Common functionality: <code class="docutils literal notranslate"><span class="pre">rcl</span></code></a></p></li>
+<li><p><a class="reference internal" href="#common-functionality-rcl" id="id6">通用功能：<code class="docutils literal notranslate"><span class="pre">rcl</span></code></a></p></li>
 <li><p><a class="reference internal" href="#language-specific-functionality" id="id7">特定于语言的功能</a></p></li>
 <li><p><a class="reference internal" href="#demo" id="id8">演示</a></p></li>
 <li><p><a class="reference internal" href="#comparison-to-ros-1" id="id9">与ROS 1的比较</a></p></li>
@@ -415,13 +415,9 @@
 </div>
 <div class="section" id="overview">
 <h2><a class="toc-backref" href="#id1">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>Client libraries are the APIs that allow users to implement their ROS 2 code.
-Using client libraries, users gain access to ROS 2 concepts such as nodes, topics, services, etc.
-Client libraries come in a variety of programming languages so that users may write ROS 2 code in the language that is best-suited for their application.
-For example, you might prefer to write visualization tools in Python because it makes prototyping iterations faster, while for parts of your system that are concerned with efficiency, the nodes might be better implemented in C++.</p>
-<p>Nodes written using different client libraries are able to share messages with each other because all client libraries implement code generators that provide users with the capability to interact with ROS 2 interface files in the respective language.</p>
-<p>In addition to the language-specific communication tools, client libraries expose to users the core functionality that makes ROS &quot;ROS&quot;.
-For example, here is a list of functionality that can typically be accessed through a client library:</p>
+<p>客户端库是允许用户实现其 ROS 2 代码的 API。使用客户端库，用户可以访问 ROS 2 概念，如节点、主题、服务等。客户端库以多种编程语言提供，因此用户可以使用最适合其应用程序的语言编写 ROS 2 代码。例如，您可能更喜欢使用 Python 编写可视化工具，因为它可以加快原型设计的迭代速度，而对于与效率有关的系统的某些部分，最好使用 C++ 实现节点。</p>
+<p>使用不同客户端库编写的节点能够相互共享消息，因为所有客户端库都实现了代码生成器，为用户提供了与相应语言中的 ROS 2 接口文件交互的功能。</p>
+<p>除了特定语言的通信工具外，客户端库还向用户公开了使 ROS 成为“ROS”的核心功能。例如，以下是通常可以通过客户端库访问的功能列表：</p>
 <ul class="simple">
 <li><p>名称和命名空间</p></li>
 <li><p>时间（真实或模拟）</p></li>
@@ -433,16 +429,16 @@ For example, here is a list of functionality that can typically be accessed thro
 </div>
 <div class="section" id="supported-client-libraries">
 <h2><a class="toc-backref" href="#id2">支持的客户端库</a><a class="headerlink" href="#supported-client-libraries" title="永久链接至标题"></a></h2>
-<p>The C++ client library (<code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>) and the Python client library (<code class="docutils literal notranslate"><span class="pre">rclpy</span></code>) are both client libraries which utilize common functionality in <code class="docutils literal notranslate"><span class="pre">rcl</span></code>.</p>
+<p>C++客户端库（<code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>）和Python客户端库（<code class="docutils literal notranslate"><span class="pre">rclpy</span></code>）都是使用``rcl``中通用功能的客户端库。</p>
 <div class="section" id="the-rclcpp-package">
-<h3><a class="toc-backref" href="#id3">The <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> package</a><a class="headerlink" href="#the-rclcpp-package" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id3"><a href="#id1"><span class="problematic" id="id2">``</span></a>rclcpp``包</a><a class="headerlink" href="#the-rclcpp-package" title="永久链接至标题"></a></h3>
 <p>ROS C++客户端库（<code class="docutils literal notranslate"><span class="pre">rclcpp</span></code>）是用户界面，使用C++的接口，提供了所有ROS客户端功能，如创建节点、发布者和订阅者。<code class="docutils literal notranslate"><span class="pre">rclcpp``基于``rcl``和``rosidl</span></code> <a class="reference internal" href="../../Glossary.html#term-API"><span class="xref std std-term">API</span></a>，并且设计用于与``rosidl_generator_cpp``生成的C++消息一起使用。</p>
 <p><code class="docutils literal notranslate"><span class="pre">rclcpp``利用C++和C++17的所有特性，使接口尽可能易于使用，但由于它重用了``rcl``中的实现，因此能够与使用``rcl</span></code> <a href="#id1"><span class="problematic" id="id2">|</span></a>API|的其他客户端库保持一致的行为。</p>
 <p><code class="docutils literal notranslate"><span class="pre">rclcpp``仓库位于GitHub上的`ros2/rclcpp</span> <span class="pre">&lt;https://github.com/ros2/rclcpp&gt;`_，包含|package|</span> <span class="pre">``rclcpp</span></code>。生成的|API|文档在此处：</p>
 <p><a class="reference external" href="http://docs.ros.org/en/humble/p/rclcpp">api/rclcpp/index.html</a></p>
 </div>
 <div class="section" id="the-rclpy-package">
-<h3><a class="toc-backref" href="#id4">The <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> package</a><a class="headerlink" href="#the-rclpy-package" title="永久链接至标题"></a></h3>
+<h3><a class="toc-backref" href="#id4"><a href="#id1"><span class="problematic" id="id2">``</span></a>rclpy``包</a><a class="headerlink" href="#the-rclpy-package" title="永久链接至标题"></a></h3>
 <p>ROS 的 Python 客户端库（<code class="docutils literal notranslate"><span class="pre">rclpy</span></code>）是 C++ 客户端库的 Python 对应物。与 C++ 客户端库一样，<code class="docutils literal notranslate"><span class="pre">rclpy</span></code> 也基于 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> C API 进行实现。该接口提供了一种符合 Python 习惯用法的编程体验，使用本地的 Python 类型和模式，如列表和上下文对象。通过在实现中使用 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../../Glossary.html#term-API"><span class="xref std std-term">API</span></a>，它在功能和行为方面与其他客户端库保持一致。除了为 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 提供 Python 符合习惯用法的绑定和为每个消息提供 Python 类之外，Python 客户端库还负责执行模型，使用 <code class="docutils literal notranslate"><span class="pre">threading.Thread</span></code> 或类似方法来运行 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> <a class="reference internal" href="../../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 中的函数。</p>
 <p>与 C++ 类似，它为用户与每个 ROS 消息进行交互生成自定义的 Python 代码，但与 C++ 不同的是，它最终将本地的 Python 消息对象转换为 C 版本的消息。所有操作都在 Python 版本的消息上进行，直到需要将其传递到 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> 层，此时将其转换为纯 C 版本的消息，以便将其传递到 <code class="docutils literal notranslate"><span class="pre">rcl</span></code> C <a class="reference internal" href="../../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 中。在同一进程中的发布者和订阅者之间通信时，如果可能的话，会尽量避免进行 Python 的转换操作，以减少转换的次数。</p>
 <p><code class="docutils literal notranslate"><span class="pre">rclpy</span></code> 存储库位于 GitHub 上的 <a class="reference external" href="https://github.com/ros2/rclpy">ros2/rclpy</a>，包含 <a class="reference internal" href="../../Glossary.html#term-package"><span class="xref std std-term">package</span></a> <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>。生成的 <a class="reference internal" href="../../Glossary.html#term-API"><span class="xref std std-term">API</span></a> 文档在此处：</p>
@@ -468,10 +464,10 @@ For example, here is a list of functionality that can typically be accessed thro
 </div>
 </div>
 <div class="section" id="common-functionality-rcl">
-<h2><a class="toc-backref" href="#id6">Common functionality: <code class="docutils literal notranslate"><span class="pre">rcl</span></code></a><a class="headerlink" href="#common-functionality-rcl" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id6">通用功能：<code class="docutils literal notranslate"><span class="pre">rcl</span></code></a><a class="headerlink" href="#common-functionality-rcl" title="永久链接至标题"></a></h2>
 <p>客户端库中的大部分功能与客户端库的编程语言无关。例如，参数的行为和命名空间的逻辑在所有编程语言中应该是相同的。因此，客户端库不需要从头开始实现通用功能，而是利用一个通用的ROS客户端库（RCL）接口，该接口实现了与ROS概念无关的逻辑和行为。因此，客户端库只需要使用外部函数接口将通用功能封装在RCL中。这使得客户端库更加轻巧且易于开发。因此，通用的RCL功能通过C接口公开，因为C语言通常是客户端库最容易封装的语言。</p>
 <p>除了使客户端库变得轻量级之外，拥有通用核心的优势是不同语言之间的行为更加一致。如果对核心RCL中的逻辑/行为进行任何更改，例如命名空间，使用RCL的所有客户端库都将反映这些更改。此外，拥有通用核心意味着在修复错误时维护多个客户端库的工作量减少。</p>
-<p>The API documentation for <code class="docutils literal notranslate"><span class="pre">rcl</span></code> can be found <a class="reference external" href="https://docs.ros.org/en/humble/p/rcl/">here</a>.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>rcl``的API文档可以在此处找到：&lt;<a class="reference external" href="https://docs.ros.org/en/humble/p/rcl/">https://docs.ros.org/en/humble/p/rcl/</a>&gt;。</p>
 </div>
 <div class="section" id="language-specific-functionality">
 <h2><a class="toc-backref" href="#id7">特定于语言的功能</a><a class="headerlink" href="#language-specific-functionality" title="永久链接至标题"></a></h2>
