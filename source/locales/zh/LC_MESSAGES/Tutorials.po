@@ -4327,107 +4327,107 @@ msgstr "在重置时，Webots 会关闭所有驱动节点。因此，要在重�
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:64
 msgid "Reset Handler for Multiple Nodes (No Shutdown Required)"
-msgstr "Reset Handler for Multiple Nodes (No Shutdown Required)@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16582>`_ "}@"
+msgstr "多节点的重置处理程序（无需关闭节点）@{"calib_text": " `[16582] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16582>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:66
 msgid "If you have some other nodes that have to be started along with the driver node (e.g. ``ros2_control`` nodes), then you can use the ``OnProcessExit`` event handler:"
-msgstr "If you have some other nodes that have to be started along with the driver node (e.g. ``ros2_control`` nodes), then you can use the ``OnProcessExit`` event handler:@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16583>`_ "}@"
+msgstr "如果还有其他必须与驱动节点一起启动的节点（例如 ``ros2_control`` 节点），则可以使用 ``OnProcessExit`` 事件处理程序：@{"calib_text": " `[16583] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16583>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:109
 msgid "It is not possible to use the ``respawn`` property on the ``ros2_control`` node, as the spawner exits during launch time and not when the simulation is reset. Instead we should declare a list of nodes in a function (e.g. ``get_ros2_control_spawners``). The nodes of this list are started along other nodes when executing the launch file. With the ``reset_handler``, the function is also declared as action to start when the ``robot_driver`` node exits, which corresponds to the moment when the simulation is reset in the Webots interface. The ``robot_driver`` node still has the ``respawn`` property set to ``True``, so that it gets restarted along with ``ros2_control`` nodes."
-msgstr "It is not possible to use the ``respawn`` property on the ``ros2_control`` node, as the spawner exits during launch time and not when the simulation is reset. Instead we should declare a list of nodes in a function (e.g. ``get_ros2_control_spawners``). The nodes of this list are started along other nodes when executing the launch file. With the ``reset_handler``, the function is also declared as action to start when the ``robot_driver`` node exits, which corresponds to the moment when the simulation is reset in the Webots interface. The ``robot_driver`` node still has the ``respawn`` property set to ``True``, so that it gets restarted along with ``ros2_control`` nodes.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16584>`_ "}@"
+msgstr "不能在 ``ros2_control`` 节点上使用 ``respawn`` 属性，因为生成器在启动时退出，而不是在重置仿真时退出。相反，我们应该在一个函数中声明节点列表（例如 ``get_ros2_control_spawners``）。此列表中的节点会在执行启动文件时与其他节点一起启动。通过 ``reset_handler``，该函数还被声明为在 ``robot_driver`` 节点退出时启动的操作，这对应于在 Webots 界面中重置仿真的时刻。``robot_driver`` 节点仍然将 ``respawn`` 属性设置为 ``True``，以便在 ``ros2_control`` 节点一起重新启动。@{"calib_text": " `[16584] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16584>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:116
 msgid "Reset Handler Requiring Node Shutdown"
-msgstr "Reset Handler Requiring Node Shutdown@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16585>`_ "}@"
+msgstr "需要节点关闭的重置处理程序@{"calib_text": " `[16585] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16585>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:118
 msgid "With the current ROS 2 launch API, there is no way to make the reset work in launch files where nodes need to be shutdown before the restart (e.g. ``Nav2`` or ``RViz``). The reason is that currently, ROS 2 doesn't allow to shutdown specific nodes from a launch file. There is a solution, but it requires to manually restart nodes after pushing the reset button."
-msgstr "With the current ROS 2 launch API, there is no way to make the reset work in launch files where nodes need to be shutdown before the restart (e.g. ``Nav2`` or ``RViz``). The reason is that currently, ROS 2 doesn't allow to shutdown specific nodes from a launch file. There is a solution, but it requires to manually restart nodes after pushing the reset button.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16586>`_ "}@"
+msgstr "根据当前的 ROS 2 启动 API，在需要在重新启动之前关闭节点的启动文件中，无法使重置工作（例如 ``Nav2`` 或 ``RViz``）。原因是目前，ROS 2 不允许从启动文件中关闭特定节点。有一个解决方案，但需要在按下重置按钮后手动重新启动节点。@{"calib_text": " `[16586] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16586>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:122
 msgid "Webots needs to be started in a specific launch file without other nodes."
-msgstr "Webots needs to be started in a specific launch file without other nodes.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16587>`_ "}@"
+msgstr "Webots 需要在一个特定的启动文件中启动，不包含其他节点。@{"calib_text": " `[16587] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16587>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:135
 msgid "A second launch file must be started from another process. This launch file contains all other nodes, including robot controllers/plugins, Navigation2 nodes, RViz, state publishers, etc."
-msgstr "A second launch file must be started from another process. This launch file contains all other nodes, including robot controllers/plugins, Navigation2 nodes, RViz, state publishers, etc.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16588>`_ "}@"
+msgstr "必须从另一个进程中启动第二个启动文件。该启动文件包含所有其他节点，包括机器人控制器/插件、Navigation2 节点、RViz、状态发布者等等。@{"calib_text": " `[16588] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16588>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:185
 msgid "The second launch file contains a handler that triggers a shutdown event when the driver node exits (which is the case when the simulation is reset). This second launch file must be manually restarted from the command line after pressing the reset button."
-msgstr "The second launch file contains a handler that triggers a shutdown event when the driver node exits (which is the case when the simulation is reset). This second launch file must be manually restarted from the command line after pressing the reset button.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16589>`_ "}@"
+msgstr "第二个启动文件包含一个处理程序，当驱动节点退出时触发关闭事件（这是仿真重置时的情况）。必须在按下重置按钮后从命令行手动重新启动这个第二个启动文件。@{"calib_text": " `[16589] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16589>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.rst:191
 msgid "In this tutorial, you learned how to implement a reset handler in a robot simulation using Webots. The reset handler allows you to restart specific nodes or perform additional actions when the reset button in Webots is pressed. You explored different approaches based on the complexity of your simulation and the requirements of your nodes."
-msgstr "In this tutorial, you learned how to implement a reset handler in a robot simulation using Webots. The reset handler allows you to restart specific nodes or perform additional actions when the reset button in Webots is pressed. You explored different approaches based on the complexity of your simulation and the requirements of your nodes.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16590>`_ "}@"
+msgstr "在本教程中，您学习了如何在使用 Webots 的机器人仿真中实现重置处理程序。重置处理程序允许您在按下 Webots 中的重置按钮时重新启动特定节点或执行其他操作。根据仿真的复杂性和节点的要求，您探索了不同的方法。@{"calib_text": " `[16590] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16590>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:2
 msgid "The Ros2Supervisor Node"
-msgstr "The Ros2Supervisor Node@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16591>`_ "}@"
+msgstr "Ros2Supervisor 节点@{"calib_text": " `[16591] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16591>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:4
 msgid "**Goal:** Extend the interface with a default Supervisor robot, named ``Ros2Supervisor``."
-msgstr "**Goal:** Extend the interface with a default Supervisor robot, named ``Ros2Supervisor``.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16592>`_ "}@"
+msgstr "**目标：** 扩展接口以包括默认的 Supervisor 机器人，名称为 ``Ros2Supervisor``。@{"calib_text": " `[16592] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16592>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:17
 msgid "In this tutorial, you will learn how to enable the ``Ros2Supervisor`` node which enhances the interface by creating additional services and topics to interact with the simulation. You can, for example, record animations or spawn Webots nodes directly from the ROS 2 interface while the simulation is running. These instructions list in details the current implemented features and how to use them."
-msgstr "In this tutorial, you will learn how to enable the ``Ros2Supervisor`` node which enhances the interface by creating additional services and topics to interact with the simulation. You can, for example, record animations or spawn Webots nodes directly from the ROS 2 interface while the simulation is running. These instructions list in details the current implemented features and how to use them.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16593>`_ "}@"
+msgstr "在本教程中，您将学习如何启用 ``Ros2Supervisor`` 节点，通过创建额外的服务和主题来增强接口，以便在仿真运行时与仿真进行交互。例如，您可以在仿真运行时从 ROS 2 接口中记录动画或直接生成 Webots 节点。这些说明详细列出了当前实现的功能以及如何使用它们。@{"calib_text": " `[16593] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16593>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:31
 msgid "The ``Ros2Supervisor``"
-msgstr "The ``Ros2Supervisor``@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16594>`_ "}@"
+msgstr "``Ros2Supervisor``@{"calib_text": " `[16594] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16594>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:33
 msgid "The ``Ros2Supervisor`` is made of two main parts:"
-msgstr "The ``Ros2Supervisor`` is made of two main parts:@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16595>`_ "}@"
+msgstr "``Ros2Supervisor`` 主要由两个主要部分组成：@{"calib_text": " `[16595] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16595>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:35
 msgid "A Webots Robot node added to the simulation world. Its ``supervisor`` field is set to TRUE."
-msgstr "A Webots Robot node added to the simulation world. Its ``supervisor`` field is set to TRUE.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16596>`_ "}@"
+msgstr "在仿真世界中添加了一个 Webots 机器人节点。其 ``supervisor`` 字段设置为 TRUE。@{"calib_text": " `[16596] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16596>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:36
 msgid "A ROS 2 node that connects to the Webots Robot as an extern controller (in a similar way to your own robot plugin)."
-msgstr "A ROS 2 node that connects to the Webots Robot as an extern controller (in a similar way to your own robot plugin).@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16597>`_ "}@"
+msgstr "一个 ROS 2 节点，以外部控制器的方式连接到 Webots 机器人（类似于您自己的机器人插件）。@{"calib_text": " `[16597] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16597>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:38
 msgid "The ROS 2 node acts as a controller that calls Supervisor API functions to control or interact with the simulation world. User interactions with the ROS 2 node are mainly performed through services and topics."
-msgstr "The ROS 2 node acts as a controller that calls Supervisor API functions to control or interact with the simulation world. User interactions with the ROS 2 node are mainly performed through services and topics.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16598>`_ "}@"
+msgstr "ROS 2 节点充当控制器，调用 Supervisor API 函数来控制或与仿真世界进行交互。用户与 ROS 2 节点的交互主要通过服务和主题进行。@{"calib_text": " `[16598] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16598>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:41
 msgid "These nodes can be automatically created at the Webots launch using the ``ros2_supervisor`` parameter in the ``WebotsLauncher``."
-msgstr "These nodes can be automatically created at the Webots launch using the ``ros2_supervisor`` parameter in the ``WebotsLauncher``.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16599>`_ "}@"
+msgstr "可以使用 ``WebotsLauncher`` 中的 ``ros2_supervisor`` 参数在 Webots 启动时自动创建这些节点。@{"calib_text": " `[16599] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16599>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:51
 msgid "The ``webots._supervisor`` object must also be included in the ``LaunchDescription`` returned by the launch file."
-msgstr "The ``webots._supervisor`` object must also be included in the ``LaunchDescription`` returned by the launch file.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16600>`_ "}@"
+msgstr "``LaunchDescription`` 中必须包括 ``webots._supervisor`` 对象，该对象由启动文件返回。@{"calib_text": " `[16600] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16600>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:70
 msgid "More information about launch files for ``webots_ros2`` projects can be found in :doc:`./Setting-Up-Simulation-Webots-Basic`."
-msgstr "More information about launch files for ``webots_ros2`` projects can be found in :doc:`./Setting-Up-Simulation-Webots-Basic`.@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16601>`_ "}@"
+msgstr "有关 ``webots_ros2`` 项目的启动文件的更多信息，请参阅 :doc:`./Setting-Up-Simulation-Webots-Basic`。@{"calib_text": " `[16601] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16601>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:73
 msgid "Clock topic"
-msgstr "Clock topic@{"calib_text": " `[\u6821\u51c6] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16602>`_ "}@"
+msgstr "时钟主题@{"calib_text": " `[16602] <http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&msgid=16602>`_ "}@"
 
 
 #: ../../source/Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.rst:75
