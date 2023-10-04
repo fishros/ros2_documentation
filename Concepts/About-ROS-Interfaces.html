@@ -2,8 +2,14 @@
 <html class="writer-html5" lang="zh" >
 <head>
   <meta charset="utf-8" />
+            <link rel="canonical" href="https://docs.ros.org/en/humble/Basic/About-Interfaces.html" />
+            <meta http-equiv="refresh" content="0; url=Basic/About-Interfaces.html" />
+            <script>
+                window.location.href = 'Basic/About-Interfaces.html';
+            </script>
+        
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>关于 ROS 2 接口 [7285] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>About-ROS-Interfaces &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -21,11 +27,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
+        <script src="../_static/tabs.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="关于 ROS 2 中的参数 [7249]" href="About-ROS-2-Parameters.html" />
-    <link rel="prev" title="关于ROS 2客户端库 [7206]" href="About-ROS-2-Client-Libraries.html" /> 
+    <link rel="search" title="搜索" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,11 +49,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">安装 []</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian packages) [校准]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Installation/RHEL-Install-RPMs.html">RHEL (RPM packages) [校准]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Installation/Alternatives.html">替代方案 [7555]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
@@ -81,10 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Humble-Hawksbill-Complete-Changelog.html">Humble Hawksbill 变更日志 [10940]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/Development.html">开发分发版 [8317]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (<code class="docutils literal notranslate"><span class="pre">jazzy</span></code>) [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
@@ -92,6 +96,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../Releases/Galactic-Geochelone-Complete-Changelog.html">Galactic Geochelone更改日志 [8321]</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Eloquent-Elusor.html">Eloquent Elusor（<code class="docutils literal notranslate"><span class="pre">eloquent</span></code>） [14501]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Dashing-Diademata.html">Dashing Diademata（<code class="docutils literal notranslate"><span class="pre">dashing</span></code>） [14311]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Releases/Release-Crystal-Clemmys.html">Crystal Clemmys (<code class="docutils literal notranslate"><span class="pre">crystal</span></code>) [14232]</a></li>
@@ -137,7 +142,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Tutorials/Intermediate.html">中级 [5283]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
@@ -193,6 +198,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Reading-From-A-Bag-File-CPP.html">Reading from a bag file (C++) [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
@@ -200,6 +206,8 @@
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Installation-MacOS.html">安装（macOS） [3661]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">设置机器人仿真（基础） [3801]</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">设置机器人模拟（高级） [3764]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Supervisor.html">The Ros2Supervisor Node [校准]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Webots/Simulation-Reset-Handler.html">Setting up a Reset Handler [校准]</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html">Gazebo [3656]</a><ul>
@@ -244,10 +252,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2 [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Packages.html">Migrating Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Interfaces.html">Migrating Interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.html">Migrating C++ Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.html">Migrating Python Packages [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html">Migrating Launch Files [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Parameters.html">Migrating Parameters [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.html">Migrating Scripts [校准]</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
@@ -283,27 +299,40 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Concepts.html">概念 [6621]</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">关于 ROS 2 接口 [7285]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Executors.html">执行器 [6909]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Composition.html">关于组合 [6800]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Security.html">关于ROS 2安全性 [7411]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Tf2.html">关于tf2 [7431]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Build-System.html">关于构建系统 [6657]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Concepts.html">概念 [校准]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic.html">Basic Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Nodes.html">节点 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Discovery.html">发现 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Interfaces.html">Interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Topics.html">主题 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Services.html">服务 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Actions.html">动作 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Parameters.html">参数 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Command-Line-Tools.html">使用命令行工具进行内省 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Launch.html">启动 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Basic/About-Client-Libraries.html">Client libraries [校准]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Intermediate.html">Intermediate Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Logging.html">Logging and logger configuration [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Executors.html">执行器 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Topic-Statistics.html">Topic statistics [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Composition.html">Composition [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Cross-Compilation.html">交叉编译 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Security.html">ROS 2 Security [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Intermediate/About-Tf2.html">Tf2 [校准]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Advanced.html">Advanced Concepts [校准]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Build-System.html">The build system [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations [校准]</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Contact.html">联系 [7468]</a></li>
@@ -312,10 +341,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../The-ROS2-Project/Contributing/Migration-Guide-Python.html">ROS 1的Python迁移指南 [2222]</a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Build-Farms.html">ROS构建农场 [1367]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Windows-Tips-and-Tricks.html">Windows提示和技巧 [2323]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Contributing/Contributing-To-ROS-2-Documentation.html">为ROS 2文档做出贡献 [1572]</a></li>
@@ -328,6 +353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../The-ROS2-Project/Governance.html">项目治理 [2505]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Charter.html">ROS 2 技术指导委员会章程 [2628]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/ROS2-TSC-Intake-process.html">ROS 2 TSC申请者招募流程 [2717]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/Working-Groups.html">About Working Groups [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../The-ROS2-Project/Governance/How-To-Start-A-Community-Working-Group.html">如何启动社区工作组 [2601]</a></li>
 </ul>
 </li>
@@ -358,10 +384,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../Concepts.html">概念 [6621]</a> &raquo;</li>
-      <li>关于 ROS 2 接口 [7285]</li>
+      <li>About-ROS-Interfaces</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/About-ROS-Interfaces.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
   </ul>
   <hr/>
@@ -369,316 +393,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-
-  <div class="section" id="about-ros-2-interfaces">
-<span id="interfaceconcept"></span><h1>关于 ROS 2 接口 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7285">[7285]</a><a class="headerlink" href="#about-ros-2-interfaces" title="永久链接至标题"></a></h1>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=6709">[]</a></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#background" id="id1">1. 背景 [7286]</a></p></li>
-<li><p><a class="reference internal" href="#message-description-specification" id="id2">2. 消息描述规范 [7292]</a></p>
-<ul>
-<li><p><a class="reference internal" href="#fields" id="id3">2.1 字段 [7294]</a></p>
-<ul>
-<li><p><a class="reference internal" href="#field-types" id="id4">2.1.1 字段类型 [7297]</a></p></li>
-<li><p><a class="reference internal" href="#field-names" id="id5">2.1.2 字段名称 [7362]</a></p></li>
-<li><p><a class="reference internal" href="#field-default-value" id="id6">2.1.3 字段默认值 [7364]</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#constants" id="id7">2.2 常量 [7370]</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#service-description-specification" id="id8">3. 服务描述规范 [7373]</a></p></li>
-<li><p><a class="reference internal" href="#new-features-in-ros-2-interfaces" id="id9">4. ROS 2接口中的新功能 [7379]</a></p></li>
-</ul>
-</div>
-<div class="section" id="background">
-<h2>1. 背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7286">[7286]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>ROS 应用通常通过三种类型的接口进行通信：消息（messages）、服务（services）和动作（actions）。ROS 2 使用一种简化的描述语言，即接口定义语言（IDL），来描述这些接口。这种描述使得 ROS 工具能够自动为接口类型在多种目标语言中生成源代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7287">[7287]</a></p>
-<p>在本文档中，我们将描述支持的类型： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7288">[7288]</a></p>
-<ul class="simple">
-<li><p>msg: <code class="docutils literal notranslate"><span class="pre">.msg</span></code> 文件是描述 ROS 消息字段的简单文本文件。它们用于在不同语言中生成消息的源代码。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7289">[7289]</a></p></li>
-<li><p>srv: <code class="docutils literal notranslate"><span class="pre">.srv</span></code> 文件描述一个服务。它由两部分组成：请求和响应。请求和响应都是消息声明。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7290">[7290]</a></p></li>
-<li><p>action: <code class="docutils literal notranslate"><span class="pre">.action</span></code> 文件描述一个动作。它由三部分组成：目标、结果和反馈。每个部分本身都是消息声明。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7291">[7291]</a></p></li>
-</ul>
-</div>
-<div class="section" id="message-description-specification">
-<h2>2. 消息描述规范 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7292">[7292]</a><a class="headerlink" href="#message-description-specification" title="永久链接至标题"></a></h2>
-<p>ROS包的``msg/<code class="docutils literal notranslate"><span class="pre">目录中的</span></code>.msg``文件描述和定义了消息。<a href="#id1"><span class="problematic" id="id2">``</span></a>.msg``文件由两个部分组成：字段和常量。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7293">[7293]</a></p>
-<div class="section" id="fields">
-<h3>2.1 字段 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7294">[7294]</a><a class="headerlink" href="#fields" title="永久链接至标题"></a></h3>
-<p>每个字段由类型和名称组成，用空格分隔，例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7295">[7295]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fieldtype1 fieldname1
-fieldtype2 fieldname2
-fieldtype3 fieldname3
-</pre></div>
-</div>
-<p>例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7296">[7296]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int32 my_int
-string my_string
-</pre></div>
-</div>
-<div class="section" id="field-types">
-<h4>2.1.1 字段类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7297">[7297]</a><a class="headerlink" href="#field-types" title="永久链接至标题"></a></h4>
-<p>字段类型可以是： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7298">[7298]</a></p>
-<ul class="simple">
-<li><p>内置类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7299">[7299]</a></p></li>
-<li><p>独立定义的消息描述的名称，例如 &quot;geometry_msgs/PoseStamped&quot; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7300">[7300]</a></p></li>
-</ul>
-<p><em>当前支持的内置类型:</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7301">[7301]</a></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>类型名称 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7302">[7302]</a></p></th>
-<th class="head"><p><a class="reference external" href="https://design.ros2.org/articles/generated_interfaces_cpp.html">C++</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7303">[7303]</a></p></th>
-<th class="head"><p><a class="reference external" href="https://design.ros2.org/articles/generated_interfaces_python.html">Python</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7304">[7304]</a></p></th>
-<th class="head"><p><a class="reference external" href="https://design.ros2.org/articles/mapping_dds_types.html">DDS 类型</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7305">[7305]</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>bool <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7306">[7306]</a></p></td>
-<td><p>bool <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7306">[7306]</a></p></td>
-<td><p>builtins.bool <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7307">[7307]</a></p></td>
-<td><p>boolean <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7308">[7308]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>byte <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7309">[7309]</a></p></td>
-<td><p>uint8_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7310">[7310]</a></p></td>
-<td><p>内建字节串* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7311">[7311]</a></p></td>
-<td><p>八位字节 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7312">[7312]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>字符 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7313">[7313]</a></p></td>
-<td><p>字符 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7313">[7313]</a></p></td>
-<td><p>内建字符串* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7314">[7314]</a></p></td>
-<td><p>字符 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7313">[7313]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>单精度浮点数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7315">[7315]</a></p></td>
-<td><p>浮点数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7316">[7316]</a></p></td>
-<td><p>内置浮点型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7317">[7317]</a></p></td>
-<td><p>浮点数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7316">[7316]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>float64 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7318">[7318]</a></p></td>
-<td><p>双精度 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7319">[7319]</a></p></td>
-<td><p>内置浮点型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7317">[7317]</a></p></td>
-<td><p>双精度 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7319">[7319]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>int8 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7320">[7320]</a></p></td>
-<td><p>int8_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7321">[7321]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>八位字节 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7312">[7312]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>无符号8位整数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7323">[7323]</a></p></td>
-<td><p>uint8_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7310">[7310]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>八位字节 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7312">[7312]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>有符号16位整数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7324">[7324]</a></p></td>
-<td><p>有符号16位整数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7325">[7325]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>短整数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7326">[7326]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>无符号16位整数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7327">[7327]</a></p></td>
-<td><p>无符号16位整数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7328">[7328]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>无符号短整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7329">[7329]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>32位整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7330">[7330]</a></p></td>
-<td><p>int32_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7331">[7331]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>长整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7332">[7332]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>无符号32位整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7333">[7333]</a></p></td>
-<td><p>uint32_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7334">[7334]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>无符号长整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7335">[7335]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>64位整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7336">[7336]</a></p></td>
-<td><p>int64_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7337">[7337]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>长长整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7338">[7338]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>无符号64位整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7339">[7339]</a></p></td>
-<td><p>uint64_t <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7340">[7340]</a></p></td>
-<td><p>内置整型* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7322">[7322]</a></p></td>
-<td><p>无符号长长整型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7341">[7341]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7342">[7342]</a></p></td>
-<td><p>std::字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7343">[7343]</a></p></td>
-<td><p>内建.字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7344">[7344]</a></p></td>
-<td><p>字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7342">[7342]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>宽字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7345">[7345]</a></p></td>
-<td><p>std::u16字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7346">[7346]</a></p></td>
-<td><p>内建.字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7344">[7344]</a></p></td>
-<td><p>宽字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7345">[7345]</a></p></td>
-</tr>
-</tbody>
-</table>
-<p><em>每个内置类型都可以用来定义数组:</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7347">[7347]</a></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>类型名称 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7302">[7302]</a></p></th>
-<th class="head"><p><a class="reference external" href="https://design.ros2.org/articles/generated_interfaces_cpp.html">C++</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7303">[7303]</a></p></th>
-<th class="head"><p><a class="reference external" href="https://design.ros2.org/articles/generated_interfaces_python.html">Python</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7304">[7304]</a></p></th>
-<th class="head"><p><a class="reference external" href="https://design.ros2.org/articles/mapping_dds_types.html">DDS 类型</a> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7305">[7305]</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>静态数组 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7348">[7348]</a></p></td>
-<td><p>std::array&lt;T, N&gt; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7349">[7349]</a></p></td>
-<td><p>内置类型列表* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7350">[7350]</a></p></td>
-<td><p>T[N] <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7351">[7351]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>无界动态数组 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7352">[7352]</a></p></td>
-<td><p>std::vector <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7353">[7353]</a></p></td>
-<td><p>builtins.list <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7354">[7354]</a></p></td>
-<td><p>sequence <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7355">[7355]</a></p></td>
-</tr>
-<tr class="row-even"><td><p>bounded dynamic array <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7356">[7356]</a></p></td>
-<td><p>custom_class&lt;T, N&gt; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7357">[7357]</a></p></td>
-<td><p>内置类型列表* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7350">[7350]</a></p></td>
-<td><p>sequence&lt;T, N&gt; <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7358">[7358]</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>有界字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7359">[7359]</a></p></td>
-<td><p>std::字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7343">[7343]</a></p></td>
-<td><p>内建字符串* <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7314">[7314]</a></p></td>
-<td><p>字符串 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7342">[7342]</a></p></td>
-</tr>
-</tbody>
-</table>
-<p>所有比它们的ROS定义更宽松的类型都通过软件强制执行范围和长度上的ROS约束 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7360">[7360]</a></p>
-<p><em>使用数组和有界类型的消息定义示例:</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7361">[7361]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int32<span class="o">[]</span> unbounded_integer_array
-int32<span class="o">[</span><span class="m">5</span><span class="o">]</span> five_integers_array
-int32<span class="o">[</span>&lt;<span class="o">=</span><span class="m">5</span><span class="o">]</span> up_to_five_integers_array
-
-string string_of_unbounded_size
-string&lt;<span class="o">=</span><span class="m">10</span> up_to_ten_characters_string
-
-string<span class="o">[</span>&lt;<span class="o">=</span><span class="m">5</span><span class="o">]</span> up_to_five_unbounded_strings
-string&lt;<span class="o">=</span><span class="m">10</span><span class="o">[]</span> unbounded_array_of_strings_up_to_ten_characters_each
-string&lt;<span class="o">=</span><span class="m">10</span><span class="o">[</span>&lt;<span class="o">=</span><span class="m">5</span><span class="o">]</span> up_to_five_strings_up_to_ten_characters_each
-</pre></div>
-</div>
-</div>
-<div class="section" id="field-names">
-<h4>2.1.2 字段名称 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7362">[7362]</a><a class="headerlink" href="#field-names" title="永久链接至标题"></a></h4>
-<p>字段名称必须是小写字母数字字符，用下划线分隔单词。它们必须以字母字符开头，不能以下划线结尾，也不能有两个连续的下划线。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7363">[7363]</a></p>
-</div>
-<div class="section" id="field-default-value">
-<h4>2.1.3 字段默认值 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7364">[7364]</a><a class="headerlink" href="#field-default-value" title="永久链接至标题"></a></h4>
-<p>消息类型中的任何字段都可以设置默认值。目前不支持为字符串数组和复杂类型（即不在上面的内置类型表中的类型，适用于所有嵌套消息）设置默认值。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7365">[7365]</a></p>
-<p>通过在字段定义行中添加第三个元素来定义默认值，例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7366">[7366]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fieldtype fieldname fielddefaultvalue
-</pre></div>
-</div>
-<p>例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7296">[7296]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uint8 x <span class="m">42</span>
-int16 y -2000
-string full_name <span class="s2">&quot;John Doe&quot;</span>
-int32<span class="o">[]</span> samples <span class="o">[</span>-200, -100, <span class="m">0</span>, <span class="m">100</span>, <span class="m">200</span><span class="o">]</span>
-</pre></div>
-</div>
-<p>注意： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7367">[7367]</a></p>
-<ul class="simple">
-<li><p>字符串值必须用单引号 <code class="docutils literal notranslate"><span class="pre">'</span></code> 或双引号 <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> 定义 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7368">[7368]</a></p></li>
-<li><p>当前字符串值不被转义 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7369">[7369]</a></p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="constants">
-<h3>2.2 常量 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7370">[7370]</a><a class="headerlink" href="#constants" title="永久链接至标题"></a></h3>
-<p>每个常量定义都类似于具有默认值的字段描述，但是这个值在程序中不能被改变。这个值的赋值通过等号 '=' 来表示，例如。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7371">[7371]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>constanttype <span class="nv">CONSTANTNAME</span><span class="o">=</span>constantvalue
-</pre></div>
-</div>
-<p>例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7296">[7296]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int32 <span class="nv">X</span><span class="o">=</span><span class="m">123</span>
-int32 <span class="nv">Y</span><span class="o">=</span>-123
-string <span class="nv">FOO</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span>
-string <span class="nv">EXAMPLE</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>常量名称必须是大写字母。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7372">[7372]</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="service-description-specification">
-<h2>3. 服务描述规范 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7373">[7373]</a><a class="headerlink" href="#service-description-specification" title="永久链接至标题"></a></h2>
-<p>服务在 ROS 包的 'srv/' 目录下的 '.srv' 文件中进行描述和定义。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7374">[7374]</a></p>
-<p>一个服务描述文件由请求和响应的消息类型组成，用 '---' 分隔。任何两个 '.msg' 文件通过 '---' 连接在一起都构成一个合法的服务描述。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7375">[7375]</a></p>
-<p>以下是一个非常简单的服务示例，它接收一个字符串并返回一个字符串： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7376">[7376]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>string str
----
-string str
-</pre></div>
-</div>
-<p>当然，我们可以变得更加复杂（如果你想引用同一包中的消息，不需要提及包名）： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7377">[7377]</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#request constants</span>
-int8 <span class="nv">FOO</span><span class="o">=</span><span class="m">1</span>
-int8 <span class="nv">BAR</span><span class="o">=</span><span class="m">2</span>
-<span class="c1">#request fields</span>
-int8 foobar
-another_pkg/AnotherMessage msg
----
-<span class="c1">#response constants</span>
-uint32 <span class="nv">SECRET</span><span class="o">=</span><span class="m">123456</span>
-<span class="c1">#response fields</span>
-another_pkg/YetAnotherMessage val
-CustomMessageDefinedInThisPackage value
-uint32 an_integer
-</pre></div>
-</div>
-<p>你不能在一个服务中嵌入另一个服务。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7378">[7378]</a></p>
-</div>
-<div class="section" id="new-features-in-ros-2-interfaces">
-<h2>4. ROS 2接口中的新功能 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7379">[7379]</a><a class="headerlink" href="#new-features-in-ros-2-interfaces" title="永久链接至标题"></a></h2>
-<p>ROS 2 IDL与 <a class="reference external" href="https://wiki.ros.org/msg">ROS 1 IDL</a> 密切相关。大多数现有的 ROS 1 <code class="docutils literal notranslate"><span class="pre">.msg</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.srv</span></code> 文件应该可以直接在 ROS 2 中使用。在 ROS 1 的现有功能集的基础上，ROS 2 IDL 还引入了一些新功能，包括： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7380">[7380]</a></p>
-<ul class="simple">
-<li><p><strong>有界数组</strong>：与 ROS 1 IDL 允许无界数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[]</span> <span class="pre">foo</span></code>）和固定大小数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[5]</span> <span class="pre">bar</span></code>）不同，ROS 2 IDL 进一步允许有界数组（例如，<code class="docutils literal notranslate"><span class="pre">int32[&lt;=5]</span> <span class="pre">bat</span></code>）。在某些情况下，能够对数组的大小设定上限是很重要的，而不必始终使用那么多的空间（例如，在需要预分配执行期间将使用的所有内存的实时系统中）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7381">[7381]</a></p></li>
-<li><p><strong>有界字符串</strong>：与 ROS 1 IDL 允许无界字符串（例如，<code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">foo</span></code>）不同，ROS 2 IDL 进一步允许有界字符串（例如，<code class="docutils literal notranslate"><span class="pre">string&lt;=5</span> <span class="pre">bar</span></code>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7382">[7382]</a></p></li>
-<li><p><strong>默认值</strong>: ROS 1 IDL 允许使用常量字段（例如，<code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X=123</span></code>），而 ROS 2 IDL 进一步允许指定默认值（例如，<code class="docutils literal notranslate"><span class="pre">int32</span> <span class="pre">X</span> <span class="pre">123</span></code>）。默认值在构造消息/服务对象时使用，并且可以通过对字段进行赋值来覆盖。您还可以为动作部分指定默认值。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=7383">[7383]</a></p></li>
-</ul>
-</div>
-</div>
-
-
-
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-          <a href="About-ROS-2-Client-Libraries.html" class="btn btn-neutral float-left" title="关于ROS 2客户端库 [7206]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-          <a href="About-ROS-2-Parameters.html" class="btn btn-neutral float-right" title="关于 ROS 2 中的参数 [7249]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-      </div>
-  
-    <hr/>
-  
-    <div role="contentinfo">
-      <p><a href="https://fishros.org.cn/forum/topic/160">点我加入鱼香ROS社区及交流群</a></p>
-    <p>如果你觉得翻译有误，可通过<a href="http://fishros.org/doc/ros2/humble/dev">校准版文档</a>帮助改进。</p>
-      <p>&#169; 版权所有 2023, Open Robotics.</p>
-    </div>
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-      <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-      由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-     
-  
-  </footer>
-  
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2023, Open Robotics.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
         </div>
       </div>
     </section>
