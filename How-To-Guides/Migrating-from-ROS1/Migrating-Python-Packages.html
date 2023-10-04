@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Python Packages &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移Python包 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -251,10 +251,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">迁移包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Python Packages</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移Python包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">迁移启动文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">Migrating Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">Migrating Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">迁移参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">迁移脚本</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a> &raquo;</li>
-      <li>Migrating Python Packages</li>
+      <li>迁移Python包</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Python-Packages.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,14 +394,14 @@
 
 
   <div class="section" id="migrating-python-packages">
-<h1>Migrating Python Packages<a class="headerlink" href="#migrating-python-packages" title="永久链接至标题"></a></h1>
+<h1>迁移Python包<a class="headerlink" href="#migrating-python-packages" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#build-tool" id="id1">构建工具</a></p></li>
 <li><p><a class="reference internal" href="#build-system" id="id2">构建系统</a></p>
 <ul>
-<li><p><a class="reference internal" href="#update-the-files-to-use-setup-py" id="id3">Update the files to use <em>setup.py</em></a></p></li>
+<li><p><a class="reference internal" href="#update-the-files-to-use-setup-py" id="id3">更新文件以使用 <em>setup.py</em></a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#update-source-code" id="id4">更新源代码</a></p>
@@ -422,10 +422,10 @@
 </div>
 <div class="section" id="build-system">
 <h2><a class="toc-backref" href="#id2">构建系统</a><a class="headerlink" href="#build-system" title="永久链接至标题"></a></h2>
-<p>For pure Python packages, ROS 2 uses the standard <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> installation mechanism familiar to Python developers.</p>
+<p>对于纯Python包，ROS 2使用标准的 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 安装机制，这对Python开发人员来说是熟悉的。</p>
 <div class="section" id="update-the-files-to-use-setup-py">
-<h3><a class="toc-backref" href="#id3">Update the files to use <em>setup.py</em></a><a class="headerlink" href="#update-the-files-to-use-setup-py" title="永久链接至标题"></a></h3>
-<p>If the ROS 1 package uses CMake only to invoke the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file and does not contain anything beside Python code (e.g. no messages, services, etc.) it should be converted into a pure Python package in ROS 2:</p>
+<h3><a class="toc-backref" href="#id3">更新文件以使用 <em>setup.py</em></a><a class="headerlink" href="#update-the-files-to-use-setup-py" title="永久链接至标题"></a></h3>
+<p>如果ROS 1包仅使用CMake来调用 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 文件，且除了Python代码外没有其他内容（例如没有消息、服务等），则应将其转换为ROS 2中的纯Python包：</p>
 <ul>
 <li><p>更新或在``package.xml``文件中添加构建类型：</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;export&gt;</span>

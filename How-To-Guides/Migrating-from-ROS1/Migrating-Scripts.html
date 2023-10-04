@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Scripts &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移脚本 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="使用 Python、XML 和 YAML 编写 ROS 2 启动文件" href="../Launch-file-different-formats.html" />
-    <link rel="prev" title="Migrating Parameters" href="Migrating-Parameters.html" /> 
+    <link rel="prev" title="迁移参数" href="Migrating-Parameters.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -251,10 +251,10 @@
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">迁移包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">迁移Python包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">迁移启动文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">Migrating Parameters</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">迁移参数</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移脚本</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件</a></li>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a> &raquo;</li>
-      <li>Migrating Scripts</li>
+      <li>迁移脚本</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Scripts.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,16 +394,16 @@
 
 
   <div class="section" id="migrating-scripts">
-<h1>Migrating Scripts<a class="headerlink" href="#migrating-scripts" title="永久链接至标题"></a></h1>
+<h1>迁移脚本<a class="headerlink" href="#migrating-scripts" title="永久链接至标题"></a></h1>
 <div class="section" id="ros-cli">
 <h2>ROS CLI<a class="headerlink" href="#ros-cli" title="永久链接至标题"></a></h2>
-<p>In ROS 1 there were individual commands for performing various actions, like <code class="docutils literal notranslate"><span class="pre">rosrun</span></code>, <code class="docutils literal notranslate"><span class="pre">rosparam</span></code>, etc.</p>
-<p>In ROS 2, there is a single top-level commands called <code class="docutils literal notranslate"><span class="pre">ros2</span></code>, and all of the actions are sub-commands of that, like <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code>, etc.</p>
+<p>在ROS 1中，有各种用于执行不同操作的单独命令，例如 <code class="docutils literal notranslate"><span class="pre">rosrun</span></code>、<code class="docutils literal notranslate"><span class="pre">rosparam</span></code> 等。</p>
+<p>在ROS 2中，存在一个称为 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 的顶级命令，所有操作都是该命令的子命令，例如 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span></code>、<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">param</span></code> 等。</p>
 </div>
 <div class="section" id="ros-cli-arguments">
 <h2>ROS CLI参数<a class="headerlink" href="#ros-cli-arguments" title="永久链接至标题"></a></h2>
-<p>In ROS 1, arguments to nodes were provided directly on the command-line.</p>
-<p>ROS 2 arguments should be scoped with <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> and a trailing <code class="docutils literal notranslate"><span class="pre">--</span></code> (the trailing double dash may be elided if no arguments follow it).</p>
+<p>在ROS 1中，节点的参数是直接在命令行上提供的。</p>
+<p>ROS 2参数应使用 <code class="docutils literal notranslate"><span class="pre">--ros-args</span></code> 和尾随的 <code class="docutils literal notranslate"><span class="pre">--</span></code> 进行作用范围限定（如果后面没有参数，尾随的双破折号可以省略）。</p>
 <p>重新映射名称与ROS 1类似，采用 <code class="docutils literal notranslate"><span class="pre">from:=to</span></code> 的形式，但必须在之前加上 <code class="docutils literal notranslate"><span class="pre">--remap``（或</span> <span class="pre">``-r</span></code>）标志。例如：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run some_package some_ros_executable --ros-args -r foo:<span class="o">=</span>bar
 </pre></div>
@@ -471,7 +471,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Migrating-Parameters.html" class="btn btn-neutral float-left" title="Migrating Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="Migrating-Parameters.html" class="btn btn-neutral float-left" title="迁移参数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="../Launch-file-different-formats.html" class="btn btn-neutral float-right" title="使用 Python、XML 和 YAML 编写 ROS 2 启动文件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
