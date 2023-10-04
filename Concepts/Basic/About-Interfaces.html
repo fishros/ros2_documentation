@@ -404,8 +404,8 @@
 <li><p><a class="reference internal" href="#fields" id="id3">字段 [17114]</a></p>
 <ul>
 <li><p><a class="reference internal" href="#field-types" id="id4">字段类型 [17117]</a></p></li>
-<li><p><a class="reference internal" href="#field-names" id="id5">Field names [校准]</a></p></li>
-<li><p><a class="reference internal" href="#field-default-value" id="id6">Field default value [校准]</a></p></li>
+<li><p><a class="reference internal" href="#field-names" id="id5">字段名称 [17182]</a></p></li>
+<li><p><a class="reference internal" href="#field-default-value" id="id6">字段默认值 [17184]</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#constants" id="id7">常量 [17189]</a></p></li>
@@ -596,11 +596,11 @@ string&lt;<span class="o">=</span><span class="m">10</span><span class="o">[</sp
 </div>
 </div>
 <div class="section" id="field-names">
-<h4>Field names <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17182">[校准]</a><a class="headerlink" href="#field-names" title="永久链接至标题"></a></h4>
+<h4>字段名称 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17182">[17182]</a><a class="headerlink" href="#field-names" title="永久链接至标题"></a></h4>
 <p>字段名称必须是小写字母数字字符，用下划线分隔单词。它们必须以字母字符开头，不能以下划线结尾，也不能有两个连续的下划线。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17183">[17183]</a></p>
 </div>
 <div class="section" id="field-default-value">
-<h4>Field default value <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17184">[校准]</a><a class="headerlink" href="#field-default-value" title="永久链接至标题"></a></h4>
+<h4>字段默认值 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17184">[17184]</a><a class="headerlink" href="#field-default-value" title="永久链接至标题"></a></h4>
 <p>消息类型中的任何字段都可以设置默认值。目前不支持为字符串数组和复杂类型（即不在上面的内置类型表中的类型，适用于所有嵌套消息）设置默认值。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17185">[17185]</a></p>
 <p>通过在字段定义行中添加第三个元素来定义默认值，例如： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17186">[17186]</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fieldtype fieldname fielddefaultvalue
@@ -643,7 +643,7 @@ string <span class="nv">EXAMPLE</span><span class="o">=</span><span class="s1">&
 </div>
 <div class="section" id="services">
 <h2>服务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17192">[17192]</a><a class="headerlink" href="#services" title="永久链接至标题"></a></h2>
-<p>Services are a request/response communication, where the client (requester) is waiting for the server (responder) to make a short computation and return a result. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17193">[校准]</a></p>
+<p>服务是一种请求/响应通信，客户端（请求方）等待服务器（响应方）进行简短计算并返回结果。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17193">[17193]</a></p>
 <p>服务在 ROS 包的 'srv/' 目录下的 '.srv' 文件中进行描述和定义。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17194">[17194]</a></p>
 <p>一个服务描述文件由请求和响应的消息类型组成，用 '---' 分隔。任何两个 '.msg' 文件通过 '---' 连接在一起都构成一个合法的服务描述。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17195">[17195]</a></p>
 <p>以下是一个非常简单的服务示例，它接收一个字符串并返回一个字符串： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17196">[17196]</a></p>
@@ -672,8 +672,8 @@ uint32 an_integer
 </div>
 <div class="section" id="actions">
 <h2>动作 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17002">[17002]</a><a class="headerlink" href="#actions" title="永久链接至标题"></a></h2>
-<p>Actions are a long-running request/response communication, where the action client (requester) is waiting for the action server (the responder) to take some action and return a result. In contrast to services, actions can be long-running (many seconds or minutes), provide feedback while they are happening, and can be interrupted. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17199">[校准]</a></p>
-<p>Action definitions have the following form: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17200">[校准]</a></p>
+<p>动作是一种长时间运行的请求/响应通信，动作客户端（请求方）等待动作服务器（响应方）执行某些操作并返回结果。与服务不同，动作可以是长时间运行的（数秒或数分钟），在执行过程中提供反馈，并可以中断。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17199">[17199]</a></p>
+<p>动作定义的形式如下： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17200">[17200]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">request_type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">request_fieldname</span><span class="o">&gt;</span>
 <span class="o">---</span>
 <span class="o">&lt;</span><span class="n">response_type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">response_fieldname</span><span class="o">&gt;</span>
@@ -681,10 +681,10 @@ uint32 an_integer
 <span class="o">&lt;</span><span class="n">feedback_type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">feedback_fieldname</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Like services, the request fields are before and the response fields are after the first triple-dash (<code class="docutils literal notranslate"><span class="pre">---</span></code>), respectively. There is also a third set of fields after the second triple-dash, which is the fields to be sent when sending feedback. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17201">[校准]</a></p>
-<p>There can be arbitrary numbers of request fields (including zero), arbitrary numbers of response fields (including zero), and arbitrary numbers of feedback fields (including zero). <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17202">[校准]</a></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">&lt;request_type&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;response_type&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;feedback_type&gt;</span></code> follow all of the same rules as the <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> for a message. The <code class="docutils literal notranslate"><span class="pre">&lt;request_fieldname&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;response_fieldname&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;feedback_fieldname&gt;</span></code> follow all of the same rules as the <code class="docutils literal notranslate"><span class="pre">&lt;fieldname&gt;</span></code> for a message. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17203">[校准]</a></p>
-<p>For instance, the <code class="docutils literal notranslate"><span class="pre">Fibonacci</span></code> action definition contains the following: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17204">[校准]</a></p>
+<p>与服务类似，请求字段位于第一个三短线（<code class="docutils literal notranslate"><span class="pre">---</span></code>）之前，响应字段位于其后。还有第二组字段位于第二个三短线之后，用于在发送反馈时发送的字段。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17201">[17201]</a></p>
+<p>可以有任意数量的请求字段（包括零个）、任意数量的响应字段（包括零个）以及任意数量的反馈字段（包括零个）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17202">[17202]</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;request_type&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;response_type&gt;``和``&lt;feedback_type&gt;``都遵循与消息的``&lt;type&gt;``相同的规则。``&lt;request_fieldname&gt;</span></code>, <a href="#id1"><span class="problematic" id="id2">``</span></a>&lt;response_fieldname&gt;``和``&lt;feedback_fieldname&gt;``都遵循与消息的``&lt;fieldname&gt;``相同的规则。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17203">[17203]</a></p>
+<p>例如，<a href="#id1"><span class="problematic" id="id2">``</span></a>Fibonacci``动作定义包含以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17204">[17204]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span> <span class="n">order</span>
 <span class="o">---</span>
 <span class="n">int32</span><span class="p">[]</span> <span class="n">sequence</span>
@@ -692,7 +692,7 @@ uint32 an_integer
 <span class="n">int32</span><span class="p">[]</span> <span class="n">sequence</span>
 </pre></div>
 </div>
-<p>This is an action definition where the action client is sending a single <code class="docutils literal notranslate"><span class="pre">int32</span></code> field representing the number of Fibonacci steps to take, and expecting the action server to produce an array of <code class="docutils literal notranslate"><span class="pre">int32</span></code> containing the complete steps. Along the way, the action server may also provide an intermediate array of <code class="docutils literal notranslate"><span class="pre">int32</span></code> contains the steps accomplished up until a certain point. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17205">[校准]</a></p>
+<p>这是一个动作定义，其中动作客户端发送一个表示要执行的Fibonacci步数的``int32``字段，并期望动作服务器生成包含所有步骤的``int32``数组。在执行过程中，动作服务器还可以提供包含截至某一点的已完成步骤的中间``int32``数组。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17205">[17205]</a></p>
 </div>
 </div>
 
