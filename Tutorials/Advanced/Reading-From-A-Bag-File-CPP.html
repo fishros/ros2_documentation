@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reading from a bag file (C++) [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>从 bag 文件中读取数据（C++） [16419] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -194,7 +194,7 @@
 <li class="toctree-l3"><a class="reference internal" href="FastDDS-Configuration.html">发挥Fast DDS中间件的潜力 [社区贡献] [3198]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Recording-A-Bag-From-Your-Own-Node-CPP.html">从节点（C++）录制一个包 [3275]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Recording-A-Bag-From-Your-Own-Node-Py.html">从节点录制包（Python） [3355]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Reading from a bag file (C++) [校准]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">从 bag 文件中读取数据（C++） [16419]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Simulators/Simulation-Main.html">模拟器 [3658]</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Simulators/Webots/Simulation-Webots.html">Webots [3886]</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="Simulators/Webots/Installation-Ubuntu.html">安装（Ubuntu） [3716]</a></li>
@@ -382,7 +382,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Tutorials.html">教程 [3059]</a> &raquo;</li>
           <li><a href="../Advanced.html">高级 [3065]</a> &raquo;</li>
-      <li>Reading from a bag file (C++) [校准]</li>
+      <li>从 bag 文件中读取数据（C++） [16419]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Tutorials/Advanced/Reading-From-A-Bag-File-CPP.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -395,8 +395,8 @@
 
 
   <div class="section" id="reading-from-a-bag-file-c">
-<h1>Reading from a bag file (C++) <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16419">[校准]</a><a class="headerlink" href="#reading-from-a-bag-file-c" title="永久链接至标题"></a></h1>
-<p><strong>Goal:</strong> Read data from a bag without using the CLI. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16420">[校准]</a></p>
+<h1>从 bag 文件中读取数据（C++） <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16419">[16419]</a><a class="headerlink" href="#reading-from-a-bag-file-c" title="永久链接至标题"></a></h1>
+<p><strong>目标：</strong> 在不使用 CLI 的情况下从 bag 中读取数据。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16420">[16420]</a></p>
 <p><strong>教程级别：</strong>  高级 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16408">[16408]</a></p>
 <p><strong>时间:</strong> 10分钟 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16421">[16421]</a></p>
 <div class="contents local topic" id="contents">
@@ -406,7 +406,7 @@
 <li><p><a class="reference internal" href="#prerequisites" id="id2">先决条件 [16411]</a></p></li>
 <li><p><a class="reference internal" href="#tasks" id="id3">任务 [16427]</a></p>
 <ul>
-<li><p><a class="reference internal" href="#create-a-package" id="id4">1 Create a Package [校准]</a></p></li>
+<li><p><a class="reference internal" href="#create-a-package" id="id4">1 创建一个包 [16428]</a></p></li>
 <li><p><a class="reference internal" href="#write-the-c-reader" id="id5">2 Write the C++ Reader [校准]</a></p></li>
 <li><p><a class="reference internal" href="#build-and-run" id="id6">3. 构建和运行 [16449]</a></p></li>
 </ul>
@@ -416,7 +416,7 @@
 </div>
 <div class="section" id="background">
 <h2>背景 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16410">[16410]</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> doesn't just provide the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> command line tool. It also provides a C++ API for reading from and writing to a bag from your own source code. This allows you to read the contents from a bag without having to play the bag, which can sometimes be useful. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16423">[校准]</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">rosbag2</span></code> 不仅提供了 <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span></code> 命令行工具，还提供了用于从您自己的源代码读取和写入 bag 的 C++ API。这允许您读取 bag 中的内容，而无需播放 bag，这在某些情况下可能非常有用。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16423">[16423]</a></p>
 </div>
 <div class="section" id="prerequisites">
 <h2>先决条件 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16411">[16411]</a><a class="headerlink" href="#prerequisites" title="永久链接至标题"></a></h2>
@@ -425,18 +425,18 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install ros-humble-rosbag2</span>
 </pre></div>
 </div>
-<p>This tutorial discusses using ROS 2 bags. You should have already completed the <a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html"><span class="doc">basic ROS 2 bag tutorial</span></a>, and we will be using the <code class="docutils literal notranslate"><span class="pre">subset</span></code> bag you created there. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16426">[校准]</a></p>
+<p>本教程讨论了如何使用 ROS 2 bags。您应该已经完成了 <a class="reference internal" href="../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html"><span class="doc">基本的 ROS 2 bag 教程</span></a>，我们将使用您在那里创建的 <code class="docutils literal notranslate"><span class="pre">subset</span></code> bag。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16426">[16426]</a></p>
 </div>
 <div class="section" id="tasks">
 <h2>任务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16427">[16427]</a><a class="headerlink" href="#tasks" title="永久链接至标题"></a></h2>
 <div class="section" id="create-a-package">
-<h3>1 Create a Package <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16428">[校准]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
+<h3>1 创建一个包 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16428">[16428]</a><a class="headerlink" href="#create-a-package" title="永久链接至标题"></a></h3>
 <p>在一个新的终端中 <a class="reference internal" href="../Beginner-CLI-Tools/Configuring-ROS2-Environment.html"><span class="doc">源化你的 ROS 2 安装</span></a>，这样 <code class="docutils literal notranslate"><span class="pre">ros2</span></code> 命令才能正常工作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16429">[16429]</a></p>
-<p>In a new or existing <a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#new-directory"><span class="std std-ref">workspace</span></a>, navigate to the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory and create a new package: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16430">[校准]</a></p>
+<p>在新的或现有的 <a class="reference internal" href="../Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#new-directory"><span class="std std-ref">工作空间</span></a> 中，导航到 <code class="docutils literal notranslate"><span class="pre">src</span></code> 目录并创建一个新包： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16430">[16430]</a></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ros2 pkg create --build-type ament_cmake --license Apache-2.0 bag_reading_cpp --dependencies rclcpp rosbag2_cpp turtlesim</span>
 </pre></div>
 </div>
-<p>Your terminal will return a message verifying the creation of your package <code class="docutils literal notranslate"><span class="pre">bag_reading_cpp</span></code> and all its necessary files and folders. The <code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> argument will automatically add the necessary dependency lines to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>. In this case, the package will use the <code class="docutils literal notranslate"><span class="pre">rosbag2_cpp</span></code> package as well as the <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> package. A dependency on the <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> package is also required for working with the custom turtlesim messages. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16431">[校准]</a></p>
+<p>您的终端将返回一条消息，验证包 <code class="docutils literal notranslate"><span class="pre">bag_reading_cpp</span></code> 及其所有必要的文件和文件夹的创建。<code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> 参数将自动将必要的依赖行添加到 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 和 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 中。在本例中，包将使用 <code class="docutils literal notranslate"><span class="pre">rosbag2_cpp</span></code> 包以及 <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> 包。还需要依赖于 <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> 包，以便使用自定义 turtlesim 消息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16431">[16431]</a></p>
 <div class="section" id="update-package-xml">
 <h4>1.1 更新 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16432">[16432]</a><a class="headerlink" href="#update-package-xml" title="永久链接至标题"></a></h4>
 <p>由于您在软件包创建过程中使用了 <code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> 选项，因此您无需手动向 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 或 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 添加依赖项。但请确保向 <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> 添加描述、维护者电子邮件和姓名以及许可信息。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16433">[16433]</a></p>
