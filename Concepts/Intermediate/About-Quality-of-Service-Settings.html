@@ -314,12 +314,12 @@
 <li class="toctree-l3"><a class="reference internal" href="About-Logging.html">日志记录和日志记录器配置 [17425]</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">质量 of 服务设置 [17510]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Executors.html">执行器 [17385]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Topic-Statistics.html">Topic statistics [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Topic-Statistics.html">主题统计 [17669]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [17602]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Composition.html">组合 [17277]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Cross-Compilation.html">交叉编译 [17299]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Security.html">ROS 2 Security [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Tf2.html">Tf2 [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Security.html">ROS 2安全性 [17629]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Tf2.html">Tf2 [17651]</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Advanced.html">高级概念 [16863]</a><ul>
@@ -503,7 +503,7 @@
 <h2>QoS 兼容性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17552">[17552]</a><a class="headerlink" href="#qos-compatibilities" title="永久链接至标题"></a></h2>
 <p><a href="#id1"><span class="problematic" id="id2">**</span></a>注意：<a href="#id3"><span class="problematic" id="id4">**</span></a>本部分内容适用于发布者和订阅者，同样适用于服务端和客户端。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17553">[17553]</a></p>
 <p>可以独立为发布者和订阅者配置 QoS 配置文件。仅当发布者和订阅者具有兼容的 QoS 配置文件时，才会建立发布者和订阅者之间的连接。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17554">[17554]</a></p>
-<p>QoS profile compatibility is determined based on a &quot;Request vs Offered&quot; model. Subscriptions <em>request</em> a QoS profile that is the &quot;minimum quality&quot; that it is willing to accept, and publishers <em>offer</em> a QoS profile that is the &quot;maximum quality&quot; that it is able to provide. Connections are only made if every policy of the requested QoS profile is not more stringent than that of the offered QoS profile. Multiple subscriptions can be connected to a single publisher simultaneously even if their requested QoS profiles are different. The compatibility between a publisher and a subscription is unaffected by the presence of other publishers and subscriptions. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17555">[校准]</a></p>
+<p>QoS配置文件的兼容性是基于&quot;请求与提供&quot;模型确定的。订阅者*请求*一个QoS配置文件，表示它愿意接受的&quot;最低质量&quot;，而发布者*提供*一个QoS配置文件，表示它能够提供的&quot;最高质量&quot;。只有在所请求的QoS配置文件的每个策略都不比提供的QoS配置文件更严格的情况下，才会建立连接。即使所请求的QoS配置文件不同，多个订阅者也可以同时连接到单个发布者。发布者和订阅者之间的兼容性不受其他发布者和订阅者的影响。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17555">[17555]</a></p>
 <p>以下表格显示了不同策略设置的兼容性及其结果： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17556">[17556]</a></p>
 <p><em>可靠性QoS策略的兼容性:</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17557">[17557]</a></p>
 <table class="docutils align-default">
@@ -549,33 +549,33 @@
 <tr class="row-odd"><th class="head"><p>发布者 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17558">[17558]</a></p></th>
 <th class="head"><p>订阅者 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17559">[17559]</a></p></th>
 <th class="head"><p>兼容 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17560">[17560]</a></p></th>
-<th class="head"><p>Result <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17566">[校准]</a></p></th>
+<th class="head"><p>结果 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17566">[17566]</a></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>易失性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17567">[17567]</a></p></td>
 <td><p>易失性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17567">[17567]</a></p></td>
 <td><p>是 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17562">[17562]</a></p></td>
-<td><p>New messages only <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17568">[校准]</a></p></td>
+<td><p>仅新消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17568">[17568]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>易失性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17567">[17567]</a></p></td>
 <td><p>瞬态本地 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17569">[17569]</a></p></td>
 <td><p>否 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17564">[17564]</a></p></td>
-<td><p>No communication <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17570">[校准]</a></p></td>
+<td><p>无通信 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17570">[17570]</a></p></td>
 </tr>
 <tr class="row-even"><td><p>瞬态本地 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17569">[17569]</a></p></td>
 <td><p>易失性 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17567">[17567]</a></p></td>
 <td><p>是 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17562">[17562]</a></p></td>
-<td><p>New messages only <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17568">[校准]</a></p></td>
+<td><p>仅新消息 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17568">[17568]</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>瞬态本地 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17569">[17569]</a></p></td>
 <td><p>瞬态本地 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17569">[17569]</a></p></td>
 <td><p>是 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17562">[17562]</a></p></td>
-<td><p>New and old messages <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17571">[校准]</a></p></td>
+<td><p>新旧消息均包括 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17571">[17571]</a></p></td>
 </tr>
 </tbody>
 </table>
-<p>To achieve a &quot;latched&quot; topic that is visible to late subscribers, both the publisher and subscriber must agree to use 'Transient Local'. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17572">[校准]</a></p>
+<p>要实现&quot;latched&quot;主题，以便向后续订阅者可见，发布者和订阅者必须都同意使用&quot;瞬态本地&quot;。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17572">[17572]</a></p>
 <p><em>截止期限 QoS 策略的兼容性：</em> <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17573">[17573]</a></p>
 <blockquote>
 <div><p>假设 <em>x</em> 和 <em>y</em> 是任意有效的持续时间值。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17574">[17574]</a></p>
