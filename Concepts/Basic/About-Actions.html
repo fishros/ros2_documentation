@@ -295,7 +295,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../Concepts.html">概念 [16856]</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../Basic.html">Basic Concepts [校准]</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Basic.html">基本概念 [16998]</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="About-Nodes.html">节点 [17211]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Discovery.html">发现 [17096]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Interfaces.html">Interfaces [校准]</a></li>
@@ -324,8 +324,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Advanced.html">高级概念 [16863]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Advanced/About-Build-System.html">构建系统 [16865]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/About-Internal-Interfaces.html">Internal ROS 2 interfaces [校准]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Advanced/About-Middleware-Implementations.html">ROS 2 middleware implementations [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/About-Internal-Interfaces.html">ROS 2内部接口 [16921]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Advanced/About-Middleware-Implementations.html">ROS 2 中间件实现 [16978]</a></li>
 </ul>
 </li>
 </ul>
@@ -380,7 +380,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Concepts.html">概念 [16856]</a> &raquo;</li>
-          <li><a href="../Basic.html">Basic Concepts [校准]</a> &raquo;</li>
+          <li><a href="../Basic.html">基本概念 [16998]</a> &raquo;</li>
       <li>动作 [17002]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/Basic/About-Actions.rst" class="fa fa-github"> 在 GitHub 上修改</a>
@@ -398,12 +398,12 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[]</a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#action-server" id="id1">Action server [校准]</a></p></li>
+<li><p><a class="reference internal" href="#action-server" id="id1">动作服务器 [17008]</a></p></li>
 <li><p><a class="reference internal" href="#action-client" id="id2">Action client [校准]</a></p></li>
 </ul>
 </div>
-<p>In ROS 2, an action refers to a long-running remote procedure call with feedback and the ability to cancel or preempt the goal. For instance, the high-level state machine running a robot may call an action to tell the navigation subsystem to travel to a waypoint, which may take several seconds (or minutes) to do. Along the way, the navigation subsystem can provide feedback on how far along it is, and the high-level state machine has the option to cancel or preempt the travel to that waypoint. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17003">[校准]</a></p>
-<p>This structure is reflected in how an action message definition looks: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17004">[校准]</a></p>
+<p>在 ROS 2 中，动作指的是具有反馈以及取消或中止目标的长时间远程过程调用。例如，运行机器人的高级状态机可以调用一个动作，以告知导航子系统前往一个路径点，这可能需要几秒钟（或几分钟）的时间。在此过程中，导航子系统可以提供有关其进展情况的反馈，并且高级状态机可以选择取消或中止前往该路径点的旅行。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17003">[17003]</a></p>
+<p>这种结构体现在动作消息定义的外观上： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17004">[17004]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span> <span class="n">request</span>
 <span class="o">---</span>
 <span class="n">int32</span> <span class="n">response</span>
@@ -411,12 +411,12 @@
 <span class="n">int32</span> <span class="n">feedback</span>
 </pre></div>
 </div>
-<p>In ROS 2, actions are expected to be long running procedures, as there is overhead in setting up and monitoring the connection. If you need a short running remote procedure call, consider using a <a class="reference internal" href="About-Services.html"><span class="doc">service</span></a> instead. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17005">[校准]</a></p>
-<p>Actions are identified by an action name, which looks much like a topic name (but is in a different namespace). <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17006">[校准]</a></p>
-<p>An action consists of two parts: the action server and the action client. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17007">[校准]</a></p>
+<p>在 ROS 2 中，由于设置和监视连接需要开销，因此预期动作是长时间运行的过程。如果您需要一个短时间运行的远程过程调用，请考虑使用 <a class="reference internal" href="About-Services.html"><span class="doc">服务</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17005">[17005]</a></p>
+<p>动作由动作名称标识，看起来很像主题名称（但位于不同的命名空间中）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17006">[17006]</a></p>
+<p>动作由两部分组成：动作服务器和动作客户端。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17007">[17007]</a></p>
 <div class="section" id="action-server">
-<h2>Action server <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17008">[校准]</a><a class="headerlink" href="#action-server" title="永久链接至标题"></a></h2>
-<p>The action server is the entity that will accept the remote procedure request and perform some procedure on it. It is also responsible for sending out feedback as the action progresses and should react to cancellation/preemption requests. For instance, consider an action to calculate the Fibonacci sequence with the following interface: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17009">[校准]</a></p>
+<h2>动作服务器 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17008">[17008]</a><a class="headerlink" href="#action-server" title="永久链接至标题"></a></h2>
+<p>动作服务器是将接受远程过程请求并对其执行某些过程的实体。它还负责在动作进行时发送反馈，并应对取消/中止请求。例如，考虑一个用于计算斐波那契数列的动作，具有以下接口： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17009">[17009]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span> <span class="n">order</span>
 <span class="o">---</span>
 <span class="n">int32</span><span class="p">[]</span> <span class="n">sequence</span>
@@ -424,10 +424,10 @@
 <span class="n">int32</span><span class="p">[]</span> <span class="n">sequence</span>
 </pre></div>
 </div>
-<p>The action server is the entity that receives this message, starts calculating the sequence up to <code class="docutils literal notranslate"><span class="pre">order</span></code> (providing feedback along the way), and finally returns a full result in <code class="docutils literal notranslate"><span class="pre">sequence</span></code>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17010">[校准]</a></p>
+<p>动作服务器接收此消息，开始计算直到 <code class="docutils literal notranslate"><span class="pre">order</span></code> 的数列（并提供反馈），最后在 <code class="docutils literal notranslate"><span class="pre">sequence</span></code> 中返回完整结果。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17010">[17010]</a></p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>There should only ever be one action server per action name. It is undefined which action server will receive client requests in the case of multiple action servers on the same action name. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17011">[校准]</a></p>
+<p>每个动作名称应始终只有一个动作服务器。在同一动作名称上存在多个动作服务器的情况下，未定义哪个动作服务器将接收客户端请求。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17011">[17011]</a></p>
 </div>
 </div>
 <div class="section" id="action-client">
