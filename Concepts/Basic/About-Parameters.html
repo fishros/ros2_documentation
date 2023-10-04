@@ -415,22 +415,16 @@
 </div>
 <div class="section" id="overview">
 <h2><a class="toc-backref" href="#id1">概述</a><a class="headerlink" href="#overview" title="永久链接至标题"></a></h2>
-<p>Parameters in ROS 2 are associated with individual nodes.
-Parameters are used to configure nodes at startup (and during runtime), without changing the code.
-The lifetime of a parameter is tied to the lifetime of the node (though the node could implement some sort of persistence to reload values after restart).</p>
+<p>在ROS 2中，参数与单个节点关联。参数用于在启动时（以及运行时）配置节点，而无需更改代码。参数的生命周期与节点的生命周期相关联（尽管节点可以实现某种持久性以在重新启动后重新加载值）。</p>
 <p>参数通过节点名称、节点命名空间、参数名称和参数命名空间来进行标识。提供参数命名空间是可选的。</p>
-<p>Each parameter consists of a key, a value, and a descriptor.
-The key is a string and the value is one of the following types: <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">int64</span></code>, <code class="docutils literal notranslate"><span class="pre">float64</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">byte[]</span></code>, <code class="docutils literal notranslate"><span class="pre">bool[]</span></code>, <code class="docutils literal notranslate"><span class="pre">int64[]</span></code>, <code class="docutils literal notranslate"><span class="pre">float64[]</span></code> or <code class="docutils literal notranslate"><span class="pre">string[]</span></code>.
-By default all descriptors are empty, but can contain parameter descriptions, value ranges, type information, and additional constraints.</p>
-<p>For an hands-on tutorial with ROS parameters see <a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">理解参数</span></a>.</p>
+<p>每个参数由一个键、一个值和一个描述符组成。键是一个字符串，值是以下类型之一：<code class="docutils literal notranslate"><span class="pre">bool</span></code>、<code class="docutils literal notranslate"><span class="pre">int64</span></code>、<code class="docutils literal notranslate"><span class="pre">float64</span></code>、<code class="docutils literal notranslate"><span class="pre">string</span></code>、<code class="docutils literal notranslate"><span class="pre">byte[]</span></code>、<code class="docutils literal notranslate"><span class="pre">bool[]</span></code>、<code class="docutils literal notranslate"><span class="pre">int64[]</span></code>、<code class="docutils literal notranslate"><span class="pre">float64[]</span></code> 或 <code class="docutils literal notranslate"><span class="pre">string[]</span></code>。默认情况下，所有描述符都为空，但可以包含参数描述、值范围、类型信息和其他约束。</p>
+<p>有关ROS参数的实际教程，请参阅 <a class="reference internal" href="../../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Parameters/Understanding-ROS2-Parameters.html"><span class="doc">理解参数</span></a>。</p>
 </div>
 <div class="section" id="parameters-background">
 <h2><a class="toc-backref" href="#id2">参数背景</a><a class="headerlink" href="#parameters-background" title="永久链接至标题"></a></h2>
 <div class="section" id="declaring-parameters">
 <h3><a class="toc-backref" href="#id3">声明参数</a><a class="headerlink" href="#declaring-parameters" title="永久链接至标题"></a></h3>
-<p>By default, a node needs to <em>declare</em> all of the parameters that it will accept during its lifetime.
-This is so that the type and name of the parameters are well-defined at node startup time, which reduces the chances of misconfiguration later on.
-See <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html"><span class="doc">在类中使用参数（C++）</span></a> or <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html"><span class="doc">在类中使用参数（Python）</span></a> for tutorials on declaring and using parameters from a node.</p>
+<p>默认情况下，节点需要在其生命周期内 <em>声明</em> 所有将接受的参数。这样，参数的类型和名称在节点启动时就得到了明确定义，从而降低了后期配置错误的机会。请参阅 <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-CPP.html"><span class="doc">在类中使用参数（C++）</span></a> 或 <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Using-Parameters-In-A-Class-Python.html"><span class="doc">在类中使用参数（Python）</span></a> 以获取有关如何声明和使用节点参数的教程。</p>
 <p>对于某些类型的节点，不是所有参数都能提前知道。在这种情况下，可以使用``allow_undeclared_parameters``设置为``true``来实例化节点，即使参数没有被声明，也允许在节点上进行参数的获取和设置。</p>
 </div>
 <div class="section" id="parameter-types">
