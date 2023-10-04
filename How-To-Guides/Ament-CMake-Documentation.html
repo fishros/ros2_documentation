@@ -490,7 +490,7 @@ In the example of Eigen3, the call should then look like</p>
 <p>This will also include necessary headers, libraries and their dependencies, but in contrast to <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code> it might not correctly order the dependencies when using overlay workspaces.</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>通常情况下不需要对不明确需要但是另一个明确需要的依赖项的依赖项进行 <code class="docutils literal notranslate"><span class="pre">find_package</span></code>。如果出现这种情况，请向相应的软件包提交错误报告。</p>
+<p>不应该必须``find_package``一个不是显式需要但是是另一个显式需要的依赖项的依赖库。如果是这种情况，请针对相应的软件包提交错误报告。</p>
 </div>
 </div>
 <div class="section" id="building-a-library">
@@ -569,7 +569,7 @@ Therefore it is customary to set the corresponding CMake flags:</p>
 <span class="nb">endif</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>为了保持代码的清洁，编译器应该对可疑的代码发出警告，并且这些警告应该被修复。</p>
+<p>为了保持代码的清晰，编译器应该对可疑的代码引发警告，并应该修复这些警告。</p>
 <p>建议至少包括以下警告级别：</p>
 <ul class="simple">
 <li><p>For Visual Studio, the default <code class="docutils literal notranslate"><span class="pre">W1</span></code> warnings are kept</p></li>
