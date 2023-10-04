@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating Launch Files &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移启动文件 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -249,10 +249,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">Migrating Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">Migrating Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">迁移接口</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-CPP-Packages.html">迁移 C++ 包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating Launch Files</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移启动文件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">Migrating Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Scripts.html">Migrating Scripts</a></li>
 </ul>
@@ -381,7 +381,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南</a> &raquo;</li>
           <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a> &raquo;</li>
-      <li>Migrating Launch Files</li>
+      <li>迁移启动文件</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,26 +394,26 @@
 
 
   <div class="section" id="migrating-launch-files">
-<span id="migratinglaunch"></span><h1>Migrating Launch Files<a class="headerlink" href="#migrating-launch-files" title="永久链接至标题"></a></h1>
+<span id="migratinglaunch"></span><h1>迁移启动文件<a class="headerlink" href="#migrating-launch-files" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#background" id="id11">背景</a></p></li>
-<li><p><a class="reference internal" href="#migrating-tags" id="id12">Migrating tags</a></p></li>
+<li><p><a class="reference internal" href="#migrating-tags" id="id12">迁移标签</a></p></li>
 <li><p><a class="reference internal" href="#new-tags-in-ros-2" id="id13">ROS 2中的新标签</a></p></li>
 <li><p><a class="reference internal" href="#replacing-an-include-tag" id="id14">替换了`include`标签</a></p></li>
 <li><p><a class="reference internal" href="#substitutions" id="id15">替换</a></p></li>
 <li><p><a class="reference internal" href="#id8" id="id16">类型推断规则</a></p></li>
 </ul>
 </div>
-<p>While launch files in ROS 1 are always specified using <a class="reference external" href="https://wiki.ros.org/roslaunch/XML">.xml</a> files, ROS 2 supports Python scripts to enable more flexibility (see <a class="reference external" href="https://github.com/ros2/launch/tree/humble/launch">launch package</a>) as well as XML and YAML files.</p>
-<p>This guide describes how to write ROS 2 XML launch files for an easy migration from ROS 1.</p>
+<p>虽然在ROS 1中，启动文件总是使用 <a class="reference external" href="https://wiki.ros.org/roslaunch/XML">.xml</a> 文件指定的，但ROS 2支持使用Python脚本以提供更大的灵活性（参见 <a class="reference external" href="https://github.com/ros2/launch/tree/humble/launch">launch 包</a> ），同时还支持XML和YAML文件。</p>
+<p>本指南描述了如何编写ROS 2 XML启动文件，以便轻松从ROS 1迁移。</p>
 <div class="section" id="background">
 <h2><a class="toc-backref" href="#id11">背景</a><a class="headerlink" href="#background" title="永久链接至标题"></a></h2>
-<p>A description of the ROS 2 launch system and its Python API can be found in <a class="reference internal" href="../../Tutorials/Intermediate/Launch/Launch-system.html"><span class="doc">Launch System tutorial</span></a>.</p>
+<p>关于ROS 2启动系统及其Python API的详细信息，请参阅 <a class="reference internal" href="../../Tutorials/Intermediate/Launch/Launch-system.html"><span class="doc">启动系统教程</span></a>。</p>
 </div>
 <div class="section" id="migrating-tags">
-<h2><a class="toc-backref" href="#id12">Migrating tags</a><a class="headerlink" href="#migrating-tags" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id12">迁移标签</a><a class="headerlink" href="#migrating-tags" title="永久链接至标题"></a></h2>
 <div class="section" id="launch">
 <h3>启动<a class="headerlink" href="#launch" title="永久链接至标题"></a></h3>
 <ul class="simple">
@@ -451,9 +451,7 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://wiki.ros.org/roslaunch/XML/param">在 ROS 1 中可用</a>.</p></li>
 <li><p>用于将参数传递给节点。</p></li>
-<li><p>There's no global parameter concept in ROS 2.
-For that reason, it can only be used nested in a <code class="docutils literal notranslate"><span class="pre">node</span></code> tag.
-Some attributes aren't supported in ROS 2: <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">textfile</span></code>, <code class="docutils literal notranslate"><span class="pre">binfile</span></code>, <code class="docutils literal notranslate"><span class="pre">executable</span></code>.</p></li>
+<li><p>在ROS 2中没有全局参数的概念。因此，它只能在 <code class="docutils literal notranslate"><span class="pre">node</span></code> 标签中嵌套使用。在ROS 2中不支持某些属性：<code class="docutils literal notranslate"><span class="pre">type</span></code>、<code class="docutils literal notranslate"><span class="pre">textfile</span></code>、<code class="docutils literal notranslate"><span class="pre">binfile</span></code>、<code class="docutils literal notranslate"><span class="pre">executable</span></code>。</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">command</span></code> attribute is now <code class="docutils literal notranslate"><span class="pre">value=&quot;$(command</span> <span class="pre">'...'</span> <span class="pre">)&quot;</span></code>.</p></li>
 </ul>
 <div class="section" id="id1">
