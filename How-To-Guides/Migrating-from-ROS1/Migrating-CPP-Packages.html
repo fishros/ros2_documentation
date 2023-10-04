@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrating C++ Packages &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>迁移 C++ 包 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -247,10 +247,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../Developing-a-ROS-2-Package.html">开发ROS 2软件包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Documentation.html">ament_cmake 用户文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Packages.html">Migrating Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Interfaces.html">Migrating Interfaces</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrating C++ Packages</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">迁移 C++ 包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Python-Packages.html">Migrating Python Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Launch-Files.html">Migrating Launch Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Migrating-Parameters.html">Migrating Parameters</a></li>
@@ -380,8 +380,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../How-To-Guides.html">如何指南</a> &raquo;</li>
-          <li><a href="../Migrating-from-ROS1.html">Migrating from ROS 1 to ROS 2</a> &raquo;</li>
-      <li>Migrating C++ Packages</li>
+          <li><a href="../Migrating-from-ROS1.html">从ROS 1迁移到ROS 2</a> &raquo;</li>
+      <li>迁移 C++ 包</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/How-To-Guides/Migrating-from-ROS1/Migrating-CPP-Packages.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,7 +394,7 @@
 
 
   <div class="section" id="migrating-c-packages">
-<h1>Migrating C++ Packages<a class="headerlink" href="#migrating-c-packages" title="永久链接至标题"></a></h1>
+<h1>迁移 C++ 包<a class="headerlink" href="#migrating-c-packages" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录</p>
 <ul class="simple">
@@ -415,7 +415,7 @@
 <li><p><a class="reference internal" href="#boost" id="id11">Boost</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#example-converting-an-existing-ros-1-package-to-ros-2" id="id12">Example: Converting an existing ROS 1 package to ROS 2</a></p>
+<li><p><a class="reference internal" href="#example-converting-an-existing-ros-1-package-to-ros-2" id="id12">示例：将现有的ROS 1 包转换为 ROS 2</a></p>
 <ul>
 <li><p><a class="reference internal" href="#the-ros-1-code" id="id13">ROS 1代码</a></p></li>
 <li><p><a class="reference internal" href="#migrating-to-ros-2" id="id14">迁移到ROS 2</a></p></li>
@@ -425,13 +425,11 @@
 </div>
 <div class="section" id="build-tool">
 <h2><a class="toc-backref" href="#id1">构建工具</a><a class="headerlink" href="#build-tool" title="永久链接至标题"></a></h2>
-<p>Instead of using <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>, <code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code> or <code class="docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code> ROS 2 uses the command line tool <a class="reference external" href="https://design.ros2.org/articles/build_tool.html">colcon</a> to build and install a set of packages.
-See the <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"><span class="doc">beginner tutorial</span></a> to get started with <code class="docutils literal notranslate"><span class="pre">colcon</span></code>.</p>
+<p>在ROS 2中，不再使用 <code class="docutils literal notranslate"><span class="pre">catkin_make</span></code>、<code class="docutils literal notranslate"><span class="pre">catkin_make_isolated</span></code> 或 <code class="docutils literal notranslate"><span class="pre">catkin</span> <span class="pre">build</span></code>，而是使用命令行工具 <a class="reference external" href="https://design.ros2.org/articles/build_tool.html">colcon</a> 来构建和安装一组包。请查看 <a class="reference internal" href="../../Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html"><span class="doc">初学者教程</span></a> 以开始使用 <code class="docutils literal notranslate"><span class="pre">colcon</span></code>。</p>
 </div>
 <div class="section" id="build-system">
 <h2><a class="toc-backref" href="#id2">构建系统</a><a class="headerlink" href="#build-system" title="永久链接至标题"></a></h2>
-<p>The build system in ROS 2 is called <a class="reference external" href="https://design.ros2.org/articles/ament.html">ament</a>.
-Ament is built on CMake: <code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> provides CMake functions to make writing <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files easier.</p>
+<p>ROS 2 中的构建系统称为 <a class="reference external" href="https://design.ros2.org/articles/ament.html">ament</a>。Ament 基于 CMake 构建：<code class="docutils literal notranslate"><span class="pre">ament_cmake</span></code> 提供了用于更轻松编写 <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> 文件的 CMake 函数。</p>
 <div class="section" id="update-the-cmakelists-txt-to-use-ament-cmake">
 <h3><a class="toc-backref" href="#id3">更新 <em>CMakeLists.txt</em> 使用 <em>ament_cmake</em></a><a class="headerlink" href="#update-the-cmakelists-txt-to-use-ament-cmake" title="永久链接至标题"></a></h3>
 <p>将以下更改应用于使用``ament_cmake``而不是``catkin``：</p>
@@ -529,9 +527,8 @@ Ament is built on CMake: <code class="docutils literal notranslate"><span class=
 </div>
 <div class="section" id="linters">
 <h3><a class="toc-backref" href="#id5">代码检查工具</a><a class="headerlink" href="#linters" title="永久链接至标题"></a></h3>
-<p>In ROS 2 we are working to maintain clean code using linters.
-The styles for different languages are defined in our <a class="reference internal" href="../../The-ROS2-Project/Contributing/Developer-Guide.html"><span class="doc">Developer Guide</span></a>.</p>
-<p>If you are starting a project from scratch it is recommended to follow the style guide and turn on the automatic linter unit tests by adding these lines just below <code class="docutils literal notranslate"><span class="pre">if(BUILD_TESTING)</span></code>:</p>
+<p>在 ROS 2 中，我们努力保持干净的代码，并使用代码检查工具。不同语言的代码风格在我们的 <a class="reference internal" href="../../The-ROS2-Project/Contributing/Developer-Guide.html"><span class="doc">开发者指南</span></a> 中有定义。</p>
+<p>如果您要从头开始创建项目，建议遵循代码风格指南，并通过在 <code class="docutils literal notranslate"><span class="pre">if(BUILD_TESTING)</span></code> 下方添加以下行来启用自动代码检查单元测试：</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">ament_lint_auto</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">ament_lint_auto_find_test_dependencies</span><span class="p">()</span>
 </pre></div>
@@ -645,7 +642,7 @@ The styles for different languages are defined in our <a class="reference intern
 </div>
 </div>
 <div class="section" id="example-converting-an-existing-ros-1-package-to-ros-2">
-<h2><a class="toc-backref" href="#id12">Example: Converting an existing ROS 1 package to ROS 2</a><a class="headerlink" href="#example-converting-an-existing-ros-1-package-to-ros-2" title="永久链接至标题"></a></h2>
+<h2><a class="toc-backref" href="#id12">示例：将现有的ROS 1 包转换为 ROS 2</a><a class="headerlink" href="#example-converting-an-existing-ros-1-package-to-ros-2" title="永久链接至标题"></a></h2>
 <p>假设我们有一个名为``talker``的简单ROS 1包，在一个名为``talker``的节点中使用了``roscpp``。该包位于catkin工作空间中，位置为``~/ros1_talker``。</p>
 <div class="section" id="the-ros-1-code">
 <h3><a class="toc-backref" href="#id13">ROS 1代码</a><a class="headerlink" href="#the-ros-1-code" title="永久链接至标题"></a></h3>
@@ -716,8 +713,7 @@ $ find .
 </div>
 <div class="section" id="building-the-ros-1-code">
 <h4>构建 ROS 1 代码<a class="headerlink" href="#building-the-ros-1-code" title="永久链接至标题"></a></h4>
-<p>We source an environment setup file (in this case for Noetic using bash), then we
-build our package using <code class="docutils literal notranslate"><span class="pre">catkin_make</span> <span class="pre">install</span></code>:</p>
+<p>我们会源码一个环境设置文件（在此示例中是 Noetic 使用 bash 的情况），然后使用 <code class="docutils literal notranslate"><span class="pre">catkin_make</span> <span class="pre">install</span></code> 构建我们的包：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. /opt/ros/noetic/setup.bash
 <span class="nb">cd</span> ~/ros1_talker
 catkin_make install
