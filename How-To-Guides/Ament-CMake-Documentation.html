@@ -536,20 +536,20 @@
 </div>
 <div class="section" id="linking-to-dependencies">
 <h3>链接到依赖项 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15538">[15538]</a><a class="headerlink" href="#linking-to-dependencies" title="永久链接至标题"></a></h3>
-<p>There are two ways to link your targets against a dependency. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15539">[校准]</a></p>
-<p>The first and recommended way is to use the ament macro <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code>. As an example, suppose we want to link <code class="docutils literal notranslate"><span class="pre">my_library</span></code> against the linear algebra library Eigen3. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15540">[校准]</a></p>
+<p>有两种方法可以将您的目标与依赖项链接起来。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15539">[15539]</a></p>
+<p>第一种推荐的方法是使用 ament 宏 <code class="docutils literal notranslate"><span class="pre">ament_target_dependencies</span></code>。例如，假设我们想要将 <code class="docutils literal notranslate"><span class="pre">my_library</span></code> 链接到线性代数库 Eigen3。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15540">[15540]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Eigen3</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
 <span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">my_library</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">Eigen3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It includes the necessary headers and libraries and their dependencies to be correctly found by the project. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15541">[校准]</a></p>
-<p>第二种方法是使用``target_link_libraries``函数。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15542">[校准]</a></p>
-<p>Modern CMake prefers to use only targets, exporting and linking against them. CMake targets may be namespaced, similar to C++. Prefer to use the namespaced targets if they are available. For instance, <code class="docutils literal notranslate"><span class="pre">Eigen3</span></code> defines the target <code class="docutils literal notranslate"><span class="pre">Eigen3::Eigen</span></code>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15543">[校准]</a></p>
-<p>In the example of Eigen3, the call should then look like <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15544">[校准]</a></p>
+<p>它包括必要的头文件和库以及它们的依赖项，以便项目能够正确找到它们。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15541">[15541]</a></p>
+<p>第二种方法是使用 <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15542">[15542]</a></p>
+<p>现代 CMake 更喜欢仅使用目标进行导出和链接。CMake 目标可以进行命名空间，类似于 C++。如果可用，最好使用带命名空间的目标。例如，<code class="docutils literal notranslate"><span class="pre">Eigen3</span></code> 定义了目标 <code class="docutils literal notranslate"><span class="pre">Eigen3::Eigen</span></code>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15543">[15543]</a></p>
+<p>在 Eigen3 的示例中，调用应该如下所示： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15544">[15544]</a></p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_library</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">Eigen3::Eigen</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This will also include necessary headers, libraries and their dependencies. Note that this dependency must have been previously discovered via a call to <code class="docutils literal notranslate"><span class="pre">find_package</span></code>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15545">[校准]</a></p>
+<p>这也会包括必要的头文件、库和它们的依赖项。请注意，此依赖项必须在以前通过调用 <code class="docutils literal notranslate"><span class="pre">find_package</span></code> 发现过。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15545">[15545]</a></p>
 </div>
 <div class="section" id="installing">
 <h3>Installing <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=15546">[校准]</a><a class="headerlink" href="#installing" title="永久链接至标题"></a></h3>
