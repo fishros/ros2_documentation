@@ -308,15 +308,15 @@
 <li class="toctree-l3"><a class="reference internal" href="About-Client-Libraries.html">客户端库 [17015]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Intermediate.html">Intermediate Concepts [校准]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Intermediate.html">中级概念 [17275]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Domain-ID.html">ROS_DOMAIN_ID [17352]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Different-Middleware-Vendors.html">不同的ROS 2中间件供应商 [17313]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Logging.html">Logging and logger configuration [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Executors.html">执行器 [17385]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Topic-Statistics.html">Topic statistics [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-RQt.html">RQt 的概述和使用方法 [17602]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Composition.html">Composition [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Composition.html">组合 [17277]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Cross-Compilation.html">交叉编译 [17299]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Security.html">ROS 2 Security [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Intermediate/About-Tf2.html">Tf2 [校准]</a></li>
@@ -398,33 +398,33 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[]</a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#publish-subscribe" id="id1">Publish/Subscribe [校准]</a></p></li>
-<li><p><a class="reference internal" href="#anonymous" id="id2">Anonymous [校准]</a></p></li>
-<li><p><a class="reference internal" href="#strongly-typed" id="id3">Strongly-typed [校准]</a></p></li>
+<li><p><a class="reference internal" href="#publish-subscribe" id="id1">发布/订阅 [17266]</a></p></li>
+<li><p><a class="reference internal" href="#anonymous" id="id2">匿名 [17268]</a></p></li>
+<li><p><a class="reference internal" href="#strongly-typed" id="id3">强类型 [17270]</a></p></li>
 </ul>
 </div>
-<p>Topics are one of the three primary styles of interfaces provided by ROS 2. Topics should be used for continuous data streams, like sensor data, robot state, etc. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17264">[校准]</a></p>
-<p>As stated earlier, ROS 2 is a strongly-typed, anonymous publish/subscribe system. Let's break down that sentence and explain it a bit more. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17265">[校准]</a></p>
+<p>主题是ROS 2提供的三种主要接口样式之一。主题应该用于连续的数据流，如传感器数据、机器人状态等。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17264">[17264]</a></p>
+<p>如前所述，ROS 2是一个强类型的匿名发布/订阅系统。让我们分解这句话并对其进行更详细的解释。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17265">[17265]</a></p>
 <div class="section" id="publish-subscribe">
-<h2>Publish/Subscribe <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17266">[校准]</a><a class="headerlink" href="#publish-subscribe" title="永久链接至标题"></a></h2>
-<p>A publish/subscribe system is one in which there are producers of data (publishers) and consumers of data (subscribers). The publishers and subscribers know how to contact each other through the concept of a &quot;topic&quot;, which is a common name so that the entites can find each other. For instance, when you create a publisher, you must also give it a string that is the name of the topic; the same goes for the subscriber. Any publishers and subscribers that are on the same topic name can directly communicate with each other. There may be zero or more publishers and zero or more subscribers on any particular topic. When data is published to the topic by any of the publishers, all subscribers in the system will receive the data. This system is also known as a &quot;bus&quot;, since it somewhat resembles a device bus from electrical engineering. This concept of a bus is part of what makes ROS 2 a powerful and flexible system. Publishers and subscribers can come and go as needed, meaning that debugging and introspection are natural extensions to the system. For instance, if you want to record data, you can use the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">record</span></code> command. Under the hood, <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">bag</span> <span class="pre">record</span></code> creates a new subscriber to whatever topic you tell it, without interrupting the flow of data to the other parts of the system. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17267">[校准]</a></p>
+<h2>发布/订阅 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17266">[17266]</a><a class="headerlink" href="#publish-subscribe" title="永久链接至标题"></a></h2>
+<p>发布/订阅系统是一种数据生产者（发布者）和数据消费者（订阅者）共存的系统。发布者和订阅者通过&quot;主题&quot;的概念知道如何联系彼此，主题是一个共同的名称，以便实体能够找到彼此。例如，当您创建一个发布者时，必须为它提供一个主题名称的字符串；订阅者也是如此。在任何特定主题上可能有零个或多个发布者和零个或多个订阅者。当任何一个发布者向主题发布数据时，系统中的所有订阅者都会接收到数据。这个系统也被称为&quot;总线&quot;，因为它在某种程度上类似于电气工程中的设备总线。总线的概念是ROS 2成为一个强大而灵活的系统的一部分。发布者和订阅者可以根据需要添加或移除，这意味着调试和内省是系统的自然扩展。例如，如果您想要记录数据，可以使用``ros2 bag record``命令。在内部，<a href="#id1"><span class="problematic" id="id2">``</span></a>ros2 bag record``会创建一个新的订阅者来订阅您告诉它的任何主题，而不会中断数据流向系统的其他部分。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17267">[17267]</a></p>
 </div>
 <div class="section" id="anonymous">
-<h2>Anonymous <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17268">[校准]</a><a class="headerlink" href="#anonymous" title="永久链接至标题"></a></h2>
-<p>Another fact mentioned in the introduction is that ROS 2 is &quot;anonymous&quot;. This means that when a subscriber gets a piece of data, it doesn't generally know or care which publisher originally sent it (though it can find out if it wants). The benefit to this architecture is that publishers and subscribers can be swapped out at will without affecting the rest of the system. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17269">[校准]</a></p>
+<h2>匿名 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17268">[17268]</a><a class="headerlink" href="#anonymous" title="永久链接至标题"></a></h2>
+<p>介绍中提到的另一个事实是ROS 2是&quot;匿名&quot;的。这意味着当订阅者获取一段数据时，通常不知道或不关心最初是哪个发布者发送的（尽管如果需要，可以找出）。这种架构的好处是可以随时更换发布者和订阅者，而不会影响系统的其余部分。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17269">[17269]</a></p>
 </div>
 <div class="section" id="strongly-typed">
-<h2>Strongly-typed <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17270">[校准]</a><a class="headerlink" href="#strongly-typed" title="永久链接至标题"></a></h2>
-<p>Finally, the introduction also mentioned that the publish/subscribe system is &quot;strongly-typed&quot;. That has two meanings in this context: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17271">[校准]</a></p>
+<h2>强类型 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17270">[17270]</a><a class="headerlink" href="#strongly-typed" title="永久链接至标题"></a></h2>
+<p>最后，介绍中还提到了发布/订阅系统是&quot;强类型&quot;的。在这个上下文中，这有两个含义： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17271">[17271]</a></p>
 <ol class="arabic">
-<li><p>The types of each field in a ROS message are typed, and that type is enforced at various levels. For instance, if the ROS message contains: <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17272">[校准]</a></p>
+<li><p>ROS消息中每个字段的类型都是有类型的，并且在各个级别进行了强制执行。例如，如果ROS消息包含以下内容： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17272">[17272]</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32</span> <span class="n">field1</span>
 <span class="n">string</span> <span class="n">field2</span>
 </pre></div>
 </div>
-<p>Then the code will ensure that <code class="docutils literal notranslate"><span class="pre">field</span></code> is always an unsigned integer and that <code class="docutils literal notranslate"><span class="pre">field2</span></code> is always a string. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17273">[校准]</a></p>
+<p>然后代码将确保``field``始终是无符号整数，而``field2``始终是字符串。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17273">[17273]</a></p>
 </li>
-<li><p>The semantics of each field are well-defined.  There is no automated mechanism to ensure this, but all of the core ROS types have strong semantics associated with them.  For instance, the IMU message contains a 3-dimensional vector for the measured angular velocity, and each of the dimensions is specified to be in radians/second.  Other interpretations should not be placed into the message. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17274">[校准]</a></p></li>
+<li><p>每个字段的语义都是明确定义的。没有自动机制来确保这一点，但所有核心ROS类型都与其关联了强大的语义。例如，IMU消息包含用于测量角速度的三维矢量，每个维度都规定为弧度/秒。不应将其他解释放入消息中。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17274">[17274]</a></p></li>
 </ol>
 </div>
 </div>

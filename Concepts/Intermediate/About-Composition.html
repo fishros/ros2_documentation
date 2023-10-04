@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Composition [校准] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>组合 [17277] &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -308,15 +308,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../Basic/About-Client-Libraries.html">客户端库 [17015]</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">Intermediate Concepts [校准]</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../Intermediate.html">中级概念 [17275]</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="About-Domain-ID.html">ROS_DOMAIN_ID [17352]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="About-Different-Middleware-Vendors.html">Different ROS 2 middleware vendors [校准]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="About-Different-Middleware-Vendors.html">不同的ROS 2中间件供应商 [17313]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Logging.html">Logging and logger configuration [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Quality-of-Service-Settings.html">Quality of Service settings [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Executors.html">执行器 [17385]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Topic-Statistics.html">Topic statistics [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-RQt.html">RQt 的概述和使用方法 [17602]</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Composition [校准]</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">组合 [17277]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Cross-Compilation.html">交叉编译 [17299]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Security.html">ROS 2 Security [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="About-Tf2.html">Tf2 [校准]</a></li>
@@ -380,8 +380,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../Concepts.html">概念 [16856]</a> &raquo;</li>
-          <li><a href="../Intermediate.html">Intermediate Concepts [校准]</a> &raquo;</li>
-      <li>Composition [校准]</li>
+          <li><a href="../Intermediate.html">中级概念 [17275]</a> &raquo;</li>
+      <li>组合 [17277]</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/Concepts/Intermediate/About-Composition.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -394,7 +394,7 @@
 
 
   <div class="section" id="composition">
-<h1>Composition <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17277">[校准]</a><a class="headerlink" href="#composition" title="永久链接至标题"></a></h1>
+<h1>组合 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17277">[17277]</a><a class="headerlink" href="#composition" title="永久链接至标题"></a></h1>
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title">目录 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=16866">[]</a></p>
 <ul class="simple">
@@ -419,7 +419,7 @@
 <p>通过使进程布局成为部署时的决策，用户可以在以下选项之间进行选择： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17283">[17283]</a></p>
 <ul class="simple">
 <li><p>以独立进程运行多个节点，具有进程/故障隔离的优点，以及更容易调试单个节点。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17284">[17284]</a></p></li>
-<li><p>running multiple nodes in a single process with the lower overhead and optionally more efficient communication (see <a class="reference internal" href="../../Tutorials/Demos/Intra-Process-Communication.html"><span class="doc">Intra Process Communication</span></a>). <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17285">[校准]</a></p></li>
+<li><p>在单个进程中运行多个节点，具有较低的开销和可选择的更高效的通信（参见 <a class="reference internal" href="../../Tutorials/Demos/Intra-Process-Communication.html"><span class="doc">进程内通信</span></a>）。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17285">[17285]</a></p></li>
 </ul>
 <p>此外，<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span></code> 可以通过专门的启动操作来自动化这些操作。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17286">[17286]</a></p>
 </div>
@@ -450,7 +450,7 @@
 </div>
 <div class="section" id="practical-application">
 <h2>实际应用 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17297">[17297]</a><a class="headerlink" href="#practical-application" title="永久链接至标题"></a></h2>
-<p>Try the <a class="reference internal" href="../../Tutorials/Intermediate/Composition.html"><span class="doc">Composition demos</span></a>. <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17298">[校准]</a></p>
+<p>尝试 <a class="reference internal" href="../../Tutorials/Intermediate/Composition.html"><span class="doc">组合演示</span></a>。 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=17298">[17298]</a></p>
 </div>
 </div>
 
