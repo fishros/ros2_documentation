@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROS 1的Python迁移指南 [2222] &mdash; ROS 2 Documentation: Humble  文档</title>
+  <title>Python migration guide from ROS 1 &mdash; ROS 2 Documentation: Humble  文档</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -25,7 +25,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="ROS构建农场 [1367]" href="Build-Farms.html" />
-    <link rel="prev" title="从ROS 1迁移指南 [1999]" href="Migration-Guide.html" /> 
+    <link rel="prev" title="Migration guide from ROS 1" href="Migration-Guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,9 +46,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../Installation.html">安装 []</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html">Ubuntu（Debian） [7981]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/Ubuntu-Install-Debians.html">Ubuntu (Debian)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Installation/Windows-Install-Binary.html">Windows (二进制) [7990]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Installation/RHEL-Install-RPMs.html">RHEL（RPM） [7936]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Installation/RHEL-Install-RPMs.html">RHEL (RPM)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Installation/Alternatives.html">替代方案 [7555]</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Development-Setup.html">Ubuntu（源代码） [7635]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Installation/Alternatives/Ubuntu-Install-Binary.html">Ubuntu（二进制） [7660]</a></li>
@@ -84,7 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Foxy-Fitzroy.html">Foxy Fitzroy (<code class="xref any docutils literal notranslate"><span class="pre">foxy</span></code>) [14577]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/Release-Rolling-Ridley.html">Rolling Ridley (<code class="docutils literal notranslate"><span class="pre">rolling</span></code>) [15488]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/Development.html">开发分发版 [8317]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco（代号'jazzy'；2024年5月） [15425]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Releases/Release-Jazzy-Jalisco.html">Jazzy Jalisco (codename 'jazzy'; May, 2024)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../Releases/End-of-Life.html">终止生命周期的发行版 [8319]</a><ul>
@@ -137,7 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../Tutorials/Intermediate.html">中级 [5283]</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [5627]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Rosdep.html">使用rosdep管理依赖关系 [校准]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Creating-an-Action.html">创建一个动作 [5358]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html">编写一个动作服务器和客户端（C++） [6308]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Tutorials/Intermediate/Writing-an-Action-Server-Client/Py.html">编写一个动作服务器和客户端（Python） [6379]</a></li>
@@ -244,10 +244,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Developing-a-ROS-2-Package.html">开发ROS 2软件包 [338]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Documentation.html">ament_cmake 用户文档 [5]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Ament-CMake-Python-Documentation.html">ament_cmake_python 用户文档 [158]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-files-migration-guide.html">将启动文件从ROS 1迁移到ROS 2 [491]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-files-migration-guide.html">Migrating launch files from ROS 1 to ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launch-file-different-formats.html">使用 Python、XML 和 YAML 编写 ROS 2 启动文件 [464]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Launching-composable-nodes.html">使用ROS 2 launch启动可组合节点 [587]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html">将YAML参数文件从ROS 1迁移到ROS 2 [705]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Parameters-YAML-files-migration-guide.html">Migrating YAML parameter files from ROS 1 to ROS 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Node-arguments.html">通过命令行向节点传递ROS参数 [603]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/Sync-Vs-Async.html">同步与异步服务客户端 [987]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../How-To-Guides/DDS-tuning.html">DDS调优信息 [294]</a></li>
@@ -283,27 +283,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">概念 [6621]</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [6876]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Different-Middleware-Vendors.html">关于不同的ROS 2 DDS/RTPS供应商 [6837]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Logging.html">关于日志记录和日志记录器配置 [7008]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html">关于服务质量设置 [7116]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html">关于 ROS 2 接口 [7285]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Parameters.html">关于 ROS 2 中的参数 [7249]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Executors.html">执行器 [6909]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Topic-Statistics.html">关于主题统计 [7449]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [6767]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-RQt.html">RQt 的概述和使用方法 [7384]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Composition.html">关于组合 [6800]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Catment.html">关于 ament 和 catkin 的混合 (catment) [6707]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Cross-Compilation.html">关于交叉编译 [6822]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Security.html">关于ROS 2安全性 [7411]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Tf2.html">关于tf2 [7431]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Build-System.html">关于构建系统 [6657]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Internal-Interfaces.html">关于内部ROS 2接口&quot; [6949]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Middleware-Implementations.html">关于ROS 2中间件实现 [7094]</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">关于ROS 2客户端库 [7206]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Concepts.html">概念 [校准]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Domain-ID.html">ROS_DOMAIN_ID [校准]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Different-Middleware-Vendors.html">About different ROS 2 DDS/RTPS vendors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Logging.html">About logging and logger configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Quality-of-Service-Settings.html">About Quality of Service settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-Interfaces.html">About ROS 2 interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Parameters.html">About parameters in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Executors.html">执行器 [校准]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Topic-Statistics.html">About topic statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Command-Line-Tools.html">使用命令行工具进行内省 [校准]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-RQt.html">RQt 的概述和使用方法 [校准]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Composition.html">About Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Catment.html">On the mixing of ament and catkin (catment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Cross-Compilation.html">About Cross-compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Security.html">About ROS 2 Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Tf2.html">About tf2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Build-System.html">About the build system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Internal-Interfaces.html">About internal ROS 2 interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-Middleware-Implementations.html">About ROS 2 middleware implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Concepts/About-ROS-2-Client-Libraries.html">About ROS 2 client libraries</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Contact.html">联系 [7468]</a></li>
@@ -312,8 +312,8 @@
 <li class="toctree-l3"><a class="reference internal" href="Developer-Guide.html">ROS 2开发者指南 [1644]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Code-Style-Language-Versions.html">代码风格和语言版本 [1415]</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Quality-Guide.html">质量指南：确保代码质量 [2231]</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="Migration-Guide.html">从ROS 1迁移指南 [1999]</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ROS 1的Python迁移指南 [2222]</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Migration-Guide.html">Migration guide from ROS 1</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Python migration guide from ROS 1</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Build-Farms.html">ROS构建农场 [1367]</a></li>
@@ -360,8 +360,8 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../The-ROS2-Project.html">ROS 2 项目 [1326]</a> &raquo;</li>
           <li><a href="../Contributing.html">贡献 [1328]</a> &raquo;</li>
-          <li><a href="Migration-Guide.html">从ROS 1迁移指南 [1999]</a> &raquo;</li>
-      <li>ROS 1的Python迁移指南 [2222]</li>
+          <li><a href="Migration-Guide.html">Migration guide from ROS 1</a> &raquo;</li>
+      <li>Python migration guide from ROS 1</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/ros2/ros2_documentation/blob/humble/source/The-ROS2-Project/Contributing/Migration-Guide-Python.rst" class="fa fa-github"> 在 GitHub 上修改</a>
       </li>
@@ -374,16 +374,16 @@
 
 
   <div class="section" id="python-migration-guide-from-ros-1">
-<h1>ROS 1的Python迁移指南 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2222">[2222]</a><a class="headerlink" href="#python-migration-guide-from-ros-1" title="永久链接至标题"></a></h1>
+<h1>Python migration guide from ROS 1<a class="headerlink" href="#python-migration-guide-from-ros-1" title="永久链接至标题"></a></h1>
 <div class="section" id="node-initialization">
-<h2>节点初始化 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2223">[2223]</a><a class="headerlink" href="#node-initialization" title="永久链接至标题"></a></h2>
-<p>在ROS 1中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2224">[2224]</a></p>
+<h2>Node Initialization<a class="headerlink" href="#node-initialization" title="永久链接至标题"></a></h2>
+<p>In ROS 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;asdf&#39;</span><span class="p">)</span>
 
 <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;Created node&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在ROS 2中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2225">[2225]</a></p>
+<p>In ROS 2:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 <span class="n">node</span> <span class="o">=</span> <span class="n">rclpy</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="s1">&#39;asdf&#39;</span><span class="p">)</span>
 
@@ -392,8 +392,8 @@
 </div>
 </div>
 <div class="section" id="ros-parameters">
-<h2>ROS参数 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2226">[2226]</a><a class="headerlink" href="#ros-parameters" title="永久链接至标题"></a></h2>
-<p>在ROS 1中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2224">[2224]</a></p>
+<h2>ROS Parameters<a class="headerlink" href="#ros-parameters" title="永久链接至标题"></a></h2>
+<p>In ROS 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">port</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="s1">&#39;/dev/ttyUSB0&#39;</span><span class="p">)</span>
  <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s1">&#39;port parameter must be a str&#39;</span>
 
@@ -403,7 +403,7 @@
 <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s1">&#39;port: &#39;</span> <span class="o">+</span> <span class="n">port</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在ROS 2中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2225">[2225]</a></p>
+<p>In ROS 2:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="s1">&#39;/dev/ttyUSB0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
 <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s1">&#39;port parameter must be a str&#39;</span>
 
@@ -415,47 +415,47 @@
 </div>
 </div>
 <div class="section" id="creating-a-publisher">
-<h2>创建发布者 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2227">[2227]</a><a class="headerlink" href="#creating-a-publisher" title="永久链接至标题"></a></h2>
-<p>在ROS 1中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2224">[2224]</a></p>
+<h2>Creating a Publisher<a class="headerlink" href="#creating-a-publisher" title="永久链接至标题"></a></h2>
+<p>In ROS 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在ROS 2中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2225">[2225]</a></p>
+<p>In ROS 2:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="creating-a-subscriber">
-<h2>创建订阅者 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2228">[2228]</a><a class="headerlink" href="#creating-a-subscriber" title="永久链接至标题"></a></h2>
-<p>在ROS 1中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2224">[2224]</a></p>
+<h2>Creating a Subscriber<a class="headerlink" href="#creating-a-subscriber" title="永久链接至标题"></a></h2>
+<p>In ROS 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在ROS 2中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2225">[2225]</a></p>
+<p>In ROS 2:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sub</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;chatter&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="creating-a-service">
-<h2>创建服务 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2229">[2229]</a><a class="headerlink" href="#creating-a-service" title="永久链接至标题"></a></h2>
-<p>在ROS 1中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2224">[2224]</a></p>
+<h2>Creating a Service<a class="headerlink" href="#creating-a-service" title="永久链接至标题"></a></h2>
+<p>In ROS 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">srv</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span><span class="s1">&#39;add_two_ints&#39;</span><span class="p">,</span> <span class="n">AddTwoInts</span><span class="p">,</span> <span class="n">add_two_ints_callback</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在ROS 2中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2225">[2225]</a></p>
+<p>In ROS 2:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">srv</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">&#39;add_two_ints&#39;</span><span class="p">,</span> <span class="n">add_two_ints_callback</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="creating-a-service-client">
-<h2>创建服务客户端 <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2230">[2230]</a><a class="headerlink" href="#creating-a-service-client" title="永久链接至标题"></a></h2>
-<p>在ROS 1中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2224">[2224]</a></p>
+<h2>Creating a Service Client<a class="headerlink" href="#creating-a-service-client" title="永久链接至标题"></a></h2>
+<p>In ROS 1:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="s1">&#39;add_two_ints&#39;</span><span class="p">)</span>
 <span class="n">add_two_ints</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="s1">&#39;add_two_ints&#39;</span><span class="p">,</span> <span class="n">AddTwoInts</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">add_two_ints</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>在ROS 2中： <a class="reference external" href="http://fishros.org/page/calib/#/home?apihost=http://fishros.org:2023/ros2/calib&amp;msgid=2225">[2225]</a></p>
+<p>In ROS 2:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">add_two_ints</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">AddTwoInts</span><span class="p">,</span> <span class="s1">&#39;add_two_ints&#39;</span><span class="p">)</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">add_two_ints</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="n">node</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;service not available, waiting again...&#39;</span><span class="p">)</span>
@@ -471,7 +471,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-          <a href="Migration-Guide.html" class="btn btn-neutral float-left" title="从ROS 1迁移指南 [1999]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+          <a href="Migration-Guide.html" class="btn btn-neutral float-left" title="Migration guide from ROS 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
           <a href="Build-Farms.html" class="btn btn-neutral float-right" title="ROS构建农场 [1367]" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       </div>
   
